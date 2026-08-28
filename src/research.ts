@@ -341,12 +341,14 @@ export const createResearchCandidate = (target: ResearchTarget, layer: Layer, da
   };
 };
 
-const candidateTargets = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> => researchTargetMap(dataset);
-
 /** Structural checks for a candidate before it is placed in the local draft shelf. */
-export const validateResearchCandidate = (candidate: ResearchQuestionCandidate, dataset: Dataset = DATASET): readonly string[] => {
+const validateResearchCandidateWithTargets = (
+  candidate: ResearchQuestionCandidate,
+  dataset: Dataset,
+  targets: ReadonlyMap<string, ResearchTarget>,
+): readonly string[] => {
   const errors: string[] = [];
-  const target = candidateTargets(dataset).get(candidate.targetId);
+  const target = targets.get(candidate.targetId);
   const facet = dataset.facets.find((item) => item.id === candidate.facetId);
   const sources = candidate.sourceIds.map((sourceId) => dataset.sources.find((source) => source.id === sourceId));
 
@@ -363,6 +365,9 @@ export const validateResearchCandidate = (candidate: ResearchQuestionCandidate, 
   if (target && candidate.targetLabel !== target.label) errors.push(`candidate ${candidate.id} target label does not match ${candidate.targetId}`);
   return errors;
 };
+
+export const validateResearchCandidate = (candidate: ResearchQuestionCandidate, dataset: Dataset = DATASET): readonly string[] =>
+  validateResearchCandidateWithTargets(candidate, dataset, researchTargetMap(dataset));
 
 /**
  * Future production-promotion gate. The current application has no promotion
@@ -415,8 +420,10 @@ export const researchCandidatesForTarget = (targetId: string): readonly Research
 export const researchAnchorProfileForTarget = (targetId: string) =>
   RESEARCH_ANCHOR_PROFILES.find((profile) => profile.targetId === targetId);
 
-export const validateCuratedResearchBank = (dataset: Dataset = DATASET): readonly string[] =>
-  RESEARCH_CANDIDATES.flatMap((candidate) => validateResearchCandidate(candidate, dataset));
+export const validateCuratedResearchBank = (dataset: Dataset = DATASET): readonly string[] => {
+  const targets = researchTargetMap(dataset);
+  return RESEARCH_CANDIDATES.flatMap((candidate) => validateResearchCandidateWithTargets(candidate, dataset, targets));
+};
 
 export const validateCuratedResearchMetadata = (dataset: Dataset = DATASET): readonly string[] => {
   const errors: string[] = [];

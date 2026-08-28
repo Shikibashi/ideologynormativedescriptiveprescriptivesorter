@@ -572,6 +572,14 @@ Require popular sovereignty, freedom as non-domination, equal civic standing, an
 
 Taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural checks; later cognitive/respondent/empirical evidence remains open.
 
+## V64 research decision — Neoconservatism micro branch
+
+Activate provisional dedicated measurement for the existing canonical `Conservatism → Neoconservatism` node while retaining its canonical taxonomy placement. Feldman, Hull, and Williams support a historically situated and internally varied current joining critique of relativism and pluralist fragmentation, republican-democratic common purpose, moral and civic order, active public authority, and a contested account of national interest and international engagement; these sources support construct terminology and item authoring only.
+
+Require historically situated moral-order and pluralist-democracy critique, republican self-government oriented toward common purpose, public authority capable of defending a liberal-democratic framework, and practical domestic or international routes whose form varies across generations, countries, and intellectual formations. Exclude Conservatism generally, Neoliberalism, National Conservatism, Paleoconservatism, anti-communism, military hawkishness, democracy promotion alone, market support alone, current party or administration affiliation, one thinker, one country, one war, or one policy alone.
+
+Taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural checks; later cognitive/respondent/empirical evidence remains open and was not run.
+
 ## V63 research decision — Left-Wing Populism micro branch
 
 Activate provisional dedicated measurement for the existing canonical `Populism → Left-Wing Populism` node while retaining its canonical taxonomy placement. Saalfeld, Eklundh, Stengel, Wojczewski, Venizelos, and Stavrakakis support a contested people-versus-elite articulation joined to a left-egalitarian host, with no fixed policy bundle and substantial identity-politics, strategic, institutional, leadership, and international variation; these sources support construct terminology and item authoring only.
@@ -595,3 +603,60 @@ Activate provisional dedicated measurement for the existing canonical `Socialist
 Require linked class and gendered power, capitalist production, social reproduction, labor and care, material dependence, and transformative emancipation. Preserve historical-materialist, dual-systems, unitary, social-reproduction, autonomist, Wages for Housework, intersectional, Black, queer, trans, decolonial, reformist, revolutionary, public, cooperative, union, household, and autonomous variation. Exclude generic Feminism, Marxism alone, Socialist / Marxist Feminism as a whole, welfare or public ownership alone, unpaid-care concern alone, one patriarchy theory, one author, one movement, or one institutional route.
 
 Taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural checks; later cognitive/respondent/empirical evidence remains open.
+## V65 research decision — Paleoconservatism micro branch
+
+Activate provisional dedicated measurement for the existing canonical Conservatism → Paleoconservatism node while retaining its canonical taxonomy placement. Dougall, Bartee, and Kolozi support a historically situated and internally varied American conservative current formed through post-war New Right conflict and associated with national particularity, inherited culture, local authority, sovereignty, restraint toward centralized or globalizing projects, and critique of universalizing or market-globalist arrangements; these sources support construct terminology and item authoring only.
+
+Require convergent historical formation plus national particularity or sovereignty, inherited culture or local authority, and a restrained or locally accountable route. Preserve traditionalist, agrarian, paleolibertarian, pluralist, exclusionary, domestic-economic, foreign-policy, historical, generational, and media/institutional variation. Exclude generic Conservatism, National Conservatism, Neoconservatism, Right-Wing Populism, the alt-right, White Nationalism, immigration concern alone, anti-globalization alone, protectionism alone, religious identity, one thinker, one party, one policy, or one issue.
+
+Taxonomy retains the node as canonical with retain-canonical and resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Twelve prompts and one provisional anchor passed structural checks; later cognitive/respondent/empirical evidence remains open.
+
+## V66 research decision — Wasatiyya micro branch
+
+Activate provisional dedicated measurement for the existing canonical Islamism → Wasatiyya node while retaining its canonical taxonomy placement. Browers, Kazmi, Sakthivel, and Teitelbaum and Abdulaev support a historically situated and internally varied Islamist current using middle-way or centrist vocabulary to negotiate modernity, public moral order, participation, citizenship, and coexistence; these sources support construct terminology and item authoring only.
+
+Boundary: require convergent public Islamist framing plus middle-way discourse and institutional, citizenship, coexistence, or public-order implications. Preserve movement-intellectual, state-sponsored, national, transnational, egalitarian-citizenship, hierarchical-citizenship, reformist, theological, historical, and jurisdictional variation.
+
+Exclusions: Muslim identity, private piety, generic Islamism, moderation as a personality trait or scalar score, liberal democracy, electoral participation, nonviolence alone, one state's counter-extremism policy, one scholar, one organization, one fatwa, one leader, one policy, or one reading of a current.
+
+Taxonomy retains the node as canonical with retain-canonical and resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Twelve prompts, one provisional anchor, five source references, two neighbor discriminants, and a false-positive audit passed structural checks; later cognitive/respondent/empirical evidence remains open.
+
+## V67 research decision — Right-Wing Populism micro branch
+
+Activate provisional dedicated measurement for the existing canonical Populism → Right-Wing Populism node while retaining its canonical taxonomy placement. Meijers, Huber, and Zaslove, Praet, Hidalgo, and the existing populism/right-populism records support a historically and contextually varied right-populist variant; these sources support construct terminology, adjacent-construct separation, and item authoring only.
+
+Boundary: require a convergent people-versus-elite articulation plus a right-wing national or culturally conservative host. Preserve national, cultural, ethnocultural, nativist, conservative, authoritarian, economic, institutional, democratic, anti-pluralist, party, movement, leadership, country, temporal, and transnational variation; treat nativism and authoritarianism as adjacent dimensions rather than mandatory features.
+
+Exclusions: generic anti-elite dissatisfaction, national pride, immigration concern, nativism alone, authoritarian preference alone, Nationalism, Conservatism, National Conservatism, Ethnocultural Nationalism, Left-Wing Populism, one party, one leader, one country, one policy, or one issue.
+
+Taxonomy retains the node as canonical with retain-canonical and resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Twelve prompts, one provisional anchor, five source references, two neighbor discriminants, a false-positive audit, and a qualitative profile passed structural checks; later cognitive/respondent/empirical evidence remains open.
+## V68 research decision — Hindutva micro branch
+
+Activate provisional dedicated measurement for the existing canonical `Religious Nationalism → Hindutva (Hindu Nationalism)` node while retaining its canonical taxonomy placement. Mehta, Sarkar, Brass, and the existing source set support a historically specific and internally contested Hindu-national political formulation linking civilizational or cultural nationhood to public authority, political membership, and institutional transformation; the sources support construct terminology, variation, adjacent-construct separation, and item authoring only.
+
+Boundary: require convergent evidence across descriptive, normative, and prescriptive layers. Preserve religiously thick and culturally secularized routes, caste and internal diversity, pluralist and majoritarian membership, Hindu Rashtra/Rajya and national-culture distinctions, and movement, party, state, educational, legal, symbolic, historical, contemporary, and diaspora variation.
+
+Exclusions: Hindu faith or piety, Hindu cultural identity, Indian patriotism, generic Nationalism, generic Religious Nationalism, one party, one leader, one government, one policy, anti-minority sentiment alone, or operational hostility or violence.
+
+Taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Twelve prompts, one provisional anchor, six source references, two neighbor discriminants, a false-positive audit, and a qualitative profile passed structural checks; later cognitive/respondent/empirical evidence remains open.
+
+
+## V69 research decision — Religious Zionism micro branch
+
+Activate provisional dedicated measurement for the existing canonical `Religious Nationalism → Religious Zionism` node while retaining its canonical taxonomy placement. Schwartz, Yadgar and Hadad, Novak, Rubin, and existing Zionism/religious-nationalism records support a historically situated and internally plural Jewish religious-national current connecting religious interpretation, collective self-determination, and public/state institutions; the sources support construct terminology, variation, adjacent-construct separation, and item authoring only.
+
+Boundary: require convergent public-political evidence across descriptive, normative, and prescriptive layers. Preserve variation over theology, denominational and historical context, messianic and non-messianic interpretation, statehood, territory, democracy, constitutionalism, organizational route, and diaspora/community relations.
+
+Exclusions: Jewish identity, private faith, broad Zionism, Israeli citizenship or patriotism, one party or leader, current government or territorial/war policy, anti-Arab or anti-Palestinian sentiment alone, one theological claim, or one territorial preference.
+
+Taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Twelve prompts, one provisional anchor, eight source references, two neighbor discriminants, a false-positive audit, and an 18-dimension qualitative profile passed structural checks; later cognitive/respondent/empirical evidence remains open.
+
+## V70 — Neo-Fascism meso branch
+
+Activate provisional dedicated measurement for the existing canonical Fascism → Neo-Fascism meso node while retaining its canonical taxonomy placement. Bull, Wolff, Albanese, Forlenza, and existing Fascism/National Socialism/Neo-Nazism records support a historically situated post-1945 field of fascist continuities, adaptations, and revivals, with meaningful variation over democracy, corporatism, organization, state power, national sovereignty, and transnational form. The sources support terminology, provenance, boundary design, and original item authoring only.
+
+Boundary: require convergent historical and organizational evidence connecting a post-1945 formation to fascist or Nazi-era political resources through continuity, adaptation, or revival. Preserve country, generation, movement, party, democratic, corporatist, state, anti-communist, sovereignty, and transnational variation.
+
+Exclusions: generic nationalism, authoritarianism, anti-communism, immigration concern, racial prejudice, violence, nostalgia, one symbol, one party, one leader, one country, one current policy, or operational tactics alone. Distinguish Fascism, National Socialism, Neo-Nazism, National Conservatism, Third Positionism, post-fascist parties, and new radical-right formations.
+
+Taxonomy retains the node as canonical with retain-canonical and resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Twelve prompts, one provisional anchor, seven direct source references, two neighbor discriminants, a false-positive audit, and an 18-dimension qualitative profile passed structural checks. Later cognitive/respondent/empirical evidence remains open and was not run.

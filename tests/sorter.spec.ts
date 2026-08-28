@@ -86,7 +86,23 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("wasatiyya");
   await expect(page.getByRole("heading", { name: "Wasatiyya" })).toBeVisible();
-  await expect(page.locator(".research-status")).toContainText("catalog only");
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("right-wing-populism");
+  await expect(page.getByRole("heading", { name: "Right-Wing Populism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("hindutva");
+  await expect(page.getByRole("heading", { name: "Hindutva (Hindu Nationalism)" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("religious-zionism");
+  await expect(page.getByRole("heading", { name: "Religious Zionism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("neo-fascism");
+  await expect(page.getByRole("heading", { name: "Neo-Fascism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("one-nation-conservatism");
   await expect(page.getByRole("heading", { name: "One-Nation Conservatism" })).toBeVisible();
@@ -148,11 +164,18 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
     ["marxist-feminism", "Marxist Feminism"],
     ["socialist-feminism", "Socialist Feminism"],
     ["left-wing-populism", "Left-Wing Populism"],
+    ["right-wing-populism", "Right-Wing Populism"],
+    ["hindutva", "Hindutva (Hindu Nationalism)"],
+    ["religious-zionism", "Religious Zionism"],
+    ["neo-fascism", "Neo-Fascism"],
+    ["neoconservatism", "Neoconservatism"],
+    ["paleoconservatism", "Paleoconservatism"],
     ["populism", "Populism"],
     ["mutualism", "Mutualism"],
     ["radical-conservatism", "Radical Conservatism"],
     ["reactionary-conservatism", "Reactionary Conservatism"],
     ["islamism", "Islamism"],
+    ["wasatiyya", "Wasatiyya"],
     ["ordoliberalism", "Ordoliberalism"],
     ["pan-africanism", "Pan-Africanism"],
     ["religious-nationalism", "Religious Nationalism"],

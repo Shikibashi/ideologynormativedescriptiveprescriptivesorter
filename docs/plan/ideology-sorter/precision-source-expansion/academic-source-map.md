@@ -655,3 +655,75 @@ These records and the existing feminist sources support terminology, variation, 
 | [Venizelos and Stavrakakis, “Bound to fail? Assessing contemporary left populism”](https://onlinelibrary.wiley.com/doi/10.1111/1467-8675.12638) | Supplies a contested form/host and strategic-institutional boundary for contemporary left populism. | Preserve strategic and institutional variation and distinguish host commitments from populist articulation. |
 
 These records and the existing populism sources support terminology, variation, provenance, false-positive controls, and original item authoring only. Left-Wing Populism is activated provisionally on `Populism → Left-Wing Populism`; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+
+## V64 source additions — Neoconservatism
+
+| Source | Contribution to the branch | Authoring implication |
+|---|---|---|
+| [Feldman, “On Neoconservatism”](https://academic.oup.com/nyu-press-scholarship-online/book/37056/chapter-abstract/323107676) | Frames neoconservatism as a historical critique of ethical relativism and fragmented pluralist democracy, with republican-democratic common purpose and public moral order. | Require moral-order and republican-democratic reasoning together; do not infer the branch from generic conservatism or order preference. |
+| [Hull, “Irving Kristol and the Biographical Threads of Neoconservatism”](https://academic.oup.com/camqtly/article/53/1/34/7637309) | Situates the current through multiple biographical, intellectual, organizational, and public-action threads. | Preserve historical, generational, organizational, and liberal-to-conservative variation; do not encode one thinker, party, or period. |
+| [Williams, “What is the National Interest? The Neoconservative Challenge in IR Theory”](https://journals.sagepub.com/doi/10.1177/1354066105055482) | Connects regime character, virtue, power, national interest, and international engagement while preserving realist/idealist tension. | Keep foreign-policy and internationalism items contested and separate from one military action, administration, or interventionist policy. |
+
+These records and the existing conservatism and political-ideologies sources support terminology, variation, provenance, false-positive controls, and original item authoring only. Neoconservatism is activated provisionally on `Conservatism → Neoconservatism`; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+## V65 source map — Paleoconservatism micro branch
+
+| Source | Contribution to the branch | Authoring implication |
+|---|---|---|
+| [Dougall, Exile and enmity: The post-war roots of the American New Right](https://academic.oup.com/book/58897/chapter-abstract/492899530) | Situates paleoconservatism within post-war American New Right conflict, historical development, and mediated collective formation. | Require historical formation and preserve generational, organizational, media, and national context; do not infer the branch from a current party or leader. |
+| [Bartee, Paul Gottfried and Paleoconservatism](https://academic.oup.com/book/25370/chapter-abstract/192452505) | Presents paleoconservatism as an internally varied reformulation of the Right drawing on Burke, southern agrarian writers, and pre-neoconservative National Review, with critique of neoconservative universalism and later right-wing pluralism. | Preserve traditionalist, agrarian, paleolibertarian, pluralist, and exclusionary variation; distinguish the branch from Neoconservatism and one intellectual. |
+| [Kolozi, The Paleoconservative Critique of Global Capitalism](https://academic.oup.com/columbia-scholarship-online/book/16897/chapter-abstract/174138181) | Supports a critique of free trade and global capitalism as threats to national independence, local continuity, and inherited culture. | Link economic and sovereignty reasoning without making protectionism, anti-globalization, or one economic policy sufficient evidence. |
+
+These records and the existing conservatism and national-conservatism sources support terminology, variation, provenance, false-positive controls, and original item authoring only. Paleoconservatism is activated provisionally on Conservatism → Paleoconservatism; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+
+## V66 source map — Wasatiyya
+
+| Source | Supported boundary | Authoring implication |
+|---|---|---|
+| [Browers, A more inclusive Islamism? The Wasatiyya trend](https://www.cambridge.org/core/books/abs/political-ideology-in-the-arab-world/more-inclusive-islamism-the-wasatiyya-trend/41EE0EE3D602AA3ED9E90525DF61DB47) | Situates Wasatiyya as a more inclusive or centrist trend within modern political-Islam debates and identifies a varied field of theorists rather than one fixed organization. | Require a public Islamist current boundary and preserve historical, intellectual, organizational, and national variation; do not infer it from private faith. |
+| [Kazmi, Islamic Democracy by Numbers](https://academic.oup.com/book/4565/chapter-abstract/146666509) | Treats al-wasatiyya as an ideologically used middle-way category whose theological and majoritarian uses are multivalent and can exclude, anathematize, or marginalize. | Do not make moderation a scalar virtue or equate Wasatiyya with liberal democracy; include an explicit boundary around theological and pluralist limits. |
+| [Sakthivel, Contesting Moderate Islam](https://doi.org/10.3751/78.1.11) | Shows that moderate Islam lacks an agreed meaning and that al-i'tidal or al-wasatiyya is deployed through platforms, public image, and identity in a specific Algerian context. | Separate movement discourse from state/security branding and preserve jurisdictional context; moderation language alone is insufficient. |
+| [Teitelbaum and Abdulaev, centrist Wasatiyya discourse](https://www.tandfonline.com/doi/abs/10.1080/00263206.2025.2595675) | Describes Wasatiyya as an Islamist stream blending Salafism and renewal and traces changing claims about non-Muslim citizenship, coexistence, participation, and the limits of secular pluralism. | Cover citizenship and coexistence as contested normative content, retain hierarchical and egalitarian historical variation, and exclude one leader, organization, fatwa, or policy as a proxy. |
+
+These records and the existing Islamism sources support terminology, variation, provenance, false-positive controls, and original item authoring only. Wasatiyya is activated provisionally on Islamism → Wasatiyya; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+
+## V67 source map — Right-Wing Populism micro branch
+
+| Source | Supported boundary | Authoring implication |
+|---|---|---|
+| [Meijers, Huber, and Zaslove, “The Anatomy of Populist Ideology”](https://www.cambridge.org/core/journals/european-journal-of-political-research/article/anatomy-of-populist-ideology-how-political-parties-define-the-people-and-the-elite/530AC0E964E62C709929D155CE14CEBB) | Treats people and elite as context-dependent signifiers, distinguishes populism from nativism and nationalism, and preserves culturally, ethnonationally, and nativistically bounded right-populist constructions. | Require a people–elite mechanism plus a host boundary; do not make national or nativist content a universal definition of right populism. |
+| [Praet, “Authoritarianism and Populist Radical Right Ideology”](https://www.tandfonline.com/doi/full/10.1080/13569317.2024.2442334) | Treats nativism, authoritarianism, and populism as related but distinct dimensions and notes multiple threat, submission, and aggression routes within authoritarianism. | Keep nativism and authoritarianism adjacent rather than mandatory; do not infer the branch from one authority preference, threat attitude, or immigration position. |
+| [Hidalgo, “(Right-Wing) Populism as an Ideology?”](https://academic.oup.com/book/62262/chapter-abstract/551612269) | Frames populism's relationship to popular sovereignty, deliberative democracy, and liberal protections as contested rather than as one fixed institutional programme. | Preserve democratic and anti-pluralist routes and distinguish the host-sensitive variant from one party, leader, country, or policy. |
+
+These records and the existing populism/right-populism sources support terminology, variation, provenance, adjacent-construct separation, false-positive controls, and original item authoring only. Right-Wing Populism is activated provisionally on Populism → Right-Wing Populism; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+## V68 source map — Hindutva micro branch
+
+| Source | Supported boundary | Authoring implication |
+|---|---|---|
+| [Mehta, Hindu Nationalism: From Ethnic Identity to Authoritarian Repression](https://journals.sagepub.com/doi/10.1177/23210230221082828) | Treats Hindu nationalism as a multi-level and contested political formation involving historical memory, majority–minority framing, legal identity, caste, and competing relations among Hindu Rashtra, Hindu Rajya, democracy, and public authority. | Require a political-project boundary across identity, membership, authority, and institutions; do not infer Hindutva from Hindu faith, identity, or one current policy. |
+| [Sarkar, Hindu Nationalism in India](https://academic.oup.com/book/41849) | Situates Hindutva within a historically developed political-cultural formation connecting Hindu religious nationalism, organizations, institutions, and everyday cultural politics. | Preserve historical, organizational, institutional, cultural, religiously thick, and secularized variation; do not collapse the branch into one party or actor. |
+| [Brass, Communal and caste conflict: secularism, Hindu nationalism, and the Indian state](https://www.cambridge.org/core/books/abs/politics-of-india-since-independence/communal-and-caste-conflict-secularism-hindu-nationalism-and-the-indian-state/CB4FC4BBBB1212F766248681500FF019) | Distinguishes a Hindu-national claim of shared beliefs, history, and cultural ties across internal divisions from secular equal-citizenship accounts and describes its possible state basis. | Cover membership and state-basis claims while keeping caste, internal diversity, pluralist, and majoritarian routes distinct. |
+
+These records and the existing Hindutva, nationalism, and religious-nationalism sources support terminology, variation, provenance, false-positive controls, and original item authoring only. Hindutva is activated provisionally on Religious Nationalism → Hindutva (Hindu Nationalism); local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+
+
+## V69 source additions — Religious Zionism micro branch
+
+| Source | Research use |
+| --- | --- |
+| [Schwartz, *Religious Zionism: History and Ideology*](https://www.jstor.org/stable/jj.36309378) | Situates Religious Zionism as an historically developed ideological-theological and institutional tradition with movement formation, education, public authority, and changing periods; use for historical and internal-variation boundaries. |
+| [Yadgar and Hadad, *A post-secular interpretation of religious nationalism: the case of Religious-Zionism*](https://www.tandfonline.com/doi/full/10.1080/13569317.2021.1957297) | Analyzes Religious-Zionism as a contested nation-state and public political-theological formation involving sovereignty, territory, public religious expression, and national identity; use for religion-state and public-synthesis boundaries. |
+| [Novak, *Zionism and Judaism: A New Theory*](https://www.cambridge.org/core/books/zionism-and-judaism/0B8316564B7014F82462B614D5E20928) | Distinguishes religious, secular, theocratic, messianic, and democratic questions within Zionist thought; use to avoid collapsing one theological or constitutional interpretation into the whole tradition. |
+| [Rubin, *Bifurcated loyalty and religious actors' behaviour in democratic politics*](https://www.tandfonline.com/doi/full/10.1080/09637494.2014.887358) | Preserves historical and organizational variation in how religious-Zionist actors engage democratic state institutions and civil society; use for temporal and institutional-route boundaries. |
+
+These records and the existing Zionism, Religious Nationalism, nationalism, and Religious Zionism sources support terminology, variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, invariance, or empirical classification.
+
+## V70 source additions — Neo-Fascism meso branch
+
+| Source | Research use |
+| --- | --- |
+| Bull, Neo-Fascism, Oxford Handbook of Fascism | Supports a postwar Neo-Fascism category and the need for historical and organizational boundary controls; used for terminology and original authoring only. |
+| Wolff, The meaning and role of democracy and corporatism in Italian neo-fascist ideology (1945–1953) | Supports preserving internal variation over democracy and corporatist coordination in postwar Italian neo-fascism; used for construct boundaries and authoring only. |
+| Albanese, Neofascism in Europe (1945–1989) | Supports a multifaceted European and transnational postwar field rather than one uniform model; used for historical variation and neighbor distinctions only. |
+| Forlenza, The end of fascism? | Supports distinguishing historical fascism from postwar imitation, continuity, and post-fascist transformation; used for temporal and false-positive boundaries only. |
+
+These records support terminology, variation, provenance, neighbor distinctions, false-positive controls, and original item authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, invariance, or empirical classification.

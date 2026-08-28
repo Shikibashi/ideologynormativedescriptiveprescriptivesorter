@@ -446,6 +446,12 @@ The V63 browser target is the existing `Populism → Left-Wing Populism` path. T
 
 Final V63 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, image rebuild/recreate, a healthy container, and `/healthz` `ok`. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with seventeen canonical catalog-only targets after V63.
 
+## V64 QA record — Neoconservatism micro branch
+
+The V64 browser target is the existing `Conservatism → Neoconservatism` path. The research workbench exposes five source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently `retain-canonical`/`scored-provisional`.
+
+Final V64 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, no-cache image rebuild/recreate, a healthy container, and `/healthz` `ok`. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with sixteen canonical catalog-only targets after V64.
+
 ## v62 Minos delivery report — Socialist Feminism
 
 Local Playwright passed 10/10, including the dedicated-scored Socialist Feminism workbench path and the taxonomy/status-separation scenario. After Docker image rebuild and forced Compose recreation, the container was healthy, `/healthz` returned `ok`, and Docker-backed Playwright passed 10/10. The branch exposes the existing canonical path and twelve direct source-linked items without changing the scorer policy.
@@ -463,3 +469,38 @@ V61 delivery verification passed: local Playwright 10/10, a rebuilt Docker servi
 Local Playwright passed 10/10, including the dedicated-scored Radical Republicanism workbench path and the taxonomy/status-separation scenario. After Docker image rebuild and forced Compose recreation, the container was healthy, `/healthz` returned `ok`, and Docker-backed Playwright passed 10/10. The branch exposes the existing canonical path and twelve direct source-linked items without changing the scorer policy.
 
 This is delivery evidence only; it does not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring.
+## V65 QA record — Paleoconservatism micro branch
+
+The V65 browser target is the existing Conservatism → Paleoconservatism path. The research workbench exposes five source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently retain-canonical/scored-provisional.
+
+Final V65 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, no-cache image rebuild/recreate, a healthy container, and /healthz ok. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with fifteen canonical catalog-only targets after V65.
+
+## V66 QA record — Wasatiyya micro branch
+
+The V66 browser target is the existing Islamism → Wasatiyya path. The research workbench exposes five source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently retain-canonical/scored-provisional.
+
+Final V66 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, no-cache image rebuild/recreate, a healthy container, and /healthz ok. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with fourteen canonical catalog-only targets after V66.
+
+## V67 QA record — Right-Wing Populism micro branch
+
+The V67 browser target is the existing Populism → Right-Wing Populism path. The research workbench exposes five source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently retain-canonical/scored-provisional.
+
+Final V67 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, no-cache image rebuild/recreate, a healthy container, and /healthz ok. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with thirteen canonical catalog-only targets after V67.
+## V68 QA record — Hindutva micro branch
+
+The V68 browser target is the existing `Religious Nationalism → Hindutva (Hindu Nationalism)` path. The research workbench exposes six source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently retain-canonical/scored-provisional.
+
+Final V68 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, no-cache image rebuild/recreate, a healthy container, and `/healthz` `ok`. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with twelve canonical catalog-only targets after V68.
+
+
+## V69 QA record — Religious Zionism micro branch
+
+The V69 browser target is the existing `Religious Nationalism → Religious Zionism` path. The research workbench exposes eight source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, an 18-dimension profile, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently retain-canonical/scored-provisional.
+
+Final V69 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, no-cache image rebuild/recreate, a healthy container, and `/healthz` `ok`. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with eleven canonical catalog-only targets after V69.
+
+## V70 QA record — Neo-Fascism meso branch
+
+The V70 browser target is the existing Fascism → Neo-Fascism path. The research workbench exposes seven source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, an 18-dimension profile, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently retain-canonical/scored-provisional.
+
+Final V70 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, fresh no-cache Docker image rebuild/recreate, a healthy container, and /healthz ok. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with ten canonical catalog-only targets after V70.

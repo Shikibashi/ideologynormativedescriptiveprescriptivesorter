@@ -620,3 +620,68 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-63-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 9/27/16 and 10 combined, aggregate rates 23.1373% and 41.1765%, and worst ranks 81 and 74 are diagnostics only. |
 | P-63-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
 | P-63-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, 11,825-character share round-trip, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## v64 QA scenarios — Neoconservatism micro branch
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-64-01 | Inspect source and ontology metadata. | Existing `Conservatism → Neoconservatism` path, five direct sources including two fresh academic records, two discriminants, and no topology change. |
+| P-64-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 64, 1,104 total prompts at 368 per layer, and 86 production anchors. |
+| P-64-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 27/28/5 and 7 combined, aggregate rates 23.2558% and 40.6977%, and worst ranks 82 and 75 are diagnostics only. |
+| P-64-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-64-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, 11,969-character share round-trip, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+## v65 QA scenarios — Paleoconservatism micro branch
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-65-01 | Inspect source and ontology metadata. | Existing Conservatism → Paleoconservatism path, five direct sources including two fresh academic records plus the existing Dougall source, two discriminants, and no topology change. |
+| P-65-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 65, 1,116 total prompts at 372 per layer, and 87 production anchors. |
+| P-65-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 12/48/1 and 6 combined, aggregate rates 23.7548% and 40.2299%, and worst ranks 83 and 76 are diagnostics only. |
+| P-65-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-65-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, 12,113-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## v66 QA scenarios — Wasatiyya micro branch
+
+| ID | Action | Expected evidence |
+|---|---|---|
+| P-66-01 | Inspect source and ontology metadata. | Existing Islamism → Wasatiyya path, five direct source references including three fresh academic records, two discriminants, and no topology change. |
+| P-66-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 66, 1,128 total prompts at 376 per layer, and 88 production anchors. |
+| P-66-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 26/30/32 and 28 combined, aggregate rates 22.3485% and 39.7727%, and worst ranks 84 and 77 are diagnostics only. |
+| P-66-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-66-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, 12,257-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## v67 QA scenarios — Right-Wing Populism micro branch
+
+| ID | Action | Expected evidence |
+|---|---|---|
+| P-67-01 | Inspect source and ontology metadata. | Existing Populism → Right-Wing Populism path, five direct source references including two fresh academic records, two discriminants, a profile, and no topology change. |
+| P-67-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 67, 1,140 total prompts at 380 per layer, and 89 production anchors. |
+| P-67-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 8/21/3 and 4 combined, aggregate rates 22.0974% and 38.2022%, and worst ranks 85 and 78 are diagnostics only. |
+| P-67-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-67-05 | Run delivery/evidence checks. | TypeScript, 78/78 tests, 12,401-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+## v68 QA scenarios — Hindutva micro branch
+
+| ID | Action | Expected evidence |
+|---|---|---|
+| P-68-01 | Inspect source and ontology metadata. | Existing `Religious Nationalism → Hindutva (Hindu Nationalism)` path, six direct source references including three fresh academic records, two discriminants, a profile, and no topology change. |
+| P-68-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 68, 1,152 total prompts at 384 per layer, and 90 production anchors. |
+| P-68-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 10/81/3 and 6 combined, aggregate rates 21.8519% and 38.8889%, and worst ranks 85 and 78 are diagnostics only. |
+| P-68-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-68-05 | Run delivery/evidence checks. | TypeScript, 79/79 tests, 12,545-character share round-trip, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+
+## V69 QA scenarios — Religious Zionism micro branch
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-69-01 | Select Religious Zionism in the research workbench. | The existing Religious Nationalism → Religious Zionism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-69-02 | Inspect the direct item block and source records. | Twelve target-tagged prompts appear at 4/4/4, each with the Religious Zionism analytical context and the four fresh academic source records. |
+| P-69-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 74/84/17 and 24 combined, aggregate rates 22.3443% and 39.5604%, and worst ranks 86 and 79 are diagnostics only. |
+| P-69-04 | Inspect taxonomy and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; the audit guards identity, private faith, broad Zionism, current policy, and current-conflict inference. |
+| P-69-05 | Run delivery/evidence checks. | TypeScript, 80/80 tests, 12,689-character share round-trip, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+| P-70-01 | Select Neo-Fascism in the research workbench. | The existing Fascism → Neo-Fascism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-70-02 | Inspect the direct item block and source records. | Twelve target-tagged prompts appear at 4/4/4, each with the Neo-Fascism analytical context and the four fresh academic source records. |
+| P-70-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 3/1/1 and 1 combined, aggregate rates 21.7391% and 38.0435%, and worst ranks 87 and 80 are diagnostics only. |
+| P-70-04 | Inspect taxonomy and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; generic nationalism, authoritarianism, anti-communism, symbols, actors, nostalgia, and operational content are not sufficient. |
+| P-70-05 | Run delivery/evidence checks. | TypeScript, 81/81 tests, 12,833-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |

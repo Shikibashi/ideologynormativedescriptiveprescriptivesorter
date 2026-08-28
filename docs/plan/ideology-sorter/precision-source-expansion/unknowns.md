@@ -439,3 +439,56 @@
 - [ ] The boundary between the thin Populist core, Left-Wing Populism, Right-Wing Populism, Socialism, Democratic Socialism, Nationalism, and generic anti-elite dissatisfaction remains host- and context-sensitive.
 - [ ] Inclusionary versus exclusionary identity construction, class and multisectoral people-construction, leadership, movement organization, reform/transformative strategy, and domestic/international routes require later cross-context source review.
 - [ ] Seventeen canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.
+
+## V64 open questions — Neoconservatism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement; explicitly not run here.
+- [ ] Full-competition ranks 27/28/5 and 7 combined, aggregate rates 23.2558% and 40.6977%, and worst ranks 82 and 75 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] The boundary among Neoconservatism, Conservatism, Neoliberalism, National Conservatism, Paleoconservatism, and liberalism remains historically and internally varied.
+- [ ] Moral-order critique, republican-democratic common purpose, public authority, national interest, international engagement, realism/idealism, multilateralism, and domestic economic routes require later cross-context source and boundary review.
+- [ ] Sixteen canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.
+## V65 open questions — Paleoconservatism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement; explicitly not run here.
+- [ ] Full-competition ranks 12/48/1 and 6 combined, aggregate rates 23.7548% and 40.2299%, and worst ranks 83 and 76 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] The boundary among Paleoconservatism, Conservatism, National Conservatism, Neoconservatism, Right-Wing Populism, the alt-right, and White Nationalism remains historically and internally varied.
+- [ ] Post-war New Right formation, inherited culture, sovereignty, local authority, paleolibertarian alliance, pluralist versus exclusionary variants, and domestic versus foreign-policy routes require later cross-context source and boundary review.
+- [ ] Fifteen canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.
+
+## V66 open questions — Wasatiyya
+
+- [ ] The boundary among Wasatiyya, Islamism, Revolutionary Islamism, Qutbism, Khomeinism, Religious Nationalism, and state-sponsored moderate-Islam branding remains historically and internally contested.
+- [ ] Equal citizenship, coexistence, consultation, participation, theological exclusivism, and resistance to secular pluralism vary across thinkers, movements, periods, states, and jurisdictions; the local block does not resolve those disputes.
+- [ ] Wasatiyya is isolated-reachable in all three layers, while the full-competition diagnostic reports combinedReachable false and full ranks 26/30/32 by layer and 28 combined; these are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Fourteen canonical ontology targets remain catalog-only; Fascism, Neo-Fascism, and other high-risk or under-specified branches remain held, and the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V70 open questions — Neo-Fascism
+
+- [ ] The boundary among Fascism, National Socialism, Neo-Nazism, Neo-Fascism, National Conservatism, Third Positionism, post-fascist parties, and new radical-right formations remains historically and internally contested.
+- [ ] Continuity, imitation, adaptation, revival, democracy, corporatism, anti-communism, national sovereignty, movement/party organization, country, generation, and transnational form vary across the post-1945 field; the local block does not resolve those disputes.
+- [ ] Neo-Fascism is isolated-reachable in all three layers, while full-competition ranks 3/1/1 by layer and 1 combined; aggregate rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Ten canonical ontology targets remain catalog-only, including Fascism and Neo-Nazism; the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+
+## V69 open measurement boundaries — Religious Zionism
+
+- [ ] Religious Zionism is isolated-reachable in all three layers, while full competition ranks 74/84/17 by layer and 24 combined, aggregate top-three rates 22.3443% and 39.5604%, and worst ranks 86 and 79; these are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Eleven canonical ontology targets remain catalog-only; Fascism, Neo-Fascism, and other high-risk or under-specified branches remain held, and the comprehensive coverage goal remains open.
+- [ ] Denominational, historical, constitutional, territorial, diaspora, and religion-state variation remain measurement gaps; later respondent cognitive and empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement and were explicitly not run here.
+
+## V67 open questions — Right-Wing Populism
+
+- [ ] The boundary among the thin Populist core, Right-Wing Populism, Left-Wing Populism, Nationalism, Conservatism, National Conservatism, Ethnocultural Nationalism, and generic anti-elite dissatisfaction remains host- and context-sensitive.
+- [ ] Nativism, authoritarianism, cultural conservatism, economic grievance, institutional antagonism, national sovereignty, democratic majoritarianism, and anti-pluralist routes can combine differently across parties, movements, countries, periods, and transnational networks; the local block does not resolve those disputes.
+- [ ] Right-Wing Populism is isolated-reachable in all three layers, while the full-competition diagnostic reports descriptive and normative missing fields and full ranks 8/21/3 by layer and 4 combined; these are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Thirteen canonical ontology targets remain catalog-only; Fascism, Neo-Fascism, and other high-risk or under-specified branches remain held, and the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+## V68 open questions — Hindutva
+
+- [ ] The boundary among Hindutva, Religious Nationalism, Nationalism, Ethnocultural Nationalism, Conservative Nationalism, Hindu cultural identity, Indian patriotism, and current political actors remains historically and internally contested.
+- [ ] Hindu Rashtra, Hindu Rajya, national culture, equal civic standing, majority/minority membership, caste, pluralism, institutional authority, and secularized versus religiously thick routes vary across thinkers, movements, parties, states, periods, and diasporas; the local block does not resolve those disputes.
+- [ ] Hindutva is isolated-reachable in all three layers, while the full-competition diagnostic reports descriptive and normative missing fields and full ranks 10/81/3 by layer and 6 combined; these are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Twelve canonical ontology targets remain catalog-only; Fascism, Neo-Fascism, and other high-risk or under-specified branches remain held, and the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.

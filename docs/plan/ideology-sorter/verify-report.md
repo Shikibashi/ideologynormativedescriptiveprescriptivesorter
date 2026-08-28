@@ -612,3 +612,100 @@ The taxonomy ledger retains Socialist Feminism as canonical with `retain-canonic
 | Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
 
 The taxonomy ledger retains Left-Wing Populism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, seventeen canonical targets remain catalog-only, and the comprehensive goal remains open. The V63 delta is currently uncommitted and no push remote is configured.
+
+## V64 verification report — Neoconservatism micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Two fresh academic records plus existing Oxford conservatism/political-ideologies sources; existing `Conservatism → Neoconservatism` path; historically situated moral-order/republican-democratic/public-authority boundary; no topology change |
+| Production contract | PASS | Content version 64; 1,104 prompts at 368 per layer; 91 editorial anchors; 86 canonical scoring anchors; 16 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Neoconservatism has twelve direct prompts at 4/4/4, profile, two discriminants, and false-positive audit |
+| Structural reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 27/28/5 and 7 combined; aggregate top-three rates 23.2558% and 40.6977%; worst ranks 82 and 75; diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 77/77; complete compact v2 fragment 11,969 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, no-cache Docker rebuild/recreate, healthy container, `/healthz` `ok`, local Playwright 10/10, and Docker-backed Playwright 10/10 passed |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Neoconservatism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, sixteen canonical targets remain catalog-only, and the comprehensive goal remains open. The curated-bank validator's target-map setup was optimized after a timeout-prone validation run; the optimized full suite passed. The V64 delta is uncommitted and no push remote is configured.
+## V65 verification report — Paleoconservatism micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Two fresh academic records plus the existing Dougall source and conservatism/national-conservatism sources; existing Conservatism → Paleoconservatism path; historically situated national-particularity/inherited-culture/local-authority/restraint boundary; no topology change |
+| Production contract | PASS | Content version 65; 1,116 prompts at 372 per layer; 92 editorial anchors; 87 canonical scoring anchors; 15 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Paleoconservatism has twelve direct prompts at 4/4/4, profile, two discriminants, and false-positive audit |
+| Structural reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 12/48/1 and 6 combined; aggregate top-three rates 23.7548% and 40.2299%; worst ranks 83 and 76; diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 77/77; complete compact v2 fragment 12,113 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, no-cache Docker rebuild/recreate, healthy container, /healthz ok, local Playwright 10/10, and Docker-backed Playwright 10/10 passed |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Paleoconservatism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; the live dataset target is separately dedicated-scored. Fascism and Neo-Fascism remain high-risk catalog-only holds, fifteen canonical targets remain catalog-only, and the comprehensive goal remains open. Although isolated routing is complete, the full-competition reachability row reports combinedReachable false with descriptive and normative missing fields; because direct coverage is complete and validationErrors/failures are empty, this remains a structural geometry diagnostic rather than a claim that item coverage is missing. The V65 delta is uncommitted and no push remote is configured.
+
+## V66 verification report — Wasatiyya micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Three fresh academic records plus the existing Cambridge Wasatiyya source and Islamism context; existing Islamism → Wasatiyya path; contested middle-way Islamist/public-order/citizenship boundary; no topology change |
+| Production contract | PASS | Content version 66; 1,128 prompts at 376 per layer; 93 editorial anchors; 88 canonical scoring anchors; 14 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Wasatiyya has twelve direct prompts at 4/4/4, profile, two discriminants, and false-positive audit |
+| Structural reachability | PASS_WITH_HOLD | Wasatiyya isolated-reachable in all three layers; full ranks 26/30/32 and 28 combined; aggregate top-three rates 22.3485% and 39.7727%, worst ranks 84 and 77; geometry diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 77/77; complete compact v2 fragment 12,257 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, no-cache Docker rebuild/recreate, healthy container, /healthz ok, local Playwright 10/10, and Docker-backed Playwright 10/10 passed |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Wasatiyya as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; the live dataset target is separately dedicated-scored. Fourteen canonical targets remain catalog-only, with Fascism and Neo-Fascism still high-risk holds. Full-competition non-reachability remains a structural geometry diagnostic because direct coverage is complete and validationErrors/failures are empty; it is not respondent evidence or a reason for uncalibrated coefficient changes. The V66 delta remains uncommitted and no push remote is configured.
+
+## V67 verification report — Right-Wing Populism micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Two fresh academic records plus existing Cambridge/Oxford populism records; existing `Populism → Right-Wing Populism` path; joint people–elite/right-host boundary; no topology change |
+| Production contract | PASS | Content version 67; 1,140 prompts at 380 per layer; 94 editorial anchors; 89 canonical scoring anchors; 13 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Right-Wing Populism has twelve direct prompts at 4/4/4, profile, two discriminants, and false-positive audit |
+| Structural reachability | PASS_WITH_HOLD | Right-Wing Populism is isolated-reachable in all three layers; full ranks 8/21/3 and 4 combined; aggregate top-three rates 22.0974% and 38.2022%, worst ranks 85 and 78; geometry diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 78/78; complete compact v2 fragment 12,401 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, no-cache Docker rebuild/recreate, healthy container, /healthz ok, local Playwright 10/10, and Docker-backed Playwright 10/10 |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Right-Wing Populism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; the live dataset target is separately dedicated-scored. Thirteen canonical targets remain catalog-only, with Fascism and Neo-Fascism still high-risk holds. Full-competition non-reachability in the descriptive and normative fields remains a structural geometry diagnostic because direct coverage is complete and validationErrors/failures are empty; it is not respondent evidence or a reason for uncalibrated coefficient changes. The V67 delta remains uncommitted and no push remote is configured.
+## V68 verification report — Hindutva micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Three fresh academic records plus existing Hindutva/nationalism/religious-nationalism sources; existing `Religious Nationalism → Hindutva (Hindu Nationalism)` path; historically specific political-project boundary; no topology change |
+| Production contract | PASS | Content version 68; 1,152 prompts at 384 per layer; 95 editorial anchors; 90 canonical scoring anchors; 12 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Hindutva has twelve direct prompts at 4/4/4, profile, two discriminants, and false-positive audit |
+| Structural reachability | PASS_WITH_HOLD | Hindutva isolated-reachable in all three layers; full ranks 10/81/3 and 6 combined; aggregate top-three rates 21.8519% and 38.8889%, worst ranks 85 and 78; geometry diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 79/79; complete compact v2 fragment 12,545 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, no-cache Docker rebuild/recreate, healthy container, `/healthz` `ok`, local Playwright 10/10, and Docker-backed Playwright 10/10 passed |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Hindutva (Hindu Nationalism) as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Twelve canonical targets remain catalog-only, with Fascism and Neo-Fascism still high-risk holds. Full-competition non-reachability in the descriptive and normative fields remains a structural geometry diagnostic because direct coverage is complete and validationErrors/failures are empty; it is not respondent evidence or a reason for uncalibrated coefficient changes. The V68 delta remains uncommitted and no push remote is configured.
+
+
+## V69 verification record — Religious Zionism micro branch
+
+| Check | Status | Evidence |
+| --- | --- | --- |
+| Direct coverage | PASS | Religious Zionism has 12 target-tagged prompts at descriptive/normative/prescriptive 4/4/4; ontology path remains canonical under Religious Nationalism. |
+| Research coverage | PASS | 119 targets, 1,428 quarantined candidates, 119 profiles/audits, zero validation errors; 91 dedicated-scored and 11 canonical catalog-only targets. |
+| Structural reachability | PASS_WITH_HOLD | All 91 production anchors close under isolated 4/4/4 routing; Religious Zionism ranks 74/84/17 by layer and 24 combined in full competition, with aggregate rates 22.3443% and 39.5604% and worst ranks 86 and 79. |
+| Unit/type/build | PASS | `npm exec -- tsc --noEmit`, `npm run test:run` 80/80, and `npm run build` passed; Vite retains the existing large-client-chunk advisory. |
+| Share compatibility | PASS | Compact v2 complete-answer fragment is 12,689 characters, round-trips, and remains under the 40,960-character finite guard; version 1 decoding and fail-closed malformed/oversized handling remain covered. |
+| Dependency/container/browser | PASS | High-severity npm audit, Compose config, no-cache Docker build/recreate/health, `/healthz`, local Playwright 10/10, and Docker-backed Playwright 10/10 passed. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Religious Zionism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Eleven canonical targets remain catalog-only, with Fascism and Neo-Fascism still high-risk holds. Full-competition non-reachability is a structural geometry diagnostic because direct coverage is complete and validationErrors/failures are empty; it is not respondent evidence or a reason for uncalibrated coefficient changes. The V69 delta remains uncommitted and no push remote is configured.
+
+## V70 verification — Neo-Fascism meso branch
+
+| Check | Status | Notes |
+| --- | --- | --- |
+| Direct coverage | PASS | Neo-Fascism has 12 target-tagged prompts at descriptive/normative/prescriptive 4/4/4 on the existing Fascism path. |
+| Research coverage | PASS | 119 targets, 1,428 quarantined candidates, 119 profiles/audits, zero validation errors; 92 dedicated-scored and 10 canonical catalog-only targets. |
+| Structural reachability | PASS_WITH_HOLD | All 92 production anchors close under isolated 4/4/4 routing; Neo-Fascism ranks 3/1/1 by layer and 1 combined in full competition, with aggregate rates 21.7391% and 38.0435% and worst ranks 87 and 80. |
+| Unit/type/build | PASS | npm exec -- tsc --noEmit, npm run test:run 81/81, and npm run build passed; Vite retains the existing large-client-chunk advisory. |
+| Share compatibility | PASS | Compact v2 complete-answer fragment is 12,833 characters, round-trips, and remains under the finite guard; version 1 decoding and fail-closed malformed/oversized handling remain covered. |
+| Dependency/container/browser | PASS | High-severity npm audit, Compose config, fresh no-cache Docker build/recreate/health, /healthz, local Playwright 10/10, and Docker-backed Playwright 10/10 passed. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Neo-Fascism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; the live dataset target is separately dedicated-scored. Ten canonical targets remain catalog-only, including Fascism and Neo-Nazism. Full-competition non-reachability is a structural geometry diagnostic because direct coverage is complete and validationErrors/failures are empty; it is not respondent evidence or a reason for uncalibrated coefficient changes. The comprehensive goal remains open.

@@ -747,3 +747,44 @@ Compact v2 is 11,681 characters and remains within the finite guard. The researc
 The result surface consumes content version 63 with 1,092 prompts and 85 canonical production anchors. The existing `Populism → Left-Wing Populism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Left-Wing Populism is isolated-reachable in every layer; full ranks are 9/27/16 and 10 combined, with aggregate top-three rates 23.1373% and 41.1765% and worst ranks 81 and 74. These are deterministic overlap diagnostics only.
 
 Compact v2 is 11,825 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 17 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V63 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V63 delta remains uncommitted and no push remote exists.
+
+## V64 results — Neoconservatism micro branch
+
+The result surface consumes content version 64 with 1,104 prompts and 86 canonical production anchors. The existing `Conservatism → Neoconservatism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Neoconservatism is isolated-reachable in every layer; full ranks are 27/28/5 and 7 combined, with aggregate top-three rates 23.2558% and 40.6977% and worst ranks 82 and 75. These are deterministic overlap diagnostics only.
+
+Compact v2 is 11,969 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 16 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V64 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V64 delta remains uncommitted and no push remote exists.
+## V65 results — Paleoconservatism micro branch
+
+The result surface consumes content version 65 with 1,116 prompts and 87 canonical production anchors. The existing Conservatism → Paleoconservatism path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Paleoconservatism is isolated-reachable in every layer; full ranks are 12/48/1 and 6 combined, with aggregate top-three rates 23.7548% and 40.2299% and worst ranks 83 and 76. These are deterministic overlap diagnostics only.
+
+Compact v2 is 12,113 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 15 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V65 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V65 delta remains uncommitted and no push remote exists.
+
+## V66 results — Wasatiyya micro branch
+
+The result surface consumes content version 66 with 1,128 prompts and 88 canonical production anchors. The existing `Islamism → Wasatiyya` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Wasatiyya is isolated-reachable in every layer; full ranks are 26/30/32 and 28 combined, with aggregate top-three rates 22.3485% by layer and 39.7727% combined and worst ranks 84 and 77. These are deterministic overlap diagnostics only.
+
+Compact v2 is 12,257 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 14 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V66 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V66 delta remains uncommitted and no push remote exists.
+
+## V67 results — Right-Wing Populism micro branch
+
+The result surface consumes content version 67 with 1,140 prompts and 89 canonical production anchors. The existing `Populism → Right-Wing Populism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Right-Wing Populism is isolated-reachable in every layer; full ranks are 8/21/3 and 4 combined, with aggregate top-three rates 22.0974% by layer and 38.2022% combined and worst ranks 85 and 78. These are deterministic overlap diagnostics only.
+
+Compact v2 is 12,401 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 13 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V67 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V67 delta remains uncommitted and no push remote exists.
+## V68 results — Hindutva micro branch
+
+The result surface consumes content version 68 with 1,152 prompts and 90 canonical production anchors. The existing `Religious Nationalism → Hindutva (Hindu Nationalism)` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Hindutva is isolated-reachable in every layer; full ranks are 10/81/3 and 6 combined, with aggregate top-three rates 21.8519% by layer and 38.8889% combined and worst ranks 85 and 78. These are deterministic overlap diagnostics only.
+
+Compact v2 is 12,545 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 12 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V68 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V68 delta remains uncommitted and no push remote exists.
+
+
+## V69 results — Religious Zionism micro branch
+
+The result surface consumes content version 69 with 1,164 prompts and 91 canonical production anchors. The existing `Religious Nationalism → Religious Zionism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Religious Zionism is isolated-reachable in every layer; full ranks are 74/84/17 and 24 combined, with aggregate top-three rates 22.3443% by layer and 39.5604% combined and worst ranks 86 and 79. These are deterministic overlap diagnostics only.
+
+Compact v2 is 12,689 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 11 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks pass after the V69 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V69 delta remains uncommitted and no push remote exists.
+
+## V70 results — Neo-Fascism meso branch
+
+The result surface consumes content version 70 with 1,176 prompts and 92 canonical production anchors. The existing Fascism → Neo-Fascism path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Neo-Fascism is isolated-reachable in every layer; full ranks are 3/1/1 and 1 combined, with aggregate top-three rates 21.7391% by layer and 38.0435% combined and worst ranks 87 and 80. These are deterministic overlap diagnostics only.
+
+Compact v2 is 12,833 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 10 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Nazism remain catalog-only. Delivery checks pass after the V70 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the comprehensive goal remains open.
