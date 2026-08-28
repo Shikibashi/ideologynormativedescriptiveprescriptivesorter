@@ -1,0 +1,23 @@
+---
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#F4EFE7"
+    primaryTextColor: "#24221E"
+    primaryBorderColor: "#C9BDAE"
+    lineColor: "#706A61"
+---
+flowchart TD
+    Start([Intro]) --> Begin[Start the 48-item flow]
+    Begin --> Question[Render current layer and question]
+    Question --> Answer{Response selected?}
+    Answer -->|No| Stay[Keep current question and explain required response]
+    Stay --> Question
+    Answer -->|Yes| Last{Last item?}
+    Last -->|No| More[Advance and preserve answer]
+    More --> Transition{Layer boundary?}
+    Transition -->|Yes| Notice[Show next-layer orientation notice]
+    Notice --> Question
+    Transition -->|No| Question
+    Last -->|Yes| Calculate[[Calculate layer profiles and coverage]]
+    Calculate --> Results([Render results])

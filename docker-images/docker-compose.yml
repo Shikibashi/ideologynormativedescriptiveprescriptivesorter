@@ -1,0 +1,15 @@
+name: ${PROJECT_NAME:-ideology-layer-sorter}
+
+services:
+  frontend:
+    image: ${PROJECT_NAME:-ideology-layer-sorter}-frontend:latest
+    container_name: ${PROJECT_NAME:-ideology-layer-sorter}-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-8001}:80"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 5s

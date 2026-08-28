@@ -1,0 +1,366 @@
+# Integration Notes — Precision and Academic Source Expansion
+
+## Accepted
+
+- Keep the three-layer model and client-only architecture.
+- The preceding integration baselines used 84 items, with 28 prompts per layer, and then version 4 with 156 items and 52 prompts per layer. The active content release is version 5 with 204 items and 68 prompts per layer.
+- Add source roles and citation/support notes instead of treating every citation as a calibration authority.
+- Keep family-balanced display, but expose low separation and remove false precision from close-neighbor presentation.
+- Retain a documented promotion-review boundary: neighbor distinctness, applicable cross-cultural/jurisdictional review, and later empirical validation are required before production promotion.
+
+## Current v6 continuation — 2026-08-26
+
+- The active manifest is content version 6 with 252 original prompts, 84 per layer.
+- Four canonical meso branches—Libertarianism, Marxism, Social Anarchism, and Liberal Feminism—now have direct four-item-per-layer production blocks, bringing the dedicated-scored target count to 15.
+- The dataset retains 20 editorial anchors; only the 15 canonical-placement anchors enter production neighbor selection. Five broad bridge anchors are `contextual-only` and remain research/provenance context.
+- The 1,428-record research bank remains effect-free and quarantined. No cognitive review, respondent evidence, psychometric calibration, or empirical validation was run.
+
+## Current v7 continuation — 2026-08-26
+
+- The active manifest is content version 7 with 348 original prompts, 116 per layer, 28 editorial anchors, and 23 canonical scoring anchors.
+- Eight existing canonical meso branches—Christian Democracy, Contemporary Neo-Republicanism, Black Feminism, Ecofeminism, Green Anarchism, Anarcha-Feminism, Liberal Nationalism, and Radical Feminism—now have direct four-item-per-layer production blocks.
+- The 1,428-record research bank remains effect-free and quarantined across 119 targets. Ontology totals remain 107 nodes plus 12 registry entries, with 9 macro, 33 canonical meso, 60 canonical micro, and five contextual-placement nodes.
+- The five broad bridge anchors remain `contextual-only`; 79 ontology targets remain `catalog-only`, and no branch is presented as empirically validated.
+- No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, or population evidence was run.
+
+## Current v8 continuation — 2026-08-26
+
+- The active manifest is content version 8 with 408 original prompts, 136 per layer, 33 editorial anchors, and 28 canonical scoring anchors.
+- Five existing canonical meso branches—Communism, Historical Republicanism, Individualist Anarchism, Neoliberalism, and Socialist / Marxist Feminism—now have direct four-item-per-layer production blocks.
+- The 1,428-record research bank remains effect-free and quarantined across 119 targets. The nine held canonical meso branches remain catalog-only; the five contextual bridge anchors remain outside production neighbor selection.
+- Academic references support construct framing and source traceability only. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, or population evidence was run, and no commit or push was performed.
+
+## Deferred
+
+- Adaptive item selection and information-gain ordering.
+- Statistical calibration of anchor vectors from respondent or party data.
+- Current party/candidate matching.
+- Psychometric claims, reliability estimates, or population-level validation.
+
+## Current v9 continuation — 2026-08-26
+
+- The active manifest is content version 9 with 432 original prompts, 144 per layer, 35 editorial anchors, and 30 canonical scoring anchors.
+- Populism and Mutualism now have direct four-item-per-layer target blocks and source-linked provisional anchors. The seven remaining canonical meso holds remain catalog-only; contextual-only anchors remain outside production neighbor selection.
+- The scoring contract and policy version remain unchanged. `scripts/audit-anchor-reachability.ts` provides a structural closure check plus a non-failing full-competition overlap diagnostic; it is explicitly not respondent, cognitive, psychometric, or empirical validation.
+- The research bank remains 1,428 effect-free candidates across 119 targets. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, or population evidence was run, and no commit or push was performed.
+
+## Current v10 continuation — 2026-08-26
+
+- Radical Conservatism and Reactionary Conservatism now have source-linked, target-tagged 4/4/4 production blocks and provisional anchors. The active manifest is content version 10 with 456 prompts, 152 per layer, 37 editorial anchors, and 32 canonical scoring anchors.
+- The five remaining canonical meso holds are Conservative Nationalism, Islamism, National Socialism, Neo-Fascism, and Religious Nationalism. Contextual-only anchors remain outside production neighbor selection; no ontology node was added, reparented, or demoted.
+- The scorer remains policy version 3. The structural reachability audit closes all 32 anchors in isolated fixtures and reports full-production overlap as a diagnostic; shared order/tradition/reform geometry remains an explicit measurement limit.
+- No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, or population evidence was run, and no commit or push was performed.
+
+## Current v11 continuation — 2026-08-26
+
+- Islamism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor. The active manifest is content version 11 with 468 prompts, 156 per layer, 38 editorial anchors, and 33 canonical scoring anchors.
+- Conservative Nationalism, National Socialism, Neo-Fascism, and Religious Nationalism remain catalog-only; contextual-only anchors remain outside production neighbor selection. No ontology node was added, reparented, or demoted.
+- The scorer remains policy version 3. The production boundary explicitly separates public religious-political organization from private faith, Muslim identity, generic conservatism, nationalism, and one militant subtype. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, or population evidence was run.
+
+## Historical v12 continuation — 2026-08-26
+
+- Ordoliberalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical micro node under Liberalism. The active manifest is content version 12 with 480 prompts, 160 per layer, 39 editorial anchors, and 34 canonical scoring anchors.
+- The source-bounded boundary is competition as an institutional order, capable rule-bound public authority against private concentration, and a limited social-market floor. Pan-Africanism and Black Nationalism remain research-only alternatives; Conservative Nationalism, National Socialism, Neo-Fascism, and Religious Nationalism remain catalog-only holds.
+- The scorer remains policy version 3; the ontology topology, facets, thresholds, family balancing, combined-layer calculation, share semantics, and contextual-only boundary are unchanged. Full-production overlap remains a structural measurement diagnostic.
+- The 1,428-record research bank remains effect-free and quarantined across 119 targets. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+
+## Current v20 continuation — 2026-08-27
+
+- Anti-Colonial Nationalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical `Nationalism → Anti-Colonial Nationalism` path. The active manifest is content version 20 with 576 prompts, 192 per layer, 47 editorial anchors, and 42 canonical scoring anchors; Arab Nationalism and Maoism remain catalog-only alternatives and Neo-Fascism remains a high-risk hold.
+- The production boundary covers colonial or externally imposed domination, collective self-rule, open-ended self-determination, solidarity, accountable institution-building, and anti-imperial transformation. It does not require formal independence as an endpoint, one state, armed struggle, Marxist doctrine, pan-continental identity, racial/ethnic exclusion, or one historical movement.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v20 answer fragment measures 37,651 characters, so the finite share guard is 40,960 characters; answer-only serialization remains unchanged.
+- Coverage, reachability, unit, type, build, local browser, Docker, health, Docker browser, dependency, source-registry, and documentation/state checks are required for this continuation. The 1,428 candidates remain effect-free and quarantined. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, population evidence, commit, or push was performed.
+
+## Current v17 continuation — 2026-08-27
+
+- Civic Nationalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical micro node under Nationalism. The active manifest is content version 17 with 540 prompts, 180 per layer, 44 editorial anchors, and 39 canonical scoring anchors; Neo-Fascism remains catalog-only.
+- The production boundary covers citizenship-mediated membership, civic narratives, institutional power and exclusion, contestable self-government, equal civic standing, bounded civic solidarity, rights protection, public capacity, social citizenship, cross-border cooperation, and corrigible institutions. Civic and ethnic nationalism are not treated as universal ideal types, and generic patriotism or isolated citizenship/democratic support remains insufficient evidence.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v17 answer fragment measures 35,075 characters under the finite 36,864-character guard. Civic Nationalism passes isolated routing in all three layers; full-production ranks 10/6/7 by layer and 6 combined remain structural diagnostics only.
+- Coverage, reachability, unit, type, build, local browser, Docker, health, Docker browser, dependency, source-registry, and documentation/state checks passed for the v17 continuation. The 1,428 candidates remain effect-free and quarantined; no cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+
+## Current v18 continuation — 2026-08-27
+
+- Black Nationalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical micro node under Nationalism. The active manifest is content version 18 with 552 prompts, 184 per layer, 45 editorial anchors, and 40 canonical scoring anchors; Materialist Feminism and Anti-Colonial Nationalism remain catalog-only alternatives and Neo-Fascism remains a high-risk hold.
+- The production boundary jointly covers Black collective dignity or linked fate, anti-Black institutional/material power, collective autonomy or self-determination, and self-directed institutions. It preserves state-seeking, community-national, cultural, economic, diasporic, reformist, and revolutionary variation, and does not treat identity, cultural pride, separatism, Pan-Africanism, one organization, or current-actor inference as sufficient evidence.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v18 answer fragment measures 35,875 characters under the finite 36,864-character guard. Black Nationalism passes isolated routing in all three layers; full-production ranks 3/15/7 by layer and 4 combined remain structural diagnostics only.
+- Coverage, reachability, unit, type, build, local browser, Docker, health, Docker browser, dependency, source-registry, and documentation/state checks passed for the v18 continuation. The 1,428 candidates remain effect-free and quarantined; no cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+
+## Current v19 continuation — 2026-08-27
+
+- Materialist Feminism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over the existing canonical `Socialist / Marxist Feminism → Materialist Feminism` path. The active manifest is content version 19 with 564 prompts, 188 per layer, 46 editorial anchors, and 41 canonical scoring anchors.
+- The production boundary is a plural feminist materialist tradition covering historically specific labor, care/social reproduction, embodiment, institutions, structural power, resource access, and emancipatory change. It does not require one Marxist theory of history, common ownership, a centralized state, or one account of gender. Marxist Feminism and Socialist Feminism remain distinct catalog branches; Radical Feminism remains distinct where patriarchy or sexual domination is primary.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v19 answer fragment measures 36,723 characters under the finite 36,864-character guard. Materialist Feminism passes isolated routing in all three layers; full-production ranks 2/7/5 by layer and 4 combined remain structural diagnostics only.
+- The 1,428 candidates remain effect-free and quarantined across 119 targets. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run. No commit or push was performed.
+
+## Current v15 continuation — 2026-08-27
+
+- Conservative Nationalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical parentless meso hybrid. The active manifest is content version 15 with 516 prompts, 172 per layer, 42 editorial anchors, and 37 canonical scoring anchors; its National Conservatism micro child remains distinct.
+- The production boundary jointly covers inherited national continuity, bounded civic solidarity, sovereignty and self-government, institutional stewardship, and accountable gradual change. National Socialism and Neo-Fascism remain catalog-only high-risk historical holds.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, and combined-layer calculation are unchanged. The finite share guard is explicitly 36,864 characters after measuring a complete 33,459-character v15 payload.
+- Coverage, unit, type, build, local browser, Docker, health, Docker browser, dependency, and source-registry checks passed. Full-production overlap remains a structural diagnostic; no cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+
+## Current v14 continuation — 2026-08-27
+
+- Religious Nationalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical meso hybrid node. The active manifest is content version 14 with 504 prompts, 168 per layer, 41 editorial anchors, and 36 canonical scoring anchors.
+- The production boundary covers public religious authority, sacred national history, jointly constituted membership, accountable self-government, and comparative institutional variation. Private faith, cultural identity, generic Nationalism, and any one religion-specific variant remain insufficient evidence.
+- Conservative Nationalism, National Socialism, and Neo-Fascism remain catalog-only holds. The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, share semantics, and contextual-only boundaries are unchanged.
+- The research bank remains effect-free and quarantined across 119 targets. Unit, type, coverage, and isolated reachability checks passed; full-production overlap remains a structural diagnostic. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+
+## Current v16 continuation — 2026-08-27
+
+- National Socialism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical meso node. The active manifest is content version 16 with 528 prompts, 176 per layer, 43 editorial anchors, and 38 canonical scoring anchors.
+- The production boundary is historically analytical: German National Socialism, especially the interwar movement and the 1933–1945 regime, requiring convergent völkisch/racialized membership, racial hierarchy, leader-centered mobilization, anti-liberal institutions, exclusionary rights, and national renewal. Neo-Fascism remains catalog-only.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v16 answer fragment measures 34,275 characters under the finite 36,864-character guard.
+- Coverage, reachability, unit, type, build, local browser, Docker, health, Docker browser, dependency, source-registry, and documentation/state checks passed. Full-production overlap remains a structural diagnostic. The 1,428 candidates remain effect-free and quarantined; no cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+
+## Current v13 continuation — 2026-08-26
+
+- Pan-Africanism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical micro node under Nationalism. The active manifest is content version 13 with 492 prompts, 164 per layer, 40 editorial anchors, and 35 canonical scoring anchors.
+- The source-bounded boundary is African and diasporic solidarity, continuing colonial/racial power, collective self-determination, and cross-border cooperation without requiring one continental-state design. Black Nationalism and Anti-Colonial Nationalism remain research-only alternatives; Conservative Nationalism, National Socialism, Neo-Fascism, and Religious Nationalism remain catalog-only holds.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, distance, family balancing, combined-layer calculation, share semantics, and contextual-only boundaries are unchanged. Isolated-anchor reachability closes Pan-Africanism; full-production ranks 7/6/7 by layer and 6 combined are structural diagnostics only.
+- The 1,428-record research bank remains effect-free and quarantined across 119 targets. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, population evidence, commit, or push was performed.
+## Current v21 continuation — 2026-08-27
+
+- Arab Nationalism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over its existing canonical `Nationalism → Arab Nationalism` path. The active manifest is content version 21 with 588 prompts, 196 per layer, 48 editorial anchors, and 43 canonical scoring anchors; Maoism remains catalog-only and Neo-Fascism remains a high-risk hold.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v21 answer fragment measures 38,435 characters under the finite 40,960-character guard; answer-only serialization remains unchanged.
+- Coverage, reachability, unit, type, build, browser, Docker, health, documentation, and state verification are required for this continuation. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence is claimed.
+
+## Current v23 continuation — Council Communism
+
+- Council Communism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over the existing canonical `Socialism → Communism → Council Communism` path. The active manifest is content version 23 with 612 prompts, 204 per layer, 50 editorial anchors, and 45 canonical scoring anchors; Guild Socialism, Trotskyism, and Marxism-Leninism remain catalog-only alternatives, and Neo-Fascism remains a high-risk hold.
+- The ontology remains 107 nodes plus 12 registry entries, with 9 macro, 38 meso placements including five contextual nodes, and 60 micro nodes; the canonical inventory remains 9/33/60. No node was added, reparented, or demoted, and the contextual-only anchor boundary remains unchanged.
+- The block requires worker councils as constitutive political/economic institutions, direct or recallable self-government, common control, and resistance to permanent party-subordinated command. Generic Communism, workplace participation, union support, public ownership, anarchism, or anti-elite sentiment alone is insufficient.
+- `npm run research:coverage --silent`: PASS; 45 dedicated-scored, 57 catalog-only, five contextual-only, 12 registry-only, 1,428 candidates, 119 profiles/audits, and zero validation errors. `npm run research:anchor-reachability --silent`: PASS; all 45 anchors have 4/4/4 target blocks and isolated routing. Full-production overlap is 42.9630% by layer and 51.1111% combined, with worst ranks 42 and 38; Council Communism ranks 12/3/1 by layer and 1 combined.
+- The complete v23 share fragment measures 39,859 characters under the finite 40,960-character guard. Unit tests (54/54), typecheck/build, audit, local serial QA (10/10), Docker rebuild/recreate/health, and Docker-backed QA (10/10) passed. No cognitive review, respondent study, substitute simulation, empirical reliability, validity, invariance, or psychometric evidence was run; no commit or push was performed.
+
+## Current v22 continuation — Maoism
+
+- Maoism now has a source-linked, target-tagged 4/4/4 production block and provisional anchor over the existing canonical `Socialism → Communism → Maoism` path. The active manifest is content version 22 with 600 prompts, 200 per layer, 49 editorial anchors, and 44 canonical scoring anchors; Neo-Fascism remains a high-risk hold.
+- The production boundary covers the historically situated adaptation of Marxism-Leninism to agrarian and colonial conditions, practice, contradiction, rectification, mass-line politics, anti-bureaucratic critique, collective transformation, and public/collective ownership. Generic Communism, anti-imperialism, peasant identity, authoritarianism, one regime outcome, and contemporary actor inference are insufficient evidence.
+- The scorer remains policy version 3; ontology topology, facets, thresholds, family balancing, combined-layer calculation, contextual-only boundaries, and answer/share semantics are unchanged. The complete v22 answer fragment measures 39,059 characters under the finite 40,960-character guard. Maoism passes isolated routing in all three layers; full-production ranks 2/14/1 by layer and 1 combined remain structural diagnostics only.
+- Coverage, reachability, unit, type, build, browser, Docker, health, documentation, and state verification passed for this continuation. The 1,428 candidates remain effect-free and quarantined. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, population evidence, commit, or push was performed.
+## v25 continuation — Trotskyism
+
+The implementation adds a source record, twelve target-tagged prompts, and one provisional anchor for the existing Trotskyism branch. It does not change ontology topology, facets, coefficients, thresholds, target-block blending, combined-layer semantics, or the research quarantine. The share layer adds only a backward-compatible compact v2 fallback for a full answer set that exceeds the finite v1 fragment guard; readable v1 links remain supported.
+
+Run coverage, anchor reachability, the full unit suite, TypeScript, build, audit, local browser QA, Docker browser QA, health, documentation, and state checks. The v25 evidence boundary remains editorial and structural; no cognitive review, respondent validation, simulation substitute, or psychometric claim is permitted.
+
+## v26 continuation — Marxism-Leninism
+
+The implementation adds three academic source records, twelve target-tagged prompts, and one provisional anchor for the existing Marxism-Leninism branch. It preserves ontology topology, facets, scorer coefficients, thresholds, distance semantics, family balancing, combined-layer semantics, and the quarantined research bank. The source boundary is doctrine-level and historically varied: vanguard-party leadership, democratic centralism, class and capital analysis, state transformation, social/public ownership, planned coordination, and revolutionary internationalism must be considered together.
+
+The share encoder remains backward-compatible: readable v1 is emitted when it fits and compact index-based v2 is emitted for the complete expanded answer set at 6,966 characters. Verification passed for coverage, isolated reachability, 57/57 unit tests, TypeScript, build, audit, local serial QA 10/10, Docker rebuild/recreate/health, Docker-backed QA 10/10, documentation, and state. The evidence boundary remains editorial and structural; no cognitive review, respondent validation, simulation substitute, psychometric claim, or commit/push is permitted.
+
+## v27 continuation — Autonomist Marxism
+
+The implementation adds the Antipode provenance record, twelve target-tagged prompts, one provisional anchor, and the Autonomist Marxism research-bank profile over the existing canonical branch. It preserves ontology topology, facets, scorer coefficients, thresholds, target-block blending, combined-layer semantics, and the research quarantine. Readable v1 measures 42,915 characters for the complete answer set, so compact v2 at 7,094 characters is emitted while strict v1 decoding remains supported.
+
+Coverage, reachability, 58/58 unit tests, TypeScript, build, audit, local browser QA, Docker rebuild/recreate/health, Docker-backed QA, documentation, and state verification passed. The evidence boundary remains editorial and structural; no cognitive review, respondent validation, simulation substitute, psychometric claim, or commit/push was performed.
+
+## v28 continuation — Anarcho-Pacifism
+
+The WorkPM comparison selected the existing `Anarchism → Social Anarchism → Anarcho-Pacifism` branch for a bounded source-backed activation. Oxford and SAGE research support the related-but-distinct treatment of anarchism, pacifism, and nonviolence, including anti-domination, militarism, structural violence, historical variation, nonviolent action, and self-defense debates. The material is used for terminology, provenance, and original item authoring only; it does not validate effects, vectors, local wording, or respondent classification.
+
+The implementation adds one SAGE source record, twelve target-tagged prompts, one provisional anchor, and the research-bank profile while preserving topology, scoring, share semantics, contextual-only exclusion, and the quarantined candidate bank. Content version 28 contains 672 prompts, 224 per layer, 55 editorial anchors, and 50 production anchors. The readable v1 complete representation is 43,699 characters, so compact v2 at 7,222 characters is emitted.
+
+No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v29 continuation — Social Ecology
+
+The WorkPM comparison selected the existing typed hybrid `Green Anarchism → Social Ecology` branch. The implementation adds four source records, twelve target-tagged prompts, one provisional anchor, and the research-bank profile while preserving topology, facets, coefficients, thresholds, combined-layer semantics, contextual-only exclusion, and the effect-free candidate quarantine. Content version 29 contains 684 prompts, 228 per layer, 56 editorial anchors, and 51 production anchors.
+
+The source set supports the coupled social-hierarchy/ecological-domination mechanism, ecological integrity, democratic municipalism, federated self-government, common provision, historical variation, and false-positive controls for authoring only. Readable v1 measures 44,451 characters, so compact v2 at 7,350 characters is emitted; v1 remains decodable. Verification passed for coverage, reachability, 60/60 unit tests, TypeScript, build, audit, local browser QA, Docker rebuild/recreate/health, and Docker-backed QA. No cognitive review, respondent validation, simulation substitute, psychometric claim, or commit/push was performed.
+
+## v30 continuation — Womanism
+
+The WorkPM comparison selected the existing canonical `Feminism → Womanism` branch. Oxford, Cambridge, Frontiers, and Journal of Black Studies sources support a source-bounded treatment of interlocking domination, Black women's knowledge and self-definition, communal survival and wholeness, and varied material, spiritual, theological, secular, queer, or political routes. They are used for terminology, provenance, variation, false-positive controls, and original item authoring only; they do not validate local effects, vectors, wording, respondent interpretation, or classification.
+
+The implementation adds four source records, twelve target-tagged prompts, one provisional anchor, and the Womanism research-bank profile while preserving topology, facets, coefficients, thresholds, combined-layer semantics, contextual-only exclusion, and the effect-free candidate quarantine. Content version 30 contains 696 prompts, 232 per layer, 57 editorial anchors, and 52 production anchors. The readable v1 complete representation measures 45,107 characters, so compact v2 at 7,478 characters is emitted; v1 remains decodable. Womanism is isolated in all three layers; its full-production ranks and aggregate overlap are structural diagnostics only.
+
+Verification passed for coverage, reachability, 61/61 unit tests, TypeScript, build, audit, local serial QA 10/10, Compose config, Docker rebuild/recreate/health, and Docker-backed QA 10/10. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v31 continuation — Classical-Liberal Feminism
+
+The WorkPM comparison selected the existing canonical `Feminism → Liberal Feminism → Classical-Liberal Feminism` branch. SEP Liberal Feminism, Baehr's peer-reviewed account of liberal feminism as a capacious family, and SEP Libertarianism support a contested branch boundary around gendered institutional barriers, equal individual rights, autonomy, freedom from coercive interference, constitutional democracy, and generally limited or non-paternal public power. The sources support terminology, provenance, historical and theoretical variation, and original item authoring only; they do not validate local wording, effects, vectors, respondent interpretation, or classification.
+
+The implementation adds the Baehr source record, twelve target-tagged prompts, one provisional anchor, and the Classical-Liberal Feminism research profile while preserving topology, facets, coefficients, thresholds, combined-layer semantics, contextual-only exclusion, and the effect-free candidate quarantine. Content version 31 contains 708 prompts, 236 per layer, 58 editorial anchors, and 53 production anchors. The target has direct 4/4/4 coverage and isolated routing in every layer; full-production ranks 45/48/4 and 45 combined, with aggregate rates 36.4780% and 50.9434% and worst ranks 50 and 46. These are structural diagnostics only.
+
+Compact v2 complete-answer output measures 7,606 characters; v1 decoding and fail-closed input validation remain supported. Verification passed for coverage, reachability, 62/62 unit tests, TypeScript, build, audit, local serial QA 10/10, Compose config, Docker rebuild/recreate/health, and Docker-backed QA 10/10. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v32 continuation — Anarcho-Communism / Collectivist Anarchism
+
+The WorkPM comparison selected the existing canonical `Anarchism → Social Anarchism → Anarcho-Communism` branch and kept `Collectivist Anarchism` catalog-only. The SEP Anarchism entry, Cambridge chapters by Cahm, Vincent, and Eckhardt, Kinna's chapter on Kropotkin, Bray's chapter on anarchist communism, and Ostrom's institutional context support a contested historical boundary around anti-hierarchical and anti-state organization, common ownership, need-oriented provision, free association, and federated self-management. They support terminology, provenance, variation, and original item authoring only; they do not validate local wording, effects, vectors, respondent interpretation, or classification.
+
+The implementation adds five source records, twelve target-tagged prompts, one provisional anchor, and the Anarcho-Communism research profile while preserving topology, facets, coefficients, thresholds, combined-layer semantics, contextual-only exclusion, and the effect-free candidate quarantine. Content version 32 contains 720 prompts, 240 per layer, 59 editorial anchors, and 54 production anchors. The target has direct 4/4/4 coverage and isolated routing in every layer; full-production ranks 11/3/1 and 1 combined, with aggregate rates 35.8025% and 51.8519% and worst ranks 51 and 47. These are structural diagnostics only. The full-competition descriptive missing-layer field is not a direct-coverage failure.
+
+Compact v2 complete-answer output measures 7,734 characters; v1 decoding and fail-closed input validation remain supported. Full closure verification is recorded after coverage, reachability, unit, TypeScript, build, audit, local serial QA, Compose, Docker health, and Docker-backed QA. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v33 continuation — Collectivist Anarchism
+
+The WorkPM comparison selected the existing canonical `Anarchism → Social Anarchism → Collectivist Anarchism` branch for separate provisional activation. Franks, Ward, Bakunin, and Kropotkin, alongside existing SEP, Cambridge, and Ostrom records, support a historically bounded boundary around collective ownership, opposition to private-capital and separate state domination, free association, federated coordination, equal economic self-government, and a debated labor-contribution/remuneration route. Sources support terminology, provenance, variation, and original item authoring only; they do not validate local wording, effects, vectors, respondent interpretation, or classification.
+
+The implementation adds twelve source-linked target-tagged prompts, one provisional anchor, updated ontology metadata, and a research-bank profile while preserving topology, facets, coefficients, thresholds, combined-layer semantics, contextual-only exclusion, and the effect-free candidate quarantine. Content version 33 contains 732 prompts, 244 per layer, 60 editorial anchors, and 55 production anchors. The target has direct 4/4/4 coverage and isolated routing in every layer; full-production ranks 9/5/1 and 1 combined, with aggregate rates 33.3333% and 49.0909% and worst ranks 52 and 48. These are structural diagnostics only.
+
+Compact v2 complete-answer output measures 7,862 characters; v1 decoding and fail-closed input validation remain supported. Verification passed for coverage, reachability, 64/64 unit tests, TypeScript, build, audit, local serial QA 10/10, Compose, Docker health, and Docker-backed QA 10/10. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v34 continuation — Anarchism macro family
+
+The implementation adds twelve source-linked target-tagged prompts and one `anarchism-family` anchor to the existing canonical `Anarchism` macro. The earlier `anarchism` anchor remains contextual-only and is not admitted to production scoring. No node was added or reparented; Social Anarchism, Anarcho-Communism, Collectivist Anarchism, and other descendants remain distinct.
+
+Content version 34 reports 744 prompts, 248 per layer, 61 editorial anchors, and 56 production anchors. Anarchism has direct 4/4/4 coverage and complete isolated routing. Full-production ranks are 45/45/45 and 45 combined; aggregate rates are 32.7381% and 48.2143%, with worst ranks 53 and 47. Compact v2 complete-answer output measures 7,990 characters. The 1,428 effect-free candidates remain quarantined; no scoring-policy or coefficient retuning was made.
+
+Coverage, reachability, 64/64 unit tests, TypeScript, Vite build, dependency audit, local QA 10/10, Compose config, no-cache Docker rebuild/recreate/health, `/healthz`, and Docker-backed QA 10/10 passed. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v35 continuation — Conservatism macro family
+
+The implementation adds twelve source-linked target-tagged prompts and one `conservatism-family` anchor to the existing canonical `Conservatism` macro. Existing Moderate/Traditional, Reactionary, Radical, National, Liberal, and New Right branches and contextual bridges remain distinct; no node was added or reparented.
+
+Content version 35 reports 756 prompts, 252 per layer, 62 editorial anchors, and 57 production anchors. Conservatism has direct 4/4/4 coverage and complete isolated routing. Full-production ranks are 38/46/4 and 18 combined; aggregate rates are 33.3333% and 49.1228%, with worst ranks 53 and 47. Compact v2 complete-answer output measures 8,118 characters. The 1,428 effect-free candidates remain quarantined; no scoring-policy or coefficient retuning was made.
+
+Coverage, reachability, 64/64 unit tests, TypeScript, Vite build, dependency audit, local QA, Compose config, Docker rebuild/recreate/health, `/healthz`, and Docker-backed QA passed. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+
+## v36 continuation — Ecologism / Green Ideology macro family
+
+The implementation adds twelve source-linked target-tagged prompts and one `ecologism-family` anchor to the existing canonical `Ecologism` macro. Existing ecological descendants, associated traditions, and contextual bridges remain distinct; no node was added or reparented.
+
+Content version 36 reports 768 prompts, 256 per layer, 63 editorial anchors, and 58 production anchors. Ecologism has direct 4/4/4 coverage and complete isolated routing. Full-production ranks are 21/48/3 and 8 combined; aggregate rates are 33.3333% and 48.2759%, with worst ranks 54 and 48. Compact v2 complete-answer output measures 8,246 characters. The 1,428 effect-free candidates remain quarantined; no scoring-policy or coefficient retuning was made.
+
+Coverage, reachability, 64/64 unit tests, TypeScript, Vite build, dependency audit, local QA 10/10, Compose config, no-cache Docker rebuild/recreate/health, `/healthz`, and Docker-backed QA 10/10 passed. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+## v37 continuation — Liberalism macro family
+
+The implementation adds twelve source-linked target-tagged prompts and one `liberalism-family` anchor to the existing canonical `Liberalism` macro. Existing Liberal branches, hybrids, and contextual bridges remain distinct; no node was added or reparented.
+
+Content version 37 reports 780 prompts, 260 per layer, 64 editorial anchors, and 59 production anchors. Liberalism has direct 4/4/4 coverage and complete isolated routing. Full-production ranks are 10/24/11 and 9 combined; aggregate rates are 33.3333% and 47.4576%, with worst ranks 55 and 48. Compact v2 complete-answer output measures 8,374 characters. The 1,428 effect-free candidates remain quarantined; no scoring-policy or coefficient retuning was made.
+
+Coverage, reachability, 64/64 unit tests, TypeScript, Vite build, dependency audit, local serial Playwright QA 10/10, Compose config, no-cache Docker rebuild/recreate/health, `/healthz`, and Docker-backed serial Playwright QA 10/10 passed. No cognitive review, respondent testing, simulation substitute, psychometric calibration, reliability/validity, invariance, empirical validation, population evidence, commit, or push was performed.
+## v38 continuation — Socialism macro family
+
+The v38 implementation attaches `source-sep-socialism`, `source-cambridge-politics-socialism`, and `source-cambridge-socialist-visions` to the existing Socialism branch, adds the direct 4/4/4 item block and `socialism-family` anchor, and updates ontology/research-bank metadata. The canonical topology and all scorer semantics remain unchanged.
+
+The verified production contract is 792 prompts, 264 per layer, 65 editorial anchors, 60 production anchors, 1,428 candidates, and 119 research targets. Socialism passes isolated routing; full-production ranks are 18/6/48 and 7 combined; compact v2 share output is 8,502 characters. Local and Docker-backed QA each pass 10/10. No cognitive or respondent validation was run.
+
+## v39 continuation — Nationalism macro family
+
+The v39 implementation attaches the five Nationalism source records to the existing canonical branch, adds the direct 4/4/4 item block and `nationalism-family` anchor, and updates ontology/research-bank metadata. The canonical topology, facet geometry, scorer policy, thresholds, combined-layer semantics, contextual exclusion, share validation, and candidate quarantine remain unchanged.
+
+The verified production contract is 804 prompts, 268 per layer, 66 editorial anchors, 61 production anchors, 1,428 candidates, and 119 research targets. Nationalism passes isolated routing; full-production ranks are 28/32/14 and 19 combined; compact v2 share output is 8,630 characters. Local and Docker-backed QA each pass 10/10 after the v39 verification run. No cognitive or respondent validation was run.
+
+## v40 continuation — Republicanism macro family
+
+The v40 implementation updates the Republicanism source record to Laborde's direct Oxford Handbook chapter, attaches civic-republican and democratic-accountability references to the existing canonical branch, adds the direct 4/4/4 item block and `republicanism-family` anchor, and updates ontology/research-bank metadata. The canonical topology, facet geometry, scorer policy, thresholds, combined-layer semantics, contextual exclusion, share validation, and candidate quarantine remain unchanged.
+
+The verified production contract is 816 prompts, 272 per layer, 67 editorial anchors, 62 production anchors, 1,428 candidates, and 119 research targets. Republicanism passes isolated routing; full-production ranks are 7/1/49 and 4 combined; compact v2 share output is 8,758 characters. Local and Docker-backed QA each pass 10/10 after the v40 verification run. No cognitive or respondent validation was run.
+
+## v41 continuation — Feminism macro family
+
+The v41 implementation adds the Feminist Political Philosophy source record, source-linked ontology metadata, a source-backed 4/4/4 target block, the `feminism-family` anchor, and corresponding research-bank/profile/coverage metadata. The canonical 9/33/60 topology, 20 facets, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
+
+The verified production contract is 828 prompts, 276 per layer, 68 editorial anchors, 63 production anchors, 1,428 candidates, and 119 research targets. Feminism passes isolated routing in all three layers; full-production ranks are 1/2/46 and 1 combined, while compact v2 share output is 8,886 characters. Local and Docker-backed QA each pass 10/10 after the v41 verification run. No cognitive or respondent validation was run.
+
+## v42 continuation — Anarcho-Syndicalism micro branch
+
+The v42 implementation adds two Cambridge syndicalism/direct-action source records, source-linked metadata to the existing canonical `anarcho-syndicalism` node, a dedicated 4/4/4 item block, the `anarcho-syndicalism` anchor, and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
+
+The verified production contract is 840 prompts, 280 per layer, 69 editorial anchors, 64 production anchors, 1,428 candidates, and 119 research targets. Anarcho-Syndicalism passes isolated routing in all three layers and combined calculation; full-production ranks are 15/8/1 and 1 combined, while compact v2 share output is 9,014 characters. Local and Docker-backed QA each pass 10/10 after the v42 verification run. No cognitive or respondent validation was run.
+
+## v43 continuation — Anarcho-Capitalism micro branch
+
+The v43 implementation adds two Cambridge Anarcho-Capitalism source records, source-linked metadata to the existing canonical `anarcho-capitalism` node, a dedicated 4/4/4 item block, the `anarcho-capitalism` anchor, and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
+
+The verified production contract is 852 prompts, 284 per layer, 70 editorial anchors, 65 production anchors, 1,428 candidates, and 119 research targets. Anarcho-Capitalism passes isolated routing in all three layers and combined calculation; full-production ranks are 12/1/1 and 1 combined, while compact v2 share output is 9,142 characters. Local and Docker-backed QA each pass 10/10 after the v43 verification run. No cognitive or respondent validation was run.
+
+## v44 continuation — Anarcho-Primitivism micro branch
+
+The v44 implementation adds five source records covering anti-civilization critique, decolonial technology critique, anarchism and technology, ecological anarchy, and a critical analysis of Zerzan; source-linked metadata to the existing canonical `anarcho-primitivism` node; a dedicated 4/4/4 item block; the `anarcho-primitivism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
+
+The verified production contract is 864 prompts, 288 per layer, 71 editorial anchors, 66 production anchors, 1,428 candidates, and 119 research targets. Anarcho-Primitivism passes isolated routing in all three layers and combined calculation; full-production ranks are 9/33/1 and 1 combined, while compact v2 share output is 9,270 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. The canonical path is intentionally the existing Green Anarchism relation rather than an invented macro parent because the ontology represents Green Anarchism as a parentless hybrid node. No cognitive or respondent validation was run.
+
+## v45 continuation — Austromarxism micro branch
+
+The v45 implementation adds seven fresh source records covering the Austrian Marxist and Social Democratic tradition, Red Vienna and worker-movement strategy, Habsburg national questions, and personal or non-territorial national autonomy; source-linked metadata to the existing canonical `austromarxism` node; a dedicated 4/4/4 item block; the `austromarxism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
+
+The verified production contract is 876 prompts, 292 per layer, 72 editorial anchors, 67 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Austromarxism passes isolated routing in all three layers and combined calculation; full-production ranks are 8/5/2 and 2 combined, while compact v2 share output is 9,398 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. The existing `Socialism → Marxism → Austromarxism` path is preserved. No cognitive or respondent validation was run.
+
+## v58 precision integration — Khomeinism micro branch
+
+The v58 implementation completes the existing `Islamism → Khomeinism` path with four fresh source records, twelve target-tagged prompts, one provisional anchor, source-linked ontology metadata, and updated research-bank/profile/neighbor/audit/coverage metadata. The existing 9/33/60 canonical topology, 20-facet geometry, policy-version 3 scorer, thresholds, combined-layer semantics, contextual-only exclusion, compact-share behavior, and effect-free candidate quarantine remain unchanged. No node was added or reparented.
+
+Content version 58 contains 1,032 prompts (344 per layer), 85 editorial anchors, 80 production anchors, and 22 canonical catalog-only targets. Khomeinism has exact 4/4/4 direct coverage and isolated routing; full-production ranks are 4/31/1 and 1 combined, aggregate top-three rates are 26.2500% and 43.7500%, and worst ranks are 76 and 69. Compact v2 is 11,105 characters. TypeScript, Vitest, build, audit, Compose, Docker, health, local QA, and Docker QA passed. No cognitive or respondent validation was run.
+
+## v57 continuation — Zionism micro branch
+
+The v57 integration completes the existing `Nationalism → Zionism` path with three fresh academic source records, twelve original target-tagged prompts, one provisional anchor, source-rich ontology metadata, and updated research-bank/profile/neighbor/audit/coverage records. It preserves the existing 9/33/60 canonical inventory, 107 ontology nodes, 12 registry entries, 20-facet geometry, scoring policy version 3, thresholds, combined-layer calculation, contextual-only exclusion, compact-share semantics, and 1,428 effect-free candidate quarantine. No node was added or reparented.
+
+The verified v57 contract is 1,020 prompts, 340 per layer, 84 editorial anchors, 79 production anchors, and 23 canonical catalog-only targets. Coverage reports 119 targets and zero validation errors. Zionism has exact 4/4/4 direct coverage and isolated routing in each layer; full-production ranks are 27/25/19 and 19 combined, while compact v2 output is 10,961 characters. TypeScript, 77/77 unit tests, build, audit, Compose config, no-cache Docker rebuild/recreate, bounded health check, local QA 10/10, and Docker-backed QA 10/10 passed. Full-competition values remain structural overlap diagnostics only; no scorer or picker retuning was made. No cognitive or respondent validation was run.
+
+## v56 continuation — One-Nation Conservatism micro branch
+
+The v56 integration completes the interrupted existing `Conservatism → Moderate Conservatism → One-Nation Conservatism` path with three fresh academic source records, twelve original target-tagged prompts, one provisional anchor, source-rich ontology metadata, and updated research-bank/profile/neighbor/audit/coverage records. It preserves the 9/33/60 canonical inventory, 107 ontology nodes, 12 registry entries, 20-facet geometry, scoring policy version 3, thresholds, combined-layer calculation, contextual-only exclusion, compact-share semantics, and 1,428 effect-free candidate quarantine. No node was added or reparented.
+
+The verified v56 contract is 1,008 prompts, 336 per layer, 83 editorial anchors, 78 production anchors, and 24 canonical catalog-only targets. Coverage reports 119 targets and zero validation errors. One-Nation Conservatism has exact 4/4/4 direct coverage and isolated routing in each layer; full-production ranks are 15/30/1 and 5 combined, while compact v2 output is 10,817 characters. TypeScript, 76/76 unit tests, build, audit, Compose config, no-cache Docker rebuild/recreate, bounded health check, local QA 10/10, and Docker-backed QA 10/10 passed. Full-competition values remain structural overlap diagnostics only; the stale catalog-only browser assertion was repaired. No cognitive or respondent validation was run.
+
+## v55 precision continuation — Lesbian Feminism micro branch
+
+The v55 precision integration adds four fresh academic source records, twelve original target-tagged prompts, one provisional `lesbian-feminism` anchor, source-rich ontology metadata, and research-bank/profile/neighbor/audit/coverage updates. It preserves the existing `Feminism → Lesbian Feminism` path, 9/33/60 canonical inventory, 20-facet geometry, scorer policy version 3, threshold and combined-layer semantics, contextual-only exclusion, compact-share behavior, and 1,428 effect-free candidate quarantine.
+
+The verified production contract is 996 prompts, 332 per layer, 82 editorial anchors, 77 production anchors, 107 ontology nodes, 12 registry entries, and zero coverage validation errors across 119 targets. Lesbian Feminism passes isolated 4/4/4 routing; full-production ranks are 3/16/10 and 4 combined, while compact v2 share output is 10,678 characters. TypeScript, 75/75 unit tests, build, audit, Compose config, no-cache Docker rebuild, bounded health retry, local browser QA 10/10, and Docker-backed browser QA 10/10 passed. No cognitive or respondent validation was run.
+
+## v54 precision continuation — Ethnocultural Nationalism micro branch
+
+The v54 implementation adds five fresh source records for Tamir, Smith's minority/exclusion analysis, Smith's culture/community/territory analysis, Piwoni/Mußotter, and Lansbergen/Shaw; source-linked metadata to the existing canonical `ethnocultural-nationalism` node; a dedicated 4/4/4 item block; the `ethnocultural-nationalism` anchor; and updated research-bank/profile/coverage metadata. The canonical `Nationalism → Ethnocultural Nationalism` topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The source-bounded boundary requires national translation plus a constitutive inherited-membership rule plus institutional/political consequence, while preserving non-racial/racialized, mixed civic, religious, anti-colonial, regional/minority, pluralist, state, non-state, historical, and postcolonial variation.
+
+The verified v54 contract is 984 prompts, 328 per layer, 81 editorial anchors, 76 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals; 26 canonical ontology targets remain catalog-only. Ethnocultural Nationalism passes isolated 4/4/4 routing in all three layers; full-production ranks are 15/28/1 and 3 combined, while compact v2 share output is 10,550 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green for v54. Full-competition values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v53 precision continuation — Cultural Nationalism micro branch
+
+The v53 implementation adds four fresh source records for Spencer, Hutchinson, Giudici/Grizelj, and Tröhler alongside the existing Oxford Cultural Nationalism record; source-linked metadata to the existing canonical `cultural-nationalism` node; a dedicated 4/4/4 item block; the `cultural-nationalism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Nationalism → Cultural Nationalism` path is preserved.
+
+The verified production contract is 972 prompts, 324 per layer, 80 editorial anchors, 75 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals; 27 canonical ontology targets remain catalog-only. Cultural Nationalism passes isolated 4/4/4 routing in every layer; full-production ranks are 16/38/17 and 19 combined, while compact v2 share output is 10,422 characters. Coverage and reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are delivery evidence only; full-competition values remain structural overlap diagnostics and did not trigger scorer or picker retuning. No cognitive or respondent validation was run.
+
+## v50 precision continuation — Christian Nationalism micro branch
+
+The v50 implementation adds two fresh Cambridge/Oxford source records; source-linked metadata to the existing canonical `christian-nationalism` node; a dedicated 4/4/4 item block; the `christian-nationalism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Religious Nationalism → Christian Nationalism` path is preserved.
+
+The verified production contract is 936 prompts, 312 per layer, 77 editorial anchors, 72 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Christian Nationalism passes isolated 4/4/4 routing in all three layers and combined calculation; full-production ranks are 8/47/1 and 2 combined, while compact v2 share output is 10,038 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. Thirty canonical ontology targets remain catalog-only. No cognitive or respondent validation was run.
+
+## v48 continuation — Cultural / Spiritual Ecofeminism micro branch
+
+The v48 implementation adds four fresh Oxford/Stanford/Wiley/Cambridge source records covering religious ecofeminism, feminist environmental philosophy, the universal/particular tension in ecofeminist ethics, and earth-centered feminist theology; source-linked metadata to the existing canonical `cultural-spiritual-ecofeminism` node; a dedicated 4/4/4 item block; the `cultural-spiritual-ecofeminism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Ecofeminism → Cultural / Spiritual Ecofeminism` path is preserved.
+
+The verified production contract is 912 prompts, 304 per layer, 75 editorial anchors, 70 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Cultural / Spiritual Ecofeminism passes isolated 4/4/4 routing in all three layers; full-production ranks are 13/10/8 and 6 combined, while compact v2 share output is 9,782 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. Full-competition values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v49 continuation — Materialist / Socialist Ecofeminism micro branch
+
+The v49 implementation adds four fresh Oxford/Cambridge/Wiley source records covering materialist and Marxist ecofeminism, feminist political ecology, social reproduction, and an eco-feminist-socialist just-transition route; source-linked metadata to the existing canonical `materialist-socialist-ecofeminism` node; a dedicated 4/4/4 item block; the `materialist-socialist-ecofeminism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Ecofeminism → Materialist / Socialist Ecofeminism` path is preserved.
+
+The verified production contract is 924 prompts, 308 per layer, 76 editorial anchors, 71 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals; 31 canonical ontology targets remain catalog-only. Materialist / Socialist Ecofeminism passes isolated 4/4/4 routing in all three layers and the combined calculation; full-production ranks are 2/1/2 and 1 combined, while compact v2 share output is 9,910 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. Full-competition values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v47 continuation — Buddhist Nationalism micro branch
+
+The v47 implementation adds five fresh Oxford/Cambridge source records covering Buddhist nationalism, religious nationalism in contemporary South Asia, Buddhist nationalism as a discourse against external forces, and monk-authorized religio-political discourse; source-linked metadata to the existing canonical `buddhist-nationalism` node; a dedicated 4/4/4 item block; the `buddhist-nationalism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Religious Nationalism → Buddhist Nationalism` path is preserved.
+
+The verified production contract is 900 prompts, 300 per layer, 74 editorial anchors, 69 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Buddhist Nationalism passes isolated 4/4/4 routing in all three layers and the combined calculation; full-production ranks are 18/43/17 and 22 combined, while compact v2 share output is 9,654 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. Full-competition values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v46 continuation — Egalitarian-Liberal Feminism micro branch
+
+The v46 implementation adds three fresh source records, source-linked metadata to the existing canonical `egalitarian-liberal-feminism` node, a dedicated 4/4/4 item block, the `egalitarian-liberal-feminism` anchor, and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Liberal Feminism → Egalitarian-Liberal Feminism` path is preserved without inventing a macro parent.
+
+The verified production contract is 888 prompts, 296 per layer, 73 editorial anchors, 68 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Egalitarian-Liberal Feminism passes isolated 4/4/4 routing in all three layers and the combined calculation. Full-production ranks are 54/57/2 and 53 combined, while compact v2 share output is 9,526 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. Full-competition values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v51 precision continuation — Egoist Anarchism micro branch
+
+The v51 implementation adds three fresh source records for Jenkins, Leopold, and Ward alongside the existing SEP Max Stirner record; source-linked metadata to the existing canonical `egoist-anarchism` node; a dedicated 4/4/4 item block; the `egoist-anarchism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Anarchism → Individualist Anarchism → Egoist Anarchism` path is preserved.
+
+The verified production contract is 948 prompts, 316 per layer, 78 editorial anchors, 73 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals; 29 canonical ontology targets remain catalog-only. Egoist Anarchism passes isolated 4/4/4 routing in all three layers and the combined calculation; full-production ranks are 27/6/1 and 1 combined, while compact v2 share output is 10,166 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. Full-competition values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v52 precision continuation — Cultural Feminism micro branch
+
+The v52 implementation adds four fresh source records for Alcoff, Narayan, and Kotiswaran; source-linked metadata to the existing canonical `cultural-feminism` node; a dedicated 4/4/4 item block; the `cultural-feminism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged. The existing `Feminism → Radical Feminism → Cultural Feminism` path is preserved.
+
+The verified production contract is 960 prompts, 320 per layer, 79 editorial anchors, 74 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals; 28 canonical ontology targets remain catalog-only. Cultural Feminism passes isolated 4/4/4 routing in every layer; full-production ranks are 12/32/16 and 11 combined, while compact v2 share output is 10,294 characters. Coverage and reachability values remain structural overlap diagnostics only; no cognitive or respondent validation was run.
+
+## v45 continuation — Austromarxism micro branch
+
+The v45 implementation adds seven fresh source records covering the Austrian Marxist and Social Democratic tradition, Red Vienna and worker-movement strategy, Habsburg national questions, and personal or non-territorial national autonomy; source-linked metadata to the existing canonical `austromarxism` node; a dedicated 4/4/4 item block; the `austromarxism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
+
+The verified production contract is 876 prompts, 292 per layer, 72 editorial anchors, 67 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Austromarxism passes isolated routing in all three layers and combined calculation; full-production ranks are 8/5/2 and 2 combined, while compact v2 share output is 9,398 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. The existing `Socialism → Marxism → Austromarxism` path is preserved. No cognitive or respondent validation was run.

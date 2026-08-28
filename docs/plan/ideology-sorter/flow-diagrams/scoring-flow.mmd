@@ -1,0 +1,20 @@
+---
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#F4EFE7"
+    primaryTextColor: "#24221E"
+    primaryBorderColor: "#C9BDAE"
+    lineColor: "#706A61"
+---
+flowchart TD
+    Answers([Validated answers]) --> Partition[Partition questions by layer]
+    Partition --> Coverage[Count answered and no-view states]
+    Coverage --> Threshold{Coverage at least 50 percent?}
+    Threshold -->|No| Insufficient[Return insufficient-information layer result]
+    Threshold -->|Yes| Aggregate[Aggregate observed facet profile]
+    Aggregate --> Distance[Compare weighted squared distance to anchors]
+    Distance --> Balance[Select family-balanced interpretive neighbors]
+    Balance --> Pulls[Derive cross-layer pulls]
+    Pulls --> Covered([Return covered results])
+    Insufficient --> Covered

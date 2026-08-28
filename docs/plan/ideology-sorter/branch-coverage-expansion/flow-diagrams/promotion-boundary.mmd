@@ -1,0 +1,11 @@
+flowchart LR
+  A[research_candidate] --> B{Structural checks}
+  B -->|pass| C{Neighbor distinctness}
+  B -->|fail| X[Hold]
+  C -->|pending or fail| X
+  C -->|pass| D{Cross-context review}
+  D -->|pending or fail| X
+  D -->|pass or not applicable with evidence| E{Empirical validation}
+  E -->|not run or fail| X
+  E -->|pass with evidence| F[Future authority decision]
+  F -. not performed in this run .-> G[Production promotion]

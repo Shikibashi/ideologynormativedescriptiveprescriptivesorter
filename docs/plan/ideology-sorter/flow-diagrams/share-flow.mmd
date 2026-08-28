@@ -1,0 +1,22 @@
+---
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#F4EFE7"
+    primaryTextColor: "#24221E"
+    primaryBorderColor: "#C9BDAE"
+    lineColor: "#706A61"
+---
+flowchart TD
+    Load([App load]) --> Hash{Share fragment present?}
+    Hash -->|No| Intro[Render intro]
+    Hash -->|Yes| Decode[Decode bounded base64url envelope]
+    Decode --> Validate{Schema, versions, IDs, and values valid?}
+    Validate -->|No| Clear[Clear unsafe state and show recoverable message]
+    Clear --> Intro
+    Validate -->|Yes| Restore[Restore validated answers]
+    Restore --> Quiz[Render quiz at first unanswered item]
+    Results([Results share action]) --> Encode[Encode canonical versioned envelope]
+    Encode --> Clipboard{Clipboard available?}
+    Clipboard -->|Yes| Copied[Copy link and disclose bearer-link privacy]
+    Clipboard -->|No| Fallback[Show selectable link for manual copy]

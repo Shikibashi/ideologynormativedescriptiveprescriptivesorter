@@ -1,0 +1,10 @@
+node_modules
+dist
+test-results
+docs/ui-audit/screenshots
+.git
+.codex
+.env
+.env.*
+!*.env.example
+docker-images/*.tar

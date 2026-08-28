@@ -1,0 +1,864 @@
+{
+  "version": 2,
+  "description": "make ideology normative descriptive prescriptive sorter based on data from other ideological sorters etc, its not scientific",
+  "sourceAttachment": "/var/home/tcs/.codex/attachments/6b127a9f-c625-4ee0-ae6a-98292bd54b5a/pasted-text.txt",
+  "startedAt": "2026-08-25T17:58:15Z",
+  "currentPhase": "continuation",
+  "continuationRun": {
+    "id": "2026-08-26-branch-coverage-expansion",
+    "description": "Research-backed ontology and quarantined candidate-bank expansion based on the supplied sorter audit and ontology design notes.",
+    "startedAt": "2026-08-26T12:00:00Z",
+    "gitInitialized": true,
+    "sourceAttachments": [
+      "/var/home/tcs/.codex/attachments/54958769-9999-4578-87a6-ecf764d34d7f/pasted-text.txt",
+      "/var/home/tcs/.codex/attachments/497832d0-2e4a-453a-b027-5b1f199d43ee/pasted-text.txt",
+      "/var/home/tcs/.codex/attachments/058cdb2c-0882-4875-bac0-92d0ea116925/pasted-text.txt"
+    ],
+    "planningDir": "docs/plan/ideology-sorter/branch-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "parsing": "completed",
+      "planning": "completed",
+      "implementation": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "baselineUnitTests": "proved: npm run test:run passed 22/22 before this continuation",
+      "baselineBuild": "proved: npm run build passed before this continuation",
+      "gitStatus": "proved: repository initialized at the project root with no commits; all existing files remain uncommitted",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review is claimed",
+      "planning": "proved: WorkPM source contract, branch-coverage specification, research decision, proposals, flow diagrams, and QA scenarios recorded",
+      "implementation": "proved: 9/33/60 canonical ontology, 119 derived targets, 144 quarantined candidates across 12 priority targets, and production bank unchanged at 84 questions",
+      "verification": "proved: npm run build passed; npm run test:run passed 25/25; curated-bank validators returned no errors; npm audit --audit-level=high reported zero vulnerabilities",
+      "docker": "proved: Compose config and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "testing": "proved: npm run qa passed 9/9 locally and E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 9/9 against Docker",
+      "report": "proved_with_conditions: WorkPM, Argos, Minos, and Zeus continuation reports record the quarantine boundary and remaining evidence holds"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/branch-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "ontology": "src/ontology.ts",
+      "researchContract": "src/research.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/branch-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/branch-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/branch-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The 144 candidates are effect-free research records and are not respondent-facing or production-scored.",
+      "No cognitive review or respondent evidence was run by explicit user instruction.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for promotion.",
+      "The repository is initialized but has no commit; no commit or push was performed."
+    ],
+    "finalStatus": "complete_with_conditions",
+    "completedAt": "2026-08-26T07:03:08Z"
+  },
+  "coverageExpansionRun": {
+    "id": "2026-08-26-ontology-coverage-expansion",
+    "description": "Ontology-wide coverage audit, core-family research tranche, and explicit research promotion/demotion governance.",
+    "startedAt": "2026-08-26T03:23:00Z",
+    "completedAt": "2026-08-26T07:25:47Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 91 catalog-only, 15 scored-indirect, 1 dedicated-scored, and 12 registry-only targets",
+      "candidateBank": "proved: 288 unique effect-free candidates across 24 targets, four descriptive, four normative, and four prescriptive per target",
+      "governance": "proved: 119 explicit taxonomy decisions validate with zero errors; Khomeinism and Qutbism promote to canonical catalog-only; Deep Ecology and Bioregionalism demote to associated registry-only",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 26/26",
+      "build": "proved: npm run build passed",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config and image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "governance": "src/research-governance.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 95 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+ "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "macroCoverageRun": {
+    "id": "2026-08-26-macro-family-coverage",
+    "description": "Macro-family research coverage continuation across the nine existing ontology roots, with effect-free questions and explicit boundary audits.",
+    "startedAt": "2026-08-26T07:38:54Z",
+    "completedAt": "2026-08-26T07:42:39Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 91 catalog-only, 15 scored-indirect, 1 dedicated-scored, and 12 registry-only targets",
+      "candidateBank": "proved: 396 unique effect-free candidates across 33 targets, four descriptive, four normative, and four prescriptive per target",
+      "macroMetadata": "proved: nine macro profiles, 18 neighbor discriminants, nine false-positive audits, and nine coverage summaries validate with zero errors",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 27/27",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config and image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 86 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "Macro coverage is research-only; no macro profile is a validated respondent classifier or production anchor.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "mesoCoverageRun": {
+    "id": "2026-08-26-canonical-meso-coverage",
+    "description": "Canonical meso research continuation with 19 source-linked three-layer candidate blocks and explicit boundary metadata.",
+    "startedAt": "2026-08-26T08:01:04Z",
+    "completedAt": "2026-08-26T08:09:00Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 624 candidates across 52 targets; 67 targets remain without curated blocks",
+      "candidateBank": "proved: 624 unique effect-free candidates across 52 targets, four descriptive, four normative, and four prescriptive per target",
+      "mesoMetadata": "proved: 19 meso profiles, 38 neighbor discriminants, 19 false-positive audits, and 19 coverage summaries validate with zero errors",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 28/28",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config with -f docker-images/docker-compose.yml and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 67 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "All new meso records remain catalog-only research candidates; no political comparison, ranking, recommendation, or production classifier was created.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "microCoverageRun": {
+    "id": "2026-08-26-selected-micro-coverage",
+    "description": "Selected canonical micro research continuation with 12 source-linked three-layer candidate blocks and explicit boundary metadata.",
+    "startedAt": "2026-08-26T08:20:00Z",
+    "completedAt": "2026-08-26T08:28:15Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 768 candidates across 64 targets; 55 targets remain without curated blocks",
+      "candidateBank": "proved: 768 unique effect-free candidates across 64 targets, four descriptive, four normative, and four prescriptive per target",
+      "microMetadata": "proved: 12 micro profiles, 24 neighbor discriminants, 12 false-positive audits, and 12 coverage summaries validate with zero errors",
+      "metadataClosure": "proved: all 64 covered targets have profiles, at least two neighbor discriminants, false-positive audits, and coverage summaries",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 29/29",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config with -f docker-images/docker-compose.yml and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs trailing-whitespace scan reported no findings",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 55 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "All new micro records remain catalog-only research candidates; no political comparison, ranking, recommendation, or production classifier was created.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "microCoverageRunTwo": {
+    "id": "2026-08-26-selected-micro-coverage-two",
+    "description": "Second selected canonical micro research continuation with 12 source-linked three-layer candidate blocks and explicit boundary metadata.",
+    "startedAt": "2026-08-26T08:36:00Z",
+    "completedAt": "2026-08-26T08:54:33Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 912 candidates across 76 targets; 43 targets remain without curated blocks",
+      "candidateBank": "proved: 912 unique effect-free candidates across 76 targets, four descriptive, four normative, and four prescriptive per target",
+      "microMetadata": "proved: 12 second-wave micro profiles, 24 neighbor discriminants, 12 false-positive audits, and 12 coverage summaries validate with zero errors",
+      "metadataClosure": "proved: all 76 covered targets have profiles, at least two neighbor discriminants, false-positive audits, and coverage summaries",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 30/30",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config with -f docker-images/docker-compose.yml and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs trailing-whitespace scan reported no findings and Zeus state parses as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 43 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "All new micro records remain catalog-only research candidates; no political comparison, ranking, recommendation, or production classifier was created.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "microCoverageRunThree": {
+    "id": "2026-08-26-selected-micro-coverage-three",
+    "description": "Third selected canonical micro research continuation with 12 source-linked three-layer candidate blocks and explicit boundary metadata.",
+    "startedAt": "2026-08-26T09:00:00Z",
+    "completedAt": "2026-08-26T09:15:05Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 1,056 candidates across 88 targets; 31 targets remain without curated blocks",
+      "candidateBank": "proved: 1,056 unique effect-free candidates across 88 targets, four descriptive, four normative, and four prescriptive per target",
+      "microMetadata": "proved: 12 third-wave micro profiles, 24 neighbor discriminants, 12 false-positive audits, and 12 coverage summaries validate with zero errors",
+      "metadataClosure": "proved: all 88 covered targets have profiles, at least two neighbor discriminants, false-positive audits, and coverage summaries",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 31/31",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config with -f docker-images/docker-compose.yml and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs trailing-whitespace scan reported no findings and Zeus state parses as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 31 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "All new micro records remain catalog-only research candidates; no political comparison, ranking, recommendation, or production classifier was created.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "microCoverageRunFour": {
+    "id": "2026-08-26-selected-micro-coverage-four",
+    "description": "Fourth selected canonical micro research continuation with 12 source-linked three-layer candidate blocks and explicit boundary metadata.",
+    "startedAt": "2026-08-26T09:17:00Z",
+    "completedAt": "2026-08-26T09:31:35Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 1,200 candidates across 100 targets; 19 targets remain without curated blocks",
+      "candidateBank": "proved: 1,200 unique effect-free candidates across 100 targets, four descriptive, four normative, and four prescriptive per target",
+      "microMetadata": "proved: 12 fourth-wave micro profiles, 24 neighbor discriminants, 12 false-positive audits, and 12 coverage summaries validate with zero errors",
+      "metadataClosure": "proved: all 100 covered targets have profiles, at least two neighbor discriminants, false-positive audits, and coverage summaries",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 32/32",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config with -f docker-images/docker-compose.yml and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs trailing-whitespace scan reported no findings and Zeus state parses as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 19 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "All new micro records remain catalog-only research candidates; no political comparison, ranking, recommendation, or production classifier was created.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "contextCoverageRunFive": {
+    "id": "2026-08-26-contextual-registry-coverage-five",
+    "description": "Contextual and registry-only research continuation with six source-linked three-layer candidate blocks and explicit separation from canonical scoring.",
+    "startedAt": "2026-08-26T09:41:45Z",
+    "completedAt": "2026-08-26T09:45:13Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 1,272 candidates across 106 targets; 13 targets remain without curated blocks",
+      "candidateBank": "proved: 1,272 unique effect-free candidates across 106 targets, four descriptive, four normative, and four prescriptive per target",
+      "contextMetadata": "proved: six contextual/registry profiles, 12 neighbor discriminants, six false-positive audits, and six coverage summaries validate with zero errors; five targets are scored-indirect and Bioregionalism is registry-only",
+      "metadataClosure": "proved: all 106 covered targets have profiles, at least two neighbor discriminants, false-positive audits, and coverage summaries",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new production questions, effects, anchors, thresholds, share behavior, or result labels",
+      "unitTests": "proved: npm run test:run passed 33/33",
+      "build": "proved: npm run build passed; Vite emitted only the existing content-size advisory",
+      "coverageCommand": "proved: npm run research:coverage returned zero candidate/governance validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config with -f docker-images/docker-compose.yml and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs trailing-whitespace scan reported no findings and Zeus state parses as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The active comprehensive goal remains open: 13 targets lack curated blocks and only one target has explicit target-tagged production coverage.",
+      "Contextual and registry-only records remain quarantined research context; no political comparison, ranking, recommendation, or production classifier was created.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "completionTrancheSix": {
+    "id": "2026-08-26-completion-tranche-six",
+    "description": "Final source-backed candidate-coverage tranche for the remaining ontology and registry targets, with explicit separation from production measurement.",
+    "startedAt": "2026-08-26T10:24:21Z",
+    "completedAt": "2026-08-26T10:30:25Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/ontology-coverage-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "coverageAudit": "proved: 119 targets; 107 ontology nodes plus 12 registry entries; 1,428 candidates across all 119 targets; no uncovered targets",
+      "candidateBank": "proved: 1,428 unique effect-free candidates, four descriptive, four normative, and four prescriptive per target",
+      "completionMetadata": "proved: 13 profiles, 26 neighbor discriminants, 13 false-positive audits, and 13 coverage summaries validate with zero errors",
+      "metadataClosure": "proved: all 119 covered targets have profiles, at least two neighbor discriminants, false-positive audits, and coverage summaries",
+      "productionIsolation": "proved: production remains 84 questions, 28 per layer; no new production questions, effects, anchors, thresholds, share behavior, or result labels",
+      "structuralReachability": "proved: all 16 existing production anchors route through all three layers in a synthetic directional-answer fixture; technical reachability only, not respondent or cognitive evidence",
+      "unitTests": "proved: npm run test:run passed 35/35",
+      "build": "proved: npm run build passed; Vite emitted the existing large-client-chunk advisory",
+      "coverageCommand": "proved: npm run research:coverage returned 1,428 candidates across 119 targets with zero validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config and frontend image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs/conversation trailing-whitespace scan reported no findings and Zeus state parses as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "planning": "docs/plan/ideology-sorter/ontology-coverage-expansion/",
+      "researchBank": "src/research-bank.ts",
+      "researchTests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "workbench": "src/App.tsx",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "Candidate coverage is closed, but production measurement remains partial: 91 catalog-only, 15 scored-indirect, 12 registry-only, and one dedicated-scored target.",
+      "Only Right-Libertarianism has explicit target-tagged production coverage; no numeric anchors were generated for the new research targets.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "combinedPatternRun": {
+    "id": "2026-08-26-combined-pattern",
+    "description": "Gated equal-layer composition of the existing descriptive, normative, and prescriptive result surfaces, with explicit abstention for missing information.",
+    "startedAt": "2026-08-26T10:56:01Z",
+    "completedAt": "2026-08-26T10:58:36Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceBoundary": "proved: Freeden morphology and Treier/Hillygus multidimensionality are recorded as construct context only; neither validates local anchors or respondent classification",
+      "resultContract": "proved: CombinedResult abstains unless all three layers are covered and exposes one layer contribution per claim type",
+      "equalLayerRule": "proved: combined fit is the arithmetic mean of descriptive, normative, and prescriptive full-precision fits",
+      "productionData": "proved: production remains 84 questions, 28 per layer, with 16 existing anchors; 1,428 research candidates across 119 targets remain quarantined",
+      "policyVersion": "proved: scoring-policy version is 3 and stale policy share fragments are rejected",
+      "structuralReachability": "proved: all 16 existing anchors route through all three layers and the combined result in a synthetic directional-answer fixture; technical reachability only",
+      "unitTests": "proved: npm run test:run -- --reporter=dot passed 37/37",
+      "build": "proved: npm run build passed; existing Vite large-client-chunk advisory remains",
+      "coverageCommand": "proved: npm run research:coverage returned 1,428 candidates across 119 targets with zero validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config and image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs/conversation trailing-whitespace scan reported no findings and Zeus state parses as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "resultTypes": "src/types.ts",
+      "scoring": "src/scoring.ts",
+      "workbench": "src/App.tsx",
+      "scoringTests": "src/scoring.test.ts",
+      "shareTests": "src/share.test.ts",
+      "browserTests": "tests/sorter.spec.ts",
+      "research": "docs/plan/ideology-sorter/precision-source-expansion/research.md",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The combined pattern is a local interpretive composition, not a validated identity classifier, recommendation, comparison, or ranking of political ideologies.",
+      "Candidate coverage is closed, but target-level production measurement remains partial: 91 catalog-only, 15 scored-indirect, 12 registry-only, and one dedicated-scored target.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for production promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "directCoverageRun": {
+    "id": "2026-08-26-direct-branch-coverage",
+    "description": "Source-backed direct production coverage for six existing ontology targets while preserving research quarantine and layer boundaries.",
+    "startedAt": "2026-08-26T11:02:00Z",
+    "completedAt": "2026-08-26T11:31:00Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceBoundary": "proved: Oxford and Stanford Encyclopedia sources support terminology, construct boundaries, and authoring rationale only; they do not validate local wording, anchor vectors, or respondent classification",
+      "productionData": "proved: content version 4 contains 156 questions, 52 per layer, and seven dedicated-scored target blocks; 16 anchors remain editorial and approximate",
+      "directTargets": "proved: Classical Liberalism, Social Liberalism, Moderate Conservatism, Social Democracy, Democratic Socialism, and Minarchism each have four target-tagged questions in every layer",
+      "researchQuarantine": "proved: 1,428 candidates across 119 targets remain research_candidate records; no registry entry is targeted by the new production questions",
+      "coverageCommand": "proved: npm run research:coverage reports 7 dedicated-scored, 9 scored-indirect, 91 catalog-only, and 12 registry-only targets with zero validation errors",
+      "layerOrdering": "proved: production question order is layer-contiguous so manifest-derived 52/104 transition boundaries remain valid",
+      "unitTests": "proved: npm run test:run -- --reporter=dot passed 39/39, including every new direct branch route",
+      "build": "proved: npm run build passed; existing Vite large-client-chunk advisory remains",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config and image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: source/docs whitespace scan reported no findings and Zeus state is maintained as JSON",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "researchBank": "src/research-bank.ts",
+      "researchContract": "src/research.ts",
+      "scoring": "src/scoring.ts",
+      "scoringTests": "src/scoring.test.ts",
+      "researchTests": "src/research.test.ts",
+      "browserTests": "tests/sorter.spec.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The six blocks are source-backed editorial additions, not validated respondent measures or political recommendations.",
+      "The 1,428 candidates remain quarantined; production measurement is still partial despite direct coverage for seven targets.",
+      "No cognitive review, respondent evidence, empirical reliability, validity, invariance, or psychometric calibration exists for promotion.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "canonicalCoverageRun": {
+    "id": "2026-08-26-canonical-branch-coverage",
+    "description": "Source-backed direct production coverage for four existing canonical ontology targets while preserving research quarantine, layer boundaries, and fail-closed share restoration.",
+    "startedAt": "2026-08-26T11:31:00Z",
+    "completedAt": "2026-08-26T11:58:17Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceBoundary": "proved: Cambridge, Stanford Encyclopedia, Oxford, Ostrom, Sen, and International Affairs records support terminology, construct boundaries, and authoring rationale only; they do not validate local wording, anchor vectors, or respondent classification",
+      "productionData": "proved: content version 5 contains 204 questions, 68 per layer, 16 editorial anchors, and 11 dedicated-scored target blocks",
+      "directTargets": "proved: Ecosocialism, Left-Libertarianism, Libertarian Socialism, and National Conservatism each have four target-tagged questions in every layer and route through existing anchor paths",
+      "researchQuarantine": "proved: 1,428 candidates across 119 targets remain research_candidate records; no registry entry is targeted by the new production questions",
+      "coverageCommand": "proved: npm run research:coverage reports 11 dedicated-scored, 5 scored-indirect, 91 catalog-only, and 12 registry-only targets with zero validation errors",
+      "layerOrdering": "proved: production question order is layer-contiguous so manifest-derived 68/136 transition boundaries remain valid",
+      "shareContract": "proved: a complete 204-answer fragment measures 12,850 characters and round-trips under MAX_FRAGMENT_LENGTH 16,384; malformed and oversized fragments remain rejected",
+      "unitTests": "proved: npm run test:run -- --reporter=dot passed 40/40, including every direct branch route and the complete share round trip",
+      "typecheck": "proved: npx tsc --noEmit --pretty false passed",
+      "build": "proved: npm run build passed; existing Vite large-client-chunk advisory remains",
+      "coverageAudit": "proved: research coverage command returned 119 targets, 1,428 candidates, 119 profiles, 119 false-positive audits, and zero validation errors",
+      "localQA": "proved: npm run qa passed 10/10",
+      "docker": "proved: Compose config and image build passed; container healthy on port 8001; /healthz returned ok",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa passed 10/10",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "integrity": "proved: Zeus state parses as JSON and source/docs/test/activity-log trailing-whitespace checks report no findings",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review, respondent evidence, or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "researchBank": "src/research-bank.ts",
+      "researchContract": "src/research.ts",
+      "scoring": "src/scoring.ts",
+      "share": "src/share.ts",
+      "shareTests": "src/share.test.ts",
+      "scoringTests": "src/scoring.test.ts",
+      "researchTests": "src/research.test.ts",
+      "browserTests": "tests/sorter.spec.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "argosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/argos-report.md",
+      "minosReport": "docs/plan/ideology-sorter/ontology-coverage-expansion/minos-report.md",
+      "materialsCheck": "docs/plan/ideology-sorter/ontology-coverage-expansion/workpm-materials-check.md"
+    },
+    "warnings": [
+      "The four blocks are source-backed editorial additions, not validated respondent measures or political recommendations.",
+      "The 1,428 candidates remain quarantined; production measurement is still partial despite direct coverage for eleven targets.",
+      "No cognitive review, respondent evidence, empirical reliability, validity, invariance, or psychometric calibration exists for promotion.",
+      "The complete share fragment is 12,850 characters; the finite 16,384-character bound is a compatibility accommodation, not privacy or URL-size assurance.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "currentContinuation": {
+    "id": "2026-08-28-v58-khomeinism-micro-branch-direct-coverage",
+    "description": "Source-backed provisional completion of the existing Khomeinism canonical micro branch under Islamism, bounded by revolutionary Shi'i jurist guardianship, modern Islamic sovereignty and state formation, anti-monarchical or anti-imperial independence, and oppressed-centered mobilization while preserving pre- and post-revolutionary, constitutional and authoritarian, populist and clerical, national and transnational, and contested Shi'i-theological variation and the 9/33/60 ontology, contextual-anchor rules, and scoring contract.",
+    "startedAt": "2026-08-28T06:33:38Z",
+    "completedAt": "2026-08-28T06:34:00Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceBoundary": "proved: Abrahamian supports a militant, contradictory, modernizing and populist register organized around grievance and foreign domination; Arjomand and Namazi support the Shi'i state, clergy, jurist-guardianship, modern sovereignty, and state-formation boundary; Hossainzadeh and Travers preserve democratic and constitutional ambiguity; Ghobadzadeh treats governmental Shiism as historically contingent and contested; these sources support terminology and authoring boundaries only, not local wording, effects, vectors, respondent classification, or empirical validity",
+      "productionData": "proved: content version 58 contains 1,032 questions, 344 per layer, 85 editorial anchors, and 80 canonical scoring anchors",
+      "directTargets": "proved: all 80 canonical production anchors have four target-tagged questions in every layer; Khomeinism has a complete direct block and isolated routing in all three layers, while no contextual bridge was promoted",
+      "heldTargets": "proved: 22 canonical ontology targets remain catalog-only, five contextual anchors remain contextual-only, 12 registry-only targets remain outside production scoring, Fascism remains a high-risk catalog-only hold, the 1,428 candidates remain quarantined, and no ontology node was added or reparented",
+      "alternatives": "proved: Khomeinism was selected as the next queue target after comparing the existing Islamism context with Abrahamian, Arjomand, Namazi, Hossainzadeh and Travers, Ghobadzadeh, and the remaining catalog-only branches; the branch has a distinct jurist-guardianship/modern-state/independence/oppressed-mobilization boundary with constitutional and theological variation",
+      "contextualBoundary": "proved: contextual-only anchors remain visible for provenance and research and are excluded from production neighbor selection",
+      "researchQuarantine": "proved: 1,428 effect-free candidates across 119 targets remain research_candidate records",
+      "coverageCommand": "proved: npm run research:coverage reports 80 dedicated-scored, 5 contextual-only, 22 canonical catalog-only, and 12 registry-only targets with zero validation errors",
+      "unitTests": "proved: npm run test:run passed 77/77 after the v58 contract and Khomeinism browser-workbench assertion updates; 3 files passed",
+      "typecheck": "proved: npx tsc --noEmit --pretty false passed",
+      "build": "proved: npm run build passed; existing Vite large-client-chunk advisory remains",
+      "localQA": "proved: full local serial QA passed 10/10 in 4.0 minutes with the Khomeinism dedicated-scored workbench assertion",
+      "dockerBuild": "proved: docker compose -f docker-images/docker-compose.yml config passed; docker build -f frontend/Dockerfile -t ideology-layer-sorter-frontend:latest . passed for v58",
+      "dockerHealth": "proved: recreated Compose frontend served /healthz as ok on port 8001 and reached healthy status",
+      "dockerQA": "proved: E2E_BASE_URL=http://127.0.0.1:8001 npm run qa -- --workers=1 passed 10/10 in 3.7 minutes for v58",
+      "securityAudit": "proved: npm audit --audit-level=high reported zero vulnerabilities",
+      "shareCapacity": "proved: compact v2 complete-answer fragment measures 11,105 and round-trips; v1 decoding remains supported and oversized input remains rejected",
+      "reachabilityAudit": "proved: npm run research:anchor-reachability reports zero validation or structural-closure failures; all 80 anchors have 4/4/4 target blocks and isolated routing; full-production top-three hit rates are 26.2500% by layer and 43.7500% combined, with worst ranks 76 and 69; Khomeinism ranks 4/31/1 by layer and 1 combined in full competition, while isolated routing is complete in all three layers",
+      "browserQAStability": "proved: the full local serial suite passed 10/10 in 4.0 minutes and the Docker-backed serial suite passed 10/10 in 3.7 minutes; the Khomeinism dedicated-scored assertion and manifest-derived research-workbench and exhaustive-traversal timeouts remain compatible with the newly scored target and larger bank",
+      "documentation": "proved: README, root and precision WorkPM plan/spec/research/QA records, precision source map and QA scenarios, methodology, results boundary, Minos report, conversation record, and v58 Zeus/activity records synchronized",
+      "cognitiveEvidence": "not-run by explicit user constraint; no cognitive review, respondent evidence, or simulated substitute is claimed"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "ontology": "src/ontology.ts",
+      "researchBank": "src/research-bank.ts",
+      "researchContract": "src/research.ts",
+      "governance": "src/research-governance.ts",
+      "scoring": "src/scoring.ts",
+      "share": "src/share.ts",
+      "tests": "src/research.test.ts, src/scoring.test.ts, src/share.test.ts, tests/sorter.spec.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "reachabilityAudit": "scripts/audit-anchor-reachability.ts",
+      "researchDecision": "docs/plan/ideology-sorter/precision-source-expansion/research-decision.md",
+      "sourceMap": "docs/plan/ideology-sorter/precision-source-expansion/academic-source-map.md",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "state": "docs/zeus/zeus-state.json"
+    },
+    "warnings": [
+ "The 12 v58 prompts and one Khomeinism micro-branch anchor are source-backed editorial additions, not validated respondent measures or political recommendations.",
+ "The 1,428 candidates remain quarantined; production measurement remains partial despite 80 dedicated-scored targets.",
+ "Khomeinism is explicitly bounded as a historically situated and internally contested Iranian Shi'i Islamist formation requiring revolutionary jurist guardianship, modern Islamic sovereignty and state formation, anti-monarchical or anti-imperial independence, and oppressed-centered mobilization; Shi'i identity, private religion, generic Islamism, anti-imperialism, social-justice concern, opposition to monarchy, present policy opinion, one leader, one regime, one policy, or operational militancy is insufficient evidence.",
+      "Marxism, Social Democracy, nationalism, National Autonomy, Democratic Socialism, and related currents remain analytically related but non-identical rather than silently collapsed into one respondent profile; variation among Bauer, Renner, Adler, Hilferding, and Neurath and over reform, revolution, parliamentary, municipal, associational, territorial, and cultural routes remains explicit.",
+ "Fascism remains a high-risk catalog-only historical hold because the Oxford and Cambridge comparison does not close a safe broad-family definition.",
+ "Neo-Fascism remains a high-risk catalog-only historical hold because postwar continuity, adaptation, organizational overlap, and anti-pluralist transformation remain contested.",
+ "Contextual-only anchors remain visible for provenance and research but are intentionally excluded from production neighbor scoring.",
+ "Compact v2 complete-answer encoding measures 11,105 characters; v1 decoding remains supported. This does not provide privacy or URL-size assurance.",
+ "Full-production top-three overlap remains coarse for several intentionally broad families in the deterministic fixture; Khomeinism's normative rank 31 and descriptive/normative top-three misses remain tuning diagnostics, not respondent evidence or grounds for arbitrary coefficient changes.",
+ "No cognitive review, respondent study, substitute simulation, psychometric calibration, reliability, validity, invariance, empirical validation, or population evidence was run or claimed.",
+      "No commit or push was performed; the initialized repository remains uncommitted."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
+  "phases": {
+    "parsing": {
+      "status": "completed",
+      "completedAt": "2026-08-25T17:58:15Z",
+      "step": 0,
+      "errors": []
+    },
+    "planning": {
+      "status": "completed",
+      "completedAt": "2026-08-25T18:34:00Z",
+      "step": 26,
+      "errors": []
+    },
+    "implementation": {
+      "status": "completed",
+      "completedAt": "2026-08-25T18:56:13Z",
+      "step": 12,
+      "errors": []
+    },
+    "verification": {
+      "status": "completed",
+      "completedAt": "2026-08-25T19:05:42Z",
+      "step": 9,
+      "errors": []
+    },
+    "docker": {
+      "status": "completed",
+      "completedAt": "2026-08-25T19:10:47Z",
+      "step": 5,
+      "errors": []
+    },
+    "testing": {
+      "status": "completed",
+      "completedAt": "2026-08-25T19:10:47Z",
+      "step": 7,
+      "errors": []
+    },
+    "report": {
+      "status": "completed",
+      "completedAt": "2026-08-25T19:12:19Z",
+      "step": 1,
+      "errors": []
+    }
+  },
+  "parsed": {
+    "industry": "civic-reflection",
+    "techStack": {
+      "frontend": "React + TypeScript + Vite",
+      "backend": null,
+      "db": null,
+      "testing": "Vitest + Playwright"
+    },
+    "features": [
+      "brief and methodology disclosure",
+      "three-layer descriptive/normative/prescriptive question flow",
+      "Likert responses with neutral and no-view separation",
+      "facet profiles and transparent similarity calculation",
+      "family-balanced interpretive matches",
+      "coverage and missing-information warnings",
+      "cross-layer tensions without contradiction scoring",
+      "inspectable question, anchor, and source data",
+      "restart and shareable local results"
+    ],
+    "projectType": "static-site",
+    "projectName": "ideology-layer-sorter",
+    "scope": "MVP, client-side only, no account or remote answer storage"
+  },
+  "artifacts": {
+    "planningDir": "docs/plan/ideology-sorter",
+    "interview": "docs/plan/ideology-sorter/interview.md",
+    "plan": "docs/plan/ideology-sorter/plan.md",
+    "sections": "docs/plan/ideology-sorter/sections/",
+    "verifyReport": "docs/plan/ideology-sorter/verify-report.md",
+    "qaScenarios": "docs/plan/ideology-sorter/qa-scenarios.md",
+    "qaReport": "docs/plan/ideology-sorter/minos-report.md",
+    "dockerCompose": "docker-images/docker-compose.yml",
+    "report": "docs/zeus/zeus-report.md"
+  },
+  "decisions": [
+    {
+      "tag": "[ZEUS-AUTO:mechanical]",
+      "decision": "Use a client-only static site with no backend or database",
+      "reason": "The brief asks for a transparent interpretive tool and does not request accounts, persistence, or live data ingestion.",
+      "rejectedAlternative": "Backend-backed quiz service",
+      "reversal": "Add a versioned API and persistence layer without changing the scoring contract."
+    },
+    {
+      "tag": "[ZEUS-AUTO:taste]",
+      "decision": "Use an editorial research-notebook visual direction",
+      "reason": "The product is about distinctions, evidence, and self-reflection; a calm editorial layout supports reading without implying scientific authority.",
+      "rejectedAlternative": "Compass-style dashboard with bright gradients",
+      "reversal": "Replace the token layer in src/styles.css and keep the component/data contracts unchanged."
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "Argos is conditional because keyboard-only, text-zoom, clipboard-denial/network-observation, and redacting historical secret-scan coverage remain open.",
+    "The canonical taxonomy is source-curated; candidate coverage is closed at 1,428 quarantined candidates across all 119 targets, while production measurement remains partial and later evidence gates remain open.",
+    "The combined pattern is an equal-layer interpretive composition gated on complete layer coverage; it is not a validated identity classifier, recommendation, comparison, or ranking."
+  ],
+  "archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism micro-branch continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism micro-branch continuation, v53 Cultural Nationalism micro-branch continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, and v57 Zionism micro-branch continuation completed 2026-08-28, and v58 Khomeinism micro-branch continuation completed 2026-08-28",
+  "completedAt": "2026-08-28T04:45:50Z",
+  "finalStatus": "partial_with_conditions"
+}
