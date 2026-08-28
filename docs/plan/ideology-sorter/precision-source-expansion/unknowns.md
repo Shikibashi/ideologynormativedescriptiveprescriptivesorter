@@ -415,3 +415,27 @@
 - [ ] Historical radical variants, material versus procedural non-domination, popular constitutionalism, labour and socialist readings, and direct versus representative routes remain contested.
 - [ ] The boundary with Historical Republicanism, Contemporary Neo-Republicanism, Civic Republicanism, Marxist readings, patriotism, and generic majoritarianism requires future source review.
 - [ ] Twenty canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.
+
+## v61 unknowns — Marxist Feminism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement.
+- [ ] Ranks 3/15/2 and 1 combined, aggregate rates 25.3012% and 42.1687%, and worst ranks 79 and 73 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] Historical-materialist, dual-systems, unitary, social-reproduction, autonomist, Wages for Housework, intersectional, Black, queer, trans, decolonial, reformist, revolutionary, public, cooperative, union, household, and autonomous variations remain contested.
+- [ ] The boundary with Socialist / Marxist Feminism, Materialist Feminism, Socialist Feminism, generic Feminism, Marxism, welfare, public ownership, and autonomous routes requires future source review.
+- [ ] Nineteen canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.
+
+## V62 open questions — Socialist Feminism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement.
+- [ ] Ranks 2/70/65 and 1 combined, aggregate rates 24.2063% and 41.6667%, and worst ranks 80 and 73 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] The boundary with Marxist Feminism, Materialist Feminism, generic Feminism, generic Socialism, welfare, public provision, and autonomous feminist politics requires future source review.
+- [ ] Semi-autonomous sex-gender relations, race and sexuality, and public, cooperative, union, household, reformist, and revolutionary variations remain contested across contexts.
+- [ ] Eighteen canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.
+
+## V63 open questions — Left-Wing Populism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement; explicitly not run here.
+- [ ] Full-competition ranks 9/27/16 and 10 combined, aggregate rates 23.1373% and 41.1765%, and worst ranks 81 and 74 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] The boundary between the thin Populist core, Left-Wing Populism, Right-Wing Populism, Socialism, Democratic Socialism, Nationalism, and generic anti-elite dissatisfaction remains host- and context-sensitive.
+- [ ] Inclusionary versus exclusionary identity construction, class and multisectoral people-construction, leadership, movement organization, reform/transformative strategy, and domestic/international routes require later cross-context source review.
+- [ ] Seventeen canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.

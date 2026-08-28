@@ -645,3 +645,23 @@ The live dataset is content version 60 with 1,056 questions (352 descriptive, 35
 The existing `Republicanism → Historical Republicanism → Radical Republicanism` node is `dedicated-scored` with one provisional anchor and twelve direct prompts at 4/4/4. The source-bounded construct covers popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, continuous contestation, and transformative public institutions; patriotism, generic anti-corruption, majoritarianism, civic participation alone, Marxism alone, or one institutional route is insufficient.
 
 Governance retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; this value is separate from the live measurement state and does not validate the anchor. Production excludes 20 canonical catalog-only targets, five contextual-only anchors, and 12 registry-only targets. The 1,428 candidates remain effect-free. No cognitive or empirical evidence is claimed.
+
+## v61 content contract — Marxist Feminism micro branch
+
+The live dataset is content version 61 with 1,068 questions (356 descriptive, 356 normative, and 356 prescriptive), 88 editorial anchors, and 83 canonical scoring anchors. The canonical inventory remains 9 macro, 33 meso, and 60 micro nodes; ontology totals remain 9/38/60 with five contextual placements, and the registry remains 12 entries.
+
+The existing `Socialist / Marxist Feminism → Marxist Feminism` node is `dedicated-scored` with one provisional anchor and twelve direct prompts at 4/4/4. The source-bounded construct covers linked class and gendered power, capitalist production, social reproduction, labor and care, material dependence, and transformative emancipation; generic Feminism, Marxism alone, welfare or public ownership alone, unpaid-care concern alone, one author, or one institutional route is insufficient.
+
+Governance retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; this value is separate from the live measurement state and does not validate the anchor. Production excludes 19 canonical catalog-only targets, five contextual-only anchors, and 12 registry-only targets. The 1,428 candidates remain effect-free. No cognitive or empirical evidence is claimed.
+
+## V62 specification — Socialist Feminism micro branch
+
+V62 adds provisional direct measurement to the existing canonical `Socialist / Marxist Feminism → Socialist Feminism` micro node: four descriptive, four normative, and four prescriptive prompts plus one provisional anchor. The construct covers linked but non-identical patriarchy and class relations, production and social reproduction, paid and unpaid labor, care, collective provision, socialist transformation, and autonomous feminist-socialist organizing; Marxist Feminism, Materialist Feminism, generic Feminism, generic Socialism, welfare or care support alone, and one institutional route are insufficient.
+
+The contract is 1,080 prompts (360 per layer), 89 editorial anchors, 84 scoring anchors, 18 canonical catalog-only targets, 12 registry targets, and 1,428 effect-free candidates across 119 targets. Governance retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Delivery checks passed; respondent and empirical evidence remain open.
+
+## V63 specification — Left-Wing Populism micro branch
+
+V63 adds provisional direct measurement to the existing canonical `Populism → Left-Wing Populism` micro node: four descriptive, four normative, and four prescriptive prompts plus one provisional anchor. The construct covers a people-versus-elite articulation joined to a left-egalitarian host, with variation over identity construction, class and multisectoral people-construction, policy content, institutional strategy, leadership, movement organization, reform/transformative routes, and domestic/international scope; generic anti-elite dissatisfaction, left policy alone, the thin Populist core, Right-Wing Populism, Nationalism, Socialism, Democratic Socialism, and one project-specific position are insufficient.
+
+The contract is 1,092 prompts (364 per layer), 90 editorial anchors, 85 scoring anchors, 17 canonical catalog-only targets, 12 registry targets, and 1,428 effect-free candidates across 119 targets. Governance retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Delivery checks remain evidence-gated; respondent and empirical evidence remain open.

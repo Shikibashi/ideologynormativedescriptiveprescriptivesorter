@@ -571,3 +571,44 @@ The V60 continuation adds provisional direct coverage for the existing canonical
 | Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
 
 The taxonomy ledger retains Radical Republicanism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, twenty canonical targets remain catalog-only, and the comprehensive goal remains open. The V60 delta is uncommitted after baseline `6f2b744`; no push occurred because no remote is configured.
+
+## V61 verification — Marxist Feminism micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Four fresh academic records; existing `Socialist / Marxist Feminism → Marxist Feminism` path; plural class-gender and production-reproduction boundary; no topology change |
+| Production contract | PASS | Content version 61; 1,068 prompts at 356 per layer; 88 editorial anchors; 83 canonical scoring anchors; 19 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Marxist Feminism has twelve direct prompts at 4/4/4 |
+| Structural reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 3/15/2 and 1 combined; aggregate top-three rates 25.3012% and 42.1687%; worst ranks 79 and 73; diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 77/77; complete compact v2 fragment 11,537 characters and round-trip |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Marxist Feminism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, nineteen canonical targets remain catalog-only, and the comprehensive goal remains open. Docker/build/browser delivery checks are run in the V61 closure pass; the V61 delta is currently uncommitted and no push is authorized without a configured remote.
+
+## V62 verification — Socialist Feminism micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Three fresh academic records; existing `Socialist / Marxist Feminism → Socialist Feminism` path; plural patriarchy-class/social-reproduction boundary; no topology change |
+| Production contract | PASS | Content version 62; 1,080 prompts at 360 per layer; 89 editorial anchors; 84 canonical scoring anchors; 18 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Socialist Feminism has twelve direct prompts at 4/4/4 |
+| Structural reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 2/70/65 and 1 combined; aggregate top-three rates 24.2063% and 41.6667%; worst ranks 80 and 73; diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 77/77; complete compact v2 fragment 11,681 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, Docker rebuild/recreate, healthy container, `/healthz` `ok`, local Playwright 10/10, Docker Playwright 10/10 |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Socialist Feminism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, eighteen canonical targets remain catalog-only, and the comprehensive goal remains open. The V62 delta is currently uncommitted and no push is authorized without a configured remote.
+
+## V63 verification report — Left-Wing Populism micro branch
+
+| Check | Status | Evidence |
+|---|---|---|
+| Source and ontology boundary | PASS_WITH_HOLD | Two fresh academic records plus existing Oxford/Cambridge populism sources; existing `Populism → Left-Wing Populism` path; contested left-egalitarian-host boundary; no topology change |
+| Production contract | PASS | Content version 63; 1,092 prompts at 364 per layer; 90 editorial anchors; 85 canonical scoring anchors; 17 canonical catalog-only targets |
+| Research-bank coverage | PASS | 1,428 effect-free candidates across 119 targets; zero coverage validation errors; Left-Wing Populism has twelve direct prompts at 4/4/4 |
+| Structural reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 9/27/16 and 10 combined; aggregate top-three rates 23.1373% and 41.1765%; worst ranks 81 and 74; diagnostics only |
+| Unit/type/share | PASS | TypeScript passed; Vitest 77/77; complete compact v2 fragment 11,825 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, Docker rebuild/recreate, healthy container, `/healthz` `ok`, local Playwright 10/10, and Docker-backed Playwright 10/10 passed |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Left-Wing Populism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, seventeen canonical targets remain catalog-only, and the comprehensive goal remains open. The V63 delta is currently uncommitted and no push remote is configured.

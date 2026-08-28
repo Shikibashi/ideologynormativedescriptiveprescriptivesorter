@@ -55,7 +55,7 @@ describe("research workbench contracts", () => {
     expect(targets.find((target) => target.id === "collectivist-anarchism")).toMatchObject({ measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
   });
 
-  it("activates Khomeinism, Qutbism, and Radical Republicanism with source-backed boundaries", () => {
+  it("activates Khomeinism, Qutbism, Radical Republicanism, Marxist Feminism, and Socialist Feminism with source-backed boundaries", () => {
     const targets = buildResearchTargets(DATASET);
     expect(targets.find((target) => target.id === "khomeinism")).toMatchObject({
       targetKind: "ideology-node",
@@ -105,9 +105,64 @@ describe("research workbench contracts", () => {
     expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-pettit-non-domination"))).toBe(true);
     expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-apsr-urbinati-republican-democracy"))).toBe(true);
     expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-tandf-thompson-radical-republicanism"))).toBe(true);
+    expect(targets.find((target) => target.id === "marxist-feminism")).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+      canonicalPath: [
+        { id: "socialist-marxist-feminism", label: "Socialist / Marxist Feminism", level: "meso" },
+        { id: "marxist-feminism", label: "Marxist Feminism", level: "micro" },
+      ],
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "marxist-feminism")).toMatchObject({ canonicalParentId: "socialist-marxist-feminism", anchorId: "marxist-feminism", status: "scored" });
+    const marxistFeminismQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("marxist-feminism"));
+    expect(marxistFeminismQuestions).toHaveLength(12);
+    expect(marxistFeminismQuestions.every((question) => question.context?.startsWith("Analytical scope: Marxist Feminism as a plural feminist current"))).toBe(true);
+    expect(marxistFeminismQuestions.every((question) => question.sourceRefs.includes("source-guilford-arruzza-social-reproduction"))).toBe(true);
+    expect(marxistFeminismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-household-capitalism"))).toBe(true);
+    expect(marxistFeminismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-ideology-work-reproduction"))).toBe(true);
+    expect(marxistFeminismQuestions.every((question) => question.sourceRefs.includes("source-goldsmiths-social-reproduction-feminisms"))).toBe(true);
+    expect(targets.find((target) => target.id === "socialist-feminism")).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+      canonicalPath: [
+        { id: "socialist-marxist-feminism", label: "Socialist / Marxist Feminism", level: "meso" },
+        { id: "socialist-feminism", label: "Socialist Feminism", level: "micro" },
+      ],
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "socialist-feminism")).toMatchObject({ canonicalParentId: "socialist-marxist-feminism", anchorId: "socialist-feminism", status: "scored" });
+    const socialistFeminismQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("socialist-feminism"));
+    expect(socialistFeminismQuestions).toHaveLength(12);
+    expect(socialistFeminismQuestions.every((question) => question.context?.startsWith("Analytical scope: Socialist Feminism as a plural feminist-socialist current"))).toBe(true);
+    expect(socialistFeminismQuestions.every((question) => question.sourceRefs.includes("source-sage-hennessy-socialist-feminism"))).toBe(true);
+    expect(socialistFeminismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-cantillon-social-reproduction"))).toBe(true);
+    expect(socialistFeminismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-dean-feministization"))).toBe(true);
+    expect(socialistFeminismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-household-capitalism"))).toBe(true);
+    expect(targets.find((target) => target.id === "left-wing-populism")).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+      canonicalPath: [
+        { id: "populism", label: "Populism", level: "meso" },
+        { id: "left-wing-populism", label: "Left-Wing Populism", level: "micro" },
+      ],
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "left-wing-populism")).toMatchObject({ canonicalParentId: "populism", anchorId: "left-wing-populism", status: "scored" });
+    const leftWingPopulismQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("left-wing-populism"));
+    expect(leftWingPopulismQuestions).toHaveLength(12);
+    expect(leftWingPopulismQuestions.every((question) => question.context?.startsWith("Analytical scope: Left-Wing Populism as a contested populist variant"))).toBe(true);
+    expect(leftWingPopulismQuestions.every((question) => question.sourceRefs.includes("source-oup-left-populism"))).toBe(true);
+    expect(leftWingPopulismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-saalfeld-left-populism"))).toBe(true);
+    expect(leftWingPopulismQuestions.every((question) => question.sourceRefs.includes("source-wiley-venizelos-left-populism"))).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "khomeinism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "radical-republicanism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "marxist-feminism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "socialist-feminism")).toBe(true);
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
@@ -116,8 +171,8 @@ describe("research workbench contracts", () => {
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1056);
-    expect(DATASET.manifest.questionCount).toBe(1056);
+    expect(DATASET.questions).toHaveLength(1092);
+    expect(DATASET.manifest.questionCount).toBe(1092);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
@@ -224,6 +279,7 @@ describe("research workbench contracts", () => {
       "individualist-anarchism",
       "neoliberalism",
       "socialist-marxist-feminism",
+      "socialist-feminism",
       "populism",
       "mutualism",
       "radical-conservatism",
@@ -581,7 +637,6 @@ describe("research workbench contracts", () => {
   it("keeps the remaining selected micro tranche catalog-only with explicit boundaries", () => {
     const microIds = [
       "hindutva",
-      "marxist-feminism",
       "neo-nazism",
       "revolutionary-islamism",
     ];
@@ -911,11 +966,9 @@ describe("research workbench contracts", () => {
     expect(directQuestions.every((question) => question.sourceRefs.includes("source-oup-mann-zionism-human-rights"))).toBe(true);
   });
 
-  it("keeps the third selected micro tranche catalog-only with explicit boundaries", () => {
+  it("keeps the remaining third selected micro tranche catalog-only with explicit boundaries", () => {
     const microIds = [
-      "left-wing-populism",
       "neoconservatism",
-      "socialist-feminism",
       "wasatiyya",
     ];
 
@@ -1070,8 +1123,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1056);
-    expect(DATASET.manifest.questionCount).toBe(1056);
+    expect(DATASET.questions).toHaveLength(1092);
+    expect(DATASET.manifest.questionCount).toBe(1092);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {
@@ -1125,9 +1178,15 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("khomeinism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "catalog-only" });
     expect(researchTaxonomyDecisionForTarget("qutbism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "catalog-only" });
     expect(researchTaxonomyDecisionForTarget("radical-republicanism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("marxist-feminism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("socialist-feminism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("left-wing-populism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "radical-republicanism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "marxist-feminism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "socialist-feminism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "left-wing-populism")).toBe(true);
   });
 });

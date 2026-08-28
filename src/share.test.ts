@@ -31,7 +31,7 @@ describe("share fragments", () => {
     const answers = Object.fromEntries(DATASET.questions.map((question) => [question.id, 2 as const]));
     const fragment = encodeShareFragment(answers, DATASET);
 
-    expect(fragment.length).toBe(11_393);
+    expect(fragment.length).toBe(11_825);
     expect(fragment.length).toBeLessThanOrEqual(40_960);
     const encodedPayload = fragment.slice(3);
     const encoded = encodedPayload.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - (encodedPayload.length % 4)) % 4);

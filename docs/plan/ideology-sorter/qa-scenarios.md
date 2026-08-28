@@ -590,3 +590,33 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-60-04 | Status separation | Inspect the workbench and taxonomy governance note. | Workbench shows dedicated and scored; governance independently shows retain-canonical with `scored-provisional`. |
 | P-60-05 | Delivery | Run unit/type/build/audit and local/Docker browser checks. | 77/77 tests, zero high-severity audit findings, healthy `/healthz`, and Playwright 10/10 locally and against Docker. |
 | P-60-06 | Evidence boundary | Inspect reports, candidates, and unanswered queue. | Candidates remain effect-free; twenty canonical targets remain catalog-only; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence is claimed. |
+
+## v61 QA scenarios — Marxist Feminism micro branch
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-61-01 | Inspect source and ontology metadata. | Existing `Socialist / Marxist Feminism → Marxist Feminism` path, eight direct sources, no topology change, and the plural class-gender/production-reproduction boundary. |
+| P-61-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 61, 1,068 total prompts at 356 per layer, and 83 production anchors. |
+| P-61-03 | Run coverage/reachability. | Zero validation/failure output; isolated 4/4/4 routing; Marxist Feminism ranks 3/15/2 and 1 combined; aggregate rates 25.3012% and 42.1687% and worst ranks 79 and 73 are diagnostics only. |
+| P-61-04 | Inspect governance versus workbench. | Workbench shows dedicated and scored; governance independently shows retain-canonical with `scored-provisional`. |
+| P-61-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, share round-trip at 11,537 characters, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## v62 QA scenarios — Socialist Feminism micro branch
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-62-01 | Inspect source and ontology metadata. | Existing `Socialist / Marxist Feminism → Socialist Feminism` path, seven direct sources including three fresh academic records, two discriminants, and no topology change. |
+| P-62-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 62, 1,080 total prompts at 360 per layer, and 84 production anchors. |
+| P-62-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 2/70/65 and 1 combined, aggregate rates 24.2063% and 41.6667%, and worst ranks 80 and 73 are diagnostics only. |
+| P-62-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-62-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, 11,681-character share round-trip, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## v63 QA scenarios — Left-Wing Populism micro branch
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-63-01 | Inspect source and ontology metadata. | Existing `Populism → Left-Wing Populism` path, five direct sources including two fresh academic records, two discriminants, and no topology change. |
+| P-63-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 63, 1,092 total prompts at 364 per layer, and 85 production anchors. |
+| P-63-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 9/27/16 and 10 combined, aggregate rates 23.1373% and 41.1765%, and worst ranks 81 and 74 are diagnostics only. |
+| P-63-04 | Inspect governance versus workbench. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states. |
+| P-63-05 | Run delivery/evidence checks. | TypeScript, 77/77 tests, 11,825-character share round-trip, build/audit, healthy `/healthz`, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |

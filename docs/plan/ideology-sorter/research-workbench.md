@@ -468,3 +468,21 @@ The target inventory remains derived from 107 ontology nodes and 12 registry ent
 The research view exposes Radical Republicanism as `dedicated and scored` on the existing `Republicanism → Historical Republicanism → Radical Republicanism` path with seven source references, twelve direct prompts (4/4/4), one provisional anchor, two neighbor discriminants, and an updated false-positive audit. The boundary preserves popular sovereignty, non-domination, civic equality, anti-corruption, contestation, and institutional transformation while excluding patriotism, generic anti-corruption, majoritarianism, civic participation alone, Marxism alone, and one route or author.
 
 The target inventory remains derived from 107 ontology nodes and 12 registry entries with 1,428 effect-free candidates across 119 targets. Governance reports `retain-canonical` with `resultingScoringStatus: scored-provisional`, while the live target is separately `dedicated-scored`; no cognitive or respondent review was run.
+
+## v63 workbench continuation — Left-Wing Populism
+
+The research view exposes Left-Wing Populism as `dedicated and scored` on the existing `Populism → Left-Wing Populism` path with five source references, twelve direct prompts (4/4/4), one provisional anchor, two neighbor discriminants, and a false-positive audit. The boundary preserves the people-versus-elite articulation plus a left-egalitarian host and leaves identity construction, policy, institutional, leadership, strategic, and international routes variable; it excludes generic anti-elite dissatisfaction, left policy alone, the thin Populist core, Right-Wing Populism, Nationalism, and one project-specific position.
+
+The target inventory remains derived from 107 ontology nodes and 12 registry entries with 1,428 effect-free candidates across 119 targets. Governance reports `retain-canonical` with `resultingScoringStatus: scored-provisional`, while the live target is separately `dedicated-scored`; no cognitive or respondent review was run.
+
+## v62 workbench continuation — Socialist Feminism
+
+The research view exposes Socialist Feminism as `dedicated and scored` on the existing `Socialist / Marxist Feminism → Socialist Feminism` path with seven source references, twelve direct prompts (4/4/4), one provisional anchor, two neighbor discriminants, and a false-positive audit. The boundary preserves linked but non-identical patriarchy and class relations, production and social reproduction, collective provision, socialist transformation, and autonomous or institutional routes while excluding Marxist Feminism, Materialist Feminism, generic Feminism, generic Socialism, welfare or care support alone, and one route or author.
+
+The target inventory remains derived from 107 ontology nodes and 12 registry entries with 1,428 effect-free candidates across 119 targets. Governance reports `retain-canonical` with `resultingScoringStatus: scored-provisional`, while the live target is separately `dedicated-scored`; no cognitive or respondent review was run.
+
+## v61 workbench continuation — Marxist Feminism
+
+The research view exposes Marxist Feminism as `dedicated and scored` on the existing `Socialist / Marxist Feminism → Marxist Feminism` path with eight source references, twelve direct prompts (4/4/4), one provisional anchor, two neighbor discriminants, and a false-positive audit. The boundary preserves the joint class-gender and production-reproduction mechanism across plural theoretical and institutional routes while excluding generic Feminism, Marxism alone, welfare, public ownership, unpaid-care concern, and one route or author.
+
+The target inventory remains derived from 107 ontology nodes and 12 registry entries with 1,428 effect-free candidates across 119 targets. Governance reports `retain-canonical` with `resultingScoringStatus: scored-provisional`, while the live target is separately `dedicated-scored`; no cognitive or respondent review was run.

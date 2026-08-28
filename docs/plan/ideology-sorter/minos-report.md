@@ -440,6 +440,24 @@ Local Playwright passed 10/10 in 1m21s, including the dedicated-scored Qutbism w
 
 This is delivery evidence only; it does not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring.
 
+## V63 QA record — Left-Wing Populism micro branch
+
+The V63 browser target is the existing `Populism → Left-Wing Populism` path. The research workbench exposes five source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently `retain-canonical`/`scored-provisional`.
+
+Final V63 delivery verification passed: local Playwright 10/10 and Docker-backed Playwright 10/10, Compose configuration, image rebuild/recreate, a healthy container, and `/healthz` `ok`. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with seventeen canonical catalog-only targets after V63.
+
+## v62 Minos delivery report — Socialist Feminism
+
+Local Playwright passed 10/10, including the dedicated-scored Socialist Feminism workbench path and the taxonomy/status-separation scenario. After Docker image rebuild and forced Compose recreation, the container was healthy, `/healthz` returned `ok`, and Docker-backed Playwright passed 10/10. The branch exposes the existing canonical path and twelve direct source-linked items without changing the scorer policy.
+
+This is delivery evidence only; it does not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring.
+
+## V61 QA record — Marxist Feminism micro branch
+
+The V61 browser target is the existing `Socialist / Marxist Feminism → Marxist Feminism` path. The research workbench exposes eight source references, twelve direct source-linked prompts at 4/4/4, one provisional anchor, two neighbor discriminants, and a false-positive audit. The branch is shown as dedicated and scored while taxonomy governance remains independently `retain-canonical`/`scored-provisional`.
+
+V61 delivery verification passed: local Playwright 10/10, a rebuilt Docker service with `/healthz` returning `ok` and a healthy container, and Docker-backed Playwright 10/10. These are delivery checks only; they do not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring, with nineteen canonical catalog-only targets after V61.
+
 ## v60 Minos delivery report — Radical Republicanism
 
 Local Playwright passed 10/10, including the dedicated-scored Radical Republicanism workbench path and the taxonomy/status-separation scenario. After Docker image rebuild and forced Compose recreation, the container was healthy, `/healthz` returned `ok`, and Docker-backed Playwright passed 10/10. The branch exposes the existing canonical path and twelve direct source-linked items without changing the scorer policy.

@@ -729,3 +729,21 @@ Compact v2 is 11,249 characters and remains within the finite guard. The researc
 The result surface consumes content version 60 with 1,056 prompts and 82 canonical production anchors. The existing `Republicanism → Historical Republicanism → Radical Republicanism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Radical Republicanism is isolated-reachable in every layer; full ranks are 10/8/6 and 4 combined, with aggregate top-three rates 25.2033% and 41.4634% and worst ranks 78 and 72. These are deterministic overlap diagnostics only.
 
 Compact v2 is 11,393 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 20 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Local and Docker QA both pass 10/10. No cognitive/respondent/empirical evidence was run; V60 is uncommitted after baseline `6f2b744` and no push remote exists.
+
+## V61 results — Marxist Feminism micro branch
+
+The result surface consumes content version 61 with 1,068 prompts and 83 canonical production anchors. The existing `Socialist / Marxist Feminism → Marxist Feminism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Marxist Feminism is isolated-reachable in every layer; full ranks are 3/15/2 and 1 combined, with aggregate top-three rates 25.3012% and 42.1687% and worst ranks 79 and 73. These are deterministic overlap diagnostics only.
+
+Compact v2 is 11,537 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 19 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks are closed only after the V61 local/Docker QA pass. No cognitive/respondent/empirical evidence was run; the V61 delta remains uncommitted and no push remote exists.
+
+## V62 results — Socialist Feminism micro branch
+
+The result surface consumes content version 62 with 1,080 prompts and 84 canonical production anchors. The existing `Socialist / Marxist Feminism → Socialist Feminism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Socialist Feminism is isolated-reachable in every layer; full ranks are 2/70/65 and 1 combined, with aggregate top-three rates 24.2063% and 41.6667% and worst ranks 80 and 73. These are deterministic overlap diagnostics only.
+
+Compact v2 is 11,681 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 18 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks are closed after the V62 local/Docker QA pass. No cognitive/respondent/empirical evidence was run; the V62 delta remains uncommitted and no push remote exists.
+
+## V63 results — Left-Wing Populism micro branch
+
+The result surface consumes content version 63 with 1,092 prompts and 85 canonical production anchors. The existing `Populism → Left-Wing Populism` path has twelve target-tagged questions, four per claim layer, and a provisional anchor. Left-Wing Populism is isolated-reachable in every layer; full ranks are 9/27/16 and 10 combined, with aggregate top-three rates 23.1373% and 41.1765% and worst ranks 81 and 74. These are deterministic overlap diagnostics only.
+
+Compact v2 is 11,825 characters and remains within the finite guard. The research bank remains 1,428 effect-free candidates across 119 targets; 17 canonical ontology targets remain catalog-only, five contextual anchors and 12 registry targets remain outside production scoring, and Fascism/Neo-Fascism remain high-risk holds. Delivery checks passed after the V63 local/Docker QA run. No cognitive/respondent/empirical evidence was run; the V63 delta remains uncommitted and no push remote exists.

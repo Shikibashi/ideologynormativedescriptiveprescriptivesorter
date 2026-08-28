@@ -597,3 +597,35 @@ The verified v58 contract is 1,032 prompts (344 per layer), 85 editorial anchors
 **Exclusions:** patriotism, generic anti-corruption, majoritarianism, civic participation alone, Historical Republicanism as a whole, Contemporary Neo-Republicanism as a whole, Marxism alone, one author, one historical movement, or one institutional design.
 
 **Status separation:** taxonomy governance retains the canonical placement with `retain-canonical` and `resultingScoringStatus: scored-provisional`; the live target is `dedicated-scored`. This records ontology governance separately from production measurement and does not constitute respondent validation. Twelve prompts and one provisional anchor passed structural verification; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.
+
+## v61 research decision — Marxist Feminism micro branch
+
+**Selected target:** the existing canonical `Socialist / Marxist Feminism → Marxist Feminism` micro node.
+
+**Decision:** retain the canonical node and activate provisional dedicated measurement after a fresh academic comparison. The source set supports a distinct but plural class-gender and production-reproduction boundary without treating one Marxist-feminist school or institutional route as exhaustive.
+
+**Boundary:** linked class and gendered power, capitalist production, social reproduction, labor and care, material dependence, and transformative emancipation, with variation across historical-materialist, dual-systems, unitary, social-reproduction, autonomist, Wages for Housework, intersectional, Black, queer, trans, decolonial, reformist, revolutionary, public, cooperative, union, household, and autonomous approaches.
+
+**Exclusions:** generic Feminism, Marxism alone, Socialist / Marxist Feminism as a whole, welfare or public ownership alone, unpaid-care concern alone, one patriarchy theory, one author, one movement, one state route, or one autonomous route.
+
+**Status separation:** taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; the live target is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural verification; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.
+
+## V63 research decision — Left-Wing Populism micro branch
+
+Activate provisional dedicated measurement for the existing canonical `Populism → Left-Wing Populism` node while retaining its canonical taxonomy placement. Saalfeld, Eklundh, Stengel, Wojczewski, Venizelos, and Stavrakakis support a contested people-versus-elite articulation joined to a left-egalitarian host, with no fixed policy bundle and substantial identity-politics, strategic, institutional, leadership, and international variation; these sources support construct terminology and item authoring only.
+
+**Boundary:** people-centrism and anti-elitism articulated through a left-egalitarian, anti-privilege, redistributive, internationalist, or otherwise left-host project; preserve inclusionary and exclusionary identity construction, class and multisectoral people-construction, reformist and transformative routes, domestic and international scope, leader and movement organization, and Global North/South variation.
+
+**Exclusions:** generic anti-elite dissatisfaction, left policy without populist articulation, Populism's thin core without a left host, Right-Wing Populism, Nationalism, Socialism, Democratic Socialism, one definition of the people, one party, one leader, one policy, or one foreign-policy position alone.
+
+**Status separation:** taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; the live target is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural verification; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.
+
+## V62 decision — Socialist Feminism
+
+Activate provisional dedicated measurement for the existing canonical `Socialist / Marxist Feminism → Socialist Feminism` node while retaining its canonical taxonomy placement. Hennessy, Cantillon, Mackett, Stevano, Dean, and Maiguashca support a plural boundary joining patriarchy and class analysis, socialist transformation, social reproduction, collective provision, and autonomous or institutional organizing variation; these sources support construct terminology and item authoring only.
+
+**Boundary:** linked but non-identical patriarchy and class relations, production and social reproduction, paid and unpaid labor, care, collective provision, socialist transformation, and autonomous feminist-socialist organizing, with public, cooperative, union, household, reformist, revolutionary, race, sexuality, and cross-context variation.
+
+**Exclusions:** Marxist Feminism's more constitutive political-economy account, Materialist Feminism's broader materialist field, generic Feminism, generic Socialism, welfare or public provision alone, care concern alone, one theory of patriarchy, one author, one movement, or one institutional route.
+
+**Status separation:** taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; the live target is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural verification; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.
