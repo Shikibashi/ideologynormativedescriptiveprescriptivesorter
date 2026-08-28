@@ -567,3 +567,26 @@ The v56 QA pass is structural and behavioral delivery verification. It does not 
 | P-58-05 | Verify browser and container delivery. | Local and Docker-backed serial Playwright are 10/10, the research workbench exposes Khomeinism as dedicated and scored, `/healthz` returns `ok`, and catalog-only/contextual targets remain excluded from production scoring. |
 
 The v58 QA pass is structural and behavioral delivery verification. It does not replace cognitive review or later respondent/empirical validation.
+
+
+## v59 QA scenarios — Qutbism micro branch
+
+| ID | Area | Scenario | Expected evidence |
+|---|---|---|---|
+| P-59-01 | Sources and ontology | Inspect Qutbism sources, path, and metadata. | Existing `Islamism → Qutbism` canonical path; seven source references; four neighbor discriminants; no node added or reparented. |
+| P-59-02 | Direct coverage | Inspect the production block and manifest. | Twelve target-tagged prompts at 4/4/4, one provisional anchor, content version 59, and 1,044 total prompts at 348 per layer. |
+| P-59-03 | Reachability | Run research coverage and anchor reachability. | Zero errors/failures; isolated reachability in all three layers; ranks 3/48/3 and 10 combined remain diagnostics only. |
+| P-59-04 | Status separation | Inspect the workbench and taxonomy governance note. | Workbench shows dedicated and scored; governance independently shows promote-to-canonical/catalog-only. |
+| P-59-05 | Delivery | Run unit/type/build/audit and local/Docker browser checks. | 77/77 tests, zero high-severity audit findings, healthy `/healthz`, and Playwright 10/10 locally and against Docker. |
+| P-59-06 | Evidence boundary | Inspect reports and candidates. | Candidates remain effect-free; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence is claimed. |
+
+## v60 QA scenarios — Radical Republicanism micro branch
+
+| ID | Area | Scenario | Expected evidence |
+|---|---|---|---|
+| P-60-01 | Sources and ontology | Inspect Radical Republicanism sources, path, and metadata. | Existing `Republicanism → Historical Republicanism → Radical Republicanism` path; seven source references; two neighbor discriminants; no node added or reparented. |
+| P-60-02 | Direct coverage | Inspect the production block and manifest. | Twelve target-tagged prompts at 4/4/4, one provisional anchor, content version 60, and 1,056 total prompts at 352 per layer. |
+| P-60-03 | Reachability | Run coverage and anchor reachability. | Zero errors/failures; isolated routing in all three layers; full ranks 10/8/6 and 4 combined, aggregate rates 25.2033% and 41.4634%, and worst ranks 78 and 72 are diagnostics only. |
+| P-60-04 | Status separation | Inspect the workbench and taxonomy governance note. | Workbench shows dedicated and scored; governance independently shows retain-canonical with `scored-provisional`. |
+| P-60-05 | Delivery | Run unit/type/build/audit and local/Docker browser checks. | 77/77 tests, zero high-severity audit findings, healthy `/healthz`, and Playwright 10/10 locally and against Docker. |
+| P-60-06 | Evidence boundary | Inspect reports, candidates, and unanswered queue. | Candidates remain effect-free; twenty canonical targets remain catalog-only; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence is claimed. |

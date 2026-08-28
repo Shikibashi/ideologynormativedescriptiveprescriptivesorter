@@ -544,3 +544,30 @@ Promote the existing canonical `Khomeinism` micro node under `Islamism` from cat
 Add exactly twelve target-tagged items and one provisional anchor on the existing path. Preserve pre/post-revolutionary, constitutional/authoritarian, populist/clerical, national/transnational, and contested Shi'i-theological variation. This is an editorial measurement decision, not empirical validation; identity, private faith, generic Islamism, current policy opinion, one leader, one regime, one policy, or operational militancy cannot define the branch alone.
 
 The verified v58 contract is 1,032 prompts (344 per layer), 85 editorial anchors, 80 production anchors, and 22 canonical catalog-only targets. Khomeinism has exact 4/4/4 direct coverage and complete isolated routing; full-production ranks are 4/31/1 and 1 combined, aggregate rates are 26.2500% and 43.7500%, and worst ranks are 76 and 69. Compact v2 is 11,105 characters. Coverage, reachability, 77/77 tests, TypeScript, build, audit, Compose, Docker, health, local QA, and Docker QA passed. The normative competition rank and layer misses remain deterministic overlap diagnostics. No cognitive review, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.
+
+## v59 research decision — Qutbism micro branch
+
+**Selected target:** the existing canonical `Islamism → Qutbism` micro node.
+
+**Decision:** activate provisional dedicated measurement after a fresh academic comparison. The convergent authoring boundary is divine sovereignty and `jahiliyya` critique, comprehensive Islamic moral order, disciplined transformative community, and contested revolutionary/reformist reception. Neighbor review explicitly distinguishes Islamism, Revolutionary Islamism, Salafi-Jihadism, and Khomeinism.
+
+**Do not infer from:** Muslim identity, private faith, generic Islamism, religious conservatism, anti-Western sentiment, support for or opposition to the Muslim Brotherhood, current policy, operational militancy, or one period/reading of Qutb. Preserve literary, theological, prison/post-prison, organizational, authority, pluralism, and reception variation.
+
+**Governance boundary:** the taxonomy ledger remains promote-to-canonical with governance `resultingScoringStatus: catalog-only`, while the live dataset target is `dedicated-scored`. This intentional separation prevents taxonomy disposition from silently activating or deactivating measurement.
+
+**Status:** 12 production prompts and one provisional anchor are implemented and structurally verified. Later cognitive/respondent/empirical evidence remains open and was not run.
+
+
+## v59 research decision — Qutbism micro branch
+
+Activate provisional dedicated measurement for the existing canonical `Islamism → Qutbism` node. Require divine sovereignty/`jahiliyya`, comprehensive order, disciplined transformative community, and varied revolutionary/reformist reception, with explicit boundaries against identity, private faith, generic Islamism, current policy, and operational militancy.
+
+Governance remains promote-to-canonical with `resultingScoringStatus: catalog-only`; live measurement is separately `dedicated-scored`. This non-equivalence is intentional and tested. Twelve prompts and one provisional anchor passed structural checks; later cognitive/respondent/empirical evidence remains open.
+
+## v60 research decision — Radical Republicanism micro branch
+
+Activate provisional dedicated measurement for the existing canonical `Republicanism → Historical Republicanism → Radical Republicanism` node while retaining its canonical taxonomy placement. The Oxford radical-republican volume, Pettit's non-domination chapter, Urbinati's republican-democracy analysis, Thompson's Marx/republican reading, and existing republican records close a source-bounded but internally plural authoring boundary.
+
+Require popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, continuous contestation, and transformative public institutions. Preserve historical radical variants, critical and neo-republican theory, labour and socialist readings, popular constitutionalism, civic virtue, material independence, and direct or representative democratic routes. Exclude patriotism, generic anti-corruption, majoritarianism, civic participation alone, Marxism alone, one author, one historical movement, or one institutional design.
+
+Taxonomy retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Twelve prompts and one provisional anchor passed structural checks; later cognitive/respondent/empirical evidence remains open.

@@ -574,3 +574,26 @@ WorkPM selects the existing canonical `Khomeinism` micro node under `Islamism` f
 Promote the target from catalog-only to `dedicated-scored` with exactly twelve target-tagged items and one provisional `khomeinism` anchor. Require the joint construct of revolutionary jurist guardianship, modern Islamic sovereignty/state formation, anti-monarchical or anti-imperial independence, and oppressed-centered mobilization. Preserve pre/post-revolutionary, constitutional/authoritarian, populist/clerical, national/transnational, and contested Shi'i-theological variation; do not encode one regime, leader, policy, or operational method as defining.
 
 The verified v58 contract is 1,032 prompts (344 per layer), 85 editorial anchors, 80 production anchors, and 22 canonical catalog-only targets. Khomeinism has exact 4/4/4 direct coverage and complete isolated routing; full-production ranks are 4/31/1 and 1 combined, aggregate rates are 26.2500% and 43.7500%, and worst ranks are 76 and 69. Compact v2 is 11,105 characters. Coverage, reachability, 77/77 tests, TypeScript, build, audit, Compose, Docker, health, local QA, and Docker QA passed. The normative competition rank and layer misses remain deterministic overlap diagnostics, not respondent evidence or grounds for uncalibrated retuning. This is an editorial measurement decision, not empirical validation. No cognitive review, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.
+
+
+## v59 research decision — Qutbism micro branch
+
+**Decision:** provisionally activate dedicated measurement for the existing canonical `Qutbism` micro node under `Islamism`.
+
+**Boundary:** divine sovereignty and `jahiliyya`, comprehensive Islamic moral order, disciplined transformative community, and contested revolutionary/reformist reception, with explicit variation across Qutb's periods, registers, organizations, authority readings, pluralism, and later reception. Distinguish Islamism, Revolutionary Islamism, Salafi-Jihadism, and Khomeinism.
+
+**Exclusions:** Muslim identity, private faith, generic Islamism, religious conservatism, anti-Western sentiment, Muslim Brotherhood alignment, current policy, operational militancy, and one interpretation of Qutb.
+
+**Status separation:** the taxonomy ledger remains promote-to-canonical with governance `resultingScoringStatus: catalog-only`, while the live dataset target is `dedicated-scored`. This is an intentional non-equivalence. Twelve prompts and one provisional anchor passed structural verification; no cognitive, respondent, psychometric, or empirical validation was run.
+
+## v60 research decision — Radical Republicanism micro branch
+
+**Selected target:** the existing canonical `Republicanism → Historical Republicanism → Radical Republicanism` micro node.
+
+**Decision:** retain the node in the canonical ontology and activate provisional dedicated measurement after a fresh academic comparison. The Oxford radical-republican volume, Pettit's non-domination chapter, Urbinati's republican-democracy analysis, Thompson's Marx/republican reading, and existing republican sources support a distinct but internally plural authoring boundary.
+
+**Boundary:** popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, continuous contestation, and transformative public institutions, with variation across historical radical traditions, critical/neo-republican theory, labour and socialist readings, popular constitutionalism, civic virtue, material independence, and direct or representative routes.
+
+**Exclusions:** patriotism, generic anti-corruption, majoritarianism, civic participation alone, Historical Republicanism as a whole, Contemporary Neo-Republicanism as a whole, Marxism alone, one author, one historical movement, or one institutional design.
+
+**Status separation:** taxonomy governance retains the canonical placement with `retain-canonical` and `resultingScoringStatus: scored-provisional`; the live target is `dedicated-scored`. This records ontology governance separately from production measurement and does not constitute respondent validation. Twelve prompts and one provisional anchor passed structural verification; no cognitive, respondent, simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run.

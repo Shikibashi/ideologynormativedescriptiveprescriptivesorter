@@ -558,3 +558,35 @@ The v57 precision QA pass is structural and behavioral delivery verification. It
 | P-58-05 | Verify browser and container delivery. | Local and Docker-backed serial Playwright are 10/10, the workbench exposes Khomeinism as dedicated and scored, `/healthz` returns `ok`, and catalog-only/contextual anchors remain excluded from production scoring. |
 
 The v58 precision QA pass is structural and behavioral delivery verification. It does not replace cognitive review or later respondent/empirical validation.
+
+## v59 QA scenarios — Qutbism micro branch
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-59-01 | Inspect Qutbism sources, path, target, and metadata. | Existing `Islamism → Qutbism` canonical path; seven source references; contested historical boundary; four neighbor discriminants; no node added or reparented. |
+| P-59-02 | Inspect direct production coverage. | Twelve target-tagged prompts with 4/4/4 layer counts, one provisional anchor, content version 59, and 1,044 total prompts at 348 per layer. |
+| P-59-03 | Run research coverage and isolated reachability. | Zero validation/closure failures; Qutbism isolated-reachable in all layers; deterministic full ranks 3/48/3 and 10 combined remain diagnostics only. |
+| P-59-04 | Inspect taxonomy governance and workbench measurement status. | Governance remains promote-to-canonical/catalog-only while the workbench and target inventory show dedicated and scored; the separation is explicit. |
+| P-59-05 | Run delivery checks. | 77/77 unit tests, TypeScript/build, zero high-severity audit findings, local and Docker Playwright 10/10, healthy port-8001 container, and `/healthz` `ok`. |
+| P-59-06 | Inspect evidence boundary. | Candidates remain effect-free; no cognitive, respondent, psychometric, reliability/validity, invariance, empirical, or population evidence is claimed. |
+
+
+## v59 QA scenarios — Qutbism micro branch
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-59-01 | Inspect source and ontology metadata. | Existing `Islamism → Qutbism` path, seven sources, four discriminants, and no topology change. |
+| P-59-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 59, and 1,044 total prompts at 348 per layer. |
+| P-59-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 3/48/3 and 10 combined are diagnostics only. |
+| P-59-04 | Inspect governance versus workbench. | Governance promote-to-canonical/catalog-only and workbench dedicated-and-scored are both visible and separate. |
+| P-59-05 | Run delivery/evidence checks. | 77/77 tests, build/audit pass, local/Docker Playwright 10/10, healthy `/healthz`, effect-free candidates, and no cognitive/empirical claim. |
+
+## v60 QA scenarios — Radical Republicanism micro branch
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-60-01 | Inspect source and ontology metadata. | Existing `Republicanism → Historical Republicanism → Radical Republicanism` path, seven sources, two discriminants, and no topology change. |
+| P-60-02 | Inspect production block. | Twelve prompts at 4/4/4, one provisional anchor, version 60, and 1,056 total prompts at 352 per layer. |
+| P-60-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 10/8/6 and 4 combined, aggregate rates 25.2033% and 41.4634%, and worst ranks 78 and 72 are diagnostics only. |
+| P-60-04 | Inspect governance versus workbench. | Governance retain-canonical/scored-provisional and workbench dedicated-and-scored are both visible and separate. |
+| P-60-05 | Run delivery/evidence checks. | 77/77 tests, build/audit pass, local/Docker Playwright 10/10, healthy `/healthz`, effect-free candidates, and no cognitive/empirical claim. |

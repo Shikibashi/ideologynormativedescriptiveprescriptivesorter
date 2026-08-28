@@ -390,3 +390,28 @@
 - The cited sources support authoring and false-positive controls only; they do not establish respondent comprehension, local vector validity, cross-context invariance, or empirical classification.
 - Isolated routing is complete at 4/4/4; full-production ranks are 4/31/1 and combined rank 1, with aggregate top-three rates of 26.2500% by layer and 43.7500% combined and worst ranks 76 and 69. These overlap diagnostics do not justify scorer or picker retuning.
 - Compact v2 is active at 11,105 characters; v1 remains decodable. The 1,428 candidates remain quarantined, 22 canonical ontology targets remain catalog-only, Fascism remains high-risk, Qutbism is next, and no cognitive, respondent, simulation, psychometric, empirical, reliability/validity, invariance, or population evidence was run.
+
+## v59 unknowns — Qutbism
+
+- [ ] Cognitive review and respondent evidence remain required before treating wording, effects, or Qutbism labels as validated measurement; explicitly not run in this continuation.
+- [ ] The deterministic full-competition ranks (3/48/3; 10 combined) show normative overlap in the current geometry. They are not respondent evidence and do not authorize coefficient or picker retuning.
+- [ ] Qutb's period, literary/theological register, `hakimiyyah`, `jahiliyya`, authority, pluralism, and revolutionary/reformist reception remain interpretively contested; future source review may revise boundaries.
+- [ ] Governance's promote-to-canonical/catalog-only result and the live dedicated-scored measurement state are intentionally separate and require explicit reconciliation if policy changes.
+- [ ] Comprehensive coverage remains unfinished; Fascism and Neo-Fascism are high-risk catalog-only holds and other catalog-only targets remain queued.
+
+
+## v59 unknowns — Qutbism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, or labels become validated measurement.
+- [ ] Ranks 3/48/3 and 10 combined are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] Qutb's period, authority, pluralism, `hakimiyyah`, `jahiliyya`, and revolutionary/reformist reception remain contested.
+- [ ] Governance catalog-only and live dedicated-scored states are intentionally separate; future policy changes must reconcile them explicitly.
+- [ ] Fascism, Neo-Fascism, and other catalog-only targets remain queued.
+
+## v60 unknowns — Radical Republicanism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement.
+- [ ] Ranks 10/8/6 and 4 combined, aggregate rates 25.2033% and 41.4634%, and worst ranks 78 and 72 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] Historical radical variants, material versus procedural non-domination, popular constitutionalism, labour and socialist readings, and direct versus representative routes remain contested.
+- [ ] The boundary with Historical Republicanism, Contemporary Neo-Republicanism, Civic Republicanism, Marxist readings, patriotism, and generic majoritarianism requires future source review.
+- [ ] Twenty canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.

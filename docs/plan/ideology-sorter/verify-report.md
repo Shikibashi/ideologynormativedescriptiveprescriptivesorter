@@ -541,3 +541,33 @@ The 12 v23 prompts and provisional anchor are source-backed editorial additions,
 | Evidence boundary | PASS_WITH_HOLD | Academic sources support terminology, historical variation, and authoring boundaries only. No cognitive review, respondent evidence, substitute simulation, psychometric calibration, reliability/validity, invariance, empirical validation, or population evidence was run. |
 
 The repository remains initialized and uncommitted; no commit or push was performed. The 50 production branches are not a claim that the 102 canonical micro nodes are comprehensively measured.
+
+## V59 verification — Qutbism micro branch
+
+The V59 continuation adds provisional direct coverage for the existing canonical `Islamism → Qutbism` micro branch after the OUP/T&F source comparison. Toth, Khatab, Faradj, Wagemakers, and existing Qutb/Islamism records support a historically situated, internally contested boundary around divine sovereignty/`jahiliyya`, comprehensive moral order, disciplined transformation, and varied revolutionary or reformist reception. The sources support authoring boundaries only; they do not validate respondent interpretation or empirical classification.
+
+| Check | Status | Evidence |
+|---|---|---|
+| Research coverage | PASS | 1,044 questions; 348 per layer; 81 dedicated-scored; 21 canonical catalog-only; five contextual-only; 12 registry-only; 1,428 candidates across 119 targets; zero validation errors |
+| Qutbism direct branch | PASS | Existing `Islamism → Qutbism` path; twelve target-tagged prompts at 4/4/4; one provisional anchor; four neighbor discriminants; no node added or reparented |
+| Reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 3/48/3 and 10 combined; aggregate rates 25.5144% and 41.9753%; worst ranks 77 and 70; deterministic overlap diagnostics only |
+| Unit/type/build/share | PASS | 77/77 tests; TypeScript; Vite build with existing large-client-chunk advisory; compact v2 share 11,249 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, Docker rebuild/recreate, healthy container, `/healthz` `ok`, local Playwright 10/10 in 1m21s, Docker Playwright 10/10 in 1m14s |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger continues to report Qutbism as promote-to-canonical with governance `resultingScoringStatus: catalog-only`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, and the comprehensive goal remains open. The V59 delta is uncommitted after the earlier V58 baseline commit `6f2b744`; no push occurred because no remote is configured.
+
+## V60 verification — Radical Republicanism micro branch
+
+The V60 continuation adds provisional direct coverage for the existing canonical `Republicanism → Historical Republicanism → Radical Republicanism` micro branch after the Oxford/Cambridge/APSR/T&F source comparison. These sources support terminology, variation, boundary controls, and original authoring only; they do not validate respondent interpretation or empirical classification.
+
+| Check | Status | Evidence |
+|---|---|---|
+| Radical Republicanism direct branch | PASS | Existing canonical path; twelve target-tagged prompts at 4/4/4; one provisional anchor; two neighbor discriminants; no node added or reparented |
+| Research coverage | PASS | 1,056 questions; 352 per layer; 82 dedicated-scored; 20 canonical catalog-only; five contextual-only; 12 registry-only; 1,428 candidates across 119 targets; zero validation errors |
+| Reachability | PASS_WITH_HOLD | Isolated 4/4/4 routing; full ranks 10/8/6 and 4 combined; aggregate rates 25.2033% and 41.4634%; worst ranks 78 and 72; deterministic overlap diagnostics only |
+| Unit/type/build/share | PASS | 77/77 tests; TypeScript; Vite build with existing large-client-chunk advisory; compact v2 share 11,393 characters and round-trip |
+| Security and delivery | PASS | High-severity npm audit has zero findings; Compose config, Docker rebuild/recreate, healthy container, `/healthz` `ok`, local Playwright 10/10, Docker Playwright 10/10 |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run |
+
+The taxonomy ledger retains Radical Republicanism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Fascism and Neo-Fascism remain high-risk catalog-only holds, twenty canonical targets remain catalog-only, and the comprehensive goal remains open. The V60 delta is uncommitted after baseline `6f2b744`; no push occurred because no remote is configured.

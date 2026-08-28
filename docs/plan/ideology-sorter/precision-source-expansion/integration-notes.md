@@ -281,6 +281,20 @@ The v45 implementation adds seven fresh source records covering the Austrian Mar
 
 The verified production contract is 876 prompts, 292 per layer, 72 editorial anchors, 67 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Austromarxism passes isolated routing in all three layers and combined calculation; full-production ranks are 8/5/2 and 2 combined, while compact v2 share output is 9,398 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. The existing `Socialism → Marxism → Austromarxism` path is preserved. No cognitive or respondent validation was run.
 
+### V59 validator reconciliation
+
+The first Qutbism item-effects draft exposed four cross-layer facet keys. The dataset validator caught them before delivery; the four effects were remapped or removed so each item uses only its layer's existing facet set. No scoring policy, coefficient, threshold, picker, or anchor-selection mechanism was changed.
+
+
+## v59 precision integration — Qutbism micro branch
+
+The V59 implementation adds four fresh source records, a seven-source direct branch reference set, twelve target-tagged prompts, one provisional anchor, updated ontology metadata, and source-rich research-bank/profile/neighbor/audit/coverage metadata for the existing `Islamism → Qutbism` path. No ontology node was added or reparented. The 9/33/60 canonical inventory, 20-facet layer geometry, policy-version 3 scorer, thresholds, combined-layer calculation, contextual-only exclusion, and effect-free candidate quarantine remain unchanged.
+
+The verified contract is 1,044 prompts (348 per layer), 86 editorial anchors, 81 canonical scoring anchors, 107 ontology nodes, 12 registry entries, 81 dedicated-scored targets, 21 canonical catalog-only targets, 1,428 research candidates, and 119 research targets. Qutbism has direct 4/4/4 coverage and isolated reachability; full ranks are 3/48/3 and 10 combined. Aggregate top-three rates are 25.5144% and 41.9753%, with worst ranks 77 and 70. These are deterministic overlap diagnostics only. Compact v2 measures 11,249 characters.
+
+Coverage and reachability return zero errors/failures; TypeScript, 77/77 unit tests, build, high-severity audit, Compose, Docker health, local QA 10/10 in 1m21s, and Docker QA 10/10 in 1m14s pass. The taxonomy governance catalog-only result and live dedicated-scored measurement result are both retained and tested. No cognitive or respondent validation was run. The V59 delta is uncommitted; prior V58 baseline is `6f2b744`, and no push remote is configured.
+
+
 ## v58 precision integration — Khomeinism micro branch
 
 The v58 implementation completes the existing `Islamism → Khomeinism` path with four fresh source records, twelve target-tagged prompts, one provisional anchor, source-linked ontology metadata, and updated research-bank/profile/neighbor/audit/coverage metadata. The existing 9/33/60 canonical topology, 20-facet geometry, policy-version 3 scorer, thresholds, combined-layer semantics, contextual-only exclusion, compact-share behavior, and effect-free candidate quarantine remain unchanged. No node was added or reparented.
@@ -364,3 +378,16 @@ The verified production contract is 960 prompts, 320 per layer, 79 editorial anc
 The v45 implementation adds seven fresh source records covering the Austrian Marxist and Social Democratic tradition, Red Vienna and worker-movement strategy, Habsburg national questions, and personal or non-territorial national autonomy; source-linked metadata to the existing canonical `austromarxism` node; a dedicated 4/4/4 item block; the `austromarxism` anchor; and updated research-bank/profile/coverage metadata. The canonical topology, facet geometry, scorer policy version 3, target-specific effects, contextual-only exclusion, combined-layer calculation, share semantics, and effect-free candidate quarantine remain unchanged.
 
 The verified production contract is 876 prompts, 292 per layer, 72 editorial anchors, 67 production anchors, 107 ontology nodes, 12 registry entries, and 1,428 candidates across 119 research targets. The canonical inventory remains 9 macro / 33 canonical meso / 60 micro, with five contextual placements represented in the 9/38/60 ontology-level totals. Austromarxism passes isolated routing in all three layers and combined calculation; full-production ranks are 8/5/2 and 2 combined, while compact v2 share output is 9,398 characters. Coverage, reachability, unit, TypeScript, share, build, dependency, browser, container, and health checks are green. The existing `Socialism → Marxism → Austromarxism` path is preserved. No cognitive or respondent validation was run.
+
+
+## v59 precision integration — Qutbism micro branch
+
+V59 adds four fresh academic records, a seven-source direct set, twelve target-tagged prompts, one provisional anchor, ontology metadata, and research-bank/profile/neighbor/audit/coverage updates for the existing `Islamism → Qutbism` path. No node was added or reparented; scorer policy, facets, thresholds, share semantics, and candidate quarantine remain unchanged.
+
+The verified contract is 1,044 prompts (348 per layer), 86 editorial anchors, 81 production anchors, 21 canonical catalog-only targets, 1,428 candidates, and 119 targets. Qutbism passes isolated 4/4/4 routing; ranks are 3/48/3 and 10 combined; share is 11,249 characters; tests, build, audit, Compose, health, and Playwright 10/10 locally and against Docker pass. Four initial cross-layer item effects were corrected to layer-valid facets after validator detection; no scoring mechanism changed. Governance catalog-only and live dedicated-scored states remain separate. No cognitive/respondent evidence was run.
+
+## v60 precision integration — Radical Republicanism micro branch
+
+V60 adds four fresh academic records, a seven-source direct set, twelve target-tagged prompts, one provisional anchor, ontology metadata, and research-bank/profile/neighbor/audit/coverage updates for the existing `Republicanism → Historical Republicanism → Radical Republicanism` path. No node was added or reparented; scorer policy, facets, thresholds, share semantics, and candidate quarantine remain unchanged.
+
+The verified contract is 1,056 prompts (352 per layer), 87 editorial anchors, 82 production anchors, 20 canonical catalog-only targets, 1,428 candidates, and 119 targets. Radical Republicanism passes isolated 4/4/4 routing; ranks are 10/8/6 and 4 combined; share is 11,393 characters; tests, build, audit, Compose, health, and Playwright 10/10 locally and against Docker pass. Full-competition values remain structural overlap diagnostics only; no scoring mechanism changed. Governance `retain-canonical`/`scored-provisional` and live `dedicated-scored` states remain separate. No cognitive/respondent evidence was run.

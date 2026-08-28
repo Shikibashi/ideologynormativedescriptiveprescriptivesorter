@@ -414,3 +414,20 @@ The v42 source comparison does not resolve these questions and intentionally lea
 - The Abrahamian, Arjomand, Namazi, Hossainzadeh/Travers, Ghobadzadeh, and adjacent Cambridge sources support authoring and false-positive controls only; they do not establish respondent comprehension, local vector validity, cross-context invariance, or empirical classification.
 - Isolated routing is complete at 4/4/4; full-production ranks are 4/31/1 and combined rank 1, with aggregate top-three rates of 26.2500% by layer and 43.7500% combined and worst ranks 76 and 69. The descriptive/normative misses and normative rank 31 are overlap diagnostics only and do not justify scorer or picker retuning.
 - Compact v2 is active at 11,105 characters; v1 remains decodable. The 1,428 candidates remain quarantined, 22 canonical ontology targets remain catalog-only, Fascism remains high-risk, the next queue target is Qutbism, and no cognitive, respondent, simulation, psychometric, empirical, reliability/validity, invariance, or population evidence was run.
+
+
+## v59 open questions — Qutbism
+
+- [ ] Cognitive review and respondent evidence remain required before wording, effects, or labels can be treated as validated measurement; explicitly not run here.
+- [ ] Deterministic ranks 3/48/3 and 10 combined show current normative overlap; they do not authorize coefficient or picker retuning.
+- [ ] Qutb's periods, `hakimiyyah`, `jahiliyya`, authority, pluralism, and revolutionary/reformist reception remain contested and may require future source review.
+- [ ] Governance promote-to-canonical/catalog-only and live dedicated-scored measurement are intentionally separate and require explicit reconciliation if policy changes.
+- [ ] Comprehensive coverage remains open; Fascism and Neo-Fascism are high-risk catalog-only holds and other targets remain queued.
+
+## v60 open questions — Radical Republicanism
+
+- [ ] Cognitive/respondent evidence remains required before wording, effects, anchor vectors, or labels become validated measurement; explicitly not run here.
+- [ ] Full-competition ranks 10/8/6 and 4 combined, aggregate rates 25.2033% and 41.4634%, and worst ranks 78 and 72 are deterministic overlap diagnostics, not grounds for coefficient or picker changes.
+- [ ] Historical radical republican variants, material versus procedural non-domination, popular constitutionalism, labour and socialist readings, and direct versus representative routes remain contested.
+- [ ] The boundary with Historical Republicanism, Contemporary Neo-Republicanism, Civic Republicanism, Marxist readings, patriotism, and generic majoritarianism requires future source review; the branch must not be inferred from civic participation or anti-corruption sentiment alone.
+- [ ] Twenty canonical ontology targets remain catalog-only; Fascism and Neo-Fascism remain high-risk holds and the comprehensive coverage goal remains open.

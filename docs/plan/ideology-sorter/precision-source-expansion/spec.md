@@ -527,3 +527,24 @@ The expanded bank remains editorial and provisional; source citations and automa
 - The dataset contains 85 editorial anchors, 80 production scoring anchors, 107 ontology nodes, 12 registry entries, and unchanged 9/33/60 canonical macro/meso/micro counts; 22 canonical ontology targets remain catalog-only and five contextual placements remain contextual-only.
 - Research candidates remain effect-free and quarantined; activating this block does not change candidate records, registry-only targets, ontology topology, scorer policy, thresholds, or combined-layer semantics. No node was added or reparented.
 - Isolated anchor reachability and full-production rank fields are structural fixtures. Khomeinism routes in all three isolated layers; ranks 4/31/1 and 1 combined are overlap diagnostics only and must not be described as cognitive, psychometric, respondent, or empirical validation.
+
+## v59 specification — Qutbism micro branch
+
+V59 adds provisional direct measurement to the existing canonical `Islamism → Qutbism` micro node. The block contains four descriptive, four normative, and four prescriptive prompts and one editorial anchor. Its source-bounded construct covers divine sovereignty and `jahiliyya`, comprehensive moral order, disciplined transformative community, and varied revolutionary or reformist reception; identity, private faith, generic Islamism, religious conservatism, anti-Western sentiment, organizational alignment, current policy, operational militancy, or one reading of Qutb is insufficient.
+
+The versioned dataset contract is 1,044 prompts (348 per layer), 86 editorial anchors, 81 canonical scoring anchors, 107 ontology nodes, 12 registry entries, 81 dedicated-scored targets, 21 canonical catalog-only targets, and 1,428 effect-free candidates across 119 research targets. The canonical inventory and scorer policy remain unchanged.
+
+Taxonomy governance continues to report Qutbism as promote-to-canonical with `resultingScoringStatus: catalog-only`; this value is not the live measurement state. The live target is `dedicated-scored`, and both states are tested separately. Delivery verification is complete; respondent comprehension and empirical measurement evidence remain open.
+
+
+## v59 specification — Qutbism micro branch
+
+V59 adds provisional direct measurement to the existing canonical `Islamism → Qutbism` micro node: four descriptive, four normative, and four prescriptive prompts plus one provisional anchor. The construct covers divine sovereignty/`jahiliyya`, comprehensive moral order, disciplined transformation, and varied reception; identity, private faith, generic Islamism, current policy, militancy, or one reading is insufficient.
+
+The contract is 1,044 prompts (348 per layer), 86 editorial anchors, 81 scoring anchors, 21 canonical catalog-only targets, 12 registry targets, and 1,428 effect-free candidates across 119 targets. Governance catalog-only remains separate from live dedicated-scored measurement. Delivery checks pass; respondent and empirical evidence remain open.
+
+## v60 specification — Radical Republicanism micro branch
+
+V60 adds provisional direct measurement to the existing canonical `Republicanism → Historical Republicanism → Radical Republicanism` micro node: four descriptive, four normative, and four prescriptive prompts plus one provisional anchor. The construct covers popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, continuous contestation, and transformative public institutions; patriotism, generic anti-corruption, majoritarianism, civic participation alone, Marxism alone, or one institutional route is insufficient.
+
+The contract is 1,056 prompts (352 per layer), 87 editorial anchors, 82 scoring anchors, 20 canonical catalog-only targets, 12 registry targets, and 1,428 effect-free candidates across 119 targets. Governance retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Delivery checks pass; respondent and empirical evidence remain open.

@@ -55,7 +55,7 @@ describe("research workbench contracts", () => {
     expect(targets.find((target) => target.id === "collectivist-anarchism")).toMatchObject({ measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
   });
 
-  it("activates Khomeinism with a source-backed jurist-guardianship and revolutionary-state boundary while keeping Qutbism catalog-only", () => {
+  it("activates Khomeinism, Qutbism, and Radical Republicanism with source-backed boundaries", () => {
     const targets = buildResearchTargets(DATASET);
     expect(targets.find((target) => target.id === "khomeinism")).toMatchObject({
       targetKind: "ideology-node",
@@ -74,11 +74,40 @@ describe("research workbench contracts", () => {
     expect(targets.find((target) => target.id === "qutbism")).toMatchObject({
       targetKind: "ideology-node",
       level: "micro",
-      measurementStatus: "catalog-only",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
       canonicalPath: [{ id: "islamism", label: "Islamism", level: "meso" }, { id: "qutbism", label: "Qutbism", level: "micro" }],
     });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "qutbism")).toMatchObject({ canonicalParentId: "islamism", anchorId: "qutbism", status: "scored" });
+    const qutbismQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("qutbism"));
+    expect(qutbismQuestions).toHaveLength(12);
+    expect(qutbismQuestions.every((question) => question.context?.startsWith("Analytical scope: Qutbism as a historically situated"))).toBe(true);
+    expect(qutbismQuestions.every((question) => question.sourceRefs.includes("source-oup-toth-qutb"))).toBe(true);
+    expect(qutbismQuestions.every((question) => question.sourceRefs.includes("source-tandf-khatab-qutb-hakimiyya"))).toBe(true);
+    expect(qutbismQuestions.every((question) => question.sourceRefs.includes("source-tandf-faradj-qutb-authority"))).toBe(true);
+    expect(qutbismQuestions.every((question) => question.sourceRefs.includes("source-oup-wagemakers-qutb-legacy"))).toBe(true);
+    expect(targets.find((target) => target.id === "radical-republicanism")).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+      canonicalPath: [
+        { id: "republicanism", label: "Republicanism", level: "macro" },
+        { id: "historical-republicanism", label: "Historical Republicanism", level: "meso" },
+        { id: "radical-republicanism", label: "Radical Republicanism", level: "micro" },
+      ],
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "radical-republicanism")).toMatchObject({ canonicalParentId: "historical-republicanism", anchorId: "radical-republicanism", status: "scored" });
+    const radicalRepublicanismQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("radical-republicanism"));
+    expect(radicalRepublicanismQuestions).toHaveLength(12);
+    expect(radicalRepublicanismQuestions.every((question) => question.context?.startsWith("Analytical scope: Radical Republicanism as a plural historical"))).toBe(true);
+    expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-oup-radical-republicanism"))).toBe(true);
+    expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-cambridge-pettit-non-domination"))).toBe(true);
+    expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-apsr-urbinati-republican-democracy"))).toBe(true);
+    expect(radicalRepublicanismQuestions.every((question) => question.sourceRefs.includes("source-tandf-thompson-radical-republicanism"))).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "khomeinism")).toBe(true);
-    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(false);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "radical-republicanism")).toBe(true);
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
@@ -87,8 +116,8 @@ describe("research workbench contracts", () => {
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1032);
-    expect(DATASET.manifest.questionCount).toBe(1032);
+    expect(DATASET.questions).toHaveLength(1056);
+    expect(DATASET.manifest.questionCount).toBe(1056);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
@@ -901,14 +930,13 @@ describe("research workbench contracts", () => {
     expect(DATASET.anchors.some((anchor) => microIds.includes(anchor.ontologyNodeId ?? ""))).toBe(false);
   });
 
-  it("keeps the fourth selected micro tranche catalog-only with explicit boundaries", () => {
+  it("keeps the remaining fourth selected micro tranche catalog-only with explicit boundaries", () => {
     const microIds = [
       "brazilian-integralism",
       "falangism",
       "integral-nationalism",
       "legionary-fascism",
       "paleoconservatism",
-      "radical-republicanism",
       "religious-zionism",
       "right-wing-populism",
       "salafi-jihadism",
@@ -1042,8 +1070,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1032);
-    expect(DATASET.manifest.questionCount).toBe(1032);
+    expect(DATASET.questions).toHaveLength(1056);
+    expect(DATASET.manifest.questionCount).toBe(1056);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {
@@ -1096,8 +1124,10 @@ describe("research workbench contracts", () => {
     expect(validateResearchTaxonomyDecisions(DATASET)).toEqual([]);
     expect(researchTaxonomyDecisionForTarget("khomeinism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "catalog-only" });
     expect(researchTaxonomyDecisionForTarget("qutbism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "catalog-only" });
+    expect(researchTaxonomyDecisionForTarget("radical-republicanism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
-    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(false);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "radical-republicanism")).toBe(true);
   });
 });

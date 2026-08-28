@@ -432,3 +432,16 @@ The v57 browser, container, and structural checks confirm delivery behavior only
 | Share compatibility | PASS | Compact v2 complete-answer fragment is 11,105 characters; v1 remains decodable and malformed/stale payloads fail closed |
 
 The v58 browser, container, and structural checks confirm delivery behavior only. Full-production overlap fields remain deterministic diagnostics and did not trigger scorer or picker retuning. No cognitive review, respondent testing, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run. No commit or push was performed; the repository remains uncommitted on `master`.
+
+
+## v59 Minos delivery report — Qutbism
+
+Local Playwright passed 10/10 in 1m21s, including the dedicated-scored Qutbism workbench path. After Docker image rebuild and forced Compose recreation, the container was healthy, `/healthz` returned `ok`, and Docker-backed Playwright passed 10/10 in 1m14s. The separate taxonomy scenario continues to verify governance catalog-only text.
+
+This is delivery evidence only; it does not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring.
+
+## v60 Minos delivery report — Radical Republicanism
+
+Local Playwright passed 10/10, including the dedicated-scored Radical Republicanism workbench path and the taxonomy/status-separation scenario. After Docker image rebuild and forced Compose recreation, the container was healthy, `/healthz` returned `ok`, and Docker-backed Playwright passed 10/10. The branch exposes the existing canonical path and twelve direct source-linked items without changing the scorer policy.
+
+This is delivery evidence only; it does not establish cognitive validity, respondent comprehension, psychometric quality, empirical classification, or population generalizability. Catalog-only and contextual-only anchors remain outside production scoring.

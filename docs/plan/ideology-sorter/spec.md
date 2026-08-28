@@ -454,7 +454,7 @@ Research candidates are review records, not `Question` records. They carry expli
 - The dataset contains 66 editorial anchors, 61 production scoring anchors, 107 ontology nodes, 12 registry entries, and unchanged 9/33/60 canonical macro/meso/micro counts.
 - Research candidates remain effect-free and quarantined; activating this block does not change candidate records, registry-only targets, ontology topology, scorer policy, thresholds, or combined-layer semantics.
 - Isolated anchor reachability and full-production rank fields are structural fixtures. They must not be described as cognitive, psychometric, respondent, or empirical validation.
-+
+
 ## v58 data contract — Khomeinism micro branch
 
 - The existing canonical `khomeinism` node remains a micro under `islamism`, now carrying `anchorId: khomeinism`, status `scored`, and source references for Iranian Shi'i political authority, modern sovereignty/state formation, anti-imperial independence, oppressed-centered mobilization, constitutional ambiguity, and governmental Shiism.
@@ -628,3 +628,20 @@ Research candidates are review records, not `Question` records. They carry expli
 - The dataset contains 68 editorial anchors, 63 production scoring anchors, 107 ontology nodes, 12 registry entries, and unchanged 9/33/60 canonical macro/meso/micro counts.
 - Research candidates remain effect-free and quarantined; activating this block does not change candidate records, registry-only targets, ontology topology, scorer policy, thresholds, or combined-layer semantics.
 - Isolated anchor reachability and full-production rank fields are structural fixtures. They must not be described as cognitive, psychometric, respondent, or empirical validation.
+
+
+## v59 content contract — Qutbism micro branch
+
+The live dataset is content version 59 with 1,044 questions (348 descriptive, 348 normative, and 348 prescriptive), 86 editorial anchors, and 81 canonical scoring anchors. The canonical inventory remains 9 macro, 33 meso, and 60 micro nodes; ontology totals remain 9/38/60 with five contextual placements, and the registry remains 12 entries.
+
+The existing `Islamism → Qutbism` node is `dedicated-scored` with one provisional anchor and twelve direct prompts at 4/4/4. The source-bounded construct covers divine sovereignty/`jahiliyya`, comprehensive moral order, disciplined transformation, and varied reception; identity, private faith, generic Islamism, current policy, militancy, or one reading is insufficient.
+
+Governance remains independently recorded as promote-to-canonical with `resultingScoringStatus: catalog-only`; it must not overwrite live measurement. Production excludes 21 canonical catalog-only targets, five contextual-only anchors, and 12 registry-only targets. The 1,428 candidates remain effect-free. No cognitive or empirical evidence is claimed.
+
+## v60 content contract — Radical Republicanism micro branch
+
+The live dataset is content version 60 with 1,056 questions (352 descriptive, 352 normative, and 352 prescriptive), 87 editorial anchors, and 82 canonical scoring anchors. The canonical inventory remains 9 macro, 33 meso, and 60 micro nodes; ontology totals remain 9/38/60 with five contextual placements, and the registry remains 12 entries.
+
+The existing `Republicanism → Historical Republicanism → Radical Republicanism` node is `dedicated-scored` with one provisional anchor and twelve direct prompts at 4/4/4. The source-bounded construct covers popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, continuous contestation, and transformative public institutions; patriotism, generic anti-corruption, majoritarianism, civic participation alone, Marxism alone, or one institutional route is insufficient.
+
+Governance retains the node as canonical with `retain-canonical` and `resultingScoringStatus: scored-provisional`; this value is separate from the live measurement state and does not validate the anchor. Production excludes 20 canonical catalog-only targets, five contextual-only anchors, and 12 registry-only targets. The 1,428 candidates remain effect-free. No cognitive or empirical evidence is claimed.

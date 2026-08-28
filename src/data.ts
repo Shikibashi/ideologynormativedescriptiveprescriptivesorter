@@ -1011,6 +1011,46 @@ const SOURCES: readonly SourceReference[] = [
     supports: "Republicanism as a historically rooted and theoretically developed ideological tradition, with a distinctive account of liberty as non-domination and debates with liberalism; it is used for terminology and family context rather than respondent classification.",
   },
   {
+    id: "source-oup-radical-republicanism",
+    label: "Oxford: Radical Republicanism: Recovering the Tradition's Popular Heritage",
+    url: "https://academic.oup.com/book/33781",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Leipold, B., Nabulsi, K., & White, S. (eds.). (2020). Radical Republicanism: Recovering the Tradition's Popular Heritage. Oxford University Press. https://doi.org/10.1093/oso/9780198796725.001.0001.",
+    supports: "supports radical republicanism as a plural popular-sovereignty and emancipation-from-domination tradition spanning historical and theoretical work, not this local vector or respondent classification.",
+  },
+  {
+    id: "source-cambridge-pettit-non-domination",
+    label: "Cambridge: Pettit, Freedom as non-domination",
+    url: "https://www.cambridge.org/core/books/abs/on-the-peoples-terms/freedom-as-nondomination/B76498C1A553E2713A9443ABE2AFD4E7",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Pettit, P. (2012). Freedom as non-domination. In On the People's Terms: A Republican Theory and Model of Democracy, 26–74. Cambridge University Press. https://doi.org/10.1017/CBO9781139017428.002.",
+    supports: "supports non-domination, democratic influence/control, and material independence as republican concepts, not all radical republicanism or this vector.",
+  },
+  {
+    id: "source-apsr-urbinati-republican-democracy",
+    label: "APSR: Competing for Liberty: The Republican Critique of Democracy",
+    url: "https://www.cambridge.org/core/journals/american-political-science-review/article/abs/competing-for-liberty-the-republican-critique-of-democracy/42F5A88F406C1465E3884CE0789BA81F",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Urbinati, N. (2012). Competing for Liberty: The Republican Critique of Democracy. American Political Science Review, 106(3), 607–621. https://doi.org/10.1017/S0003055412000317.",
+    supports: "supports the contested relationship between republican liberty, democratic participation, and popular rule, not one universal republican route.",
+  },
+  {
+    id: "source-tandf-thompson-radical-republicanism",
+    label: "Critique: The Radical Republican Structure of Marx's Critique of Capitalist Society",
+    url: "https://www.tandfonline.com/doi/abs/10.1080/03017605.2019.1642987",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Thompson, M. J. (2019). The Radical Republican Structure of Marx's Critique of Capitalist Society. Critique, 47(3), 391–409. https://doi.org/10.1080/03017605.2019.1642987.",
+    supports: "supports one scholarly interpretation connecting radical republican freedom/common good/justice to capitalist domination, exploitation, and alienation; do not collapse radical republicanism into Marxism.",
+  },
+  {
     id: "source-oup-social-democracy",
     label: "Oxford Handbook of Political Ideologies: Social Democracy",
     url: "https://academic.oup.com/edited-volume/34324",
@@ -1901,6 +1941,46 @@ const SOURCES: readonly SourceReference[] = [
     supports: "The comprehensive socio-political aspiration and totalizing moral order associated with Qutb’s ideology; it does not establish an empirical scale or authorize a classification of contemporary respondents.",
   },
   {
+    id: "source-oup-toth-qutb",
+    label: "Toth: Sayyid Qutb, life and legacy",
+    url: "https://academic.oup.com/book/11603",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Toth, J. (2013). Sayyid Qutb: The Life and Legacy of a Radical Islamic Intellectual. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199790883.001.0001",
+    supports: "Qutb’s intellectual transition and concepts of jahiliyya, hakimiyya, and differentiated struggle registers, while warning against reducing his thought to a one-dimensional militant stereotype; it does not classify respondents.",
+  },
+  {
+    id: "source-tandf-khatab-qutb-hakimiyya",
+    label: "Khatab: Hakimiyyah and Jahiliyyah in Qutb",
+    url: "https://www.tandfonline.com/doi/abs/10.1080/714004475",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Khatab, S. (2002). Hakimiyyah and Jahiliyyah in the Thought of Sayyid Qutb. Middle Eastern Studies, 38(3), 145–170. https://doi.org/10.1080/714004475",
+    supports: "The theory-specific relationship between divine sovereignty and jahiliyya in Qutb’s thought; it does not equate that boundary with generic Islamism or a militant classification.",
+  },
+  {
+    id: "source-tandf-faradj-qutb-authority",
+    label: "Faradj: Qutb’s hakimiyyah and authority",
+    url: "https://www.tandfonline.com/doi/abs/10.1080/00263206.2020.1865321",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Faradj, H. (2021). Qutb’s hakimiyyah through the lens of Arendtian authority. Middle Eastern Studies, 57(2), 372–390. https://doi.org/10.1080/00263206.2020.1865321",
+    supports: "The complexity of authority and sovereignty in Qutb’s hakimiyyah, including the need to contest a simple binary framing; it does not establish a respondent classifier.",
+  },
+  {
+    id: "source-oup-wagemakers-qutb-legacy",
+    label: "Wagemakers: the struggle over Qutb’s jahiliyya legacy",
+    url: "https://academic.oup.com/jis/article-abstract/36/1/83/7774476",
+    retrievalDate: "2026-08-28",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Wagemakers, J. (2025). How do you solve a problem like jāhiliyya? The struggle over Sayyid Quṭb’s legacy among Jordanian Muslim Brothers. Journal of Islamic Studies, 36(1), 83–108. https://doi.org/10.1093/jis/etae048",
+    supports: "Contested reception of Qutb’s jahiliyya concept and variation between moderating and radicalizing interpretations; it does not classify current Muslim Brotherhood members or militant actors.",
+  },
+  {
     id: "source-oup-pan-africanism",
     label: "Oxford Research Encyclopedia: Pan-Africanism",
     url: "https://academic.oup.com/edited-volume/61663/chapter-abstract/553395327",
@@ -2604,6 +2684,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   socialism: ["source-sep-socialism", "source-cambridge-politics-socialism", "source-cambridge-socialist-visions", "source-oup-socialism-vsi", "source-oup-political-ideologies"],
   nationalism: ["source-sep-nationalism", "source-oup-nationalism-ere", "source-oup-nationalism-contexts", "source-cambridge-civic-patriotism", "source-anderson"],
   republicanism: ["source-sep-republicanism", "source-oup-republicanism", "source-oup-civic-republicanism", "source-dahl"],
+  radicalRepublicanism: ["source-sep-republicanism", "source-oup-republicanism", "source-dahl", "source-oup-radical-republicanism", "source-cambridge-pettit-non-domination", "source-apsr-urbinati-republican-democracy", "source-tandf-thompson-radical-republicanism"],
   feminism: ["source-oup-feminism", "source-oup-feminist-theory", "source-sep-feminist-philosophy", "source-sep-feminist-political"],
   socialEcology: ["source-sage-social-ecology-best", "source-sage-democratic-municipalism-shelley", "source-sage-radical-municipalism", "source-frontiers-social-ecology-rojava", "source-oup-social-ecology", "source-oup-social-ecology-movements", "source-sep-environmental-ethics", "source-sep-anarchism"],
   individualistAnarchism: ["source-sep-anarchism", "source-sep-stirner", "source-sep-libertarianism"],
@@ -2611,6 +2692,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   populism: ["source-oup-populism", "source-cambridge-populism", "source-oup-left-populism", "source-oup-right-populism"],
   islamism: ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-political-islam", "source-oup-islamism-case-universe", "source-cambridge-wasatiyya"],
   khomeinism: ["source-ucp-khomeinism", "source-cambridge-arjomand-khomeini-order", "source-cambridge-namazi-khomeini-sovereign-state", "source-tandf-khomeini-democratic-constitutionalism", "source-oup-ghobadzadeh-governmental-shiism", "source-cambridge-islamism"],
+  qutbism: ["source-cambridge-qutb-march", "source-cambridge-qutb-vahdat", "source-oup-toth-qutb", "source-tandf-khatab-qutb-hakimiyya", "source-tandf-faradj-qutb-authority", "source-oup-wagemakers-qutb-legacy", "source-cambridge-islamism"],
   ordoliberalism: ["source-oup-ordoliberalism", "source-sep-liberalism", "source-hayek"],
   panAfricanism: ["source-oup-pan-africanism", "source-oup-panafrican-analytical-category", "source-cambridge-panafrican-distinction", "source-sep-nationalism", "source-oup-political-ideologies"],
   religiousNationalism: ["source-oup-religious-nationalism", "source-oup-religious-nationalism-21c", "source-sep-nationalism", "source-oup-political-ideologies", "source-cambridge-religious-zionism", "source-oup-hindutva"],
@@ -2659,6 +2741,8 @@ const LESBIAN_FEMINISM_CONTEXT = "Analytical scope: Lesbian Feminism as a contes
 const ONE_NATION_CONSERVATISM_CONTEXT = "Analytical scope: One-Nation Conservatism as a historically situated and internally varied conservative tradition joining an organic national society, cross-class social cohesion, responsible inherited institutions, and constructive or gradual public reform; preserve Disraelian, interwar, postwar, and contemporary variation, paternalist and libertarian tensions, market and welfare variation, constitutional and democratic commitments, and disagreements over nationhood, sovereignty, immigration, and cosmopolitanism; not patriotism, welfare support, tradition, current party affiliation, one policy, or one historical leader alone.";
 const ZIONISM_CONTEXT = "Analytical scope: Zionism as a historically situated and internally varied modern Jewish nationalist tradition centered on Jewish collective self-determination, political community, cultural or institutional revival, and contested relationships among homeland, sovereignty, diaspora, and the people living under resulting institutions; preserve political, cultural, labor/socialist, revisionist, religious, liberal, diasporic, multinational, autonomy, and post-state or post-independence variation, equal-citizenship and minority-rights disputes, and historical and jurisdictional context; not Jewish identity or religious practice, support for or opposition to a current government, one territorial programme, one party, one leader, one policy, antisemitism or anti-Palestinian sentiment alone, or current conflict opinion alone.";
 const KHOMEINISM_CONTEXT = "Analytical scope: Khomeinism as a historically situated and internally contested Iranian Shi'i Islamist political formation associated with Khomeini's revolutionary interpretation of Islamic governance, clerical or jurist authority, anti-monarchical and anti-imperial independence, appeal to the oppressed, and state-building through an Islamic Republic; preserve variation between pre-revolutionary theory and post-revolutionary institutional practice, democratic or constitutional and authoritarian interpretations, populist and clerical registers, national and transnational scope, and critiques within Shi'i thought; not Shi'i identity or private faith, generic Islamism, anti-imperialism, social-justice concern, opposition to monarchy, support for or opposition to a present Iranian government or foreign policy, one leader's entire record, or operational militancy.";
+const QUTBISM_CONTEXT = "Analytical scope: Qutbism as a historically situated and internally contested Egyptian Islamist intellectual and political current associated with Sayyid Qutb's accounts of divine sovereignty, jahiliyya, comprehensive Islamic moral order, disciplined transformative community, and revolutionary or reformist reconstitution; preserve variation across Qutb's intellectual periods, literary and theological registers, prison and post-prison writings, organizational settings, interpretations of authority and pluralism, and later reception; not Muslim identity or private faith, generic Islamism, generic religious conservatism, anti-Western sentiment, support for or opposition to the Muslim Brotherhood, Salafi-Jihadism or al-Qaeda membership, operational militancy, current regime or policy opinion, or one reading of Qutb.";
+const RADICAL_REPUBLICANISM_CONTEXT = "Analytical scope: Radical Republicanism as a plural historical and contemporary republican current emphasizing popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, continuous contestation, and transformative public institutions; preserve variation between historical radical republican traditions, critical/neo-republican theory, labour and socialist readings, popular constitutionalism, civic virtue, material independence, and direct or representative democratic routes; not patriotism, generic anti-corruption, majoritarianism, historical Republicanism as a whole, Contemporary Neo-Republicanism as a whole, civic participation alone, Marxism alone, one author, one historical movement, or one institutional design.";
 const MATERIALIST_SOCIALIST_ECOFEMINISM_CONTEXT = "Analytical scope: Materialist / Socialist Ecofeminism as a plural ecofeminist branch connecting capitalist and patriarchal political economy, paid and unpaid labor, social reproduction, resource control, and ecological degradation, with collective and democratic transformation routes; preserve variation among materialist ecofeminism, Marxist ecofeminism, feminist political ecology, social-reproduction analysis, intersectional and decolonial approaches, state, municipal, cooperative, and autonomous institutions, and reform or transformative strategy; not green policy, feminism, socialism, welfare support, public ownership, social reproduction language, or environmental concern alone, nor Cultural / Spiritual Ecofeminism's primarily cultural or spiritual mechanism, generic Ecosocialism, Materialist Feminism without the ecological connection, or any single theorist, policy, country, or institutional model.";
 const ANARCHO_PACIFISM_CONTEXT = "Analytical scope: Anarcho-Pacifism as a historically varied anarchist current combining anti-domination and anti-hierarchy with serious opposition to war, militarism, and structural violence and a nonviolent or prefigurative transformation route; pacifism and nonviolence are related but not identical, and principled, pragmatic, religious, secular, radical, reformist, and self-defense positions vary; not personal quietism, opposition to one war, anti-state language alone, strategic nonviolence alone, or any single historical or religious tradition.";
 const ANARCHO_PRIMITIVISM_CONTEXT = "Analytical scope: Anarcho-Primitivism as a contested anti-civilization current within or adjacent to Green Anarchism that diagnoses civilization, industrial scale, divisions of labour, domestication, and technical systems as sources of domination or ecological disconnection and favors radically decentralized, self-organized, ecologically bounded lifeways; preserve variation over anti-civilization versus primitivist labels, technology and appropriate-tech exceptions, Indigenous and decolonial critiques, agriculture and domestication, scale, community, and tactics; not environmentalism, Green Anarchism broadly, Social Ecology, Deep Ecology, Neo-Luddism, degrowth, localism, survivalism, romanticized Indigenous identity, anti-technology sentiment alone, or any single theorist's programme.";
@@ -3745,6 +3829,38 @@ const QUESTIONS: readonly Question[] = [
   question("p-khomeinism-03", "prescriptive", "Justice", "Public institutions should direct political and economic power toward reducing poverty and entrenched privilege.", { "public-provision": 0.75, "state-capacity": 0.65, reformism: 0.3 }, KHOMEINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.khomeinism, ["khomeinism"]),
   question("p-khomeinism-04", "prescriptive", "Institutions", "Religious guardianship should operate through a constitutional order that includes elected institutions and public accountability.", { "state-capacity": 0.85, reformism: 0.45, decentralization: 0.15 }, KHOMEINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.khomeinism, ["khomeinism"]),
   // This micro-branch block is a source-backed editorial activation. It keeps
+  // Qutbism distinct from generic Islamism, Revolutionary Islamism,
+  // Salafi-Jihadism, Khomeinism, religious conservatism, and current policy
+  // positions while preserving variation across Qutb's periods and reception.
+  question("d-qutbism-01", "descriptive", "Culture", "A society can be judged as morally alienated when human institutions displace divine guidance as the basis of authority.", { "cultural-causation": 0.9, institutionalism: 0.65, "structural-power": 0.35 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("d-qutbism-02", "descriptive", "Power", "The contrast between jahiliyya and an Islamic order can organize a critique of modern social and political institutions.", { "cultural-causation": 0.9, "structural-power": 0.7, institutionalism: 0.5 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("d-qutbism-03", "descriptive", "Institutions", "An Islamic moral order can be presented as comprehensive, shaping law, economy, social relations, and public culture together.", { institutionalism: 0.95, "cultural-causation": 0.8 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("d-qutbism-04", "descriptive", "Change", "A disciplined community can function as a vehicle for transforming a society understood to have lost its moral orientation.", { "elite-autonomy": 0.85, "structural-power": 0.55, institutionalism: 0.65 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("n-qutbism-01", "normative", "Authority", "Human political authority should remain subordinate to divine sovereignty.", { "order-tradition": 0.95, liberty: -0.25, universalism: 0.35 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("n-qutbism-02", "normative", "Culture", "A coherent moral order should guide public institutions rather than leave fundamental values entirely to competing preferences.", { "order-tradition": 0.8, universalism: 0.45, democracy: -0.2 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("n-qutbism-03", "normative", "Justice", "A community committed to moral reform may have a duty to challenge institutions it regards as reproducing jahiliyya.", { solidarity: 0.65, democracy: 0.2, equality: 0.45 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("n-qutbism-04", "normative", "Democracy", "Political participation should not require abandoning fundamental religious obligations, even when interpretations of those obligations differ.", { liberty: 0.45, democracy: 0.5, universalism: 0.4, "order-tradition": 0.45 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("p-qutbism-01", "prescriptive", "Institutions", "Political education should cultivate a disciplined community capable of embodying a comprehensive Islamic moral order.", { "state-capacity": 0.75, reformism: 0.35, "public-provision": 0.2 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("p-qutbism-02", "prescriptive", "Institutions", "Public law should be evaluated against principles derived from Islamic revelation rather than treated as value-neutral.", { "state-capacity": 0.85, reformism: 0.15 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("p-qutbism-03", "prescriptive", "Change", "A movement should organize gradual or revolutionary transformation according to its diagnosis of jahiliyya rather than copy an external political model.", { reformism: 0.55, "state-capacity": 0.6, internationalism: -0.45 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  question("p-qutbism-04", "prescriptive", "Justice", "Institutions should align social and economic arrangements with an Islamic conception of justice while preserving variation over organizational route.", { "public-provision": 0.55, "state-capacity": 0.65, reformism: 0.4 }, QUTBISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.qutbism, ["qutbism"]),
+  // This micro-branch block is a source-backed editorial activation. It keeps
+  // Radical Republicanism distinct from historical Republicanism,
+  // Contemporary Neo-Republicanism, patriotism, generic anti-corruption,
+  // majoritarianism, and Marxism while preserving plural routes.
+  question("d-radical-republicanism-01", "descriptive", "Power", "Concentrated public or private power can place citizens in relations of dependence even without constant direct interference.", { "elite-autonomy": 0.9, "structural-power": 0.7, institutionalism: 0.35 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("d-radical-republicanism-02", "descriptive", "Institutions", "Rules and institutions can reproduce domination when citizens cannot contest or revise them.", { institutionalism: 0.9, "structural-power": 0.75, "elite-autonomy": 0.45 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("d-radical-republicanism-03", "descriptive", "Hierarchy", "Economic, social, and political hierarchies can limit equal civic standing and effective participation.", { "structural-power": 0.9, "elite-autonomy": 0.6, institutionalism: 0.5 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("d-radical-republicanism-04", "descriptive", "Culture", "Civic norms and practices can either sustain public freedom or normalize corruption and dependence.", { "cultural-causation": 0.75, institutionalism: 0.65, "elite-autonomy": 0.35 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("n-radical-republicanism-01", "normative", "Liberty", "Freedom requires protection from arbitrary domination by public or private power.", { liberty: 0.95, equality: 0.45 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("n-radical-republicanism-02", "normative", "Democracy", "Citizens should have meaningful and continuing power to contest, revise, and authorize public institutions.", { democracy: 0.95, liberty: 0.65 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("n-radical-republicanism-03", "normative", "Equality", "Equal civic standing requires reducing material and institutional conditions that make some citizens dependent on others.", { equality: 0.85, liberty: 0.7, solidarity: 0.55 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("n-radical-republicanism-04", "normative", "Solidarity", "A free republic requires citizens to sustain common institutions and resist private domination together.", { solidarity: 0.8, democracy: 0.75, liberty: 0.55 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("p-radical-republicanism-01", "prescriptive", "Institutions", "Public power should be distributed across contestable civic institutions rather than concentrated in one executive or elite center.", { decentralization: 0.9, "state-capacity": 0.65 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("p-radical-republicanism-02", "prescriptive", "Institutions", "Public institutions should be strong enough to prevent domination but accountable to affected citizens.", { "state-capacity": 0.9, reformism: 0.45 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("p-radical-republicanism-03", "prescriptive", "Change", "Institutional reform should expand civic contestation and remove entrenched relations of dependence.", { reformism: 0.9, "state-capacity": 0.55, decentralization: 0.45 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  question("p-radical-republicanism-04", "prescriptive", "Provision", "Basic conditions of civic independence should be protected through accountable public or common institutions.", { "public-provision": 0.75, "state-capacity": 0.6, "public-ownership": 0.2 }, RADICAL_REPUBLICANISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.radicalRepublicanism, ["radical-republicanism"]),
+  // This micro-branch block is a source-backed editorial activation. It keeps
   // Cultural / Spiritual Ecofeminism distinct from generic Ecofeminism,
   // Cultural Feminism, Materialist / Socialist Ecofeminism, and spirituality
   // or environmental concern without the linked gender–ecology mechanism.
@@ -3840,6 +3956,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "socialism-family") return "source-sep-socialism";
   if (id === "nationalism-family") return "source-oup-nationalism-ere";
   if (id === "republicanism-family") return "source-oup-republicanism";
+  if (id === "radical-republicanism") return "source-oup-radical-republicanism";
   if (id === "feminism-family") return "source-sep-feminist-political";
   if (id === "anarcho-syndicalism") return "source-cambridge-direct-action-syndicalism";
   if (id === "anarcho-capitalism") return "source-cambridge-social-anarchism-anarchocapitalism";
@@ -3864,6 +3981,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "one-nation-conservatism") return "source-oup-one-nation-conservatism";
   if (id === "zionism") return "source-cambridge-zionism-philosophy";
   if (id === "khomeinism") return "source-cambridge-namazi-khomeini-sovereign-state";
+  if (id === "qutbism") return "source-oup-toth-qutb";
   if (id === "cultural-spiritual-ecofeminism") return "source-sep-feminist-environmental-philosophy";
   if (id === "materialist-socialist-ecofeminism") return "source-cambridge-oksala-materialist-ecofeminism";
   if (id === "christian-nationalism") return "source-cambridge-christian-nationalism";
@@ -4013,6 +4131,8 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("reactionary-conservatism", "Reactionary Conservatism", "Reactionary Conservative", "A conservative current diagnosing disorder as the displacement of inherited authority and seeking restoration, reversal, or recovered continuity.", { "structural-power": 0.6, "market-coordination": 0.05, "elite-autonomy": -0.2, "cultural-causation": 0.9, institutionalism: 0.9, "ecological-limits": 0 }, { liberty: 0.15, equality: -0.35, solidarity: 0.75, "order-tradition": 0.98, democracy: -0.55, universalism: -0.3, "ecological-priority": 0 }, { "market-allocation": 0.1, "public-provision": 0.25, "public-ownership": -0.25, decentralization: -0.25, "state-capacity": 0.75, reformism: -1, internationalism: -0.65 }, "A provisional reactionary-conservative anchor: sources support restoration and counter-revolution as historical boundaries, not this vector's validity or respondent classification."),
   anchor("islamism", "Islamism", "Islamist", "A heterogeneous modern public religious-political field that treats an interpretation of Islam as relevant to organizing state or social life.", { "structural-power": 0.45, "market-coordination": 0.05, "elite-autonomy": 0.25, "cultural-causation": 0.95, institutionalism: 0.65, "ecological-limits": 0 }, { liberty: 0.3, equality: 0.55, solidarity: 0.7, "order-tradition": 0.55, democracy: 0.2, universalism: 0.85, "ecological-priority": 0 }, { "market-allocation": 0, "public-provision": 0.45, "public-ownership": 0, decentralization: 0.1, "state-capacity": 0.65, reformism: 0.35, internationalism: 0.15 }, "A provisional Islamism anchor: scholarship supports a heterogeneous public political field and its internal variation, not this vector's validity or respondent classification."),
   anchor("khomeinism", "Khomeinism", "Khomeinist", "A historically specific and internally contested Iranian Shi'i Islamist formation joining jurist guardianship, anti-imperial independence, appeal to the oppressed, revolutionary mobilization, and Islamic state formation.", { "structural-power": 0.8, "market-coordination": 0.05, "elite-autonomy": 0.55, "cultural-causation": 0.9, institutionalism: 0.95, "ecological-limits": 0 }, { liberty: 0.35, equality: 0.7, solidarity: 0.85, "order-tradition": 0.95, democracy: 0.35, universalism: 0.3, "ecological-priority": 0 }, { "market-allocation": 0.05, "public-provision": 0.7, "public-ownership": 0.2, decentralization: 0.05, "state-capacity": 0.95, reformism: 0.55, internationalism: -0.7 }, "A provisional Khomeinism anchor: scholarship supports a historically situated Shi'i political formation and contested jurist-guardianship, state, independence, and social-grievance boundaries, not this vector's validity, present-regime approval, or respondent classification.", "khomeinism"),
+  anchor("qutbism", "Qutbism", "Qutbist", "A historically situated and internally contested Egyptian Islamist intellectual and political current joining divine sovereignty, jahiliyya critique, comprehensive Islamic moral order, disciplined transformative community, and contested revolutionary or reformist reconstitution.", { "structural-power": 0.75, "market-coordination": 0.05, "elite-autonomy": 0.8, "cultural-causation": 0.95, institutionalism: 0.95, "ecological-limits": 0 }, { liberty: 0.2, equality: 0.45, solidarity: 0.75, "order-tradition": 0.95, democracy: 0.2, universalism: 0.65, "ecological-priority": 0 }, { "market-allocation": 0, "public-provision": 0.5, "public-ownership": 0.05, decentralization: 0.05, "state-capacity": 0.9, reformism: 0.2, internationalism: -0.55 }, "A provisional Qutbism anchor: scholarship supports a historically situated and contested current organized around divine sovereignty, jahiliyya, comprehensive moral order, disciplined transformation, and varied reception, not this vector's validity, operational militancy, or respondent classification.", "qutbism"),
+  anchor("radical-republicanism", "Radical Republicanism", "Radical Republican", "A plural republican current emphasizing popular sovereignty, freedom as non-domination, equal civic standing, anti-corruption, and contestatory institutional transformation.", { "structural-power": 0.85, "market-coordination": 0.1, "elite-autonomy": 0.9, "cultural-causation": 0.5, institutionalism: 0.9, "ecological-limits": 0 }, { liberty: 0.95, equality: 0.8, solidarity: 0.75, "order-tradition": 0.05, democracy: 0.98, universalism: 0.75, "ecological-priority": 0.1 }, { "market-allocation": 0.1, "public-provision": 0.55, "public-ownership": 0.15, decentralization: 0.85, "state-capacity": 0.8, reformism: 0.9, internationalism: 0.55 }, "A provisional Radical Republicanism anchor: scholarship supports popular sovereignty, non-domination, civic equality, anti-corruption, and transformative contestation with substantial historical and theoretical variation; this vector is not validated and does not classify respondents.", "radical-republicanism"),
   anchor("ordoliberalism", "Ordoliberalism", "Ordoliberal", "A historically specific liberal-economic tradition centered on competition as an institutional order, a rule-bound capable state, and a limited social-market floor.", { "structural-power": 0.5, "market-coordination": 0.95, "elite-autonomy": 0.1, "cultural-causation": 0, institutionalism: 0.95, "ecological-limits": 0 }, { liberty: 0.8, equality: 0.25, solidarity: 0.45, "order-tradition": 0.6, democracy: 0.55, universalism: 0.45, "ecological-priority": 0.1 }, { "market-allocation": 0.85, "public-provision": 0.35, "public-ownership": -0.65, decentralization: 0.1, "state-capacity": 0.9, reformism: 0.65, internationalism: 0.35 }, "A provisional Ordoliberalism anchor: scholarship supports a historically specific and internally contested competitive-order tradition, not this vector's validity or respondent classification."),
   anchor("pan-africanism", "Pan-Africanism", "Pan-African", "A historically varied transnational liberation tradition centered on African and diasporic solidarity, anti-colonial self-determination, racial equality, and cooperation across borders.", { "structural-power": 0.85, "market-coordination": -0.25, "elite-autonomy": 0.2, "cultural-causation": 0.8, institutionalism: 0.45, "ecological-limits": 0.1 }, { liberty: 0.6, equality: 0.8, solidarity: 0.95, "order-tradition": 0.25, democracy: 0.6, universalism: 0.85, "ecological-priority": 0.15 }, { "market-allocation": -0.35, "public-provision": 0.4, "public-ownership": 0.25, decentralization: 0.35, "state-capacity": 0.45, reformism: 0.55, internationalism: 0.95 }, "A provisional Pan-Africanism anchor: scholarship supports a historically varied and multi-layered transnational liberation tradition, not this vector's validity or respondent classification."),
   anchor("religious-nationalism", "Religious Nationalism", "Religious Nationalist", "A public political formation in which religious authority, sacred history, or religiously marked membership is jointly constitutive of national identity, self-government, or state purpose.", { "structural-power": 0.55, "market-coordination": 0, "elite-autonomy": 0.35, "cultural-causation": 0.95, institutionalism: 0.75, "ecological-limits": 0 }, { liberty: 0.35, equality: 0.35, solidarity: 0.85, "order-tradition": 0.85, democracy: 0.45, universalism: 0.25, "ecological-priority": 0 }, { "market-allocation": 0.05, "public-provision": 0.45, "public-ownership": 0, decentralization: 0.05, "state-capacity": 0.75, reformism: 0.3, internationalism: 0.1 }, "A provisional Religious Nationalism anchor: scholarship supports a public religion–nation fusion and comparative variation, not this vector's validity or respondent classification."),
@@ -4043,10 +4163,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 58,
+    contentVersion: 60,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 344, normative: 344, prescriptive: 344 },
+    questionsPerLayer: { descriptive: 352, normative: 352, prescriptive: 352 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

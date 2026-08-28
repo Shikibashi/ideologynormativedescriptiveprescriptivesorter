@@ -72,6 +72,14 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.getByRole("heading", { name: "Khomeinism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("qutbism");
+  await expect(page.getByRole("heading", { name: "Qutbism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("radical-republicanism");
+  await expect(page.getByRole("heading", { name: "Radical Republicanism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("christian-nationalism");
   await expect(page.getByRole("heading", { name: "Christian Nationalism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");

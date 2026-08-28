@@ -589,3 +589,38 @@ These records support terminology, historical and institutional variation, prove
 | Existing [Cambridge Islamism context](https://www.cambridge.org/core/books/abs/the-cambridge-companion-to-islamic-political-thought/islamism/3B4F58C5C9537C0B41B55F3CEB2E4E5A) | Adjacent provenance for the broader Islamism relation; it does not collapse Khomeinism into generic Islamism. |
 
 These records support terminology, historical and institutional variation, provenance, false-positive controls, and original item authoring only. Khomeinism is activated provisionally on the existing `Islamism → Khomeinism` path; the source set does not validate local effects, the anchor vector, respondent comprehension, cross-context invariance, or empirical classification.
+
+## v59 source map — Qutbism micro branch
+
+| Source | Use in the sorter | Boundary or safety implication |
+|---|---|---|
+| [Toth, *Sayyid Qutb: The Life and Legacy of a Radical Islamic Intellectual*](https://academic.oup.com/book/11603) | Situates Qutb's intellectual movement across literary, nationalist, moderate, and radical Islamist phases and distinguishes multiple struggle registers. | Preserve period and register variation; do not reduce Qutbism to a one-dimensional militant stereotype or infer it from Muslim identity. |
+| [Khatab, “Hakimiyyah and Jahiliyyah in the Thought of Sayyid Qutb,” *Middle Eastern Studies*](https://www.tandfonline.com/doi/abs/10.1080/714004475) | Supplies the theory-specific relationship between divine sovereignty (`hakimiyyah`) and `jahiliyyah`. | Keep the paired concepts distinct from generic religious conservatism, anti-Western sentiment, or generic Islamism. |
+| [Faradj, “Qutb's hakimiyyah through the lens of Arendtian authority,” *Middle Eastern Studies*](https://www.tandfonline.com/doi/abs/10.1080/00263206.2020.1865321) | Complicates a binary sovereignty reading through bounded and contested authority. | Preserve internal authority and pluralism disputes; do not encode one interpretation as the whole branch. |
+| [Wagemakers, “How do you solve a problem like jāhiliyya?” *Journal of Islamic Studies*](https://academic.oup.com/jis/article-abstract/36/1/83/7774476) | Documents divergent, moderating, and radicalizing receptions of Qutb's `jahiliyya` among Muslim Brotherhood settings. | Separate reception and organizational alignment from the intellectual current; do not infer operational militancy. |
+| Existing [Cambridge Qutb and Islamism context](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/taking-people-as-they-are-islam-as-a-realistic-utopia-in-the-political-theory-of-sayyid-qutb/3F2E9A0BE53FF51AEA36A47249A2C12A) and [Cambridge Islamism context](https://www.cambridge.org/core/books/limits-of-islamism/islamism-and-ideology-philosophical-issues-and-analytical-categories/E2663B0987FDB1C3C1577B37014453AE) | Supplies adjacent Qutb political-theory and broader Islamism context for canonical parentage and neighbor comparison. | Do not collapse Qutbism into generic Islamism, Salafi-Jihadism, or Khomeinism. |
+
+These records support terminology, historical and interpretive variation, provenance, false-positive controls, and original item authoring only. Qutbism is activated provisionally on the existing `Islamism → Qutbism` path; the sources do not validate local effects, the anchor vector, respondent comprehension, cross-context invariance, or empirical classification.
+
+
+## v59 source map — Qutbism micro branch
+
+| Source | Use in the sorter | Boundary implication |
+|---|---|---|
+| [Toth, *Sayyid Qutb: The Life and Legacy of a Radical Islamic Intellectual*](https://academic.oup.com/book/11603) | Intellectual periods and differentiated struggle registers. | Preserve historical variation; avoid a one-dimensional militant stereotype. |
+| [Khatab, “Hakimiyyah and Jahiliyyah in the Thought of Sayyid Qutb”](https://www.tandfonline.com/doi/abs/10.1080/714004475) | Theory-specific divine sovereignty/jahiliyyah relation. | Distinguish from generic Islamism and religious conservatism. |
+| [Faradj, “Qutb's hakimiyyah through the lens of Arendtian authority”](https://www.tandfonline.com/doi/abs/10.1080/00263206.2020.1865321) | Contested and bounded authority interpretations. | Preserve authority/pluralism variation; do not encode one reading. |
+| [Wagemakers, “How do you solve a problem like jāhiliyya?”](https://academic.oup.com/jis/article-abstract/36/1/83/7774476) | Moderating and radicalizing reception across settings. | Separate reception and organizational alignment from militancy. |
+
+These records support terminology, variation, provenance, false-positive controls, and original item authoring only. Qutbism is activated provisionally on `Islamism → Qutbism`; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
+
+## v60 Radical Republicanism source map
+
+| Source | Use in the sorter | Boundary implication |
+|---|---|---|
+| [Leipold, Nabulsi, and White, *Radical Republicanism: Recovering the Tradition's Popular Heritage*](https://academic.oup.com/book/33781) | Popular sovereignty, radical republican pluralism, and freedom from social, political, and economic domination. | Preserve historical and theoretical variation; do not reduce the branch to patriotism, generic Republicanism, or one movement. |
+| [Pettit, “Freedom as non-domination”](https://www.cambridge.org/core/books/abs/on-the-peoples-terms/freedom-as-nondomination/B76498C1A553E2713A9443ABE2AFD4E7) | Non-domination, democratic influence/control, and material-independence context. | Distinguish non-domination from non-interference and test accountable power rather than generic liberty language. |
+| [Urbinati, “Competing for Liberty: The Republican Critique of Democracy”](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/competing-for-liberty-the-republican-critique-of-democracy/42F5A88F406C1465E3884CE0789BA81F) | Contested relation among republican liberty, democratic participation, and popular rule. | Preserve procedural and anti-majoritarian tensions; do not assume one democratic route. |
+| [Thompson, “The Radical Republican Structure of Marx's Critique of Capitalist Society”](https://www.tandfonline.com/doi/abs/10.1080/03017605.2019.1642987) | One scholarly connection among radical republican freedom, common good, justice, and capitalist domination. | Keep a Marxist reading as one possible overlap, not an alias or universal component of Radical Republicanism. |
+
+These records and the existing SEP/OUP/Dahl republican records support terminology, variation, provenance, false-positive controls, and original item authoring only. Radical Republicanism is activated provisionally on `Republicanism → Historical Republicanism → Radical Republicanism`; local effects, anchor validity, respondent comprehension, invariance, and empirical classification remain unverified.
