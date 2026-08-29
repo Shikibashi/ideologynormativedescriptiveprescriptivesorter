@@ -21,15 +21,15 @@ test("starts with an inspectable brief and requires an answer", async ({ page })
   await expect(page.locator('input[type="radio"]').nth(3)).toBeChecked();
 });
 
-test("exposes the audited ontology inventory and distinguishes scored branches from catalog-only branches", async ({ page }) => {
+test("exposes the audited ontology inventory and distinguishes scored branches from contextual registry entries", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /How this experiment works/ }).click();
-  await expect(page.getByText(/9 canonical macro families, 33 canonical meso traditions, and 60 canonical micro branches/)).toBeVisible();
+  await expect(page.getByText(/9 canonical macro families, 33 canonical meso traditions, and 66 canonical micro branches/)).toBeVisible();
   await expect(page.getByText(/Secondary registry\./)).toBeVisible();
   await page.getByText("Browse the canonical meso and micro catalog").click();
   await expect(page.getByText("Right-Libertarianism")).toBeVisible();
   await expect(page.getByText("scored anchor").first()).toBeVisible();
-  await expect(page.getByText("catalog only").first()).toBeVisible();
+  await expect(page.getByText(/contextual, historical, or associated entries remain queryable as provenance context/)).toBeVisible();
 });
 
 test("opens the research workbench and saves a quarantined candidate item", async ({ page }) => {
@@ -76,6 +76,14 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.getByRole("heading", { name: "Qutbism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("revolutionary-islamism");
+  await expect(page.getByRole("heading", { name: "Revolutionary Islamism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("salafi-jihadism");
+  await expect(page.getByRole("heading", { name: "Salafi-Jihadism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("radical-republicanism");
   await expect(page.getByRole("heading", { name: "Radical Republicanism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");
@@ -100,8 +108,48 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.getByRole("heading", { name: "Religious Zionism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("fascism");
+  await expect(page.getByRole("heading", { name: "Fascism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("french-fascism");
+  await expect(page.getByRole("heading", { name: "French Fascism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("italian-fascism");
+  await expect(page.getByRole("heading", { name: "Italian Fascism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("japanese-fascism");
+  await expect(page.getByRole("heading", { name: "Japanese Fascism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("neo-fascism");
   await expect(page.getByRole("heading", { name: "Neo-Fascism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("third-positionism");
+  await expect(page.getByRole("heading", { name: "Third Positionism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("neo-nazism");
+  await expect(page.getByRole("heading", { name: "Neo-Nazism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("falangism");
+  await expect(page.getByRole("heading", { name: "Falangism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("brazilian-integralism");
+  await expect(page.getByRole("heading", { name: "Brazilian Integralism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("integral-nationalism");
+  await expect(page.getByRole("heading", { name: "Integral Nationalism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("legionary-fascism");
+  await expect(page.getByRole("heading", { name: "Legionary Fascism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("one-nation-conservatism");
@@ -118,7 +166,7 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("white-nationalism");
   await expect(page.getByRole("heading", { name: "White Nationalism" })).toBeVisible();
-  await expect(page.locator(".research-status")).toContainText("catalog only");
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("deep-ecology");
   await expect(page.getByRole("heading", { name: "Deep Ecology" })).toBeVisible();
@@ -133,6 +181,7 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
     ["social-liberalism", "Social Liberalism"],
     ["moderate-conservatism", "Moderate Conservatism"],
     ["social-democracy", "Social Democracy"],
+    ["revisionist-bernsteinian-social-democracy", "Revisionist / Bernsteinian Social Democracy"],
     ["democratic-socialism", "Democratic Socialism"],
     ["minarchism", "Minarchism"],
     ["ecosocialism", "Ecosocialism"],
@@ -167,7 +216,20 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
     ["right-wing-populism", "Right-Wing Populism"],
     ["hindutva", "Hindutva (Hindu Nationalism)"],
     ["religious-zionism", "Religious Zionism"],
+    ["fascism", "Fascism"],
+    ["italian-fascism", "Italian Fascism"],
+    ["japanese-fascism", "Japanese Fascism"],
+    ["british-fascism", "British Fascism"],
+    ["french-fascism", "French Fascism"],
     ["neo-fascism", "Neo-Fascism"],
+    ["third-positionism", "Third Positionism"],
+    ["national-syndicalism", "National-Syndicalism"],
+    ["neo-nazism", "Neo-Nazism"],
+    ["falangism", "Falangism"],
+    ["brazilian-integralism", "Brazilian Integralism"],
+    ["integral-nationalism", "Integral Nationalism"],
+    ["legionary-fascism", "Legionary Fascism"],
+    ["white-nationalism", "White Nationalism"],
     ["neoconservatism", "Neoconservatism"],
     ["paleoconservatism", "Paleoconservatism"],
     ["populism", "Populism"],
@@ -176,6 +238,8 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
     ["reactionary-conservatism", "Reactionary Conservatism"],
     ["islamism", "Islamism"],
     ["wasatiyya", "Wasatiyya"],
+    ["revolutionary-islamism", "Revolutionary Islamism"],
+    ["salafi-jihadism", "Salafi-Jihadism"],
     ["ordoliberalism", "Ordoliberalism"],
     ["pan-africanism", "Pan-Africanism"],
     ["religious-nationalism", "Religious Nationalism"],

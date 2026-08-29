@@ -463,6 +463,72 @@
 - [ ] Fourteen canonical ontology targets remain catalog-only; Fascism, Neo-Fascism, and other high-risk or under-specified branches remain held, and the comprehensive coverage goal remains open.
 - [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
 
+## V80 open questions — Salafi-Jihadism high-risk doctrinal boundary
+
+- [ ] The boundary among Salafi quietist, political, and jihadi trajectories remains historically and internally contested; national, regional, organizational, intellectual, movement, and period differences may not share one uniform construct.
+- [ ] The distinctions from generic Salafism, Islamism, Revolutionary Islamism, Qutbism, Khomeinism, Wasatiyya, religious conservatism, generic sharia support, anti-Western sentiment, authoritarianism, and anti-state anger require continued source comparison rather than deterministic rank-based confidence.
+- [ ] The high-risk branch must remain non-operational and must not be used to infer Muslim identity, private faith, current actors, membership, recruitment, tactics, targets, intent, or capability.
+- [ ] Salafi-Jihadism is isolated-reachable in all three layers and combined, while full-competition ranks 13/1/2 by layer and 1 combined; aggregate rates and worst ranks 96/89 are deterministic geometry diagnostics only, not grounds for uncalibrated retuning.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V79 open questions — Third Positionism postwar far-right boundary
+
+- [ ] The boundary among Third Positionism, Fascism, Neo-Fascism, National Socialism, National-Syndicalism, National Conservatism, and broader third-way language remains contested and historically variable.
+- [ ] Italian Terza Posizione, British/Strasserite, other national or transnational, intellectual, movement, party, corporative, occupational, sovereign, constitutional, democratic, and authoritarian uses differ; the local block is a bounded analytical construct and does not resolve those disputes.
+- [ ] Peronist and Cold War non-alignment uses of “Third Position,” Argentine authoritarian-corporatist uses, generic mixed-economy positions, and anti-capitalism/anti-communism without the convergent historical bundle remain explicit false-positive risks.
+- [ ] Third Positionism is isolated-reachable in all three layers, while full-competition ranks 13/2/1 by layer and 2 combined; top-three rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Salafi-Jihadism is the sole remaining canonical catalog-only target; cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement.
+
+## V78 open questions — Revolutionary Islamism
+
+- [ ] Distinguish additional Sunni, Shi'a, national, transnational, constitutional, democratic, authoritarian, movement-led, and state-mediated cases before treating the cross-case branch as settled.
+- [ ] Test false positives from Muslim identity, private faith, religious conservatism, anti-imperialism, anti-elite anger, broad Islamism, and current policy views.
+- [ ] Maintain a strict non-operational boundary from Salafi-Jihadism and defer any high-risk expansion until source and expert safeguards are stronger.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+
+## V77 open questions — Neo-Nazism postwar continuity and adaptation
+
+- [ ] The boundary among Neo-Nazism, historical National Socialism, Neo-Fascism, White Nationalism, wider Fascism, Third Positionism, and generic radical-right or nationalist formations remains historically and internally contested across periods and national settings.
+- [ ] British, American, German, European, transnational, party, network, cultural, esoteric, religious, imitation, and direct-continuity forms differ; the local block is a bounded analytical construct and does not resolve those scholarly disputes.
+- [ ] Neo-Nazism is isolated-reachable in all three layers, while full-competition ranks are 6/1/4 by layer and 1 combined; aggregate rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Three canonical ontology targets remain catalog-only: Revolutionary Islamism, Salafi-Jihadism, and Third Positionism; the comprehensive coverage goal remains open.
+- [ ] Coded-language, identity-inference, affiliation, symbol, slogan, current-actor, period, and continuity-versus-imitation false-positive controls need later source and boundary review; operational content remains excluded.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V76 open questions — White Nationalism high-risk racial-national boundary
+
+- [ ] The boundary among White Nationalism, Ethnocultural Nationalism, Nationalism, Fascism, Neo-Nazism, White Christian Nationalism, and adjacent racialized or civic formations remains historically and internally contested.
+- [ ] Settler-colonial and postcolonial histories, national and transnational formations, racialized citizenship, religious and secular idioms, conservative/liberal/populist/fascist-adjacent routes, and changing or coded discourse vary; the local block does not resolve those disputes.
+- [ ] White Nationalism is isolated-reachable in all three layers, while full-competition ranks 29/5/3 by layer and 2 combined; aggregate rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Four canonical ontology targets remain catalog-only: Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, and Third Positionism; the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V75 open questions — Fascism macro family
+
+- [ ] The boundary among Fascism, National Socialism, Neo-Fascism, Legionary Fascism, Radical Conservatism, Nationalism, Third Positionism, and generic authoritarianism remains contested across scholarship and national cases.
+- [ ] Italian, German, Romanian, Spanish, Brazilian, and other formations differ over race, religion, economic coordination, movement/state relations, democracy, violence, war, social base, and institutionalization; the macro block preserves that variation but does not resolve it.
+- [ ] Fascism is isolated-reachable in all three layers, while full-competition ranks 3/1/1 by layer and 1 combined; aggregate rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Five canonical ontology targets remain catalog-only: Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism; the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V74 status — Legionary Fascism micro branch
+
+- [x] Existing canonical `Fascism → Legionary Fascism` was retained and activated for provisional dedicated scoring with a historically bounded Romanian/interwar boundary.
+- [x] Four fresh academic sources, twelve direct prompts at 4/4/4, one provisional anchor, eight direct source references, two neighbor discriminants, a false-positive audit, a 16-dimension profile, and coverage metadata were added.
+- [x] Structural checks pass: 1,224 prompts, 408 per layer, 101 editorial anchors, 96 production anchors, 1,428 quarantined candidates, 119 targets, zero coverage/reachability errors, and Legionary Fascism isolated-reachable in every layer.
+- [ ] Full-competition ranks 1/1/2 and 1 combined, aggregate rates 25.6944% and 41.6667%, and worst ranks 91 and 83 are deterministic geometry diagnostics only; no scorer or picker retuning is justified by them.
+- [ ] Six canonical ontology targets remain catalog-only: Fascism, Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required and were not run.
+
+## V73 open questions — Integral Nationalism cross-case historical category
+
+- [ ] The boundary among Integral Nationalism, wider Fascism, National Conservatism, Cultural Nationalism, Brazilian Integralism, Nationalism, and ordinary patriotism remains historically and internally contested.
+- [ ] French/Maurrasian, Egyptian, Ukrainian, Georgian, fascist-adjacent, liberationist, monarchist, religious, corporative, democratic, authoritarian, regional, minority, and period applications differ; the local block does not resolve those disputes.
+- [ ] Integral Nationalism is isolated-reachable in all three layers, while full-competition ranks 9/2/1 by layer and 1 combined; aggregate rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Seven canonical ontology targets remain catalog-only: Fascism, Legionary Fascism, Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism; the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
 ## V70 open questions — Neo-Fascism
 
 - [ ] The boundary among Fascism, National Socialism, Neo-Nazism, Neo-Fascism, National Conservatism, Third Positionism, post-fascist parties, and new radical-right formations remains historically and internally contested.
@@ -492,3 +558,61 @@
 - [ ] Hindutva is isolated-reachable in all three layers, while the full-competition diagnostic reports descriptive and normative missing fields and full ranks 10/81/3 by layer and 6 combined; these are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
 - [ ] Twelve canonical ontology targets remain catalog-only; Fascism, Neo-Fascism, and other high-risk or under-specified branches remain held, and the comprehensive coverage goal remains open.
 - [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V71 open questions — Falangism
+
+- [ ] The boundary among Falangism, wider Fascism, National-Syndicalism, Francoism, National Socialism, Neo-Fascism, and Third Positionism remains historically and internally contested.
+- [ ] Early Falange and later FET y de las JONS, movement and state relations, Catholicism as a national attribute, rural and urban bases, democracy, membership, sovereignty, corporative coordination, and economic ownership vary across periods and interpretations; the local block does not resolve those disputes.
+- [ ] Falangism is isolated-reachable in all three layers, while full-competition ranks 2/1/1 by layer and 1 combined; aggregate top-three rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Nine canonical ontology targets remain catalog-only: Brazilian Integralism, Fascism, Integral Nationalism, Legionary Fascism, Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism; the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+
+## V72 open questions — Brazilian Integralism
+
+- [ ] The boundary among Brazilian Integralism, wider Fascism, Integral Nationalism, Religious Nationalism, Christian Democracy, Falangism, National-Syndicalism, and generic Brazilian nationalism remains historically and internally contested.
+- [ ] AIB organization, religious-cultural language, corporative mediation, movement/state relations, democracy, rights, race and membership, regional setting, and Plínio Salgado's postwar reinterpretation vary across periods and sources; the local block does not resolve those disputes.
+- [ ] Brazilian Integralism is isolated-reachable in all three layers, while full-competition ranks 3/2/1 by layer and 1 combined; aggregate top-three rates and worst ranks are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Eight canonical ontology targets remain catalog-only: Fascism, Integral Nationalism, Legionary Fascism, Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism; the comprehensive coverage goal remains open.
+- [ ] Cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement; explicitly not run here.
+## V81 open questions — Revisionist / Bernsteinian Social Democracy historical microtype
+
+- [ ] The boundary among Bernsteinian revision, the heterogeneous historical label revisionism, Social Democracy, Democratic Socialism, Marxism, Market Socialism, Guild Socialism, and later reformist party traditions remains historically and internally contested.
+- [ ] Reform versus revolution, class analysis, ownership, cooperative and regulated coordination, party and trade-union practice, constitutional routes, internationalism, historical period, and later reinterpretation require continued comparative source review; the local microtype does not settle those disputes.
+- [ ] Revisionist / Bernsteinian Social Democracy is isolated-reachable in all three layers and combined, while full-competition ranks 21/82/3 by layer and 3 combined; aggregate rates and worst ranks 97/90 are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Five contextual anchors and 11 registry-only targets remain outside production scoring; cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement.
+
+## V82 open questions — National-Syndicalism historical microtype
+
+- [ ] The boundary among National-Syndicalism, wider Fascism, Anarcho-Syndicalism, Falangism, Third Positionism, Integral Nationalism, corporatism, and generic nationalism remains historically and internally contested across French, Italian, Portuguese, Spanish, and related cases.
+- [ ] Occupational organization, nationally framed solidarity, corporative mediation, transformed public authority, movement/regime translation, democratic and anti-pluralist routes, and economic coordination require continued comparative source review; the local microtype does not settle those disputes.
+- [ ] National-Syndicalism is isolated-reachable in all three layers and combined, while full-competition ranks 9/2/1 by layer and 1 combined; aggregate rates and worst ranks 98/91 are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Five contextual anchors and 10 registry-only targets remain outside production scoring; cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement.
+
+
+## V83 open questions — British Fascism historical microtype
+
+- [ ] The boundary among British Fascism, wider Fascism, National Socialism, Neo-Fascism, National-Syndicalism, Falangism, White Nationalism, Integral Nationalism, National Conservatism, and British imperial or patriotic conservatism remains historically and internally contested.
+- [ ] Organization, region, empire, race, Irish/Northern Irish context, constitutional orientation, social organization, period, and movement/regime translation require continued comparative source review; the local microtype does not settle those disputes.
+- [ ] British Fascism is isolated-reachable in all three layers and combined, while full-competition ranks are 13/2/3 by layer and 2 combined; aggregate rates and worst ranks 99/92 are deterministic geometry diagnostics only, not respondent evidence or grounds for uncalibrated retuning.
+- [ ] Five contextual anchors and 9 registry-only targets remain outside production scoring; cognitive/respondent evidence, empirical reliability/validity, invariance, and population evidence remain required before any wording, effects, anchor vector, or label can be treated as validated measurement.
+## V84 unresolved questions — French Fascism
+
+- How should later empirical work separate French Fascism from broader Fascism, National-Syndicalism, Integral Nationalism, National Conservatism, and authoritarian conservatism across organizations and periods?
+- Which organization, regional, agrarian, veteran, Vichy/collaboration, Catholic, and imperial distinctions are necessary for future instruments without turning the historical field into a single national stereotype?
+- How should the contested neo-socialist conversion boundary be represented when sources and cases disagree?
+- The current isolated routing is technical evidence only; respondent comprehension, reliability, validity, invariance, and population transport remain untested and outside this no-cognitive-review tranche.
+
+## V86 unresolved questions — Japanese Fascism
+
+- How should Japanese Fascism be separated from wider Fascism, Italian Fascism, National Socialism, National-Syndicalism, Integral Nationalism, National Conservatism, and generic militarism or authoritarianism when the comparative label is itself disputed?
+- Which intellectual, military, bureaucratic, technocratic, associational, New Order, wartime, domestic, imperial, and Manchurian distinctions are necessary for future research without treating Japan or Japanese identity as a single fascist case?
+- How should the 1940 New Order Movement, party-government breakdown, wartime mobilization, and Manchukuo be represented without overclaiming a uniform party-seizure or regime pathway?
+- The deterministic audit is technical evidence only; respondent comprehension, reliability, validity, invariance, empirical classification, and population transport remain untested and outside this no-cognitive-review tranche.
+
+## V85 unresolved questions — Italian Fascism
+
+- How should Italian Fascism be separated from the wider Fascism family, National-Syndicalism, Falangism, Legionary Fascism, National Conservatism, generic authoritarianism, nationalism, corporatism, Italian identity, and one-leader or order preferences?
+- Which movement, party, coalition, dictatorship, local, industrial, agrarian, Catholic, secular, wartime, racial, imperial, and period distinctions must remain explicit rather than being collapsed into a single Italian case?
+- How should project-versus-realization, repression-versus-consensus, corporative order, and leader-centered mass politics be represented without treating corporatism, order, national identity, or one leader as sufficient evidence?
+- The deterministic audit reaches Italian Fascism in all three isolated layers and in the combined view; full-competition ranks and top-three rates remain structural diagnostics only, and production top-three missing fields are overlap diagnostics rather than routing failures.
+- Five contextual anchors and seven registry-only targets remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, and population generalization remain untested by explicit constraint.

@@ -37,6 +37,7 @@ describe("research workbench contracts", () => {
     expect(targets.find((target) => target.id === "nationalism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "nationalism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "republicanism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "republicanism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "feminism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "feminism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
+    expect(targets.find((target) => target.id === "fascism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "fascism", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "right-libertarianism")).toMatchObject({ measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "populism")).toMatchObject({ measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "mutualism")).toMatchObject({ measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
@@ -213,8 +214,8 @@ describe("research workbench contracts", () => {
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1176);
-    expect(DATASET.manifest.questionCount).toBe(1176);
+    expect(DATASET.questions).toHaveLength(1368);
+    expect(DATASET.manifest.questionCount).toBe(1368);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
@@ -245,7 +246,7 @@ describe("research workbench contracts", () => {
 
     for (const targetId of macroIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
-      expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)?.currentStatus).toBe(["anarchism", "conservatism", "ecologism", "feminism", "liberalism", "nationalism", "republicanism", "socialism"].includes(targetId) ? "dedicated-scored" : "catalog-only");
+      expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)?.currentStatus).toBe(["anarchism", "conservatism", "ecologism", "fascism", "feminism", "liberalism", "nationalism", "republicanism", "socialism"].includes(targetId) ? "dedicated-scored" : "catalog-only");
     }
     expect(DATASET.ideologyNodes.find((node) => node.id === "conservatism")).toMatchObject({ status: "scored", anchorId: "conservatism-family", placement: "canonical" });
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("conservatism"))).toHaveLength(12);
@@ -268,6 +269,9 @@ describe("research workbench contracts", () => {
     expect(DATASET.ideologyNodes.find((node) => node.id === "feminism")).toMatchObject({ status: "scored", anchorId: "feminism-family", placement: "canonical" });
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("feminism"))).toHaveLength(12);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("feminism")).every((question) => question.context?.startsWith("Analytical scope: Feminism as a plural political family"))).toBe(true);
+    expect(DATASET.ideologyNodes.find((node) => node.id === "fascism")).toMatchObject({ status: "scored", anchorId: "fascism", placement: "canonical" });
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("fascism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("fascism")).every((question) => question.context?.startsWith("Analytical scope: Fascism as a contested family"))).toBe(true);
     expect(DATASET.ideologyNodes.find((node) => node.id === "anarcho-syndicalism")).toMatchObject({ status: "scored", anchorId: "anarcho-syndicalism", placement: "canonical" });
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("anarcho-syndicalism"))).toHaveLength(12);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("anarcho-syndicalism")).every((question) => question.context?.startsWith("Analytical scope: Anarcho-Syndicalism as a historically varied social-anarchist and syndicalist current"))).toBe(true);
@@ -280,6 +284,97 @@ describe("research workbench contracts", () => {
     expect(DATASET.ideologyNodes.find((node) => node.id === "anarchism")).toMatchObject({ status: "scored", anchorId: "anarchism-family", placement: "canonical" });
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("anarchism"))).toHaveLength(12);
     expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "fascism")?.preferredOutcome).toMatch(/production/i);
+  });
+
+  it("activates Fascism as a source-backed macro family with explicit historical boundaries", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "macro",
+      placement: "canonical",
+      canonicalPath: [{ id: "fascism", label: "Fascism", level: "macro" }],
+      anchorId: "fascism",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "fascism")).toMatchObject({ anchorId: "fascism", status: "scored", placement: "canonical" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Fascism as a contested family"))).toBe(true);
+    for (const sourceId of ["source-routledge-griffin-nature-fascism", "source-penguinrandomhouse-paxton-anatomy-fascism", "source-uwpress-payne-history-fascism", "source-cambridge-mann-fascists"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "fascism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "fascism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "fascism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "fascism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "fascism")).toBe(true);
+  });
+
+  it("activates White Nationalism as a source-backed high-risk racial-national boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "white-nationalism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "nationalism", label: "Nationalism", level: "macro" },
+        { id: "white-nationalism", label: "White Nationalism", level: "micro" },
+      ],
+      anchorId: "white-nationalism",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "white-nationalism")).toMatchObject({ canonicalParentId: "nationalism", anchorId: "white-nationalism", status: "scored", placement: "canonical" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("white-nationalism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: White Nationalism as a high-risk"))).toBe(true);
+    for (const sourceId of ["source-cambridge-geary-global-white-nationalism", "source-cambridge-buzas-racial-nationalism", "source-oup-nieli-white-identity", "source-cambridge-rosenberg-white-supremacist-discourse"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "white-nationalism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "white-nationalism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "white-nationalism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "white-nationalism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "white-nationalism")).toBe(true);
+  });
+
+  it("activates Neo-Nazism as a source-backed high-risk postwar continuity boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "neo-nazism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "national-socialism", label: "National Socialism (Nazism)", level: "meso" },
+        { id: "neo-nazism", label: "Neo-Nazism", level: "micro" },
+      ],
+      anchorId: "neo-nazism",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "neo-nazism")).toMatchObject({ canonicalParentId: "national-socialism", anchorId: "neo-nazism", status: "scored", placement: "canonical" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("neo-nazism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Neo-Nazism as a high-risk"))).toBe(true);
+    for (const sourceId of ["source-bloomsbury-jackson-colin-jordan-neo-nazi", "source-nyup-goodrick-clarke-black-sun", "source-tandf-kahn-german-neo-nazism", "source-wiley-simi-neo-nazi-movements"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "neo-nazism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "neo-nazism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "neo-nazism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "neo-nazism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "neo-nazism")).toBe(true);
   });
 
   it("activates the remaining canonical meso target with explicit historical boundaries", () => {
@@ -676,24 +771,111 @@ describe("research workbench contracts", () => {
     expect(directQuestions.every((question) => question.sourceRefs.includes("source-cambridge-bakunin-statism-anarchy"))).toBe(true);
   });
 
-  it("keeps the remaining selected micro tranche catalog-only with explicit boundaries", () => {
-    const microIds = [
-      "neo-nazism",
-      "revolutionary-islamism",
-    ];
-
-    for (const targetId of microIds) {
-      expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
-      expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ currentStatus: "catalog-only", newCandidateItems: 12 });
-      expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
-      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(2);
-      expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
+  it("activates Salafi-Jihadism with a high-risk doctrinal and non-operational boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "salafi-jihadism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [{ id: "islamism", label: "Islamism", level: "meso" }, { id: "salafi-jihadism", label: "Salafi-Jihadism", level: "micro" }],
+      anchorId: "salafi-jihadism",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "salafi-jihadism")).toMatchObject({ canonicalParentId: "islamism", anchorId: "salafi-jihadism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("salafi-jihadism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Salafi-Jihadism as a historically situated"))).toBe(true);
+    for (const sourceId of ["source-oup-meijer-global-salafism", "source-oup-wehrey-boukhars-salafism-currents", "source-cambridge-wagemakers-quietist-jihadi", "source-cambridge-lav-salafi-jihadi-theonomy"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
     }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "salafi-jihadism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "salafi-jihadism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "salafi-jihadism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "salafi-jihadism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "salafi-jihadism")).toBe(true);
+    expect(directQuestions.some((question) => /tactics|targets|recruitment/i.test(question.prompt))).toBe(false);
 
     expect(researchCandidatesForTarget("right-libertarianism")).toHaveLength(12);
     expect(researchCoverageSummaries.find((summary) => summary.targetId === "right-libertarianism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
     expect(researchCandidatesForTarget("green-politics")).toHaveLength(12);
     expect(researchCoverageSummaries.find((summary) => summary.targetId === "green-politics")).toMatchObject({ currentStatus: "contextual-only", newCandidateItems: 12 });
+  });
+
+  it("records Salafi-Jihadism as canonical but only provisionally scored", () => {
+    expect(researchTaxonomyDecisionForTarget("salafi-jihadism")).toMatchObject({
+      disposition: "retain-canonical",
+      evidenceStatus: "source-backed-contested",
+      resultingPlacement: "canonical",
+      resultingScoringStatus: "scored-provisional",
+    });
+    expect(researchTaxonomyDecisionForTarget("salafi-jihadism")?.sourceIds).toEqual(expect.arrayContaining([
+      "source-oup-meijer-global-salafism",
+      "source-cambridge-lav-salafi-jihadi-theonomy",
+    ]));
+  });
+
+  it("activates Revolutionary Islamism with cross-case public-order and transformation boundaries", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "revolutionary-islamism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [{ id: "islamism", label: "Islamism", level: "meso" }, { id: "revolutionary-islamism", label: "Revolutionary Islamism", level: "micro" }],
+      anchorId: "revolutionary-islamism",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "revolutionary-islamism")).toMatchObject({ canonicalParentId: "islamism", anchorId: "revolutionary-islamism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("revolutionary-islamism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Revolutionary Islamism as a historically situated and cross-context Islamist branch"))).toBe(true);
+    for (const sourceId of ["source-cambridge-chalcraft-islamism-revolution", "source-cambridge-sadeghi-boroujerdi-revolutionary-islam", "source-cambridge-maidul-islam-islamism-ideology", "source-oup-nasr-islamic-leviathan"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "revolutionary-islamism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "revolutionary-islamism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "revolutionary-islamism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "revolutionary-islamism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "revolutionary-islamism")).toBe(true);
+  });
+
+  it("activates Third Positionism with postwar far-right and term-disambiguation boundaries", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "third-positionism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "neo-fascism", label: "Neo-Fascism", level: "meso" },
+        { id: "third-positionism", label: "Third Positionism", level: "micro" },
+      ],
+      anchorId: "third-positionism",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "third-positionism")).toMatchObject({ canonicalParentId: "neo-fascism", anchorId: "third-positionism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("third-positionism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Third Positionism as a historically situated and contested postwar far-right"))).toBe(true);
+    for (const sourceId of ["source-aup-wolff-terza-posizione", "source-oup-griffin-third-positionism", "source-cambridge-taiana-third-position", "source-cambridge-kressel-argentine-franco"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "third-positionism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "third-positionism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "third-positionism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "third-positionism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "third-positionism")).toBe(true);
   });
 
   it("activates Anarcho-Primitivism with an anti-civilization and technology boundary", () => {
@@ -1161,25 +1343,123 @@ describe("research workbench contracts", () => {
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "neo-fascism")).toBe(true);
   });
 
-  it("keeps the remaining fourth selected micro tranche catalog-only with explicit boundaries", () => {
-    const microIds = [
-      "brazilian-integralism",
-      "falangism",
-      "integral-nationalism",
-      "legionary-fascism",
-      "salafi-jihadism",
-      "third-positionism",
-    ];
+  it("activates Falangism with a historically bounded Spanish national-syndicalist boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "falangism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "falangism", label: "Falangism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "falangism")).toMatchObject({ canonicalParentId: "fascism", anchorId: "falangism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("falangism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Falangism as a historically situated Spanish fascist and national-syndicalist current"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-oup-falangism"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-wiley-colas-falangism"))).toBe(true);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "falangism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "falangism")).toHaveLength(2);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "falangism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "falangism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "falangism")).toBe(true);
+  });
 
-    for (const targetId of microIds) {
-      expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
-      expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ currentStatus: "catalog-only", newCandidateItems: 12 });
-      expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
-      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(2);
-      expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
+  it("activates Brazilian Integralism with a source-repaired transnational and historical boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "brazilian-integralism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "brazilian-integralism", label: "Brazilian Integralism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "brazilian-integralism")).toMatchObject({ canonicalParentId: "fascism", anchorId: "brazilian-integralism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("brazilian-integralism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Brazilian Integralism as a historically situated Brazilian integralist current"))).toBe(true);
+    for (const sourceId of ["source-scielo-bianchi-integralism", "source-tandf-goncalves-brazil-integralism", "source-ufjf-calil-integralism", "source-unesp-perez-brazil-integralism"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
     }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "brazilian-integralism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "brazilian-integralism")).toHaveLength(2);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "brazilian-integralism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "brazilian-integralism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "brazilian-integralism")).toBe(true);
+  });
 
-    expect(DATASET.anchors.some((anchor) => microIds.includes(anchor.ontologyNodeId ?? ""))).toBe(false);
+  it("activates Integral Nationalism with a source-backed cross-case historical boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "integral-nationalism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "nationalism", label: "Nationalism", level: "macro" },
+        { id: "integral-nationalism", label: "Integral Nationalism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "integral-nationalism")).toMatchObject({ canonicalParentId: "nationalism", anchorId: "integral-nationalism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("integral-nationalism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Integral Nationalism as a contested historical term"))).toBe(true);
+    for (const sourceId of ["source-cambridge-integral-nationalism", "source-ucpress-zaitsev-integral-nationalism", "source-uvr-zajtsev-integral-nationalism", "source-psage-matsaberidze-georgian-integral-nationalism", "source-sage-spektorowski-integral-nationalism"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "integral-nationalism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "integral-nationalism")).toHaveLength(2);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "integral-nationalism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "integral-nationalism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "integral-nationalism")).toBe(true);
+  });
+
+  it("activates Legionary Fascism with a source-backed Romanian historical boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "legionary-fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "legionary-fascism", label: "Legionary Fascism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "legionary-fascism")).toMatchObject({ canonicalParentId: "fascism", anchorId: "legionary-fascism", status: "scored" });
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("legionary-fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Legionary Fascism as a historically situated Romanian fascist current"))).toBe(true);
+    for (const sourceId of ["source-tandf-ioanid-legionary-sacralised-politics", "source-tandf-iordachi-legionary-faith", "source-cambridge-cercel-legionary-sovereignty", "source-jstor-clark-holy-legionary-youth"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "legionary-fascism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "legionary-fascism")).toHaveLength(2);
+    expect(researchFalsePositiveAudits.some((audit) => audit.targetId === "legionary-fascism")).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "legionary-fascism")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "legionary-fascism")).toBe(true);
   });
 
   it("keeps contextual and registry-only coverage separate from canonical scoring", () => {
@@ -1205,9 +1485,184 @@ describe("research workbench contracts", () => {
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => contextIds.includes(targetId)))).toBe(false);
   });
 
-  it("closes the completion tranche without promoting registry entries or changing production targeting", () => {
+  it("promotes Bernsteinian revision as a narrow historical microtype with full source-backed coverage", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "revisionist-bernsteinian-social-democracy");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "socialism", label: "Socialism", level: "macro" },
+        { id: "social-democracy", label: "Social Democracy", level: "meso" },
+        { id: "revisionist-bernsteinian-social-democracy", label: "Revisionist / Bernsteinian Social Democracy", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "revisionist-bernsteinian-social-democracy")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("revisionist-bernsteinian-social-democracy"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Revisionist / Bernsteinian Social Democracy as a historically situated"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-oup-ostrowski-bernstein-reform-revolution"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-cambridge-fletcher-bernstein-foreign-policy"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-oup-constitutionalism-bernstein-revisionism"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-cambridge-steger-evolutionary-socialism"))).toBe(true);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "revisionist-bernsteinian-social-democracy")?.dimensions.length).toBeGreaterThanOrEqual(15);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "revisionist-bernsteinian-social-democracy")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "revisionist-bernsteinian-social-democracy")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("revisionist-bernsteinian-social-democracy")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
+  it("promotes National-Syndicalism as a bounded historical microtype with explicit neighboring boundaries", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "national-syndicalism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "national-syndicalism", label: "National-Syndicalism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "national-syndicalism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("national-syndicalism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: National-Syndicalism as a historically bounded"))).toBe(true);
+    for (const sourceId of ["source-cambridge-ganapini-national-syndicalism", "source-pucminas-national-syndicalism", "source-cambridge-abse-syndicalism-fascism", "source-kci-shin-cercle-proudhon"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "national-syndicalism")?.dimensions.length).toBeGreaterThanOrEqual(10);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "national-syndicalism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "national-syndicalism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("national-syndicalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
+  it("promotes British Fascism as a bounded historical microtype with national and organizational variation", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "british-fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "british-fascism", label: "British Fascism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "british-fascism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("british-fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: British Fascism as a historically bounded"))).toBe(true);
+    for (const sourceId of ["source-cambridge-jackson-british-fascism", "source-oup-liburd-british-fascisti-empire", "source-cambridge-douglas-british-irish-fascism", "source-cambridge-loughlin-british-fascism-northern-ireland"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "british-fascism")?.dimensions.length).toBeGreaterThanOrEqual(12);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "british-fascism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "british-fascism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("british-fascism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
+  it("promotes French Fascism as a bounded and contested historical microtype", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "french-fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "french-fascism", label: "French Fascism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "french-fascism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("french-fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: French Fascism as a historically bounded"))).toBe(true);
+    for (const sourceId of ["source-cambridge-passmore-french-fascism", "source-oup-passmore-right-france-vichy", "source-oup-millington-french-veterans-fascism", "source-oup-paxton-french-peasant-fascism", "source-cambridge-desan-french-fascism-conversion"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "french-fascism")?.dimensions.length).toBeGreaterThanOrEqual(12);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "french-fascism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "french-fascism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("french-fascism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
+  it("promotes Italian Fascism as a bounded historical movement-and-regime microtype", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "italian-fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "italian-fascism", label: "Italian Fascism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "italian-fascism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("italian-fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Italian Fascism as a historically bounded"))).toBe(true);
+    for (const sourceId of ["source-cambridge-cerasi-italian-corporative-populism", "source-oup-morgan-italian-corporatism", "source-oup-corner-fascist-party-popular-opinion", "source-cambridge-whittam-fascist-italy-transition", "source-cambridge-forlenza-fascism-form"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "italian-fascism")?.dimensions.length).toBeGreaterThanOrEqual(12);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "italian-fascism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "italian-fascism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("italian-fascism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
+  it("promotes Japanese Fascism as a contested and bounded historical microtype", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "japanese-fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "japanese-fascism", label: "Japanese Fascism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "japanese-fascism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("japanese-fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Japanese Fascism as a contested"))).toBe(true);
+    for (const sourceId of ["source-cambridge-fletcher-japanese-fascism", "source-oup-hofmann-fascist-effect-japan-italy", "source-cambridge-young-japanese-fascism-empire", "source-oup-mimura-japanese-military-fascism", "source-oup-tsuzuki-japanese-fascism"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "japanese-fascism")?.dimensions.length).toBeGreaterThanOrEqual(17);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "japanese-fascism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "japanese-fascism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("japanese-fascism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
+  it("closes the completion tranche with the research-backed Bernsteinian promotion explicit", () => {
     const completionIds = [
-      "white-nationalism",
       "agrarian-populism",
       "british-fascism",
       "civic-republicanism",
@@ -1224,18 +1679,24 @@ describe("research workbench contracts", () => {
     const registryIds = completionIds.filter((targetId) => DATASET.ideologyRegistry.some((entry) => entry.id === targetId));
     const targets = buildResearchTargets(DATASET);
 
-    expect(completionIds).toHaveLength(13);
+    expect(completionIds).toHaveLength(12);
     for (const targetId of completionIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
-      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(2);
+      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(["british-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? 4 : 2);
       expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
       expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ newCandidateItems: 12 });
-      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(targetId === "right-libertarianism" ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
+      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["british-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
     }
 
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => registryIds.includes(targetId)))).toBe(false);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("right-libertarianism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("revisionist-bernsteinian-social-democracy"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("national-syndicalism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("british-fascism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("french-fascism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("italian-fascism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("japanese-fascism"))).toHaveLength(12);
   });
 
   it("gives the next source-backed branch tranche direct three-layer coverage while keeping it provisional", () => {
@@ -1298,8 +1759,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1176);
-    expect(DATASET.manifest.questionCount).toBe(1176);
+    expect(DATASET.questions).toHaveLength(1368);
+    expect(DATASET.manifest.questionCount).toBe(1368);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {
@@ -1362,7 +1823,12 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("right-wing-populism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("hindutva")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("religious-zionism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("fascism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("neo-fascism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("brazilian-integralism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("integral-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("legionary-fascism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("white-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
@@ -1376,6 +1842,9 @@ describe("research workbench contracts", () => {
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "right-wing-populism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "hindutva")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "religious-zionism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "fascism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "neo-fascism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "legionary-fascism")).toBe(true);
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "white-nationalism")).toBe(true);
   });
 });

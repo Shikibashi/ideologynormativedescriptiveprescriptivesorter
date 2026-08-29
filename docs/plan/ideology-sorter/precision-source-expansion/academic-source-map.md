@@ -727,3 +727,178 @@ These records and the existing Zionism, Religious Nationalism, nationalism, and 
 | Forlenza, The end of fascism? | Supports distinguishing historical fascism from postwar imitation, continuity, and post-fascist transformation; used for temporal and false-positive boundaries only. |
 
 These records support terminology, variation, provenance, neighbor distinctions, false-positive controls, and original item authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, invariance, or empirical classification.
+
+## V71 source additions — Falangism micro branch
+
+| Source | Research use |
+| --- | --- |
+| [Vincent, Spain, *Oxford Handbook of Fascism*](https://academic.oup.com/edited-volume/34510/chapter-abstract/292831365) | Situates Spanish fascism and the Falange within Spain's political history, including Catholicism as a national attribute and the hybrid relationship between Falange and Francoism; use for period, institution, religion-state, and broader-family boundaries. |
+| [Colás, Falangism, Wiley, *The Encyclopedia of Political Science*](https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118474396.wbept0351) | Identifies Falangism's FE de las JONS setting, interwar-to-Franco trajectory, Iberian fascist character, and national-syndicalist features; use for historical terminology and movement/institutional boundary writing. |
+
+The V71 direct branch set also cites existing Fascism and political-ideologies records. These sources support terminology, historical variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, facet effects, anchor validity, respondent comprehension, invariance, or empirical classification.
+
+## V72 source additions — Brazilian Integralism micro branch
+
+| Source | Research use |
+| --- | --- |
+| [Bianchi, Defina, and Cardoso, *Integralismo e fascismos: perspectivas transnacionais*](https://doi.org/10.1590/S2178-149420260704) | Places Brazilian Integralism in transnational ultranationalist networks while preserving local translation and the contested fascist classification; use for historical scope and boundary writing. |
+| [Gonçalves, *Transnational Fascism: Portugal and the Brazilian Integralism of Plínio Salgado*](https://doi.org/10.1080/14701847.2023.2226977) | Supports the AIB's 1932 foundation, Salgado's role, transnational fascist circulation, and Portuguese connection; use for movement, organization, and national-translation boundaries. |
+| [Calil, *Plínio Salgado e a reinterpretação da doutrina integralista no contexto da derrota nazifascista*](https://periodicos.ufjf.br/index.php/locus/article/view/20366) | Supports postwar democratic and anti-totalitarian reinterpretation as a distinct historical phase; use for temporal and democracy variation. |
+| [Pérez Climent, *Plínio Salgado, a Espanha e os caminhos do fascismo transnacional*](https://doi.org/10.18223/hiscult.v13i1.4361) | Supports comparison with Spanish Falange and Francoism and the regional/transnational boundary; use for neighbor distinctions and period variation. |
+
+The V72 direct branch set also cites existing Fascism, nationalism, and political-ideologies records. These sources support terminology, historical variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, facet effects, anchor validity, respondent comprehension, invariance, or empirical classification.
+
+## V73 source additions — Integral Nationalism cross-case historical category
+
+| Source | Research use |
+| --- | --- |
+| [Gershoni and Jankowski, “Integral Egyptian nationalism,” Cambridge](https://www.cambridge.org/core/books/abs/redefining-the-egyptian-nation-19301945/integral-egyptian-nationalism/35F359928AEB5E4E3ECF775E918F4500) | Supplies the Maurrasian genealogy, national-absolute problem, and an Egypt-centered historical application; use for terminology, historical scope, and the national-versus-individual boundary. |
+| [Zaitsev, “Fascism or ustashism? Ukrainian integral nationalism,” Communist and Post-Communist Studies](https://online.ucpress.edu/cpcs/article-abstract/48/2-3/183/532/Fascism-or-ustashism-Ukrainian-integral?redirectedFrom=fulltext) | Supports a distinct Ukrainian case and cautions that Fascism is only a limited heuristic; use for country, period, stateless-national, and classification boundaries. |
+| [Zajtsev, “Integral Nationalism as a theoretical model for the study of the Ukrainian nationalist movement”](https://www.uvr.in.ua/index.php/uvr/article/view/308) | Supports application of the model to the radical wing of a historically situated Ukrainian nationalist movement; use for movement and historical-period variation. |
+| [Matsaberidze, “Georgian Integral Nationalism”](https://psage.tsu.ge/index.php/Politics/article/view/179) | Supports a Georgian emigrant and national-liberation application and the possibility of a theoretical union with fascist-adjacent ideas; use for national variation and false-positive controls. |
+| [Spektorowski, “The Ideological Origins of Right and Left Nationalism in Argentina, 1930–43”](https://journals.sagepub.com/doi/10.1177/002200949402900106) | Supports the relationship between Maurrasian integral nationalism and fascist synthesis while preserving distinct trajectories; use for the Fascism boundary and comparative ideological context. |
+
+The V73 direct branch set also cites existing Fascism, nationalism, and political-ideologies records. These sources support terminology, historical variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, facet effects, anchor validity, respondent comprehension, invariance, or empirical classification.
+
+## V74 source additions — Legionary Fascism
+
+| Source | Research use |
+| --- | --- |
+| [Ioanid, “The sacralised politics of the Romanian Iron Guard”](https://doi.org/10.1080/1469076042000312203) | Supports the Iron Guard's religiously structured Romanian fascist politics; use for the political-faith and religious-national public-doctrine boundary, not for private Orthodox belief. |
+| [Iordachi, *The Fascist Faith of the Legion “Archangel Michael” in Romania, 1927–1941*](https://doi.org/10.4324/9780429428043) | Supports the palingenetic and theological-type political-faith framing, historical period, and the distinction between syncretic political religion and ordinary religious identity. |
+| [Cercel, “Fascist Claims to Sovereign Power: Law, Politics and the Romanian Legionary Movement”](https://doi.org/10.1017/S0960777323000279) | Supports law, sovereignty, justice, constitutional power, and movement/state institutional boundaries. |
+| [Clark, *Holy Legionary Youth: Fascist Activism in Interwar Romania*](https://www.jstor.org/stable/10.7591/j.ctt20d89z0) | Supports organization, social formation, movement/state relations, ordinary participation, and interwar historical variation. |
+
+The V74 direct branch set also cites the existing Legionary Fascism, Fascism, nationalism, and political-ideologies records. These sources support terminology, historical variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, facet effects, anchor validity, respondent comprehension, invariance, or empirical classification; no cognitive review was run.
+
+## V75 — Fascism macro family
+
+| Source | Authoring use |
+| --- | --- |
+| [Griffin, *The Nature of Fascism*](https://www.routledge.com/The-Nature-of-Fascism/Griffin/p/book/9781138174085) | Supports the palingenetic or regenerated-national-community problem and a family-level ideological boundary distinct from generic authoritarianism or nationalism. |
+| [Paxton, *The Anatomy of Fascism*](https://www.penguinrandomhouse.com/books/128540/the-anatomy-of-fascism-by-robert-o-paxton/9781400033911/) | Supports process-sensitive attention to movement formation, access to power, exercise of power, and radicalization rather than doctrine-only classification. |
+| [Payne, *A History of Fascism, 1914–1945*](https://uwpress.wisc.edu/Books/A/A-History-of-Fascism-1914-1945) | Supports comparative treatment of interwar movements and regimes and preserves variation across ultranationalism, rebirth, hierarchy, violence, war, elites, masses, and economic or institutional form. |
+| [Mann, *Fascists*](https://www.cambridge.org/core/books/fascists/07E35B94A84B2A49A412173C6FD41F6B) | Supports comparative attention to movement organization, ideology, state power, national solidarity, and social participation across European cases. |
+| [Oxford Handbook of Fascism](https://academic.oup.com/edited-volume/34510) | Existing adjacent reference for contested definitions, ideas and practice, national cases, and post-1945 continuities. |
+
+The V75 source set supports terminology, provenance, variation, false-positive controls, and original item authoring only. It does not validate local wording, facet effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification; no cognitive review was run.
+
+## V76 source additions — White Nationalism high-risk racial-national boundary
+
+| Source | Authoring use |
+| --- | --- |
+| [Geary, Schofield, and Sutton, “Toward a global history of white nationalism”](https://doi.org/10.7765/9781526147080.00007) | Supports historically adaptive and transnational treatment across decolonization, civil-rights change, migration, and international institutions; use for historical scope and variation. |
+| [Búzás, “Racism and Antiracism in the Liberal International Order”](https://doi.org/10.1017/S0020818320000521) | Supports racial-national membership, hierarchy, institutional order, and sovereignty boundaries; use for racialized political membership and power rather than identity alone. |
+| [Fording and Schram, “The Rise of the Modern White Nationalist Movement”](https://academic.oup.com/book/36900/chapter/322145498) | Supports movement formation, racialized identity, and power narratives; use for movement and institutional translation boundaries. |
+| [Nieli, “Jared Taylor and White Identity”](https://doi.org/10.1093/oso/9780190877583.003.0009) | Supports the composite relation among White Identity, community, property or liberty language, and multiculturalism critique; use for discourse variation and false-positive controls. |
+| [Rosenberg, “The Evolving Role of the Jew in White Supremacist Discourse”](https://www.cambridge.org/core/journals/nationalities-papers/article/taking-the-race-out-of-master-race-the-evolving-role-of-the-jew-in-white-supremacist-discourse/3B6356B38246457414CDA6B10C14CC93) | Supports historical and coded-discourse variation; use for boundary writing and caution against treating one rhetorical form as exhaustive. |
+
+The V76 direct branch set also cites existing White Nationalism, Nationalism, ethnocultural-nationalism, Fascism, and political-ideologies records. These sources support terminology, historical variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, facet effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification; no cognitive review was run.
+
+
+## V77 Neo-Nazism source set
+
+| Source | Use in the sorter |
+| --- | --- |
+| [Jackson, Colin Jordan and Britain's Neo-Nazi Movement](https://www.bloomsbury.com/uk/colin-jordan-and-britains-neonazi-movement-9781472509062/) | Supports a specific postwar British Neo-Nazi case, National Socialist inheritance, organizational specificity, and historically situated boundary writing. |
+| [Goodrick-Clarke, Black Sun](https://nyupress.org/9780814731246/black-sun/) | Supports postwar far-right and neo-Nazi cultural, esoteric, religious, and transnational variation. |
+| [Kahn, The American Influence on German Neo-Nazism](https://doi.org/10.1080/25785648.2021.1901496) | Supports transatlantic postwar diffusion, historical German/American context, and continuity/adaptation analysis. |
+| [Simi, Neo-Nazi Movements (Europe and the United States)](https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470674871.wbespm353.pub2) | Supports post-World War II emergence, racialized and antisemitic references, National Socialist inheritance, and regional variation. |
+
+The V77 direct branch set also cites existing Neo-Nazism, National Socialism, Fascism, Neo-Fascism, and political-ideologies records. These sources support terminology, historical variation, provenance, false-positive controls, and original item authoring only. They do not validate local wording, facet effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification; no cognitive review was run.
+
+## V78 academic source map — Revolutionary Islamism
+
+| Source | Contribution to bounded authoring |
+| --- | --- |
+| [Chalcraft, Cambridge](https://www.cambridge.org/core/books/abs/popular-politics-in-the-making-of-the-modern-middle-east/islamism-revolution-uprisings-and-liberalism-19772011/8E259553C1232AFE372FDDFF151E92D9) | Historically varied revolutionary Islamist mobilizing projects and distinctions among Shi'a popular, Sunni modernist, Salafi-Wahhabi, reformist, and liberalizing strands. |
+| [Sadeghi-Boroujerdi, Cambridge](https://www.cambridge.org/core/books/abs/revolution-and-its-discontents/constructing-beheshte-jahan-islam-the-clergy-and-the-state/49E343BBBB5084A114F6A2FA24022C5C) | Bounded Iranian Shi'a case connecting Islam, radical socio-political change, clerical authority, sacred law, and state formation. |
+| [Maidul Islam, Cambridge](https://www.cambridge.org/core/books/abs/limits-of-islamism/islamism-and-ideology-philosophical-issues-and-analytical-categories/E2663B0987FDB1C3C1577B37014453AE) | Comprehensive but heterogeneous modern Islamist morphology with core, adjacent, and peripheral concepts. |
+| [Nasr, Oxford](https://academic.oup.com/book/6278) | State-mediated Islamization, state ideology and policy, institutional capacity, and the need to distinguish from-above and movement-led translation. |
+
+These records and existing Islamist sources support terminology, provenance, historical variation, boundary design, false-positive controls, and original authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification. Salafi-Jihadism and Third Positionism remain held.
+
+## V79 academic source map — Third Positionism postwar far-right boundary
+
+| Source | Contribution to bounded authoring |
+| --- | --- |
+| [Wolff, AUP / *Fascism*](https://www.aup-online.com/content/journals/10.1163/22116257-00801004) | Italian Terza Posizione/CasaPound provenance, postwar neo-fascist lineage, and internal/historical variation. |
+| [Holland, Oxford](https://academic.oup.com/book/47490/chapter-abstract/422416323) | British post-1979/1980s Third Positionism, younger Strasserite currents, and national variation in the postwar far right. |
+| [Taiana, Cambridge](https://www.cambridge.org/core/books/abs/latin-american-foreign-policies-in-the-new-world-order/argentina-and-the-third-position/1208E2B4A3C8DB66623F8EFF97957455) | Distinct Argentine Peronist and Cold War non-alignment meaning of “Third Position,” used as a terminology disambiguation control. |
+| [Kressel, Cambridge](https://www.cambridge.org/core/journals/americas/article/argentine-franco-the-regime-of-juan-carlos-ongania-and-its-ideological-dialogue-with-francoist-spain-19661970/B2CB016E3EA4523A771B46688DF3FAD4) | Argentine authoritarian/corporatist context and a warning against treating every third-position or corporatist reference as the local ideological construct. |
+
+These records and existing Fascism, Neo-Fascism, National Socialism, National-Syndicalism, National Conservatism, nationalism, and political-ideologies sources support terminology, provenance, historical variation, boundary design, false-positive controls, and original authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification. Salafi-Jihadism remains held.
+
+## V80 academic source map — Salafi-Jihadism high-risk doctrinal boundary
+
+| Source | Contribution to bounded authoring |
+| --- | --- |
+| [Meijer, Oxford University Press / *Global Salafism*](https://academic.oup.com/book/1728) | Salafism's return-to-early-generations and purification claims, with a contested field that should not be reduced to one current. |
+| [Wehrey and Boukhars, Oxford University Press](https://academic.oup.com/book/35035/chapter-abstract/298879908) | Diverse contexts and currents of Salafism, including the rough quietist, political, and jihadi distinctions and their blurred boundaries. |
+| [Wagemakers, Cambridge / *A Quietist Jihadi*](https://www.cambridge.org/core/books/quietist-jihadi/9C679BEC1787A474A49E78E96476E8CE) | Historically situated jihadi-Salafi intellectual formation, used to avoid treating generic Salafism as Salafi-Jihadism. |
+| [Lav, Cambridge / Salafi Jihadi Theonomy](https://www.cambridge.org/core/books/abs/salafi-political-theology/salafi-jihadi-theonomy/71E03EF21127347C081067A899133BB4) | High-level divine-sovereignty/theonomic legitimacy, anti-pluralist political-order boundary, and polemical differentiation from quietist and political currents. |
+
+These records, together with existing Drevon, Islamism, and political-ideologies sources, support terminology, provenance, doctrinal and historical variation, boundary design, false-positive controls, and original authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification. The branch remains high-risk, non-operational, and provisional for measurement.
+## V81 academic source map — Revisionist / Bernsteinian Social Democracy historical microtype
+
+| Source | Contribution to bounded authoring |
+| --- | --- |
+| [Ostrowski, Historical Research](https://academic.oup.com/histres/article-abstract/95/268/213/6564402) | Bernstein's reform-or-revolution position in relation to the 1918–19 German Revolution, later refinement, and critique of Bolshevism. |
+| [Fletcher, Review of International Studies](https://www.cambridge.org/core/journals/review-of-international-studies/article/abs/in-the-interest-of-peace-and-progress-eduard-bernsteins-socialist-foreign-policy/0DB1AF421AC6CAD9E35230CD25B994F4) | Bernstein's socialist foreign-policy and revision context, with an explicit warning that “revisionism” covered varied right-wing SPD positions rather than one universal identity. |
+| [Greally, Oxford Journal of Legal Studies](https://academic.oup.com/ojls/article/44/4/949/7749547) | Democratic and constitutional institutional boundaries relevant to democratic-socialist readings of political constitutionalism and contestation. |
+| [Steger, Cambridge / *The Quest for Evolutionary Socialism*](https://www.cambridge.org/core/books/abs/quest-for-evolutionary-socialism/revisionist-debate-extended/B908E07EE40D0C47BF6001466BF561DA) | The revisionist debate, evolutionary-socialist assumptions, and the limits of Bernsteinian optimism in Wilhelmine and Weimar contexts. |
+
+These records, together with existing Bernstein, Social Democracy, Socialism, and political-ideologies sources, support terminology, provenance, historical variation, boundary design, false-positive controls, and original authoring only. They do not validate local wording, effects, anchor validity, respondent comprehension, reliability, validity, invariance, or empirical classification. The microtype remains historically bounded and provisional for measurement.
+
+## V82 source map — National-Syndicalism
+
+V82 adds direct provenance for the National-Syndicalism microtype: [Ganapini, “The Dark Side of Italian History 1943–1945”](https://www.cambridge.org/core/journals/modern-italy/article/abs/dark-side-of-italian-history-19431945/80C07BCA6D0CEFC4C3F40C1463FE8A2C); [the Portuguese study of Lusitanian Integralism and National Syndicalism](https://pucminas.emnuvens.com.br/cadernoshistoria/article/view/P.2237-8871.2015v16n24p30); [Abse, “Syndicalism and the Origins of Italian Fascism”](https://www.cambridge.org/core/journals/historical-journal/article/syndicalism-and-the-origins-of-italian-fascism/FD9A8135436051937B75FF3E7D2F8F63); [Shin, “Inventing Traditions of Fascism”](https://journal.kci.go.kr/krfh/archive/articleView?artiId=ART003109300); and [the Persée National-Syndicalism record](https://www.persee.fr/doc/mcm_1146-1225_1992_num_10_1_1057?pageId=T1_47). Existing Mann, Fascism, OUP, Falangism, Anarcho-Syndicalism, and political-ideologies records remain comparison sources.
+
+The eight-source direct set supports terminology, national/period/movement/regime variation, the occupational and corporative boundary, and false-positive controls. It does not authorize equivalence among National-Syndicalism, Fascism, Falangism, Anarcho-Syndicalism, Third Positionism, Integral Nationalism, labor solidarity, corporatism, or mixed economy; it does not validate local wording, effects, anchors, respondent comprehension, reliability, validity, invariance, or empirical classification. Civic Republicanism remains registry-only after comparison with [the Stanford Encyclopedia of Philosophy's republicanism entry](https://plato.stanford.edu/entries/republicanism/), whose historical and contemporary uses overlap existing branches.
+
+
+## V83 source map — British Fascism historical microtype
+
+V83 adds direct provenance for British Fascism: [Jackson, “Roots,” in Pride in Prejudice](<https://www.cambridge.org/core/books/abs/pride-in-prejudice/roots/D954116B01EF5C6AA55E3C0934460E24>); [Liburd, “Thinking Imperially: The British Fascisti and the Politics of Empire, 1923–35”](<https://academic.oup.com/tcbh/article-abstract/32/1/46/5824948>); [Douglas, “The Swastika and the Shamrock: British Fascism and the Irish Question, 1918–1940”](<https://www.cambridge.org/core/journals/albion/article/abs/swastika-and-the-shamrock-british-fascism-and-the-irish-question-19181940/2BE41B4EB6A909FED9B0363244D3CBFB>); and [Loughlin, “Northern Ireland and British fascism in the inter-war years”](<https://www.cambridge.org/core/journals/irish-historical-studies/article/abs/northern-ireland-and-british-fascism-in-the-inter-war-years/E05E8B7FF8483B04D453910B793B8667>). Existing [Linehan, British Fascism 1918–1939](<https://www.cambridge.org/core/books/abs/british-fascism-191839/arrival-of-fascism-the-british-fascisti-and-the-imperial-fascist-league/F42C440A230C33901F70000186CE96C6>) and Oxford fascism records remain comparison sources.
+
+The eight-source direct set supports the historically bounded British case, competing organizations, British political-cultural roots, imperial and regional variation, period boundaries, and false-positive controls. It does not authorize equivalence among British Fascism, wider Fascism, National Socialism, Neo-Fascism, National-Syndicalism, Falangism, White Nationalism, Integral Nationalism, National Conservatism, patriotism, conservatism, or imperial nostalgia; it does not validate local wording, effects, anchors, respondent comprehension, reliability, validity, invariance, or empirical classification.
+## V84 academic source map — French Fascism
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-cambridge-passmore-french-fascism` | [Passmore, *From Liberalism to Fascism*](https://www.cambridge.org/core/books/from-liberalism-to-fascism/92F1B1A067D53DAA678A870677B25980) | Provincial French-right, Croix de Feu, PSF, and historical fascism classification |
+| `source-oup-passmore-right-france-vichy` | [Passmore, *The Right in France from the Third Republic to Vichy*](https://academic.oup.com/book/7430) | Parliamentary conservatism, extreme-right factional variation, crisis, and Vichy transition |
+| `source-oup-millington-french-veterans-fascism` | [Millington, “We are not fascists”](https://academic.oup.com/manchester-scholarship-online/book/29250/chapter-abstract/243102493) | Uneven veteran, provincial, Croix de Feu, and extreme-right relationships |
+| `source-oup-paxton-french-peasant-fascism` | [Paxton, *French Peasant Fascism*](https://academic.oup.com/book/47498) | Agrarian crisis, local rural mobilization, and an authoritarian agrarian project |
+| `source-cambridge-desan-french-fascism-conversion` | [Desan, *Order, Authority, Nation*](https://www.cambridge.org/core/books/abs/order-authority-nation/order-authority-nation/A150AC38D963F64D27942B6377B050FD) | Neo-socialism, fascism, and contingent political conversion; prevents automatic conflation |
+| Existing context | [Oxford, “Fascism in France?”](https://academic.oup.com/book/7430/chapter-abstract/152326725) and existing Fascism records | Comparative and contested family context |
+
+The records support terminology, historical scope, organizational and regional variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, or empirical classification.
+
+## V85 academic source map — Italian Fascism historical microtype
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-cambridge-cerasi-italian-corporative-populism` | [Cerasi, “They, the people. Italian Fascism and the ambivalences of corporative populism”](https://www.cambridge.org/core/journals/modern-italy/article/they-the-people-italian-fascism-and-the-ambivalences-of-corporative-populism/D6421957129E36E8DB9A511D2B900B46) | Corporative-organic politics, leaderistic mass language, state/society integration, and plebiscitary authority |
+| `source-oup-morgan-italian-corporatism` | [Morgan, “Corporatism and the Economic Order”](https://academic.oup.com/edited-volume/34510/chapter-abstract/292825842) | Fascist corporatism as a politicized economic order that subordinates class conflict to national cooperation |
+| `source-oup-corner-fascist-party-popular-opinion` | [Corner, *The Fascist Party and Popular Opinion in Mussolini's Italy*](https://academic.oup.com/book/10002) | Repression, consensus, local variation, party practice, and the difference between fascist project and realization |
+| `source-cambridge-whittam-fascist-italy-transition` | [Whittam, “Transition: from coalition to regime, 1922–1928”](https://www.cambridge.org/core/books/abs/fascist-italy/transition-from-coalition-to-regime-19221928/E02A8D60177929AAC0628E3316540A1A) | Movement-to-regime transition, anti-parliamentary claims, coalition politics, and industrial/labor context |
+| `source-cambridge-forlenza-fascism-form` | [Forlenza, “The end of fascism?”](https://www.cambridge.org/core/journals/modern-italy/article/end-of-fascism/F3A25EAD5FCF3342AC693876A0B3649C) | Bounded historical experience, political form, and a false-positive warning against equating every authoritarian or nationalist case with fascism |
+| Existing context | [Cambridge, *Fascist Italy*](https://www.cambridge.org/core/books/abs/fascist-italy/construction-of-the-regime-economic-and-social-developments/9D810505A5A384858B080F35ADD8F55A) and [Oxford, *The Oxford Handbook of Fascism*](https://academic.oup.com/edited-volume/34510) | Italian regime and comparative Fascism context |
+
+The records support terminology, historical scope, movement/party/regime and project/realization distinctions, variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification.
+
+## V86 academic source map — Japanese Fascism historical microtype
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-cambridge-fletcher-japanese-fascism` | [Fletcher, “Intellectuals and Fascism in Early Shōwa Japan”](https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/intellectuals-and-fascism-in-early-showa-japan/24375A72B18397DE8C6D19247A1E165B) | Contested terminology, intellectual formation, the 1940 New Order Movement, and the need to distinguish 1930s Japan from specific fascist movements |
+| `source-oup-hofmann-fascist-effect-japan-italy` | [Hofmann, *The Fascist Effect: Japan and Italy, 1915–1952*](https://academic.oup.com/cornell-scholarship-online/book/24047) | Transnational circulation and local reformulation of fascist resources across nationalism, leadership, political economy, empire, and new-order projects |
+| `source-cambridge-young-japanese-fascism-empire` | [Young, “When fascism met empire in Japanese-occupied Manchuria”](https://www.cambridge.org/core/journals/journal-of-global-history/article/when-fascism-met-empire-in-japaneseoccupied-manchuria/4D050824AA8EA411A0D9B1884935FB23) | Imperial dimension and the interaction of Asianism, hyper-militarism, red-peril narratives, radical statism, war, and empire |
+| `source-oup-mimura-japanese-military-fascism` | [Mimura, “Military Fascism and Manchukuo, 1930–36”](https://academic.oup.com/cornell-scholarship-online/book/24122/chapter-abstract/185559288) | Military, civilian-technocratic, Manchukuo, party-government, and managed-state pathways |
+| `source-oup-tsuzuki-japanese-fascism` | [Tsuzuki, “Fascism, Militarism, and Thought Control”](https://academic.oup.com/book/7118/chapter-abstract/151649407) | Historical Japanese-style Fascism, ultra-nationalism, fascist societies, militarism, police and thought-control institutions |
+| Existing context | [Oxford, “Japan” in the *Oxford Handbook of Fascism*](https://academic.oup.com/edited-volume/34510/chapter-abstract/292834324), existing Fascism, and political-ideologies records | Comparative family context and explicit warning that the classification of Japan as a whole is conceptually disputed |
+
+The V86 records support terminology, historical scope, institutional and imperial variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification.
+
+## V85 academic source map — Italian Fascism historical microtype

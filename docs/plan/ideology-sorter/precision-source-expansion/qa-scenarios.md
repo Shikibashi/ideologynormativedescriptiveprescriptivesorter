@@ -682,3 +682,164 @@ The v58 precision QA pass is structural and behavioral delivery verification. It
 | P-70-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 3/1/1 and 1 combined, aggregate rates 21.7391% and 38.0435%, and worst ranks 87 and 80 are diagnostics only. |
 | P-70-04 | Inspect governance and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; generic nationalism, authoritarianism, anti-communism, symbols, actors, nostalgia, and operational content are not sufficient. |
 | P-70-05 | Run delivery/evidence checks. | TypeScript, 81/81 tests, 12,833-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V71 QA scenarios — Falangism micro branch
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-71-01 | Select Falangism in the research workbench. | The existing Fascism → Falangism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-71-02 | Inspect direct items and sources. | Twelve target-tagged prompts appear at 4/4/4, each with the Falangism analytical context and the direct OUP/Wiley source records. |
+| P-71-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; Falangism ranks 2/1/1 and 1 combined, aggregate rates 22.9391% and 39.7849%, and worst ranks 88 and 81 are diagnostics only. |
+| P-71-04 | Inspect governance and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; Spanish identity, patriotism, Catholic faith, anti-party sentiment, corporatism alone, and current actors/policies are not sufficient. |
+| P-71-05 | Run delivery/evidence checks. | TypeScript, 82/82 tests, 12,977-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V72 QA scenarios — Brazilian Integralism micro branch
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-72-01 | Select Brazilian Integralism in the research workbench. | The existing Fascism → Brazilian Integralism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-72-02 | Inspect direct items and sources. | Twelve target-tagged prompts appear at 4/4/4, each with the Brazilian Integralism analytical context and the four repaired historical source records. |
+| P-72-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; Brazilian Integralism ranks 3/2/1 and 1 combined, aggregate rates 24.1135% and 39.3617%, and worst ranks 89 and 81 are diagnostics only. |
+| P-72-04 | Inspect governance and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; Brazilian identity, Catholic faith, generic nationalism, anti-communism, corporatism alone, and current actors/policies are not sufficient. |
+| P-72-05 | Run delivery/evidence checks. | TypeScript, 83/83 tests, 13,121-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V73 QA scenarios — Integral Nationalism cross-case historical category
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-73-01 | Select Integral Nationalism in the research workbench. | The existing Nationalism → Integral Nationalism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-73-02 | Inspect direct items and sources. | Twelve target-tagged prompts appear at 4/4/4, each with the cross-case Integral Nationalism analytical context and the five fresh academic source records plus adjacent support. |
+| P-73-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; Integral Nationalism ranks 9/2/1 and 1 combined, aggregate rates 25.2632% and 40%, and worst ranks 90 and 82 are diagnostics only. |
+| P-73-04 | Inspect governance and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; pride, patriotism, culture alone, sovereignty preference, generic nationalism, one country, and one fascist association are not sufficient. |
+| P-73-05 | Run delivery/evidence checks. | TypeScript, 84/84 tests, 13,265-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V74 QA scenarios — Legionary Fascism micro branch
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-74-01 | Select Legionary Fascism in the research workbench. | The existing Fascism → Legionary Fascism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-74-02 | Inspect direct items and sources. | Twelve target-tagged prompts appear at 4/4/4, each with the historically bounded Romanian Legionary Fascism context and the four fresh academic source records plus adjacent support. |
+| P-74-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; Legionary Fascism ranks 1/1/2 and 1 combined, aggregate rates 25.6944% and 41.6667%, and worst ranks 91 and 83 are diagnostics only. |
+| P-74-04 | Inspect governance and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; Romanian identity, Orthodox faith, private piety, generic nationalism, prejudice alone, one leader/event, current actors, and operational content are not sufficient. |
+| P-74-05 | Run delivery/evidence checks. | TypeScript, 85/85 tests, 13,409-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V75 QA scenarios — Fascism macro family
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-75-01 | Select Fascism in the research workbench. | The existing Fascism macro breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-75-02 | Inspect direct items and sources. | Twelve target-tagged prompts appear at 4/4/4, each with the contested-family Fascism analytical context and four fresh academic source records plus adjacent support. |
+| P-75-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; Fascism ranks 3/1/1 and 1 combined, aggregate rates 26.1168% and 46.3918%, and worst ranks 92 and 84 are diagnostics only. |
+| P-75-04 | Inspect governance and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; nationalism, authoritarianism, anti-communism, populism, one leader/event, current actors, and operational content are not sufficient. |
+| P-75-05 | Run delivery/evidence checks. | TypeScript, 86/86 tests, 13,553-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V76 QA scenarios — White Nationalism high-risk racial-national boundary
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-76-01 | Run coverage and structural validation. | Zero validation errors; 1,248 prompts at 416 per layer, 103 editorial anchors, 98 production anchors, 98 dedicated-scored targets, 4 canonical catalog-only targets, 1,428 quarantined candidates, and 119 research targets. |
+| P-76-02 | Select White Nationalism in the research workbench. | The existing Nationalism → White Nationalism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-76-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, the high-risk racial-national context, and exclusions for identity alone, generic demographic concern, adjacent constructs, current affiliation, and operational content. |
+| P-76-04 | Run anchor reachability. | Zero failures; isolated routing in all layers; White Nationalism ranks 29/5/3 and 2 combined, aggregate rates are 26.1905% and 46.9388%, and worst ranks 92 and 85 are diagnostics only. |
+| P-76-05 | Run delivery and evidence checks. | TypeScript, 87/87 tests, 13,697-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker pass; no cognitive/respondent/empirical claim is made. |
+
+
+## V77 QA scenarios — Neo-Nazism postwar continuity and adaptation
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-77-01 | Run coverage and structural validation. | Zero validation errors; 1,260 prompts at 420 per layer, 104 editorial anchors, 99 production anchors, 99 dedicated-scored targets, 3 canonical catalog-only targets, 1,428 quarantined candidates, and 119 research targets. |
+| P-77-02 | Select Neo-Nazism in the research workbench. | The Fascism → National Socialism → Neo-Nazism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-77-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, the high-risk postwar context, and exclusions for historical National Socialism, wider Neo-Fascism, broader White Nationalism, isolated symbols or slogans, current affiliation, private identity, and operational content. |
+| P-77-04 | Run anchor reachability. | Zero failures; isolated routing in all layers; Neo-Nazism ranks 6/1/4 and 1 combined, aggregate rates are 26.9360% and 47.4747%, and worst ranks 93 and 86 are diagnostics only. |
+| P-77-05 | Run delivery and evidence checks. | TypeScript, 88/88 tests, 13,841-character share round-trip, build/audit, healthy /healthz, and serial local and Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim is made. |
+
+
+## V78 QA scenarios — Revolutionary Islamism cross-case public-order boundary
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-78-01 | Run coverage and structural validation. | Zero validation errors; 1,272 prompts at 424 per layer, 105 editorial anchors, 100 production anchors, 100 dedicated-scored targets, 2 canonical catalog-only targets, 1,428 quarantined candidates, and 119 research targets. |
+| P-78-02 | Select Revolutionary Islamism in the research workbench. | The existing Islamism → Revolutionary Islamism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-78-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, the cross-case public-order context, and exclusions for private faith, identity, generic Islamism, Qutbism, Khomeinism, Wasatiyya, Salafi-Jihadism, current politics, and operational content. |
+| P-78-04 | Run anchor reachability. | Zero failures; isolated routing in all layers and combined reachability; Revolutionary Islamism ranks 32/1/2 and 1 combined, aggregate rates are 27.3333% and 49.0000%, and worst ranks 94 and 87 are diagnostics only. |
+| P-78-05 | Run delivery and evidence checks. | TypeScript, 89/89 tests, 13,985-character share round-trip, build/audit, healthy /healthz, and serial local/Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim. |
+
+## V79 QA scenarios — Third Positionism postwar far-right boundary
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-79-01 | Run coverage and structural validation. | Zero validation errors; 1,284 prompts at 428 per layer, 106 editorial anchors, 101 production anchors, 101 dedicated-scored targets, 1 canonical catalog-only target, 1,428 quarantined candidates, and 119 research targets. |
+| P-79-02 | Select Third Positionism in the research workbench. | The existing Fascism → Neo-Fascism → Third Positionism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible. |
+| P-79-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, the postwar far-right national-social context, and exclusions for broad Fascism, wider Neo-Fascism, specific National Socialism, National-Syndicalism, National Conservatism, generic third-way language, Peronist/non-aligned usage, current politics, and operational content. |
+| P-79-04 | Run anchor reachability. | Zero failures; isolated routing in all layers and combined reachability; Third Positionism ranks 13/2/1 and 2 combined, aggregate rates are 27.7228% and 49.5050%, and worst ranks 95 and 88 are diagnostics only. |
+| P-79-05 | Run delivery and evidence checks. | TypeScript, 90/90 tests, 14,129-character share round-trip, build/audit, healthy /healthz, and serial local/Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim. |
+
+## V80 QA scenarios — Salafi-Jihadism high-risk doctrinal boundary
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-80-01 | Run coverage and structural validation. | Zero validation errors; 1,296 prompts at 432 per layer, 107 editorial anchors, 102 production anchors, 102 dedicated-scored targets, no canonical catalog-only target, 1,428 quarantined candidates, and 119 research targets. |
+| P-80-02 | Select Salafi-Jihadism in the research workbench. | The existing Islamism → Salafi-Jihadism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible and the high-risk/non-operational boundary is disclosed. |
+| P-80-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, the Salafi authority/divine-sovereignty/jihadist-revolutionary context, and exclusions for generic Salafism, quietist/political Salafism, broad Islamism, adjacent Islamist formations, current actors, membership, recruitment, tactics, targets, and operational content. |
+| P-80-04 | Run anchor reachability. | Zero failures; isolated routing in all layers and combined reachability; Salafi-Jihadism ranks 13/1/2 and 1 combined, aggregate rates are 28.7582% and 50.9804%, and worst ranks 96 and 89 are diagnostics only. |
+| P-80-05 | Run delivery and evidence checks. | TypeScript, 90/90 tests, 14,273-character share round-trip, build/audit, healthy /healthz, and serial local/Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim. |
+## V81 QA scenarios — Revisionist / Bernsteinian Social Democracy historical microtype
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-81-01 | Run coverage and structural validation. | Zero validation errors; 1,308 prompts at 436 per layer, 108 editorial anchors, 103 production anchors, 103 dedicated-scored targets, five contextual-only targets, 11 registry-only targets, 1,428 quarantined candidates, and 119 research targets. |
+| P-81-02 | Select Revisionist / Bernsteinian Social Democracy in the research workbench. | The Socialism → Social Democracy → Revisionist / Bernsteinian Social Democracy breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible and the historically bounded/non-diagnostic boundary is disclosed. |
+| P-81-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, the empirically revisable strategy/democratic reform/social-provision context, four neighbor discriminants, and exclusions for generic revisionism, current party identity, welfare support alone, and generic reform preference. |
+| P-81-04 | Run anchor reachability. | Zero failures; isolated routing in all layers and combined reachability; Revisionist / Bernsteinian Social Democracy ranks 21/82/3 and 3 combined, aggregate rates are 28.4790% and 51.4563%, and worst ranks 97 and 90 are diagnostics only. |
+| P-81-05 | Run delivery and evidence checks. | TypeScript, 91/91 tests, 14,417-character share round-trip, build/audit, healthy /healthz, and serial local/Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim. |
+
+## V82 QA scenarios — National-Syndicalism
+
+| ID | Action | Expected result |
+| --- | --- | --- |
+| P-82-01 | Run coverage and structural validation. | Zero validation errors; 1,320 prompts at 440 per layer, 109 editorial anchors, 104 production anchors, 104 dedicated-scored targets, five contextual-only targets, 10 registry-only targets, 1,428 quarantined candidates, and 119 research targets. |
+| P-82-02 | Select National-Syndicalism in the research workbench. | The Fascism → National-Syndicalism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible and the historically bounded/non-operational boundary is disclosed. |
+| P-82-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, occupational/national/corporative/institutional context, four neighbor discriminants, and exclusions for generic Fascism, Anarcho-Syndicalism, Falangism, Third Positionism, labor, nationalism, corporatism, mixed economy, and current-actor inference. |
+| P-82-04 | Run anchor reachability. | Zero failures; isolated routing in all layers and combined reachability; National-Syndicalism ranks 9/2/1 and 1 combined, aggregate rates are 28.2051% and 52.8846%, and worst ranks 98 and 91 are diagnostics only. |
+| P-82-05 | Run delivery and evidence checks. | TypeScript, 92/92 tests, 14,561-character share round-trip, build/audit, healthy /healthz, and serial local/Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim. |
+
+
+## V83 QA scenarios — British Fascism historical microtype
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-83-01 | Run coverage and structural validation. | Zero validation errors; 1,332 prompts at 444 per layer, 110 editorial anchors, 105 production anchors, 105 dedicated-scored targets, five contextual-only targets, 9 registry-only targets, 1,428 quarantined candidates, and 119 research targets. |
+| P-83-02 | Select British Fascism in the research workbench. | The Fascism → British Fascism breadcrumb renders; status is dedicated and scored; twelve research-bank items are visible and the historically bounded/non-operational boundary is disclosed. |
+| P-83-03 | Inspect direct items, sources, and boundaries. | Twelve target-tagged prompts appear at 4/4/4 with eight source references, organizational/domestic/imperial/regional/period context, four neighbor discriminants, and exclusions for generic Fascism, National Socialism, Neo-Fascism, National-Syndicalism, Falangism, White Nationalism, patriotism, conservatism, imperial nostalgia, and current-actor inference. |
+| P-83-04 | Run anchor reachability. | Zero failures; isolated routing in all layers and combined reachability; British Fascism ranks 13/2/3 by layer and 2 combined, while aggregate and worst-rank outputs remain diagnostics only. |
+| P-83-05 | Run delivery and evidence checks. | TypeScript, 93/93 tests, 14,705-character share round-trip, build/audit, healthy /healthz, and serial local/Docker Playwright 10/10 pass; no cognitive/respondent/empirical claim. |
+## V84 QA scenarios — French Fascism
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-84-01 | Run research coverage and dataset validation. | 1,344 prompts at 448 per layer; 111 editorial anchors; 106 production anchors; 111 ontology nodes; 8 registry entries; 1,428 candidates across 119 targets; zero validation errors. |
+| P-84-02 | Inspect the French Fascism target. | Canonical `Fascism → French Fascism` micro path; dedicated-scored state; 12 direct items at 4/4/4; five fresh source IDs; four neighbors; profile and false-positive audit. |
+| P-84-03 | Run isolated anchor reachability. | French Fascism reaches every layer in an isolated-anchor fixture; no structural-closure failures. |
+| P-84-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 14,849 characters, remains below the finite limit, and decodes to the complete answer map. |
+| P-84-05 | Run delivery and browser checks. | TypeScript, Vitest 94/94, build, audit, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive or respondent claim. |
+
+## V86 QA scenarios — Japanese Fascism historical microtype
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-86-01 | Run research coverage and dataset validation. | 1,368 prompts at 456 per layer; 113 editorial anchors; 108 production anchors; 113 ontology nodes; 6 registry entries; 1,428 candidates across 119 targets; zero validation errors. |
+| P-86-02 | Inspect the Japanese Fascism target. | Canonical `Fascism → Japanese Fascism` micro path; dedicated-scored state; 12 direct items at 4/4/4; five fresh source IDs plus existing context; four neighbors; 17-dimension profile; false-positive audit; and promote-to-canonical governance. |
+| P-86-03 | Run isolated anchor reachability. | Japanese Fascism reaches every layer in an isolated-anchor fixture and the combined calculation is reachable; full-production rank and top-three output remain structural diagnostics only. |
+| P-86-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 15,137 characters, remains below the finite limit, and decodes to the complete answer map. |
+| P-86-05 | Run delivery and browser checks. | TypeScript, Vitest 96/96, build, high-severity audit, coverage, reachability, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive, respondent, psychometric, or empirical claim. |
+
+## V85 QA scenarios — Italian Fascism historical microtype
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-85-01 | Run research coverage and dataset validation. | 1,356 prompts at 452 per layer; 112 editorial anchors; 107 production anchors; 112 ontology nodes; 7 registry entries; 1,428 candidates across 119 targets; zero validation errors. |
+| P-85-02 | Inspect the Italian Fascism target. | Canonical `Fascism → Italian Fascism` micro path; dedicated-scored state; 12 direct items at 4/4/4; five fresh source IDs plus existing context; four neighbors; 17-dimension profile; false-positive audit; and promote-to-canonical governance. |
+| P-85-03 | Run isolated anchor reachability. | Italian Fascism reaches every layer in an isolated-anchor fixture and the combined calculation is reachable; full ranks 6/1/4 by layer and 1 combined are recorded only as structural diagnostics, with no uncalibrated retuning. |
+| P-85-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 14,993 characters, remains below the finite limit, and decodes to the complete answer map. |
+| P-85-05 | Run delivery and browser checks. | TypeScript, Vitest 95/95, build, high-severity audit, coverage, reachability, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive, respondent, psychometric, or empirical claim. |

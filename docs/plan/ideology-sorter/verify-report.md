@@ -709,3 +709,173 @@ The taxonomy ledger retains Religious Zionism as canonical with `retain-canonica
 | Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
 
 The taxonomy ledger retains Neo-Fascism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; the live dataset target is separately dedicated-scored. Ten canonical targets remain catalog-only, including Fascism and Neo-Nazism. Full-competition non-reachability is a structural geometry diagnostic because direct coverage is complete and validationErrors/failures are empty; it is not respondent evidence or a reason for uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V71 verification — Falangism micro branch
+
+| Check | Status | Notes |
+| --- | --- | --- |
+| Direct coverage | PASS | Falangism has 12 target-tagged prompts at descriptive/normative/prescriptive 4/4/4 on the existing Fascism path. |
+| Research coverage | PASS | 119 targets, 1,428 quarantined candidates, 119 profiles/audits, zero validation errors; 93 dedicated-scored and 9 canonical catalog-only targets. |
+| Structural reachability | PASS_WITH_HOLD | All 93 production anchors close under isolated 4/4/4 routing; Falangism ranks 2/1/1 by layer and 1 combined, with aggregate rates 22.9391% and 39.7849% and worst ranks 88 and 81. |
+| Unit/type/build | PASS | npm exec -- tsc --noEmit, npm run test:run 82/82, and npm run build passed; Vite retains the existing large-client-chunk advisory. |
+| Share compatibility | PASS | Compact v2 complete-answer fragment is 12,977 characters, round-trips, and remains under the finite guard; version 1 decoding and fail-closed malformed/oversized handling remain covered. |
+| Dependency/container/browser | PASS | High-severity npm audit, Compose config, fresh no-cache Docker build/recreate/health, /healthz, local Playwright 10/10, and Docker-backed Playwright 10/10 passed. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Falangism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Nine canonical targets remain catalog-only, including Fascism and Neo-Nazism. Full-competition values remain deterministic geometry diagnostics because direct coverage is complete and validationErrors/failures are empty; they are not respondent evidence or a reason for uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V72 verification — Brazilian Integralism micro branch
+
+| Check | Status | Notes |
+| --- | --- | --- |
+| Source and boundary repair | PASS | Four direct historical/research records now support the existing Brazilian Integralism path; direct wording preserves Brazilian translation, transnational circulation, religious-cultural language, corporative mediation, movement/state variation, and postwar reinterpretation. |
+| Direct coverage | PASS | Brazilian Integralism has 12 target-tagged prompts at descriptive/normative/prescriptive 4/4/4 on the existing Fascism path. |
+| Research coverage | PASS | 119 targets, 1,428 quarantined candidates, 119 profiles/audits, zero validation errors; 94 dedicated-scored and 8 canonical catalog-only targets. |
+| Structural reachability | PASS_WITH_HOLD | All 94 production anchors close under isolated 4/4/4 routing; Brazilian Integralism ranks 3/2/1 by layer and 1 combined, with aggregate rates 24.1135% and 39.3617% and worst ranks 89 and 81. These are deterministic geometry diagnostics only. |
+| Unit/type/build | PASS | `npm exec -- tsc --noEmit`, `npm run test:run` 83/83, and `npm run build` passed; Vite retains the existing large-client-chunk advisory. |
+| Share compatibility | PASS | Compact v2 complete-answer fragment is 13,121 characters, round-trips, and remains under the finite guard; version 1 decoding and fail-closed malformed/oversized handling remain covered. |
+| Dependency/container/browser | PASS | High-severity npm audit reported zero vulnerabilities; Compose config, fresh no-cache `frontend/Dockerfile` build, forced recreation, healthy `/healthz`, local Playwright 10/10, and Docker-backed Playwright 10/10 passed. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Brazilian Integralism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Eight canonical targets remain catalog-only, including Fascism and Neo-Nazism. Full-competition values remain deterministic geometry diagnostics because direct coverage is complete and validationErrors/failures are empty; they are not respondent evidence or a reason for uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V73 verification — Integral Nationalism cross-case historical category
+
+| Check | Status | Notes |
+| --- | --- | --- |
+| Source and boundary comparison | PASS | Five fresh academic records support a bounded cross-case historical category associated with Maurrasian national absolutism and varied Egyptian, Ukrainian, Georgian, and fascist-synthesis applications; sources are used for authoring and provenance, not validation. |
+| Direct coverage | PASS | Integral Nationalism has 12 target-tagged prompts at descriptive/normative/prescriptive 4/4/4 on the existing Nationalism path. |
+| Research coverage | PASS | 119 targets, 1,428 quarantined candidates, 119 profiles/audits, zero validation errors; 95 dedicated-scored and 7 canonical catalog-only targets. |
+| Structural reachability | PASS_WITH_HOLD | All 95 production anchors close under isolated 4/4/4 routing; Integral Nationalism ranks 9/2/1 by layer and 1 combined, with aggregate rates 25.2632% and 40% and worst ranks 90 and 82. These are deterministic geometry diagnostics only. |
+| Unit/type/build | PASS | npm exec -- tsc --noEmit, npm run test:run 84/84, and npm run build passed; Vite retains the existing large-client-chunk advisory. |
+| Share compatibility | PASS | Compact v2 complete-answer fragment is 13,265 characters, round-trips, and remains under the finite guard; version 1 decoding and fail-closed malformed/oversized handling remain covered. |
+| Dependency/container/browser | PASS | npm audit --audit-level=high reported zero vulnerabilities; Compose config, fresh no-cache frontend/Dockerfile build, forced recreation, healthy /healthz, local Playwright 10/10, and Docker-backed Playwright 10/10 passed. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Integral Nationalism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Seven canonical targets remain catalog-only, including Fascism and Neo-Nazism. Full-competition values remain deterministic geometry diagnostics because direct coverage is complete and validationErrors/failures are empty; they are not respondent evidence or a reason for uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V74 verification record — Legionary Fascism micro branch
+
+| Check | Status | Evidence |
+| --- | --- | --- |
+| Source and boundary comparison | PASS | Four fresh academic records support a historically bounded Romanian Legionary Fascism case spanning political faith, religious-national public doctrine, organization, movement/state relations, law, sovereignty, social formation, and period variation; sources are used for authoring and provenance, not validation. |
+| Direct coverage | PASS | Legionary Fascism has 12 target-tagged prompts at descriptive/normative/prescriptive 4/4/4 on the existing Fascism path. |
+| Research coverage | PASS | 119 targets, 1,428 quarantined candidates, 119 profiles/audits, zero validation errors; 96 dedicated-scored and 6 canonical catalog-only targets. |
+| Structural reachability | PASS_WITH_HOLD | All 96 production anchors close under isolated 4/4/4 routing; Legionary Fascism ranks 1/1/2 by layer and 1 combined, with aggregate rates 25.6944% and 41.6667% and worst ranks 91 and 83. These are deterministic geometry diagnostics only. |
+| Unit/type/build | PASS | npm exec -- tsc --noEmit, npm run test:run 85/85, and npm run build passed; Vite retains the existing large-client-chunk advisory. |
+| Share compatibility | PASS | Compact v2 complete-answer fragment is 13,409 characters, round-trips, and remains under the finite guard; version 1 decoding and fail-closed malformed/oversized handling remain covered. |
+| Dependency/container/browser | PASS | npm audit --audit-level=high reported zero vulnerabilities; Compose config, fresh no-cache frontend/Dockerfile build, forced recreation, healthy /healthz, local Playwright 10/10, and Docker-backed Playwright 10/10 passed. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Legionary Fascism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; the live dataset target is separately `dedicated-scored`. Six canonical targets remain catalog-only: Fascism, Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism. Full-competition values remain deterministic geometry diagnostics because direct coverage is complete and validationErrors/failures are empty; they are not respondent evidence or a reason for uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V75 verification — Fascism macro family
+
+| Check | Status | Evidence |
+| --- | --- | --- |
+| Focused research/scoring/share | PASS | 86/86 Vitest tests; dataset/share contracts updated to 1,236 questions, 412 per layer, and 13,553-character compact v2 output. |
+| Research coverage | PASS | `npm run research:coverage`; 119 targets, 1,428 effect-free candidates, 119 profiles/audits, and zero validation errors. |
+| Anchor reachability | PASS | `npm run research:anchor-reachability`; 97 production anchors, zero failures, Fascism isolated-reachable in all layers, full ranks 3/1/1 and 1 combined. |
+| TypeScript/build | PASS | `npx tsc --noEmit` and `npm run build`; existing >500 kB client chunk advisory remains. |
+| Dependency audit | PASS | `npm audit --omit=dev --audit-level=high`; zero vulnerabilities. |
+| Compose/Docker/health | PASS | Compose config, fresh `docker build --no-cache -f frontend/Dockerfile ...`, forced recreation, healthy container, `/healthz` returned `ok`. |
+| Browser QA | PASS | Local `npm run qa` 10/10 and `E2E_BASE_URL=http://127.0.0.1:8001 npm run qa` 10/10. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Fascism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Five canonical targets remain catalog-only: Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, Third Positionism, and White Nationalism. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V76 verification — White Nationalism high-risk racial-national boundary
+
+| Check | Status | Evidence |
+| --- | --- | --- |
+| Focused research/scoring/share | PASS | 87/87 Vitest tests; dataset/share contracts updated to 1,248 questions, 416 per layer, and 13,697-character compact v2 output. |
+| Research coverage | PASS | `npm run research:coverage`; 119 targets, 1,428 effect-free candidates, 119 profiles/audits, and zero validation errors. |
+| Anchor reachability | PASS | `npm run research:anchor-reachability`; 98 production anchors, zero failures, White Nationalism isolated-reachable in all layers, full ranks 29/5/3 and 2 combined. |
+| TypeScript/build | PASS | `npx tsc --noEmit` and `npm run build`; existing >500 kB client chunk advisory remains. |
+| Dependency audit | PASS | `npm audit --omit=dev --audit-level=high`; zero vulnerabilities. |
+| Compose/Docker/health | PASS | Compose config, fresh `docker build --no-cache -f frontend/Dockerfile ...`, forced recreation, healthy container, `/healthz` returned `ok`. |
+| Browser QA | PASS | Local `npm run qa` 10/10 and `E2E_BASE_URL=http://127.0.0.1:8001 npm run qa` 10/10. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains White Nationalism as canonical with `retain-canonical` and governance `resultingScoringStatus: scored-provisional`; live measurement is separately `dedicated-scored`. Four canonical targets remain catalog-only: Neo-Nazism, Revolutionary Islamism, Salafi-Jihadism, and Third Positionism. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes. The comprehensive goal remains open.
+
+
+## V77 verification — Neo-Nazism postwar continuity and adaptation
+
+| Check | Status | Notes |
+| --- | --- | --- |
+| Focused research/scoring/share | PASS | Focused research, scoring, and share tests passed 88/88; 1,260 prompts at 420 per layer; compact v2 fragment is 13,841 characters. |
+| Research coverage | PASS | 107 ontology nodes, 12 registry entries, 99 dedicated-scored targets, 3 canonical catalog-only targets, 1,428 effect-free candidates across 119 targets, and zero validation errors. |
+| Anchor reachability | PASS | 99 production anchors, zero validation or structural-closure failures; Neo-Nazism is isolated-reachable in all layers, with full ranks 6/1/4 and 1 combined. |
+| TypeScript/build | PASS | npx tsc --noEmit and npm run build; the existing greater-than-500 kB client chunk advisory remains. |
+| Dependency audit | PASS | npm audit --omit=dev --audit-level=high; zero vulnerabilities. |
+| Compose/Docker/health | PASS | Compose config, fresh docker build --no-cache -f frontend/Dockerfile ..., forced recreation, healthy container, and /healthz returning ok. |
+| Browser QA | PASS | Serial local npm run qa -- --workers=1 10/10 and E2E_BASE_URL=http://127.0.0.1:8001 npm run qa -- --reporter=dot 10/10; isolated local share-flow rerun 1/1. |
+| Evidence boundary | PASS_WITH_HOLD | No cognitive review, respondent study, substitute simulation, psychometric, reliability/validity, invariance, empirical, or population evidence was run. |
+
+The taxonomy ledger retains Neo-Nazism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Three canonical targets remain catalog-only: Revolutionary Islamism, Salafi-Jihadism, and Third Positionism. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes. The comprehensive goal remains open.
+
+## V78 verification record — Revolutionary Islamism
+
+The V78 data and research-bank contracts pass with 1,272 questions at 424 per layer, 105 editorial anchors, 100 production anchors, 100 dedicated-scored targets, 2 canonical catalog-only targets, 1,428 quarantined candidates, and 119 research targets. The source comparison and metadata validate the presence of provenance, historical/contextual boundaries, 4/4/4 direct coverage, four neighbor discriminants, a false-positive audit, and a 17-dimension qualitative profile as editorial research artifacts; they do not validate the local measure.
+
+The anchor reachability audit reports zero validation errors and zero failures, with Revolutionary Islamism isolated-reachable in all three layers and combined. Its full-competition ranks are 32/1/2 and 1 combined; aggregate top-three rates are 27.3333% by layer and 49.0000% combined, with worst ranks 94 and 87. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes.
+
+The taxonomy ledger retains Revolutionary Islamism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Two canonical targets remain catalog-only: Salafi-Jihadism and Third Positionism. No cognitive review, respondent study, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied; the comprehensive goal remains open.
+
+## V79 verification record — Third Positionism postwar far-right boundary
+
+The V79 data and research-bank contracts pass with 1,284 questions at 428 per layer, 106 editorial anchors, 101 production anchors, 101 dedicated-scored targets, 1 canonical catalog-only target, 1,428 quarantined candidates, and 119 research targets. The source comparison and metadata validate the presence of provenance, historical/contextual boundaries, 4/4/4 direct coverage, four neighbor discriminants, a false-positive audit, and a 17-dimension qualitative profile as editorial research artifacts; they do not validate the local measure.
+
+The anchor reachability audit reports zero validation errors and zero failures, with Third Positionism isolated-reachable in all three layers and combined. Its full-competition ranks are 13/2/1 and 2 combined; aggregate top-three rates are 27.7228% by layer and 49.5050% combined, with worst ranks 95 and 88. The production report's `missingLayers: ["descriptive"]` is a top-three-overlap diagnostic, not an isolated routing failure; isolated missing layers are empty. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes.
+
+The taxonomy ledger retains Third Positionism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Salafi-Jihadism is the sole remaining canonical catalog-only target. TypeScript, the full 90/90 Vitest suite, build, high-severity audit, coverage, reachability, Compose configuration, fresh no-cache Docker build/recreate, healthy /healthz, serial local Playwright 10/10, and Docker-backed Playwright 10/10 passed. Compact v2 share round-trip is 14,129 characters. No cognitive review, respondent study, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied; the comprehensive goal remains open.
+
+## V80 verification record — Salafi-Jihadism high-risk doctrinal boundary
+
+The V80 data and research-bank contracts pass with 1,296 questions at 432 per layer, 107 editorial anchors, 102 production anchors, 102 dedicated-scored targets, no canonical catalog-only targets, 1,428 quarantined candidates, and 119 research targets. The source comparison and metadata validate the presence of provenance, historical/contextual boundaries, 4/4/4 direct coverage, four neighbor discriminants, a false-positive audit, and a 17-dimension qualitative profile as editorial research artifacts; they do not validate the local measure.
+
+The anchor reachability audit reports zero validation errors and zero failures, with Salafi-Jihadism isolated-reachable in all three layers and combined. Its full-competition ranks are 13/1/2 and 1 combined; aggregate top-three rates are 28.7582% by layer and 50.9804% combined, with worst ranks 96 and 89. The production top-three missing descriptive layer is an overlap diagnostic, not an isolated routing failure; isolated missing layers are empty. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes.
+
+The taxonomy ledger retains Salafi-Jihadism as canonical with retain-canonical and governance resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. Five contextual anchors and 12 registry-only targets remain outside production scoring. TypeScript, the full 90/90 Vitest suite, build, high-severity audit, coverage, reachability, Compose configuration, fresh no-cache Docker build/recreate, healthy /healthz, serial local Playwright 10/10, and Docker-backed Playwright 10/10 passed. Compact v2 share round-trip is 14,273 characters. No cognitive review, respondent study, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied; the comprehensive goal remains open.
+## V81 verification record — Revisionist / Bernsteinian Social Democracy historical microtype
+
+The V81 data and research-bank contracts pass with 1,308 questions at 436 per layer, 108 editorial anchors, 103 production anchors, 103 dedicated-scored targets, five contextual-only targets, 11 registry-only targets, 1,428 quarantined candidates, and 119 research targets. The source comparison and metadata establish a historically situated, internally varied Bernsteinian/revisionist boundary with 4/4/4 direct coverage, eight direct source references, four neighbor discriminants, a false-positive audit, and a 17-dimension qualitative profile as editorial research artifacts; they do not validate the local measure.
+
+The anchor reachability audit reports zero validation errors and zero failures, with Revisionist / Bernsteinian Social Democracy isolated-reachable in all three layers and combined. Its full-competition ranks are 21/82/3 and 3 combined; aggregate top-three rates are 28.4790% by layer and 51.4563% combined, with worst ranks 97 and 90. The production top-three descriptive and normative misses are overlap diagnostics; isolated missing layers are empty. Full-competition values remain deterministic geometry diagnostics and do not justify uncalibrated coefficient changes.
+
+The taxonomy ledger records the new microtype as canonical with a promote-to-canonical decision and resultingScoringStatus scored-provisional; live measurement is separately dedicated-scored. TypeScript, the full 91/91 Vitest suite, build, high-severity audit, coverage, reachability, Compose configuration, fresh no-cache Docker build/recreate, healthy /healthz, serial local Playwright 10/10, and Docker-backed Playwright 10/10 passed. Compact v2 share round-trip is 14,417 characters. No cognitive review, respondent study, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied; the comprehensive goal remains open.
+
+## V82 verification record — National-Syndicalism
+
+V82 records the source-backed promotion of National-Syndicalism to the canonical `Fascism → National-Syndicalism` micro path. Coverage reports 1,320 production prompts at 440 per layer, 109 editorial anchors, 104 production anchors, 109 ontology nodes, 10 registry entries, 104 dedicated-scored targets, five contextual-only targets, 1,428 quarantined candidates, 119 research targets, and zero validation errors. The target has twelve direct prompts at 4/4/4, eight direct source references, one provisional anchor, a twelve-dimension profile, four neighbor discriminants, and a false-positive audit.
+
+National-Syndicalism is isolated-reachable in every layer and combined; full ranks are 9/2/1 and 1 combined, aggregate top-three rates are 28.2051% and 52.8846%, worst ranks are 98 and 91, and compact v2 complete-answer output is 14,561 characters. These are deterministic geometry diagnostics only. `npx tsc --noEmit`, `npm run test:run` (92/92), `npm run build`, `npm audit --omit=dev --audit-level=high`, coverage, reachability, Compose config, fresh no-cache Docker build/recreate, healthy `/healthz`, local Playwright 10/10, Docker-backed Playwright 10/10, and `git diff --check` passed. The build retains the existing large-client-chunk advisory. No cognitive/respondent/psychometric/empirical/population evidence was run or implied; Civic Republicanism remains registry-only and the comprehensive goal remains open.
+
+
+## V83 verification record — British Fascism historical microtype
+
+V83 records the source-backed promotion of British Fascism to the canonical Fascism → British Fascism micro path. Coverage reports 1,332 production prompts at 444 per layer, 110 editorial anchors, 105 production anchors, 110 ontology nodes, 9 registry entries, 105 dedicated-scored targets, five contextual-only targets, 1,428 quarantined candidates across 119 research targets, and zero validation errors. The target has twelve direct prompts at 4/4/4, eight direct source references, one provisional anchor, a twelve-dimension profile, four neighbor discriminants, and a false-positive audit.
+
+The verified V83 contract is 1,332 production prompts (444 per layer), 110 editorial anchors, 105 production anchors, 110 ontology nodes, 9 registry entries, 105 dedicated-scored targets, five contextual-only targets, 1,428 quarantined candidates across 119 research targets, and a 14,705-character compact v2 fragment. British Fascism is isolated-reachable at 4/4/4 and combined; full-competition ranks are 13/2/3 by layer and 2 combined. Aggregate top-three rates are 27.9365% by layer and 52.3810% combined, with worst ranks 99 and 92. These are deterministic structural-overlap diagnostics only. Coverage and reachability report zero validation or structural-closure failures. TypeScript, 93/93 unit tests, Vite build, high-severity dependency audit, Compose configuration, fresh no-cache Docker build/recreate, healthy /healthz, serial local Playwright 10/10, Docker-backed Playwright 10/10, and git diff --check pass. The build retains the existing large-client-chunk advisory. No cognitive/respondent/psychometric/empirical/population evidence was run or implied; contextual and registry-only targets remain outside production scoring and the comprehensive goal remains open.
+## V84 verification record — French Fascism historical microtype
+
+V84 records the source-backed promotion of French Fascism to the canonical `Fascism → French Fascism` micro path. The target has five fresh academic source records, eight direct source references, twelve direct prompts at 4/4/4, one provisional anchor, four neighbor discriminants, a twelve-dimension qualitative profile, a false-positive audit, and explicit promotion governance. Its historical context covers interwar French movements through the Occupation while preserving organizational, regional, social-base, period, democratic/authoritarian, Vichy/collaboration, agrarian, Catholic, and imperial variation.
+
+The verified contract is 1,344 production prompts (448 per layer), 111 editorial anchors, 106 production anchors, 111 ontology nodes, 8 registry entries, 106 dedicated-scored targets, five contextual-only targets, 1,428 quarantined candidates across 119 research targets, and a 14,849-character compact v2 fragment. French Fascism is isolated-reachable in descriptive, normative, and prescriptive layers. Full-production ranks are 18/4/4 by layer and 5 combined; aggregate top-three rates are 27.6729% by layer and 51.8868% combined, with worst ranks 100 and 93. These are deterministic structural-overlap diagnostics only.
+
+All V84 verification gates pass: `npx tsc --noEmit`, `npm run test:run` (94/94), `npm run build`, `npm audit --omit=dev --audit-level=high` (zero vulnerabilities), coverage validation, reachability structural closure, Compose configuration, fresh no-cache Docker build/recreate, healthy `/healthz`, serial local Playwright 10/10, Docker-backed Playwright 10/10, and `git diff --check`. The build retains the existing large-client-chunk advisory. No cognitive/respondent/psychometric/empirical/population evidence was run or implied; the comprehensive goal remains open.
+
+## V86 verification record — Japanese Fascism historical microtype
+
+V86 records the source-backed promotion of Japanese Fascism to the canonical `Fascism → Japanese Fascism` micro path. The source comparison uses [Fletcher's study of intellectuals and Fascism in early Shōwa Japan](https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/intellectuals-and-fascism-in-early-showa-japan/24375A72B18397DE8C6D19247A1E165B), [Hofmann's comparative study of Japan and Italy](https://academic.oup.com/cornell-scholarship-online/book/24047), [Young's analysis of fascism and empire in Japanese-occupied Manchuria](https://www.cambridge.org/core/journals/journal-of-global-history/article/when-fascism-met-empire-in-japaneseoccupied-manchuria/4D050824AA8EA411A0D9B1884935FB23), [Mimura's study of military Fascism and Manchukuo](https://academic.oup.com/cornell-scholarship-online/book/24122/chapter-abstract/185559288), and [Tsuzuki's account of Fascism, militarism, and thought control](https://academic.oup.com/book/7118/chapter-abstract/151649407), alongside existing Oxford Fascism context. These sources support a historically bounded, internally varied, and contested Japanese field; they support terminology, provenance, boundary design, and false-positive controls only.
+
+The verified contract contains 1,368 production prompts (456 per layer), 113 editorial anchors, 108 production anchors, 113 ontology nodes, 6 registry entries, 108 dedicated-scored targets, five contextual-only targets, 1,428 quarantined candidates across 119 research targets, and a 15,137-character compact v2 fragment. Japanese Fascism has twelve direct prompts at 4/4/4, eight direct source references, one provisional anchor, four neighbor discriminants, a 17-dimension qualitative profile, a false-positive audit, and explicit promote-to-canonical governance. It is isolated-reachable in all three layers and combined; full-production ranks are 11/7/3 by layer and 2 combined. Aggregate top-three rates are 28.7037% by layer and 53.7037% combined, with worst ranks 102 and 95. These are deterministic structural-overlap diagnostics only. `npx tsc --noEmit`, `npm run test:run` (96/96), `npm run build`, `npm audit --omit=dev --audit-level=high` (zero vulnerabilities), coverage, reachability, Compose configuration, fresh no-cache Docker build/recreate, healthy container, `/healthz` returning `ok`, serial local Playwright 10/10, Docker-backed Playwright 10/10, and `git diff --check` all pass. The build retains the existing large-client-chunk advisory. No cognitive review, respondent study, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied.
+
+## V85 verification record — Italian Fascism historical microtype
+
+V85 records the source-backed promotion of Italian Fascism to the canonical `Fascism → Italian Fascism` micro path. The source comparison uses [Cerasi's study of corporative populism](https://www.cambridge.org/core/journals/modern-italy/article/they-the-people-italian-fascism-and-the-ambivalences-of-corporative-populism/D6421957129E36E8DB9A511D2B900B46), [Morgan's Oxford Handbook chapter on corporatism](https://academic.oup.com/edited-volume/34510/chapter-abstract/292825842), [Corner's study of the Fascist Party and popular opinion](https://academic.oup.com/book/10002), [Whittam's movement-to-regime transition study](https://www.cambridge.org/core/books/abs/fascist-italy/transition-from-coalition-to-regime-19221928/E02A8D60177929AAC0628E3316540A1A), and [Forlenza's account of fascism as political form](https://www.cambridge.org/core/journals/modern-italy/article/end-of-fascism/F3A25EAD5FCF3342AC693876A0B3649C), alongside existing Italian and Oxford context. These sources support a historically bounded, internally varied, and contested Italian movement-and-regime field; they support terminology, provenance, boundary design, and false-positive controls only.
+
+The verified contract contains 1,356 production prompts (452 per layer), 112 editorial anchors, 107 production anchors, 112 ontology nodes, 7 registry entries, 107 dedicated-scored targets, five contextual-only targets, 1,428 quarantined candidates across 119 research targets, and a 14,993-character compact v2 fragment. Italian Fascism has twelve direct prompts at 4/4/4, eight direct source references, one provisional anchor, four neighbor discriminants, a 17-dimension qualitative profile, a false-positive audit, and explicit promote-to-canonical governance. It is isolated-reachable in all three layers and combined; full-production ranks are 6/1/4 by layer and 1 combined. Aggregate top-three rates are 28.0374% by layer and 52.3364% combined, with worst ranks 101 and 94. The production top-three missing fields are overlap diagnostics, not isolated routing failures, and no scorer or picker retuning was justified.
+
+All V85 verification gates pass: `npx tsc --noEmit`, `npm run test:run` (95/95), `npm run build`, `npm audit --omit=dev --audit-level=high` (zero vulnerabilities), coverage validation, reachability structural closure, Compose configuration, fresh no-cache Docker build/recreate, healthy `/healthz`, serial local Playwright 10/10, Docker-backed Playwright 10/10, and `git diff --check`. The build retains the existing large-client-chunk advisory. No cognitive review, respondent study, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied. Five contextual anchors and 7 registry-only targets remain outside production scoring; the comprehensive goal remains open. The V85 delta remains uncommitted and no push remote is configured.
