@@ -3970,6 +3970,86 @@ const SOURCES: readonly SourceReference[] = [
     citation: "Buch-Hansen, H., Koch, M., & Nesterova, I. (2024). Deep Transformations: A Theory of Degrowth. Manchester University Press. https://manchesteruniversitypress.co.uk/9781526177858/.",
     supports: "Degrowth as a research field, social movement, and political project with transformation mechanisms across civil society, business, the state, and multiple scales; supports institutional and multilevel route variation.",
   },
+  {
+    id: "source-jstor-salter-distributism",
+    label: "Salter: The Political Economy of Distributism",
+    url: "https://www.jstor.org/stable/jj.3485520",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Salter, A. W. (2023). The Political Economy of Distributism: Property, Liberty, and the Common Good. Catholic University of America Press. https://doi.org/10.2307/jj.3485520.",
+    supports: "A contemporary scholarly reconstruction of Distributism as a political-economic research programme and reform vision centered on widely dispersed property, liberty, human dignity, Catholic social teaching, and a critical but non-identical relationship to capitalism and socialism.",
+  },
+  {
+    id: "source-cambridge-boyd-distributism",
+    label: "Boyd: Chesterton and Distributism",
+    url: "https://doi.org/10.1111/j.1741-2005.1974.tb03889.x",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Boyd, I. (1974). Chesterton and Distributism. New Blackfriars, 55(649), 265–272. https://doi.org/10.1111/j.1741-2005.1974.tb03889.x.",
+    supports: "Historical interpretation of Chestertonian Distributism as wide property distribution and an alternative to concentrated capitalist or state-socialist power, with small ownership and worker-guild routes; preserves the fact that the doctrine was not a single systematic programme.",
+  },
+  {
+    id: "source-cambridge-mathews-distributism",
+    label: "Mathews: The Making of Distributism",
+    url: "https://doi.org/10.1017/S0034193200012814",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Mathews, R. (2010). Hilaire Belloc, Gilbert and Cecil Chesterton and the Making of Distributism. British Catholic History, 30(2), 299–319. https://doi.org/10.1017/S0034193200012814.",
+    supports: "Historical provenance for Distributism as a political philosophy emerging from Catholic social and political thought and the Belloc–Chesterton circle, without treating later uses as identical to the original movement.",
+  },
+  {
+    id: "source-oup-pierson-distributism",
+    label: "Pierson: Radical Conservatives and Distributism",
+    url: "https://doi.org/10.1093/oso/9780198787105.003.0009",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Pierson, C. (2020). Radical Conservatives II. In Just Property: Volume Three: Property in an Age of Ideologies (pp. 191–216). Oxford University Press. https://doi.org/10.1093/oso/9780198787105.003.0009.",
+    supports: "Political-theory analysis of Chestertonian and Bellocian property radicalism, showing how widely distributed private property can function as a conservative principle while requiring radical reform and remaining distinct from ordinary Conservatism.",
+  },
+  {
+    id: "source-sage-quilley-distributism",
+    label: "Quilley: Schumacher, Subsidiarity, and Distributism",
+    url: "https://doi.org/10.1177/13684310241237428",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Quilley, S. (2024). Schumacher against globalism and ecomodernism: Ecology, subsidiarity and the politics of scale. European Journal of Social Theory, 27(3), 456–481. https://doi.org/10.1177/13684310241237428.",
+    supports: "A contemporary social-theory interpretation connecting distributist political economy to embedded production, consumption and reproduction, place-bound community, subsidiarity, smallness, and a critique of both market and state collectivism; preserves its explicitly Christian and contested route.",
+  },
+  {
+    id: "source-cauriensia-utrera-distributism",
+    label: "Utrera García: Distributist Thought and Political Sovereignty",
+    url: "https://doi.org/10.17398/2340-4256.17.637",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Utrera García, J. C. (2022). De la igualdad económica a la soberanía política. Una reconsideración del pensamiento distributista. Cauriensia, 17, 637–656. https://doi.org/10.17398/2340-4256.17.637.",
+    supports: "Peer-reviewed analysis of Distributism's relationship to Christian thought, Catholic social doctrine, economic equality, political sovereignty, and its critique of capitalist and socialist models; preserves distinctions between Distributism and official social teaching.",
+  },
+  {
+    id: "source-cambridge-kelly-distributism-work",
+    label: "Kelly: The Catholic Land Movement and Distributism",
+    url: "https://doi.org/10.1111/j.1741-2005.2009.01298.x",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Kelly, J. (2010). Vincent McNabb, Agrarian Utopia and The Theology of Work: An exploration of the theology of the Catholic Land Association in relation to the social encyclicals Rerum Novarum and Laborem Exercens. New Blackfriars, 91(1033), 286–303. https://doi.org/10.1111/j.1741-2005.2009.01298.x.",
+    supports: "Historical study of the Catholic Land Movement's Distributist, agrarian, work, anti-industrial, and community experiment, useful for distinguishing the wider tradition from one land-colony or agrarian implementation.",
+  },
+  {
+    id: "source-cambridge-chesterton-distributism-primary",
+    label: "Distributism (1927 primary text)",
+    url: "https://doi.org/10.1111/j.1741-2005.1927.tb04727.x",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Distributism. (1927). New Blackfriars. https://doi.org/10.1111/j.1741-2005.1927.tb04727.x.",
+    supports: "Primary period text for the movement's language of widespread ownership, labor's product, opposition to trusts and monopolies, distributive justice, and moral-political mobilization; used with scholarship and not as a complete or validated contemporary measurement source.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -4101,6 +4181,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   oneNationConservatism: ["source-oup-one-nation-conservatism", "source-tandf-walsha-one-nation", "source-policy-press-page-one-nation-welfare", "source-wiley-webb-one-nation-tradition", "source-oup-conservatism", "source-sep-nationalism"],
   georgism: ["source-helsinki-obeng-odoom-georgist-political-economy", "source-jhu-england-land-liberty", "source-oup-odonnell-george-inequality", "source-oup-mclean-land-value-taxation", "source-sage-williams-georgist-political-ecology", "source-wiley-mccann-georgist-social-philosophy", "source-wiley-hudson-george-critics", "source-oll-george-progress-poverty"],
   degrowth: ["source-cup-kallis-degrowth", "source-tandf-akbulut-degrowth", "source-elsevier-alisa-kallis-degrowth-state", "source-elsevier-asara-degrowth-democracy", "source-cambridge-durrant-cohen-degrowth", "source-sage-savini-degrowth-ideology", "source-elsevier-degrowth-movement-2025", "source-manchester-buch-hansen-degrowth-transformations"],
+  distributism: ["source-jstor-salter-distributism", "source-cambridge-boyd-distributism", "source-cambridge-mathews-distributism", "source-oup-pierson-distributism", "source-sage-quilley-distributism", "source-cauriensia-utrera-distributism", "source-cambridge-kelly-distributism-work", "source-cambridge-chesterton-distributism-primary"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4255,6 +4336,7 @@ const ANARCHO_COMMUNISM_CONTEXT = "Analytical scope: Anarcho-Communism as a hist
 const COLLECTIVIST_ANARCHISM_CONTEXT = "Analytical scope: Collectivist Anarchism as a historically bounded social-anarchist current associated especially with Bakunin and the First International, joining abolition of capitalist private ownership and state rule with collective control, free association, federated organization, and historically debated labor-linked distribution or remuneration; distinguish it from Anarcho-Communism's need-oriented communist route, Social Anarchism's wider economic variation, Anarcho-Syndicalism's worker-union route, Mutualism, and state-centered socialism; preserve variation over transition, labor accounting, communal scale, revolutionary strategy, gender, and international scope; not collective ownership alone, anti-government sentiment, generic worker control, union support, or a single author's full programme.";
 const GEORGISM_CONTEXT = "Analytical scope: Georgism / Georgist political economy as a historically rooted and internally varied political-economic school and movement centered on land, land or location value, rent, and equal access to natural opportunity; preserve variation over Henry George's single-tax argument, land-value taxation, public revenue, citizen dividend, land tenure, environmental and resource rents, urban housing, liberal, republican, socialist, cooperative, and international routes; distinguish it from generic tax reform, private-property defense, public ownership of all capital, agrarian identity, environmentalism, and current policy approval; not one tax rate, one historical movement, one city, one party, or a respondent classifier.";
 const DEGROWTH_CONTEXT = "Analytical scope: Degrowth as a plural ecological-economic and political project, social-movement frame, and ideology-in-making that challenges growth imperatives and seeks equitable reductions in material and energy throughput while protecting wellbeing, sufficiency, care, ecological limits, and democratic agency; preserve variation across anti-growth critique, post-growth and wellbeing interpretations, anarchist, systemic, pragmatic, limitarian, commons, cooperative, public, state, civil-society, business, local, national, and transnational routes; distinguish it from generic environmental concern, climate concern, personal frugality, minimalism, recession, austerity, anti-capitalism or socialism alone, localism, anti-technology, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
+const DISTRIBUTISM_CONTEXT = "Analytical scope: Distributism as a historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, the dignity and responsibility of work, subsidiarity, common-good obligations, and associational, cooperative, guild, family, or worker routes that mediate between isolated individuals and concentrated market or state power; preserve variation in Catholic social roots, Christian interpretation, agrarian and urban forms, small-property and worker-control mechanisms, market participation, public regulation, and later ecological or localist readings; distinguish it from Catholic identity or piety, family traditionalism, small business support, localism, cooperatives alone, generic private-property defense, anti-capitalism or anti-socialism alone, anti-monopoly policy alone, agrarian identity, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
@@ -5859,6 +5941,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-degrowth-02", "prescriptive", "Work and essential services", "Work time, income, and essential services should be reorganized so wellbeing does not depend on expanding production.", { "public-provision": 0.85, reformism: 0.6, "state-capacity": 0.45 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
   question("p-degrowth-03", "prescriptive", "Commons and cooperative infrastructure", "Cooperatives, commons, and public institutions should have meaningful roles in governing production and infrastructure.", { "public-ownership": 0.7, decentralization: 0.65, "state-capacity": 0.45 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
   question("p-degrowth-04", "prescriptive", "Multilevel transition", "Degrowth transitions should be planned through democratic, multilevel institutions that negotiate unequal effects across places and generations.", { "state-capacity": 0.7, internationalism: 0.8, decentralization: 0.55, reformism: 0.5 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("d-distributism-01", "descriptive", "Concentrated ownership", "Concentrated ownership can make formal freedom depend on owners or employers and weaken independent social power.", { "structural-power": 0.9, "elite-autonomy": 0.65 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("d-distributism-02", "descriptive", "Market and state power", "Market and state concentration can produce similar dependence even when ownership is nominally private or public.", { "structural-power": 0.8, institutionalism: 0.5 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("d-distributism-03", "descriptive", "Mediating associations", "Family, guild, cooperative, and local associations can mediate production and social responsibility.", { institutionalism: 0.8, "cultural-causation": 0.4 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("d-distributism-04", "descriptive", "Moral economy", "Economic arrangements are shaped by moral and social ideas about property, work, dignity, and the common good.", { "cultural-causation": 0.65, institutionalism: 0.55, "structural-power": 0.35 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("n-distributism-01", "normative", "Wide ownership", "A just economy should make productive property broadly accessible rather than reserve it for a narrow class.", { equality: 0.95, liberty: 0.75 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("n-distributism-02", "normative", "Material independence", "Personal freedom requires some material independence through access to productive property or meaningful control of work.", { liberty: 0.9, equality: 0.7 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("n-distributism-03", "normative", "Common good", "Economic life should serve the common good and reciprocal social obligations, not only aggregate output or individual gain.", { solidarity: 0.9, "order-tradition": 0.35 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("n-distributism-04", "normative", "Intermediate associations", "Intermediate associations should have moral and political standing between isolated individuals and centralized state or market power.", { solidarity: 0.8, democracy: 0.6, liberty: 0.45 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("p-distributism-01", "prescriptive", "Broad-based ownership", "Institutions should widen ownership of productive property through small producers, employee ownership, cooperatives, or other broad-based routes.", { "public-ownership": 0.55, decentralization: 0.75, "state-capacity": 0.55 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("p-distributism-02", "prescriptive", "Anti-concentration rules", "Public rules should restrain monopoly and concentration and support independent producers without requiring one ownership formula.", { "state-capacity": 0.75, decentralization: 0.55, "market-allocation": 0.35 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("p-distributism-03", "prescriptive", "Associational governance", "Economic governance should give workers and affected communities meaningful roles through guild, cooperative, or associational institutions.", { "public-ownership": 0.65, decentralization: 0.85, "state-capacity": 0.45 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("p-distributism-04", "prescriptive", "Subsidiarity", "Higher-level institutions should follow subsidiarity by supporting local and associational capacity and a social floor without absorbing every function.", { decentralization: 0.8, "public-provision": 0.65, "state-capacity": 0.55, reformism: 0.4 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -5883,6 +5977,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "bioregionalism") return "source-wiley-hubbard-bioregionalism";
   if (id === "georgism") return "source-helsinki-obeng-odoom-georgist-political-economy";
   if (id === "degrowth") return "source-sage-savini-degrowth-ideology";
+  if (id === "distributism") return "source-jstor-salter-distributism";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -6128,6 +6223,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("trotskyism", "Trotskyism", "Trotskyist", "A historically organized and internally varied Marxist current associated with permanent revolution, internationalism, workers' democracy, and critique of bureaucratic degeneration.", { "structural-power": 0.8, "market-coordination": -0.35, "elite-autonomy": 0.9, "cultural-causation": 0.45, institutionalism: 0.65, "ecological-limits": 0 }, { liberty: 0.85, equality: 0.9, solidarity: 0.85, "order-tradition": -0.45, democracy: 0.95, universalism: 0.85, "ecological-priority": 0 }, { "market-allocation": -0.5, "public-provision": 0.55, "public-ownership": 0.8, decentralization: 0.55, "state-capacity": 0.65, reformism: -0.7, internationalism: 1 }, "A provisional Trotskyism anchor: scholarship supports a historically organized and internally divided internationalist and anti-bureaucratic Marxist current, not this vector's validity, a single permanent-revolution interpretation, or respondent classification."),
   anchor("georgism", "Georgism", "Georgist", "A historically rooted and internally varied land-centered political-economic school and movement connecting equal access to natural opportunity with public capture of socially created land value, private claims to labor and improvements, and varied market and democratic routes.", { "structural-power": 0.95, "market-coordination": 0.45, "elite-autonomy": 0.55, "cultural-causation": 0.2, institutionalism: 0.6, "ecological-limits": 0.25 }, { liberty: 0.8, equality: 0.95, solidarity: 0.75, "order-tradition": 0.05, democracy: 0.65, universalism: 0.3, "ecological-priority": 0.2 }, { "market-allocation": 0.55, "public-provision": 0.65, "public-ownership": 0.15, decentralization: 0.15, "state-capacity": 0.7, reformism: 0.7, internationalism: 0.35 }, "A provisional Georgism anchor: scholarship supports a distinct land, rent, inequality, liberty, republican, and democratic-reform boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one tax design.", "georgism"),
   anchor("degrowth", "Degrowth", "Degrowth", "A plural ecological-political economy and social-movement project challenging growth imperatives and seeking planned, equitable reductions in material and energy throughput with wellbeing, democratic transformation, and institutional variation.", { "structural-power": 0.85, "market-coordination": -0.25, "elite-autonomy": 0.45, "cultural-causation": 0.55, institutionalism: 0.8, "ecological-limits": 0.95 }, { liberty: 0.45, equality: 0.9, solidarity: 0.9, "order-tradition": -0.15, democracy: 0.75, universalism: 0.85, "ecological-priority": 1 }, { "market-allocation": -0.35, "public-provision": 0.85, "public-ownership": 0.55, decentralization: 0.6, "state-capacity": 0.75, reformism: 0.55, internationalism: 0.8 }, "A provisional Degrowth anchor: scholarship supports a contested growth-imperative, throughput, sufficiency, justice, and democratic-transformation boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one transition route.", "degrowth"),
+  anchor("distributism", "Distributism", "Distributist", "A historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, work, common-good responsibility, subsidiarity, and associational or worker control as alternatives to concentrated market or state power.", { "structural-power": 0.9, "market-coordination": 0.35, "elite-autonomy": 0.65, "cultural-causation": 0.75, institutionalism: 0.9, "ecological-limits": 0.15 }, { liberty: 0.85, equality: 0.9, solidarity: 0.95, "order-tradition": 0.65, democracy: 0.7, universalism: 0.35, "ecological-priority": 0.2 }, { "market-allocation": 0.3, "public-provision": 0.55, "public-ownership": 0.5, decentralization: 0.85, "state-capacity": 0.65, reformism: 0.75, internationalism: 0.15 }, "A provisional Distributism anchor: scholarship supports a contested wide-ownership, work, common-good, subsidiarity, and associational boundary with Catholic social roots and varied agrarian, urban, cooperative, guild, market, regulatory, and ecological routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one property or institutional design.", "distributism"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -6144,10 +6240,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 91,
+    contentVersion: 92,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 476, normative: 476, prescriptive: 476 },
+    questionsPerLayer: { descriptive: 480, normative: 480, prescriptive: 480 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

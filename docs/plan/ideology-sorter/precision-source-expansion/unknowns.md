@@ -657,6 +657,15 @@
 - Degrowth currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V94.
 - The shared facet schema still lacks a dedicated growth/throughput axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
 
+## V95 unresolved questions — Distributism canonical meso promotion
+
+- How should a future dedicated wide-ownership or associational construct distinguish Distributism from generic private-property defense, small-business support, cooperative support, anti-monopoly policy, Catholic identity, family traditionalism, agrarian identity, or worker ownership without changing the current schema by inference?
+- Which features are durable across early twentieth-century Catholic social and political movements, Chestertonian and Bellocian formulations, contemporary scholarly reconstructions, Catholic Land Movement experiments, urban and agrarian applications, and later ecological or subsidiarity readings?
+- How should the sorter preserve the boundary among Distributism, Christian Democracy, Conservatism, Socialism, Guild Socialism, Georgism, Agrarian Populism, and Communitarianism when sources use overlapping language about community, property, work, associations, equality, localism, or the common good?
+- How should future items represent variation among family or small-property, employee-ownership, cooperative, guild, public, market, regulatory, and mixed routes without treating one institutional arrangement as constitutive?
+- Distributism currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V95.
+- The shared facet schema still lacks a dedicated property-dispersion or association axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
+
 ## V93 unresolved questions — Georgism canonical meso promotion
 
 - How should a future dedicated land/rent construct distinguish Georgist land-value and location-rent commitments from generic taxation, resource-rent, public-finance, housing, property, or environmental positions without changing the current schema by inference?

@@ -1901,6 +1901,69 @@
     ],
     "finalStatus": "complete_with_conditions"
   },
+  "distributismCoverageRun": {
+    "id": "2026-08-29-distributism-canonical-meso",
+    "description": "Research-backed Distributism canonical meso-tradition promotion, direct production coverage, and end-to-end verification.",
+    "startedAt": "2026-08-29T10:34:00Z",
+    "completedAt": "2026-08-29T11:21:23Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceComparison": "proved: Salter, Boyd, Mathews, Pierson, Quilley, Utrera García, Kelly, and the 1927 primary text support a bounded, contested property-and-common-good tradition with widely dispersed productive ownership, material independence, social responsibility, subsidiarity, associational or worker control, and plural institutional routes",
+      "communitarianismBoundary": "proved: Communitarianism remains a contextual bridge rather than a separate scored node because the current literature treats it as a diverse and contested family spanning metaphysical and policy critiques of individualism",
+      "production": "proved: content version 92 contains 1,440 questions, 480 per layer, 119 editorial anchors, and 114 production anchors",
+      "directTarget": "proved: Distributism has twelve direct target-tagged prompts at 4/4/4 and isolated routing in descriptive, normative, and prescriptive layers",
+      "topology": "proved: one parentless canonical meso node was added; canonical inventory is 9/41/69 and total ontology is 119 nodes with five contextual placements",
+      "heldTargets": "proved: five contextual placements and three registry-only targets remain outside production scoring, and 1,464 effect-free candidates remain quarantined across 122 research targets",
+      "coverage": "proved: research coverage exits successfully with 122 target rows, 122 profiles, 122 false-positive audits, and the expected V95 production counts",
+      "reachability": "proved: Distributism is isolated-reachable in descriptive, normative, and prescriptive layers with zero reported validation errors and zero structural-closure failures",
+      "unitTests": "proved: focused research/scoring/share contracts passed 104/104; full Vitest passed 122/122 across four files",
+      "build": "proved: npx tsc --noEmit and npm run build passed with the existing large-client-chunk advisory",
+      "audit": "proved: npm audit --omit=dev --audit-level=high reported zero vulnerabilities",
+      "share": "proved: compact v2 complete-answer fragment measures 16,001 characters and round-trips",
+      "browser": "proved: supervised local and rebuilt Docker-backed Playwright suites passed 10/10 each",
+      "health": "proved: forced Compose recreation served /healthz as ok and the frontend container reached healthy status",
+      "dockerBuild": "proved: docker compose config and fresh no-cache docker build -f frontend/Dockerfile -t ideology-layer-sorter-frontend:latest . passed, followed by forced Compose recreation",
+      "cognitiveEvidence": "not-run by explicit user constraint; no cognitive, respondent, psychometric, or empirical validation is claimed",
+      "documentation": "proved: research plan, source map, QA scenarios, verification report, and Zeus log/report/state were synchronized",
+      "integrity": "proved: the separate belief-profile/morphology workstream remains outside the V95 scope and is not staged"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "ontology": "src/ontology.ts",
+      "researchBank": "src/research-bank.ts",
+      "governance": "src/research-governance.ts",
+      "tests": "src/research.test.ts, src/scoring.test.ts, src/share.test.ts, tests/sorter.spec.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "reachabilityAudit": "scripts/audit-anchor-reachability.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "verifyReport": "docs/plan/ideology-sorter/verify-report.md",
+      "qaScenarios": "docs/plan/ideology-sorter/precision-source-expansion/qa-scenarios.md",
+      "academicSourceMap": "docs/plan/ideology-sorter/precision-source-expansion/academic-source-map.md",
+      "zeus": "docs/zeus/zeus-report.md",
+      "log": "docs/zeus/zeus-log.md"
+    },
+    "warnings": [
+      "Distributism remains a contested, internally varied, provisional editorial measurement, not a validated respondent classifier or current-actor label.",
+      "Generic Catholic identity, family traditionalism, small business, localism, cooperatives, private-property support, anti-capitalism, anti-monopoly language, agrarian identity, or one ownership proposal is not sufficient evidence for the target.",
+      "The comprehensive goal remains open; five contextual placements and three registry-only targets remain non-scored.",
+      "The current schema has no dedicated property-dispersion facet; the V95 anchor uses existing facets and records that limitation for later schema research rather than retuning geometry without evidence.",
+      "No cognitive review, respondent study, substitute simulation, psychometric, reliability, validity, invariance, empirical, or population evidence was run.",
+      "No remote is configured; push requires a user-provided remote target."
+    ],
+    "finalStatus": "complete_with_conditions"
+  },
   "phases": {
     "parsing": {
       "status": "completed",

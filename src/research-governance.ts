@@ -257,6 +257,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "scored-provisional",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-distributism-promote",
+    "distributism",
+    "promote-to-canonical",
+    "source-backed-contested",
+    ["source-jstor-salter-distributism", "source-cambridge-boyd-distributism", "source-cambridge-mathews-distributism", "source-oup-pierson-distributism", "source-sage-quilley-distributism", "source-cauriensia-utrera-distributism", "source-cambridge-kelly-distributism-work", "source-cambridge-chesterton-distributism-primary"],
+    "The source set supports Distributism as a historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, material independence through work or ownership, common-good obligations, intermediate associations, and subsidiarity. Its Catholic social roots, agrarian and urban forms, worker or guild routes, market participation, public regulation, and later ecological interpretations are sufficiently coherent for a bounded parentless meso node while remaining contested in scope and translation.",
+    "This promotion establishes a parentless canonical meso target and a provisional dedicated measurement branch only. It does not make Distributism synonymous with Christian Democracy, Conservatism, Socialism, Guild Socialism, Georgism, Agrarian Populism, Catholic identity, family traditionalism, small business support, localism, cooperative support, generic private-property defense, anti-capitalism, anti-monopoly policy, one ownership design, or a current political identity; later validation remains required.",
+    ["Distributism may be treated as a Catholic social, Christian democratic, conservative, agrarian, cooperative, guild, or socialist-adjacent tradition rather than a separate meso node.", "The tradition varies across early twentieth-century movement history, later scholarly reconstructions, agrarian and urban applications, private small-property and worker-control routes, market and regulatory designs, and ecological or localist interpretations.", "Religious identity, family values, small firms, rural life, anti-monopoly rules, cooperative support, worker ownership, or generic anti-concentration sentiment alone do not establish the full Distributist boundary."],
+    "canonical",
+    "scored-provisional",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>
