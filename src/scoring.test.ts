@@ -17,14 +17,14 @@ const minimumCoveredAnswers = (layer: Layer): number => Math.ceil(DATASET.manife
 describe("dataset contract", () => {
   it("accepts the versioned dataset", () => {
     expect(validateDataset(DATASET)).toEqual([]);
-    expect(DATASET.manifest.questionCount).toBe(1380);
-    expect(DATASET.manifest.questionsPerLayer).toEqual({ descriptive: 460, normative: 460, prescriptive: 460 });
+    expect(DATASET.manifest.questionCount).toBe(1392);
+    expect(DATASET.manifest.questionsPerLayer).toEqual({ descriptive: 464, normative: 464, prescriptive: 464 });
     expect(DATASET.questions.every((question) => question.sourceRefs.some((sourceRef) => DATASET.sources.find((source) => source.id === sourceRef)?.role === "ideology-research"))).toBe(true);
     expect(DATASET.anchors.every((anchor) => anchor.sourceRefs.some((sourceRef) => DATASET.sources.find((source) => source.id === sourceRef)?.role === "ideology-research"))).toBe(true);
     const canonicalNodes = DATASET.ideologyNodes.filter((node) => node.placement === "canonical");
     expect(canonicalNodes.filter((node) => node.level === "macro")).toHaveLength(9);
     expect(canonicalNodes.filter((node) => node.level === "meso")).toHaveLength(33);
-    expect(canonicalNodes.filter((node) => node.level === "micro")).toHaveLength(67);
+    expect(canonicalNodes.filter((node) => node.level === "micro")).toHaveLength(68);
     expect(canonicalNodes.filter((node) => node.level === "macro").map((node) => node.id)).toEqual(expect.arrayContaining(["liberalism", "ecologism", "feminism", "fascism"]));
     expect(DATASET.anchors.every((anchor) => DATASET.ideologyNodes.some((node) => node.anchorId === anchor.id))).toBe(true);
     expect(DATASET.ideologyRegistry.length).toBeGreaterThan(0);
@@ -61,6 +61,7 @@ describe("dataset contract", () => {
     expect(DATASET.ideologyNodes.find((node) => node.id === "socialist-feminism")).toMatchObject({ status: "scored", anchorId: "socialist-feminism", placement: "canonical", canonicalParentId: "socialist-marxist-feminism", level: "micro" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "left-wing-populism")).toMatchObject({ status: "scored", anchorId: "left-wing-populism", placement: "canonical", canonicalParentId: "populism", level: "micro" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "right-wing-populism")).toMatchObject({ status: "scored", anchorId: "right-wing-populism", placement: "canonical", canonicalParentId: "populism", level: "micro" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "agrarian-populism")).toMatchObject({ status: "scored", anchorId: "agrarian-populism", placement: "canonical", canonicalParentId: "populism", level: "micro" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "wasatiyya")).toMatchObject({ status: "scored", anchorId: "wasatiyya", placement: "canonical", canonicalParentId: "islamism", level: "micro" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "religious-zionism")).toMatchObject({ status: "scored", anchorId: "religious-zionism", placement: "canonical", canonicalParentId: "religious-nationalism", level: "micro" });
     expect(DATASET.questions.filter((question) => /^d-libertarian-\d{2}$/.test(question.id)).length).toBe(4);
@@ -98,8 +99,8 @@ describe("dataset contract", () => {
 describe("layer scoring", () => {
   it("keeps no-view separate and fails closed below the coverage threshold", () => {
     const result = calculateResults({});
-    expect(result.layers.descriptive).toMatchObject({ kind: "insufficient-information", answered: 0, total: 460, coverage: 0 });
-    expect(result.layers.normative).toMatchObject({ kind: "insufficient-information", answered: 0, total: 460 });
+    expect(result.layers.descriptive).toMatchObject({ kind: "insufficient-information", answered: 0, total: 464, coverage: 0 });
+    expect(result.layers.normative).toMatchObject({ kind: "insufficient-information", answered: 0, total: 464 });
     expect(result.combined).toMatchObject({ kind: "insufficient-information", coveredLayers: [], requiredLayers: ["descriptive", "normative", "prescriptive"] });
     expect(result.pulls).toEqual([]);
   });
@@ -107,7 +108,7 @@ describe("layer scoring", () => {
   it("counts mixed responses as answered while preserving the mixed count", () => {
     const minimum = minimumCoveredAnswers("descriptive");
     const result = calculateResults(answersForLayer("descriptive", 0, minimum));
-    expect(result.layers.descriptive).toMatchObject({ kind: "covered", answered: minimum, total: 460, coverage: 0.5, mixed: minimum });
+    expect(result.layers.descriptive).toMatchObject({ kind: "covered", answered: minimum, total: 464, coverage: 0.5, mixed: minimum });
   });
 
   it("uses the exact half threshold and distinguishes it from the answer immediately below it", () => {
@@ -373,8 +374,8 @@ describe("layer scoring", () => {
   });
 
   it("keeps contextual bridge anchors inspectable without including them in production scoring", () => {
-    expect(DATASET.anchors).toHaveLength(114);
-    expect(scoringAnchorsFor(DATASET)).toHaveLength(109);
+    expect(DATASET.anchors).toHaveLength(115);
+    expect(scoringAnchorsFor(DATASET)).toHaveLength(110);
     expect(scoringAnchorsFor(DATASET).map((anchor) => anchor.id)).toEqual(expect.arrayContaining(["anarchism-family", "feminism-family", "liberalism-family", "nationalism-family", "republicanism-family", "socialism-family"]));
     expect(scoringAnchorsFor(DATASET).map((anchor) => anchor.id)).not.toEqual(expect.arrayContaining([
       "anarchism",

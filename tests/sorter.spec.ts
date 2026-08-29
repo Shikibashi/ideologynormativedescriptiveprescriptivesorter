@@ -24,7 +24,7 @@ test("starts with an inspectable brief and requires an answer", async ({ page })
 test("exposes the audited ontology inventory and distinguishes scored branches from contextual registry entries", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /How this experiment works/ }).click();
-  await expect(page.getByText(/9 canonical macro families, 33 canonical meso traditions, and 67 canonical micro branches/)).toBeVisible();
+  await expect(page.getByText(/9 canonical macro families, 33 canonical meso traditions, and 68 canonical micro branches/)).toBeVisible();
   await expect(page.getByText(/Secondary registry\./)).toBeVisible();
   await page.getByText("Browse the canonical meso and micro catalog").click();
   await expect(page.getByText("Right-Libertarianism")).toBeVisible();
@@ -98,6 +98,10 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("right-wing-populism");
   await expect(page.getByRole("heading", { name: "Right-Wing Populism" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("dedicated and scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
+  await page.locator("#research-target").selectOption("agrarian-populism");
+  await expect(page.getByRole("heading", { name: "Agrarian Populism" })).toBeVisible();
   await expect(page.locator(".research-status")).toContainText("dedicated and scored");
   await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("hindutva");
@@ -218,6 +222,7 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
     ["socialist-feminism", "Socialist Feminism"],
     ["left-wing-populism", "Left-Wing Populism"],
     ["right-wing-populism", "Right-Wing Populism"],
+    ["agrarian-populism", "Agrarian Populism"],
     ["hindutva", "Hindutva (Hindu Nationalism)"],
     ["religious-zionism", "Religious Zionism"],
     ["fascism", "Fascism"],

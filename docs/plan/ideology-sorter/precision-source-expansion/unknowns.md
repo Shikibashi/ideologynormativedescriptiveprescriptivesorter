@@ -624,3 +624,11 @@
 - How should project-versus-realization, identity-versus-ideology, and collaboration-versus-fascist commitment be represented without turning language, autonomy, Catholicism, corporatism, authoritarianism, or anti-parliamentary dissatisfaction into sufficient evidence?
 - The deterministic audit reaches Flemish / Belgian Fascism in all three isolated layers and in the combined view; full-production ranks 7/8/4 and 2 combined, aggregate rates 29.0520%/54.1284%, and worst ranks 103/96 remain geometry diagnostics only.
 - Five contextual placements and five registry-only targets remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, and population generalization remain untested by explicit constraint.
+
+## V88 unresolved questions — Agrarian Populism
+
+- How should Agrarian Populism be separated from thin-core Populism, Left-Wing Populism, Right-Wing Populism, Market Socialism, agrarian-class parties, rural conservatism, and food-sovereignty movements across country and period?
+- Which combinations of rural or land-based people–elite construction, land/food/agricultural power, rural–urban antagonism, and class composition are necessary without treating rural residence, farmer status, localism, policy, tariffs, or generic anti-elite sentiment as sufficient evidence?
+- How should smallholder, farm-worker, peasant, cooperative, cross-class, progressive, reactionary, socialist, nationalist, market, and democratic variants remain visible without turning one historical case into a universal current label?
+- The deterministic audit reaches Agrarian Populism in all three isolated layers; its combined top-three diagnostic omits normative and prescriptive layers, and full-competition output remains geometry diagnostics only.
+- Four registry-only targets and five contextual placements remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.

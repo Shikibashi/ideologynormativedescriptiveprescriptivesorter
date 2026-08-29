@@ -914,3 +914,16 @@ The records support terminology, historical scope, movement/party/regime and pro
 The V86 records support terminology, historical scope, institutional and imperial variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification.
 
 ## V85 academic source map — Italian Fascism historical microtype
+
+## V88 academic source map — Agrarian Populism historical microtype
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-wiley-arter-agrarian-populism` | [Arter, “Bigwig hatred” and the emergence of the first Scandinavian agrarian-populist party](https://onlinelibrary.wiley.com/doi/10.1111/1467-9477.12251) | Distinguishes agrarian-class from agrarian-populist party types and centers rural–urban cultural antagonism and people–elite othering |
+| `source-wiley-hajdu-agrarian-populism` | [Hajdu and Mamonova, rural populism and food sovereignty](https://onlinelibrary.wiley.com/doi/10.1111/soru.12301) | Rural people–elite construction, inclusive rural coalition, food sovereignty, and plural/porous meanings |
+| `source-wiley-borras-agrarian-populism` | [Borras, agrarian movements and agrarian populism](https://onlinelibrary.wiley.com/doi/10.1111/joac.12311) | Separates agrarian-populist and right-wing-populist routes and preserves anti-capitalist, socialist, and cross-class possibilities |
+| `source-wiley-pattenden-agrarian-populism` | [Pattenden, cross-class rural movements and agrarian populism](https://onlinelibrary.wiley.com/doi/full/10.1111/joac.12532) | Keeps class composition, rural–urban relations, and progressive or reactionary political routes visible |
+| `source-wiley-mamonova-rural-populism` | [Mamonova and Franquesa, rural populism and the agrarian question](https://onlinelibrary.wiley.com/doi/10.1111/soru.12306) | Preserves local historical variation between progressive food-sovereignty alternatives and right-wing rural populism |
+| Existing context | Existing [agrarian-populism](https://onlinelibrary.wiley.com/doi/10.1111/joac.12311), [Oxford populism](https://academic.oup.com/edited-volume/34510), and [Cambridge populism](https://www.cambridge.org/core/books/abs/populism) records | Comparative family context and historical terminology controls |
+
+The V88 records support terminology, historical scope, rural–urban and class-composition variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification.

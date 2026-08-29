@@ -632,3 +632,11 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 
 - [ ] Five contextual anchors and seven registry-only targets remain outside production scoring; the comprehensive coverage goal remains open.
 - [ ] Future evidence must distinguish project from realization, repression from consensus, and corporative integration from generic corporatism, order preference, national identity, or one-leader support.
+
+## V88 open boundaries — Agrarian Populism
+
+- How should Agrarian Populism be separated from thin-core Populism, Left-Wing Populism, Right-Wing Populism, Market Socialism, agrarian-class parties, rural conservatism, and food-sovereignty movements across country and period?
+- Which combinations of rural or land-based people–elite construction, land/food/agricultural power, rural–urban antagonism, and class composition are necessary without treating rural residence, farmer status, localism, policy, tariffs, or generic anti-elite sentiment as sufficient evidence?
+- How should smallholder, farm-worker, peasant, cooperative, cross-class, progressive, reactionary, socialist, nationalist, market, and democratic variants remain visible without turning one historical case into a universal current label?
+- The deterministic audit reaches Agrarian Populism in all three isolated layers; its combined top-three diagnostic omits normative and prescriptive layers, and full-competition output remains geometry diagnostics only.
+- Four registry-only targets and five contextual placements remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
