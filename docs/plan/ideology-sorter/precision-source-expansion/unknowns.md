@@ -647,3 +647,11 @@
 - How should scale, state, community, and cross-border institutional variation be represented without converting Civic Republicanism into a duplicate of Historical Republicanism, Contemporary Neo-Republicanism, or Radical Republicanism?
 - The existing twelve Civic Republicanism candidates remain effect-free research material; no production questions, effects, anchors, or respondent-facing classification are authorized by V90.
 - Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V91 unresolved questions — Conservative New Right registry retention
+
+- Should future contextual metadata separate Anglo-American or British New Right usages from the European New Right intellectual field, or would that create a second label without a sufficiently stable application boundary?
+- Which features are durable across the label's conservative, neoliberal, metapolitical, civilizational, national, and transnational usages, and which belong only to particular historical or national variants?
+- How should the sorter continue distinguishing Conservative New Right context from Conservatism, National Conservatism, Paleoconservatism, Neoconservatism, Right-Wing Populism, and neoliberalism when sources use overlapping vocabulary?
+- The existing twelve Conservative New Right candidates remain effect-free research material; no production questions, effects, anchors, current-party labels, or respondent-facing classification are authorized by V91.
+- Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.

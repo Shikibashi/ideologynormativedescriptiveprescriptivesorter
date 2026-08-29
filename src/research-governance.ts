@@ -217,6 +217,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "not-scored",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-conservative-new-right-retain-registry",
+    "conservative-new-right",
+    "retain-registry-only",
+    "source-backed-contested",
+    ["source-oup-conservatism", "source-ia-national-conservatism", "source-oup-paleoconservatism", "source-oup-freeden-conservative-revival", "source-tandf-williams-new-right", "source-oup-jackson-new-right-neoliberalism", "source-aup-bures-european-new-right", "source-sage-drolet-williams-european-new-right", "source-sage-gianoncelli-new-right"],
+    "The source set confirms that New Right is a historically and geographically plural label: Anglo-American conservative or neoliberal formations and the European New Right's radical-conservative intellectual network share some family resemblance but do not form one uniform doctrine or one stable political constituency.",
+    "Retain Conservative New Right as contextual registry-only context, keep its aliases as lookup labels rather than equivalence claims, and do not create duplicate canonical ancestry, a scored anchor, production questions, or a current-party or respondent identity label.",
+    ["The label may be split into separate historical or geographic contextual entries if a future source review establishes a useful non-duplicative boundary.", "The European New Right may be treated as a distinct intellectual movement rather than as a synonym for the Anglo-American conservative New Right.", "Cultural continuity, market preference, national or civilizational language, metapolitical activity, or anti-elite rhetoric alone do not establish one New Right construct."],
+    "registry-only",
+    "not-scored",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>
