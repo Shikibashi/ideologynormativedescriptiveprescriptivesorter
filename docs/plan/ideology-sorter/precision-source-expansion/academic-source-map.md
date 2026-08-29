@@ -939,3 +939,16 @@ The V88 records support terminology, historical scope, rural–urban and class-c
 | Existing context | [SEP, “Environmental Ethics”](https://plato.stanford.edu/entries/ethics-environmental/), existing Ecologism, and [Ostrom's commons-governance work](https://doi.org/10.2307/3146384) | Supplies ecological-affordance, determinism, wider political-integration, and accountable common-institution context |
 
 The V89 records support terminology, place/scale scope, governance variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification. No cognitive review or respondent study was run.
+
+## V92 academic source map — Deep Ecology associated-framework boundary
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-trumpeter-drengson-devall-deep-ecology` | [Drengson and Devall, “The Deep Ecology Movement”](https://trumpeter.athabascau.ca/index.php/trumpet/article/view/1191) | Separates personal ecosophy, plural platform principles, policy formulations, and concrete actions through the four-level Apron Diagram |
+| `source-mit-katz-light-rothenberg-deep-ecology` | [Katz, Light, and Rothenberg, eds., *Beneath the Surface*](https://mitpress.mit.edu/9780262611497/beneath-the-surface/) | Supports intrinsic value, ecological principles, noninterference, and the distinction between Deep Ecology as philosophy and as a political or social movement |
+| `source-wiley-grey-deep-ecology-critique` | [Grey, “A Critique of Deep Ecology”](https://doi.org/10.1111/j.1468-5930.1986.tb00420.x) | Records critical dispute over the paradigm, science, technology, and non-technological-culture claims attributed to Deep Ecology |
+| `source-cambridge-dizerega-deep-ecology-liberalism` | [diZerega, “Deep Ecology and Liberalism”](https://doi.org/10.1017/S003467050002043X) | Supplies a political-theory translation and keeps liberal compatibility or tension as a contested route rather than a fixed prescription |
+| `source-uksw-bombik-deep-ecology-methodology` | [Bombik, “The bases and methodology of deep ecology”](https://doi.org/10.21697/seb.2020.18.5.06) | Maps semantic, synthetic, policy, and organizational dimensions while documenting ecological-metaphysical and political variation |
+| `source-sage-luke-deep-ecology` | [Luke, “Deep Ecology: Living as if Nature Mattered”](https://doi.org/10.1177/10826602015002005) | Supports the influence of Deep Ecology on environmental political movements and the need to distinguish ethics from political translation |
+
+The V92 records support intrinsic-value, ecocentric, ecological-self, platform/action, technology, institutional, and plural-translation terminology for original effect-free research items and boundary metadata only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, empirical classification, or population generalization. No cognitive review or respondent study was run.

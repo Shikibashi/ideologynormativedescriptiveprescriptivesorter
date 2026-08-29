@@ -655,3 +655,11 @@
 - How should the sorter continue distinguishing Conservative New Right context from Conservatism, National Conservatism, Paleoconservatism, Neoconservatism, Right-Wing Populism, and neoliberalism when sources use overlapping vocabulary?
 - The existing twelve Conservative New Right candidates remain effect-free research material; no production questions, effects, anchors, current-party labels, or respondent-facing classification are authorized by V91.
 - Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V92 unresolved questions — Deep Ecology associated-framework retention
+
+- How should future metadata preserve the distinction among personal ecosophy, platform principles, movement organization, policy formulation, and concrete action without creating a duplicate political-ideology node?
+- Which elements of intrinsic value, biospheric egalitarianism, ecological selfhood, ecological limits, and noninterference are durable across Deep Ecology variants, and which remain tied to Næssian, movement, or philosophical formulations?
+- How should the sorter continue distinguishing Deep Ecology from Ecologism, Green Politics, Bioregionalism, Social Ecology, Green Anarchism, and Anarcho-Primitivism when sources share ecological, anti-industrial, decentralist, or more-than-human vocabulary?
+- The existing twelve Deep Ecology candidates remain effect-free research material; no production questions, effects, anchors, current-party labels, or respondent-facing classification are authorized by V92.
+- Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
