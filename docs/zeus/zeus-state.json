@@ -1964,6 +1964,68 @@
     ],
     "finalStatus": "complete_with_conditions"
   },
+  "christianSocialismCoverageRun": {
+    "id": "2026-08-29-christian-socialism-canonical-meso",
+    "description": "Research-backed Christian Socialism canonical meso-tradition promotion, direct production coverage, and end-to-end verification.",
+    "startedAt": "2026-08-29T11:30:00Z",
+    "completedAt": "2026-08-29T17:10:54Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceComparison": "proved: Williams, Drake, Stauffer, Jashari, Lockley, Johnson, and Hogan support a bounded, contested Christian theological/ethical and socialist structural-transformation tradition while preserving historical, denominational, movement, democratic, liberationist, cooperative, and institutional variation",
+      "boundary": "proved: Christian moral or theological grounding and a socialist or collective structural-transformation claim are jointly required; private Christian identity, piety, charity, generic social concern, Christian Democracy, Distributism, liberation theology alone, Democratic Socialism alone, one denomination, one movement, or one policy is not sufficient",
+      "production": "proved: content version 93 contains 1,452 questions, 484 per layer, 120 editorial anchors, and 115 production anchors",
+      "directTarget": "proved: Christian Socialism has twelve direct target-tagged prompts at 4/4/4 and isolated routing in descriptive, normative, and prescriptive layers",
+      "topology": "proved: one parentless canonical meso node was added; canonical inventory is 9/37/69 and total ontology is 120 nodes with five contextual placements",
+      "heldTargets": "proved: five contextual placements and three registry-only targets remain outside production scoring, and 1,476 effect-free candidates remain quarantined across 123 research targets",
+      "coverage": "proved: research coverage exits successfully with 123 target rows, 123 profiles, 123 false-positive audits, and zero validation errors",
+      "reachability": "proved: Christian Socialism is isolated-reachable in descriptive, normative, and prescriptive layers with zero reported validation errors and zero structural-closure failures",
+      "unitTests": "proved: focused research/scoring contracts passed 100/100, share tests passed 6/6, and full Vitest passed 130/130 across five files",
+      "build": "proved: npx tsc --noEmit and npm run build passed with the existing large-client-chunk advisory",
+      "audit": "proved: npm audit --omit=dev --audit-level=high reported zero vulnerabilities",
+      "share": "proved: compact v2 complete-answer fragment measures 16,145 characters and round-trips",
+      "browser": "proved: Docker-backed Playwright suite passed 10/10 against the freshly recreated frontend image",
+      "health": "proved: forced Compose recreation served /healthz as ok and the frontend container reached healthy status",
+      "dockerBuild": "proved: docker compose config passed; Compose correctly reported no services to build because it references a prebuilt image; a fresh no-cache docker build -f frontend/Dockerfile supplied the current image before forced recreation",
+      "cognitiveEvidence": "not-run by explicit user constraint; no cognitive, respondent, psychometric, or empirical validation is claimed",
+      "documentation": "proved: domain dictionary, research plan, source map, integration notes, decision record, unknowns, QA scenarios, verification report, and Zeus log/report/state were synchronized",
+      "integrity": "proved: the separate belief-profile/morphology workstream remains outside the V96 scope and is not staged"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "ontology": "src/ontology.ts",
+      "researchBank": "src/research-bank.ts",
+      "governance": "src/research-governance.ts",
+      "tests": "src/research.test.ts, src/scoring.test.ts, src/share.test.ts, tests/sorter.spec.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "reachabilityAudit": "scripts/audit-anchor-reachability.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "verifyReport": "docs/plan/ideology-sorter/verify-report.md",
+      "qaScenarios": "docs/plan/ideology-sorter/precision-source-expansion/qa-scenarios.md",
+      "academicSourceMap": "docs/plan/ideology-sorter/precision-source-expansion/academic-source-map.md",
+      "zeus": "docs/zeus/zeus-report.md",
+      "log": "docs/zeus/zeus-log.md"
+    },
+    "warnings": [
+      "Christian Socialism remains a contested, internally varied, provisional editorial measurement, not a validated respondent classifier or current-actor label.",
+      "The current schema has no dedicated religious-socialism facet; the V96 anchor uses existing facets and records that limitation for later schema research rather than retuning geometry without evidence.",
+      "The comprehensive goal remains open; five contextual placements and three registry-only targets remain non-scored.",
+      "No cognitive review, respondent study, substitute simulation, psychometric, reliability, validity, invariance, empirical, or population evidence was run.",
+      "No remote is configured; push requires a user-provided remote target."
+    ],
+    "finalStatus": "complete_with_conditions"
+  },
   "phases": {
     "parsing": {
       "status": "completed",
@@ -2061,11 +2123,12 @@
   "errors": [],
   "warnings": [
     "Argos is conditional because keyboard-only, text-zoom, clipboard-denial/network-observation, and redacting historical secret-scan coverage remain open.",
-    "The canonical taxonomy is source-curated; candidate coverage is closed at 1,428 quarantined candidates across all 119 targets, while production measurement remains partial and later evidence gates remain open.",
-    "The combined pattern is an equal-layer interpretive composition gated on complete layer coverage; it is not a validated identity classifier, recommendation, comparison, or ranking."
+    "The canonical taxonomy is source-curated; candidate coverage is now 1,476 quarantined candidates across 123 targets, while production measurement remains partial and later evidence gates remain open.",
+    "The combined pattern is an equal-layer interpretive composition gated on complete layer coverage; it is not a validated identity classifier, recommendation, comparison, or ranking.",
+    "The separate belief-profile/morphology workstream remains uncommitted and outside the Christian Socialism tranche; no unrelated changes were staged."
   ],
 "archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism continuation, v53 Cultural Nationalism continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, v57 Zionism micro-branch continuation, v58 Khomeinism micro-branch continuation, v59 Qutbism micro-branch continuation, v60 Radical Republicanism micro-branch continuation, v61 Marxist Feminism micro-branch continuation, v62 Socialist Feminism micro-branch continuation, v63 Left-Wing Populism micro-branch continuation, v64 Neoconservatism continuation, v65 Paleoconservatism continuation, v66 Wasatiyya continuation, v67 Right-Wing Populism continuation, and v68 Hindutva micro-branch continuation, and v69 Religious Zionism micro-branch continuation completed 2026-08-28, v70 Neo-Fascism meso-branch continuation completed 2026-08-28, v71 Falangism micro-branch continuation completed 2026-08-28, and v72 Brazilian Integralism micro-branch continuation completed 2026-08-28, v73 Integral Nationalism cross-case historical-category continuation completed 2026-08-28, and v74 Legionary Fascism historically bounded micro-branch continuation completed 2026-08-28, and v75 Fascism macro-family continuation completed 2026-08-28, and v76 White Nationalism high-risk racial-national continuation completed 2026-08-28, and v77 Neo-Nazism postwar continuity and adaptation completed 2026-08-28, and v78 Revolutionary Islamism cross-case public-order continuation completed 2026-08-28, and v79 Third Positionism postwar far-right continuation completed 2026-08-28, and v80 Salafi-Jihadism high-risk doctrinal continuation completed 2026-08-28, and v81 Revisionist / Bernsteinian Social Democracy historical-microtype continuation completed 2026-08-28, and v82 National-Syndicalism historical-microtype continuation completed 2026-08-28, and v83 British Fascism historical-microtype continuation completed 2026-08-28, and v84 French Fascism historical-microtype continuation completed 2026-08-28, and v85 Italian Fascism historical-microtype continuation completed 2026-08-28, and v86 Japanese Fascism historical-microtype continuation completed 2026-08-28, and v87 Flemish / Belgian Fascism historical-microtype continuation completed 2026-08-29, and v88 Agrarian Populism historically bounded microtype continuation completed 2026-08-29, and v89 Bioregionalism ecological microtype continuation completed 2026-08-29, and v90 Civic Republicanism registry-retention continuation completed 2026-08-29, and v91 Conservative New Right registry-retention continuation completed 2026-08-29, and v92 Deep Ecology associated-framework continuation completed 2026-08-29, and v93 Georgism canonical-meso continuation completed 2026-08-29, and v94 Degrowth canonical-meso continuation completed 2026-08-29",
-  "latestArchiveEntry": "v94 Degrowth canonical-meso continuation completed 2026-08-29",
-  "completedAt": "2026-08-29T10:28:38Z",
+  "latestArchiveEntry": "v96 Christian Socialism canonical-meso continuation completed 2026-08-29",
+  "completedAt": "2026-08-29T17:10:54Z",
   "finalStatus": "partial_with_conditions"
 }

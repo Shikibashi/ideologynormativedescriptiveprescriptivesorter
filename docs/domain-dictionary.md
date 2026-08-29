@@ -1,6 +1,6 @@
 # Domain Dictionary
 
-> Generated 2026-08-26 for the Ideology Layer Sorter. Version v11 (content version 8).
+> Generated 2026-08-29 for the Ideology Layer Sorter. Version v12 (content version 93).
 
 ## Core terms
 
@@ -271,3 +271,4 @@ flowchart LR
 | 2026-08-26 | v9 | Added ontology-wide research governance, explicit promotion/demotion/retention dispositions, and the repeatable coverage-audit contract. |
 | 2026-08-26 | v10 | Updated the active vocabulary context for content version 7: 348 prompts, 23 canonical scoring anchors, 28 editorial anchors, and eight newly activated source-backed meso branches. |
 | 2026-08-26 | v11 | Updated the active vocabulary context for content version 8: 408 prompts, 28 canonical scoring anchors, 33 editorial anchors, and five newly activated source-backed meso branches; retained explicit catalog-only holds. |
+| 2026-08-29 | v12 | Updated the active vocabulary context for content version 93: 1,452 prompts, 115 canonical scoring anchors, 120 editorial anchors, 9 macro / 37 canonical meso / 69 micro nodes, 123 research targets, and 1,476 quarantined candidates; total meso placements remain 42 because five are contextual. |

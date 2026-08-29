@@ -666,6 +666,15 @@
 - Distributism currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V95.
 - The shared facet schema still lacks a dedicated property-dispersion or association axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
 
+## V96 unresolved questions — Christian Socialism canonical meso promotion
+
+- How should a future dedicated Christian-socialist construct distinguish Christian moral or theological grounding joined to socialist structural critique from private Christian identity, piety, charitable relief, generic social concern, Christian Democracy, Distributism, Democratic Socialism without Christian grounding, or one religious movement without changing the current schema by inference?
+- Which features are durable across British Christian Socialism, Social Gospel and Labour Church formations, Catholic and Protestant social thought, Christian–socialist dialogue, liberationist and Third Worldist cases, and later democratic, reformist, revolutionary, church-linked, lay, cooperative, or autonomous interpretations?
+- How should the sorter preserve the boundary among Christian Socialism, Christian Democracy, Distributism, Socialism, Democratic Socialism, Liberation Theology, Social Gospel, Guild Socialism, and religious or communitarian traditions when sources use overlapping language about dignity, solidarity, community, work, cooperation, public action, or the common good?
+- How should future items represent variation among public, cooperative, worker, labor, community, church, lay, movement, and market-compatible routes without treating one ownership model, church, denomination, historical actor, or policy as constitutive?
+- Christian Socialism currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V96.
+- The shared facet schema still lacks a dedicated religious-socialism or theological-grounding axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
+
 ## V93 unresolved questions — Georgism canonical meso promotion
 
 - How should a future dedicated land/rent construct distinguish Georgist land-value and location-rent commitments from generic taxation, resource-rent, public-finance, housing, property, or environmental positions without changing the current schema by inference?

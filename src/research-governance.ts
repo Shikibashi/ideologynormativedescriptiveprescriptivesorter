@@ -270,6 +270,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "scored-provisional",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-christian-socialism-promote",
+    "christian-socialism",
+    "promote-to-canonical",
+    "source-backed-contested",
+    ["source-bloomsbury-williams-christian-socialism", "source-liverpool-williams-christian-socialism-thesis", "source-oup-drake-gospel-church", "source-oup-stauffer-listening-spirit", "source-cambridge-jashari-christians-socialism", "source-oup-lockley-christian-socialism", "source-taylor-johnson-labour-church", "source-sage-hogan-christian-socialism"],
+    "The source set supports Christian Socialism as a plural and historically varied political tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation. Its Anglican, Catholic, Protestant, Social Gospel, liberationist, labor, cooperative, democratic, reformist, revolutionary, public, and autonomous routes are sufficiently coherent for a bounded parentless meso node while remaining contested in scope, theological grounding, and institutional translation.",
+    "This promotion establishes a parentless canonical meso target and a provisional dedicated measurement branch only. It does not make Christian Socialism synonymous with Christian Democracy, Distributism, Socialism, Democratic Socialism, Social Democracy, Christian Nationalism, private Christian identity, piety, charitable relief, generic social concern, liberation theology as a broader field, one denomination, one movement, one author, one policy, or a current political identity; later validation remains required.",
+    ["Christian Socialism may be treated as a religious-socialist discourse, Social Gospel current, Christian left, theological socialism, liberationist formation, or socialist-adjacent tradition rather than a separate meso node.", "The tradition varies across Anglican, Catholic, Protestant, ecumenical, labor, historical, global, liberationist, democratic, reformist, revolutionary, church-linked, lay, and autonomous contexts; no one route or doctrine is universal.", "Christian identity, charitable service, social justice language, welfare support, worker support, democratic socialism, Christian public action, or one historical movement alone do not establish the full Christian-socialist boundary."],
+    "canonical",
+    "scored-provisional",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>

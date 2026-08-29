@@ -4050,6 +4050,86 @@ const SOURCES: readonly SourceReference[] = [
     citation: "Distributism. (1927). New Blackfriars. https://doi.org/10.1111/j.1741-2005.1927.tb04727.x.",
     supports: "Primary period text for the movement's language of widespread ownership, labor's product, opposition to trusts and monopolies, distributive justice, and moral-political mobilization; used with scholarship and not as a complete or validated contemporary measurement source.",
   },
+  {
+    id: "source-bloomsbury-williams-christian-socialism",
+    label: "Williams: Christian Socialism as Political Ideology",
+    url: "https://www.bloomsbury.com/uk/christian-socialism-as-political-ideology-9780755634996/",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Williams, A. A. J. (2022). Christian Socialism as Political Ideology: The Formation of the British Christian Left, 1877–1945. I.B. Tauris.",
+    supports: "A historically bounded study that reconstructs Christian Socialism as a body of political thought with biblical and church bases, a democratic-revolutionary synthesis, co-operation, a debated role for the state, democracy, equality, pacifism, and utopian variation.",
+  },
+  {
+    id: "source-liverpool-williams-christian-socialism-thesis",
+    label: "Williams: Christian Socialism as a Political Ideology thesis",
+    url: "https://livrepository.liverpool.ac.uk/3001797/",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Williams, A. A. J. (2016). Christian Socialism as a Political Ideology [PhD thesis]. University of Liverpool.",
+    supports: "A research-led reconstruction that defines the relationship between Christianity, socialism, and ideology while documenting criticism from both Christian and socialist perspectives; used to preserve contested scope rather than claim one essence.",
+  },
+  {
+    id: "source-oup-drake-gospel-church",
+    label: "Drake: The Gospel of Church",
+    url: "https://doi.org/10.1093/oso/9780197614303.001.0001",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Drake, J. G. (2023). The Gospel of Church: How Mainline Protestants Vilified Christian Socialism and Fractured the Labor Movement. Oxford University Press. https://doi.org/10.1093/oso/9780197614303.001.0001.",
+    supports: "A history of Social Gospel and Christian Socialist conflict over moral and spiritual authority, labor, cooperative commonwealth, and significant change to the social and economic system; distinguishes structural transformation from charitable relief or church identity alone.",
+  },
+  {
+    id: "source-oup-stauffer-listening-spirit",
+    label: "Stauffer: Listening to the Spirit",
+    url: "https://doi.org/10.1093/oso/9780197755525.001.0001",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Stauffer, A. (2024). Listening to the Spirit: The Radical Social Gospel, Sacred Value, and Broad-based Community Organizing. Oxford University Press. https://doi.org/10.1093/oso/9780197755525.001.0001.",
+    supports: "Christian social ethics, sacred value, community organizing, solidarity, racial capitalism, radical democracy, and engagement with economic and political power; supports public and collective action while distinguishing it from private religiosity.",
+  },
+  {
+    id: "source-cambridge-jashari-christians-socialism",
+    label: "Jashari: Chilean Christians for Socialism",
+    url: "https://www.cambridge.org/core/journals/latin-american-research-review/article/chilean-christians-for-socialism-movement-liberationist-third-worldist-and-utopian/FEC7354A28DA423CB5B4A8CFC8684491",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Jashari, D. (2024). The Chilean Christians for Socialism Movement: Liberationist, Third Worldist, and Utopian. Latin American Research Review.",
+    supports: "A case study of a Chilean Christians for Socialism movement that preserves liberationist, Third Worldist, utopian, Marxist-Christian, and context-specific variation rather than treating one national movement as the whole tradition.",
+  },
+  {
+    id: "source-oup-lockley-christian-socialism",
+    label: "Lockley: Capitalism and Socialism",
+    url: "https://academic.oup.com/edited-volume/28079/chapter-abstract/212105874",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Lockley, P. (2017). Capitalism and Socialism. In The Oxford Handbook of Nineteenth-Century Christian Thought. Oxford University Press.",
+    supports: "Historical analysis of Christian responses to capitalism and socialism, including co-operation, common-good reasoning, Catholic social teaching, and Protestant Christian socialisms; supports a cross-confessional and historically varied boundary.",
+  },
+  {
+    id: "source-taylor-johnson-labour-church",
+    label: "Johnson: The Labour Church",
+    url: "https://doi.org/10.4324/9781315304595",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Johnson, N. (2017). The Labour Church: The Movement & Its Message. Routledge. https://doi.org/10.4324/9781315304595.",
+    supports: "Historical study of the Labour Church and its theological socialism, including the relationship between religious language, labor organization, collective action, and a movement-specific vision of social transformation.",
+  },
+  {
+    id: "source-sage-hogan-christian-socialism",
+    label: "Hogan: The Uses of Failure",
+    url: "https://doi.org/10.1177/0725513605049125",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Hogan, T. (2005). The Uses of Failure: Christian Socialism as a Nomadic City of the Gift Economy. Thesis Eleven. https://doi.org/10.1177/0725513605049125.",
+    supports: "A critical account emphasizing that Christian Socialism has no single unitary party or movement and can operate as a plural discourse of free association, political pluralism, and gift economy; used as a false-positive and over-unification guard.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -4182,6 +4262,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   georgism: ["source-helsinki-obeng-odoom-georgist-political-economy", "source-jhu-england-land-liberty", "source-oup-odonnell-george-inequality", "source-oup-mclean-land-value-taxation", "source-sage-williams-georgist-political-ecology", "source-wiley-mccann-georgist-social-philosophy", "source-wiley-hudson-george-critics", "source-oll-george-progress-poverty"],
   degrowth: ["source-cup-kallis-degrowth", "source-tandf-akbulut-degrowth", "source-elsevier-alisa-kallis-degrowth-state", "source-elsevier-asara-degrowth-democracy", "source-cambridge-durrant-cohen-degrowth", "source-sage-savini-degrowth-ideology", "source-elsevier-degrowth-movement-2025", "source-manchester-buch-hansen-degrowth-transformations"],
   distributism: ["source-jstor-salter-distributism", "source-cambridge-boyd-distributism", "source-cambridge-mathews-distributism", "source-oup-pierson-distributism", "source-sage-quilley-distributism", "source-cauriensia-utrera-distributism", "source-cambridge-kelly-distributism-work", "source-cambridge-chesterton-distributism-primary"],
+  christianSocialism: ["source-bloomsbury-williams-christian-socialism", "source-liverpool-williams-christian-socialism-thesis", "source-oup-drake-gospel-church", "source-oup-stauffer-listening-spirit", "source-cambridge-jashari-christians-socialism", "source-oup-lockley-christian-socialism", "source-taylor-johnson-labour-church", "source-sage-hogan-christian-socialism"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4337,6 +4418,7 @@ const COLLECTIVIST_ANARCHISM_CONTEXT = "Analytical scope: Collectivist Anarchism
 const GEORGISM_CONTEXT = "Analytical scope: Georgism / Georgist political economy as a historically rooted and internally varied political-economic school and movement centered on land, land or location value, rent, and equal access to natural opportunity; preserve variation over Henry George's single-tax argument, land-value taxation, public revenue, citizen dividend, land tenure, environmental and resource rents, urban housing, liberal, republican, socialist, cooperative, and international routes; distinguish it from generic tax reform, private-property defense, public ownership of all capital, agrarian identity, environmentalism, and current policy approval; not one tax rate, one historical movement, one city, one party, or a respondent classifier.";
 const DEGROWTH_CONTEXT = "Analytical scope: Degrowth as a plural ecological-economic and political project, social-movement frame, and ideology-in-making that challenges growth imperatives and seeks equitable reductions in material and energy throughput while protecting wellbeing, sufficiency, care, ecological limits, and democratic agency; preserve variation across anti-growth critique, post-growth and wellbeing interpretations, anarchist, systemic, pragmatic, limitarian, commons, cooperative, public, state, civil-society, business, local, national, and transnational routes; distinguish it from generic environmental concern, climate concern, personal frugality, minimalism, recession, austerity, anti-capitalism or socialism alone, localism, anti-technology, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 const DISTRIBUTISM_CONTEXT = "Analytical scope: Distributism as a historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, the dignity and responsibility of work, subsidiarity, common-good obligations, and associational, cooperative, guild, family, or worker routes that mediate between isolated individuals and concentrated market or state power; preserve variation in Catholic social roots, Christian interpretation, agrarian and urban forms, small-property and worker-control mechanisms, market participation, public regulation, and later ecological or localist readings; distinguish it from Catholic identity or piety, family traditionalism, small business support, localism, cooperatives alone, generic private-property defense, anti-capitalism or anti-socialism alone, anti-monopoly policy alone, agrarian identity, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
+const CHRISTIAN_SOCIALISM_CONTEXT = "Analytical scope: Christian Socialism as a plural and historically varied political tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes; preserve variation across Anglican, Catholic, Protestant, Social Gospel, liberationist, ecumenical, historical, and global contexts and across reformist, revolutionary, democratic, church-linked, lay, and autonomous interpretations; distinguish it from private Christian identity or piety, charitable relief, generic social concern, Christian Democracy, Distributism, liberation theology as a broader theological field, democratic socialism without Christian grounding, one denomination, one movement, one author, one policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
@@ -5953,6 +6035,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-distributism-02", "prescriptive", "Anti-concentration rules", "Public rules should restrain monopoly and concentration and support independent producers without requiring one ownership formula.", { "state-capacity": 0.75, decentralization: 0.55, "market-allocation": 0.35 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
   question("p-distributism-03", "prescriptive", "Associational governance", "Economic governance should give workers and affected communities meaningful roles through guild, cooperative, or associational institutions.", { "public-ownership": 0.65, decentralization: 0.85, "state-capacity": 0.45 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
   question("p-distributism-04", "prescriptive", "Subsidiarity", "Higher-level institutions should follow subsidiarity by supporting local and associational capacity and a social floor without absorbing every function.", { decentralization: 0.8, "public-provision": 0.65, "state-capacity": 0.55, reformism: 0.4 }, DISTRIBUTISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.distributism, ["distributism"]),
+  question("d-christian-socialism-01", "descriptive", "Economic power", "Christian Socialist accounts can interpret economic domination and labor relations through both material structures and Christian moral or theological claims.", { "structural-power": 0.9, "cultural-causation": 0.8 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("d-christian-socialism-02", "descriptive", "Collective transformation", "Christian Socialist movements have treated churches, labor organizations, cooperatives, communities, and political movements as sites of collective transformation rather than only charitable relief.", { institutionalism: 0.9, "structural-power": 0.7 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("d-christian-socialism-03", "descriptive", "Historical variation", "Christian Socialism has appeared in Anglican, Catholic, Protestant, Social Gospel, liberationist, labor, and other settings rather than one church or national programme.", { "cultural-causation": 0.9, institutionalism: 0.75 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("d-christian-socialism-04", "descriptive", "Institutional variation", "Christian Socialist arguments can combine criticism of capitalist dependence with varied relationships to markets, property, state action, and democratic institutions.", { "structural-power": 0.8, "market-coordination": 0.35, institutionalism: 0.7 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("n-christian-socialism-01", "normative", "Economic dignity", "Economic life should honor equal human dignity and solidarity rather than allow wealth or ownership to determine whose needs count.", { equality: 0.85, solidarity: 0.95 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("n-christian-socialism-02", "normative", "Structural justice", "Christian moral commitments can require changing social and economic structures, not merely offering private charity to people harmed by them.", { equality: 0.8, solidarity: 0.9 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("n-christian-socialism-03", "normative", "Worker and community standing", "Workers and affected communities should have moral and political standing in decisions about production and economic life.", { democracy: 0.8, solidarity: 0.85, liberty: 0.55 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("n-christian-socialism-04", "normative", "Plural conscience", "A Christian-socialist politics should remain open to plural institutions and critical conscience rather than equate one church, doctrine, or movement with the whole tradition.", { democracy: 0.75, liberty: 0.65, universalism: 0.5 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("p-christian-socialism-01", "prescriptive", "Collective control", "Economic institutions should expand collective, cooperative, public, or worker control where concentrated ownership makes people dependent.", { "public-ownership": 0.8, decentralization: 0.7, "state-capacity": 0.45 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("p-christian-socialism-02", "prescriptive", "Social floor", "Public policy should secure a social floor and reduce exploitation through democratic action rather than rely on charitable relief alone.", { "public-provision": 0.9, "state-capacity": 0.75, reformism: 0.45 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("p-christian-socialism-03", "prescriptive", "Accountable organization", "Christian Socialist projects should organize through labor, community, cooperative, religious, and political institutions that can hold economic power accountable.", { decentralization: 0.75, "public-ownership": 0.65, "state-capacity": 0.55 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("p-christian-socialism-04", "prescriptive", "Plural transformation routes", "Christian Socialist programmes may combine democratic reform, collective organization, cooperative practice, and public action in context-specific ways while retaining structural transformation as the aim.", { decentralization: 0.7, "public-provision": 0.7, "public-ownership": 0.6, reformism: 0.25 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -5978,6 +6072,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "georgism") return "source-helsinki-obeng-odoom-georgist-political-economy";
   if (id === "degrowth") return "source-sage-savini-degrowth-ideology";
   if (id === "distributism") return "source-jstor-salter-distributism";
+  if (id === "christian-socialism") return "source-bloomsbury-williams-christian-socialism";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -6224,6 +6319,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("georgism", "Georgism", "Georgist", "A historically rooted and internally varied land-centered political-economic school and movement connecting equal access to natural opportunity with public capture of socially created land value, private claims to labor and improvements, and varied market and democratic routes.", { "structural-power": 0.95, "market-coordination": 0.45, "elite-autonomy": 0.55, "cultural-causation": 0.2, institutionalism: 0.6, "ecological-limits": 0.25 }, { liberty: 0.8, equality: 0.95, solidarity: 0.75, "order-tradition": 0.05, democracy: 0.65, universalism: 0.3, "ecological-priority": 0.2 }, { "market-allocation": 0.55, "public-provision": 0.65, "public-ownership": 0.15, decentralization: 0.15, "state-capacity": 0.7, reformism: 0.7, internationalism: 0.35 }, "A provisional Georgism anchor: scholarship supports a distinct land, rent, inequality, liberty, republican, and democratic-reform boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one tax design.", "georgism"),
   anchor("degrowth", "Degrowth", "Degrowth", "A plural ecological-political economy and social-movement project challenging growth imperatives and seeking planned, equitable reductions in material and energy throughput with wellbeing, democratic transformation, and institutional variation.", { "structural-power": 0.85, "market-coordination": -0.25, "elite-autonomy": 0.45, "cultural-causation": 0.55, institutionalism: 0.8, "ecological-limits": 0.95 }, { liberty: 0.45, equality: 0.9, solidarity: 0.9, "order-tradition": -0.15, democracy: 0.75, universalism: 0.85, "ecological-priority": 1 }, { "market-allocation": -0.35, "public-provision": 0.85, "public-ownership": 0.55, decentralization: 0.6, "state-capacity": 0.75, reformism: 0.55, internationalism: 0.8 }, "A provisional Degrowth anchor: scholarship supports a contested growth-imperative, throughput, sufficiency, justice, and democratic-transformation boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one transition route.", "degrowth"),
   anchor("distributism", "Distributism", "Distributist", "A historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, work, common-good responsibility, subsidiarity, and associational or worker control as alternatives to concentrated market or state power.", { "structural-power": 0.9, "market-coordination": 0.35, "elite-autonomy": 0.65, "cultural-causation": 0.75, institutionalism: 0.9, "ecological-limits": 0.15 }, { liberty: 0.85, equality: 0.9, solidarity: 0.95, "order-tradition": 0.65, democracy: 0.7, universalism: 0.35, "ecological-priority": 0.2 }, { "market-allocation": 0.3, "public-provision": 0.55, "public-ownership": 0.5, decentralization: 0.85, "state-capacity": 0.65, reformism: 0.75, internationalism: 0.15 }, "A provisional Distributism anchor: scholarship supports a contested wide-ownership, work, common-good, subsidiarity, and associational boundary with Catholic social roots and varied agrarian, urban, cooperative, guild, market, regulatory, and ecological routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one property or institutional design.", "distributism"),
+  anchor("christian-socialism", "Christian Socialism", "Christian Socialist", "A plural and historically varied Christian-socialist tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.65, "cultural-causation": 0.9, institutionalism: 0.85, "ecological-limits": 0.15 }, { liberty: 0.6, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.8, universalism: 0.75, "ecological-priority": 0.2 }, { "market-allocation": -0.3, "public-provision": 0.85, "public-ownership": 0.7, decentralization: 0.7, "state-capacity": 0.75, reformism: 0.5, internationalism: 0.55 }, "A provisional Christian Socialism anchor: scholarship supports a plural religious-socialist boundary involving moral or theological grounding, structural critique, solidarity, and collective transformation, while preserving Anglican, Catholic, Protestant, Social Gospel, liberationist, labor, cooperative, democratic, reformist, revolutionary, and public or autonomous routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one church, movement, or institutional design.", "christian-socialism"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -6240,10 +6336,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 92,
+    contentVersion: 93,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 480, normative: 480, prescriptive: 480 },
+    questionsPerLayer: { descriptive: 484, normative: 484, prescriptive: 484 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

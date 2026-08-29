@@ -211,18 +211,18 @@ describe("research workbench contracts", () => {
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
-    expect(curatedResearchCandidates).toHaveLength(1464);
-    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1464);
+    expect(curatedResearchCandidates).toHaveLength(1476);
+    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1476);
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1440);
-    expect(DATASET.manifest.questionCount).toBe(1440);
+    expect(DATASET.questions).toHaveLength(1452);
+    expect(DATASET.manifest.questionCount).toBe(1452);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
     const targetIds = [...new Set(curatedResearchCandidates.map((candidate) => candidate.targetId))];
-    expect(targetIds).toHaveLength(122);
+    expect(targetIds).toHaveLength(123);
     for (const targetId of targetIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
@@ -1246,6 +1246,32 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("distributism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
   });
 
+  it("activates Christian Socialism with a Christian-socialist structural-transformation boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "christian-socialism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "meso",
+      placement: "canonical",
+      canonicalPath: [{ id: "christian-socialism", label: "Christian Socialism", level: "meso" }],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "christian-socialism")).toMatchObject({ anchorId: "christian-socialism", status: "scored", placement: "canonical" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "christian-socialism")?.canonicalParentId).toBeUndefined();
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("christian-socialism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Christian Socialism as a plural and historically varied political tradition"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-bloomsbury-williams-christian-socialism"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-oup-drake-gospel-church"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-sage-hogan-christian-socialism"))).toBe(true);
+    expect(researchCandidatesForTarget("christian-socialism")).toHaveLength(12);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "christian-socialism")?.dimensions.length).toBeGreaterThanOrEqual(8);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "christian-socialism")).toHaveLength(6);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "christian-socialism")).toMatchObject({ preferredOutcome: expect.stringContaining("convergent") });
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "christian-socialism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchTaxonomyDecisionForTarget("christian-socialism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
+  });
+
   it("activates Zionism with historically varied self-determination and equal-citizenship boundaries", () => {
     const target = buildResearchTargets(DATASET).find((item) => item.id === "zionism");
     expect(target).toMatchObject({
@@ -1979,8 +2005,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1440);
-    expect(DATASET.manifest.questionCount).toBe(1440);
+    expect(DATASET.questions).toHaveLength(1452);
+    expect(DATASET.manifest.questionCount).toBe(1452);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {
