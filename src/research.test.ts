@@ -211,18 +211,18 @@ describe("research workbench contracts", () => {
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
-    expect(curatedResearchCandidates).toHaveLength(1440);
-    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1440);
+    expect(curatedResearchCandidates).toHaveLength(1452);
+    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1452);
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1416);
-    expect(DATASET.manifest.questionCount).toBe(1416);
+    expect(DATASET.questions).toHaveLength(1428);
+    expect(DATASET.manifest.questionCount).toBe(1428);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
     const targetIds = [...new Set(curatedResearchCandidates.map((candidate) => candidate.targetId))];
-    expect(targetIds).toHaveLength(120);
+    expect(targetIds).toHaveLength(121);
     for (const targetId of targetIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
@@ -1194,6 +1194,32 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("georgism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
   });
 
+  it("activates Degrowth with a growth-critical, justice, and institutional-route boundary", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "degrowth");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "meso",
+      placement: "canonical",
+      canonicalPath: [{ id: "degrowth", label: "Degrowth", level: "meso" }],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "degrowth")).toMatchObject({ anchorId: "degrowth", status: "scored", placement: "canonical" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "degrowth")?.canonicalParentId).toBeUndefined();
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("degrowth"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Degrowth as a plural ecological-economic and political project"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-cup-kallis-degrowth"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-sage-savini-degrowth-ideology"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-manchester-buch-hansen-degrowth-transformations"))).toBe(true);
+    expect(researchCandidatesForTarget("degrowth")).toHaveLength(12);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "degrowth")?.dimensions.length).toBeGreaterThanOrEqual(8);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "degrowth")).toHaveLength(6);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "degrowth")).toMatchObject({ preferredOutcome: expect.stringContaining("convergent") });
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "degrowth")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12 });
+    expect(researchTaxonomyDecisionForTarget("degrowth")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
+  });
+
   it("activates Zionism with historically varied self-determination and equal-citizenship boundaries", () => {
     const target = buildResearchTargets(DATASET).find((item) => item.id === "zionism");
     expect(target).toMatchObject({
@@ -1927,8 +1953,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1416);
-    expect(DATASET.manifest.questionCount).toBe(1416);
+    expect(DATASET.questions).toHaveLength(1428);
+    expect(DATASET.manifest.questionCount).toBe(1428);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {

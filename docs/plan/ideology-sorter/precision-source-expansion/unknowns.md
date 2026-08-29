@@ -648,6 +648,15 @@
 - The existing twelve Civic Republicanism candidates remain effect-free research material; no production questions, effects, anchors, or respondent-facing classification are authorized by V90.
 - Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
 
+## V94 unresolved questions — Degrowth canonical meso promotion
+
+- How should a future dedicated growth/throughput construct distinguish growth-critical political commitments from generic ecological concern, climate policy, resource conservation, frugality, wellbeing-economy language, or post-growth terminology without changing the current schema by inference?
+- Which features are durable across Degrowth's ecological-economic critique, sufficiency and wellbeing accounts, state and public-provision routes, infrastructural proposals, movement strategies, local or municipal forms, and international or differentiated-justice interpretations?
+- How should the sorter preserve the boundary among Degrowth, Ecologism, Ecosocialism, Social Ecology, Bioregionalism, Georgism, Social Democracy, anti-capitalism, socialism, green growth, and austerity when sources use overlapping growth, ecological, equality, or provisioning vocabulary?
+- How should future items distinguish planned just reductions in high-consumption throughput from recession, austerity, involuntary deprivation, or an undifferentiated contraction of economic activity?
+- Degrowth currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V94.
+- The shared facet schema still lacks a dedicated growth/throughput axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
+
 ## V93 unresolved questions — Georgism canonical meso promotion
 
 - How should a future dedicated land/rent construct distinguish Georgist land-value and location-rent commitments from generic taxation, resource-rent, public-finance, housing, property, or environmental positions without changing the current schema by inference?

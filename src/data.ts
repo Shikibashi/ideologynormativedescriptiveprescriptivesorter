@@ -3890,6 +3890,86 @@ const SOURCES: readonly SourceReference[] = [
     citation: "George, H. (1879). Progress and Poverty. Online Library of Liberty edition.",
     supports: "Primary-text evidence for Henry George's relationship among land, rent, labor, progress, poverty, equal rights, and the social claim on land value; used as primary ideological evidence alongside later scholarship, not as a validated contemporary measurement source.",
   },
+  {
+    id: "source-cup-kallis-degrowth",
+    label: "Kallis: Degrowth",
+    url: "https://cup.columbia.edu/book/degrowth/9781911116790/",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Kallis, G. (2018). Degrowth. Agenda Publishing / Columbia University Press distribution. https://cup.columbia.edu/book/degrowth/9781911116790/.",
+    supports: "Degrowth as a critique of growth as an ideology and as a project for transforming economies so they produce and consume less or differently; supports the growth-imperative and material-throughput boundary without treating one policy as sufficient.",
+  },
+  {
+    id: "source-tandf-akbulut-degrowth",
+    label: "Akbulut: Degrowth",
+    url: "https://doi.org/10.1080/08935696.2020.1847014",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Akbulut, B. (2021). Degrowth. Rethinking Marxism, 33(1), 98–110. https://doi.org/10.1080/08935696.2020.1847014.",
+    supports: "Degrowth as a conceptual framework and political mobilizer that breaks with growth ideology and repoliticizes economic relations; supports political-economic mechanism and internal debate boundaries.",
+  },
+  {
+    id: "source-elsevier-alisa-kallis-degrowth-state",
+    label: "D'Alisa and Kallis: Degrowth and the State",
+    url: "https://doi.org/10.1016/j.ecolecon.2019.106486",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "D'Alisa, G., & Kallis, G. (2020). Degrowth and the State. Ecological Economics, 169, 106486. https://doi.org/10.1016/j.ecolecon.2019.106486.",
+    supports: "Theoretical disagreement over the state's role in degrowth and the relationship among radical policy change, social movements, symbiotic strategies, and interstitial transformation; supports route variation rather than a state-or-no-state shortcut.",
+  },
+  {
+    id: "source-elsevier-asara-degrowth-democracy",
+    label: "Strunz and Bartkowski: Degrowth, Modernity, and Liberal Democracy",
+    url: "https://doi.org/10.1016/j.jclepro.2018.06.148",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Strunz, S., & Bartkowski, B. (2018). Degrowth, the project of modernity, and liberal democracy. Journal of Cleaner Production, 196, 1158–1168. https://doi.org/10.1016/j.jclepro.2018.06.148.",
+    supports: "A democratic and social-ecological framing of degrowth that distinguishes critique of growth and modernity from rejection of liberal democracy; supports democratic, justice, and transformation-route boundaries.",
+  },
+  {
+    id: "source-cambridge-durrant-cohen-degrowth",
+    label: "Durrant and Cohen: An Infrastructural Pathway to Degrowth",
+    url: "https://www.cambridge.org/core/journals/democratic-theory/article/an-infrastructural-pathway-to-degrowth/500AC43EC0013E2A7D7CA20E2B132E54",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Durrant, D., & Cohen, M. J. (2024). An infrastructural pathway to degrowth. Democratic Theory, 11(1), 92–115. https://doi.org/10.3167/dt.2024.110105.",
+    supports: "Degrowth as a plural field joining activism, empirical critique, and political project, with planned reduction, deliberative democracy, cooperatives, commoning, and infrastructure governance as possible institutional routes.",
+  },
+  {
+    id: "source-sage-savini-degrowth-ideology",
+    label: "Savini: Degrowth as Ideology",
+    url: "https://doi.org/10.1177/09632719251318139",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Savini, F. (2025). Degrowth as ideology: Making values for the soil of Amsterdam. Environmental Values, 34(4–5). https://doi.org/10.1177/09632719251318139.",
+    supports: "Degrowth as a multilayered ideology-in-making in which values contest growth institutions, including sufficiency, care, conviviality, democracy, autonomy, commoning, and decolonisation; supports the three-layer authoring boundary while preserving provisionality.",
+  },
+  {
+    id: "source-elsevier-degrowth-movement-2025",
+    label: "Exploring the Degrowth Movement",
+    url: "https://doi.org/10.1016/j.erss.2025.104045",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Fitzpatrick, N., Eversberg, D., & Schmelzer, M. (2025). Exploring the degrowth movement: A survey of conceptualisations, strategies, and tactics. Energy Research & Social Science, 124, 104045. https://doi.org/10.1016/j.erss.2025.104045.",
+    supports: "Recent survey-based scholarship documenting internal currents among scholar-activists; used only to preserve variation among anarchist, systemic, pragmatic, and limitarian readings, not as local respondent validation or population evidence.",
+  },
+  {
+    id: "source-manchester-buch-hansen-degrowth-transformations",
+    label: "Buch-Hansen, Koch, and Nesterova: Deep Transformations",
+    url: "https://manchesteruniversitypress.co.uk/9781526177858/",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Buch-Hansen, H., Koch, M., & Nesterova, I. (2024). Deep Transformations: A Theory of Degrowth. Manchester University Press. https://manchesteruniversitypress.co.uk/9781526177858/.",
+    supports: "Degrowth as a research field, social movement, and political project with transformation mechanisms across civil society, business, the state, and multiple scales; supports institutional and multilevel route variation.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -4020,6 +4100,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   lesbianFeminism: ["source-uchicago-rich-compulsory-heterosexuality", "source-wiley-schippers-compulsory-heterosexuality", "source-oup-lee-atchison-lesbian-separatism", "source-oup-hobson-lesbian-feminism-defense", "source-sep-feminism-trans", "source-oup-feminist-theory", "source-oup-feminism-strands"],
   oneNationConservatism: ["source-oup-one-nation-conservatism", "source-tandf-walsha-one-nation", "source-policy-press-page-one-nation-welfare", "source-wiley-webb-one-nation-tradition", "source-oup-conservatism", "source-sep-nationalism"],
   georgism: ["source-helsinki-obeng-odoom-georgist-political-economy", "source-jhu-england-land-liberty", "source-oup-odonnell-george-inequality", "source-oup-mclean-land-value-taxation", "source-sage-williams-georgist-political-ecology", "source-wiley-mccann-georgist-social-philosophy", "source-wiley-hudson-george-critics", "source-oll-george-progress-poverty"],
+  degrowth: ["source-cup-kallis-degrowth", "source-tandf-akbulut-degrowth", "source-elsevier-alisa-kallis-degrowth-state", "source-elsevier-asara-degrowth-democracy", "source-cambridge-durrant-cohen-degrowth", "source-sage-savini-degrowth-ideology", "source-elsevier-degrowth-movement-2025", "source-manchester-buch-hansen-degrowth-transformations"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4173,6 +4254,7 @@ const ANARCHO_CAPITALISM_CONTEXT = "Analytical scope: Anarcho-Capitalism as a co
 const ANARCHO_COMMUNISM_CONTEXT = "Analytical scope: Anarcho-Communism as a historically varied social-anarchist communist current joining anti-hierarchical and anti-state organization with abolition of capitalist ownership, decentralized common provision, free association, and need-oriented distribution; distinguish it from Collectivist Anarchism's historically bounded labor-contribution and remuneration debates, Social Anarchism's wider economic variation, Anarcho-Syndicalism's worker-union route, state-centered Communism, and Mutualism or market anarchism; preserve variation over revolutionary and reformist strategy, communal scale, voluntary association, and self-defense; not anti-government sentiment, equality alone, communal cooperation, public ownership, or any single author or period.";
 const COLLECTIVIST_ANARCHISM_CONTEXT = "Analytical scope: Collectivist Anarchism as a historically bounded social-anarchist current associated especially with Bakunin and the First International, joining abolition of capitalist private ownership and state rule with collective control, free association, federated organization, and historically debated labor-linked distribution or remuneration; distinguish it from Anarcho-Communism's need-oriented communist route, Social Anarchism's wider economic variation, Anarcho-Syndicalism's worker-union route, Mutualism, and state-centered socialism; preserve variation over transition, labor accounting, communal scale, revolutionary strategy, gender, and international scope; not collective ownership alone, anti-government sentiment, generic worker control, union support, or a single author's full programme.";
 const GEORGISM_CONTEXT = "Analytical scope: Georgism / Georgist political economy as a historically rooted and internally varied political-economic school and movement centered on land, land or location value, rent, and equal access to natural opportunity; preserve variation over Henry George's single-tax argument, land-value taxation, public revenue, citizen dividend, land tenure, environmental and resource rents, urban housing, liberal, republican, socialist, cooperative, and international routes; distinguish it from generic tax reform, private-property defense, public ownership of all capital, agrarian identity, environmentalism, and current policy approval; not one tax rate, one historical movement, one city, one party, or a respondent classifier.";
+const DEGROWTH_CONTEXT = "Analytical scope: Degrowth as a plural ecological-economic and political project, social-movement frame, and ideology-in-making that challenges growth imperatives and seeks equitable reductions in material and energy throughput while protecting wellbeing, sufficiency, care, ecological limits, and democratic agency; preserve variation across anti-growth critique, post-growth and wellbeing interpretations, anarchist, systemic, pragmatic, limitarian, commons, cooperative, public, state, civil-society, business, local, national, and transnational routes; distinguish it from generic environmental concern, climate concern, personal frugality, minimalism, recession, austerity, anti-capitalism or socialism alone, localism, anti-technology, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
@@ -5765,6 +5847,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-georgism-02", "prescriptive", "Assessment", "Land assessment should distinguish the value of a site from the value of buildings and other improvements.", { "state-capacity": 0.85, reformism: 0.45 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
   question("p-georgism-03", "prescriptive", "Markets and rent", "Land markets can remain in use when institutions return socially created land value to the public and protect equal access.", { "market-allocation": 0.55, "public-provision": 0.6 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
   question("p-georgism-04", "prescriptive", "Shared revenue", "Revenue from land and other common rents should support shared public goods or an equal civic dividend.", { "public-provision": 0.85, "state-capacity": 0.25 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("d-degrowth-01", "descriptive", "Growth and throughput", "Economic growth can increase material throughput and ecological pressure even when some technologies become more efficient.", { "ecological-limits": 0.95, "structural-power": 0.45 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("d-degrowth-02", "descriptive", "Output and wellbeing", "An economy can expand monetary output while failing to improve wellbeing or reducing unequal exposure to ecological harm.", { "ecological-limits": 0.85, "structural-power": 0.75, "market-coordination": -0.15 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("d-degrowth-03", "descriptive", "Growth imperative", "Institutions organized around accumulation and competition can make continued growth appear necessary for employment, revenue, and social stability.", { institutionalism: 0.9, "elite-autonomy": 0.45, "cultural-causation": 0.55 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("d-degrowth-04", "descriptive", "Unequal ecological costs", "Resource use and ecological impacts are distributed unevenly across regions, classes, and generations rather than experienced as one shared cost.", { "structural-power": 0.85, "ecological-limits": 0.8, institutionalism: 0.3 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("n-degrowth-01", "normative", "Wellbeing and sufficiency", "Human wellbeing should not be made dependent on ever-increasing material production and consumption.", { "ecological-priority": 0.95, equality: 0.55 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("n-degrowth-02", "normative", "Shared flourishing", "A just society should prioritize sufficiency, care, and shared flourishing over accumulation and status competition.", { "ecological-priority": 0.85, solidarity: 0.85, equality: 0.7 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("n-degrowth-03", "normative", "Global and intergenerational justice", "People in poorer regions and those bearing ecological harms should not be asked to absorb the costs of reducing resource use.", { equality: 0.85, universalism: 0.85, solidarity: 0.75 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("n-degrowth-04", "normative", "Democratic ecological limits", "Economic decisions should be open to meaningful democratic contestation when they shape ecological limits and collective wellbeing.", { democracy: 0.85, "ecological-priority": 0.7, liberty: 0.35 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("p-degrowth-01", "prescriptive", "Planned reduction and social floor", "Public policy should deliberately reduce resource and energy throughput in high-consuming economies while protecting a social floor.", { "public-provision": 0.8, "state-capacity": 0.75, reformism: 0.55 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("p-degrowth-02", "prescriptive", "Work and essential services", "Work time, income, and essential services should be reorganized so wellbeing does not depend on expanding production.", { "public-provision": 0.85, reformism: 0.6, "state-capacity": 0.45 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("p-degrowth-03", "prescriptive", "Commons and cooperative infrastructure", "Cooperatives, commons, and public institutions should have meaningful roles in governing production and infrastructure.", { "public-ownership": 0.7, decentralization: 0.65, "state-capacity": 0.45 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
+  question("p-degrowth-04", "prescriptive", "Multilevel transition", "Degrowth transitions should be planned through democratic, multilevel institutions that negotiate unequal effects across places and generations.", { "state-capacity": 0.7, internationalism: 0.8, decentralization: 0.55, reformism: 0.5 }, DEGROWTH_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.degrowth, ["degrowth"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -5788,6 +5882,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "agrarian-populism") return "source-wiley-arter-agrarian-populism";
   if (id === "bioregionalism") return "source-wiley-hubbard-bioregionalism";
   if (id === "georgism") return "source-helsinki-obeng-odoom-georgist-political-economy";
+  if (id === "degrowth") return "source-sage-savini-degrowth-ideology";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -6032,6 +6127,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("guild-socialism", "Guild Socialism", "Guild Socialist", "A historically situated socialist tradition centered on industrial self-government, functional representation, public or social ownership, and coordination across guild, civic, and territorial associations.", { "structural-power": 0.85, "market-coordination": -0.35, "elite-autonomy": 0.75, "cultural-causation": 0.2, institutionalism: 0.95, "ecological-limits": 0.05 }, { liberty: 0.85, equality: 0.9, solidarity: 0.85, "order-tradition": 0.05, democracy: 1, universalism: 0.6, "ecological-priority": 0.1 }, { "market-allocation": 0.15, "public-provision": 0.65, "public-ownership": 0.9, decentralization: 0.95, "state-capacity": 0.55, reformism: 0.55, internationalism: 0.25 }, "A provisional Guild Socialism anchor: scholarship supports historical worker control, plural functional representation, public or social ownership, and coordination across associations, not this vector's validity or respondent classification."),
   anchor("trotskyism", "Trotskyism", "Trotskyist", "A historically organized and internally varied Marxist current associated with permanent revolution, internationalism, workers' democracy, and critique of bureaucratic degeneration.", { "structural-power": 0.8, "market-coordination": -0.35, "elite-autonomy": 0.9, "cultural-causation": 0.45, institutionalism: 0.65, "ecological-limits": 0 }, { liberty: 0.85, equality: 0.9, solidarity: 0.85, "order-tradition": -0.45, democracy: 0.95, universalism: 0.85, "ecological-priority": 0 }, { "market-allocation": -0.5, "public-provision": 0.55, "public-ownership": 0.8, decentralization: 0.55, "state-capacity": 0.65, reformism: -0.7, internationalism: 1 }, "A provisional Trotskyism anchor: scholarship supports a historically organized and internally divided internationalist and anti-bureaucratic Marxist current, not this vector's validity, a single permanent-revolution interpretation, or respondent classification."),
   anchor("georgism", "Georgism", "Georgist", "A historically rooted and internally varied land-centered political-economic school and movement connecting equal access to natural opportunity with public capture of socially created land value, private claims to labor and improvements, and varied market and democratic routes.", { "structural-power": 0.95, "market-coordination": 0.45, "elite-autonomy": 0.55, "cultural-causation": 0.2, institutionalism: 0.6, "ecological-limits": 0.25 }, { liberty: 0.8, equality: 0.95, solidarity: 0.75, "order-tradition": 0.05, democracy: 0.65, universalism: 0.3, "ecological-priority": 0.2 }, { "market-allocation": 0.55, "public-provision": 0.65, "public-ownership": 0.15, decentralization: 0.15, "state-capacity": 0.7, reformism: 0.7, internationalism: 0.35 }, "A provisional Georgism anchor: scholarship supports a distinct land, rent, inequality, liberty, republican, and democratic-reform boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one tax design.", "georgism"),
+  anchor("degrowth", "Degrowth", "Degrowth", "A plural ecological-political economy and social-movement project challenging growth imperatives and seeking planned, equitable reductions in material and energy throughput with wellbeing, democratic transformation, and institutional variation.", { "structural-power": 0.85, "market-coordination": -0.25, "elite-autonomy": 0.45, "cultural-causation": 0.55, institutionalism: 0.8, "ecological-limits": 0.95 }, { liberty: 0.45, equality: 0.9, solidarity: 0.9, "order-tradition": -0.15, democracy: 0.75, universalism: 0.85, "ecological-priority": 1 }, { "market-allocation": -0.35, "public-provision": 0.85, "public-ownership": 0.55, decentralization: 0.6, "state-capacity": 0.75, reformism: 0.55, internationalism: 0.8 }, "A provisional Degrowth anchor: scholarship supports a contested growth-imperative, throughput, sufficiency, justice, and democratic-transformation boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one transition route.", "degrowth"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -6048,10 +6144,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 90,
+    contentVersion: 91,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 472, normative: 472, prescriptive: 472 },
+    questionsPerLayer: { descriptive: 476, normative: 476, prescriptive: 476 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

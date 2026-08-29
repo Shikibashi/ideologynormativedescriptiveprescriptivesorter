@@ -967,3 +967,18 @@ The V92 records support intrinsic-value, ecocentric, ecological-self, platform/a
 | source-oll-george-progress-poverty | [George, *Progress and Poverty*](https://oll.libertyfund.org/titles/george-progress-and-poverty) | Provides primary-text evidence for land, rent, labor, progress, poverty, equal rights, and the social claim on land value |
 
 The V93 records support terminology, historical provenance, internal variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, empirical classification, or population generalization. No cognitive review or respondent study was run.
+
+## V94 academic source map — Degrowth meso boundary
+
+| Source ID | Academic or primary record | Boundary contribution |
+|---|---|---|
+| source-cup-kallis-degrowth | [Kallis, *Degrowth*](https://cup.columbia.edu/book/degrowth/9781911116790/) | Establishes Degrowth as a critique of growth-centred political economy and a plural project concerned with sufficiency, wellbeing, ecological limits, and social justice |
+| source-tandf-akbulut-degrowth | [Akbulut, “Degrowth”](https://doi.org/10.1080/08935696.2020.1847014) | Locates Degrowth in a contested field of political-economic critique and preserves variation in its conceptual and strategic translations |
+| source-elsevier-alisa-kallis-degrowth-state | [D'Alisa and Kallis, “Degrowth and the State”](https://doi.org/10.1016/j.ecolecon.2019.106486) | Supports explicit treatment of the state, institutions, public action, and plural routes rather than reducing Degrowth to personal consumption or statelessness |
+| source-elsevier-asara-degrowth-democracy | [Strunz and Bartkowski, “Degrowth, the project of modernity, and liberal democracy”](https://doi.org/10.1016/j.jclepro.2018.06.148) | Documents the relationship among Degrowth, modernity, democracy, and competing institutional interpretations |
+| source-cambridge-durrant-cohen-degrowth | [Durrant and Cohen, “An infrastructural pathway to degrowth”](https://www.cambridge.org/core/journals/democratic-theory/article/an-infrastructural-pathway-to-degrowth/500AC43EC0013E2A7D7CA20E2B132E54) | Supplies an infrastructural and democratic route to equitable provision, showing that prescriptive Degrowth analysis is not exhausted by aggregate contraction |
+| source-sage-savini-degrowth-ideology | [Savini, “The ideology of degrowth”](https://doi.org/10.1177/09632719251318139) | Provides direct support for treating Degrowth as an ideological and political project with normative and institutional dimensions, while preserving internal contestation |
+| source-elsevier-degrowth-movement-2025 | [Fitzpatrick, Eversberg, and Schmelzer, “Exploring the degrowth movement”](https://doi.org/10.1016/j.erss.2025.104045) | Maps movement conceptualisations, strategies, and tactics and supports variation across movement practice rather than one mandatory programme |
+| source-manchester-buch-hansen-degrowth-transformations | [Buch-Hansen, Koch, and Nesterova, *Deep Transformations*](https://manchesteruniversitypress.co.uk/9781526177858/) | Supports a transformation-oriented account of post-growth political economy, social provisioning, and structural change beyond a single policy instrument |
+
+The V94 records support Degrowth terminology, intellectual provenance, growth/throughput and sufficiency boundaries, institutional variation, movement variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, empirical classification, or population generalization. No cognitive review or respondent study was run.

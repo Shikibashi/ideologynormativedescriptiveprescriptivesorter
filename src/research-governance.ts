@@ -244,6 +244,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "scored-provisional",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-degrowth-promote",
+    "degrowth",
+    "promote-to-canonical",
+    "source-backed-contested",
+    ["source-cup-kallis-degrowth", "source-tandf-akbulut-degrowth", "source-elsevier-alisa-kallis-degrowth-state", "source-elsevier-asara-degrowth-democracy", "source-cambridge-durrant-cohen-degrowth", "source-sage-savini-degrowth-ideology", "source-elsevier-degrowth-movement-2025", "source-manchester-buch-hansen-degrowth-transformations"],
+    "The source set supports Degrowth as a plural ecological-economic field, social-movement frame, and political project centered on growth imperatives, material and energy throughput, sufficiency, wellbeing, differentiated justice, and democratic or institutionally varied transformation.",
+    "This promotion establishes a parentless canonical meso target and a provisional dedicated measurement branch only. It does not make Degrowth synonymous with Ecologism, Ecosocialism, Social Ecology, Bioregionalism, Georgism, Social Democracy, recession, austerity, environmentalism, anti-capitalism, localism, anti-technology, a wellbeing-economy label, one policy, one movement, or a current political identity; later validation remains required.",
+    ["Degrowth may be treated as an ecological-economic framework, movement, post-growth discourse, or variant within broader ecological or socialist traditions rather than a separate canonical node.", "The field varies across anarchist, systemic, pragmatic, limitarian, commons, cooperative, public, state, civil-society, business, local, national, and transnational routes; the label is not one uniform institutional programme.", "Environmental concern, personal frugality, reduced consumption, recession, austerity, anti-capitalism, public provision, localism, or one climate or work-time policy alone do not establish the growth-critical mechanism."],
+    "canonical",
+    "scored-provisional",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>
