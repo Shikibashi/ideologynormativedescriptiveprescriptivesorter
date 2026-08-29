@@ -214,8 +214,8 @@ describe("research workbench contracts", () => {
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1392);
-    expect(DATASET.manifest.questionCount).toBe(1392);
+    expect(DATASET.questions).toHaveLength(1404);
+    expect(DATASET.manifest.questionCount).toBe(1404);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
@@ -1469,17 +1469,16 @@ describe("research workbench contracts", () => {
       "green-politics",
       "liberal-conservatism-context",
       "market-socialism-context",
-      "bioregionalism",
     ];
     const targets = buildResearchTargets(DATASET);
 
     for (const targetId of contextIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
-      expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ currentStatus: targetId === "bioregionalism" ? "registry-only" : "contextual-only", newCandidateItems: 12 });
+      expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ currentStatus: "contextual-only", newCandidateItems: 12 });
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
       expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(2);
       expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
-      expect(targets.find((target) => target.id === targetId)?.measurementStatus).toBe(targetId === "bioregionalism" ? "registry-only" : "contextual-only");
+      expect(targets.find((target) => target.id === targetId)?.measurementStatus).toBe("contextual-only");
     }
 
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => contextIds.includes(targetId)))).toBe(false);
@@ -1719,9 +1718,39 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("agrarian-populism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
   });
 
+  it("promotes Bioregionalism as a contested and bounded ecological microtype", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "bioregionalism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "ecologism", label: "Ecologism / Green Ideology", level: "macro" },
+        { id: "bioregionalism", label: "Bioregionalism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "bioregionalism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("bioregionalism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Bioregionalism as a historically varied"))).toBe(true);
+    for (const sourceId of ["source-wiley-mctaggart-bioregionalism", "source-wiley-hubbard-bioregionalism", "source-wiley-wearne-bioregionalism", "source-tandf-waldenberger-bioregionalism"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "bioregionalism")?.dimensions.length).toBeGreaterThanOrEqual(7);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "bioregionalism")).toHaveLength(3);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "bioregionalism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
+  });
+
   it("closes the completion tranche with the research-backed Bernsteinian promotion explicit", () => {
     const completionIds = [
       "agrarian-populism",
+      "bioregionalism",
       "british-fascism",
       "civic-republicanism",
       "conservative-new-right",
@@ -1737,14 +1766,14 @@ describe("research workbench contracts", () => {
     const registryIds = completionIds.filter((targetId) => DATASET.ideologyRegistry.some((entry) => entry.id === targetId));
     const targets = buildResearchTargets(DATASET);
 
-    expect(completionIds).toHaveLength(12);
+    expect(completionIds).toHaveLength(13);
     for (const targetId of completionIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
-      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(["agrarian-populism", "british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? 4 : 2);
+      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(["agrarian-populism", "bioregionalism", "british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? targetId === "bioregionalism" ? 3 : 4 : 2);
       expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
       expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ newCandidateItems: 12 });
-      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["agrarian-populism", "british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
+      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["agrarian-populism", "bioregionalism", "british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
     }
 
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => registryIds.includes(targetId)))).toBe(false);
@@ -1757,6 +1786,7 @@ describe("research workbench contracts", () => {
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("japanese-fascism"))).toHaveLength(12);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("flemish-belgian-fascism"))).toHaveLength(12);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("agrarian-populism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("bioregionalism"))).toHaveLength(12);
   });
 
   it("gives the next source-backed branch tranche direct three-layer coverage while keeping it provisional", () => {
@@ -1819,8 +1849,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1392);
-    expect(DATASET.manifest.questionCount).toBe(1392);
+    expect(DATASET.questions).toHaveLength(1404);
+    expect(DATASET.manifest.questionCount).toBe(1404);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {
@@ -1890,7 +1920,7 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("legionary-fascism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("white-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
-    expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
+    expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "radical-republicanism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "marxist-feminism")).toBe(true);

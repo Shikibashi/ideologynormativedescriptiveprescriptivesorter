@@ -685,3 +685,13 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-70-03 | Run coverage/reachability. | Zero errors/failures; isolated routing in all layers; ranks 3/1/1 and 1 combined, aggregate rates 21.7391% and 38.0435%, and worst ranks 87 and 80 are diagnostics only. |
 | P-70-04 | Inspect taxonomy and false-positive metadata. | Governance shows retain-canonical/scored-provisional and the workbench shows dedicated-and-scored as separate states; generic nationalism, authoritarianism, anti-communism, symbols, actors, nostalgia, and operational content are not sufficient. |
 | P-70-05 | Run delivery/evidence checks. | TypeScript, 81/81 tests, 12,833-character share round-trip, build/audit, healthy /healthz, and Playwright 10/10 locally and against Docker; no cognitive/respondent/empirical claim. |
+
+## V89 QA scenarios — Bioregionalism ecological microtype
+
+| ID | Action | Expected evidence |
+|---|---|---|
+| P-89-01 | Run research coverage and dataset validation. | 1,404 prompts at 468 per layer; 116 editorial anchors; 111 production anchors; 116 ontology nodes with canonical inventory 9/33/69; 3 registry entries; 1,428 candidates across 119 targets; zero validation errors. |
+| P-89-02 | Inspect the Bioregionalism target. | Canonical `Ecologism / Green Ideology → Bioregionalism` micro path; dedicated-scored state; 12 direct items at 4/4/4; seven direct source references; three neighbors; seven-dimension profile; false-positive audit; and promote-to-canonical governance. |
+| P-89-03 | Run isolated anchor reachability and full fixture diagnostics. | Bioregionalism reaches every layer in an isolated-anchor fixture; the combined top-three diagnostic omits all three layers; full-production output remains deterministic geometry evidence only, with no uncalibrated retuning. |
+| P-89-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 15,569 characters, remains below the finite limit, and decodes to the complete answer map. |
+| P-89-05 | Run delivery and browser checks. | TypeScript, Vitest 99/99, build, high-severity audit, coverage, reachability, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive, respondent, psychometric, or empirical claim. |

@@ -640,3 +640,11 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - How should smallholder, farm-worker, peasant, cooperative, cross-class, progressive, reactionary, socialist, nationalist, market, and democratic variants remain visible without turning one historical case into a universal current label?
 - The deterministic audit reaches Agrarian Populism in all three isolated layers; its combined top-three diagnostic omits normative and prescriptive layers, and full-competition output remains geometry diagnostics only.
 - Four registry-only targets and five contextual placements remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V89 open boundaries — Bioregionalism ecological microtype
+
+- How should Bioregionalism be separated from Ecologism, Green Politics, Deep Ecology, Social Ecology, Green Anarchism, generic environmentalism, localism, watershed planning, and decentralization when the literature treats it as a plural and processual field rather than one fixed doctrine?
+- Which combinations of ecological place or scale, biophysical and inhabiting relations, networked interdependence, more-than-human responsibility, and accountable governance are necessary without treating local identity, environmental concern, land-use preference, or one planning tool as sufficient evidence?
+- How should environmental-determinism critiques, urban–other power relations, jurisdictional variation, and local/regional/interregional scale be represented without converting bioregional boundaries into naturalized or exclusionary membership rules?
+- The deterministic audit reaches Bioregionalism in all three isolated layers. Its full-competition combined top-three diagnostic omits all three layers and remains geometry evidence only; it is not a respondent, cognitive, psychometric, or empirical result.
+- Three registry-only targets and five contextual placements remain outside production scoring. Respondent comprehension, reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.

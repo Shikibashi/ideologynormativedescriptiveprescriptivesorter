@@ -927,3 +927,15 @@ The V86 records support terminology, historical scope, institutional and imperia
 | Existing context | Existing [agrarian-populism](https://onlinelibrary.wiley.com/doi/10.1111/joac.12311), [Oxford populism](https://academic.oup.com/edited-volume/34510), and [Cambridge populism](https://www.cambridge.org/core/books/abs/populism) records | Comparative family context and historical terminology controls |
 
 The V88 records support terminology, historical scope, rural–urban and class-composition variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification.
+
+## V89 academic source map — Bioregionalism ecological microtype
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-wiley-mctaggart-bioregionalism` | [McTaggart, “Bioregionalism and regional geography: place, people, and networks”](https://doi.org/10.1111/j.1541-0064.1993.tb00390.x) | Places bioregionalism in an action-oriented regional field organized through biophysical, inhabiting, and network relations rather than one fixed boundary |
+| `source-wiley-hubbard-bioregionalism` | [Hubbard et al., “Where are you at? Re-engaging bioregional ideas and what they offer geography”](https://eprints.whiterose.ac.uk/202190/) | Supports place-and-scale discourse, ontological/critical/processual plurality, and explicit environmental-determinism critique |
+| `source-wiley-wearne-bioregionalism` | [Wearne et al., “A learning journey into contemporary bioregionalism”](https://besjournals.onlinelibrary.wiley.com/doi/10.1002/pan3.10548) | Supports contemporary bioregioning, more-than-human thriving, cross-scale connection, participation, power, justice, and contextual variation |
+| `source-tandf-waldenberger-bioregionalism` | [Waldenberger and Savini, “Bioregionalism and Degrowth: Addressing the Urban-Other Divide”](https://www.tandfonline.com/doi/full/10.1080/14649357.2025.2524106) | Supports regional socio-metabolic scale, sufficiency, polycentric cooperation, regenerative ecology, post-humanist planning, and anti-localist boundary work |
+| Existing context | [SEP, “Environmental Ethics”](https://plato.stanford.edu/entries/ethics-environmental/), existing Ecologism, and [Ostrom's commons-governance work](https://doi.org/10.2307/3146384) | Supplies ecological-affordance, determinism, wider political-integration, and accountable common-institution context |
+
+The V89 records support terminology, place/scale scope, governance variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification. No cognitive review or respondent study was run.
