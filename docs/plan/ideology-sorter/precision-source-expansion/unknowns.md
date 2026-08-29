@@ -648,6 +648,15 @@
 - The existing twelve Civic Republicanism candidates remain effect-free research material; no production questions, effects, anchors, or respondent-facing classification are authorized by V90.
 - Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
 
+## V97 unresolved questions — Ujamaa / Nyererean African Socialism canonical meso promotion
+
+- How should a future dedicated construct distinguish Ujamaa's familyhood, egalitarian social relations, collective self-reliance, nation-building, and communal or public development from generic Socialism, Pan-Africanism, Anti-Colonial Nationalism, ruralism, nationalism, communitarianism, or public ownership without changing the current schema by inference?
+- Which features are durable across Nyerere's political thought, the wider African-Socialist field, early postcolonial Tanzania, rural and urban settings, national and transnational projects, local agency, state direction, nationalization, and villagization, and which remain period- or implementation-specific?
+- How should the sorter preserve the boundary among Ujamaa, Socialism, Pan-Africanism, Anti-Colonial Nationalism, Agrarian Populism, Christian Socialism, Social Democracy, and Communitarianism when sources use overlapping language about equality, solidarity, self-reliance, community, sovereignty, development, or the common good?
+- How should future items represent variation between political ideal and implementation, including participatory, cooperative, public, party, national, local, developmental, coercive, and uneven routes, without making one institution, policy, actor, or outcome constitutive?
+- Ujamaa currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V97.
+- The shared facet schema still lacks a dedicated African-Socialism, familyhood, postcolonial-development, or collective-self-reliance axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
+
 ## V94 unresolved questions — Degrowth canonical meso promotion
 
 - How should a future dedicated growth/throughput construct distinguish growth-critical political commitments from generic ecological concern, climate policy, resource conservation, frugality, wellbeing-economy language, or post-growth terminology without changing the current schema by inference?

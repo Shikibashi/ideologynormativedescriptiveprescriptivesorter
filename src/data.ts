@@ -4130,6 +4130,86 @@ const SOURCES: readonly SourceReference[] = [
     citation: "Hogan, T. (2005). The Uses of Failure: Christian Socialism as a Nomadic City of the Gift Economy. Thesis Eleven. https://doi.org/10.1177/0725513605049125.",
     supports: "A critical account emphasizing that Christian Socialism has no single unitary party or movement and can operate as a plural discourse of free association, political pluralism, and gift economy; used as a false-positive and over-unification guard.",
   },
+  {
+    id: "source-oup-jennings-ujamaa",
+    label: "Jennings: Ujamaa",
+    url: "https://academic.oup.com/edited-volume/61663/chapter-abstract/553407677",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Jennings, M. (2017). Ujamaa. Oxford Research Encyclopedia of African History. https://doi.org/10.1093/acrefore/9780190277734.013.172.",
+    supports: "A reference treatment of Ujamaa as a form of African socialism blending socialist principles with a communitarian understanding, egalitarianism, self-reliance, participation in nation-building, communal rural labor and land, and nationalization; also preserves its state-directed implementation and wider legacy.",
+  },
+  {
+    id: "source-cambridge-lal-self-reliance-ujamaa",
+    label: "Lal: Self-Reliance and the State",
+    url: "https://doi.org/10.1017/S0001972012000022",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Lal, P. (2012). Self-Reliance and the State: The Multiple Meanings of Development in Early Post-Colonial Tanzania. Africa, 82(2), 212–234. https://doi.org/10.1017/S0001972012000022.",
+    supports: "A historical analysis of self-reliance as a key Ujamaa principle with multiple official, civic, rural, regional, dignitary, and survival meanings; supports measuring the concept without reducing it to one state policy or one lived experience.",
+  },
+  {
+    id: "source-cambridge-lal-african-socialism-ujamaa",
+    label: "Lal: African Socialism in Postcolonial Tanzania",
+    url: "https://doi.org/10.1017/CBO9781316221679",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Lal, P. (2015). African Socialism in Postcolonial Tanzania: Between the Village and the World. Cambridge University Press. https://doi.org/10.1017/CBO9781316221679.",
+    supports: "A historically grounded study of Tanzania's Ujamaa socialist experiment and villagization that keeps the political vision, rural development, local agency, and implementation consequences analytically distinct.",
+  },
+  {
+    id: "source-cambridge-hunter-african-socialism",
+    label: "Hunter: African Socialism",
+    url: "https://doi.org/10.1017/9781108611107.023",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Hunter, E. (2022). African Socialism. In M. van der Linden (Ed.), The Cambridge History of Socialism (pp. 455–473). Cambridge University Press. https://doi.org/10.1017/9781108611107.023.",
+    supports: "A comparative history showing that African Socialism was used by political leaders with varied ideological positions and that the umbrella term cannot substitute for a bounded Ujamaa/Nyererean construct.",
+  },
+  {
+    id: "source-cambridge-aminzade-african-socialism",
+    label: "Aminzade: African Socialism and Nation-Building",
+    url: "https://doi.org/10.1017/CBO9781107360259.008",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Aminzade, R. (2013). African Socialism: The Challenges of Nation-Building. In Race, Nation, and Citizenship in Postcolonial Africa: The Case of Tanzania (pp. 135–170). Cambridge University Press. https://doi.org/10.1017/CBO9781107360259.008.",
+    supports: "A case-based account of African Socialism, nation-building, citizenship, and political-economic transformation in Tanzania; supports the national-development and membership boundary while preserving historical context.",
+  },
+  {
+    id: "source-ahr-maddox-lal-african-socialism",
+    label: "Maddox review of Lal's African Socialism",
+    url: "https://doi.org/10.1093/ahr/122.1.288",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Maddox, G. H. (2017). Review of African Socialism in Postcolonial Tanzania: Between the Village and the World. American Historical Review, 122(1), 288. https://doi.org/10.1093/ahr/122.1.288.",
+    supports: "A scholarly review summarizing Ujamaa as Nyerere's political philosophy for a socialist path, its rural-development, nationalization, and self-reliance emphases, and the historiographical dispute over developmentalist-authoritarian versus justice-oriented interpretations.",
+  },
+  {
+    id: "source-oup-nyerere-ujamaa-1962",
+    label: "Nyerere: Ujamaa, the Basis of African Socialism",
+    url: "https://www.juliusnyerere.org/uploads/ujamaa_1962.pdf",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Nyerere, J. K. (1962). Ujamaa: The Basis of African Socialism. Reproduced in Freedom and Unity / Ujamaa: Essays on Socialism.",
+    supports: "A primary statement of Ujamaa's familyhood, social equality, freedom, unity, cooperation, and African-socialist rationale; used as a primary text alongside historical scholarship, not as proof of contemporary respondent meaning or implementation success.",
+  },
+  {
+    id: "source-nyerere-arusha-declaration-1967",
+    label: "Nyerere: Arusha Declaration and TANU's Policy",
+    url: "https://sourcebooks.fordham.edu/mod/1967-arusha.asp",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Tanganyika African National Union. (1967). The Arusha Declaration and TANU's Policy on Socialism and Self-Reliance. Primary text.",
+    supports: "A primary policy statement connecting socialism, self-reliance, cooperation, public responsibility, and national development; used to represent prescriptive language while keeping the historical policy text separate from all Ujamaa interpretations.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -4263,6 +4343,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   degrowth: ["source-cup-kallis-degrowth", "source-tandf-akbulut-degrowth", "source-elsevier-alisa-kallis-degrowth-state", "source-elsevier-asara-degrowth-democracy", "source-cambridge-durrant-cohen-degrowth", "source-sage-savini-degrowth-ideology", "source-elsevier-degrowth-movement-2025", "source-manchester-buch-hansen-degrowth-transformations"],
   distributism: ["source-jstor-salter-distributism", "source-cambridge-boyd-distributism", "source-cambridge-mathews-distributism", "source-oup-pierson-distributism", "source-sage-quilley-distributism", "source-cauriensia-utrera-distributism", "source-cambridge-kelly-distributism-work", "source-cambridge-chesterton-distributism-primary"],
   christianSocialism: ["source-bloomsbury-williams-christian-socialism", "source-liverpool-williams-christian-socialism-thesis", "source-oup-drake-gospel-church", "source-oup-stauffer-listening-spirit", "source-cambridge-jashari-christians-socialism", "source-oup-lockley-christian-socialism", "source-taylor-johnson-labour-church", "source-sage-hogan-christian-socialism"],
+  ujamaa: ["source-oup-jennings-ujamaa", "source-cambridge-lal-self-reliance-ujamaa", "source-cambridge-lal-african-socialism-ujamaa", "source-cambridge-hunter-african-socialism", "source-cambridge-aminzade-african-socialism", "source-ahr-maddox-lal-african-socialism", "source-oup-nyerere-ujamaa-1962", "source-nyerere-arusha-declaration-1967"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4419,6 +4500,7 @@ const GEORGISM_CONTEXT = "Analytical scope: Georgism / Georgist political econom
 const DEGROWTH_CONTEXT = "Analytical scope: Degrowth as a plural ecological-economic and political project, social-movement frame, and ideology-in-making that challenges growth imperatives and seeks equitable reductions in material and energy throughput while protecting wellbeing, sufficiency, care, ecological limits, and democratic agency; preserve variation across anti-growth critique, post-growth and wellbeing interpretations, anarchist, systemic, pragmatic, limitarian, commons, cooperative, public, state, civil-society, business, local, national, and transnational routes; distinguish it from generic environmental concern, climate concern, personal frugality, minimalism, recession, austerity, anti-capitalism or socialism alone, localism, anti-technology, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 const DISTRIBUTISM_CONTEXT = "Analytical scope: Distributism as a historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, the dignity and responsibility of work, subsidiarity, common-good obligations, and associational, cooperative, guild, family, or worker routes that mediate between isolated individuals and concentrated market or state power; preserve variation in Catholic social roots, Christian interpretation, agrarian and urban forms, small-property and worker-control mechanisms, market participation, public regulation, and later ecological or localist readings; distinguish it from Catholic identity or piety, family traditionalism, small business support, localism, cooperatives alone, generic private-property defense, anti-capitalism or anti-socialism alone, anti-monopoly policy alone, agrarian identity, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 const CHRISTIAN_SOCIALISM_CONTEXT = "Analytical scope: Christian Socialism as a plural and historically varied political tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes; preserve variation across Anglican, Catholic, Protestant, Social Gospel, liberationist, ecumenical, historical, and global contexts and across reformist, revolutionary, democratic, church-linked, lay, and autonomous interpretations; distinguish it from private Christian identity or piety, charitable relief, generic social concern, Christian Democracy, Distributism, liberation theology as a broader theological field, democratic socialism without Christian grounding, one denomination, one movement, one author, one policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
+const UJAMAA_CONTEXT = "Analytical scope: Ujamaa / Nyererean African Socialism as a historically bounded and internally varied postcolonial political tradition associated with familyhood, egalitarian social relations, anti-exploitation, collective self-reliance, participation in nation-building, and communal or public development; preserve variation across Nyerere's political thought, wider African-socialist debates, rural and urban settings, national and transnational aims, local agency, state direction, nationalization, villagization, democratic participation, and coercive implementation; distinguish it from generic Socialism, Pan-Africanism, Anti-Colonial Nationalism, communitarianism, ruralism, nationalism, public ownership, self-reliance, Tanzania or Nyerere identification, the Arusha Declaration, one villagization policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
@@ -6047,6 +6129,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-christian-socialism-02", "prescriptive", "Social floor", "Public policy should secure a social floor and reduce exploitation through democratic action rather than rely on charitable relief alone.", { "public-provision": 0.9, "state-capacity": 0.75, reformism: 0.45 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
   question("p-christian-socialism-03", "prescriptive", "Accountable organization", "Christian Socialist projects should organize through labor, community, cooperative, religious, and political institutions that can hold economic power accountable.", { decentralization: 0.75, "public-ownership": 0.65, "state-capacity": 0.55 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
   question("p-christian-socialism-04", "prescriptive", "Plural transformation routes", "Christian Socialist programmes may combine democratic reform, collective organization, cooperative practice, and public action in context-specific ways while retaining structural transformation as the aim.", { decentralization: 0.7, "public-provision": 0.7, "public-ownership": 0.6, reformism: 0.25 }, CHRISTIAN_SOCIALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.christianSocialism, ["christian-socialism"]),
+  question("d-ujamaa-01", "descriptive", "Postcolonial power", "Colonial rule and unequal external economic relations can shape the development choices available to postcolonial societies.", { "structural-power": 0.85, "cultural-causation": 0.35 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("d-ujamaa-02", "descriptive", "Social relations", "Social and economic life can be organized through reciprocal community obligations rather than isolated individual competition.", { "cultural-causation": 0.85, institutionalism: 0.35, "market-coordination": -0.35 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("d-ujamaa-03", "descriptive", "Development strategy", "A newly independent society may use collective self-reliance and public coordination to build productive capacity.", { institutionalism: 0.7, "structural-power": 0.45, "cultural-causation": 0.3 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("d-ujamaa-04", "descriptive", "Idea and implementation", "Ujamaa's political ideas and their state-directed implementation can have different consequences for people and communities.", { institutionalism: 0.85, "cultural-causation": 0.6, "elite-autonomy": 0.35 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("n-ujamaa-01", "normative", "Equal dignity", "Every person should have equal standing and material dignity within a shared social community.", { equality: 0.9, solidarity: 0.8 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("n-ujamaa-02", "normative", "Anti-exploitation", "Economic relations should be judged by whether they prevent exploitation and serve the welfare of the whole community.", { equality: 0.75, solidarity: 0.9, liberty: 0.25 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("n-ujamaa-03", "normative", "Collective self-determination", "Political freedom should include collective self-determination after colonial rule, not only formal noninterference.", { liberty: 0.55, solidarity: 0.6, universalism: 0.45 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("n-ujamaa-04", "normative", "Civic inclusion", "Social obligations should extend through a civic community without making ethnic or inherited identity the basis of human worth.", { solidarity: 0.75, equality: 0.8, universalism: 0.45 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("p-ujamaa-01", "prescriptive", "Self-reliant development", "Development should build collective self-reliance and public capacity rather than depend entirely on external capital or direction.", { "state-capacity": 0.75, internationalism: -0.45, "public-provision": 0.45 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("p-ujamaa-02", "prescriptive", "Shared productive resources", "Land, productive resources, and essential services should be organized through communal, cooperative, or public institutions when private concentration blocks shared development.", { "public-ownership": 0.7, "public-provision": 0.65, decentralization: 0.5 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("p-ujamaa-03", "prescriptive", "Participatory nation-building", "National development should involve broad participation and reciprocal labor or service through accountable institutions rather than passive administration.", { decentralization: 0.55, "state-capacity": 0.55, "public-provision": 0.25, reformism: 0.2 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("p-ujamaa-04", "prescriptive", "Local and national coordination", "Rural and local communities should have meaningful roles in development decisions while national institutions coordinate shared goals.", { decentralization: 0.6, "state-capacity": 0.6, "public-provision": 0.4 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -6073,6 +6167,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "degrowth") return "source-sage-savini-degrowth-ideology";
   if (id === "distributism") return "source-jstor-salter-distributism";
   if (id === "christian-socialism") return "source-bloomsbury-williams-christian-socialism";
+  if (id === "ujamaa") return "source-oup-jennings-ujamaa";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -6320,6 +6415,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("degrowth", "Degrowth", "Degrowth", "A plural ecological-political economy and social-movement project challenging growth imperatives and seeking planned, equitable reductions in material and energy throughput with wellbeing, democratic transformation, and institutional variation.", { "structural-power": 0.85, "market-coordination": -0.25, "elite-autonomy": 0.45, "cultural-causation": 0.55, institutionalism: 0.8, "ecological-limits": 0.95 }, { liberty: 0.45, equality: 0.9, solidarity: 0.9, "order-tradition": -0.15, democracy: 0.75, universalism: 0.85, "ecological-priority": 1 }, { "market-allocation": -0.35, "public-provision": 0.85, "public-ownership": 0.55, decentralization: 0.6, "state-capacity": 0.75, reformism: 0.55, internationalism: 0.8 }, "A provisional Degrowth anchor: scholarship supports a contested growth-imperative, throughput, sufficiency, justice, and democratic-transformation boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one transition route.", "degrowth"),
   anchor("distributism", "Distributism", "Distributist", "A historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, work, common-good responsibility, subsidiarity, and associational or worker control as alternatives to concentrated market or state power.", { "structural-power": 0.9, "market-coordination": 0.35, "elite-autonomy": 0.65, "cultural-causation": 0.75, institutionalism: 0.9, "ecological-limits": 0.15 }, { liberty: 0.85, equality: 0.9, solidarity: 0.95, "order-tradition": 0.65, democracy: 0.7, universalism: 0.35, "ecological-priority": 0.2 }, { "market-allocation": 0.3, "public-provision": 0.55, "public-ownership": 0.5, decentralization: 0.85, "state-capacity": 0.65, reformism: 0.75, internationalism: 0.15 }, "A provisional Distributism anchor: scholarship supports a contested wide-ownership, work, common-good, subsidiarity, and associational boundary with Catholic social roots and varied agrarian, urban, cooperative, guild, market, regulatory, and ecological routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one property or institutional design.", "distributism"),
   anchor("christian-socialism", "Christian Socialism", "Christian Socialist", "A plural and historically varied Christian-socialist tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.65, "cultural-causation": 0.9, institutionalism: 0.85, "ecological-limits": 0.15 }, { liberty: 0.6, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.8, universalism: 0.75, "ecological-priority": 0.2 }, { "market-allocation": -0.3, "public-provision": 0.85, "public-ownership": 0.7, decentralization: 0.7, "state-capacity": 0.75, reformism: 0.5, internationalism: 0.55 }, "A provisional Christian Socialism anchor: scholarship supports a plural religious-socialist boundary involving moral or theological grounding, structural critique, solidarity, and collective transformation, while preserving Anglican, Catholic, Protestant, Social Gospel, liberationist, labor, cooperative, democratic, reformist, revolutionary, and public or autonomous routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one church, movement, or institutional design.", "christian-socialism"),
+  anchor("ujamaa", "Ujamaa (African Socialism)", "African Socialist", "A historically bounded and internally varied postcolonial political tradition associated with familyhood, egalitarian social relations, anti-exploitation, collective self-reliance, participation in nation-building, and communal or public development.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.55, "cultural-causation": 0.85, institutionalism: 0.8, "ecological-limits": 0.1 }, { liberty: 0.65, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.75, universalism: 0.6, "ecological-priority": 0.15 }, { "market-allocation": -0.25, "public-provision": 0.8, "public-ownership": 0.75, decentralization: 0.6, "state-capacity": 0.7, reformism: 0.4, internationalism: 0.55 }, "A provisional Ujamaa anchor: scholarship supports a historically bounded African-Socialist boundary involving familyhood, egalitarianism, postcolonial self-reliance, collective development, and communal or public institutions, while preserving local agency, state direction, national and wider African scope, and contested implementation; the vector is not empirically validated and does not decide a respondent's political identity or endorse one policy, state, or historical interpretation.", "ujamaa"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -6336,10 +6432,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 93,
+    contentVersion: 94,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 484, normative: 484, prescriptive: 484 },
+    questionsPerLayer: { descriptive: 488, normative: 488, prescriptive: 488 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

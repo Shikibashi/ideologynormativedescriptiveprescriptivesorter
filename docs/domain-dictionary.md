@@ -100,7 +100,7 @@
 - UI wording: Catalog only
 
 ### Ideology node placement
- - Definition: The role of an ontology node in the inventory: `canonical` for the strict 9/33/60 graph, `contextual` for broad or bridge anchors, `associated` for adjacent doctrines/frameworks, or `historical` for historical cases.
+ - Definition: The role of an ontology node in the inventory: `canonical` for the current scored graph, `contextual` for broad or bridge anchors, `associated` for adjacent doctrines/frameworks, or `historical` for historical cases.
 - Identifier: `placement`
 - UI wording: Ontology placement
 
@@ -110,7 +110,7 @@
 - UI wording: Secondary registry
 
 ### Canonical inventory
-- Definition: The strict audited graph containing exactly 9 macro families, 33 meso traditions, and 60 micro branches; contextual anchors and secondary registry entries are excluded from these counts.
+ - Definition: The audited canonical graph containing 9 macro families, 38 meso traditions, and 69 micro branches in the current V97 dataset; contextual placements and secondary registry entries are excluded from these counts. The ontology also exposes five contextual placements and three registry-only entries for inspectable non-canonical context.
 - Identifier: `canonical-inventory`
 - UI wording: Canonical ontology
 
@@ -272,3 +272,4 @@ flowchart LR
 | 2026-08-26 | v10 | Updated the active vocabulary context for content version 7: 348 prompts, 23 canonical scoring anchors, 28 editorial anchors, and eight newly activated source-backed meso branches. |
 | 2026-08-26 | v11 | Updated the active vocabulary context for content version 8: 408 prompts, 28 canonical scoring anchors, 33 editorial anchors, and five newly activated source-backed meso branches; retained explicit catalog-only holds. |
 | 2026-08-29 | v12 | Updated the active vocabulary context for content version 93: 1,452 prompts, 115 canonical scoring anchors, 120 editorial anchors, 9 macro / 37 canonical meso / 69 micro nodes, 123 research targets, and 1,476 quarantined candidates; total meso placements remain 42 because five are contextual. |
+| 2026-08-29 | v13 | Updated the active vocabulary context for content version 94: 1,464 prompts, 116 canonical scoring anchors, 121 editorial anchors, 9 macro / 38 canonical meso / 69 micro nodes, 124 research targets, and 1,488 quarantined candidates; total meso placements are 43 because five are contextual. |

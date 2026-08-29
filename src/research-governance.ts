@@ -283,6 +283,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "scored-provisional",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-ujamaa-promote",
+    "ujamaa",
+    "promote-to-canonical",
+    "source-backed-contested",
+    ["source-oup-jennings-ujamaa", "source-cambridge-lal-self-reliance-ujamaa", "source-cambridge-lal-african-socialism-ujamaa", "source-cambridge-hunter-african-socialism", "source-cambridge-aminzade-african-socialism", "source-ahr-maddox-lal-african-socialism", "source-oup-nyerere-ujamaa-1962", "source-nyerere-arusha-declaration-1967"],
+    "The source set supports Ujamaa as a historically bounded and internally varied Nyererean form of African Socialism with a distinct relationship among familyhood, egalitarian social relations, anti-exploitation, postcolonial self-reliance, participatory nation-building, and communal or public development.",
+    "This promotion establishes a parentless canonical meso target and a provisional dedicated measurement branch only. It does not make Ujamaa synonymous with the heterogeneous African Socialism umbrella, Socialism, Pan-Africanism, Anti-Colonial Nationalism, Agrarian Populism, Christian Socialism, ruralism, nationalism, public ownership, self-reliance, Tanzania or Nyerere identity, the Arusha Declaration, one villagization policy, one state implementation, or a current political identity; later validation remains required.",
+    ["Ujamaa may be treated as a historically specific micro tradition under Socialism or as a variant within African Socialism rather than a separate parentless meso node.", "The tradition varies across political articulation, official development discourse, rural and local experience, state direction, national and wider African scope, and interpretations of participation and coercion.", "African identity, communal language, anti-colonial sovereignty, public services, rural preference, equality, self-reliance, or one historical policy alone do not establish the full Ujamaa boundary."],
+    "canonical",
+    "scored-provisional",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>
