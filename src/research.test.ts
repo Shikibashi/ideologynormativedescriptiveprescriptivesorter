@@ -214,8 +214,8 @@ describe("research workbench contracts", () => {
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1368);
-    expect(DATASET.manifest.questionCount).toBe(1368);
+    expect(DATASET.questions).toHaveLength(1380);
+    expect(DATASET.manifest.questionCount).toBe(1380);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
@@ -1661,6 +1661,35 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("japanese-fascism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
   });
 
+  it("promotes Flemish / Belgian Fascism as a contested and bounded historical microtype", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "flemish-belgian-fascism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      canonicalPath: [
+        { id: "fascism", label: "Fascism", level: "macro" },
+        { id: "flemish-belgian-fascism", label: "Flemish / Belgian Fascism", level: "micro" },
+      ],
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "flemish-belgian-fascism")).toBe(false);
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("flemish-belgian-fascism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Flemish/Belgian Fascism as a contested"))).toBe(true);
+    for (const sourceId of ["source-oup-de-wever-belgium-fascism", "source-tandf-de-wever-catholicism-belgium-fascism", "source-jstor-conway-rexism", "source-cambridge-van-de-maele-belgian-technocratic-fascism", "source-cambridge-dalle-mulle-flemish-nationality", "source-sage-kunkeler-flemish-fascism"]) {
+      expect(directQuestions.every((question) => question.sourceRefs.includes(sourceId))).toBe(true);
+    }
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "flemish-belgian-fascism")?.dimensions.length).toBeGreaterThanOrEqual(17);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "flemish-belgian-fascism")).toHaveLength(4);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "flemish-belgian-fascism")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("flemish-belgian-fascism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-28" });
+  });
+
   it("closes the completion tranche with the research-backed Bernsteinian promotion explicit", () => {
     const completionIds = [
       "agrarian-populism",
@@ -1683,10 +1712,10 @@ describe("research workbench contracts", () => {
     for (const targetId of completionIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
-      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(["british-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? 4 : 2);
+      expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(["british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? 4 : 2);
       expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
       expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ newCandidateItems: 12 });
-      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["british-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
+      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
     }
 
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => registryIds.includes(targetId)))).toBe(false);
@@ -1697,6 +1726,7 @@ describe("research workbench contracts", () => {
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("french-fascism"))).toHaveLength(12);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("italian-fascism"))).toHaveLength(12);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("japanese-fascism"))).toHaveLength(12);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("flemish-belgian-fascism"))).toHaveLength(12);
   });
 
   it("gives the next source-backed branch tranche direct three-layer coverage while keeping it provisional", () => {
@@ -1759,8 +1789,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1368);
-    expect(DATASET.manifest.questionCount).toBe(1368);
+    expect(DATASET.questions).toHaveLength(1380);
+    expect(DATASET.manifest.questionCount).toBe(1380);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {

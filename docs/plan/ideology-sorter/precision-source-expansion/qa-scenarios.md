@@ -843,3 +843,13 @@ The v58 precision QA pass is structural and behavioral delivery verification. It
 | P-85-03 | Run isolated anchor reachability. | Italian Fascism reaches every layer in an isolated-anchor fixture and the combined calculation is reachable; full ranks 6/1/4 by layer and 1 combined are recorded only as structural diagnostics, with no uncalibrated retuning. |
 | P-85-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 14,993 characters, remains below the finite limit, and decodes to the complete answer map. |
 | P-85-05 | Run delivery and browser checks. | TypeScript, Vitest 95/95, build, high-severity audit, coverage, reachability, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive, respondent, psychometric, or empirical claim. |
+
+## V87 QA scenarios — Flemish / Belgian Fascism historical microtype
+
+| ID | Scenario | Expected evidence |
+|---|---|---|
+| P-87-01 | Run research coverage and dataset validation. | 1,380 prompts at 460 per layer; 114 editorial anchors; 109 production anchors; 114 ontology nodes with canonical inventory 9/33/67; 5 registry entries; 1,428 candidates across 119 targets; zero validation errors. |
+| P-87-02 | Inspect the Flemish / Belgian Fascism target. | Canonical `Fascism → Flemish / Belgian Fascism` micro path; dedicated-scored state; 12 direct items at 4/4/4; nine direct source references; four neighbors; 17-dimension profile; false-positive audit; and promote-to-canonical governance. |
+| P-87-03 | Run isolated anchor reachability and full fixture diagnostics. | The target reaches every layer in an isolated-anchor fixture and the combined calculation is reachable; full ranks 7/8/4 by layer and 2 combined are recorded only as deterministic structural diagnostics; no uncalibrated retuning. |
+| P-87-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 15,281 characters, remains below the finite limit, and decodes to the complete answer map. |
+| P-87-05 | Run delivery and browser checks. | TypeScript, Vitest 97/97, build, high-severity audit, coverage, reachability, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive, respondent, psychometric, or empirical claim. |

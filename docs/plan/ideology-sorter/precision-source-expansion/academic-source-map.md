@@ -875,7 +875,19 @@ The eight-source direct set supports the historically bounded British case, comp
 
 The records support terminology, historical scope, organizational and regional variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, or empirical classification.
 
-## V85 academic source map — Italian Fascism historical microtype
+## V87 academic source map — Flemish / Belgian Fascism historical microtype
+
+| Source ID | Academic record | Boundary contribution |
+|---|---|---|
+| `source-oup-de-wever-belgium-fascism` | [De Wever, “Belgium,” in *The Oxford Handbook of Fascism*](https://academic.oup.com/edited-volume/34510/chapter-abstract/292833099?login=false) | Interwar Belgian democracy, reactionary Catholic and Belgian-nationalist currents, Flemish nationalism, and the need to compare rather than collapse the field |
+| `source-tandf-de-wever-catholicism-belgium-fascism` | [De Wever, “Catholicism and Fascism in Belgium”](https://www.tandfonline.com/doi/abs/10.1080/14690760701321312) | Distinguishes Catholic, fascist, and corporatist relationships and prevents Catholic identity or corporatism alone from becoming a fascist criterion |
+| `source-jstor-conway-rexism` | [Conway, *Collaboration in Belgium: Léon Degrelle and the Rexist Movement, 1940–1944*](https://www.jstor.org/stable/j.ctt211qx80) | Rexist Catholic origins, prewar movement success, collaboration, and occupation-era transformation |
+| `source-cambridge-van-de-maele-belgian-technocratic-fascism` | [van de Maele, “A Technocratic Moment in 1930s Belgium: Governmental Planning between Democracy and Fascism”](https://www.cambridge.org/core/journals/contemporary-european-history/article/technocratic-moment-in-1930s-belgium-governmental-planning-between-democracy-and-fascism/FE2458D091F25098BB79EEA61E3B6008) | Technocratic planning, authoritarian-corporate projects, Verdinaso, and the boundary between planning/authoritarianism and fascism |
+| `source-cambridge-dalle-mulle-flemish-nationality` | [Dalle Mulle, “The Improbable Minority: Flanders and the Fluidity of Minority and Nationality Questions, 1919–1944”](https://www.cambridge.org/core/journals/contemporary-european-history/article/improbable-minority-flanders-and-the-fluidity-of-minority-and-nationality-questions-19191944/ECD75AFC30B26F2E008B06C04E049DD9) | Heterogeneous Flemish nationalism, VNV and Greater-Netherlandist projects, New Order drift, and the warning not to infer fascism from Flemish identity or autonomy claims |
+| `source-sage-kunkeler-flemish-fascism` | [Kunkeler and Hamre, “Conceptions and Practices of International Fascism: The Case of Verdinaso and VNV”](https://journals.sagepub.com/doi/10.1177/00220094211031992) | Verdinaso/VNV, transnational fascist context, national projects, and organizational comparison |
+| Existing context | [Cambridge, “Fascist Zenith — Belgium”](https://www.cambridge.org/core/journals/contemporary-european-history), existing Fascism, and political-ideologies records | Comparative family context and historical terminology support |
+
+The V87 records support terminology, historical scope, organizational and regional variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, or empirical classification. The field remains contested and bounded through 1945; current identity, language politics, autonomy, Catholicism, corporatism, authoritarianism, or collaboration alone are not sufficient evidence.
 
 | Source ID | Academic record | Boundary contribution |
 |---|---|---|

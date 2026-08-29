@@ -616,3 +616,11 @@
 - How should project-versus-realization, repression-versus-consensus, corporative order, and leader-centered mass politics be represented without treating corporatism, order, national identity, or one leader as sufficient evidence?
 - The deterministic audit reaches Italian Fascism in all three isolated layers and in the combined view; full-competition ranks and top-three rates remain structural diagnostics only, and production top-three missing fields are overlap diagnostics rather than routing failures.
 - Five contextual anchors and seven registry-only targets remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, and population generalization remain untested by explicit constraint.
+
+## V87 unresolved questions — Flemish / Belgian Fascism
+
+- How should the historically contested Flemish / Belgian fascist field be separated from the wider Fascism family, French Fascism, Integral Nationalism, National-Syndicalism, Flemish nationalism, Belgian nationalism, and regional autonomy without collapsing organizational and period variation?
+- Which differences among VNV, Verdinaso, Rex, Catholic/secular registers, technocratic/corporative projects, Flemish/Francophone settings, occupation, and collaboration should remain explicit rather than being treated as one uniform case?
+- How should project-versus-realization, identity-versus-ideology, and collaboration-versus-fascist commitment be represented without turning language, autonomy, Catholicism, corporatism, authoritarianism, or anti-parliamentary dissatisfaction into sufficient evidence?
+- The deterministic audit reaches Flemish / Belgian Fascism in all three isolated layers and in the combined view; full-production ranks 7/8/4 and 2 combined, aggregate rates 29.0520%/54.1284%, and worst ranks 103/96 remain geometry diagnostics only.
+- Five contextual placements and five registry-only targets remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, and population generalization remain untested by explicit constraint.

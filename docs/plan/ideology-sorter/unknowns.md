@@ -610,6 +610,14 @@ The promotion leaves open the empirical boundary among French Fascism, wider Fas
 
 The new production anchor and prompts are editorial research artifacts. Their isolated reachability proves only wiring and deterministic structural routing; the combined rank 5 and descriptive full-competition rank 18 do not establish respondent comprehension, reliability, validity, invariance, or population generalization. The next evidence gates remain substantive item review, later respondent research, and empirical validation, subject to the standing no-cognitive-review constraint for this workstream.
 
+## V87 open boundaries — Flemish / Belgian Fascism
+
+- How should the historically contested Flemish / Belgian fascist field be separated from the wider Fascism family, French Fascism, Integral Nationalism, National-Syndicalism, Flemish nationalism, Belgian nationalism, and regional autonomy without collapsing organizational and period variation?
+- Which differences among VNV, Verdinaso, Rex, Catholic/secular registers, technocratic/corporative projects, Flemish/Francophone settings, occupation, and collaboration should remain explicit rather than being treated as one uniform case?
+- How should project-versus-realization, identity-versus-ideology, and collaboration-versus-fascist commitment be represented without turning language, autonomy, Catholicism, corporatism, authoritarianism, or anti-parliamentary dissatisfaction into sufficient evidence?
+- The deterministic audit reaches Flemish / Belgian Fascism in all three isolated layers and in the combined view; full-production ranks 7/8/4 and 2 combined, aggregate rates 29.0520%/54.1284%, and worst ranks 103/96 remain geometry diagnostics only.
+- Five contextual placements and five registry-only targets remain outside production scoring. Respondent comprehension, psychometric reliability/validity, invariance, empirical classification, and population generalization remain untested by explicit constraint.
+
 ## V86 open boundaries — Japanese Fascism
 
 The promotion leaves open the boundary among Japanese Fascism, wider Fascism, Italian Fascism, National Socialism, National-Syndicalism, Integral Nationalism, National Conservatism, generic militarism, authoritarianism, imperialism, Japanese identity, and security preference. The 1940 New Order Movement, party-government breakdown, military-bureaucratic continuity, wartime mobilization, and Manchurian imperial setting must remain historically and institutionally specific rather than collapsed into one national stereotype.
