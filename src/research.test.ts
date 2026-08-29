@@ -27,6 +27,7 @@ describe("research workbench contracts", () => {
     expect(targets).toHaveLength(DATASET.ideologyNodes.length + DATASET.ideologyRegistry.length);
     expect(targets.find((target) => target.id === "anarcho-capitalism")).toMatchObject({ targetKind: "ideology-node", measurementStatus: "dedicated-scored", level: "micro", placement: "canonical", anchorId: "anarcho-capitalism", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "deep-ecology")).toMatchObject({ targetKind: "registry-entry", measurementStatus: "registry-only" });
+    expect(targets.find((target) => target.id === "civic-republicanism")).toMatchObject({ targetKind: "registry-entry", measurementStatus: "registry-only" });
     expect(targets.find((target) => target.id === "conservatism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "conservatism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "anarchism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "anarchism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "anarcho-syndicalism")).toMatchObject({ targetKind: "ideology-node", level: "micro", placement: "canonical", anchorId: "anarcho-syndicalism", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
@@ -1921,6 +1922,10 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("white-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
+    expect(researchTaxonomyDecisionForTarget("civic-republicanism")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
+    expect(DATASET.ideologyNodes.some((node) => node.id === "civic-republicanism")).toBe(false);
+    expect(DATASET.ideologyRegistry.find((entry) => entry.id === "civic-republicanism")?.sourceRefs).toEqual(expect.arrayContaining(["source-cambridge-civic-republicanism", "source-oup-gallagher-civic-virtue", "source-springer-toth-civic-republicanism"]));
+    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("civic-republicanism"))).toBe(false);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "radical-republicanism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "marxist-feminism")).toBe(true);

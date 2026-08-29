@@ -1605,6 +1605,64 @@
     ],
     "finalStatus": "partial_with_conditions"
   },
+  "civicRepublicanismCoverageRun": {
+    "id": "2026-08-29-civic-republicanism-retention",
+    "description": "Research-backed Civic Republicanism registry retention, provenance refresh, and end-to-end verification.",
+    "startedAt": "2026-08-29T06:59:19Z",
+    "completedAt": "2026-08-29T07:15:10Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceComparison": "proved: Costa, Gallagher, SEP Republicanism, and Tóth support Civic Republicanism as a contested interpretive bridge across historical civic virtue/participation and contemporary non-domination uses, with variation over virtue, community, scale, state, and global integration",
+      "production": "proved: content version 89 remains at 1,404 questions, 468 per layer, 116 editorial anchors, and 111 production anchors",
+      "directTarget": "proved: Civic Republicanism has zero direct production questions; its existing 4/4/4 research candidates remain effect-free and quarantined",
+      "topology": "proved: no ontology node or scoring anchor was added; Civic Republicanism remains an associated registry entry outside canonical ancestry and production scoring",
+      "heldTargets": "proved: five contextual placements and three registry-only targets remain outside production scoring, with 1,428 candidates across 119 research targets",
+      "coverage": "proved: research coverage reports 111 dedicated-scored, five contextual-only, three registry-only, 119 profiles/audits, and zero validation errors",
+      "reachability": "proved: reachability reports 111 production anchors, zero isolated-reachability failures, and zero validation errors; Civic Republicanism is absent by its registry-only design",
+      "unitTests": "proved: focused research contracts passed 75/75 and the full Vitest suite passed 99/99",
+      "build": "proved: npx tsc --noEmit and npm run build passed with the existing large-client-chunk advisory",
+      "audit": "proved: npm audit --omit=dev --audit-level=high reported zero vulnerabilities",
+      "browser": "proved: serial local and Docker-backed Playwright suites passed 10/10",
+      "health": "proved: Compose recreation served /healthz as ok and the frontend container reached healthy status",
+      "dockerBuild": "proved: fresh no-cache docker build -f frontend/Dockerfile -t ideology-layer-sorter-frontend:latest . passed, followed by forced Compose recreation",
+      "cognitiveEvidence": "not-run by explicit user constraint; no respondent cognitive review, psychometric validation, or simulated substitute is claimed",
+      "documentation": "proved: README, active research plans, QA/unknowns/verification records, Zeus report, and Zeus log synchronized",
+      "integrity": "proved: git diff --check passed and zeus-state.json parses as JSON after V90 documentation synchronization"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "ontology": "src/ontology.ts",
+      "researchBank": "src/research-bank.ts",
+      "governance": "src/research-governance.ts",
+      "tests": "src/research.test.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "reachabilityAudit": "scripts/audit-anchor-reachability.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "verifyReport": "docs/plan/ideology-sorter/verify-report.md",
+      "qaScenarios": "docs/plan/ideology-sorter/precision-source-expansion/qa-scenarios.md"
+    },
+    "warnings": [
+      "Civic Republicanism remains a contested, associated registry term rather than a validated respondent classifier or current-actor label.",
+      "Generic democracy, patriotism, anti-corruption, participation, civic virtue, or non-domination alone is not sufficient evidence for a distinct Civic Republicanism target.",
+      "The comprehensive goal remains open; five contextual placements and three registry-only targets remain non-scored.",
+      "No empirical reliability, validity, invariance, or psychometric evidence exists for the registry retention decision.",
+      "No cognitive review, respondent study, or substitute simulation was run.",
+      "No remote is configured; a scoped Git commit can be created but push requires a configured remote."
+    ],
+    "finalStatus": "partial_with_conditions"
+  },
   "phases": {
     "parsing": {
       "status": "completed",
@@ -1705,8 +1763,8 @@
     "The canonical taxonomy is source-curated; candidate coverage is closed at 1,428 quarantined candidates across all 119 targets, while production measurement remains partial and later evidence gates remain open.",
     "The combined pattern is an equal-layer interpretive composition gated on complete layer coverage; it is not a validated identity classifier, recommendation, comparison, or ranking."
   ],
-"archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism continuation, v53 Cultural Nationalism continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, v57 Zionism micro-branch continuation, v58 Khomeinism micro-branch continuation, v59 Qutbism micro-branch continuation, v60 Radical Republicanism micro-branch continuation, v61 Marxist Feminism micro-branch continuation, v62 Socialist Feminism micro-branch continuation, v63 Left-Wing Populism micro-branch continuation, v64 Neoconservatism continuation, v65 Paleoconservatism continuation, v66 Wasatiyya continuation, v67 Right-Wing Populism continuation, and v68 Hindutva micro-branch continuation, and v69 Religious Zionism micro-branch continuation completed 2026-08-28, v70 Neo-Fascism meso-branch continuation completed 2026-08-28, v71 Falangism micro-branch continuation completed 2026-08-28, and v72 Brazilian Integralism micro-branch continuation completed 2026-08-28, v73 Integral Nationalism cross-case historical-category continuation completed 2026-08-28, and v74 Legionary Fascism historically bounded micro-branch continuation completed 2026-08-28, and v75 Fascism macro-family continuation completed 2026-08-28, and v76 White Nationalism high-risk racial-national continuation completed 2026-08-28, and v77 Neo-Nazism postwar continuity and adaptation completed 2026-08-28, and v78 Revolutionary Islamism cross-case public-order continuation completed 2026-08-28, and v79 Third Positionism postwar far-right continuation completed 2026-08-28, and v80 Salafi-Jihadism high-risk doctrinal continuation completed 2026-08-28, and v81 Revisionist / Bernsteinian Social Democracy historical-microtype continuation completed 2026-08-28, and v82 National-Syndicalism historical-microtype continuation completed 2026-08-28, and v83 British Fascism historical-microtype continuation completed 2026-08-28, and v84 French Fascism historical-microtype continuation completed 2026-08-28, and v85 Italian Fascism historical-microtype continuation completed 2026-08-28, and v86 Japanese Fascism historical-microtype continuation completed 2026-08-28, and v87 Flemish / Belgian Fascism historical-microtype continuation completed 2026-08-29, and v88 Agrarian Populism historically bounded microtype continuation completed 2026-08-29, and v89 Bioregionalism ecological microtype continuation completed 2026-08-29",
-  "latestArchiveEntry": "v89 Bioregionalism ecological microtype continuation completed 2026-08-29",
-  "completedAt": "2026-08-29T06:45:32Z",
+"archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism continuation, v53 Cultural Nationalism continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, v57 Zionism micro-branch continuation, v58 Khomeinism micro-branch continuation, v59 Qutbism micro-branch continuation, v60 Radical Republicanism micro-branch continuation, v61 Marxist Feminism micro-branch continuation, v62 Socialist Feminism micro-branch continuation, v63 Left-Wing Populism micro-branch continuation, v64 Neoconservatism continuation, v65 Paleoconservatism continuation, v66 Wasatiyya continuation, v67 Right-Wing Populism continuation, and v68 Hindutva micro-branch continuation, and v69 Religious Zionism micro-branch continuation completed 2026-08-28, v70 Neo-Fascism meso-branch continuation completed 2026-08-28, v71 Falangism micro-branch continuation completed 2026-08-28, and v72 Brazilian Integralism micro-branch continuation completed 2026-08-28, v73 Integral Nationalism cross-case historical-category continuation completed 2026-08-28, and v74 Legionary Fascism historically bounded micro-branch continuation completed 2026-08-28, and v75 Fascism macro-family continuation completed 2026-08-28, and v76 White Nationalism high-risk racial-national continuation completed 2026-08-28, and v77 Neo-Nazism postwar continuity and adaptation completed 2026-08-28, and v78 Revolutionary Islamism cross-case public-order continuation completed 2026-08-28, and v79 Third Positionism postwar far-right continuation completed 2026-08-28, and v80 Salafi-Jihadism high-risk doctrinal continuation completed 2026-08-28, and v81 Revisionist / Bernsteinian Social Democracy historical-microtype continuation completed 2026-08-28, and v82 National-Syndicalism historical-microtype continuation completed 2026-08-28, and v83 British Fascism historical-microtype continuation completed 2026-08-28, and v84 French Fascism historical-microtype continuation completed 2026-08-28, and v85 Italian Fascism historical-microtype continuation completed 2026-08-28, and v86 Japanese Fascism historical-microtype continuation completed 2026-08-28, and v87 Flemish / Belgian Fascism historical-microtype continuation completed 2026-08-29, and v88 Agrarian Populism historically bounded microtype continuation completed 2026-08-29, and v89 Bioregionalism ecological microtype continuation completed 2026-08-29, and v90 Civic Republicanism registry-retention continuation completed 2026-08-29",
+  "latestArchiveEntry": "v90 Civic Republicanism registry-retention continuation completed 2026-08-29",
+  "completedAt": "2026-08-29T07:15:10Z",
   "finalStatus": "partial_with_conditions"
 }

@@ -204,6 +204,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "scored-provisional",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-civic-republicanism-retain-registry",
+    "civic-republicanism",
+    "retain-registry-only",
+    "source-backed-contested",
+    ["source-oup-civic-republicanism", "source-sep-republicanism", "source-oup-republicanism", "source-cambridge-civic-republicanism", "source-oup-gallagher-civic-virtue", "source-springer-toth-civic-republicanism"],
+    "The source set uses Civic Republicanism as an interpretation or bridge label across historical civic-virtue and participation arguments and contemporary non-domination theory, while also documenting disagreement about virtue, scale, community, state, and institutional routes.",
+    "Retain Civic Republicanism as associated registry context because the current canonical graph already separates Historical Republicanism, Contemporary Neo-Republicanism, and Radical Republicanism; do not create duplicate ancestry, a scored anchor, production questions, or a respondent-facing identity label.",
+    ["Civic Republicanism may be used as a distinct contemporary political doctrine in some scholarship.", "The label may instead denote an instrumental reading of civic virtue within the historical republican tradition or a broad family resemblance across republican theories.", "Civic virtue, participation, patriotism, anti-corruption, or non-domination alone do not resolve the historical/contemporary boundary."],
+    "registry-only",
+    "not-scored",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>

@@ -639,3 +639,11 @@
 - How should environmental-determinism critiques, urban–other power relations, jurisdictional variation, and local/regional/interregional scale be represented without converting bioregional boundaries into naturalized or exclusionary membership rules?
 - The deterministic audit reaches Bioregionalism in all three isolated layers. Its full-competition combined top-three diagnostic omits all three layers and remains geometry evidence only; it is not a respondent, cognitive, psychometric, or empirical result.
 - Three registry-only targets and five contextual placements remain outside production scoring. Respondent comprehension, reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V90 unresolved questions — Civic Republicanism registry retention
+
+- When should Civic Republicanism be treated as a historical interpretation of civic virtue and participation, a contemporary non-domination doctrine, or a broader bridge label across republican traditions?
+- How should the sorter preserve the instrumental-versus-constitutive dispute over civic virtue, including disagreement over participation, common-good language, pluralism, and the status of civic customs?
+- How should scale, state, community, and cross-border institutional variation be represented without converting Civic Republicanism into a duplicate of Historical Republicanism, Contemporary Neo-Republicanism, or Radical Republicanism?
+- The existing twelve Civic Republicanism candidates remain effect-free research material; no production questions, effects, anchors, or respondent-facing classification are authorized by V90.
+- Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
