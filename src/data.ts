@@ -131,6 +131,56 @@ const SOURCES: readonly SourceReference[] = [
     supports: "One concept per item, clear and neutral wording, explicit missingness, and transparent reporting.",
   },
   {
+    id: "source-adcock-collier",
+    label: "Adcock & Collier (2001)",
+    url: "https://doi.org/10.1017/S0003055401003100",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "survey-methodology",
+    citation: "Adcock, R. & Collier, D. (2001). Measurement Validity: A Shared Standard for Qualitative and Quantitative Research. American Political Science Review, 95(3), 529–546.",
+    supports: "Separating conceptualization from measurement and treating validity claims as context-specific; it does not validate this project's constructs, item wording, or anchor vectors.",
+  },
+  {
+    id: "source-morucci-irt",
+    label: "Morucci et al. (2025)",
+    url: "https://doi.org/10.1017/S000305542400039X",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "survey-methodology",
+    citation: "Morucci, M., Foster, M. J., Webster, K., Lee, S. J. & Siegel, D. A. (2025). Measurement That Matches Theory: Theory-Driven Identification in Item Response Theory Models. American Political Science Review, 119(2), 727–745.",
+    supports: "Theory-driven identification of potentially correlated latent dimensions before estimation; it does not establish the correct dimensionality or validate this project's proxy bridge.",
+  },
+  {
+    id: "source-aera-testing-standards",
+    label: "AERA/APA/NCME Testing Standards",
+    url: "https://www.apa.org/science/programs/testing/standards",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "survey-methodology",
+    citation: "American Educational Research Association, American Psychological Association & National Council on Measurement in Education. (2014). Standards for Educational and Psychological Testing.",
+    supports: "Validity evidence from test content, response processes, internal structure, relations to other variables, and consequences; it does not prescribe a political-ideology ontology.",
+  },
+  {
+    id: "source-borsboom-validity",
+    label: "Borsboom, Mellenbergh & van Heerden (2004)",
+    url: "https://doi.org/10.1037/0033-295X.111.4.1061",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "survey-methodology",
+    citation: "Borsboom, D., Mellenbergh, G. J. & van Heerden, J. (2004). The Concept of Validity. Psychological Review, 111(4), 1061–1071.",
+    supports: "A causal account of how an attribute would produce observed measurement outcomes; it cautions that correlations or factor fit alone do not establish construct validity.",
+  },
+  {
+    id: "source-bauer-invariance",
+    label: "Bauer (2017)",
+    url: "https://doi.org/10.1037/met0000077",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "survey-methodology",
+    citation: "Bauer, D. J. (2017). A More General Model for Testing Measurement Invariance and Differential Item Functioning. Psychological Methods, 22(3), 507–526.",
+    supports: "Testing measurement invariance and differential item functioning across groups or contexts; it does not determine the substantive meaning of an ideological construct.",
+  },
+  {
     id: "source-pew-question-writing",
     label: "Pew question-writing guidance",
     url: "https://www.pewresearch.org/writing-survey-questions/",
@@ -3760,6 +3810,86 @@ const SOURCES: readonly SourceReference[] = [
     citation: "Steger, M. B. (1997). The revisionist debate extended. In The Quest for Evolutionary Socialism (pp. 176–204). Cambridge University Press.",
     supports: "Bernstein's evolutionary assumptions about social change, class privilege, social security, and democratic transformation together with the historical failure and context-dependence of those predictions; it supports a historically modest boundary and not a respondent classifier.",
   },
+  {
+    id: "source-helsinki-obeng-odoom-georgist-political-economy",
+    label: "Obeng-Odoom: Georgist Political Economy",
+    url: "https://doi.org/10.4337/9781789909067.00026",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Obeng-Odoom, F. (2022). Georgist political economy. In F. Stilwell, D. Primrose, & T. B. Thornton (Eds.), Handbook of Alternative Theories of Political Economy, 260–270. Edward Elgar. https://doi.org/10.4337/9781789909067.00026.",
+    supports: "Georgist political economy as a peer-reviewed school of thought beginning with Henry George and distinguished by its central focus on land, rentier capitalism, diagnosis, and political-economic responses; supports a land-centered boundary rather than a generic tax or environmental label.",
+  },
+  {
+    id: "source-jhu-england-land-liberty",
+    label: "England: Land and Liberty",
+    url: "https://www.press.jhu.edu/books/title/12372/land-and-liberty",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "England, C. (2023). Land and Liberty: Henry George and the Geoliberal Tradition. Johns Hopkins University Press. https://doi.org/10.56021/9781421445410.",
+    supports: "Georgism as a national, international, multiracial, urban, and global reform movement within and beyond liberalism, with egalitarian and democratic aims, a land-and-inequality tradition, and varied institutional and conservation translations; supports movement and liberal-boundary work rather than a single policy inference.",
+  },
+  {
+    id: "source-oup-odonnell-george-inequality",
+    label: "O'Donnell: Henry George and the Crisis of Inequality",
+    url: "https://academic.oup.com/columbia-scholarship-online/book/29732",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "O'Donnell, E. T. (2015). Henry George and the Crisis of Inequality: Progress and Poverty in the Gilded Age. Columbia University Press. https://academic.oup.com/columbia-scholarship-online/book/29732.",
+    supports: "Henry George's critique of laissez-faire inequality, land-value taxation, activism, and the relationship among democracy, equality, freedom, republican traditions, and industrial-era poverty; supports historically situated boundary writing rather than contemporary policy or respondent classification.",
+  },
+  {
+    id: "source-oup-mclean-land-value-taxation",
+    label: "McLean: The Politics of Land Value Taxation",
+    url: "https://doi.org/10.1093/oso/9780199609222.003.0011",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "McLean, I. (2018). The politics of land value taxation. In Taxation: Philosophical Perspectives, 185–202. Oxford University Press. https://doi.org/10.1093/oso/9780199609222.003.0011.",
+    supports: "The philosophical and practical arguments surrounding land-value taxation, including the historical line from Smith, Paine, Ricardo, Henry George, and Lloyd George; supports distinguishing land-rent capture from generic taxation while preserving implementation variation.",
+  },
+  {
+    id: "source-sage-williams-georgist-political-ecology",
+    label: "Williams: Nature, Rent and the Persistence of Inequality",
+    url: "https://doi.org/10.1177/19427786251390972",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Williams, J. (2026). Nature, rent and the persistence of inequality: A Georgist political ecology. Organization & Environment. https://doi.org/10.1177/19427786251390972.",
+    supports: "A recent political-ecology reconstruction of Georgist theory as concerned with land, nature, rent, inequality, and the persistence of poverty amid industrial progress; supports ecological and rentier boundaries without making ecological concern alone Georgist.",
+  },
+  {
+    id: "source-wiley-mccann-georgist-social-philosophy",
+    label: "McCann: Apprehending the Social Philosophy of Henry George",
+    url: "https://doi.org/10.1111/j.1536-7150.2007.00559.x",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "McCann, G. (2008). Apprehending the social philosophy of Henry George. American Journal of Economics and Sociology. https://doi.org/10.1111/j.1536-7150.2007.00559.x.",
+    supports: "Interpretive questions about Henry George's social philosophy, individual claims, land nationalization, and the relationship between Georgist arguments and socialism; supports boundaries among land-rent capture, private improvement, and comprehensive social ownership.",
+  },
+  {
+    id: "source-wiley-hudson-george-critics",
+    label: "Hudson: Henry George's Political Critics",
+    url: "https://doi.org/10.1111/j.1536-7150.2007.00560.x",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Hudson, M. (2008). Henry George's political critics. American Journal of Economics and Sociology. https://doi.org/10.1111/j.1536-7150.2007.00560.x.",
+    supports: "Political criticism, economic-rent claims, implementation gaps, and disagreement over local, two-rate, and national land-value-tax routes; supports internal variation and a non-single-policy boundary.",
+  },
+  {
+    id: "source-oll-george-progress-poverty",
+    label: "George: Progress and Poverty",
+    url: "https://oll.libertyfund.org/titles/george-progress-and-poverty",
+    retrievalDate: "2026-08-29",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "George, H. (1879). Progress and Poverty. Online Library of Liberty edition.",
+    supports: "Primary-text evidence for Henry George's relationship among land, rent, labor, progress, poverty, equal rights, and the social claim on land value; used as primary ideological evidence alongside later scholarship, not as a validated contemporary measurement source.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -3889,6 +4019,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   zionism: ["source-cambridge-zionism-philosophy", "source-oup-zionism-vsi", "source-cup-boix-jewish-national-identity", "source-yale-shumsky-zionist-political-imagination", "source-oup-mann-zionism-human-rights", "source-sep-nationalism", "source-cambridge-religious-zionism"],
   lesbianFeminism: ["source-uchicago-rich-compulsory-heterosexuality", "source-wiley-schippers-compulsory-heterosexuality", "source-oup-lee-atchison-lesbian-separatism", "source-oup-hobson-lesbian-feminism-defense", "source-sep-feminism-trans", "source-oup-feminist-theory", "source-oup-feminism-strands"],
   oneNationConservatism: ["source-oup-one-nation-conservatism", "source-tandf-walsha-one-nation", "source-policy-press-page-one-nation-welfare", "source-wiley-webb-one-nation-tradition", "source-oup-conservatism", "source-sep-nationalism"],
+  georgism: ["source-helsinki-obeng-odoom-georgist-political-economy", "source-jhu-england-land-liberty", "source-oup-odonnell-george-inequality", "source-oup-mclean-land-value-taxation", "source-sage-williams-georgist-political-ecology", "source-wiley-mccann-georgist-social-philosophy", "source-wiley-hudson-george-critics", "source-oll-george-progress-poverty"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4041,6 +4172,7 @@ const ANARCHO_SYNDICALISM_CONTEXT = "Analytical scope: Anarcho-Syndicalism as a 
 const ANARCHO_CAPITALISM_CONTEXT = "Analytical scope: Anarcho-Capitalism as a contested market-anarchist current joining rejection of territorial state monopoly with strong private-property and contract claims, voluntary market coordination, and polycentric proprietary or protective institutions; preserve variation over Rothbardian and other market-anarchist arguments, property acquisition, inequality, legal and security provision, exit, institutional feasibility, and the disputed relation to anarchism; not generic libertarianism, small-government preference, anti-state sentiment, non-market anarchism, Mutualism, Minarchism, Right-Libertarianism, or one theorist's full programme.";
 const ANARCHO_COMMUNISM_CONTEXT = "Analytical scope: Anarcho-Communism as a historically varied social-anarchist communist current joining anti-hierarchical and anti-state organization with abolition of capitalist ownership, decentralized common provision, free association, and need-oriented distribution; distinguish it from Collectivist Anarchism's historically bounded labor-contribution and remuneration debates, Social Anarchism's wider economic variation, Anarcho-Syndicalism's worker-union route, state-centered Communism, and Mutualism or market anarchism; preserve variation over revolutionary and reformist strategy, communal scale, voluntary association, and self-defense; not anti-government sentiment, equality alone, communal cooperation, public ownership, or any single author or period.";
 const COLLECTIVIST_ANARCHISM_CONTEXT = "Analytical scope: Collectivist Anarchism as a historically bounded social-anarchist current associated especially with Bakunin and the First International, joining abolition of capitalist private ownership and state rule with collective control, free association, federated organization, and historically debated labor-linked distribution or remuneration; distinguish it from Anarcho-Communism's need-oriented communist route, Social Anarchism's wider economic variation, Anarcho-Syndicalism's worker-union route, Mutualism, and state-centered socialism; preserve variation over transition, labor accounting, communal scale, revolutionary strategy, gender, and international scope; not collective ownership alone, anti-government sentiment, generic worker control, union support, or a single author's full programme.";
+const GEORGISM_CONTEXT = "Analytical scope: Georgism / Georgist political economy as a historically rooted and internally varied political-economic school and movement centered on land, land or location value, rent, and equal access to natural opportunity; preserve variation over Henry George's single-tax argument, land-value taxation, public revenue, citizen dividend, land tenure, environmental and resource rents, urban housing, liberal, republican, socialist, cooperative, and international routes; distinguish it from generic tax reform, private-property defense, public ownership of all capital, agrarian identity, environmentalism, and current policy approval; not one tax rate, one historical movement, one city, one party, or a respondent classifier.";
 
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
@@ -5621,6 +5753,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-national-syndicalism-02", "prescriptive", "Social protection", "Social protection should be organized through occupational and national institutions rather than only through individual market contracts.", { "public-provision": 0.9, "state-capacity": 0.65 }, NATIONAL_SYNDICALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.nationalSyndicalism, ["national-syndicalism"]),
   question("p-national-syndicalism-03", "prescriptive", "Social obligations and markets", "Markets should be subordinated to national and social obligations without requiring one uniform ownership system in every domain.", { "market-allocation": -0.55, "public-provision": 0.45, "public-ownership": 0.2 }, NATIONAL_SYNDICALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.nationalSyndicalism, ["national-syndicalism"]),
   question("p-national-syndicalism-04", "prescriptive", "National scope", "Cross-border labor or political cooperation should remain subordinate to the national organization of social life.", { internationalism: -0.9, "state-capacity": 0.25 }, NATIONAL_SYNDICALISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.nationalSyndicalism, ["national-syndicalism"]),
+  question("d-georgism-01", "descriptive", "Land and value", "Land and location values can rise because of surrounding community activity and public infrastructure, not only because of the owner's improvements.", { "structural-power": 0.95, "market-coordination": 0.25 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("d-georgism-02", "descriptive", "Poverty and rent", "Poverty can persist alongside economic progress when access to land and natural opportunities is monopolized and rising rent captures gains.", { "structural-power": 0.9, institutionalism: 0.3 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("d-georgism-03", "descriptive", "Economic factors", "Land is a distinct economic factor because its location and natural supply cannot be reproduced like produced capital.", { "structural-power": 0.75, "market-coordination": 0.4, "ecological-limits": 0.25 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("d-georgism-04", "descriptive", "Freedom and power", "Political freedom is affected by who controls access to land and who receives income from land rent.", { "structural-power": 0.9, "elite-autonomy": 0.45 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("n-georgism-01", "normative", "Common value", "The socially created value of land and location should be treated as a common claim rather than an unqualified private windfall.", { equality: 0.95, solidarity: 0.75 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("n-georgism-02", "normative", "Labor and improvement", "People should be able to keep the value they create through their own labor and improvements.", { liberty: 0.85, equality: 0.6 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("n-georgism-03", "normative", "Equal opportunity", "Freedom requires access to natural opportunities without allowing private control of land to impose unearned dependence on others.", { liberty: 0.9, equality: 0.8 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("n-georgism-04", "normative", "Tax justice", "Public claims on land rent are more justifiable than taxing productive labor or voluntary exchange.", { equality: 0.75, liberty: 0.65 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("p-georgism-01", "prescriptive", "Land-value revenue", "Public revenue should capture a substantial share of unimproved land or site value while leaving improvements and productive activity less burdened.", { "state-capacity": 0.7, "public-provision": 0.5 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("p-georgism-02", "prescriptive", "Assessment", "Land assessment should distinguish the value of a site from the value of buildings and other improvements.", { "state-capacity": 0.85, reformism: 0.45 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("p-georgism-03", "prescriptive", "Markets and rent", "Land markets can remain in use when institutions return socially created land value to the public and protect equal access.", { "market-allocation": 0.55, "public-provision": 0.6 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
+  question("p-georgism-04", "prescriptive", "Shared revenue", "Revenue from land and other common rents should support shared public goods or an equal civic dividend.", { "public-provision": 0.85, "state-capacity": 0.25 }, GEORGISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.georgism, ["georgism"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -5643,6 +5787,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "right-wing-populism") return "source-cambridge-meijers-right-populism";
   if (id === "agrarian-populism") return "source-wiley-arter-agrarian-populism";
   if (id === "bioregionalism") return "source-wiley-hubbard-bioregionalism";
+  if (id === "georgism") return "source-helsinki-obeng-odoom-georgist-political-economy";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -5886,6 +6031,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("council-communism", "Council Communism", "Council Communist", "A historically specific communist current centered on workers' councils, direct self-government, common control, and resistance to party-subordinated command while allowing variation in scale and coordination.", { "structural-power": 0.9, "market-coordination": -0.65, "elite-autonomy": 0.9, "cultural-causation": 0.1, institutionalism: 0.9, "ecological-limits": 0 }, { liberty: 0.8, equality: 0.9, solidarity: 0.85, "order-tradition": -0.45, democracy: 1, universalism: 0.6, "ecological-priority": 0 }, { "market-allocation": -0.65, "public-provision": 0.4, "public-ownership": 0.95, decentralization: 1, "state-capacity": -0.85, reformism: -0.65, internationalism: 0.4 }, "A provisional Council Communism anchor: scholarship supports workers' councils, direct self-government, common control, and anti-vanguard boundaries, not this vector's validity or respondent classification."),
   anchor("guild-socialism", "Guild Socialism", "Guild Socialist", "A historically situated socialist tradition centered on industrial self-government, functional representation, public or social ownership, and coordination across guild, civic, and territorial associations.", { "structural-power": 0.85, "market-coordination": -0.35, "elite-autonomy": 0.75, "cultural-causation": 0.2, institutionalism: 0.95, "ecological-limits": 0.05 }, { liberty: 0.85, equality: 0.9, solidarity: 0.85, "order-tradition": 0.05, democracy: 1, universalism: 0.6, "ecological-priority": 0.1 }, { "market-allocation": 0.15, "public-provision": 0.65, "public-ownership": 0.9, decentralization: 0.95, "state-capacity": 0.55, reformism: 0.55, internationalism: 0.25 }, "A provisional Guild Socialism anchor: scholarship supports historical worker control, plural functional representation, public or social ownership, and coordination across associations, not this vector's validity or respondent classification."),
   anchor("trotskyism", "Trotskyism", "Trotskyist", "A historically organized and internally varied Marxist current associated with permanent revolution, internationalism, workers' democracy, and critique of bureaucratic degeneration.", { "structural-power": 0.8, "market-coordination": -0.35, "elite-autonomy": 0.9, "cultural-causation": 0.45, institutionalism: 0.65, "ecological-limits": 0 }, { liberty: 0.85, equality: 0.9, solidarity: 0.85, "order-tradition": -0.45, democracy: 0.95, universalism: 0.85, "ecological-priority": 0 }, { "market-allocation": -0.5, "public-provision": 0.55, "public-ownership": 0.8, decentralization: 0.55, "state-capacity": 0.65, reformism: -0.7, internationalism: 1 }, "A provisional Trotskyism anchor: scholarship supports a historically organized and internally divided internationalist and anti-bureaucratic Marxist current, not this vector's validity, a single permanent-revolution interpretation, or respondent classification."),
+  anchor("georgism", "Georgism", "Georgist", "A historically rooted and internally varied land-centered political-economic school and movement connecting equal access to natural opportunity with public capture of socially created land value, private claims to labor and improvements, and varied market and democratic routes.", { "structural-power": 0.95, "market-coordination": 0.45, "elite-autonomy": 0.55, "cultural-causation": 0.2, institutionalism: 0.6, "ecological-limits": 0.25 }, { liberty: 0.8, equality: 0.95, solidarity: 0.75, "order-tradition": 0.05, democracy: 0.65, universalism: 0.3, "ecological-priority": 0.2 }, { "market-allocation": 0.55, "public-provision": 0.65, "public-ownership": 0.15, decentralization: 0.15, "state-capacity": 0.7, reformism: 0.7, internationalism: 0.35 }, "A provisional Georgism anchor: scholarship supports a distinct land, rent, inequality, liberty, republican, and democratic-reform boundary, but the vector is not empirically validated and does not decide a respondent's political identity or endorse one tax design.", "georgism"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -5902,10 +6048,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 89,
+    contentVersion: 90,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 468, normative: 468, prescriptive: 468 },
+    questionsPerLayer: { descriptive: 472, normative: 472, prescriptive: 472 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

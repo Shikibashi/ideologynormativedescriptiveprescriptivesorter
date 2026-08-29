@@ -231,6 +231,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "not-scored",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-georgism-promote",
+    "georgism",
+    "promote-to-canonical",
+    "source-backed-contested",
+    ["source-helsinki-obeng-odoom-georgist-political-economy", "source-jhu-england-land-liberty", "source-oup-odonnell-george-inequality", "source-oup-mclean-land-value-taxation", "source-sage-williams-georgist-political-ecology", "source-wiley-mccann-georgist-social-philosophy", "source-wiley-hudson-george-critics", "source-oll-george-progress-poverty"],
+    "The source set supports Georgism as a distinct, historically rooted political-economic school and movement centered on land, land value, rent, unequal access to natural opportunity, and the separation of socially created location value from privately created labor and improvements. Its liberal, egalitarian, republican, democratic, and market-compatible dimensions are sufficiently coherent for a bounded parentless meso node.",
+    "This promotion establishes a canonical meso target and a provisional dedicated measurement branch only. It does not make Georgism synonymous with Liberalism, Left-Libertarianism, Socialism, Agrarian Populism, land-value-tax support, environmentalism, rural identity, one single-tax design, or a current policy position; the current shared schema lacks a dedicated land/rent facet and later validation remains required.",
+    ["Georgism may be treated as a liberal, left-libertarian, republican, socialist-adjacent, or policy tradition rather than a separate meso node.", "Historical Georgist movements and later geoliberal, land-value-tax, civic-dividend, resource-rent, urban, ecological, and international interpretations vary.", "Land taxation, property rights, public infrastructure, agrarian identity, or generic egalitarianism alone do not establish the Georgist land-rent mechanism."],
+    "canonical",
+    "scored-provisional",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>

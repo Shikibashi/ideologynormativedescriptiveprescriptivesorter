@@ -952,3 +952,18 @@ The V89 records support terminology, place/scale scope, governance variation, fa
 | `source-sage-luke-deep-ecology` | [Luke, “Deep Ecology: Living as if Nature Mattered”](https://doi.org/10.1177/10826602015002005) | Supports the influence of Deep Ecology on environmental political movements and the need to distinguish ethics from political translation |
 
 The V92 records support intrinsic-value, ecocentric, ecological-self, platform/action, technology, institutional, and plural-translation terminology for original effect-free research items and boundary metadata only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, empirical classification, or population generalization. No cognitive review or respondent study was run.
+
+## V93 academic source map — Georgism meso boundary
+
+| Source ID | Academic or primary record | Boundary contribution |
+|---|---|---|
+| source-helsinki-obeng-odoom-georgist-political-economy | [Obeng-Odoom, “Georgist political economy”](https://doi.org/10.4337/9781789909067.00026) | Treats Georgism as a school of thought beginning with Henry George and centered on land, rentier capitalism, diagnosis, and political-economic response |
+| source-jhu-england-land-liberty | [England, *Land and Liberty: Henry George and the Geoliberal Tradition*](https://www.press.jhu.edu/books/title/12372/land-and-liberty) | Supplies national, international, multiracial, urban, democratic, egalitarian, liberal, movement, and conservation context |
+| source-oup-odonnell-george-inequality | [O'Donnell, *Henry George and the Crisis of Inequality*](https://academic.oup.com/columbia-scholarship-online/book/29732) | Connects land-value taxation and activism to industrial inequality, democracy, equality, freedom, and republican traditions |
+| source-oup-mclean-land-value-taxation | [McLean, “The politics of land value taxation”](https://doi.org/10.1093/oso/9780199609222.003.0011) | Preserves the historical and normative line from Smith, Paine, Ricardo, Henry George, and Lloyd George while keeping implementation variation visible |
+| source-sage-williams-georgist-political-ecology | [Williams, “Nature, rent and the persistence of inequality: A Georgist political ecology”](https://doi.org/10.1177/19427786251390972) | Supports a contemporary ecological reconstruction organized around land, nature, rent, inequality, and poverty amid progress |
+| source-wiley-mccann-georgist-social-philosophy | [McCann, “Apprehending the social philosophy of Henry George”](https://doi.org/10.1111/j.1536-7150.2007.00559.x) | Supports social-philosophical interpretation, land nationalization, private improvement, and the debated relation to socialism |
+| source-wiley-hudson-george-critics | [Hudson, “Henry George's political critics”](https://doi.org/10.1111/j.1536-7150.2007.00560.x) | Preserves criticism, economic-rent disputes, and local, two-rate, national, and other implementation routes |
+| source-oll-george-progress-poverty | [George, *Progress and Poverty*](https://oll.libertyfund.org/titles/george-progress-and-poverty) | Provides primary-text evidence for land, rent, labor, progress, poverty, equal rights, and the social claim on land value |
+
+The V93 records support terminology, historical provenance, internal variation, false-positive controls, and original item authoring only. They do not validate local effects, anchor vectors, respondent interpretation, reliability, validity, invariance, empirical classification, or population generalization. No cognitive review or respondent study was run.

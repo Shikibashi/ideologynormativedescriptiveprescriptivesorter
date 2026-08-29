@@ -648,6 +648,15 @@
 - The existing twelve Civic Republicanism candidates remain effect-free research material; no production questions, effects, anchors, or respondent-facing classification are authorized by V90.
 - Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
 
+## V93 unresolved questions — Georgism canonical meso promotion
+
+- How should a future dedicated land/rent construct distinguish Georgist land-value and location-rent commitments from generic taxation, resource-rent, public-finance, housing, property, or environmental positions without changing the current schema by inference?
+- Which features are durable across Henry George's single-tax argument, later land-value-tax movements, geoliberal reform, civic-dividend proposals, public-revenue routes, resource-rent extensions, and ecological or international interpretations?
+- How should the sorter preserve the boundary among Georgism, Liberalism, Left-Libertarianism, Socialism, Agrarian Populism, Social Democracy, and generic land-value-tax policy support when sources use overlapping language?
+- How should future items handle urban versus rural context, land tenure, labor-created improvements, assessment, transition, public-service finance, and implementation disputes without converting one policy design into the construct?
+- Georgism currently has twelve effect-free candidates, a provisional anchor, and dedicated production items, but the candidate bank remains quarantined and the anchor remains editorial/provisional. No cognitive review, respondent evidence, psychometric validation, empirical classification, or population generalization is authorized by V93.
+- The shared facet schema still lacks a dedicated land/rent axis. Isolated structural reachability passes, but full-production overlap remains a geometry diagnostic and does not justify uncalibrated coefficient, threshold, picker, or anchor retuning.
+
 ## V91 unresolved questions — Conservative New Right registry retention
 
 - Should future contextual metadata separate Anglo-American or British New Right usages from the European New Right intellectual field, or would that create a second label without a sufficiently stable application boundary?

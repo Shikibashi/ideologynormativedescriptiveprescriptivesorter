@@ -1777,6 +1777,68 @@
     ],
     "finalStatus": "complete_with_conditions"
   },
+  "georgismCoverageRun": {
+    "id": "2026-08-29-georgism-canonical-meso",
+    "description": "Research-backed Georgism canonical meso-tradition promotion, direct production coverage, and end-to-end verification.",
+    "startedAt": "2026-08-29T08:40:00Z",
+    "completedAt": "2026-08-29T09:37:28Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceComparison": "proved: Obeng-Odoom, England, McLean, O'Donnell, Williams, McCann, Hudson, and George support a bounded Georgist tradition centered on land, economic rent, unequal access to natural opportunity, public capture of land value, and contested liberal/republican/socialist translations",
+      "production": "proved: content version 90 contains 1,416 questions, 472 per layer, 117 editorial anchors, and 112 production anchors",
+      "directTarget": "proved: Georgism has twelve direct target-tagged prompts at 4/4/4 and isolated routing in all three layers; combined reachability remains a geometry diagnostic",
+      "topology": "proved: one parentless canonical meso node was added; canonical inventory is 9/34/69 and total ontology is 117 nodes with five contextual placements",
+      "heldTargets": "proved: five contextual placements and three registry-only targets remain outside production scoring, and 1,440 effect-free candidates remain quarantined across 120 research targets",
+      "coverage": "proved: research coverage reports 112 dedicated-scored, five contextual-only, three registry-only, 120 profiles/audits, and zero validation errors",
+      "reachability": "proved: Georgism is isolated-reachable in descriptive, normative, and prescriptive layers with zero validation errors and zero structural-closure failures",
+      "unitTests": "proved: full Vitest suite passed 109/109 across four files; share-fragment contracts passed 5/5",
+      "build": "proved: npx tsc --noEmit and npm run build passed with the existing large-client-chunk advisory",
+      "audit": "proved: npm audit --omit=dev --audit-level=high reported zero vulnerabilities",
+      "share": "proved: compact v2 complete-answer fragment measures 15,713 characters and round-trips; v1 decoding and finite-size rejection remain covered",
+      "browser": "proved: serial local and Docker-backed Playwright suites passed 10/10, including the Georgism workbench target traversal",
+      "health": "proved: forced Compose recreation served /healthz as ok and the frontend container reached healthy status",
+      "dockerBuild": "proved: fresh no-cache docker build -f frontend/Dockerfile -t ideology-layer-sorter-frontend:latest . passed, followed by forced Compose recreation",
+      "cognitiveEvidence": "not-run by explicit user constraint; no cognitive, respondent, psychometric, or empirical validation is claimed",
+      "documentation": "proved: README, research plan, source map, QA scenarios, verification report, and Zeus log/report/state synchronized",
+      "integrity": "proved: final JSON parse, docker compose config, and git diff --check passed; separate belief-profile/morphology workstream was excluded from the V93 scope"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "ontology": "src/ontology.ts",
+      "researchBank": "src/research-bank.ts",
+      "governance": "src/research-governance.ts",
+      "tests": "src/research.test.ts, src/scoring.test.ts, src/share.test.ts, tests/sorter.spec.ts",
+      "coverageAudit": "scripts/audit-research-coverage.ts",
+      "reachabilityAudit": "scripts/audit-anchor-reachability.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "verifyReport": "docs/plan/ideology-sorter/verify-report.md",
+      "qaScenarios": "docs/plan/ideology-sorter/precision-source-expansion/qa-scenarios.md",
+      "academicSourceMap": "docs/plan/ideology-sorter/precision-source-expansion/academic-source-map.md",
+      "zeus": "docs/zeus/zeus-report.md",
+      "log": "docs/zeus/zeus-log.md"
+    },
+    "warnings": [
+      "Georgism remains a contested, internally varied, provisional editorial measurement, not a validated respondent classifier or current-actor label.",
+      "Generic land ownership, property-tax preference, environmental concern, agrarian identity, public-infrastructure support, or a single land-value-tax policy is not sufficient evidence for the target.",
+      "The comprehensive goal remains open; five contextual placements and three registry-only targets remain non-scored.",
+      "The current schema has no dedicated land/rent facet; the V93 anchor uses existing facets and records that limitation for later schema research rather than retuning geometry without evidence.",
+      "No cognitive review, respondent study, substitute simulation, psychometric, reliability, validity, invariance, empirical, or population evidence was run.",
+      "No remote is configured; push requires a user-provided remote target."
+    ],
+    "finalStatus": "complete_with_conditions"
+  },
   "phases": {
     "parsing": {
       "status": "completed",
@@ -1878,7 +1940,7 @@
     "The combined pattern is an equal-layer interpretive composition gated on complete layer coverage; it is not a validated identity classifier, recommendation, comparison, or ranking."
   ],
 "archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism continuation, v53 Cultural Nationalism continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, v57 Zionism micro-branch continuation, v58 Khomeinism micro-branch continuation, v59 Qutbism micro-branch continuation, v60 Radical Republicanism micro-branch continuation, v61 Marxist Feminism micro-branch continuation, v62 Socialist Feminism micro-branch continuation, v63 Left-Wing Populism micro-branch continuation, v64 Neoconservatism continuation, v65 Paleoconservatism continuation, v66 Wasatiyya continuation, v67 Right-Wing Populism continuation, and v68 Hindutva micro-branch continuation, and v69 Religious Zionism micro-branch continuation completed 2026-08-28, v70 Neo-Fascism meso-branch continuation completed 2026-08-28, v71 Falangism micro-branch continuation completed 2026-08-28, and v72 Brazilian Integralism micro-branch continuation completed 2026-08-28, v73 Integral Nationalism cross-case historical-category continuation completed 2026-08-28, and v74 Legionary Fascism historically bounded micro-branch continuation completed 2026-08-28, and v75 Fascism macro-family continuation completed 2026-08-28, and v76 White Nationalism high-risk racial-national continuation completed 2026-08-28, and v77 Neo-Nazism postwar continuity and adaptation completed 2026-08-28, and v78 Revolutionary Islamism cross-case public-order continuation completed 2026-08-28, and v79 Third Positionism postwar far-right continuation completed 2026-08-28, and v80 Salafi-Jihadism high-risk doctrinal continuation completed 2026-08-28, and v81 Revisionist / Bernsteinian Social Democracy historical-microtype continuation completed 2026-08-28, and v82 National-Syndicalism historical-microtype continuation completed 2026-08-28, and v83 British Fascism historical-microtype continuation completed 2026-08-28, and v84 French Fascism historical-microtype continuation completed 2026-08-28, and v85 Italian Fascism historical-microtype continuation completed 2026-08-28, and v86 Japanese Fascism historical-microtype continuation completed 2026-08-28, and v87 Flemish / Belgian Fascism historical-microtype continuation completed 2026-08-29, and v88 Agrarian Populism historically bounded microtype continuation completed 2026-08-29, and v89 Bioregionalism ecological microtype continuation completed 2026-08-29, and v90 Civic Republicanism registry-retention continuation completed 2026-08-29, and v91 Conservative New Right registry-retention continuation completed 2026-08-29, and v92 Deep Ecology associated-framework continuation completed 2026-08-29",
-  "latestArchiveEntry": "v92 Deep Ecology associated-framework continuation completed 2026-08-29",
-  "completedAt": "2026-08-29T08:35:24Z",
+  "latestArchiveEntry": "v93 Georgism canonical-meso continuation completed 2026-08-29",
+  "completedAt": "2026-08-29T09:37:28Z",
   "finalStatus": "partial_with_conditions"
 }
