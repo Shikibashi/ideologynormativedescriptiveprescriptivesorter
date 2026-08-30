@@ -50,3 +50,13 @@
 - TypeScript passes; full Vitest passes with 10 files and 170 tests; build passes with the existing large-chunk warning; research coverage, measurement, direct-pilot, morphology, anchor-reachability, and target-trace checks pass within their declared structural scopes.
 - `belief:question-coverage --summary` exits nonzero only because the four pre-existing prescriptive source-direction gaps remain open; its new target-profile and target-morphology structural checks are true and its failure list is empty.
 - The completion audit's cognitive/response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent gates remain `NOT RUN` by explicit scope. Scoped commit/push remain pending for this continuation.
+
+## Continuation — explicit representation posture
+
+- Reclassified each target/layer coverage block as `directional`, `contested-indeterminate`, or `unrepresented` in `src/ideology-question-coverage.ts`.
+- Removed the fixture's prior zero-alignment direction manufacturing. Unmatched target items remain mixed/depends, while the four source-backed contested prescriptive layers remain `not-established` and do not manufacture morphology evidence.
+- Preserved `allTargetQuestionsReachDirectionalPrimaryProfile` and added the layer-level directional trace check so existing report consumers retain the earlier field while the new check distinguishes item-level from layer-level coverage.
+- Added regression coverage for the three postures, contested morphology abstention, and the detached-target negative control; updated `docs/plan/ideology-sorter/target-evidence-traceability.md` with the fail-closed boundary.
+- TypeScript passes; focused posture tests pass 7/7; full Vitest passes 10 files and 172 tests; build passes with the existing large-chunk warning; research coverage passes with 1,500 production questions, 119 canonical targets, 128 research targets, and zero validation errors.
+- The target audit reports zero hard failures and four explicit open source-direction gaps. Its directional-primary-profile and target-morphology summary checks remain false only for those intentionally contested prescriptive layers. Cognitive review, psychometric, empirical, respondent, and population/consequence gates remain `NOT RUN`.
+- Scoped commit and push remain pending; unrelated worktree modifications are not part of this tranche.

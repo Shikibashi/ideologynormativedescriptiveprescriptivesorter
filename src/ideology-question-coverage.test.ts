@@ -27,8 +27,8 @@ describe("ideology question coverage", () => {
       allCanonicalTargetsReachPrimaryMorphology: true,
       allPrimaryMorphologyCandidatesAreProvisional: true,
       allCanonicalTargetsReachPrimaryProfileEvidence: true,
-      allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: true,
-      allCanonicalTargetsReachTargetMorphologyEvidence: true,
+      allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: false,
+      allCanonicalTargetsReachTargetMorphologyEvidence: false,
     });
   }, 30_000);
 
@@ -42,6 +42,29 @@ describe("ideology question coverage", () => {
     expect(islamism?.layers.normative.questionAlignments.find((item) => item.questionId === "n-islamism-02"))
       .toMatchObject({ alignment: "aligned", matchedFacetIds: ["equality"] });
   });
+
+  it("distinguishes directional, contested, and unrepresented layer postures", () => {
+    const classicalLiberalism = report.rows.find((row) => row.targetId === "classical-liberalism");
+    const populism = report.rows.find((row) => row.targetId === "populism");
+
+    expect(classicalLiberalism?.layers.descriptive.representationPosture).toBe("directional");
+    expect(classicalLiberalism?.layers.normative.representationPosture).toBe("directional");
+    expect(classicalLiberalism?.layers.prescriptive.representationPosture).toBe("directional");
+    expect(populism?.layers.prescriptive.representationPosture).toBe("contested-indeterminate");
+
+    const detachedDataset: Dataset = {
+      ...DATASET,
+      questions: DATASET.questions.map((question) => question.targetNodeIds?.includes("classical-liberalism")
+        ? { ...question, targetNodeIds: [] }
+        : question),
+    };
+    const detachedReport = auditIdeologyQuestionCoverage(detachedDataset);
+    const detached = detachedReport.rows.find((row) => row.targetId === "classical-liberalism");
+
+    expect(detached?.layers.descriptive.representationPosture).toBe("unrepresented");
+    expect(detached?.layers.normative.representationPosture).toBe("unrepresented");
+    expect(detached?.layers.prescriptive.representationPosture).toBe("unrepresented");
+  }, 30_000);
 
   it("keeps each layer's coverage detail available for review without treating it as respondent evidence", () => {
     const firstRow = report.rows[0];
@@ -65,17 +88,33 @@ describe("ideology question coverage", () => {
     if (!row) return;
 
     expect(row.evidenceTrace.allTargetQuestionsReachPrimaryProfile).toBe(true);
-    expect(row.evidenceTrace.allTargetQuestionsReachDirectionalPrimaryProfile).toBe(true);
+    expect(row.evidenceTrace.allTargetQuestionsReachDirectionalPrimaryProfile).toBe(false);
+    expect(row.evidenceTrace.allTargetLayersReachDirectionalPrimaryProfile).toBe(true);
     expect(row.evidenceTrace.allLayersReachTargetMorphology).toBe(true);
     for (const layer of ["descriptive", "normative", "prescriptive"] as const) {
       const trace = row.evidenceTrace.layers[layer];
       expect(trace).toMatchObject({ status: "pass" });
       expect(trace.targetQuestionIds).toHaveLength(4);
-      expect(trace.directionalTargetQuestionIds).toEqual(trace.targetQuestionIds);
       expect(trace.primaryProfileEvidenceQuestionIds).toEqual(trace.targetQuestionIds);
-      expect(trace.primaryProfileDirectionalEvidenceQuestionIds).toEqual(trace.targetQuestionIds);
+      expect(trace.primaryProfileDirectionalEvidenceQuestionIds).toEqual(trace.directionalTargetQuestionIds);
       expect(trace.morphologyEvidenceQuestionIds.length).toBeGreaterThan(0);
     }
+  });
+
+  it("does not manufacture direction for unmatched items or indeterminate layers", () => {
+    const classical = report.rows.find((candidate) => candidate.targetId === "classical-liberalism");
+    const populism = report.rows.find((candidate) => candidate.targetId === "populism");
+
+    expect(classical?.evidenceTrace.layers.descriptive.representationPosture).toBe("directional");
+    expect(classical?.evidenceTrace.layers.descriptive.directionalTargetQuestionIds.length).toBeLessThan(4);
+    expect(classical?.evidenceTrace.layers.descriptive.primaryProfileEvidenceQuestionIds).toHaveLength(4);
+    expect(classical?.evidenceTrace.layers.descriptive.primaryProfileDirectionalEvidenceQuestionIds)
+      .toEqual(classical?.evidenceTrace.layers.descriptive.directionalTargetQuestionIds);
+
+    expect(populism?.layers.prescriptive.representationPosture).toBe("contested-indeterminate");
+    expect(populism?.evidenceTrace.layers.prescriptive.representationPosture).toBe("contested-indeterminate");
+    expect(populism?.evidenceTrace.layers.prescriptive.directionalTargetQuestionIds).toEqual([]);
+    expect(populism?.evidenceTrace.layers.prescriptive.status).toBe("not-established");
   });
 
   it("fails closed when a target item is detached from the primary profile evidence path", () => {

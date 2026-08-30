@@ -15,6 +15,13 @@ const LAYERS = ["descriptive", "normative", "prescriptive"] as const satisfies r
 
 export type IdeologyQuestionAlignment = "aligned" | "opposed" | "mixed" | "unmapped";
 
+/**
+ * A source-backed configuration posture for one target block and claim
+ * layer. This is an audit classification, not a respondent trait or a fit
+ * threshold.
+ */
+export type IdeologyQuestionLayerPosture = "directional" | "contested-indeterminate" | "unrepresented";
+
 export type IdeologyQuestionAlignmentRecord = Readonly<{
   questionId: string;
   layer: Layer;
@@ -28,6 +35,7 @@ export type IdeologyQuestionAlignmentRecord = Readonly<{
 
 export type IdeologyQuestionLayerCoverage = Readonly<{
   layer: Layer;
+  representationPosture: IdeologyQuestionLayerPosture;
   questionIds: readonly string[];
   questionCount: number;
   directionalCommitmentCount: number;
@@ -43,6 +51,7 @@ export type IdeologyQuestionLayerCoverage = Readonly<{
 
 export type IdeologyQuestionEvidenceTraceLayer = Readonly<{
   layer: Layer;
+  representationPosture: IdeologyQuestionLayerPosture;
   targetQuestionIds: readonly string[];
   directionalTargetQuestionIds: readonly string[];
   primaryProfileEvidenceQuestionIds: readonly string[];
@@ -56,6 +65,7 @@ export type IdeologyQuestionEvidenceTrace = Readonly<{
   layers: Readonly<Record<Layer, IdeologyQuestionEvidenceTraceLayer>>;
   allTargetQuestionsReachPrimaryProfile: boolean;
   allTargetQuestionsReachDirectionalPrimaryProfile: boolean;
+  allTargetLayersReachDirectionalPrimaryProfile: boolean;
   allLayersReachTargetMorphology: boolean;
 }>;
 
@@ -175,6 +185,7 @@ const layerCoverageFor = (
 ): IdeologyQuestionLayerCoverage => {
   const layerQuestions = questions.filter((question) => question.layer === layer);
   const commitmentWeights = directionalCommitmentWeightsFor(configuration, layer);
+  const layerCommitments = configuration.commitments.filter((commitment) => commitment.layer === layer);
   const directionalCommitments = configuration.commitments.filter((commitment) =>
     commitment.layer === layer
     && commitment.facetId
@@ -194,9 +205,17 @@ const layerCoverageFor = (
     .map((commitment) => commitment.facetId as string))].sort();
   const alignmentCounts = emptyAlignmentCounts();
   for (const alignment of questionAlignments) alignmentCounts[alignment.alignment] += 1;
+  const hasMappedDirectionalCommitment = commitmentWeights.size > 0
+    && questionAlignments.some((alignment) => alignment.matchedFacetIds.length > 0);
+  const representationPosture: IdeologyQuestionLayerPosture = hasMappedDirectionalCommitment
+    ? "directional"
+    : layerCommitments.length > 0 && directionalCommitments.length === 0
+      ? "contested-indeterminate"
+      : "unrepresented";
 
   return {
     layer,
+    representationPosture,
     questionIds: layerQuestions.map((question) => question.id),
     questionCount: layerQuestions.length,
     directionalCommitmentCount: directionalCommitments.length,
@@ -215,7 +234,7 @@ const layerCoverageFor = (
       ? "gap"
       : commitmentWeights.size === 0
         ? "not-established"
-        : questionAlignments.some((alignment) => alignment.matchedFacetIds.length > 0)
+        : hasMappedDirectionalCommitment
           ? "pass"
           : "gap",
   };
@@ -252,9 +271,10 @@ const targetQuestionIdsByLayerFor = (
 /**
  * Exercises the target-specific data path without adding target metadata to a
  * production answer or profile. Target-tagged questions receive the existing
- * configuration fixture direction; every other question is explicit
- * mixed/depends so it satisfies coverage without contributing directional
- * evidence to the profile or morphology basis.
+ * configuration fixture direction when a determinate commitment matches;
+ * unmatched target questions remain explicit mixed/depends. Every other
+ * question is also mixed/depends so it cannot contribute directional evidence
+ * to the profile or morphology basis.
  */
 const targetTraceAnswersFor = (
   configuration: IdeologyConfiguration,
@@ -266,8 +286,7 @@ const targetTraceAnswersFor = (
     .map((question) => question.id));
   return Object.fromEntries(dataset.questions.map((question) => {
     if (!targetQuestionIds.has(question.id)) return [question.id, 0];
-    const answer = configurationAnswers[question.id];
-    return [question.id, answer === 0 ? 2 : answer];
+    return [question.id, configurationAnswers[question.id]];
   }));
 };
 
@@ -309,15 +328,26 @@ const targetEvidenceTraceFor = (
     const primaryProfileDirectionalEvidence = questionIdsInOrder(dataset, layerTargetQuestionIds, profileDirectionalEvidenceQuestionIds);
     const targetMorphologyEvidence = questionIdsInOrder(dataset, layerTargetQuestionIds, morphologyEvidenceQuestionIds);
     const profileComplete = primaryProfileEvidence.length === layerTargetQuestionIds.length
-      && primaryProfileDirectionalEvidence.length === layerTargetQuestionIds.length;
+      && layerTargetQuestionIds.length > 0;
+    const directionalProfileComplete = directionalTargetQuestionIds.every((questionId) =>
+      primaryProfileDirectionalEvidence.includes(questionId));
+    const hasDeterminateLayerCommitment = directionalCommitmentWeightsFor(configuration, layer).size > 0;
+    const representationPosture = directionalTargetQuestionIds.length > 0
+      ? "directional" as const
+      : hasDeterminateLayerCommitment
+        ? "unrepresented" as const
+        : "contested-indeterminate" as const;
     return {
       layer,
+      representationPosture,
       targetQuestionIds: layerTargetQuestionIds,
       directionalTargetQuestionIds,
       primaryProfileEvidenceQuestionIds: primaryProfileEvidence,
       primaryProfileDirectionalEvidenceQuestionIds: primaryProfileDirectionalEvidence,
       morphologyEvidenceQuestionIds: targetMorphologyEvidence,
-      status: layerTargetQuestionIds.length !== 4 || directionalTargetQuestionIds.length !== layerTargetQuestionIds.length || !profileComplete
+      status: layerTargetQuestionIds.length !== 4
+        || !profileComplete
+        || (representationPosture === "directional" && !directionalProfileComplete)
         ? "gap"
         : targetMorphologyEvidence.length === 0
           ? "not-established"
@@ -334,6 +364,13 @@ const targetEvidenceTraceFor = (
     layers,
     allTargetQuestionsReachPrimaryProfile: targetQuestionIds.every((questionId) => profileEvidenceQuestionIds.includes(questionId)),
     allTargetQuestionsReachDirectionalPrimaryProfile: targetQuestionIds.every((questionId) => profileDirectionalEvidenceQuestionIds.includes(questionId)),
+    allTargetLayersReachDirectionalPrimaryProfile: LAYERS.every((layer) => {
+      const trace = layers[layer];
+      return trace.representationPosture === "directional"
+        && trace.directionalTargetQuestionIds.length > 0
+        && trace.directionalTargetQuestionIds.every((questionId) =>
+          trace.primaryProfileDirectionalEvidenceQuestionIds.includes(questionId));
+    }),
     allLayersReachTargetMorphology: LAYERS.every((layer) => layers[layer].morphologyEvidenceQuestionIds.length > 0),
   };
 };
@@ -380,7 +417,8 @@ export const auditIdeologyQuestionCoverage = (dataset: Dataset = DATASET): Ideol
       .filter((layer) => row.evidenceTrace.layers[layer].status === "gap")
       .map((layer) => `${row.targetId} ${layer} target questions do not all reach directional primary-profile evidence in the structural fixture`),
     ...LAYERS
-      .filter((layer) => row.evidenceTrace.layers[layer].status === "not-established")
+      .filter((layer) => row.evidenceTrace.layers[layer].status === "not-established"
+        && row.evidenceTrace.layers[layer].representationPosture !== "contested-indeterminate")
       .map((layer) => `${row.targetId} ${layer} target questions do not reach target morphology basis evidence in the structural fixture`),
     ...(!row.targetCandidatePresent ? [`${row.targetId} does not reach a primary morphology candidate`] : []),
     ...(row.targetCandidateStatus !== null && row.targetCandidateStatus !== "provisional-candidate"
@@ -403,7 +441,7 @@ export const auditIdeologyQuestionCoverage = (dataset: Dataset = DATASET): Ideol
     allCanonicalTargetsReachPrimaryMorphology: rows.every((row) => row.targetCandidatePresent),
     allPrimaryMorphologyCandidatesAreProvisional: rows.every((row) => row.targetCandidateStatus === "provisional-candidate"),
     allCanonicalTargetsReachPrimaryProfileEvidence: rows.every((row) => row.evidenceTrace.allTargetQuestionsReachPrimaryProfile),
-    allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: rows.every((row) => row.evidenceTrace.allTargetQuestionsReachDirectionalPrimaryProfile),
+    allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: rows.every((row) => row.evidenceTrace.allTargetLayersReachDirectionalPrimaryProfile),
     allCanonicalTargetsReachTargetMorphologyEvidence: rows.every((row) => row.evidenceTrace.allLayersReachTargetMorphology),
   };
   return {
