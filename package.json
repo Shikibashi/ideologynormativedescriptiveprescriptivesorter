@@ -16,7 +16,9 @@
     "belief:morphology-audit": "vite-node scripts/audit-belief-morphology.ts",
     "belief:direct-pilot-audit": "vite-node scripts/audit-belief-direct-pilot.ts",
     "belief:question-coverage": "vite-node scripts/audit-ideology-question-coverage.ts",
-    "belief:completion-audit": "vite-node scripts/audit-belief-completion.ts"
+    "belief:completion-audit": "vite-node scripts/audit-belief-completion.ts",
+    "belief:review-packet": "vite-node scripts/export-belief-review-packet.ts",
+    "belief:review-validate": "vite-node scripts/validate-belief-review-packet.ts"
   },
   "dependencies": {
     "react": "^19.1.1",

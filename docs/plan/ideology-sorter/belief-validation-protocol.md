@@ -100,6 +100,16 @@ For each item, record:
 
 Agreement statistics may summarize categorical coding when their assumptions fit the design, but a single agreement coefficient is not a substitute for the written disagreement record. Reviewers must not infer that an item is valid merely because it has a source citation or a stable legacy effect.
 
+### Exportable review packet
+
+The repository provides a reproducible study-ready export through `npm run belief:review-packet`. The default command emits the full JSON packet to standard output; `npm run belief:review-packet -- --summary` emits counts, version identifiers, packet validation status, and the current external-gate snapshot. The packet records the content, scoring-policy, belief-model, morphology-model, fixed-ontology, construct, source, and production-question snapshots used to assemble the queue.
+
+The production queue includes a stable blind-first-pass view and a full adjudication view. Blind records expose only a stable review id, layer, domain, prompt, and context; question ids, source refs, facet and construct bridges, legacy effects, editorial target metadata, flags, dispositions, and rationale remain in the adjudication view. The full packet also carries the 42 currently open production dispositions, all 19 quarantined candidates, eight direct categorical pilot definitions, six relational follow-up definitions, and the required review-field and evidence-ledger schemas.
+
+The export contains no reviewer, respondent, coding, comparison-group, or consequence records. It therefore always reports `eligibleForPromotion: false`, preserves the typed validation-gate snapshot, and cannot change `BELIEF_VALIDATION_GATES` or the completion audit. A successful export validates packet structure and provenance only; it does not close expert, cognitive, empirical, invariance, population, or held-out morphology gates.
+
+Completed review records can be checked against the current packet with `npx vite-node scripts/validate-belief-review-packet.ts --summary`, using a packet path in `BELIEF_REVIEW_PACKET_INPUT` or piping the full export to stdin. The validator rejects stale content, policy, belief-model, morphology-model, ontology, or gate snapshots; changed question-id or fixed-ontology snapshots; metadata-swapped queue entries; unknown queue ids; malformed reviewer records; incomplete two-reviewer coverage; unresolved reviewer disposition disagreements; and malformed evidence-ledger rows. An `INCOMPLETE` or `INVALID` result is expected until actual review records exist. The validator never authenticates the study, changes the gate ledger, or promotes an artifact.
+
 ## 5. Stage 2: cognitive and response-process study
 
 This stage tests how respondents produce answers, not whether a researcher likes the answer or whether the answer matches an anchor.
@@ -197,6 +207,7 @@ Every completed study or adjudication should add one row per substantive claim:
 | Field | Required content |
 |---|---|
 | Evidence id | Stable id and version. |
+| Gate ids | One or more required external validation gates directly supported by the evidence row. |
 | Claim and unit | Exact item, construct, relationship, configuration, or morphology claim. |
 | Intended use | Explanatory profile, research display, scoring, morphology, or other use. |
 | Source or study | Citation, protocol, dataset, instrument, or review record. |
@@ -218,6 +229,8 @@ npm run belief:measurement-audit
 npm run belief:direct-pilot-audit
 npm run belief:morphology-audit
 npm run belief:question-coverage
+npm run belief:review-packet -- --summary
+npx vite-node scripts/export-belief-review-packet.ts | npx vite-node scripts/validate-belief-review-packet.ts --summary
 npm run belief:completion-audit
 npm run research:coverage
 npm run research:anchor-reachability

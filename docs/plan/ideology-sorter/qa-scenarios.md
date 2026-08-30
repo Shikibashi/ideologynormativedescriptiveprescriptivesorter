@@ -1010,3 +1010,34 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 |---|---|---|
 | P-135-01 | Open Research and inspect Khomeinism and Qutbism in the taxonomy decision panel. | Each target shows a source-backed-contested promotion to the canonical ontology with `scored-provisional` governance consequence, while the live target remains dedicated-scored and the historical/interpretive boundary remains visible. |
 | R-135-01 | Run the research-coverage audit and focused governance tests after the status alignment. | The 128-target ledger validates with 119 `scored-provisional` and 9 `not-scored` results, zero measurement-status exceptions/reconciliations, and zero validation errors; the fail-closed mismatch test still detects an unrecorded downgrade. |
+
+## Current V136 review-packet scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-136-01 | Run `npm run belief:review-packet -- --summary` against the current content snapshot. | The packet reports content version 99, belief model 2, morphology model 5, 1,500 production audit records, 42 open dispositions, 19 gap candidates, 8 direct items, 6 relational follow-ups, 464 sources, 11 constructs, zero packet validation errors, and `eligibleForPromotion: false`. |
+| R-136-02 | Inspect the full packet's blind and adjudication production arrays. | Both arrays contain 1,500 records with stable one-to-one review ids; blind records omit question ids, ideology-bearing target metadata, effects, source refs, construct bridges, flags, dispositions, and rationale, while adjudication records retain the full audit. |
+| R-136-03 | Inspect the packet evidence ledger and gate snapshot. | The evidence ledger is empty, all six required external-study gates remain `NOT RUN`, and exporting the packet does not alter the typed validation ledger or completion-audit status. |
+
+## Current V137 review-record intake scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-137-01 | Pipe the full exporter output to `npx vite-node scripts/validate-belief-review-packet.ts --summary`. | The validator reports `INCOMPLETE`, recognizes 1,533 queue items, finds zero reviewer and evidence records, reports 1,533 incomplete review items, and keeps promotion ineligible. |
+| R-137-02 | Validate a packet whose content snapshot is changed from 99 to 98. | The validator reports `INVALID` with a stale content-version error and keeps promotion ineligible. |
+| R-137-03 | Validate a packet containing one malformed reviewer record. | The validator reports field-level structural errors for missing review fields, invalid disposition, missing rationale, or invalid timestamp; it does not accept the record as evidence. |
+
+## Current V138 validator-diagnostic scenario
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-138-01 | Validate a packet whose `reviewRecords` contains one empty object. | The validator reports exactly 13 missing required-field errors, does not duplicate each missing field as an invalid-value error, remains `INVALID`, and keeps promotion ineligible. |
+
+## Current V139 packet-integrity scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-139-01 | Validate a packet whose first queue entry keeps `production-0001` but changes its `itemId`. | The validator reports `INVALID` with a mismatched queue-item identity error and keeps promotion ineligible. |
+| R-139-02 | Validate a packet whose first snapshot `questionIds` entry is changed. | The validator reports `INVALID` with a question-id snapshot error and keeps promotion ineligible. |
+| R-139-03 | Validate a packet whose first blinded production prompt is changed. | The validator reports `INVALID` with a production-item content error and keeps promotion ineligible. |
+| R-139-04 | Validate the fresh exporter output. | The packet remains structurally valid, reports `INCOMPLETE` only because no external review/evidence records exist, and preserves all six external gates as `NOT RUN`. |

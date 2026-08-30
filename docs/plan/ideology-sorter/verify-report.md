@@ -1894,3 +1894,75 @@ The V135 change aligns the two explicit taxonomy decisions with their already ac
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
 
 The source review supports historical and interpretive taxonomy boundaries only. It does not provide a comparison, assessment, ranking, recommendation, respondent classification, or political preference, and none is implemented by this tranche. Local source review, structural tests, synthetic profiles, browser behavior, and build output remain insufficient for cognitive, psychometric, empirical, invariance, population, or respondent-morphology claims; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V136 observed verification — export study-ready belief review packet — 2026-08-30
+
+V136 adds a machine-checkable export over existing measurement and research seams. The script is stdout-only and does not write a packet file, mutate the dataset, add scoring behavior, or change the validation ledger. The full export has a blind first-pass production view and a complete adjudication view keyed by stable review ids; no external review or respondent records are fabricated.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The new exporter, package entry point, and current source compile with no output. |
+| `npm run belief:review-packet -- --summary` | PASS | Packet version 1; content version 99; scoring policy 3; belief model 2; morphology model 5; 1,500 production audits and blind records; 42 open dispositions; 19 candidates; 8 direct items; 6 relational follow-ups; 464 sources; 11 constructs; zero local packet validation errors. |
+| Full-packet structural inspection | PASS | Default JSON contains both review arrays; blind records omit anchoring fields; full records retain question ids; open-disposition ids are aligned; the evidence ledger is empty; promotion is false. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 175/175 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-CDrWl49i.js` 3,027.53 kB (674.87 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 99; 1,500/1,500 items audited; 42 split dispositions, zero duplicate/rewrite/redundant dispositions, and zero validation errors. |
+| `npx vite-node scripts/audit-belief-morphology.ts --summary` | PASS | 119 source-backed canonical configurations, 238 source-backed-contested relationships, all adversarial checks true, and zero validation/failure errors. |
+| `npx vite-node scripts/audit-ideology-question-coverage.ts --summary` | PASS WITH OPEN GAPS | 119 canonical targets retain 4/4/4 blocks with zero validation errors/failures; four contested prescriptive gaps remain explicit. |
+| `npx vite-node scripts/audit-research-coverage.ts --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets, complete profile/conception rows, and zero validation errors. |
+| `npx vite-node scripts/audit-anchor-reachability.ts --summary` | PASS | 119 production anchors; zero validation/failure errors; overlap ranks remain structural diagnostics only. |
+| `npx vite-node scripts/audit-belief-direct-pilot.ts --summary` | PASS | Eight effect-free direct pilot items remain outside production; source/option validation and isolation checks pass. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass and `structuralEligible` is true, but all six required external-study gates remain `NOT RUN`; exit 1 is expected. |
+| Browser suite | INHERITED | The exporter is script-only; the latest full current-tree browser evidence remains V134's 13/13 single-worker run, including both audit-queue scenarios. No new browser run is claimed for V136. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+| `git diff --check` | PASS | No whitespace errors after the V136 exporter and documentation updates. |
+
+The packet is study-ready as an instrument-development handoff, not as evidence that the study has occurred. Its empty evidence ledger and `eligibleForPromotion: false` status preserve the objective's fail-closed boundary; the overall goal remains `INCOMPLETE`.
+
+## V137 observed verification — validate external-review record intake — 2026-08-30
+
+V137 adds a structural validator for completed reviewer and evidence-ledger records. It accepts the full packet from stdin or a task-specific input path, validates current snapshot and queue identity, enforces required review fields and allowed dispositions, checks two-reviewer completeness and adjudication coverage, and validates external-gate links. It never authenticates external evidence or updates the typed gate ledger.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The shared review contract, exporter updates, and intake validator compile with no output. |
+| `npx vite-node scripts/export-belief-review-packet.ts | npx vite-node scripts/validate-belief-review-packet.ts --summary` | INCOMPLETE / FAIL-CLOSED | Current packet parses successfully; 1,533 queue items have no reviewer records, zero evidence records exist, all six external gates remain `NOT RUN`, and promotion remains false; exit 1 is expected. |
+| Stale-snapshot structural check | PASS | A synthetic content-version change is rejected as `INVALID` with a stale snapshot error; this is validator testing, not study evidence. |
+| Malformed-review structural check | PASS | A synthetic reviewer record with missing fields, invalid disposition, missing rationale, and invalid timestamp is rejected with 13 field-level errors; this is validator testing, not study evidence. |
+| `git diff --check` | PASS | No whitespace errors after the V137 validator and documentation updates. |
+| External validation gates | NOT RUN | No reviewer, respondent, coding, comparison, population, consequence, or held-out morphology evidence was created or promoted. |
+
+V137 improves evidence intake but does not advance any external gate from `NOT RUN`; the comprehensive goal remains `INCOMPLETE` / fail-closed.
+
+## V138 observed verification — deduplicate malformed review diagnostics — 2026-08-30
+
+V138 repairs diagnostic duplication in the review-record intake validator. Missing required fields are reported once; semantic checks still reject fields that are present but invalid. The change does not create reviewer, respondent, coding, comparison, population, consequence, or held-out morphology evidence.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The validator and current TypeScript source compile with no output. |
+| Fresh packet through validator | PASS / INCOMPLETE | The full packet parses with zero structural validation errors, 1,533 pending review items, zero evidence rows, all six external gates `NOT RUN`, and promotion false; the exit code remains 1 because review completeness is intentionally unmet. |
+| Stale-snapshot structural check | PASS | A synthetic content-version change remains `INVALID` with one stale-snapshot error. |
+| Empty-review-row structural check | PASS | A synthetic `reviewRecords: [{}]` packet remains `INVALID` with exactly 13 missing required-field errors and no duplicate semantic diagnostics. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 175/175 tests across 10 files. |
+| `git diff --check` | PASS | No whitespace errors in the current tracked-objective diff. |
+| Required external validation gates | NOT RUN | No reviewer or respondent study was performed, and no gate status was advanced. |
+
+The repair improves intake readability only. The packet remains an instrument-development artifact, not respondent evidence or a promotion decision; the overall goal remains `INCOMPLETE` / fail-closed.
+
+## V139 observed verification — enforce exact review-packet identity — 2026-08-30
+
+V139 closes a provenance-integrity gap in the review intake validator. Stable review ids are now checked against their current queue type, item id, and layer; the question-id sequence, per-layer counts, fixed-ontology snapshot, blinded production items, adjudication audits, open-disposition rows, and question-id list are also compared to the current checkout. The change only strengthens packet freshness and identity checks; it creates no external evidence and does not update the gate ledger.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The validator and current TypeScript source compile with no output. |
+| `npm run belief:review-packet -- --summary` | PASS | Current packet remains version 1 at content 99, with 1,500 production audits, 42 open dispositions, 1,533 queue items, zero packet-contract errors, and promotion false. |
+| `npx vite-node scripts/export-belief-review-packet.ts | npx vite-node scripts/validate-belief-review-packet.ts --summary` | INCOMPLETE / FAIL-CLOSED | Fresh packet parses with zero structural validation errors; 1,533 items have no independent reviewer records, no evidence rows exist, all six external gates remain `NOT RUN`, and promotion remains false. Exit 1 is expected. |
+| Queue-metadata mutation | PASS | Changing the `itemId` under `production-0001` is rejected as `INVALID` with a mismatched queue-item identity error. |
+| Question-snapshot mutation | PASS | Changing one snapshot question id is rejected as `INVALID` with a question-id snapshot error. |
+| Production-prompt mutation | PASS | Changing the first blinded production prompt is rejected as `INVALID` with a production-item content error. |
+| `git diff --check` | PASS | No whitespace errors after the validator and documentation update. |
+| Required external validation gates | NOT RUN | No reviewer, respondent, coding, comparison, population, consequence, or held-out morphology evidence was created or promoted. |
+
+V139 improves packet integrity only. The validator still cannot authenticate external evidence, modify `BELIEF_VALIDATION_GATES`, or promote the belief model; the comprehensive goal remains `INCOMPLETE` / fail-closed.

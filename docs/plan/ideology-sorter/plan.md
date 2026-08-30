@@ -787,3 +787,23 @@ Verification for this bounded slice covers TypeScript, the full unit suite, the 
 Research and repository evidence support closing the explicit governance mismatch for the existing Khomeinism and Qutbism branches. Both already have source-backed canonical placement, complete dedicated production blocks, source-backed configuration profiles, neighbor discriminants, and false-positive audits; their taxonomy decisions were the only canonical promotions still marked `catalog-only`. The decision records now cite the full attached source sets and report `scored-provisional`, while retaining contested posture and historical/interpretive boundaries.
 
 This change deliberately stops at the lowest responsible layer: no new label or question is justified, no scorer or picker behavior changes, and no research candidate is promoted into production. The reconciliation array is empty because the governance and live measurement statuses align, but its validator remains fail-closed for any future mismatch. External cognitive, expert-adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent-morphology gates remain open.
+
+## V136 continuation — export a study-ready belief review packet — 2026-08-30
+
+The next bounded measurement action is now a reproducible review export over the existing audit and quarantined research seams. `scripts/export-belief-review-packet.ts` exposes the content, policy, belief-model, morphology-model, fixed-ontology, construct, source, question, audit, direct-item, relational-follow-up, and candidate snapshots needed for independent content adjudication and later response-process or evidence-ledger work. Its blind production view omits question ids that may contain ideology labels, source refs, effects, facet and construct bridges, editorial targets, flags, dispositions, and rationale; the full adjudication view retains those fields under stable review ids.
+
+The packet is deliberately fail-closed. It exports an empty evidence ledger, derives the six required external gate statuses from the typed validation ledger, and always reports `eligibleForPromotion: false`; it cannot mutate scoring, morphology, the ontology, production content, or gate status. Current packet counts are 1,500 production audits, 42 open dispositions, 19 gap candidates, eight direct categorical items, six relational follow-ups, 464 sources, and 11 constructs. The external review and respondent studies remain the next authority-requiring boundary.
+
+## V137 continuation — validate completed external-review records without auto-promotion — 2026-08-30
+
+The review packet now has a companion intake validator, `scripts/validate-belief-review-packet.ts`, and the `belief:review-validate` npm command. It consumes a full packet through stdin or `BELIEF_REVIEW_PACKET_INPUT`, checks snapshot freshness and queue identity, requires the planned two independent reviewers per queue item, requires adjudication when reviewer dispositions disagree, and validates the evidence-ledger fields and external-gate links.
+
+The validator is deliberately an intake check rather than a gate updater. It cannot authenticate a study, infer respondent validity, write reviewer records, alter `BELIEF_VALIDATION_GATES`, or set promotion eligibility. Against the current empty packet it reports `INCOMPLETE` with 1,533 queue items awaiting review, zero external evidence records, and all six external gates still `NOT RUN`; stale and malformed synthetic records are rejected as `INVALID` during structural testing.
+
+## V138 continuation — deduplicate malformed review diagnostics — 2026-08-30
+
+The review-record validator now reports each absent required field once and reserves semantic diagnostics for fields that are present but invalid. This keeps malformed-record output actionable without changing the fail-closed `INCOMPLETE` state for the empty packet, the two-reviewer requirement, external-gate status, promotion boundary, or any production scoring path.
+
+## V139 continuation — enforce exact review-packet identity — 2026-08-30
+
+The review-packet validator now checks the packet's question-id and fixed-ontology snapshots, verifies that every stable queue id retains its current queue type, item id, and layer, and compares the blinded production items and adjudication audit rows with the current production snapshot. This closes a local provenance gap in which a packet could preserve the set of stable ids and array lengths while swapping the content a reviewer would see. The repair does not create review evidence, alter production questions, change scoring or morphology, update the typed gate ledger, or promote the packet; all six external validation gates remain `NOT RUN`.

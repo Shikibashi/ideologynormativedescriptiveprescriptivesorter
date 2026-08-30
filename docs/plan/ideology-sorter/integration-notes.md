@@ -757,3 +757,23 @@ The new surface is explicitly read-only and editorial. It does not mutate the qu
 The explicit Khomeinism and Qutbism taxonomy decisions now use the same `scored-provisional` governance status as their already activated dedicated production branches. Their source sets were expanded to the full target-attached research records, while `source-backed-contested` posture, competing interpretations, historical scope, and no-respondent-classification boundaries remain explicit. The change removes two deliberate measurement reconciliation exceptions; the typed fail-closed reconciliation validator remains available for future mismatches.
 
 This is a governance and provenance alignment only. The fixed 119-node ontology, 1,500-question bank, 119 anchors, legacy scorer, question effects, morphology projection, and research-candidate quarantine are unchanged. The source pass supports authoring and taxonomy boundaries only; it does not establish cognitive comprehension, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or held-out respondent morphology.
+
+## V136 integration note — study-ready review packet over the existing belief seams
+
+`scripts/export-belief-review-packet.ts` composes the existing `auditBeliefMeasurement(DATASET)` records with the quarantined 19 candidate definitions, eight direct categorical items, six relational follow-ups, construct registry, 464-source registry, fixed ontology snapshot, typed validation-gate snapshot, and review/evidence-ledger schemas. The packet has a stable `production-0001`-style review id for every production item, a blind first-pass array that hides ideology-bearing or adjudication-anchoring metadata, and a full production adjudication array with the exact source and legacy context needed after the blind pass.
+
+The packet is an export and review instrument, not a second measurement or scoring path. It has no external evidence records, reports promotion ineligible, and does not write to the validation ledger. The summary command passes with zero local contract errors at content version 99, while cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF/cross-context, population/consequence, and held-out respondent morphology gates remain `NOT RUN`.
+
+## V137 integration note — fail-closed review-record intake
+
+`scripts/validate-belief-review-packet.ts` validates a packet after independent reviewers or a study team add records. The known review queue is 1,533 items: 1,500 production questions plus 19 gap candidates, 8 direct categorical items, and 6 relational follow-ups. A review record must use a current stable queue id and snapshot, contain all required review fields, identify its reviewer role, carry an allowed disposition, and retain disagreement/adjudication and version metadata. Evidence rows must carry required claim/provenance fields, one or more known external gate ids, and an explicit status.
+
+The validator reports structural validity and review completeness separately, rejects stale or malformed input, and leaves `eligibleForPromotion` false in every output. It does not treat a structurally complete record as proof that the named study occurred, and it cannot change the typed gate ledger or the completion audit. The current generated packet therefore validates structurally but remains `INCOMPLETE` until real external evidence exists.
+
+## V138 integration note — non-duplicative malformed-record diagnostics
+
+The intake path now avoids reporting a missing reviewer field again as a second invalid-value error. A missing field produces one required-field diagnostic; a present but empty, stale, or otherwise invalid field still receives the appropriate semantic diagnostic. This is an output-quality repair only: no review data, study status, gate status, scoring behavior, ontology node, or research-candidate status changes.
+
+## V139 integration note — exact packet and queue metadata identity
+
+The review intake now verifies the question-id sequence, per-layer question counts, fixed-ontology snapshot, the queue/item/layer tuple for every stable review id, and the current content of the blinded and adjudication production arrays and open-disposition list. This prevents a metadata- or prompt-swapped packet from being accepted merely because its ids and array lengths are unchanged. The validator remains an intake integrity check: it does not authenticate an external study, generate reviewer records, change `BELIEF_VALIDATION_GATES`, promote evidence, or alter the belief-to-morphology or legacy scoring paths.
