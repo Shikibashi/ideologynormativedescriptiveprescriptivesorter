@@ -11,6 +11,69 @@ export const BELIEF_REVIEW_ALLOWED_DISPOSITIONS = [
   "construct-gap",
 ] as const satisfies readonly BeliefItemDisposition[];
 
+/**
+ * Evidence rows must declare the kind of external study or adjudication that
+ * produced them. This is a typed declaration of scope, not authentication of
+ * the study or its result.
+ */
+export const BELIEF_REVIEW_EVIDENCE_KINDS = [
+  "response-process-study",
+  "expert-content-adjudication",
+  "respondent-empirical-study",
+  "invariance-dif-study",
+  "population-consequence-review",
+  "held-out-morphology-study",
+] as const;
+
+export type BeliefReviewEvidenceKind = (typeof BELIEF_REVIEW_EVIDENCE_KINDS)[number];
+
+export const BELIEF_REVIEW_EVIDENCE_KIND_BY_GATE: Readonly<Record<string, BeliefReviewEvidenceKind>> = {
+  "cognitive-response-process": "response-process-study",
+  "expert-content-adjudication": "expert-content-adjudication",
+  "empirical-reliability-validity": "respondent-empirical-study",
+  "invariance-dif-cross-context": "invariance-dif-study",
+  "population-consequence-review": "population-consequence-review",
+  "held-out-respondent-morphology": "held-out-morphology-study",
+};
+
+/**
+ * Checks the declared evidence type against the external gates listed on one
+ * ledger row. The caller remains responsible for authenticating the source,
+ * method, result, and provenance; this helper only enforces the local type
+ * and gate-to-study-kind contract.
+ */
+export const validateBeliefReviewEvidenceKinds = (
+  evidenceKindsValue: unknown,
+  gateIds: readonly string[],
+): readonly string[] => {
+  const errors: string[] = [];
+  if (!Array.isArray(evidenceKindsValue) || evidenceKindsValue.length === 0) {
+    return ["evidenceKinds must list one or more evidence kinds"];
+  }
+  const evidenceKinds = evidenceKindsValue.filter((kind): kind is string => typeof kind === "string");
+  if (evidenceKinds.length !== evidenceKindsValue.length || evidenceKinds.some((kind) => !kind.trim())) {
+    errors.push("evidenceKinds must contain only non-empty strings");
+  }
+  if (new Set(evidenceKinds).size !== evidenceKinds.length) errors.push("evidenceKinds contains duplicate kinds");
+  for (const evidenceKind of evidenceKinds) {
+    if (!(BELIEF_REVIEW_EVIDENCE_KINDS as readonly string[]).includes(evidenceKind)) {
+      errors.push(`unknown evidence kind ${evidenceKind}`);
+    }
+  }
+  for (const gateId of gateIds) {
+    const expectedKind = BELIEF_REVIEW_EVIDENCE_KIND_BY_GATE[gateId];
+    if (expectedKind && !evidenceKinds.includes(expectedKind)) {
+      errors.push(`evidence kind ${expectedKind} is required for gate ${gateId}`);
+    }
+  }
+  for (const evidenceKind of evidenceKinds) {
+    if (!gateIds.some((gateId) => BELIEF_REVIEW_EVIDENCE_KIND_BY_GATE[gateId] === evidenceKind)) {
+      errors.push(`evidence kind ${evidenceKind} is not linked to a listed gate`);
+    }
+  }
+  return errors;
+};
+
 export const BELIEF_REVIEW_REQUIRED_FIELDS = [
   {
     id: "single-claim-and-layer",
@@ -66,6 +129,7 @@ export const BELIEF_REVIEW_REQUIRED_FIELDS = [
 
 export const BELIEF_REVIEW_EVIDENCE_LEDGER_FIELDS = [
   "evidenceId",
+  "evidenceKinds",
   "claimAndUnit",
   "intendedUse",
   "sourceOrStudy",

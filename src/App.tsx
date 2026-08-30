@@ -1053,7 +1053,7 @@ const BeliefDirectPilotView = ({ answers, onAnswer }: { answers: BeliefDirectAns
         <div>
           <p className="eyebrow">Optional belief-structure pilot</p>
           <h2 id="belief-direct-pilot-title">Make the underlying account explicit</h2>
-          <p className="belief-direct-pilot-lede">These {BELIEF_DIRECT_ITEMS.length} categorical choices ask which conception, causal account, legitimacy basis, distributive reason, institutional route, economic explanation, change path, priority rule, epistemic stance, or response to internal contestation is closest to your view. They expose direct evidence without converting a category into a numerical ideology score.</p>
+          <p className="belief-direct-pilot-lede">These {BELIEF_DIRECT_ITEMS.length} categorical choices make underlying conceptions, reasons, mechanisms, standards, priority rules, epistemic stances, and responses to internal contestation explicit. They expose direct evidence without converting a category into a numerical ideology score.</p>
         </div>
         <span className="belief-profile-status">{answeredCount} of {BELIEF_DIRECT_ITEMS.length} answered</span>
       </div>

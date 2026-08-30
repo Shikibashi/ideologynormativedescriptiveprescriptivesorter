@@ -1,4 +1,5 @@
 import { BELIEF_DIRECT_ITEMS, directEvidenceForAnswers, validateBeliefDirectEvidence, validateBeliefDirectItems, type BeliefDirectAnswerMap } from "../src/belief-direct-items";
+import { BELIEF_GAP_CANDIDATES } from "../src/belief-gap-candidates";
 import { BELIEF_CONSTRUCT_DEFINITIONS, auditBeliefMeasurement, validateBeliefModel } from "../src/beliefs";
 import { DATASET } from "../src/data";
 import { calculateResults } from "../src/scoring";
@@ -44,12 +45,19 @@ const directItemErrors = validateBeliefDirectItems(DATASET);
 const directEvidenceErrors = validateBeliefDirectEvidence(directEvidence, DATASET);
 const productionMeasurementAudits = auditBeliefMeasurement(DATASET);
 const productionCoveredConstructIds = new Set(productionMeasurementAudits.flatMap((audit) => audit.constructIds));
+const productionCoveredConstructLayerPairs = new Set(productionMeasurementAudits.flatMap((audit) => audit.constructIds.map((constructId) => `${constructId}:${audit.layer}`)));
 const productionUnmeasuredConstructIds = BELIEF_CONSTRUCT_DEFINITIONS
   .filter((definition) => !productionCoveredConstructIds.has(definition.id))
   .map((definition) => definition.id);
 const directPilotCoversProductionGaps = productionUnmeasuredConstructIds.every((constructId) =>
   BELIEF_DIRECT_ITEMS.some((item) => item.constructIds.includes(constructId)),
 );
+const candidateOnlyConstructLayerPairs = BELIEF_CONSTRUCT_DEFINITIONS.flatMap((definition) => definition.layers
+  .filter((layer) => !productionCoveredConstructLayerPairs.has(`${definition.id}:${layer}`)
+    && BELIEF_GAP_CANDIDATES.some((candidate) => candidate.constructId === definition.id && candidate.layer === layer))
+  .map((layer) => `${definition.id}:${layer}`));
+const directPilotConstructLayerPairs = new Set(BELIEF_DIRECT_ITEMS.flatMap((item) => item.constructIds.map((constructId) => `${constructId}:${item.layer}`)));
+const directPilotCoversCandidateOnlyCells = candidateOnlyConstructLayerPairs.every((pair) => directPilotConstructLayerPairs.has(pair));
 const validationErrors = [
   ...directItemErrors,
   ...directEvidenceErrors,
@@ -94,6 +102,8 @@ const report = {
     uncoveredConstructIds: uncoveredDirectConstructIds,
     productionUnmeasuredConstructIds,
     directPilotCoversProductionGaps,
+    candidateOnlyConstructLayerPairs,
+    directPilotCoversCandidateOnlyCells,
     directItemsInProduction,
   },
   syntheticEvidence: {
@@ -117,6 +127,7 @@ const failures = [
   ...(directEvidence.length !== BELIEF_DIRECT_ITEMS.length ? ["not every direct pilot item produced synthetic evidence"] : []),
   ...(directItemsInProduction.length > 0 ? [`direct pilot items overlap production questions: ${directItemsInProduction.join(", ")}`] : []),
   ...(!directPilotCoversProductionGaps ? ["direct pilot does not cover every construct without a production signal"] : []),
+  ...(!directPilotCoversCandidateOnlyCells ? ["direct pilot does not cover every candidate-only construct/layer cell"] : []),
   ...(!sameLegacyScoring ? ["direct pilot evidence changed legacy layer or combined scoring"] : []),
   ...(!sameAffinityBasis ? ["direct pilot evidence changed morphology affinity fit or basis"] : []),
   ...(!enriched.primary.profile.directEvidence.length ? ["direct pilot evidence was not retained in the belief profile"] : []),

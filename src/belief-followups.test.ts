@@ -113,8 +113,8 @@ describe("respondent-facing relational follow-ups", () => {
   });
 
   it("keeps the direct-belief pilot categorical, source-linked, and separate from scalar observations", () => {
-    expect(BELIEF_DIRECT_ITEMS).toHaveLength(11);
-    expect(new Set(BELIEF_DIRECT_ITEMS.map((item) => item.id)).size).toBe(11);
+    expect(BELIEF_DIRECT_ITEMS).toHaveLength(18);
+    expect(new Set(BELIEF_DIRECT_ITEMS.map((item) => item.id)).size).toBe(18);
     expect(BELIEF_DIRECT_ITEMS.every((item) => item.options.length >= 4 && item.sourceRefs.length >= 2)).toBe(true);
     expect(BELIEF_DIRECT_ITEMS.every((item) => item.options
       .filter((option) => option.record !== false)
@@ -124,10 +124,17 @@ describe("respondent-facing relational follow-ups", () => {
       expect.objectContaining({ id: "priority-conflict-rule", layer: "normative", kind: "priority-rule", constructIds: ["priority-conflict"] }),
       expect.objectContaining({ id: "epistemic-stance-pilot", layer: "descriptive", kind: "epistemic-stance", constructIds: ["epistemic-stance"] }),
       expect.objectContaining({ id: "heterodoxy-contestation-pilot", layer: "prescriptive", kind: "contestation-response", constructIds: ["heterodoxy-contestation"] }),
+      expect.objectContaining({ id: "conception-liberty-institution-pilot", layer: "prescriptive", kind: "conception", constructIds: ["concept-conception"] }),
+      expect.objectContaining({ id: "political-economy-justice-pilot", layer: "normative", kind: "political-economy", constructIds: ["political-economy"] }),
+      expect.objectContaining({ id: "change-mechanism-pilot", layer: "descriptive", kind: "change-mechanism", constructIds: ["change-strategy"] }),
+      expect.objectContaining({ id: "change-transition-standard-pilot", layer: "normative", kind: "transition-standard", constructIds: ["change-strategy"] }),
+      expect.objectContaining({ id: "priority-rights-local-autonomy-pilot", layer: "prescriptive", kind: "priority-rule", constructIds: ["priority-conflict"] }),
+      expect.objectContaining({ id: "epistemic-fact-value-distinction-pilot", layer: "normative", kind: "epistemic-stance", constructIds: ["epistemic-stance"] }),
+      expect.objectContaining({ id: "heterodoxy-revision-pilot", layer: "normative", kind: "contestation-response", constructIds: ["heterodoxy-contestation"] }),
     ]));
 
     const evidence = directEvidenceForAnswers(firstDirectAnswers());
-    expect(evidence).toHaveLength(11);
+    expect(evidence).toHaveLength(18);
     expect(validateBeliefDirectEvidence(evidence, DATASET)).toEqual([]);
     const freedomEvidence = evidence.find((item) => item.questionId === "conception-of-freedom");
     if (!freedomEvidence) throw new Error("expected generated freedom evidence");
@@ -267,9 +274,11 @@ describe("respondent-facing relational follow-ups", () => {
       .filter((construct) => construct.directEvidenceCount > 0)
       .every((construct) => construct.directEvidenceIds.length === construct.directEvidenceCount)).toBe(true);
     expect(enriched.beliefProfile.constructs).toEqual(expect.arrayContaining([
-      expect.objectContaining({ id: "priority-conflict", directEvidenceCount: 1, directEvidenceIds: [expect.stringContaining("priority-conflict-rule")] }),
-      expect.objectContaining({ id: "epistemic-stance", directEvidenceCount: 1, directEvidenceIds: [expect.stringContaining("epistemic-stance-pilot")] }),
-      expect.objectContaining({ id: "heterodoxy-contestation", directEvidenceCount: 1, directEvidenceIds: [expect.stringContaining("heterodoxy-contestation-pilot")] }),
+      expect.objectContaining({ id: "political-economy", directEvidenceCount: 2, directEvidenceIds: expect.arrayContaining([expect.stringContaining("political-economy-mechanism"), expect.stringContaining("political-economy-justice-pilot")]) }),
+      expect.objectContaining({ id: "change-strategy", directEvidenceCount: 3, directEvidenceIds: expect.arrayContaining([expect.stringContaining("change-mechanism-pilot"), expect.stringContaining("change-transition-standard-pilot")]) }),
+      expect.objectContaining({ id: "priority-conflict", directEvidenceCount: 2, directEvidenceIds: expect.arrayContaining([expect.stringContaining("priority-conflict-rule"), expect.stringContaining("priority-rights-local-autonomy-pilot")]) }),
+      expect.objectContaining({ id: "epistemic-stance", directEvidenceCount: 2, directEvidenceIds: expect.arrayContaining([expect.stringContaining("epistemic-stance-pilot"), expect.stringContaining("epistemic-fact-value-distinction-pilot")]) }),
+      expect.objectContaining({ id: "heterodoxy-contestation", directEvidenceCount: 2, directEvidenceIds: expect.arrayContaining([expect.stringContaining("heterodoxy-contestation-pilot"), expect.stringContaining("heterodoxy-revision-pilot")]) }),
     ]));
     expect(enriched.beliefProfile.diagnostics).toEqual(expect.arrayContaining([
       expect.objectContaining({ id: "direct-evidence-conception", layer: "conception", status: "validation-gap" }),
@@ -279,7 +288,7 @@ describe("respondent-facing relational follow-ups", () => {
     expect(enriched.beliefProfile.gaps).toEqual(expect.arrayContaining([
       expect.stringContaining("Selected categorical direct-belief responses are visible"),
     ]));
-    expect(enriched.beliefMorphology.candidates[0]?.directBasis).toHaveLength(11);
+    expect(enriched.beliefMorphology.candidates[0]?.directBasis).toHaveLength(18);
     expect(enriched.beliefMorphology.candidates[0]?.directBasis.every((item) => item.sourceRefs.length > 0)).toBe(true);
     expect(enriched.beliefMorphology.candidates[0]?.directBasis.find((item) => item.evidenceId.includes("conception-of-freedom"))).toMatchObject({
       profileDimensionIds: expect.arrayContaining(["concepts-and-conceptions", "legitimacy-and-authority"]),

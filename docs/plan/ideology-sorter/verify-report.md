@@ -2115,3 +2115,25 @@ V146 adds three optional source-linked direct categorical items for the producti
 | Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
 
 V146 improves inspectability and evidence routing for the three unmeasured constructs only. Local source citations, deterministic audits, synthetic evidence, browser behavior, and build results are not substitutes for the six external gates; the comprehensive objective remains `INCOMPLETE` / fail-closed.
+
+## V147 observed verification — direct pilot coverage of candidate-only claim-layer cells — 2026-08-30
+
+V147 adds seven optional source-linked direct categorical items for the remaining candidate-only construct/layer cells. The source tree now has 18 direct pilot items: nine normative, four descriptive, and five prescriptive. The records remain outside the 1,500-question production bank, preserve explicit `No view yet` missingness, and expose selected option text only through the non-scoring belief-profile and morphology trace. The production audit still reports `priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation` as unmeasured; all ten candidate-only cells remain explicit in the production-versus-research matrix.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The two new direct evidence kinds, seven item definitions, audit coverage fields, UI copy, unit tests, and browser selectors compile with no output. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 12 files and 182/182 tests passed in 57.26 seconds, including the existing review-contract test. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | 18 direct items; all three production-unmeasured constructs and all ten candidate-only construct/layer cells are covered; zero production overlap and zero validation errors; legacy and affinity isolation remain true. |
+| `npx vite-node scripts/audit-belief-measurement.ts --summary` | PASS | 1,500 production questions remain `facet-proxy`, distributed 500/500/500 by layer; all ten construct/layer gaps and three production-unmeasured constructs remain explicit; validation errors are 0. |
+| `npx vite-node scripts/audit-belief-morphology.ts --summary` | PASS | 119 source-backed configurations and 238 source-backed-contested relationships remain valid; validation and failure counts are 0. |
+| `npx vite-node scripts/audit-research-coverage.ts --summary` | PASS | 1,500 production questions, 119 canonical anchors, 124 editorial anchors, 125 ontology nodes, 128 research targets, and zero research-bank validation errors. |
+| `npx vite-node scripts/audit-ideology-question-coverage.ts --summary` | PASS WITH OPEN GAPS | All 119 canonical targets retain 4/4/4 production blocks with zero validation failures; four family-level prescriptive directions remain contested/indeterminate. |
+| Fresh exporter-to-validator pipeline | INCOMPLETE / FAIL-CLOSED | The fresh packet has 1,543 queue items, 0 structural validation errors, no reviewer/evidence records, six missing recorded gate results, and `eligibleForPromotion: false`; exit 1 is expected. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All structural checks, including `directPilotCoversCandidateOnlyCells`, pass; structural eligibility is true, but all six required external-study gates remain `NOT RUN`, so eligibility is false and exit 1 is expected. |
+| `E2E_BASE_URL=http://127.0.0.1:4176 npm run qa -- --workers=1 --reporter=list` | PASS | Full current-tree Playwright suite: 13/13 scenarios passed in 7.5 minutes against a stable preview, including selection and share restoration for all seven new direct records; the preview was stopped cleanly. |
+| `git diff --check` | PASS | No whitespace errors after the V147 source, audit, test, UI, and documentation changes. |
+| Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
+
+V147 closes a local direct-pilot coverage observability gap only. Research citations, categorical options, synthetic evidence, deterministic tests, browser behavior, and build results do not establish comprehension, response-process validity, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent morphology; the comprehensive objective remains `INCOMPLETE` / fail-closed.

@@ -79,7 +79,7 @@ Do not select a new weight, threshold, factor structure, label, or target-block 
 
 ### Review queue
 
-The first queue contains the full production-item audit, 19 quarantined construct-gap and construct/layer-gap candidates, eleven direct categorical pilot items, and six relational follow-up definitions. The queue is not a request to rewrite all flagged items automatically. The `split`, `rewrite`, `remap`, `redundant`, `branch-target-metadata`, and `ideology-coded-wording` flags are review signals that require a human decision. Branch-target metadata is editorial coverage information, not a respondent-facing ideology claim.
+The first queue contains the full production-item audit, 19 quarantined construct-gap and construct/layer-gap candidates, eighteen direct categorical pilot items, and six relational follow-up definitions. The queue is not a request to rewrite all flagged items automatically. The `split`, `rewrite`, `remap`, `redundant`, `branch-target-metadata`, and `ideology-coded-wording` flags are review signals that require a human decision. Branch-target metadata is editorial coverage information, not a respondent-facing ideology claim.
 
 ### Proposed review procedure
 
@@ -104,11 +104,13 @@ Agreement statistics may summarize categorical coding when their assumptions fit
 
 The repository provides a reproducible study-ready export through `npm run belief:review-packet`. The default command emits the full JSON packet to standard output; `npm run belief:review-packet -- --summary` emits counts, version identifiers, packet validation status, and the current external-gate snapshot. The packet records the content, scoring-policy, belief-model, morphology-model, fixed-ontology, construct, source, and production-question snapshots used to assemble the queue.
 
-The production queue includes a stable blind-first-pass view and a full adjudication view. Blind records expose only a stable review id, layer, domain, prompt, and context; question ids, source refs, facet and construct bridges, legacy effects, editorial target metadata, flags, dispositions, and rationale remain in the adjudication view. The full packet also carries the 42 currently open production dispositions, all 19 quarantined candidates, eleven direct categorical pilot definitions, six relational follow-up definitions, and the required review-field and evidence-ledger schemas.
+The production queue includes a stable blind-first-pass view and a full adjudication view. Blind records expose only a stable review id, layer, domain, prompt, and context; question ids, source refs, facet and construct bridges, legacy effects, editorial target metadata, flags, dispositions, and rationale remain in the adjudication view. The full packet also carries the 42 currently open production dispositions, all 19 quarantined candidates, eighteen direct categorical pilot definitions, six relational follow-up definitions, and the required review-field and evidence-ledger schemas.
 
 The export contains no reviewer, respondent, coding, comparison-group, or consequence records. It therefore always reports `eligibleForPromotion: false`, preserves the typed validation-gate snapshot, and cannot change `BELIEF_VALIDATION_GATES` or the completion audit. A successful export validates packet structure and provenance only; it does not close expert, cognitive, empirical, invariance, population, or held-out morphology gates.
 
 Completed review records can be checked against the current packet with `npx vite-node scripts/validate-belief-review-packet.ts --summary`, using a packet path in `BELIEF_REVIEW_PACKET_INPUT` or piping the full export to stdin. The validator rejects stale content, policy, belief-model, morphology-model, ontology, or gate snapshots; changed question-id or fixed-ontology snapshots; metadata-swapped queue entries; altered production or research-source snapshot rows; unknown queue ids; malformed reviewer records; incomplete two-reviewer coverage; unresolved reviewer disposition disagreements; and malformed evidence-ledger rows. It separately reports required gates with no evidence row carrying a non-`NOT RUN` result, so a linked `NOT RUN` row does not masquerade as study evidence. An `INCOMPLETE` or `INVALID` result is expected until actual review records and gate-specific evidence exist. The validator never authenticates the study, changes the gate ledger, or promotes an artifact.
+
+Each evidence row also declares one or more `evidenceKinds`, and every listed gate must have its matching kind: `response-process-study`, `expert-content-adjudication`, `respondent-empirical-study`, `invariance-dif-study`, `population-consequence-review`, or `held-out-morphology-study`. This is a local scope contract that prevents a generic citation or an unrelated study declaration from being attached to a gate by shape alone; it does not authenticate the study, its participants, its analysis, or its result.
 
 ## 5. Stage 2: cognitive and response-process study
 
@@ -207,6 +209,7 @@ Every completed study or adjudication should add one row per substantive claim:
 | Field | Required content |
 |---|---|
 | Evidence id | Stable id and version. |
+| Evidence kind | One or more declared study or adjudication kinds whose gate mappings match the listed gate ids; this declaration is not authentication. |
 | Gate ids | One or more required external validation gates directly supported by the evidence row. |
 | Claim and unit | Exact item, construct, relationship, configuration, or morphology claim. |
 | Intended use | Explanatory profile, research display, scoring, morphology, or other use. |

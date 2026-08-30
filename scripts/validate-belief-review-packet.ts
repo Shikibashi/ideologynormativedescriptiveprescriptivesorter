@@ -11,9 +11,11 @@ import {
 } from "../src/beliefs";
 import {
   BELIEF_REVIEW_ALLOWED_DISPOSITIONS,
+  BELIEF_REVIEW_EVIDENCE_KIND_BY_GATE,
   BELIEF_REVIEW_EVIDENCE_LEDGER_FIELDS,
   BELIEF_REVIEW_PACKET_VERSION,
   BELIEF_REVIEW_REQUIRED_FIELDS,
+  validateBeliefReviewEvidenceKinds,
 } from "../src/belief-review";
 import { BELIEF_VALIDATION_GATES } from "../src/belief-validation";
 import { answerOptions, DATASET } from "../src/data";
@@ -112,9 +114,9 @@ const jsonMatches = (actual: unknown, expected: unknown): boolean => JSON.string
 const readInput = async (): Promise<{ raw: string; label: string }> => {
   if (inputPath) return { raw: readFileSync(inputPath, "utf8"), label: inputPath };
   if (!process.stdin.isTTY) {
-    const chunks: string[] = [];
-    for await (const chunk of process.stdin) chunks.push(chunk.toString());
-    const raw = chunks.join("");
+    const chunks: Buffer[] = [];
+    for await (const chunk of process.stdin) chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+    const raw = Buffer.concat(chunks).toString("utf8");
     if (!raw.trim()) throw new Error("stdin was empty; provide a full review packet JSON document");
     return { raw, label: "stdin" };
   }
@@ -406,19 +408,29 @@ const evidenceRecordErrorsFor = (root: JsonRecord): {
   const gateIdsCovered = new Set<string>();
   const gateIdsWithRecordedResults = new Set<string>();
   if (!Array.isArray(evidenceLedger.records)) errors.push("review packet is missing evidenceLedger.records array");
+  for (const gateId of currentExternalGateIds) {
+    if (!Object.prototype.hasOwnProperty.call(BELIEF_REVIEW_EVIDENCE_KIND_BY_GATE, gateId)) {
+      errors.push(`review contract has no evidence kind for external gate ${gateId}`);
+    }
+  }
+  for (const gateId of Object.keys(BELIEF_REVIEW_EVIDENCE_KIND_BY_GATE)) {
+    if (!currentExternalGateIdSet.has(gateId)) errors.push(`review contract maps an unknown external gate ${gateId}`);
+  }
   for (const [index, recordValue] of records.entries()) {
     if (!isRecord(recordValue)) {
       errors.push(`evidence record ${index} is not an object`);
       continue;
     }
     const prefix = `evidence record ${index}`;
-    errors.push(...stringFieldErrors(recordValue, BELIEF_REVIEW_EVIDENCE_LEDGER_FIELDS.filter((field) => field !== "gateIds" && field !== "status"), prefix));
+    errors.push(...stringFieldErrors(recordValue, BELIEF_REVIEW_EVIDENCE_LEDGER_FIELDS.filter((field) => field !== "evidenceKinds" && field !== "gateIds" && field !== "status"), prefix));
     const evidenceId = recordValue.evidenceId;
     if (isNonEmptyString(evidenceId)) {
       if (evidenceIds.has(evidenceId)) errors.push(`duplicate evidence id ${evidenceId}`);
       evidenceIds.add(evidenceId);
     }
     const gateIds = recordValue.gateIds;
+    const validGateIds = Array.isArray(gateIds) ? gateIds.filter(isNonEmptyString) : [];
+    errors.push(...validateBeliefReviewEvidenceKinds(recordValue.evidenceKinds, validGateIds).map((error) => `${prefix} ${error}`));
     const status = recordValue.status;
     const hasRecordedResult = isNonEmptyString(status) && allowedStatuses.has(status) && status !== "NOT RUN";
     if (!Array.isArray(gateIds) || gateIds.length === 0 || gateIds.some((gateId) => !isNonEmptyString(gateId))) {

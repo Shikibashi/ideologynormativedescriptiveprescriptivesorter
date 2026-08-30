@@ -91,6 +91,12 @@ for (const audit of audits) {
 const expectedUncoveredConstructLayerPairs = BELIEF_CONSTRUCT_DEFINITIONS.flatMap((definition) => definition.layers
   .filter((layer) => expectedConstructLayerItemCounts[definition.id][layer] === 0)
   .map((layer) => `${definition.id}:${layer}`));
+const candidateOnlyConstructLayerPairs = expectedUncoveredConstructLayerPairs.filter((pair) => {
+  const [constructId, layer] = pair.split(":");
+  return BELIEF_GAP_CANDIDATES.some((candidate) => candidate.constructId === constructId && candidate.layer === layer);
+});
+const directPilotConstructLayerPairs = new Set(BELIEF_DIRECT_ITEMS.flatMap((item) => item.constructIds.map((constructId) => `${constructId}:${item.layer}`)));
+const directPilotCoversCandidateOnlyCells = candidateOnlyConstructLayerPairs.every((pair) => directPilotConstructLayerPairs.has(pair));
 const baseAnswers = allAnswers(2);
 const baseResult = calculateResults(baseAnswers, DATASET);
 const noViewResult = calculateResults(allAnswers("no-view"), DATASET);
@@ -264,6 +270,7 @@ const structuralChecks = {
     && JSON.stringify(directResult.legacy.combined) === JSON.stringify(baseResult.legacy.combined)
     && JSON.stringify(affinityTraceFor(directResult)) === JSON.stringify(affinityTraceFor(baseResult)),
   directPilotCoversProductionGaps,
+  directPilotCoversCandidateOnlyCells,
   directEvidenceAttachedToStructure,
   relationalEvidenceIsolated: relationalResult.primary.profile.relationalEvidence.length === relationalEvidence.length
     && JSON.stringify(relationalResult.legacy.layers) === JSON.stringify(baseResult.legacy.layers)
@@ -335,6 +342,8 @@ const report = {
     directPilotItems: BELIEF_DIRECT_ITEMS.length,
     productionUnmeasuredConstructIds,
     directPilotCoversProductionGaps,
+    candidateOnlyConstructLayerPairs,
+    directPilotCoversCandidateOnlyCells,
     relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
     contestedRouteVariantTargets: contestedRouteVariantProfiles.filter((profile) => profile !== undefined).length,
     contestedRouteVariants: contestedRouteVariants.length,
