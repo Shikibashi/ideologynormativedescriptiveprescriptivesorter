@@ -335,6 +335,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "not-scored",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-market-socialism-context-retain-contextual",
+    "market-socialism-context",
+    "retain-contextual",
+    "source-backed-contested",
+    ["source-sep-socialism", "source-oup-socialism-vsi", "source-oup-miller-market-socialism", "source-tandf-neuhauser-market-socialism", "source-oup-democratic-socialist-planning", "source-ostrom", "source-sen"],
+    "The source set supports Market Socialism as a family of models joining social or collective control of capital with market coordination, while differing over workplace control, investment, public institutions, and the boundary with property-owning democracy or state socialism.",
+    "Retain this as a contextual meso research target because the literature supports a family of economic and political models rather than one exclusive canonical ancestry in the current graph. The source refresh adds qualitative conceptions but does not create production questions, an anchor vector, a score contribution, or a respondent-facing identity label.",
+    ["Market Socialism may be treated as a socialist economic model, a political-economic theory, or a variant within Democratic Socialism and Libertarian Socialism rather than a separate canonical node.", "Worker self-management, collective ownership, public investment, market coordination, and democratic control can be combined in different institutional designs and should not be collapsed into one model.", "Market support, public ownership, cooperative preference, workplace democracy, or opposition to capitalism alone do not establish the full contextual boundary."],
+    "contextual",
+    "not-scored",
+    "2026-08-30",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>

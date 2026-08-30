@@ -1737,6 +1737,43 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("gandhian-political-thought")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
   });
 
+  it("keeps Market Socialism contextual while recording source-backed economic conceptions", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "market-socialism-context");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "meso",
+      placement: "contextual",
+      canonicalPath: [],
+      measurementStatus: "contextual-only",
+      questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "market-socialism-context")).toMatchObject({ placement: "contextual", status: "catalog-only" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "market-socialism-context")?.sourceRefs).toEqual(expect.arrayContaining([
+      "source-sep-socialism",
+      "source-oup-miller-market-socialism",
+      "source-tandf-neuhauser-market-socialism",
+    ]));
+    const candidates = researchCandidatesForTarget("market-socialism-context");
+    expect(candidates).toHaveLength(12);
+    expect(candidates.filter((candidate) => candidate.layer === "descriptive")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "normative")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "prescriptive")).toHaveLength(4);
+    expect(candidates.every((candidate) => candidate.sourceIds.includes("source-oup-miller-market-socialism"))).toBe(true);
+    expect(candidates.every((candidate) => candidate.sourceIds.includes("source-tandf-neuhauser-market-socialism"))).toBe(true);
+    const marketProfile = researchAnchorProfiles.find((profile) => profile.targetId === "market-socialism-context");
+    expect(marketProfile?.conceptions.map((conception) => conception.conceptId)).toEqual([
+      "social-control-with-market-coordination",
+      "democratic-investment-and-workplace-control",
+    ]);
+    expect(marketProfile?.conceptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ conceptId: "social-control-with-market-coordination", layer: "normative", centrality: "defining" }),
+      expect.objectContaining({ conceptId: "democratic-investment-and-workplace-control", layer: "prescriptive", centrality: "characteristic" }),
+    ]));
+    expect(marketProfile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
+    expect(researchTaxonomyDecisionForTarget("market-socialism-context")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });
+    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("market-socialism-context"))).toBe(false);
+  });
+
   it("promotes Bernsteinian revision as a narrow historical microtype with full source-backed coverage", () => {
     const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "revisionist-bernsteinian-social-democracy");
     expect(target).toMatchObject({

@@ -1085,3 +1085,12 @@ The source-backed boundary is explicitly not Muslim identity, private piety, rel
 | `source-springer-schilk-new-right-metapolitics` | [Schilk, “The Metapolitics of Crises: How the New Right Weaponises Narratives to Mainstream Far-Right Ideology”](https://doi.org/10.1007/s10767-025-09519-3) | Discourse-analytic distinction between metapolitical narrative work and political actors, with explicit attention to divergent Continental European and Anglo-American New Right applications |
 
 The V103 source set is used for provenance, terminology, taxonomy boundaries, qualitative profiles, and false-positive controls only. It does not establish respondent interpretation, reliability, validity, invariance, empirical classification, population generalization, or current-actor inference. No production questions or scored ideology nodes were added for these registry entries.
+
+## V104 — Market Socialism contextual source refresh
+
+| Source ID | Citation | Use in the sorter |
+|---|---|---|
+| `source-oup-miller-market-socialism` | [Miller, *Market, State, and Community: Theoretical Foundations of Market Socialism*](https://academic.oup.com/book/4132) | Supports a theoretical model combining market coordination with social control of capital, employee control of workplaces, and constitutional or community institutions; used for qualitative boundary and profile provenance only |
+| `source-tandf-neuhauser-market-socialism` | [Neuhäuser, “Property-owning democracy, market socialism and workplace democracy”](https://doi.org/10.1080/00346764.2020.1854333) | Distinguishes collective ownership in market socialism from property-owning democracy and separates worker or workplace democracy while preserving institutional, transition, and stability variation |
+
+The V104 crosswalk uses the existing SEP Socialism record together with the two fresh sources to connect social or collective ownership, market coordination, workplace authority, and democratic investment without collapsing them into one institutional design. The sources support terminology, provenance, taxonomy boundaries, qualitative conceptions, neighbor distinctions, and false-positive controls for twelve quarantined effect-free candidates at 4/4/4. They do not establish respondent interpretation, reliability, validity, invariance, empirical classification, population generalization, or current-actor inference. No production questions or scored ideology nodes were added.

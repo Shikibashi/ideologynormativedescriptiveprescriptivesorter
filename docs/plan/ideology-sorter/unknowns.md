@@ -655,3 +655,11 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - How should variation across Gandhi's periods, state and anti-statist interpretations, property, industrialization, caste, gender, religion, and later reception be represented without collapsing a contested tradition into one authorial or national identity label?
 - Can a future facet or measurement design represent ethical discipline and political means as a distinct construct while preserving the separation between descriptive, normative, and prescriptive layers and avoiding double counting?
 - V98 adds six contextual placements in total and leaves Gandhian Political Thought outside production scoring. No cognitive, respondent, psychometric, substitute-simulation, empirical, reliability/validity, invariance, or population evidence answers these questions.
+
+## V104 — Market Socialism open boundaries
+
+- How should Market Socialism be separated from Socialism, Democratic Socialism, Mutualism, Libertarian Socialism, Property-Owning Democracy, State Socialism, and mixed-economy arrangements when the literature treats it as a family of models rather than one fixed constitution?
+- Which combination of social or collective control of capital and market coordination is necessary without treating market support, public ownership, cooperative preference, workplace democracy, opposition to capitalism, or equality preference as sufficient evidence?
+- How should variation over worker self-management, public or cooperative ownership, democratic investment, credit institutions, commons, property distribution, constitutional limits, and state authority remain visible without double-counting existing socialism or decentralization facets?
+- Market Socialism remains a contextual-only, not-scored target with no production anchor or direct questions; the two qualitative conceptions are source-backed editorial context, not respondent measurements or score effects.
+- No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
