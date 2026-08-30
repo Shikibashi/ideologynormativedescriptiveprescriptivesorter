@@ -1077,3 +1077,11 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 |---|---|---|
 | P-143-01 | Open Research and inspect the production-versus-research construct/layer coverage table. | The table has 25 declared cells, 15 production-covered cells, 10 candidate-only gap cells, and 19 quarantined candidate bindings; it labels the matrix as an authoring/provenance aid rather than a respondent measure. |
 | R-143-01 | Run the focused coverage regression, TypeScript, production build, full Vitest suite, full browser suite, fresh packet validation, and coverage-snapshot mutation. | The executed local checks pass; the fresh packet remains `INCOMPLETE`, the mutated coverage snapshot is `INVALID`, promotion remains false, and all six external gates remain `NOT RUN`. |
+
+## V144 qualitative route-variant scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-144-01 | Open Research and select each of `populism`, `islamism`, `religious-nationalism`, and `deep-ecology`. | The selected profile exposes 2, 2, 2, and 4 `source-backed-contested` prescriptive route variants respectively; each route has a statement, source links, and prescriptive dimensions while the base family direction remains contested/indeterminate. |
+| R-144-01 | Run the route metadata regression and research coverage audit. | The route validator accepts the current source snapshot, rejects missing route provenance or a non-prescriptive route dimension, reports 10 route variants across 4 targets, and reports zero research-bank validation errors. |
+| R-144-02 | Run TypeScript, full Vitest, production build, and browser QA after the route surface is present. | All executed local checks pass; the route records remain qualitative context and do not enter respondent scoring, morphology fit, affinity ordering, or promotion. |

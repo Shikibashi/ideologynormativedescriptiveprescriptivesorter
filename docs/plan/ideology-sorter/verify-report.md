@@ -2060,3 +2060,21 @@ V143 adds an explicit 25-cell matrix for the declared belief constructs and clai
 | Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance, population/consequence, or held-out morphology evidence was created or promoted. |
 
 V143 improves measurement-gap traceability and packet freshness only. Candidate presence remains a research/authoring signal, not a measured construct or ideological classification result; the comprehensive objective remains `INCOMPLETE` / fail-closed.
+
+## V144 observed verification — contested prescriptive route variants — 2026-08-30
+
+The current checkout exposes ten source-backed-contested route variants for the four canonical family profiles whose base prescriptive direction remains indeterminate: Populism (2), Islamism (2), Religious Nationalism (2), and Deep Ecology (4). The route validator requires nonempty route identity and statement, profile-attached ideology-research sources, existing prescriptive facets, dimension-level provenance, and at least one determinate direction. The base profile is not rewritten and no route is treated as a universal family-level commitment.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current route type, validator, coverage fields, UI formatter, and tests compile with no output. |
+| `npm run test:run -- src/research.test.ts src/belief-structure.test.ts --no-file-parallelism --reporter=dot` | PASS | Focused current-tree contracts: 2 files and 124/124 tests passed, including route-target counts and malformed route rejection. |
+| `npm run research:coverage` | PASS | Current report: 1,500 production questions, 119 canonical anchors, 128 research targets/profiles, 140 conceptions, 10 route variants across 4 targets, and zero research-bank validation errors. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 11 files and 179/179 tests passed. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `E2E_BASE_URL=http://127.0.0.1:4176 npm run qa -- --workers=1 --reporter=list` | PASS | Full current-tree Playwright suite: 13/13 scenarios passed in 7.4 minutes against a stable isolated preview; the all-target workbench traversal and long-running quiz paths completed successfully. |
+| Fresh exporter-to-validator pipeline | INCOMPLETE / FAIL-CLOSED | Zero structural validation errors, 1,533 queue items, zero reviewer/evidence records, six missing recorded gate results, promotion false; exit 1 is expected until real records exist. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | Structural eligibility true and validation error count 0, but all six required external gates remain `NOT RUN`; exit 1 is expected. |
+| Required external validation gates | NOT RUN | No external reviewer, respondent, psychometric, cross-context, population/consequence, or held-out morphology evidence was created or promoted. |
+
+V144 preserves contested scholarly plurality as qualitative context and improves route traceability only. It does not promote research candidates, establish a respondent belief, change the fixed ontology, alter the belief-to-morphology path, or close the comprehensive objective.

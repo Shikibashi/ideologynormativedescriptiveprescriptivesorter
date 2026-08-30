@@ -17,6 +17,7 @@ import {
   type IdeologyRelationType,
   type IdeologyRegistryEntry,
   type Layer,
+  type ResearchAnchorProfile,
   type ResearchConfidence,
   type ResearchCoverageStatus,
   type ResearchExpectedDirection,
@@ -425,6 +426,68 @@ export const validateCuratedResearchBank = (dataset: Dataset = DATASET): readonl
   return RESEARCH_CANDIDATES.flatMap((candidate) => validateResearchCandidateWithTargets(candidate, dataset, targets));
 };
 
+/**
+ * Validates the structured route alternatives attached to one qualitative
+ * profile. Route dimensions are intentionally restricted to the prescriptive
+ * layer and must include at least one determinate direction, while the
+ * profile's base dimensions can remain indeterminate for a broad or contested
+ * tradition.
+ */
+export const validateResearchAnchorRouteVariants = (
+  profile: ResearchAnchorProfile,
+  dataset: Dataset = DATASET,
+): readonly string[] => {
+  const errors: string[] = [];
+  const knownSources = new Map(dataset.sources.map((source) => [source.id, source]));
+  const knownFacets = new Map(dataset.facets.map((facet) => [facet.id, facet]));
+  const profileSourceIds = new Set(profile.sourceIds);
+  const routeIds = new Set<string>();
+
+  for (const route of profile.routeVariants) {
+    const prefix = `research profile ${profile.targetId} route variant ${route.id}`;
+    if (routeIds.has(route.id)) errors.push(`research profile ${profile.targetId} has duplicate route variant ${route.id}`);
+    routeIds.add(route.id);
+    if (!route.id.trim()) errors.push(`research profile ${profile.targetId} has an empty route variant id`);
+    if (!route.label.trim()) errors.push(`${prefix} is missing a label`);
+    if (!route.statement.trim()) errors.push(`${prefix} is missing a statement`);
+    if (route.evidencePosture !== "source-backed" && route.evidencePosture !== "source-backed-contested") {
+      errors.push(`${prefix} has an invalid evidence posture`);
+    }
+    if (route.sourceIds.length === 0) errors.push(`${prefix} has no source`);
+    if (new Set(route.sourceIds).size !== route.sourceIds.length) errors.push(`${prefix} has duplicate source evidence`);
+    for (const sourceId of route.sourceIds) {
+      const source = knownSources.get(sourceId);
+      if (!source) errors.push(`${prefix} references missing source ${sourceId}`);
+      else if (source.role !== "ideology-research") errors.push(`${prefix} source ${sourceId} is not ideology research`);
+      if (!profileSourceIds.has(sourceId)) errors.push(`${prefix} cites a source not attached to profile ${profile.targetId}`);
+    }
+
+    if (route.dimensions.length === 0) errors.push(`${prefix} needs at least one prescriptive dimension`);
+    const dimensionKeys = new Set<string>();
+    let hasDeterminateDirection = false;
+    for (const dimension of route.dimensions) {
+      const dimensionKey = `${dimension.layer}:${dimension.facetId}`;
+      if (dimensionKeys.has(dimensionKey)) errors.push(`${prefix} has duplicate dimension ${dimensionKey}`);
+      dimensionKeys.add(dimensionKey);
+      const facet = knownFacets.get(dimension.facetId);
+      if (!facet) errors.push(`${prefix} references missing facet ${dimension.facetId}`);
+      else if (facet.layer !== dimension.layer) errors.push(`${prefix} dimension ${dimension.facetId} is outside ${dimension.layer}`);
+      if (dimension.layer !== "prescriptive") errors.push(`${prefix} dimension ${dimension.facetId} must be prescriptive`);
+      if (dimension.expectedDirection !== "indeterminate") hasDeterminateDirection = true;
+      if (dimension.sourceIds.length === 0) errors.push(`${prefix} dimension ${dimension.facetId} has no source`);
+      for (const sourceId of dimension.sourceIds) {
+        const source = knownSources.get(sourceId);
+        if (!source) errors.push(`${prefix} dimension references missing source ${sourceId}`);
+        else if (source.role !== "ideology-research") errors.push(`${prefix} dimension source ${sourceId} is not ideology research`);
+        if (!route.sourceIds.includes(sourceId)) errors.push(`${prefix} dimension cites a source not attached to the route`);
+      }
+    }
+    if (!hasDeterminateDirection) errors.push(`${prefix} needs at least one determinate route direction`);
+  }
+
+  return errors;
+};
+
 export const validateCuratedResearchMetadata = (dataset: Dataset = DATASET): readonly string[] => {
   const errors: string[] = [];
   const knownTargets = new Set([...dataset.ideologyNodes.map((node) => node.id), ...dataset.ideologyRegistry.map((entry) => entry.id)]);
@@ -445,6 +508,7 @@ export const validateCuratedResearchMetadata = (dataset: Dataset = DATASET): rea
         if (!knownSources.has(sourceId)) errors.push("research profile " + profile.targetId + " dimension references missing source " + sourceId);
       }
     }
+    errors.push(...validateResearchAnchorRouteVariants(profile, dataset));
     const conceptionIds = new Set<string>();
     for (const conception of profile.conceptions) {
       if (conceptionIds.has(conception.conceptId)) errors.push("research profile " + profile.targetId + " has duplicate conception " + conception.conceptId);

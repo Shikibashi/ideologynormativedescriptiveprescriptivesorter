@@ -64,3 +64,21 @@ At content version 99, the measurement audit reports complete 1,500-item coverag
 The measurement model now exposes a complete matrix over the 25 declared construct/claim-layer cells. Each row carries the current production item count, the ids of any quarantined research candidates, and a posture: `production-covered`, `candidate-only`, `production-and-candidate`, or `unrepresented`. The current source snapshot has 15 production-covered cells, 10 candidate-only cells corresponding exactly to the declared production gaps, 19 quarantined candidate prompts, and zero unrepresented cells.
 
 The matrix is available through `BeliefMeasurementSummary`, the `belief:measurement-audit` report, the review-packet snapshot, and the Research Workbench table. Model validation rejects a source snapshot in which a candidate is absent from its declared cell or an uncovered cell has neither production coverage nor research material. The review-packet validator also rejects a tampered construct-layer coverage snapshot. Candidate presence remains an authoring/provenance signal only: it does not promote a prompt, create production effects, change morphology, or establish response-process, psychometric, empirical, invariance, population, or respondent evidence. The fixed 119-node canonical ontology and six external validation gates are unchanged.
+
+## V144 — contested prescriptive route variants — 2026-08-30
+
+The four remaining family-level prescriptive gaps are now accompanied by source-backed-contested route context rather than a forced universal direction. The qualitative profile carries two routes for Populism, two for Islamism, two for Religious Nationalism, and four for Deep Ecology. Route dimensions are limited to prescriptive facets, retain source ids at both route and dimension level, and require at least one determinate direction so the branch is interpretable without rewriting the base family claim. The route records are not questions, answer observations, production commitments, calibrated weights, morphology evidence, or respondent classifications.
+
+The plurality boundary is consistent with the source register and the checked scholarship: populism is treated as a thin or host-dependent formation in the [Oxford varieties-of-populism chapter](https://academic.oup.com/book/59292/chapter/499435716); the [Cambridge Islamism and Ideology chapter](https://www.cambridge.org/core/books/limits-of-islamism/islamism-and-ideology-philosophical-issues-and-analytical-categories/E2663B0987FDB1C3C1577B37014453AE) cautions against collapsing a heterogeneous field; the [Oxford Religious Nationalism chapter](https://academic.oup.com/edited-volume/62239/chapter-abstract/550810397) treats religious-national fusions and institutional influence as variable formations; and [SEP Environmental Ethics](https://plato.stanford.edu/entries/ethics-environmental/) surveys plural ecological and political routes. These are provenance and boundary sources, not validation of the repository's item wording, response process, psychometrics, population consequences, or ideological inference.
+
+## V144 local acceptance conditions
+
+The route tranche is structurally acceptable only when:
+
+1. all ten route records resolve to profile-attached ideology-research sources and existing prescriptive facets;
+2. the four target profiles retain their contested/indeterminate base prescriptive dimensions;
+3. route variants remain outside production questions, legacy effects, respondent observations, and morphology calculations;
+4. the Research Workbench and coverage audit expose the routes without presenting them as respondent evidence; and
+5. the full local regression remains green while the six external validation gates remain explicitly open.
+
+The current checkout satisfies these local conditions. This does not establish expert agreement, response-process validity, psychometric validity, cross-context invariance, population/consequence safety, or held-out respondent morphology.

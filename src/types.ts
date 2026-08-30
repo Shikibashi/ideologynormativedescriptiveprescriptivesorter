@@ -230,6 +230,21 @@ export type ResearchAnchorDimension = Readonly<{
   sourceIds: readonly string[];
 }>;
 
+/**
+ * A source-backed alternative institutional route for an anchor profile.
+ * Route variants preserve branch-level prescriptive plurality without
+ * rewriting an indeterminate base dimension into a universal commitment.
+ * They are qualitative research context only and never enter scoring.
+ */
+export type ResearchAnchorRouteVariant = Readonly<{
+  id: string;
+  label: string;
+  statement: string;
+  dimensions: readonly ResearchAnchorDimension[];
+  evidencePosture: "source-backed" | "source-backed-contested";
+  sourceIds: readonly string[];
+}>;
+
 export type ResearchAnchorConception = Readonly<{
   conceptId: string;
   layer: Exclude<Layer, "descriptive">;
@@ -268,6 +283,7 @@ export type ResearchAnchorProfile = Readonly<{
   variants: readonly string[];
   neighbors: readonly string[];
   dimensions: readonly ResearchAnchorDimension[];
+  routeVariants: readonly ResearchAnchorRouteVariant[];
   conceptions: readonly ResearchAnchorConception[];
   relationships: readonly ResearchAnchorRelation[];
   sourceIds: readonly string[];

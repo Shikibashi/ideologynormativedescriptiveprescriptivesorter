@@ -255,6 +255,10 @@ const researchAnchorRelationshipParticipantsTextFor = (relationship: ResearchAnc
   })
   .join(" ↔ ");
 
+const researchAnchorRouteDimensionsTextFor = (route: NonNullable<typeof researchAnchorProfiles[number]["routeVariants"]>[number]): string => route.dimensions
+  .map((dimension) => `${DATASET.facets.find((facet) => facet.id === dimension.facetId)?.label ?? dimension.facetId}: ${dimension.expectedDirection.replaceAll("-", " ")} · ${dimension.centrality}`)
+  .join("; ");
+
 const sourceLinksFor = (sourceRefs: readonly string[]): ReactNode => sourceRefs.map((sourceRef, index) => {
   const source = sourceMap.get(sourceRef);
   return source ? <span key={`${sourceRef}-${index}`}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null;
@@ -648,6 +652,24 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
                       </div>
                     </div>
                   ) : <p className="research-help">No qualitative profile has been recorded for this target.</p>}
+                  {selectedAnchorProfile?.routeVariants.length ? (
+                    <div className="research-bank-columns research-profile-route-variants">
+                      <div>
+                        <h3>Prescriptive route variants</h3>
+                        <p>These records preserve source-backed institutional alternatives for a broad or contested tradition. They do not replace the base profile, close a universal-direction gap, create a score, or establish respondent evidence.</p>
+                        <ul>
+                          {selectedAnchorProfile.routeVariants.map((route) => (
+                            <li key={route.id}>
+                              <strong>{route.label}</strong>
+                              <small>{route.evidencePosture.replaceAll("-", " ")} · {researchAnchorRouteDimensionsTextFor(route)}</small>
+                              <p>{route.statement}</p>
+                              <small>Sources: {sourceLinksFor(route.sourceIds)}</small>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
                   {selectedAnchorProfile?.conceptions.length ? (
                     <div className="research-bank-columns research-profile-conceptions">
                       <div>

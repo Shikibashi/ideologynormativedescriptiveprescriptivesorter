@@ -5,6 +5,7 @@ import type {
   ResearchAnchorConception,
   ResearchAnchorDimension,
   ResearchAnchorProfile,
+  ResearchAnchorRouteVariant,
   ResearchAnchorRelation,
   ResearchAnchorRelationKind,
   ResearchAnchorRelationParticipant,
@@ -2931,6 +2932,15 @@ const researchedRelation = (
   evidencePosture: ResearchAnchorRelation["evidencePosture"] = "source-backed-contested",
 ): ResearchAnchorRelation => ({ id, kind, statement, participants, evidencePosture, sourceIds });
 
+const routeVariant = (
+  id: string,
+  label: string,
+  statement: string,
+  dimensions: readonly ResearchAnchorDimension[],
+  sourceIds: readonly string[],
+  evidencePosture: ResearchAnchorRouteVariant["evidencePosture"] = "source-backed-contested",
+): ResearchAnchorRouteVariant => ({ id, label, statement, dimensions, evidencePosture, sourceIds });
+
 const profile = (
   targetId: string,
   definition: string,
@@ -2947,6 +2957,7 @@ const profile = (
   variants,
   neighbors,
   dimensions,
+  routeVariants: [],
   conceptions: [],
   relationships: [],
   sourceIds,
@@ -3089,7 +3100,7 @@ const PRIORITY_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = [
     "Do not equate political Islam with private faith, generic conservatism, nationalism, or one militant current; internal variation is constitutive.",
     ["Wasatiyya", "revolutionary Islamism", "legalist or electoral currents", "militant currents"],
     ["wasatiyya", "revolutionary-islamism", "salafi-jihadism", "religious-nationalism"],
-    ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-political-islam", "source-oup-islamism-case-universe", "source-cambridge-wasatiyya"],
+    ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-political-islam", "source-oup-islamism-case-universe", "source-cambridge-wasatiyya", "source-oup-nasr-islamic-leviathan"],
     [
       dimension("cultural-causation", "descriptive", "defining-positive", "defining", "Religion supplies a comprehensive public political language.", ["source-cambridge-islamism"]),
       dimension("solidarity", "normative", "moderate-positive", "characteristic", "Social justice can be articulated through an Islamic framework.", ["source-cambridge-islamism"]),
@@ -7420,12 +7431,129 @@ const profilesWithResearchConceptions = (profiles: readonly ResearchAnchorProfil
   conceptions: RESEARCH_ANCHOR_CONCEPTIONS[profile.targetId] ?? profile.conceptions,
 }));
 
+/**
+ * Route variants are deliberately kept beside the qualitative profile rather
+ * than merged into its base dimensions. They document source-backed ways a
+ * broad tradition can translate commitments into institutions without making
+ * any one route a universal anchor direction.
+ */
+const RESEARCH_ANCHOR_ROUTE_VARIANTS: Readonly<Record<string, readonly ResearchAnchorRouteVariant[]>> = {
+  populism: [
+    routeVariant(
+      "populism:majoritarian-popular-sovereignty",
+      "Majoritarian popular-sovereignty route",
+      "Some populist constitutional projects translate popular sovereignty and majority rule into a more direct relation between the people and public institutions, sometimes reducing counter-majoritarian insulation. This is a host- and case-dependent route, not a universal Populist prescription.",
+      [
+        dimension("state-capacity", "prescriptive", "strong-positive", "contested", "The route concentrates institutional translation in bodies claimed to express a unified popular mandate.", ["source-cambridge-populism", "source-oup-populism"]),
+        dimension("reformism", "prescriptive", "moderate-negative", "contested", "Ordinary liberal-constitutional mediation can be treated as an obstacle to institutional renewal in this route.", ["source-cambridge-populism"]),
+      ],
+      ["source-cambridge-populism", "source-oup-populism"],
+    ),
+    routeVariant(
+      "populism:direct-democratic-renewal",
+      "Direct-democratic renewal route",
+      "Another populist translation emphasizes a closer and more participatory relation between political institutions and the people. Its inclusion boundary, institutional safeguards, and compatibility with pluralism remain dependent on the host formation.",
+      [
+        dimension("state-capacity", "prescriptive", "moderate-positive", "contested", "Public institutions are reorganized to make popular authorization more immediate, without fixing one constitutional design.", ["source-cambridge-populism", "source-oup-populism"]),
+      ],
+      ["source-cambridge-populism", "source-oup-populism"],
+    ),
+  ],
+  islamism: [
+    routeVariant(
+      "islamism:state-mediated-public-order",
+      "State-mediated public-order route",
+      "Some Islamist currents translate public religious claims through state law, administration, and policy. The extent and form of that translation vary across the wider field and should not be treated as the definition of Islamism.",
+      [
+        dimension("state-capacity", "prescriptive", "strong-positive", "contested", "The state is used as a principal institutional medium for public religious and social ordering.", ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-nasr-islamic-leviathan"]),
+        dimension("public-provision", "prescriptive", "moderate-positive", "contested", "Public policy can be used to translate religiously grounded obligations into social provision, with the content and scope varying among currents.", ["source-oup-political-islam", "source-oup-nasr-islamic-leviathan"]),
+      ],
+      ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-nasr-islamic-leviathan", "source-oup-political-islam"],
+    ),
+    routeVariant(
+      "islamism:inclusive-constitutional-participation",
+      "Inclusive constitutional-participation route",
+      "Other currents pursue a more inclusive or centrist public interpretation through participation, constitutional negotiation, and plural institutional mediation. The meaning of inclusion, authority, and equal membership remains contested across contexts.",
+      [
+        dimension("state-capacity", "prescriptive", "moderate-positive", "contested", "Public institutions mediate religiously grounded claims through negotiated and participatory arrangements rather than one fixed model of authority.", ["source-cambridge-islamism", "source-cambridge-wasatiyya"]),
+        dimension("reformism", "prescriptive", "moderate-positive", "contested", "Institutional change can proceed through constitutional participation and revision rather than a single revolutionary route.", ["source-cambridge-wasatiyya", "source-oup-islamic-political-ideologies"]),
+      ],
+      ["source-cambridge-islamism", "source-cambridge-wasatiyya", "source-oup-islamic-political-ideologies"],
+    ),
+  ],
+  "religious-nationalism": [
+    routeVariant(
+      "religious-nationalism:integrated-religious-state",
+      "Integrated religious-state route",
+      "A religious-national formation may translate the fusion of religious and national goals into public law, state institutions, and membership policy. The concrete legal and political form is historically and nationally variable.",
+      [
+        dimension("state-capacity", "prescriptive", "strong-positive", "contested", "Public institutions are treated as an active vehicle for expressing and enforcing a religious-national account of political community.", ["source-oup-religious-nationalism", "source-oup-religious-nationalism-21c"]),
+      ],
+      ["source-oup-religious-nationalism", "source-oup-religious-nationalism-21c"],
+    ),
+    routeVariant(
+      "religious-nationalism:civic-religious-accommodation",
+      "Civic-religious accommodation route",
+      "A different formation may retain a religious-national public identity while accommodating it through civic, constitutional, or institutionally mediated arrangements. This route records comparative variation; it does not imply that all religious-national projects are pluralist or equivalent.",
+      [
+        dimension("state-capacity", "prescriptive", "moderate-positive", "contested", "Public authority mediates religious-national identity through institutional accommodation rather than a single fully integrated model.", ["source-oup-religious-nationalism", "source-oup-religious-nationalism-21c"]),
+        dimension("reformism", "prescriptive", "indeterminate", "contested", "The relation between inherited religious-national identity and constitutional revision varies by case and cannot be assigned one direction at the family level.", ["source-oup-religious-nationalism-21c"]),
+      ],
+      ["source-oup-religious-nationalism", "source-oup-religious-nationalism-21c"],
+    ),
+  ],
+  "deep-ecology": [
+    routeVariant(
+      "deep-ecology:decentralized-ecological-community",
+      "Decentralized ecological-community route",
+      "Naessian and movement-oriented translations can emphasize local autonomy, decentralization, and ecological community self-organization. This is a documented route within a plural field, not a universal institutional requirement.",
+      [
+        dimension("decentralization", "prescriptive", "strong-positive", "contested", "Ecological decisions are located closer to affected communities and ecological places, with wider coordination left open.", ["source-naess-deep-ecology", "source-trumpeter-drengson-devall-deep-ecology"]),
+      ],
+      ["source-naess-deep-ecology", "source-trumpeter-drengson-devall-deep-ecology"],
+    ),
+    routeVariant(
+      "deep-ecology:public-ecological-guardrails",
+      "Public ecological-guardrails route",
+      "A public-institutional translation uses accountable authority to limit activity that exceeds ecological thresholds and to protect shared ecological goods. The scope of public provision and the appropriate institutional form remain open.",
+      [
+        dimension("state-capacity", "prescriptive", "moderate-positive", "contested", "Public institutions set or enforce ecological limits while the wider governance arrangement remains plural.", ["source-cambridge-ecologism", "source-uksw-bombik-deep-ecology-methodology", "source-oup-dobson-environmental-politics"]),
+        dimension("public-provision", "prescriptive", "moderate-positive", "contested", "Common or public institutions can protect ecological goods without establishing one ownership model for all production.", ["source-uksw-bombik-deep-ecology-methodology", "source-oup-attfield-environmental-movements"]),
+      ],
+      ["source-cambridge-ecologism", "source-uksw-bombik-deep-ecology-methodology", "source-oup-dobson-environmental-politics", "source-oup-attfield-environmental-movements"],
+    ),
+    routeVariant(
+      "deep-ecology:liberal-self-organization",
+      "Liberal self-organization route",
+      "Some political-theory interpretations connect deep ecological commitments with liberal self-organization and democratic coordination. The interpretation is a contested reconciliation, not evidence that Deep Ecology has a fixed market or liberal programme.",
+      [
+        dimension("decentralization", "prescriptive", "moderate-positive", "contested", "Self-organizing and democratically coordinated institutions can be treated as compatible with ecological commitments in this interpretation.", ["source-cambridge-dizerega-deep-ecology-liberalism"]),
+      ],
+      ["source-cambridge-dizerega-deep-ecology-liberalism"],
+    ),
+    routeVariant(
+      "deep-ecology:transboundary-ecological-coordination",
+      "Transboundary ecological-coordination route",
+      "Because ecological systems cross political borders, movement and policy translations may use wider networks and cross-border coordination. This records a possible scale of action rather than a single sovereignty or institutional settlement.",
+      [
+        dimension("internationalism", "prescriptive", "moderate-positive", "contested", "Institutional cooperation can follow ecological interdependence across places and borders.", ["source-trumpeter-drengson-devall-deep-ecology", "source-sage-luke-deep-ecology"]),
+      ],
+      ["source-trumpeter-drengson-devall-deep-ecology", "source-sage-luke-deep-ecology"],
+    ),
+  ],
+};
+
+const profilesWithResearchRouteVariants = (profiles: readonly ResearchAnchorProfile[]): readonly ResearchAnchorProfile[] => profiles.map((profile) => ({
+  ...profile,
+  routeVariants: RESEARCH_ANCHOR_ROUTE_VARIANTS[profile.targetId] ?? profile.routeVariants,
+}));
+
 const profilesWithResearchRelationships = (profiles: readonly ResearchAnchorProfile[]): readonly ResearchAnchorProfile[] => profiles.map((profile) => ({
   ...profile,
   relationships: RESEARCH_ANCHOR_RELATIONSHIPS[profile.targetId] ?? profile.relationships,
 }));
 
-export const RESEARCH_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = profilesWithResearchRelationships(profilesWithResearchConceptions([...PRIORITY_ANCHOR_PROFILES, ...CORE_ANCHOR_PROFILES, ...MACRO_ANCHOR_PROFILES, ...MESO_ANCHOR_PROFILES, ...MICRO_ANCHOR_PROFILES, ...MICRO_TRANCHE_TWO_ANCHOR_PROFILES, ...MICRO_TRANCHE_THREE_ANCHOR_PROFILES, ...MICRO_TRANCHE_FOUR_ANCHOR_PROFILES, ...CONTEXT_TRANCHE_FIVE_ANCHOR_PROFILES, ...COMPLETION_TRANCHE_SIX_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_SEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_EIGHT_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_NINE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_ELEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TWELVE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_THIRTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FIFTEEN_ANCHOR_PROFILES]));
+export const RESEARCH_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = profilesWithResearchRelationships(profilesWithResearchRouteVariants(profilesWithResearchConceptions([...PRIORITY_ANCHOR_PROFILES, ...CORE_ANCHOR_PROFILES, ...MACRO_ANCHOR_PROFILES, ...MESO_ANCHOR_PROFILES, ...MICRO_ANCHOR_PROFILES, ...MICRO_TRANCHE_TWO_ANCHOR_PROFILES, ...MICRO_TRANCHE_THREE_ANCHOR_PROFILES, ...MICRO_TRANCHE_FOUR_ANCHOR_PROFILES, ...CONTEXT_TRANCHE_FIVE_ANCHOR_PROFILES, ...COMPLETION_TRANCHE_SIX_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_SEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_EIGHT_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_NINE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_ELEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TWELVE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_THIRTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FIFTEEN_ANCHOR_PROFILES])));
 
 const neighbor = (
   targetId: string,

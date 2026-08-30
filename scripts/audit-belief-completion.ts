@@ -12,6 +12,7 @@ import {
 } from "../src/beliefs";
 import { BELIEF_VALIDATION_GATES, openBeliefValidationGates, validateBeliefValidationLedger } from "../src/belief-validation";
 import { auditIdeologyQuestionCoverage } from "../src/ideology-question-coverage";
+import { researchAnchorProfiles, validateCuratedResearchMetadata } from "../src/research";
 import { calculateResults, scoringAnchorsFor, validateDataset } from "../src/scoring";
 import { LAYERS, type Answer, type AnswerMap, type IdeologyConfiguration } from "../src/types";
 
@@ -52,12 +53,25 @@ const constructSignalFor = (result: ReturnType<typeof calculateResults>, constru
 
 const canonicalConfigurations = ideologyConfigurationsFor(DATASET).filter((configuration) => configuration.placement === "canonical");
 const canonicalNodeIds = new Set(DATASET.ideologyNodes.filter((node) => node.placement === "canonical").map((node) => node.id));
+const contestedRouteVariantCounts = new Map<string, number>([
+  ["populism", 2],
+  ["islamism", 2],
+  ["religious-nationalism", 2],
+  ["deep-ecology", 4],
+]);
+const expectedContestedRouteVariantCount = [...contestedRouteVariantCounts.values()].reduce((sum, count) => sum + count, 0);
+const contestedRouteVariantProfiles = [...contestedRouteVariantCounts.keys()].map((targetId) => researchAnchorProfiles.find((profile) => profile.targetId === targetId));
+const contestedRouteVariants = contestedRouteVariantProfiles.flatMap((profile) => profile?.routeVariants ?? []);
+const productionQuestionIds = new Set(DATASET.questions.map((question) => question.id));
+const productionAnchorIds = new Set(scoringAnchorsFor(DATASET).map((anchor) => anchor.id));
+const researchMetadataValidationErrors = validateCuratedResearchMetadata(DATASET);
 const validationErrors = [
   ...validateDataset(DATASET),
   ...validateBeliefModel(DATASET),
   ...validateBeliefGapCandidates(DATASET),
   ...validateBeliefDirectItems(DATASET),
   ...validateBeliefValidationLedger(DATASET),
+  ...researchMetadataValidationErrors,
 ];
 const audits = auditBeliefMeasurement(DATASET);
 const questionCoverage = auditIdeologyQuestionCoverage(DATASET);
@@ -188,6 +202,17 @@ const structuralChecks = {
     && baseResult.primary.morphology.candidates.every((candidate) => canonicalNodeIds.has(candidate.ontologyNodeId)),
   completeProductionItemAudit: audits.length === DATASET.questions.length
     && audits.every((audit) => audit.constructIds.length > 0 && audit.sourceRefs.length > 0),
+  researchMetadataHasNoValidationErrors: researchMetadataValidationErrors.length === 0,
+  contestedRouteVariantCoverage: contestedRouteVariantProfiles.length === contestedRouteVariantCounts.size
+    && contestedRouteVariantProfiles.every((profile) => profile !== undefined
+      && profile.routeVariants.length === contestedRouteVariantCounts.get(profile.targetId)),
+  contestedRouteVariantsRemainNonScoring: contestedRouteVariants.length === expectedContestedRouteVariantCount
+    && contestedRouteVariants.every((route) => route.evidencePosture === "source-backed-contested"
+      && route.dimensions.length > 0
+      && route.dimensions.every((dimension) => dimension.layer === "prescriptive")
+      && route.dimensions.some((dimension) => dimension.expectedDirection !== "indeterminate")
+      && !productionQuestionIds.has(route.id)
+      && !productionAnchorIds.has(route.id)),
   questionCoverageHasNoValidationErrors: questionCoverage.validationErrors.length === 0,
   questionCoverageHasNoUnexpectedFailures: questionCoverage.failures.length === 0,
   questionCoverageHasCompleteTargetBlocks: questionCoverage.structuralChecks.allCanonicalTargetsHaveFourQuestionsPerLayer,
@@ -301,6 +326,8 @@ const report = {
     gapPilotEvidence: gapEvidence.length,
     directPilotItems: BELIEF_DIRECT_ITEMS.length,
     relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
+    contestedRouteVariantTargets: contestedRouteVariantProfiles.filter((profile) => profile !== undefined).length,
+    contestedRouteVariants: contestedRouteVariants.length,
     mixedProfileUnderDeterminedDiagnostics: mixedResult.primary.morphology.underDeterminedCandidates.length,
     ideologyQuestionCoverage: {
       canonicalTargets: questionCoverage.canonicalTargetCount,

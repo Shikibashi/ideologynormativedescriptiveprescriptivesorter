@@ -12,6 +12,7 @@ import {
   researchNeighborDiscriminants,
   validateCuratedResearchBank,
   validateCuratedResearchMetadata,
+  validateResearchAnchorRouteVariants,
   validateResearchCandidate,
   validateResearchPromotion,
 } from "./research";
@@ -2239,6 +2240,49 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-30" });
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "deep-ecology")).toBe(true);
     expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("deep-ecology"))).toHaveLength(12);
+  });
+
+  it("keeps broad-family prescriptive routes explicit without creating a universal direction", () => {
+    const expectedRouteCounts = new Map([
+      ["populism", 2],
+      ["islamism", 2],
+      ["religious-nationalism", 2],
+      ["deep-ecology", 4],
+    ]);
+
+    for (const [targetId, expectedCount] of expectedRouteCounts) {
+      const profile = researchAnchorProfiles.find((candidate) => candidate.targetId === targetId);
+      expect(profile?.routeVariants).toHaveLength(expectedCount);
+      expect(profile?.routeVariants.every((route) => route.evidencePosture === "source-backed-contested")).toBe(true);
+      expect(profile?.routeVariants.every((route) => route.dimensions.every((dimension) => dimension.layer === "prescriptive"))).toBe(true);
+      expect(profile?.routeVariants.every((route) => route.dimensions.some((dimension) => dimension.expectedDirection !== "indeterminate"))).toBe(true);
+      expect(profile?.routeVariants.every((route) => route.sourceIds.every((sourceId) => profile.sourceIds.includes(sourceId)))).toBe(true);
+    }
+
+    expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
+  });
+
+  it("rejects route variants that are not source-backed prescriptive alternatives", () => {
+    const profile = researchAnchorProfiles.find((candidate) => candidate.targetId === "populism");
+    expect(profile).toBeDefined();
+    if (!profile) return;
+
+    const malformedProfile = {
+      ...profile,
+      routeVariants: [{
+        ...profile.routeVariants[0],
+        sourceIds: [],
+        dimensions: [{
+          ...profile.routeVariants[0].dimensions[0],
+          layer: "normative",
+        }],
+      }],
+    } as typeof profile;
+
+    expect(validateResearchAnchorRouteVariants(malformedProfile, DATASET)).toEqual(expect.arrayContaining([
+      "research profile populism route variant populism:majoritarian-popular-sovereignty has no source",
+      "research profile populism route variant populism:majoritarian-popular-sovereignty dimension state-capacity must be prescriptive",
+    ]));
   });
 
   it("closes the completion tranche with the research-backed Bernsteinian promotion explicit", () => {

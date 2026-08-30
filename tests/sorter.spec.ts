@@ -340,6 +340,19 @@ test("shows research-backed taxonomy decisions separately from scoring", async (
   await page.locator("#research-target").selectOption("deep-ecology");
   await expect(page.locator(".research-governance-note")).toContainText(/promote to canonical ontology/i);
   await expect(page.locator(".research-governance-note")).toContainText(/scored-provisional/i);
+  for (const [targetId, routeCount] of [
+    ["populism", 2],
+    ["islamism", 2],
+    ["religious-nationalism", 2],
+    ["deep-ecology", 4],
+  ] as const) {
+    await page.locator("#research-target").selectOption(targetId);
+    const routeVariants = page.locator(".research-profile-route-variants");
+    await expect(routeVariants).toBeVisible();
+    await expect(routeVariants.locator("li")).toHaveCount(routeCount);
+    await expect(routeVariants).toContainText(/source backed contested/i);
+  }
+  await page.locator("#research-target").selectOption("deep-ecology");
   const relationshipProfile = page.locator(".research-profile-relationships");
   await expect(relationshipProfile).toContainText(/source-backed configuration relationships/i);
   await expect(relationshipProfile.locator("li")).toHaveCount(2);
