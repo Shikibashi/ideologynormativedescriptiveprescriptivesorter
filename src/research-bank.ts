@@ -4469,6 +4469,24 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-cambridge-trotskyism", "source-cambridge-trotskyism-permanent-revolution", "source-oup-political-ideologies"],
     ),
   ],
+  "conservative-new-right": [
+    anchorConception(
+      "cultural-continuity-and-particularism",
+      "normative",
+      "Cultural continuity as a contested political value",
+      "Some New Right formations treat inherited cultural continuity and culturally bounded political communities as valuable, while the scope, relation to individual liberty, and meaning of national or civilizational membership vary across Anglo-American and European strands.",
+      "contested",
+      ["source-oup-freeden-conservative-revival", "source-aup-bures-european-new-right", "source-sage-drolet-williams-european-new-right", "source-sage-gianoncelli-new-right"],
+    ),
+    anchorConception(
+      "metapolitical-cultural-work",
+      "prescriptive",
+      "Cultural and intellectual work as a route to political change",
+      "Some New Right formations treat sustained intellectual, cultural, and narrative work as a route to reshape public common sense and the boundaries of legitimate political language alongside or before electoral and institutional action; this is a field-level strategy, not a respondent instruction or universal New Right programme.",
+      "characteristic",
+      ["source-tandf-williams-new-right", "source-aup-bures-european-new-right", "source-sage-drolet-williams-european-new-right", "source-sage-gianoncelli-new-right", "source-springer-schilk-new-right-metapolitics"],
+    ),
+  ],
   "civic-republicanism": [
     anchorConception(
       "civic-freedom-through-non-domination",

@@ -2089,6 +2089,16 @@ describe("research workbench contracts", () => {
     ]));
     expect(researchCandidatesForTarget("conservative-new-right")).toHaveLength(12);
     expect(researchAnchorProfiles.find((profile) => profile.targetId === "conservative-new-right")?.dimensions.length).toBeGreaterThanOrEqual(7);
+    const newRightProfile = researchAnchorProfiles.find((profile) => profile.targetId === "conservative-new-right");
+    expect(newRightProfile?.conceptions.map((conception) => conception.conceptId)).toEqual([
+      "cultural-continuity-and-particularism",
+      "metapolitical-cultural-work",
+    ]);
+    expect(newRightProfile?.conceptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ conceptId: "cultural-continuity-and-particularism", layer: "normative", centrality: "contested" }),
+      expect.objectContaining({ conceptId: "metapolitical-cultural-work", layer: "prescriptive", centrality: "characteristic" }),
+    ]));
+    expect(newRightProfile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
     expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "conservative-new-right")).toHaveLength(3);
     expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "conservative-new-right")?.preferredOutcome).toContain("contextual formation");
     expect(researchTaxonomyDecisionForTarget("conservative-new-right")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });

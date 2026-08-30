@@ -671,3 +671,11 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - How should rule-bound public power, popular control, equal civic standing, private as well as public domination, civic education, vigilance, and contestation be represented without treating patriotism, participation, anti-corruption, constitutional checks, or non-domination alone as sufficient evidence?
 - Civic Republicanism remains registry-only and not-scored with two qualitative conceptions and twelve quarantined candidates; the conceptions are editorial context rather than respondent measurements, anchor weights, or score effects.
 - No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
+
+## V106 — Conservative New Right open boundaries
+
+- How should Conservative New Right be separated from Conservatism, National Conservatism, Paleoconservatism, Neoconservatism, Right-Wing Populism, and the broader far-right field when Anglo-American conservative or neoliberal currents and European radical-conservative metapolitical networks are historically and geographically non-equivalent?
+- Which combinations of cultural continuity, bounded community, national or civilizational interpretation, institutional critique, market or social provision, and metapolitical cultural work are recurring enough to describe the field without turning one strand into a universal programme?
+- How should intellectual networks, periodicals, think tanks, narrative communities, parties, movements, and political actors remain distinct, especially when cultural hegemony or crisis narratives are treated as field-level strategies rather than respondent commitments?
+- Conservative New Right remains registry-only and not-scored with two qualitative conceptions and twelve quarantined candidates; the conceptions are editorial context rather than respondent measurements, anchor weights, morphology outputs, or score effects.
+- No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
