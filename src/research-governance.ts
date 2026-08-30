@@ -296,6 +296,19 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "scored-provisional",
     "2026-08-29",
   ),
+  decision(
+    "taxonomy-gandhian-political-thought-retain-contextual",
+    "gandhian-political-thought",
+    "retain-contextual",
+    "source-backed-contested",
+    ["source-oup-parel-pax-gandhiana", "source-cambridge-parel-gandhi-state", "source-cambridge-mantena-gandhi-state", "source-cambridge-mantena-gandhian-nonviolence", "source-sage-parasher-gandhian-democracy", "source-oup-gandhi-hind-swaraj-law", "source-cambridge-rolnick-gandhian-trusteeship", "source-gandhi-heritage-portal-key-texts"],
+    "The source set supports Gandhian Political Thought as a historically situated and internally varied political-ethical tradition organized around ethical and political self-rule, nonviolent political action, constructive work, pluralism, trusteeship, and decentralized community self-government.",
+    "Retain this as a contextual meso research target with a quarantined 4/4/4 candidate block. The current facet registry does not directly represent swaraj, satyagraha, means–ends integrity, constructive programme, or trusteeship, so contextual placement does not create a production anchor, respondent-facing score, or claim that one historical or later interpretation defines the tradition.",
+    ["Gandhian thought may be treated as an ethical-political philosophy, anti-colonial tradition, pacifist current, decentralist or agrarian programme, or socialist-adjacent current rather than a separate meso node.", "The tradition varies across Gandhi's periods and contexts, religious and secular readings, state and antistatist interpretations, property and economic routes, caste and gender debates, industrialization, and later global receptions.", "Nonviolence, localism, self-reliance, religious ethics, trusteeship, village institutions, anti-imperialism, Indian identity, or one historical campaign alone do not establish the full Gandhian Political Thought boundary."],
+    "contextual",
+    "not-scored",
+    "2026-08-29",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>

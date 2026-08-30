@@ -60,6 +60,7 @@ describe("research workbench contracts", () => {
     expect(targets.find((target) => target.id === "collectivist-anarchism")).toMatchObject({ measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "georgism")).toMatchObject({ targetKind: "ideology-node", level: "meso", placement: "canonical", anchorId: "georgism", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "ujamaa")).toMatchObject({ targetKind: "ideology-node", level: "meso", placement: "canonical", anchorId: "ujamaa", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
+    expect(targets.find((target) => target.id === "gandhian-political-thought")).toMatchObject({ targetKind: "ideology-node", level: "meso", placement: "contextual", measurementStatus: "contextual-only", questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 } });
   });
 
   it("activates Khomeinism, Qutbism, Radical Republicanism, Marxist Feminism, Socialist Feminism, Left-Wing Populism, Neoconservatism, and Paleoconservatism with source-backed boundaries", () => {
@@ -212,8 +213,8 @@ describe("research workbench contracts", () => {
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
-    expect(curatedResearchCandidates).toHaveLength(1488);
-    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1488);
+    expect(curatedResearchCandidates).toHaveLength(1500);
+    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1500);
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
@@ -223,7 +224,7 @@ describe("research workbench contracts", () => {
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
     const targetIds = [...new Set(curatedResearchCandidates.map((candidate) => candidate.targetId))];
-    expect(targetIds).toHaveLength(124);
+    expect(targetIds).toHaveLength(125);
     for (const targetId of targetIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
@@ -1617,6 +1618,33 @@ describe("research workbench contracts", () => {
     }
 
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => contextIds.includes(targetId)))).toBe(false);
+  });
+
+  it("keeps Gandhian Political Thought as a source-backed contextual research target without production scoring", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "gandhian-political-thought");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "meso",
+      placement: "contextual",
+      canonicalPath: [],
+      measurementStatus: "contextual-only",
+      questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "gandhian-political-thought")).toMatchObject({ placement: "contextual", status: "catalog-only" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "gandhian-political-thought")?.anchorId).toBeUndefined();
+    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("gandhian-political-thought"))).toBe(false);
+    const candidates = researchCandidatesForTarget("gandhian-political-thought");
+    expect(candidates).toHaveLength(12);
+    expect(candidates.filter((candidate) => candidate.layer === "descriptive")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "normative")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "prescriptive")).toHaveLength(4);
+    expect(candidates.every((candidate) => candidate.sourceIds.includes("source-oup-parel-pax-gandhiana"))).toBe(true);
+    expect(candidates.every((candidate) => candidate.sourceIds.includes("source-gandhi-heritage-portal-key-texts"))).toBe(true);
+    expect(researchCoverageSummaries.find((summary) => summary.targetId === "gandhian-political-thought")).toMatchObject({ currentStatus: "contextual-only", newCandidateItems: 12 });
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "gandhian-political-thought")?.dimensions).toHaveLength(0);
+    expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "gandhian-political-thought")).toHaveLength(6);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "gandhian-political-thought")?.preferredOutcome).toContain("do not activate");
+    expect(researchTaxonomyDecisionForTarget("gandhian-political-thought")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
   });
 
   it("promotes Bernsteinian revision as a narrow historical microtype with full source-backed coverage", () => {

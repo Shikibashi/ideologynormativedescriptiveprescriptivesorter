@@ -695,3 +695,13 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-89-03 | Run isolated anchor reachability and full fixture diagnostics. | Bioregionalism reaches every layer in an isolated-anchor fixture; the combined top-three diagnostic omits all three layers; full-production output remains deterministic geometry evidence only, with no uncalibrated retuning. |
 | P-89-04 | Run complete-answer share round trip. | Versioned v2 fragment measures 15,569 characters, remains below the finite limit, and decodes to the complete answer map. |
 | P-89-05 | Run delivery and browser checks. | TypeScript, Vitest 99/99, build, high-severity audit, coverage, reachability, Compose/Docker, `/healthz`, and serial local/Docker Playwright suites pass; no cognitive, respondent, psychometric, or empirical claim. |
+
+## V98 — Gandhian Political Thought contextual research tranche
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-98-01 | Run the research coverage inventory after adding Gandhian Political Thought. | Production remains content version 94 with 1,464 prompts and 116 production anchors; editorial inventory reports 122 nodes, 9 macro / 44 total meso / 69 micro placements, six contextual placements, three registry entries, 125 targets, and 1,500 candidates with zero validation errors. |
+| P-98-02 | Select `gandhian-political-thought` in the research workbench. | The target is visibly `contextual, not scored`, has no canonical path or direct production questions, exposes exactly twelve quarantined candidates at 4/4/4, and shows its source-backed boundary and neighbors. |
+| P-98-03 | Run anchor reachability and inspect the target's score surface. | Gandhian Political Thought has no production anchor, is absent from dedicated-scored reachability, contributes no score effect, and does not alter layer or combined results. |
+| P-98-04 | Run source, governance, profile, neighbor, and false-positive regression assertions. | All twelve candidates carry the source-backed provenance required by the tranche; the anchor profile remains intentionally dimensionless; six discriminants, the contextual coverage summary, and retain-contextual / not-scored governance remain present. |
+| P-98-05 | Run the complete deterministic and delivery gate set. | Focused and full Vitest, TypeScript, build, audit, coverage, reachability, Compose/Docker, health, and browser checks report their actual PASS/FAIL/NOT RUN state. No cognitive review, respondent study, psychometric validation, or empirical classification is substituted or implied. |

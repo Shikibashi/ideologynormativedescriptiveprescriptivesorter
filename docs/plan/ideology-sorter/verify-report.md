@@ -981,3 +981,25 @@ The verified V97 data shape is content version 94 with 1,464 production prompts 
 The V97 deterministic and delivery gates pass: focused research 82/82, focused scoring 19/19, share tests 6/6, full Vitest 134/134 across five files, `npx tsc --noEmit`, `npm run build`, `npm audit --omit=dev --audit-level=high` with zero vulnerabilities, research coverage with zero validation errors and complete 124/124 profile/audit rows, research anchor reachability with zero validation errors or structural failures and isolated Ujamaa routing in all three layers, `docker compose -f docker-images/docker-compose.yml config`, fresh no-cache Docker build, forced Compose recreation, healthy `/healthz`, healthy container status, and Docker-backed Playwright 10/10. The build retains the existing large-client-chunk advisory.
 
 The separate uncommitted belief-profile/morphology workstream remained present and was not staged or modified by this tranche. No cognitive review, respondent study, substitute simulation, psychometric calibration, reliability/validity estimate, invariance study, empirical validation, or population evidence was run or implied. Full-production overlap remains deterministic geometry evidence only. The comprehensive-coverage goal remains open, five contextual placements and three registry-only targets remain outside production scoring, and no Git remote is configured so push remains blocked pending a user-provided remote target.
+
+## V98 verification boundary — Gandhian Political Thought contextual tranche
+
+At authoring time, the V98-specific evidence is: focused `src/research.test.ts` 83/83 PASS; `npx tsc --noEmit` PASS; `npm run research:coverage` PASS with zero validation errors and 1,500 candidates across 125 targets; and `git diff --check` PASS. The inventory remains production content version 94 with 1,464 prompts (488 per layer) and 116 production anchors, while the editorial ontology reports 122 nodes with 9 macro / 44 total meso / 69 micro placements, six contextual placements, and three registry entries. Gandhian Political Thought has no production questions, anchor, canonical path, or score effect.
+
+The broader Vitest suite, build, high-severity audit, anchor-reachability command, Compose/Docker configuration and image checks, health check, and Playwright delivery checks are part of the remaining V98 verification pass and must be reported from their actual command results. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, or population evidence was run or implied. The unrelated uncommitted belief-profile/morphology workstream remains outside the tranche and must not be staged.
+
+## V98 final observed verification — 2026-08-30
+
+| Check | Status | Observed result |
+|---|---|---|
+| `npm run test:run` | PASS | 5 files, 137/137 tests; the 83 research-contract tests and the existing belief-profile tests all pass in the current worktree |
+| `npx tsc --noEmit` and `npm run build` | PASS | Production bundle built; the existing Vite large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | 0 validation errors; 1,500 candidates across 125 targets; Gandhian target is contextual-only with 0 direct questions and 4/4/4 candidates |
+| `npm run research:anchor-reachability` | PASS | 116 production anchors; 0 validation errors; 0 structural failures; all production anchors isolated-reachable across all three layers |
+| Compose config, fresh image, health | PASS | Compose config passed; current-tree no-cache Docker image built; forced recreation is healthy and `/healthz` returns `ok` |
+| local Playwright | PASS after rerun | A Playwright-managed-server attempt failed 1/10 when the long share test encountered a stopped Vite server; the affected test then passed 1/1 and the complete suite passed 10/10 against a manually held Vite server |
+| Docker Playwright | PASS after rebuild | A stale-image attempt failed 1/10 because it lacked the latest unrelated `Compatibility baseline` UI; after rebuilding from the current tree, the complete suite passed 10/10 |
+| `git diff --check` | PASS | No whitespace errors |
+
+The initial browser failures are retained as diagnostic history, not silently converted into passes; the final PASS rows are the successful reruns against the explicitly controlled runtime surfaces. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, or population evidence was run or implied. The unrelated belief-profile/morphology workstream remains outside the V98 tranche and is not authorized for staging.

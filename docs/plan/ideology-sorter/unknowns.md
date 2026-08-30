@@ -648,3 +648,10 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - How should environmental-determinism critiques, urban–other power relations, jurisdictional variation, and local/regional/interregional scale be represented without converting bioregional boundaries into naturalized or exclusionary membership rules?
 - The deterministic audit reaches Bioregionalism in all three isolated layers. Its full-competition combined top-three diagnostic omits all three layers and remains geometry evidence only; it is not a respondent, cognitive, psychometric, or empirical result.
 - Three registry-only targets and five contextual placements remain outside production scoring. Respondent comprehension, reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V98 — Gandhian Political Thought open questions
+
+- Which direct constructs can validly distinguish swaraj, satyagraha, means-ends integrity, constructive programme, trusteeship, and decentralized self-government from the existing liberty, solidarity, equality, universalism, decentralization, public-provision, and public-ownership proxies without creating a false-positive score?
+- How should variation across Gandhi's periods, state and anti-statist interpretations, property, industrialization, caste, gender, religion, and later reception be represented without collapsing a contested tradition into one authorial or national identity label?
+- Can a future facet or measurement design represent ethical discipline and political means as a distinct construct while preserving the separation between descriptive, normative, and prescriptive layers and avoiding double counting?
+- V98 adds six contextual placements in total and leaves Gandhian Political Thought outside production scoring. No cognitive, respondent, psychometric, substitute-simulation, empirical, reliability/validity, invariance, or population evidence answers these questions.

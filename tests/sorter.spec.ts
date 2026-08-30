@@ -37,7 +37,7 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await page.goto("/");
   await page.getByRole("button", { name: /^Research$/ }).click();
   await expect(page.getByRole("heading", { name: /Make the next question earn its place/ })).toBeVisible();
-  await expect(page.locator(".research-count")).toContainText(/1488 quarantined candidates across 124 targets/);
+  await expect(page.locator(".research-count")).toContainText(/1500 quarantined candidates across 125 targets/);
   await expect(page.locator(".research-promotion-gate")).toContainText(/neighbor distinctness: not completed/i);
   await expect(page.locator(".research-promotion-gate")).toContainText(/cross-cultural \/ jurisdictional: not completed/i);
   await expect(page.locator(".research-promotion-gate")).toContainText(/empirical validation: not completed/i);
@@ -290,6 +290,10 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
     await expect(page.locator(".research-status")).toContainText("dedicated and scored");
     await expect(page.locator(".research-bank-item")).toHaveCount(12);
   }
+  await page.locator("#research-target").selectOption("gandhian-political-thought");
+  await expect(page.getByRole("heading", { name: "Gandhian Political Thought" })).toBeVisible();
+  await expect(page.locator(".research-status")).toContainText("contextual, not scored");
+  await expect(page.locator(".research-bank-item")).toHaveCount(12);
   await page.locator("#research-target").selectOption("anarcho-capitalism");
   await page.locator("summary", { hasText: "Review risks and promotion evidence" }).click();
   await expect(page.locator("#candidate-neighbor-review")).toBeVisible();
