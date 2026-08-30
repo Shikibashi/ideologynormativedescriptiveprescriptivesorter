@@ -757,3 +757,21 @@ Completion condition for V130: all relation participants and sources resolve; id
 The canonical ontology and production target blocks are now structurally complete, so this bounded continuation addresses the remaining selection-resolution problem rather than adding a duplicate ideology label. The configuration projection now reports defining-commitment support separately from total configuration coverage and exposes a bounded resolution posture: `insufficient-information`, `not-derived`, `coarse-neighborhood`, or `provisional-neighborhood`. At most five leading candidate ids remain inspectable, but no unique ideology is selected.
 
 When the leading internal-fit margin is low, the result explicitly treats the output as a coarse neighborhood and directs future authoring toward source-backed neighbor-discriminating research candidates before any scorer change. The existing candidate order, fit calculation, separation policy, production question effects, ontology, legacy scorer, share contract, and combined-layer semantics are unchanged. This is structural measurement observability, not calibrated confidence, respondent classification, cognitive review, psychometric or empirical validation, invariance evidence, population/consequence evidence, or a reason to close the comprehensive objective.
+
+
+## V131 continuation — remove exact duplicate production wording — 2026-08-30
+
+1. Rewrite only the five source-backed production prompts implicated in six exact duplicate-wording audit findings: `n-liberal-feminism-02`, `n-french-fascism-01`, `p-french-fascism-01`, `n-british-fascism-01`, and `p-british-fascism-01`.
+2. Preserve every existing effect map, source reference, layer, facet, target metadata, fixed ontology, morphology behavior, candidate order, affinity basis, share contract, and legacy scorer behavior.
+3. Bump the dataset content version to 98 and add a regression assertion that the duplicate and redundant dispositions are empty and the rewritten effects remain unchanged.
+4. Rerun TypeScript, focused/full Vitest, build, measurement, question-coverage, morphology, research-coverage, reachability, direct-pilot, completion, and whitespace checks.
+
+Completion condition for V131: exact duplicate production wording is removed without changing measurement semantics or legacy effects; current deterministic evidence is recorded; and the completion audit remains `INCOMPLETE` / fail-closed because the three unmeasured constructs, four open claim-layer gaps, and six external validation gates remain unresolved.
+
+## V132 continuation — remove the remaining single-item compound wording signal — 2026-08-30
+
+1. Rewrite `n-collectivist-anarchism-04` around one participation claim, preserving its existing source references, `democracy: 0.95` effect, layer, facet, target metadata, and facet-proxy mode.
+2. Bump the dataset content version to 99 and add a regression assertion for the exact prompt, absence of the compound/rewrite signal, source provenance, and unchanged legacy effect.
+3. Rerun TypeScript, focused regression, measurement audit, and whitespace validation.
+
+Completion condition for V132: the remaining non-cross-construct rewrite signal is removed without changing scoring semantics; the 42 cross-construct split signals remain visibly queued for human review; and the comprehensive completion audit remains `INCOMPLETE` / fail-closed.

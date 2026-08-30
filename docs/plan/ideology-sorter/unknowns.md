@@ -720,6 +720,18 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - [ ] V130 adds 92 records across 46 owners but does not address the three unmeasured constructs (`priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation`), the four contested prescriptive target-layer gaps, or the six external validation gates. Those remain explicit follow-up work.
 - [ ] No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance/DIF study, population/consequence review, empirical classification, or current-actor inference answers these boundaries.
 
+## V131 unknowns — question-layer duplicate repair
+
+- [ ] The exact duplicate-wording findings are removed, but the measurement audit still reports one `rewrite` disposition and 42 mechanically flagged `split` dispositions; these remain human content-review signals rather than automatic instructions to rewrite.
+- [ ] The five revised prompts preserve legacy effects and source references, but no cognitive response-process study establishes whether respondents interpret the revised wording as intended.
+- [ ] Content version 98 still has three unmeasured constructs, four contested prescriptive coverage gaps, and six required external validation gates with status `NOT RUN`; none is closed by the wording repair or local regression evidence.
+
+## V132 unknowns — single-claim rewrite boundary
+
+- [ ] The non-cross-construct rewrite disposition is now zero, but 42 cross-construct split signals remain; deciding whether each coordinated claim should be split requires content and response-process review rather than a mechanical regex rule.
+- [ ] The revised collectivist-anarchism item preserves its legacy effect and source provenance, but no cognitive interview establishes that “perform common work” is interpreted consistently across respondents or historical contexts.
+- [ ] Content version 99 still has three unmeasured constructs, four contested prescriptive coverage gaps, and six required external validation gates with status `NOT RUN`.
+
 ## V129 unknowns — additional configuration relationships
 
 - [ ] The relationship registry now covers 73 of 119 canonical owners with 146 source-backed-contested records; the remaining 46 owners still have explicit relational gaps, and no coverage percentage is evidence that the researched configuration model is exhaustive.

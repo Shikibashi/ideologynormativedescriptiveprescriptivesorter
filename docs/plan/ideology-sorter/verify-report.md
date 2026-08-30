@@ -1808,3 +1808,49 @@ V130 verifies 46 additional canonical configuration owners: Arab Nationalism, Ci
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
 
 The tranche adds source-backed theoretical relationship context while preserving the separation from respondent evidence, construct signals, morphology fit, affinity weights, and legacy scoring. Local structural, synthetic, unit, build, browser, and reachability evidence does not establish comprehension, expert agreement, psychometric validity, invariance, population/consequence safety, empirical classification, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
+
+
+## V131 observed verification — remove exact duplicate production wording — 2026-08-30
+
+V131 repairs the lowest failing question-layer signal identified by the measurement audit. Five production prompts were rewritten: `n-liberal-feminism-02`, `n-french-fascism-01`, `p-french-fascism-01`, `n-british-fascism-01`, and `p-british-fascism-01`. These five edits remove six duplicate-wording flags because one member of the liberal-feminism pair and both members of each historical-fascism pair were revised. The existing `Question.effects`, source references, fixed ontology, morphology path, candidate order, affinity basis, share contract, and legacy scorer remain unchanged. Content version is now 98.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current source and regression assertions compile with no output. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 174/174 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-C8Q_jiic.js` 3,020.68 kB (673.17 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 98; 1,500/1,500 items audited; `duplicate: 0`, `redundant: 0`; three constructs remain unmeasured and 19 candidates remain quarantined. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | All 119 canonical targets retain 4/4/4 blocks with zero validation errors; the four contested prescriptive gaps remain explicit. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations, 238 source-backed-contested relationships, all participants resolved, and zero validation/failure errors. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets, 128/128 profile and conception rows, and zero validation errors. |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; isolated reachability has no validation/failure errors; full-competition ranks remain structural overlap diagnostics only. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct pilot items remain outside production; source/option validation and effect isolation pass. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass and `structuralEligible` is true, but all six required external-study gates remain `NOT RUN`; exit 1 is expected. |
+| `git diff --check` | PASS | No whitespace errors after the V131 source, test, and documentation updates. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+This is a bounded wording repair and regression result, not evidence of respondent comprehension, expert agreement, psychometric validity, invariance, population/consequence safety, empirical classification, or respondent-morphology validity. The comprehensive objective remains `INCOMPLETE` / fail-closed; the remaining mechanical review signals, unmeasured constructs, open claim-layer gaps, and external gates are still visible.
+
+## V132 observed verification — remove the remaining single-item compound signal — 2026-08-30
+
+V132 rewrites `n-collectivist-anarchism-04` from a coordinated “do and are affected” predicate to the single-claim wording “People who perform common work should participate as equals in the rules governing it.” The item retains its existing `democracy: 0.95` effect, source references, layer, facet, target metadata, and facet-proxy measurement mode. No ontology, morphology, affinity, candidate-order, share, or legacy-scoring behavior changes. Content version is now 99.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current source and regression assertions compile. |
+| `npm run test:run -- src/belief-structure.test.ts src/share.test.ts --reporter=dot` | PASS | Focused regression: 35/35 tests across 2 files. |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 99; 1,500/1,500 items audited; `rewrite: 0`, `duplicate: 0`, `redundant: 0`; 42 cross-construct split signals remain for human review. |
+| `npx vite-node scripts/audit-ideology-question-coverage.ts --summary` | PASS WITH OPEN GAPS | 119 canonical targets retain 4/4/4 blocks with zero validation errors/failures; the four contested prescriptive gaps remain explicit. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 175/175 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-B7VVewvA.js` 3,020.67 kB (673.16 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations, 238 source-backed-contested relationships, all participants resolved, all adversarial checks true, and zero validation/failure errors. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets, complete profile/conception rows, and zero validation errors. |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; overlap ranks remain structural diagnostics only. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct pilot items remain outside production; all isolation checks and validation counts pass. |
+| Stable-server Playwright, research/completion/share/malformed-share subset | PASS | With `E2E_BASE_URL=http://127.0.0.1:4174` and `--workers=1`, 3/3 current scenarios passed in 3.1 minutes. |
+| Stable-server Playwright, missing-information/transition subset | PASS | With `E2E_BASE_URL=http://127.0.0.1:4174` and `--workers=1`, 2/2 current scenarios passed in 3.0 minutes. |
+| Preview cleanup / port 4174 | PASS | The explicitly started Vite server was stopped; no listener remained on ports 4174 or 5173 at the cleanup check. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass and `structuralEligible` is true, but all six required external-study gates remain `NOT RUN`; exit 1 is expected. |
+| `git diff --check` | PASS | No whitespace errors after the V132 source and test updates. |
+
+The repair removes one mechanical rewrite disposition; it is not evidence of respondent comprehension or response-process validity. The remaining 42 split signals, three unmeasured constructs, four contested prescriptive gaps, and six external validation gates remain open and explicitly fail-closed.

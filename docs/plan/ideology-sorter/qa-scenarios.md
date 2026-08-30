@@ -979,3 +979,19 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-130-02 | Inspect a new `priority`, `conditionality`, `conflict-resolution`, `epistemic`, or `contestation` record. | The relation kind, contested posture, statement, and variation remain explicit; the system does not infer respondent priority, institutional route, epistemic stance, contradiction rule, or identity from shared facets or answer co-occurrence. |
 | R-130-01 | Run the configuration, morphology, measurement, coverage, reachability, and completion audits after the tranche. | The registry reports 238 source-backed-contested relationships across all 119 canonical owners with all participants and sources resolved; owner-level relationship gaps are zero; measurement remains 1,500/1,500 with the three unmeasured constructs explicit; completion remains `INCOMPLETE` / fail-closed while six external gates are `NOT RUN`. |
 | R-130-02 | Run the full deterministic suite and browser QA. | TypeScript, 27 focused tests, 173 full Vitest tests, production build, and the five relation-relevant stable-server Playwright paths pass; any concurrent-run termination is recorded as an environment result rather than converted to a pass, preview listeners are cleaned up, and no empirical, psychometric, population, or political-identity claim is made. |
+
+
+## Current V131 question-layer repair scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-131-01 | Inspect `n-liberal-feminism-02` beside `n-egalitarian-liberal-feminism-02`. | The liberal-feminist item has distinct wording about equal legal rights and fair opportunity while preserving its source references and `{ equality: 0.9 }` legacy effect; the audit no longer treats the pair as exact duplicate production wording. |
+| P-131-02 | Inspect the French- and British-fascism normative and prescriptive items that previously shared generic wording. | The five revised prompts retain historically bounded, source-backed branch context and their original effects; they do not add ideology-coded metadata, hidden weighting, or a new scoring path. |
+| R-131-01 | Run the measurement audit and focused/full regression after the wording repair. | Content version 98 reports 1,500 audited items with zero duplicate or redundant dispositions; the focused duplicate/effect regression and full 174-test suite pass, while the three unmeasured constructs, four open coverage gaps, and six external gates remain visible. |
+
+## Current V132 single-claim wording scenario
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-132-01 | Inspect `n-collectivist-anarchism-04` and its measurement audit record. | The normative item asks one participation claim about people who perform common work; it retains the source-backed context and `{ democracy: 0.95 }` effect without a compound-wording or rewrite disposition. |
+| R-132-01 | Run the focused regression and measurement audit after the V132 edit. | The focused suite passes 35/35; content version 99 reports zero rewrite, duplicate, and redundant dispositions, while 42 cross-construct split signals remain explicit review items. |

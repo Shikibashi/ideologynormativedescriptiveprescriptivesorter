@@ -46,3 +46,15 @@ The tranche is structurally acceptable only when:
 6. morphology and completion audits preserve their existing provisional and fail-closed status.
 
 Passing these conditions demonstrates repository wiring and quarantine, not cognitive, psychometric, empirical, invariance, population, or respondent validation.
+
+## V131 — duplicate-wording repair remains a measurement-hygiene change
+
+The existing belief-measurement audit identified five exact normalized prompt duplicates across production branches: `n-liberal-feminism-02`, `n-french-fascism-01`, `p-french-fascism-01`, `n-british-fascism-01`, and `p-british-fascism-01`. The repair replaces the shared wording with branch-specific referents while preserving each item's source references, layer, target tags, and effect map. The content version is now 98; no research candidate was promoted and no production question was added or removed.
+
+The post-repair audit reports complete coverage of all 1,500 items, `facet-proxy` as the only measurement mode, zero duplicate-wording flags, zero redundant dispositions, and zero validation errors. It still reports the three unmeasured constructs and 19 quarantined research candidates. This provides a structural uniqueness and contract-preservation check only. It does not establish comprehension, neighboring-item distinctness, cognitive response-process validity, expert agreement, psychometric validity, invariance, population/consequence safety, empirical classification, or respondent morphology.
+
+## V132 — single-claim rewrite for the remaining non-cross-construct signal
+
+The remaining `rewrite` disposition was `n-collectivist-anarchism-04`, whose wording combined participation by people who do common work with participation by people affected by it. The prompt now asks whether people who perform common work should participate as equals in the rules governing it. Its source references, normative layer, Democracy facet, and `democracy: 0.95` legacy effect are unchanged; no production item was added or removed and no candidate was promoted.
+
+At content version 99, the measurement audit reports complete 1,500-item coverage, `facet-proxy` as the only production measurement mode, zero `rewrite`, duplicate-wording, and redundant dispositions, and 42 remaining cross-construct `split` signals. Those split signals remain a human content-review queue because the mechanical flag cannot determine whether a coordinated diagnosis, value, institutional route, condition, or change claim should be separated. This local repair does not establish comprehension, response-process validity, expert agreement, psychometric validity, invariance, population/consequence safety, empirical classification, or respondent morphology.

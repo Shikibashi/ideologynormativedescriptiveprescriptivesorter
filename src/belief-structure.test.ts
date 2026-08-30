@@ -109,6 +109,42 @@ describe("stated political commitment configuration", () => {
     expect(baseline.flags).not.toContain("ideology-coded-wording");
   });
 
+  it("removes exact duplicate production wording at the question layer without changing legacy effects", () => {
+    const audits = auditBeliefMeasurement(DATASET);
+    expect(audits.filter((audit) => audit.flags.includes("duplicate-wording"))).toEqual([]);
+    expect(audits.filter((audit) => audit.disposition === "redundant")).toEqual([]);
+    const questionById = new Map(DATASET.questions.map((question) => [question.id, question]));
+    const rewrittenIds = [
+      "n-liberal-feminism-02",
+      "n-french-fascism-01",
+      "p-french-fascism-01",
+      "n-british-fascism-01",
+      "p-british-fascism-01",
+    ];
+    for (const questionId of rewrittenIds) {
+      const question = questionById.get(questionId);
+      const audit = audits.find((item) => item.questionId === questionId);
+      expect(question?.prompt).toBeTruthy();
+      expect(audit?.flags).not.toContain("duplicate-wording");
+      expect(audit?.sourceRefs.length).toBeGreaterThan(0);
+    }
+    expect(questionById.get("n-liberal-feminism-02")?.effects).toEqual({ equality: 0.9 });
+    expect(questionById.get("n-french-fascism-01")?.effects).toEqual({ "order-tradition": 0.9, solidarity: 0.75, democracy: -0.6 });
+    expect(questionById.get("p-french-fascism-01")?.effects).toEqual({ "state-capacity": 0.95, decentralization: -0.55 });
+    expect(questionById.get("n-british-fascism-01")?.effects).toEqual({ "order-tradition": 0.9, solidarity: 0.75, democracy: -0.6 });
+    expect(questionById.get("p-british-fascism-01")?.effects).toEqual({ "state-capacity": 0.95, decentralization: -0.55 });
+  });
+
+  it("rewrites the remaining single-item compound signal without changing its legacy effect", () => {
+    const audit = auditBeliefMeasurement(DATASET).find((item) => item.questionId === "n-collectivist-anarchism-04");
+    const question = DATASET.questions.find((item) => item.id === "n-collectivist-anarchism-04");
+    expect(question?.prompt).toBe("People who perform common work should participate as equals in the rules governing it.");
+    expect(audit?.flags).not.toContain("compound-wording");
+    expect(audit?.disposition).toBe("preserve");
+    expect(audit?.sourceRefs.length).toBeGreaterThan(0);
+    expect(question?.effects).toEqual({ democracy: 0.95 });
+  });
+
   it("keeps researched gap items explicit, format-specific, and quarantined", () => {
     expect(validateBeliefGapCandidates(DATASET)).toEqual([]);
     expect(BELIEF_GAP_CANDIDATES.length).toBeGreaterThanOrEqual(12);
