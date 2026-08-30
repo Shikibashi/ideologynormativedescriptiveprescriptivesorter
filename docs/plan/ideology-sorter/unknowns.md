@@ -712,6 +712,14 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - [ ] When the neighborhood is coarse, the next authorized step is source-backed neighbor-discriminating item research and later external review. Do not tune coefficients, add target-specific weights, or promote a unique label from synthetic overlap diagnostics.
 - [ ] The candidate resolution record is an abstention/shortlist diagnostic; it does not answer the open cognitive response-process, expert content, empirical, invariance/DIF, population/consequence, or held-out respondent morphology gates.
 
+## V130 unknowns — additional configuration relationships
+
+- [ ] The relationship registry now covers all 119 canonical owners with 238 source-backed-contested records; owner-level relationship coverage is structurally complete, but this coverage is not evidence that the researched configuration model is exhaustive.
+- [ ] The nationalism, religious-national, revolutionary, socialist, feminist, and historical records preserve source-backed variation but do not establish which relationship a respondent endorses. Priority, condition, conflict resolution, epistemic stance, and contestation remain unmeasured respondent-level constructs.
+- [ ] Several records share broad commitments such as cultural causation, solidarity, structural power, institutionalism, democracy, state capacity, public ownership, or order/tradition. Exact participant binding makes the theoretical substrate inspectable but cannot by itself separate neighboring traditions or justify a target-specific score.
+- [ ] V130 adds 92 records across 46 owners but does not address the three unmeasured constructs (`priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation`), the four contested prescriptive target-layer gaps, or the six external validation gates. Those remain explicit follow-up work.
+- [ ] No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance/DIF study, population/consequence review, empirical classification, or current-actor inference answers these boundaries.
+
 ## V129 unknowns — additional configuration relationships
 
 - [ ] The relationship registry now covers 73 of 119 canonical owners with 146 source-backed-contested records; the remaining 46 owners still have explicit relational gaps, and no coverage percentage is evidence that the researched configuration model is exhaustive.
