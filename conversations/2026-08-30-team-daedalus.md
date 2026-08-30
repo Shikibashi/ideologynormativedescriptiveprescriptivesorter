@@ -40,3 +40,13 @@
 - The implementation maps to the existing research flow and promotion boundary: it ends at the qualitative profile/quarantined shelf and does not cross the future production-promotion gate.
 - Browser cleanup is verified: the exact preview process started for the retry was stopped and port 4179 is closed.
 - Pending final staged-diff inspection and commit/push of only this V109 tranche.
+
+## Continuation — target-specific evidence traceability
+
+- Reconciled the pushed repository state at `9657f32` and preserved the unrelated dirty belief-model, UI, audit, memory, conversation, and documentation work.
+- WorkPM bounded the next slice to structural evidence traceability: target metadata selects an isolated fixture, while production profile and morphology remain the only downstream calculation path.
+- Added target/layer evidence traces to `src/ideology-question-coverage.ts`. The trace records target ids, directional fixture ids, primary-profile evidence ids, and target morphology-basis ids; it does not inspect rank or infer identity.
+- Added positive and negative-control regression coverage in `src/ideology-question-coverage.test.ts` and documented the contract in `docs/plan/ideology-sorter/target-evidence-traceability.md`.
+- TypeScript passes; full Vitest passes with 10 files and 170 tests; build passes with the existing large-chunk warning; research coverage, measurement, direct-pilot, morphology, anchor-reachability, and target-trace checks pass within their declared structural scopes.
+- `belief:question-coverage --summary` exits nonzero only because the four pre-existing prescriptive source-direction gaps remain open; its new target-profile and target-morphology structural checks are true and its failure list is empty.
+- The completion audit's cognitive/response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent gates remain `NOT RUN` by explicit scope. Scoped commit/push remain pending for this continuation.

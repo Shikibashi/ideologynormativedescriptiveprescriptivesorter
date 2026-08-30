@@ -1,6 +1,7 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { DATASET } from "./data";
 import { auditIdeologyQuestionCoverage, type IdeologyQuestionCoverageReport } from "./ideology-question-coverage";
+import type { Dataset } from "./types";
 
 describe("ideology question coverage", () => {
   let report: IdeologyQuestionCoverageReport;
@@ -25,6 +26,9 @@ describe("ideology question coverage", () => {
       allCanonicalLayersHaveSourceBackedTrace: false,
       allCanonicalTargetsReachPrimaryMorphology: true,
       allPrimaryMorphologyCandidatesAreProvisional: true,
+      allCanonicalTargetsReachPrimaryProfileEvidence: true,
+      allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: true,
+      allCanonicalTargetsReachTargetMorphologyEvidence: true,
     });
   }, 30_000);
 
@@ -53,4 +57,45 @@ describe("ideology question coverage", () => {
     }
     expect(report.interpretation).toContain("does not establish respondent comprehension");
   });
+
+  it("traces target-tagged item ids through the primary profile and target morphology basis", () => {
+    const row = report.rows.find((candidate) => candidate.targetId === "classical-liberalism");
+
+    expect(row).toBeDefined();
+    if (!row) return;
+
+    expect(row.evidenceTrace.allTargetQuestionsReachPrimaryProfile).toBe(true);
+    expect(row.evidenceTrace.allTargetQuestionsReachDirectionalPrimaryProfile).toBe(true);
+    expect(row.evidenceTrace.allLayersReachTargetMorphology).toBe(true);
+    for (const layer of ["descriptive", "normative", "prescriptive"] as const) {
+      const trace = row.evidenceTrace.layers[layer];
+      expect(trace).toMatchObject({ status: "pass" });
+      expect(trace.targetQuestionIds).toHaveLength(4);
+      expect(trace.directionalTargetQuestionIds).toEqual(trace.targetQuestionIds);
+      expect(trace.primaryProfileEvidenceQuestionIds).toEqual(trace.targetQuestionIds);
+      expect(trace.primaryProfileDirectionalEvidenceQuestionIds).toEqual(trace.targetQuestionIds);
+      expect(trace.morphologyEvidenceQuestionIds.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("fails closed when a target item is detached from the primary profile evidence path", () => {
+    const detachedQuestionId = "n-classical-liberalism-01";
+    const brokenDataset: Dataset = {
+      ...DATASET,
+      questions: DATASET.questions.map((question) => question.id === detachedQuestionId
+        ? { ...question, effects: {} }
+        : question),
+    };
+    const brokenReport = auditIdeologyQuestionCoverage(brokenDataset);
+    const row = brokenReport.rows.find((candidate) => candidate.targetId === "classical-liberalism");
+
+    expect(row?.evidenceTrace.layers.normative.status).toBe("gap");
+    expect(row?.evidenceTrace.layers.normative.primaryProfileDirectionalEvidenceQuestionIds)
+      .not.toContain(detachedQuestionId);
+    expect(brokenReport.structuralChecks.allCanonicalTargetsReachPrimaryProfileEvidence).toBe(false);
+    expect(brokenReport.structuralChecks.allCanonicalTargetsReachDirectionalPrimaryProfileEvidence).toBe(false);
+    expect(brokenReport.failures).toContain(
+      "classical-liberalism normative target questions do not all reach directional primary-profile evidence in the structural fixture",
+    );
+  }, 30_000);
 });
