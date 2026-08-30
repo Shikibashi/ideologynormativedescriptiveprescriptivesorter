@@ -2395,8 +2395,8 @@ describe("research workbench contracts", () => {
   it("keeps taxonomy promotion and demotion explicit, source-backed, and separate from scoring", () => {
     expect(RESEARCH_TAXONOMY_DECISIONS).toHaveLength(DATASET.ideologyNodes.length + DATASET.ideologyRegistry.length);
     expect(validateResearchTaxonomyDecisions(DATASET)).toEqual([]);
-    expect(researchTaxonomyDecisionForTarget("khomeinism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "catalog-only" });
-    expect(researchTaxonomyDecisionForTarget("qutbism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "catalog-only" });
+    expect(researchTaxonomyDecisionForTarget("khomeinism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-30" });
+    expect(researchTaxonomyDecisionForTarget("qutbism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-30" });
     expect(researchTaxonomyDecisionForTarget("radical-republicanism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("marxist-feminism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("socialist-feminism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
@@ -2440,34 +2440,15 @@ describe("research workbench contracts", () => {
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "white-nationalism")).toBe(true);
   });
 
-  it("surfaces governance dispositions that intentionally await a separate measurement change", () => {
+  it("keeps governance and live measurement statuses aligned without empirical overclaiming", () => {
     const summary = researchTaxonomyGovernanceSummary(DATASET);
 
     expect(summary.decisionCount).toBe(DATASET.ideologyNodes.length + DATASET.ideologyRegistry.length);
     expect(summary.validationErrors).toEqual([]);
-    expect(summary.measurementStatusExceptions).toEqual([
-      {
-        targetId: "khomeinism",
-        label: "Khomeinism",
-        governanceScoringStatus: "catalog-only",
-        liveMeasurementStatus: "dedicated-scored",
-        reconciliationId: "measurement-activation-khomeinism",
-        reconciliationKind: "separate-measurement-activation",
-        interpretation: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
-      },
-      {
-        targetId: "qutbism",
-        label: "Qutbism",
-        governanceScoringStatus: "catalog-only",
-        liveMeasurementStatus: "dedicated-scored",
-        reconciliationId: "measurement-activation-qutbism",
-        reconciliationKind: "separate-measurement-activation",
-        interpretation: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
-      },
-    ]);
+    expect(summary.measurementStatusExceptions).toEqual([]);
     expect(summary.unclassifiedMeasurementMismatches).toEqual([]);
-    expect(summary.measurementReconciliations).toHaveLength(2);
-    expect(summary.resultingScoringStatusCounts).toMatchObject({ "catalog-only": 2, "not-scored": 9 });
+    expect(summary.measurementReconciliations).toEqual([]);
+    expect(summary.resultingScoringStatusCounts).toEqual({ "scored-provisional": 119, "not-scored": 9 });
     expect(summary.researchEvidenceCoverage).toMatchObject({
       minimumNeighborDiscriminantsPerTarget: 2,
       targetsWithMinimumNeighborDiscriminants: 128,
@@ -2475,12 +2456,12 @@ describe("research workbench contracts", () => {
     });
   });
 
-  it("fails closed when a governance-versus-measurement exception loses its reconciliation record", () => {
-    const errors = validateResearchTaxonomyDecisionSet(DATASET, RESEARCH_TAXONOMY_DECISIONS);
+  it("fails closed when a changed governance status has no reconciliation record", () => {
+    const changedDecisions = RESEARCH_TAXONOMY_DECISIONS.map((item) => item.targetId === "khomeinism" ? { ...item, resultingScoringStatus: "catalog-only" as const } : item);
+    const errors = validateResearchTaxonomyDecisionSet(DATASET, changedDecisions, RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS);
 
     expect(errors).toEqual(expect.arrayContaining([
       "taxonomy decision taxonomy-khomeinism-promote has an unclassified measurement/governance mismatch",
-      "taxonomy decision taxonomy-qutbism-promote has an unclassified measurement/governance mismatch",
     ]));
   });
 

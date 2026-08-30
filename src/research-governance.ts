@@ -63,12 +63,13 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "khomeinism",
     "promote-to-canonical",
     "source-backed-contested",
-    ["source-ucp-khomeinism", "source-cambridge-islamism"],
-    "Scholarship treats Khomeinism as a historically specific Islamist political formation with a distinct relationship among clerical guardianship, anti-imperial independence, mass grievance, and revolutionary state formation.",
-    "This promotion establishes a canonical catalog target only. It does not create a production anchor, a score, or a claim that Khomeinism represents Islamism as a whole.",
-    ["Khomeinism may be treated as a manifestation or variant of Islamism rather than a separate canonical node.", "Its internal historical and theological variation remains contested."],
+    ["source-ucp-khomeinism", "source-cambridge-arjomand-khomeini-order", "source-cambridge-namazi-khomeini-sovereign-state", "source-tandf-khomeini-democratic-constitutionalism", "source-oup-ghobadzadeh-governmental-shiism", "source-cambridge-islamism"],
+    "The source set supports Khomeinism as a historically specific and internally contested Iranian Shi'i Islamist formation joining jurist guardianship, modern sovereignty and Islamic state formation, anti-imperial independence, appeal to the oppressed, and revolutionary mobilization. The sources also preserve changes across Khomeini's political phases and disagreement over constitutional, participatory, clerical, and state translations.",
+    "This promotion establishes a canonical micro target and a provisional dedicated-scored measurement target only. It does not create empirical validation, classify respondents, or make Khomeinism representative of Islamism or Shi'i political thought as a whole.",
+    ["Khomeinism may be treated as a historically specific manifestation or variant within Islamism rather than a separate canonical node.", "Its internal theological, constitutional, institutional, and post-revolutionary variation remains contested; present Iranian policy or one reading of Khomeini does not define the target."],
     "canonical",
-    "catalog-only",
+    "scored-provisional",
+    "2026-08-30",
   ),
   decision(
     "taxonomy-revisionist-bernsteinian-social-democracy-promote",
@@ -179,12 +180,13 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "qutbism",
     "promote-to-canonical",
     "source-backed-contested",
-    ["source-cambridge-qutb-march", "source-cambridge-qutb-vahdat", "source-cambridge-islamism"],
-    "Political-theory scholarship reconstructs Qutb's concepts of divine sovereignty, jahiliyya, comprehensive moral order, and disciplined transformation as a distinct intellectual current within modern Islamism.",
-    "This promotion establishes a canonical catalog target only. It does not equate Qutbism with every Islamist or militant current and does not create a production anchor.",
-    ["Qutbism may be retained as a historical school or variant within Islamism rather than a canonical node.", "Later movements appropriated Qutb selectively and cannot be treated as identical to his theory."],
+    ["source-cambridge-qutb-march", "source-cambridge-qutb-vahdat", "source-oup-toth-qutb", "source-tandf-khatab-qutb-hakimiyya", "source-tandf-faradj-qutb-authority", "source-oup-wagemakers-qutb-legacy", "source-cambridge-islamism"],
+    "The source set supports Qutbism as a historically situated and internally contested Egyptian Islamist intellectual and political current associated with divine sovereignty (hakimiyya), jahiliyya and moral alienation, comprehensive Islamic moral order, disciplined transformative community, and varied revolutionary or reformist reconstitution. The sources distinguish Qutb's concepts from later selective receptions and from any single militant or organizational interpretation.",
+    "This promotion establishes a canonical micro target and a provisional dedicated-scored measurement target only. It does not create empirical validation, classify respondents, or equate Qutbism with every Islamist, revolutionary, or militant current.",
+    ["Qutbism may be treated as a historically situated school or variant within Islamism rather than a separate canonical node.", "Qutb's periods, authority and pluralism readings, and later receptions remain contested; Muslim identity, current policy, organization, or operational militancy does not define the target."],
     "canonical",
-    "catalog-only",
+    "scored-provisional",
+    "2026-08-30",
   ),
   decision(
     "taxonomy-deep-ecology-promote",
@@ -532,32 +534,11 @@ export type ResearchTaxonomyMeasurementReconciliation = Readonly<{
 }>;
 
 /**
- * These records make the two current Khomeinism/Qutbism states explicit. The
- * taxonomy decisions remain catalog-only as research dispositions, while a
- * separately recorded earlier measurement activation explains why the live
- * workbench still contains their provisional direct branches. Neither record
- * asserts empirical validity or changes the scoring inventory.
+ * Current taxonomy and live measurement statuses align. Keep the typed seam
+ * for future exceptions so any later mismatch must be recorded explicitly and
+ * cannot be silently treated as a successful promotion.
  */
-export const RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS: readonly ResearchTaxonomyMeasurementReconciliation[] = [
-  {
-    id: "measurement-activation-khomeinism",
-    decisionId: "taxonomy-khomeinism-promote",
-    targetId: "khomeinism",
-    kind: "separate-measurement-activation",
-    liveMeasurementStatus: "dedicated-scored",
-    rationale: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
-    recordedAt: "2026-08-30",
-  },
-  {
-    id: "measurement-activation-qutbism",
-    decisionId: "taxonomy-qutbism-promote",
-    targetId: "qutbism",
-    kind: "separate-measurement-activation",
-    liveMeasurementStatus: "dedicated-scored",
-    rationale: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
-    recordedAt: "2026-08-30",
-  },
-];
+export const RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS: readonly ResearchTaxonomyMeasurementReconciliation[] = [];
 
 export const RESEARCH_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = (() => {
   const explicitByTarget = new Map(EXPLICIT_TAXONOMY_DECISIONS.map((item) => [item.targetId, item]));
@@ -566,9 +547,8 @@ export const RESEARCH_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = 
 
 /**
  * Summarizes the research ledger without treating its intended disposition as
- * a mutation of the live scoring inventory. Exceptions are deliberate when a
- * research decision is waiting for a separate measurement change; surfacing
- * them keeps that boundary inspectable instead of silently reconciling it.
+ * a mutation of the live scoring inventory. Any future mismatch between a
+ * research decision and live measurement remains explicit and fail-closed.
  */
 export const researchTaxonomyGovernanceSummary = (dataset: Dataset = DATASET) => {
   const targets = targetById(dataset);

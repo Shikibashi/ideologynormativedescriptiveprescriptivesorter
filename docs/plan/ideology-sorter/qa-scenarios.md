@@ -1003,3 +1003,10 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-133-01 | Open Research and inspect the default production measurement queue. | The read-only queue shows 42 open disposition signals, the 1,500-item audit total, retained legacy effects and source metadata, and an explicit mechanical-only boundary. |
 | P-133-02 | Switch among conditional wording and all-item filters, then search `n-collectivist-anarchism-04`. | The conditional filter reports 510 matching audit records and caps the rendered list at 80; the all-item search narrows to one record and exposes the preserved single-claim prompt and `Democracy +0.95` effect without changing the live bank. |
 | R-133-01 | Run TypeScript, the full Vitest suite, production build, focused queue/responsive browser paths, and `git diff --check`. | All executed deterministic checks pass; the existing large-client-chunk advisory remains informational, while the three unmeasured constructs, four open prescriptive gaps, 42 split dispositions, and six external validation gates remain visible and fail-closed. |
+
+## Current V135 taxonomy-governance scenario
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-135-01 | Open Research and inspect Khomeinism and Qutbism in the taxonomy decision panel. | Each target shows a source-backed-contested promotion to the canonical ontology with `scored-provisional` governance consequence, while the live target remains dedicated-scored and the historical/interpretive boundary remains visible. |
+| R-135-01 | Run the research-coverage audit and focused governance tests after the status alignment. | The 128-target ledger validates with 119 `scored-provisional` and 9 `not-scored` results, zero measurement-status exceptions/reconciliations, and zero validation errors; the fail-closed mismatch test still detects an unrecorded downgrade. |

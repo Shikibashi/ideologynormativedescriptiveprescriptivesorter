@@ -336,7 +336,7 @@ test("shows research-backed taxonomy decisions separately from scoring", async (
   await page.getByRole("button", { name: /^Research$/ }).click();
   await page.locator("#research-target").selectOption("qutbism");
   await expect(page.locator(".research-governance-note")).toContainText(/promote to canonical ontology/i);
-  await expect(page.locator(".research-governance-note")).toContainText(/catalog-only/i);
+  await expect(page.locator(".research-governance-note")).toContainText(/scored-provisional/i);
   await page.locator("#research-target").selectOption("deep-ecology");
   await expect(page.locator(".research-governance-note")).toContainText(/promote to canonical ontology/i);
   await expect(page.locator(".research-governance-note")).toContainText(/scored-provisional/i);

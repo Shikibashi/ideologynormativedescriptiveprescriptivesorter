@@ -1870,3 +1870,27 @@ V133 adds a Research Workbench presentation of the existing production measureme
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
 
 The browser and deterministic checks establish the workbench interaction and presentation contract only. They do not establish respondent comprehension, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V135 observed verification — Khomeinism/Qutbism governance alignment — 2026-08-30
+
+The V135 change aligns the two explicit taxonomy decisions with their already activated dedicated production branches. It changes only research-governance source coverage, decision status, tests, and documentation; it does not change the ontology inventory, production question bank, question effects, anchors, legacy scorer, morphology rules, or optional pilot contracts.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx vitest run src/research.test.ts --reporter=dot --no-file-parallelism` | PASS | Focused governance/research suite: 93/93 tests. |
+| `npx tsc --noEmit --pretty false` | PASS | TypeScript compilation completed with no output; also exercised by the production build. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full Vitest suite: 175/175 tests across 10 files. |
+| `npm run build` | PASS | Vite production build: 42 modules; `index-CDrWl49i.js` 3,027.53 kB (674.87 kB gzip) and `index-D6wjrBST.css` 54.80 kB (8.52 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500/1,500 production items audited; 42 split dispositions remain explicit, three constructs remain unmeasured, and validation-error count is zero. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations, zero validation errors, zero failures, and adversarial separation checks remain true. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | 119 canonical targets retain 4/4/4 blocks and zero validation errors; four contested prescriptive gaps remain explicit. |
+| `npm run research:coverage -- --summary` | PASS | 128 decisions validate; governance status counts are 119 `scored-provisional` and 9 `not-scored`, with zero measurement-status exceptions and an empty reconciliation list. |
+| `npm run research:anchor-reachability -- --summary` | PASS | Canonical reachability audit exited 0 with no validation/failure errors; full-competition ranks remain structural diagnostics only. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct pilot items remain outside production and preserve legacy/affinity isolation. |
+| `npm run qa -- --workers=1 --reporter=list` | PASS | Full browser suite: 13/13 scenarios passed in 8.4 minutes, including the updated taxonomy panel, workbench queue, responsive, share, under-determined, and malformed-share paths. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | Exit 1 is expected: all structural checks are eligible, while six required external-study gates remain `NOT RUN`. |
+| Preview cleanup check | PASS | No listener remained on ports 4173, 4174, or 5173 after browser verification. |
+| `git diff --check` | PASS | No whitespace errors after the final documentation edits. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The source review supports historical and interpretive taxonomy boundaries only. It does not provide a comparison, assessment, ranking, recommendation, respondent classification, or political preference, and none is implemented by this tranche. Local source review, structural tests, synthetic profiles, browser behavior, and build output remain insufficient for cognitive, psychometric, empirical, invariance, population, or respondent-morphology claims; the overall objective remains `INCOMPLETE` / fail-closed.
