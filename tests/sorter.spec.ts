@@ -24,7 +24,7 @@ test("starts with an inspectable brief and requires an answer", async ({ page })
 test("exposes the audited ontology inventory and distinguishes scored branches from contextual registry entries", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /How this experiment works/ }).click();
-  await expect(page.getByText(/9 canonical macro families, 38 canonical meso traditions, and 70 canonical micro branches/)).toBeVisible();
+  await expect(page.getByText(/9 canonical macro families, 38 canonical meso traditions, and 71 canonical micro branches/)).toBeVisible();
   await expect(page.getByText(/Secondary registry\./)).toBeVisible();
   await page.getByText("Browse the canonical meso and micro catalog").click();
   await expect(page.getByText("Right-Libertarianism")).toBeVisible();
@@ -37,7 +37,7 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await page.goto("/");
   await page.getByRole("button", { name: /^Research$/ }).click();
   await expect(page.getByRole("heading", { name: /Make the next question earn its place/ })).toBeVisible();
-  await expect(page.locator(".research-count")).toContainText(/1512 quarantined candidates across 126 targets/);
+  await expect(page.locator(".research-count")).toContainText(/1524 quarantined candidates across 127 targets/);
   await expect(page.locator(".research-promotion-gate")).toContainText(/neighbor distinctness: not completed/i);
   await expect(page.locator(".research-promotion-gate")).toContainText(/cross-cultural \/ jurisdictional: not completed/i);
   await expect(page.locator(".research-promotion-gate")).toContainText(/empirical validation: not completed/i);
@@ -382,6 +382,7 @@ test("shows missing information instead of inventing a layer result", async ({ p
     await advance(page, index === DATASET.questions.length - 1);
   }
   await expect(page.getByRole("heading", { name: "Keep this layer open" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "No named morphology yet." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Keep the combined reading open" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "All three layers are needed." })).toBeVisible();
   await expect(page.locator(".coverage-row").first()).toContainText(`0 of ${firstLayerCount} prompts answered`);

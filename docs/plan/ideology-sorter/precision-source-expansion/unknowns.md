@@ -717,3 +717,11 @@
 - How should the source-set disagreement over settler-colonial interpretation be shown as historical scholarship and contested context rather than a current-actor or present-policy classification?
 - The deterministic reachability audit should test all three layers for the provisional anchor; full-production overlap and ranks remain geometry diagnostics only, and no uncalibrated retuning is authorized.
 - Four registry-only targets and six contextual placements remain outside production scoring after V99. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V100 open questions — Islamic Feminism
+
+- Which combinations of gender justice, critical Qur'anic or Islamic interpretive engagement, gendered institutional diagnosis, and activist or legal route are necessary to distinguish Islamic Feminism from generic feminism, women's rights, Islamism, Religious Nationalism, Womanism, Liberal Feminism, Socialist Feminism, and Muslim identity?
+- How should theological and secular positioning, Sunni/Shi'a and other Muslim contexts, national/transnational settings, family-law and public-law questions, race/class, and scholarly/grassroots activism be represented without making one interpreter, legal school, organization, jurisdiction, or policy universal?
+- How should the relationship between religious commitment and feminist equality be represented without treating piety or secularization as a proxy for the construct, and without erasing disagreement over Qur'anic hermeneutics, fiqh, Shari'a, authority, and legal reform?
+- The deterministic reachability audit isolates Islamic Feminism in all three layers; its full-competition ranks remain geometry diagnostics only, and no uncalibrated coefficient, picker, threshold, or anchor retuning is authorized.
+- Three registry-only targets and six contextual placements remain outside production scoring. Cognitive/respondent comprehension, expert adjudication, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.

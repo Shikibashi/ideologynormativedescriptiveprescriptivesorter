@@ -101,6 +101,44 @@ describe("research workbench contracts", () => {
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "labor-zionism")).toBe(true);
   });
 
+  it("integrates Islamic Feminism as a source-backed canonical micro branch with interpretive and institutional safeguards", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "islamic-feminism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      measurementStatus: "dedicated-scored",
+      anchorId: "islamic-feminism",
+      canonicalPath: [
+        { id: "feminism", label: "Feminism", level: "macro" },
+        { id: "islamic-feminism", label: "Islamic Feminism", level: "micro" },
+      ],
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "islamic-feminism")).toMatchObject({ canonicalParentId: "feminism", anchorId: "islamic-feminism", placement: "canonical", status: "scored" });
+
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("islamic-feminism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Islamic Feminism as a plural contemporary"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-oup-islamic-feminism-schroter"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-musawah-vision-family"))).toBe(true);
+
+    const candidates = researchCandidatesForTarget("islamic-feminism");
+    expect(candidates).toHaveLength(12);
+    expect(candidates.filter((candidate) => candidate.layer === "descriptive")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "normative")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "prescriptive")).toHaveLength(4);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "islamic-feminism")?.dimensions).toHaveLength(17);
+    expect(researchNeighborDiscriminants.filter((item) => item.targetId === "islamic-feminism")).toHaveLength(6);
+    expect(researchFalsePositiveAudits.find((item) => item.targetId === "islamic-feminism")?.guardItemIds).toEqual(expect.arrayContaining(["rc-islamic-feminism-d-01", "rc-islamic-feminism-d-02", "rc-islamic-feminism-n-02", "rc-islamic-feminism-p-01", "rc-islamic-feminism-p-04"]));
+    expect(researchCoverageSummaries.find((item) => item.targetId === "islamic-feminism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12, sourceStrength: "high" });
+    expect(researchTaxonomyDecisionForTarget("islamic-feminism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-30" });
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "islamic-feminism")).toBe(true);
+  });
+
   it("activates Khomeinism, Qutbism, Radical Republicanism, Marxist Feminism, Socialist Feminism, Left-Wing Populism, Neoconservatism, and Paleoconservatism with source-backed boundaries", () => {
     const targets = buildResearchTargets(DATASET);
     expect(targets.find((target) => target.id === "khomeinism")).toMatchObject({
@@ -251,18 +289,18 @@ describe("research workbench contracts", () => {
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
-    expect(curatedResearchCandidates).toHaveLength(1512);
-    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1512);
+    expect(curatedResearchCandidates).toHaveLength(1524);
+    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1524);
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1476);
-    expect(DATASET.manifest.questionCount).toBe(1476);
+    expect(DATASET.questions).toHaveLength(1488);
+    expect(DATASET.manifest.questionCount).toBe(1488);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
     const targetIds = [...new Set(curatedResearchCandidates.map((candidate) => candidate.targetId))];
-    expect(targetIds).toHaveLength(126);
+    expect(targetIds).toHaveLength(127);
     for (const targetId of targetIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
@@ -2101,8 +2139,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1476);
-    expect(DATASET.manifest.questionCount).toBe(1476);
+    expect(DATASET.questions).toHaveLength(1488);
+    expect(DATASET.manifest.questionCount).toBe(1488);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {

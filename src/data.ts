@@ -4370,6 +4370,96 @@ const SOURCES: readonly SourceReference[] = [
     citation: "Penslar, D., & Kaye, A. (2012; updated 2021). Zionism from its inception to 1948. Oxford Bibliographies in Jewish Studies. https://doi.org/10.1093/obo/9780199840731-0006.",
     supports: "An Oxford Bibliographies overview defining Zionism as a variety of Jewish nationalism and a project to remake the Jewish people, while mapping dedicated scholarship on the Zionist Labor movement, diaspora, settlement, culture, and Zionist-Palestinian relations; used as a field map and boundary source.",
   },
+  {
+    id: "source-oup-islamic-feminism-schroter",
+    label: "Schröter: Islamic Feminism: National and Transnational Dimensions",
+    url: "https://doi.org/10.1093/oso/9780198788553.003.0006",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Schröter, S. Islamic feminism: National and transnational dimensions. In The Oxford Handbook of Islam and Women. Oxford University Press. https://doi.org/10.1093/oso/9780198788553.003.0006.",
+    supports: "A scholarly account of Islamic feminism as a plural theological and socially reformist field using Islamic interpretive resources for gender justice, with national, local, and transnational activist and intellectual dimensions; used to establish the branch boundary without treating one interpreter or programme as definitive.",
+  },
+  {
+    id: "source-oup-islamic-feminism-al-sharmani",
+    label: "Al-Sharmani: Islamic Feminism Scholars and their Interpretive Approaches",
+    url: "https://doi.org/10.1093/oxfordhb/9780197532805.013.20",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Al-Sharmani, M. (2026). Islamic feminism scholars and their interpretive approaches. In The Oxford Handbook of Islamic Reform. Oxford University Press. https://doi.org/10.1093/oxfordhb/9780197532805.013.20.",
+    supports: "A current scholarly review of Muslim women scholars' close engagement with Qur'anic and Islamic interpretive traditions, including ethical rereading, challenges to patriarchal exegesis and jurisprudence, and gender-sensitive family-law reform; used to preserve methodological and movement variation.",
+  },
+  {
+    id: "source-oup-afsaruddin-quran-gender",
+    label: "Afsaruddin: Modern Rereadings of the Qur'an through a Gendered Lens",
+    url: "https://academic.oup.com/edited-volume/55356/chapter-abstract/430532458",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Afsaruddin, A. (2023). Modern rereadings of the Qur'an through a gendered lens. In The Oxford Handbook of Islam and Women (pp. 80–118). Oxford University Press. https://doi.org/10.1093/oxfordhb/9780190638771.013.15.",
+    supports: "A scholarly comparison of classical male exegeses and modern Muslim women's readings of Qur'anic gender passages, including competing patriarchal and egalitarian methodologies; used for the hermeneutic and gendered-interpretation boundary, not as respondent evidence.",
+  },
+  {
+    id: "source-oup-sharify-funk-islamic-feminism",
+    label: "Sharify-Funk: Islamic Feminist Movement in North America",
+    url: "https://doi.org/10.1093/acrefore/9780199340378.013.858",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Sharify-Funk, M. Islamic feminist movement in North America. Oxford Research Encyclopedia of Religion. Oxford University Press. https://doi.org/10.1093/acrefore/9780199340378.013.858.",
+    supports: "An Oxford Research Encyclopedia account of women-centered rereading of Islamic canonical sources, generational and activist variation, and the diversity of North American Islamic-feminist trajectories; used to avoid reducing the field to one organization, geography, or interpretive school.",
+  },
+  {
+    id: "source-cambridge-islamic-feminists-approaches",
+    label: "Nurmila: Islamic Feminists' Approaches",
+    url: "https://doi.org/10.1017/9781009206587.011",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Nurmila, N. (2025). Islamic feminists' approaches. In The Cambridge Companion to Women and Islam (pp. 214–233). Cambridge University Press. https://doi.org/10.1017/9781009206587.011.",
+    supports: "A comparative scholarly review of major Islamic-feminist figures and interpretive approaches, including vernacular and Indonesian dissemination; used for internal plurality and cross-context boundary controls.",
+  },
+  {
+    id: "source-utexas-barlas-believing-women",
+    label: "Barlas: Believing Women in Islam",
+    url: "https://utpress.utexas.edu/9781477315880/believing-women-in-islam/",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Barlas, A. (2019). Believing Women in Islam: Unreading Patriarchal Interpretations of the Qur'an. University of Texas Press. https://utpress.utexas.edu/9781477315880/believing-women-in-islam/.",
+    supports: "A primary intellectual work arguing for non-patriarchal Qur'anic interpretation and gender equality while engaging questions of authority, exegesis, and Muslim women's status; used as a named interpretive source, not as universal proof or respondent validation.",
+  },
+  {
+    id: "source-musawah-vision-family",
+    label: "Musawah: Vision for the Family",
+    url: "https://www.musawah.org/resources/musawah-vision-for-the-family/",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Musawah. Musawah Vision for the Family. Global movement for equality and justice in the Muslim family. https://www.musawah.org/resources/musawah-vision-for-the-family/.",
+    supports: "A primary movement framework grounding equality and justice in Qur'anic values, Muslim legal tradition, human-rights principles, and lived realities while calling for reconsideration of male authority and guardianship; used to represent activist and legal-reform routes, not as neutral population evidence.",
+  },
+  {
+    id: "source-ziba-mirhosseini-gender-justice",
+    label: "Mir-Hosseini: The Quest for Gender Justice",
+    url: "https://zibamirhosseini.com/wp-content/uploads/2021/11/mir-hosseini-article-quest-for-gender-justice-2001.pdf",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Mir-Hosseini, Z. The quest for gender justice: Emerging feminist voices in Islam. Author's research archive. https://zibamirhosseini.com/wp-content/uploads/2021/11/mir-hosseini-article-quest-for-gender-justice-2001.pdf.",
+    supports: "A primary scholarly-activist text distinguishing divine Shari'a from human fiqh and connecting feminist critique to gender justice in Muslim legal thought; used for legal-interpretive and authority boundaries, not as a respondent measure.",
+  },
+  {
+    id: "source-cambridge-wadud-social-justice",
+    label: "Wadud: Qur'anic Hermeneutics of Social Justice",
+    url: "https://www.cambridge.org/core/journals/journal-of-law-and-religion/article/abs/towards-a-quranic-hermeneutics-of-social-justice-race-class-and-gender/B68F4B8C30A5BB3D72E7133D2076833F",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Wadud, A. (2015). Towards a Qur'anic hermeneutics of social justice: Race, class and gender. Journal of Law and Religion. Cambridge University Press. https://www.cambridge.org/core/journals/journal-of-law-and-religion/article/abs/towards-a-quranic-hermeneutics-of-social-justice-race-class-and-gender/B68F4B8C30A5BB3D72E7133D2076833F.",
+    supports: "A primary interpretive essay connecting race, class, gender, Qur'anic interpretation, civil society, and social justice; used to keep Islamic-feminist gender justice connected to wider social power rather than reducing it to private belief or textual technique alone.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -4505,6 +4595,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   christianSocialism: ["source-bloomsbury-williams-christian-socialism", "source-liverpool-williams-christian-socialism-thesis", "source-oup-drake-gospel-church", "source-oup-stauffer-listening-spirit", "source-cambridge-jashari-christians-socialism", "source-oup-lockley-christian-socialism", "source-taylor-johnson-labour-church", "source-sage-hogan-christian-socialism"],
   ujamaa: ["source-oup-jennings-ujamaa", "source-cambridge-lal-self-reliance-ujamaa", "source-cambridge-lal-african-socialism-ujamaa", "source-cambridge-hunter-african-socialism", "source-cambridge-aminzade-african-socialism", "source-ahr-maddox-lal-african-socialism", "source-oup-nyerere-ujamaa-1962", "source-nyerere-arusha-declaration-1967"],
   laborZionism: ["source-ucp-shafir-land-labor", "source-cambridge-beinin-socialism-zionism", "source-oup-halpern-reinharz-zionism-left", "source-cambridge-yona-labour-zionism", "source-cambridge-kelemen-labour-zionism", "source-suny-gorny-zionist-labor", "source-jstor-origins-israel-labor", "source-oup-zionism-bibliography"],
+  islamicFeminism: ["source-oup-islamic-feminism-schroter", "source-oup-islamic-feminism-al-sharmani", "source-oup-afsaruddin-quran-gender", "source-oup-sharify-funk-islamic-feminism", "source-cambridge-islamic-feminists-approaches", "source-utexas-barlas-believing-women", "source-musawah-vision-family", "source-ziba-mirhosseini-gender-justice", "source-cambridge-wadud-social-justice"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4664,6 +4755,7 @@ const CHRISTIAN_SOCIALISM_CONTEXT = "Analytical scope: Christian Socialism as a 
 const UJAMAA_CONTEXT = "Analytical scope: Ujamaa / Nyererean African Socialism as a historically bounded and internally varied postcolonial political tradition associated with familyhood, egalitarian social relations, anti-exploitation, collective self-reliance, participation in nation-building, and communal or public development; preserve variation across Nyerere's political thought, wider African-socialist debates, rural and urban settings, national and transnational aims, local agency, state direction, nationalization, villagization, democratic participation, and coercive implementation; distinguish it from generic Socialism, Pan-Africanism, Anti-Colonial Nationalism, communitarianism, ruralism, nationalism, public ownership, self-reliance, Tanzania or Nyerere identification, the Arusha Declaration, one villagization policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
   const LABOR_ZIONISM_CONTEXT = "Analytical scope: Labor Zionism as a historically situated and internally varied Zionist-socialist current joining Jewish collective self-determination and nation-building with worker organization, labor-centered social transformation, cooperative or collective settlement, and institution-building; preserve variation among Poale Zion, socialist and social-democratic routes, pioneering and cooperative forms, diaspora and Palestine/Eretz Israel transnational organization, cultural and state-building projects, democratic and pluralist arrangements, class and peoplehood debates, and historical relations with Palestinian Arab society; distinguish it from Zionism generally, Socialism, Social Democracy, Revisionist or Religious Zionism, the Bund, Anti-Colonial Nationalism, Cultural Nationalism, Jewish identity, religious practice, Israeli citizenship, labor solidarity, union membership, cooperative preference, one settlement or party, current conflict positions, one historical policy, or any current political identity; this instrument is historical, non-operational, and does not classify respondents or current actors.";
 
+const ISLAMIC_FEMINISM_CONTEXT = "Analytical scope: Islamic Feminism as a plural contemporary feminist current seeking gender justice through critical engagement with the Qur'an, Islamic interpretive traditions, and gendered institutions across hermeneutic, legal, ethical, activist, and reformist routes; preserve variation across theological and secular positioning, Sunni and Shi'a and other Muslim contexts, national and transnational settings, textual methods, family-law and public-law questions, religious authority, race and class, grassroots and scholarly activism, and the relationship between Muslim and feminist self-description; distinguish it from Muslim identity, private piety, religious observance, generic feminism or women's rights, Islamism, religious nationalism, one interpreter, one law, one organization, one policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology, faith, gender, or organizational affiliation.";
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
   question("d-economy-02", "descriptive", "Economy", "Prices often coordinate dispersed information better than a central office can.", { "market-coordination": 1, "structural-power": -0.2 }, "The focus is on coordination and information, not on who should own the result.", sourceRefs("source-8values")),
@@ -6315,6 +6407,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-labor-zionism-02", "prescriptive", "Settlement and production", "Cooperative or collective forms of settlement and production should be available as routes to national institution-building, without requiring one uniform ownership model.", { "public-ownership": 0.65, decentralization: 0.75, "market-allocation": 0.15 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
   question("p-labor-zionism-03", "prescriptive", "Public capacity", "Public institutions should secure social provision and democratic economic coordination as part of national development.", { "public-provision": 0.8, "state-capacity": 0.7, reformism: 0.35 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
   question("p-labor-zionism-04", "prescriptive", "Transnational organization", "Political and labor institutions should cooperate across diaspora and territorial communities while remaining accountable to the people affected by their decisions.", { internationalism: 0.85, decentralization: 0.55, "state-capacity": 0.25 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("d-islamic-feminism-01", "descriptive", "Interpretation and gender", "Islamic Feminist scholarship and activism have treated gender justice as requiring critical rereading of the Qur'an and Islamic interpretive traditions, not only a change in private attitudes.", { "cultural-causation": 0.95, institutionalism: 0.8 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("d-islamic-feminism-02", "descriptive", "Authority and law", "Gender hierarchy can be reproduced through patriarchal exegesis, jurisprudence, and institutions even when those arrangements are presented as timeless or divinely fixed.", { "structural-power": 0.85, institutionalism: 0.9, "cultural-causation": 0.65 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("d-islamic-feminism-03", "descriptive", "Plural methods", "Islamic Feminist projects vary across interpretive methods, legal contexts, regions, secular or religious positioning, and forms of scholarly or grassroots activism.", { "cultural-causation": 0.9, institutionalism: 0.75 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("d-islamic-feminism-04", "descriptive", "Public and lived institutions", "Gender justice projects in Muslim contexts can work through scholarship, civil society, education, law, family institutions, and public debate rather than through one organization or state model.", { institutionalism: 0.9, "structural-power": 0.65, "cultural-causation": 0.6 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("n-islamic-feminism-01", "normative", "Gender justice and tradition", "Gender equality and justice should be pursued through critical engagement with Islamic sources and traditions when those sources are part of the community's moral and legal vocabulary.", { equality: 0.95 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("n-islamic-feminism-02", "normative", "Interpretive authority", "Women should have equal standing and authority in shaping the religious, legal, and public interpretations that govern their lives.", { equality: 0.95, liberty: 0.8, democracy: 0.7 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("n-islamic-feminism-03", "normative", "Agency and self-definition", "Muslim women's agency should not be judged by whether it follows a single secular or externally imposed definition of emancipation.", { liberty: 0.85, universalism: 0.7, equality: 0.65 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("n-islamic-feminism-04", "normative", "Faith and equality", "Religious commitment and feminist equality can coexist, so neither private piety nor secularization alone defines a gender-justice project.", { equality: 0.85, liberty: 0.65, "order-tradition": 0.15 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("p-islamic-feminism-01", "prescriptive", "Interpretive participation", "Religious and legal institutions should support gender-just reinterpretation of Qur'anic and Islamic sources through accountable participation by women scholars and affected communities.", { decentralization: 0.55, "state-capacity": 0.55, reformism: 0.85 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("p-islamic-feminism-02", "prescriptive", "Legal reform", "Family and public laws should be reformed when patriarchal interpretations produce unequal status, using accountable interpretive and legal processes.", { "state-capacity": 0.7, reformism: 0.85, "public-provision": 0.35 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("p-islamic-feminism-03", "prescriptive", "Civil society and education", "Educational, civil-society, and transnational networks should expand women's religious, legal, and civic agency in ways responsive to local contexts.", { decentralization: 0.7, internationalism: 0.7, "public-provision": 0.5 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
+  question("p-islamic-feminism-04", "prescriptive", "Plural routes", "Gender equality should be pursued through plural religious, legal, democratic, movement, and public routes rather than one universal institutional formula.", { reformism: 0.75, decentralization: 0.65, internationalism: 0.55 }, ISLAMIC_FEMINISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.islamicFeminism, ["islamic-feminism"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -6343,6 +6447,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "christian-socialism") return "source-bloomsbury-williams-christian-socialism";
   if (id === "ujamaa") return "source-oup-jennings-ujamaa";
   if (id === "labor-zionism") return "source-ucp-shafir-land-labor";
+  if (id === "islamic-feminism") return "source-oup-islamic-feminism-schroter";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -6592,6 +6697,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("christian-socialism", "Christian Socialism", "Christian Socialist", "A plural and historically varied Christian-socialist tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.65, "cultural-causation": 0.9, institutionalism: 0.85, "ecological-limits": 0.15 }, { liberty: 0.6, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.8, universalism: 0.75, "ecological-priority": 0.2 }, { "market-allocation": -0.3, "public-provision": 0.85, "public-ownership": 0.7, decentralization: 0.7, "state-capacity": 0.75, reformism: 0.5, internationalism: 0.55 }, "A provisional Christian Socialism anchor: scholarship supports a plural religious-socialist boundary involving moral or theological grounding, structural critique, solidarity, and collective transformation, while preserving Anglican, Catholic, Protestant, Social Gospel, liberationist, labor, cooperative, democratic, reformist, revolutionary, and public or autonomous routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one church, movement, or institutional design.", "christian-socialism"),
   anchor("ujamaa", "Ujamaa (African Socialism)", "African Socialist", "A historically bounded and internally varied postcolonial political tradition associated with familyhood, egalitarian social relations, anti-exploitation, collective self-reliance, participation in nation-building, and communal or public development.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.55, "cultural-causation": 0.85, institutionalism: 0.8, "ecological-limits": 0.1 }, { liberty: 0.65, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.75, universalism: 0.6, "ecological-priority": 0.15 }, { "market-allocation": -0.25, "public-provision": 0.8, "public-ownership": 0.75, decentralization: 0.6, "state-capacity": 0.7, reformism: 0.4, internationalism: 0.55 }, "A provisional Ujamaa anchor: scholarship supports a historically bounded African-Socialist boundary involving familyhood, egalitarianism, postcolonial self-reliance, collective development, and communal or public institutions, while preserving local agency, state direction, national and wider African scope, and contested implementation; the vector is not empirically validated and does not decide a respondent's political identity or endorse one policy, state, or historical interpretation.", "ujamaa"),
   anchor("labor-zionism", "Labor Zionism", "Zionist Socialist", "A historically situated and internally varied Zionist-socialist current joining Jewish collective self-determination and nation-building with worker organization, labor-centered social transformation, cooperative or collective settlement, and institution-building.", { "structural-power": 0.85, "market-coordination": 0.05, "elite-autonomy": 0.55, "cultural-causation": 0.95, institutionalism: 0.9, "ecological-limits": 0 }, { liberty: 0.65, equality: 0.9, solidarity: 0.95, "order-tradition": 0.25, democracy: 0.75, universalism: 0.55, "ecological-priority": 0 }, { "market-allocation": 0.2, "public-provision": 0.75, "public-ownership": 0.65, decentralization: 0.65, "state-capacity": 0.7, reformism: 0.55, internationalism: 0.7 }, "A provisional Labor Zionism anchor: source-backed history supports a joint national self-determination, worker-institution, cooperative or collective settlement, and social-transformation boundary with substantial period and internal variation; the vector is not empirically validated and does not classify Jewish identity, current conflict positions, citizenship, current parties, or one territorial or ownership programme.", "labor-zionism"),
+  anchor("islamic-feminism", "Islamic Feminism", "Islamic Feminist", "A plural contemporary feminist current seeking gender justice through critical engagement with the Qur'an, Islamic interpretive traditions, and gendered institutions across hermeneutic, legal, ethical, activist, and reformist routes without requiring one theology, jurisdiction, or state programme.", { "structural-power": 0.9, "market-coordination": 0, "elite-autonomy": 0.45, "cultural-causation": 0.95, institutionalism: 0.9, "ecological-limits": 0 }, { liberty: 0.8, equality: 0.95, solidarity: 0.55, "order-tradition": 0.3, democracy: 0.75, universalism: 0.75, "ecological-priority": 0 }, { "market-allocation": 0.05, "public-provision": 0.55, "public-ownership": 0.1, decentralization: 0.65, "state-capacity": 0.7, reformism: 0.85, internationalism: 0.7 }, "A provisional Islamic Feminism anchor: sources support a plural gender-justice, Islamic-hermeneutic, authority, legal-reform, and activist boundary with national, transnational, theological, secular, Sunni, Shi'a, racial, class, scholarly, and grassroots variation; the vector is not empirically validated and does not classify Muslim identity, private piety, gender, religious observance, current organizations, current actors, or one law or policy.", "islamic-feminism"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -6608,10 +6714,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 95,
+    contentVersion: 96,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 492, normative: 492, prescriptive: 492 },
+    questionsPerLayer: { descriptive: 496, normative: 496, prescriptive: 496 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

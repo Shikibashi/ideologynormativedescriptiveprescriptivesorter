@@ -1027,3 +1027,26 @@ The V99 branch adds eight source records, one canonical micro node under `nation
 | `git diff --check` and Zeus-state JSON parse | PASS | No whitespace errors; `python -m json.tool` passed |
 
 The current production contract is content version 95 with 1,476 prompts (492 per layer), 117 production anchors, 122 editorial anchors, 123 ontology nodes, 9 macro / 44 total meso / 70 micro placements, six contextual placements, three registry entries, and 1,512 quarantined candidates across 126 research targets. Labor Zionism is source-backed, canonical, and provisional: it has twelve direct prompts at 4/4/4, six neighbor discriminants, a false-positive audit, and isolated three-layer reachability. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, or population generalization was run or implied. The separate belief-profile/morphology workstream remains outside this tranche and is not staged.
+
+## V100 final observed verification — Islamic Feminism canonical micro branch — 2026-08-30
+
+| Check | Status | Observed result |
+|---|---|---|
+| `npx vitest run src/research.test.ts src/scoring.test.ts` | PASS | 104/104 focused research and scoring-contract tests |
+| `npm run test:run` | PASS | 5 files, 142/142 Vitest tests, including the existing belief-model structural tests |
+| `npx tsc --noEmit` | PASS | Current tree typechecks |
+| `npm run build` | PASS | Vite production build completes; the existing large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | Content version 96; 1,488 prompts; 118 production anchors; 123 editorial anchors; 124 ontology nodes; 1,524 candidates across 127 targets; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 118 production anchors; zero validation errors and zero structural failures; every production anchor is isolated-reachable across all three layers, including Islamic Feminism |
+| `npm run qa` | PASS | Complete Playwright suite passes 10/10 against the local Vite runtime |
+| `npm run belief:measurement-audit` | PASS | 1,488 production items audited; 11 constructs; all items covered; three construct gaps remain explicit; no directional facet or construct evidence is inferred |
+| `npm run belief:morphology-audit` | PASS | 118 source-backed canonical configurations round-trip; adversarial structural checks pass; synthetic output is not respondent evidence |
+| `npm run belief:direct-pilot-audit` | PASS | 8-item effect-free categorical pilot is isolated from legacy scoring; no validation errors |
+| `npm run belief:completion-audit` | NOT PASS / FAIL-CLOSED | Exit remains nonzero because cognitive/response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology gates are `NOT RUN` by explicit scope |
+| `git diff --check` | PASS | No whitespace errors before documentation finalization |
+| Compose/Docker delivery | NOT RUN | Not rerun for V100; no Docker or hosted-runtime claim is made |
+
+The V100 production contract is content version 96 with 1,488 prompts (496 per layer), 118 production anchors, 123 editorial anchors, 124 ontology nodes, 9 macro / 44 total meso / 71 micro placements, 9 macro / 38 canonical meso / 71 canonical micro inventory, six contextual placements, three registry entries, and 1,524 quarantined candidates across 127 research targets. Islamic Feminism is source-backed, canonical, and provisional: it has nine source references, twelve direct prompts at 4/4/4, twelve quarantined effect-free candidates at 4/4/4, a seventeen-dimension profile, six neighbor discriminants, a false-positive audit, explicit promotion governance, and isolated three-layer reachability. The public repository remote remains configured separately; the V100 commit and push are the next repository-state operations. The separate belief-profile/morphology workstream remains outside the V100 commit scope.
+
+No cognitive review, respondent study, expert content adjudication, psychometric calibration, reliability/validity estimate, invariance/DIF study, empirical validation, population/consequence review, or held-out respondent morphology evidence was run or implied. Local tests and synthetic audits are structural evidence only; they do not validate an ideological classification instrument or authorize political recommendations.
