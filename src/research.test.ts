@@ -293,8 +293,8 @@ describe("research workbench contracts", () => {
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
-    expect(curatedResearchCandidates).toHaveLength(1524);
-    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1524);
+    expect(curatedResearchCandidates).toHaveLength(1536);
+    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1536);
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
@@ -302,17 +302,18 @@ describe("research workbench contracts", () => {
     expect(DATASET.manifest.questionCount).toBe(1500);
   }, 60_000);
 
-  it("gives every covered branch a three-layer starter block and review metadata", () => {
+  it("gives every covered branch or registry target a three-layer starter block and review metadata", () => {
     const targetIds = [...new Set(curatedResearchCandidates.map((candidate) => candidate.targetId))];
-    expect(targetIds).toHaveLength(127);
+    expect(targetIds).toHaveLength(128);
     for (const targetId of targetIds) {
+      const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === targetId);
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
-      expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
+      expect(target?.targetKind === "registry-entry" || researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
       expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId).length).toBeGreaterThanOrEqual(2);
       expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
       expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)?.layersCovered).toEqual(["descriptive", "normative", "prescriptive"]);
     }
-  });
+  }, 30_000);
 
   it("keeps the nine macro families source-bounded while covering all three claim layers", () => {
     const macroIds = DATASET.ideologyNodes.filter((node) => node.level === "macro").map((node) => node.id);
@@ -2466,11 +2467,11 @@ describe("research workbench contracts", () => {
     ]);
     expect(summary.unclassifiedMeasurementMismatches).toEqual([]);
     expect(summary.measurementReconciliations).toHaveLength(2);
-    expect(summary.resultingScoringStatusCounts).toMatchObject({ "catalog-only": 2, "not-scored": 8 });
+    expect(summary.resultingScoringStatusCounts).toMatchObject({ "catalog-only": 2, "not-scored": 9 });
     expect(summary.researchEvidenceCoverage).toMatchObject({
       minimumNeighborDiscriminantsPerTarget: 2,
-      targetsWithMinimumNeighborDiscriminants: 127,
-      targetsWithFalsePositiveAudits: 127,
+      targetsWithMinimumNeighborDiscriminants: 128,
+      targetsWithFalsePositiveAudits: 128,
     });
   });
 

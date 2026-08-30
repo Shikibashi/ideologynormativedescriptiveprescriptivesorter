@@ -37,7 +37,7 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await page.goto("/");
   await page.getByRole("button", { name: /^Research$/ }).click();
   await expect(page.getByRole("heading", { name: /Make the next question earn its place/ })).toBeVisible();
-  await expect(page.locator(".research-count")).toContainText(/1524 quarantined candidates across 127 targets/);
+  await expect(page.locator(".research-count")).toContainText(/1536 quarantined candidates across 128 targets/);
   await expect(page.locator(".research-promotion-gate")).toContainText(/neighbor distinctness: not completed/i);
   await expect(page.locator(".research-promotion-gate")).toContainText(/cross-cultural \/ jurisdictional: not completed/i);
   await expect(page.locator(".research-promotion-gate")).toContainText(/empirical validation: not completed/i);
