@@ -5,6 +5,7 @@ import {
   researchCandidatesForTarget,
   researchCoverageSummaries,
   researchFalsePositiveAudits,
+  researchAnchorProfileForTarget,
   researchNeighborDiscriminants,
 } from "./research";
 import { researchTaxonomyDecisionForTarget, validateResearchTaxonomyDecisions } from "./research-governance";
@@ -42,6 +43,19 @@ describe("Confucian Political Thought research boundary", () => {
     expect(DATASET.questions.some((question) => question.targetNodeIds?.includes(target.id))).toBe(false);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === target.id)).toBe(false);
     expect(researchCandidatesForTarget(target.id).every((candidate) => candidate.targetJustification.includes("registry-only"))).toBe(true);
+
+    const profile = researchAnchorProfileForTarget(target.id);
+    expect(profile).toMatchObject({ targetId: target.id, targetLabel: "Confucian Political Thought", status: "research_candidate" });
+    expect(profile?.dimensions).toHaveLength(13);
+    expect(profile?.dimensions.filter((dimension) => dimension.layer === "descriptive")).toHaveLength(4);
+    expect(profile?.dimensions.filter((dimension) => dimension.layer === "normative")).toHaveLength(5);
+    expect(profile?.dimensions.filter((dimension) => dimension.layer === "prescriptive")).toHaveLength(4);
+    expect(profile?.conceptions).toHaveLength(3);
+    expect(profile?.relationships).toHaveLength(3);
+    expect(profile?.sourceIds).toEqual(expect.arrayContaining(sourceIds));
+    expect(profile?.dimensions.every((dimension) => dimension.sourceIds.every((sourceId) => sourceIds.includes(sourceId)))).toBe(true);
+    expect(profile?.conceptions.every((conception) => conception.sourceIds.every((sourceId) => sourceIds.includes(sourceId)))).toBe(true);
+    expect(profile?.relationships.every((relationship) => relationship.sourceIds.every((sourceId) => sourceIds.includes(sourceId)))).toBe(true);
 
     const discriminants = researchNeighborDiscriminants.filter((item) => item.targetId === target.id);
     expect(discriminants).toHaveLength(3);

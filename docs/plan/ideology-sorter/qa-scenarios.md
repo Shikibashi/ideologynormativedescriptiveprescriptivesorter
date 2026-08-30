@@ -918,3 +918,20 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-122-01 | Submit a fully covered profile with mixed descriptive/normative answers and directional prescriptive answers, then open morphology. | The morphology status remains provisional only when supported records exist; the ordered candidate list contains only `provisional-candidate` records, with no under-determined status or rank mixed into that list. |
 | P-122-02 | Open the under-determined configuration disclosure. | Source-backed withheld configurations expose missing defining evidence as diagnostics without rank, selection language, or identity assignment; the full diagnostic collection remains in the result contract. |
 | R-122-01 | Run the morphology and completion audits against all-mixed and partially directional fixtures. | All-mixed remains `not-derived` with zero public candidates and explicit under-determined diagnostics; the partially directional fixture keeps provisional and under-determined anchor ids disjoint; completion remains fail-closed while external gates are `NOT RUN`. |
+
+## Current V123 source-backed configuration relationship scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-123-01 | Open a morphology candidate whose configuration has researched relationships. | The candidate exposes source-backed relationship statements, their participating commitments, and source links as configuration context; no relationship is presented as respondent evidence or a fit contribution. |
+| P-123-02 | Inspect a configuration with a contested relationship hypothesis. | The relationship is labeled as source-backed but contested, and its statement preserves variation rather than assigning one universal priority, condition, or conflict rule. |
+| R-123-01 | Run the morphology and completion audits. | The 25 relationship records across 13 canonical profiles have resolved commitment participants and valid source provenance, including an epistemic relationship; profiles without records remain explicitly open, all structural checks pass, and the six external gates remain `NOT RUN`. |
+
+## Current V124 Confucian profile scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-124-01 | Run `npm run research:coverage -- --summary` after loading the Confucian registry target. | `confucian-political-thought` reports `registry-only`, zero direct questions, a qualitative profile, 3 conceptions, 3 relationships, 12 quarantined candidates, and no score effect; the report has 128 profile rows, empty missing-profile and missing-conception lists, and zero validation errors. |
+| R-124-02 | Inspect the Confucian profile and its source-backed relationships. | The profile exposes 4 descriptive, 5 normative, and 4 prescriptive dimensions; conceptions and relationship participants resolve to known source-backed records; contested modern translations remain marked as contested rather than collapsed into one institutional route. |
+| R-124-03 | Run production and belief audits after the profile bridge. | Production remains 1,500 questions / 119 scoring anchors / 124 editorial anchors; the 119 canonical targets retain 4/4/4 direct coverage; the profile does not enter effects, affinity, morphology, legacy scoring, or respondent output. |
+| R-124-04 | Run the completion audit and review its external-gate ledger. | Structural checks remain green, but the overall completion result remains `INCOMPLETE` / fail-closed because the six required external gates are still `NOT RUN`; no local structural result is reclassified as cognitive or empirical validation. |

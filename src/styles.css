@@ -459,6 +459,16 @@ a { color: inherit; }
 .morphology-underdetermined-list strong { color: var(--ink); font-size: 0.8rem; }
 .morphology-underdetermined-list span { font-size: 0.72rem; }
 .morphology-underdetermined-more { margin-top: 12px !important; font-size: 0.7rem; }
+.morphology-configuration-relationships { max-width: 820px; margin-top: 16px; border-top: 1px solid var(--rule); }
+.morphology-configuration-relationships > summary { padding: 12px 0 9px; color: var(--ink); cursor: pointer; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.morphology-configuration-relationship-list { display: grid; gap: 0; }
+.morphology-configuration-relationship { padding: 11px 0; border-top: 1px solid color-mix(in srgb, var(--rule) 70%, transparent); }
+.morphology-configuration-relationship p { margin: 5px 0 0; color: var(--ink-muted); font-size: 0.72rem; line-height: 1.5; }
+.morphology-configuration-relationship p:first-child { margin-top: 0; }
+.morphology-configuration-relationship strong { color: var(--ink); }
+.morphology-configuration-relationship-meta { font-size: 0.68rem !important; }
+.morphology-configuration-relationship-meta a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.morphology-configuration-relationship-note { margin: 12px 0 0; color: var(--ink-muted); font-size: 0.7rem; line-height: 1.5; }
 .morphology-gap-list { margin-top: 22px; }
 .combined-reading { margin-bottom: 50px; padding: 28px 0 34px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
 .combined-reading-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; }

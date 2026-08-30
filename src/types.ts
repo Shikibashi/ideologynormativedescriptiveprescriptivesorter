@@ -239,6 +239,27 @@ export type ResearchAnchorConception = Readonly<{
   sourceIds: readonly string[];
 }>;
 
+export type ResearchAnchorRelationKind = "priority" | "conditionality" | "conflict-resolution" | "epistemic" | "contestation";
+
+export type ResearchAnchorRelationParticipant = Readonly<{
+  kind: "facet" | "concept";
+  id: string;
+}>;
+
+/**
+ * A source-backed relationship hypothesis about an ideological configuration.
+ * It is theoretical configuration evidence, not a respondent observation and
+ * never enters scalar affinity calculation.
+ */
+export type ResearchAnchorRelation = Readonly<{
+  id: string;
+  kind: ResearchAnchorRelationKind;
+  statement: string;
+  participants: readonly ResearchAnchorRelationParticipant[];
+  evidencePosture: "source-backed" | "source-backed-contested";
+  sourceIds: readonly string[];
+}>;
+
 export type ResearchAnchorProfile = Readonly<{
   targetId: string;
   targetLabel: string;
@@ -248,6 +269,7 @@ export type ResearchAnchorProfile = Readonly<{
   neighbors: readonly string[];
   dimensions: readonly ResearchAnchorDimension[];
   conceptions: readonly ResearchAnchorConception[];
+  relationships: readonly ResearchAnchorRelation[];
   sourceIds: readonly string[];
   status: "research_candidate";
 }>;
@@ -728,6 +750,8 @@ export type IdeologyConfiguration = Readonly<{
   causalAssumptions: readonly BeliefCommitment[];
   institutionalImplications: readonly BeliefCommitment[];
   optionalOrContestedCommitments: readonly BeliefCommitment[];
+  /** Source-backed theory of how this configuration relates its commitments; never respondent evidence or affinity input. */
+  researchedRelationships: readonly IdeologyConfigurationRelationship[];
   priorities: Readonly<{
     status: "not-established";
     note: string;
@@ -745,6 +769,22 @@ export type IdeologyConfiguration = Readonly<{
   tensions: readonly string[];
   sourceRefs: readonly string[];
   evidencePosture: "source-backed-projection" | "anchor-only-projection";
+}>;
+
+export type IdeologyConfigurationRelationshipParticipant = Readonly<{
+  kind: "facet" | "concept";
+  id: string;
+  /** Exact configuration commitments resolved from the research participant reference. */
+  commitmentIds: readonly string[];
+}>;
+
+export type IdeologyConfigurationRelationship = Readonly<{
+  id: string;
+  kind: ResearchAnchorRelationKind;
+  statement: string;
+  participants: readonly IdeologyConfigurationRelationshipParticipant[];
+  evidencePosture: "source-backed" | "source-backed-contested";
+  sourceRefs: readonly string[];
 }>;
 
 export type BeliefMeasurementAudit = Readonly<{

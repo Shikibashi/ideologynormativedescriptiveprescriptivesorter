@@ -175,6 +175,15 @@ const configurationConceptionPostureTextFor = (configuration: IdeologyConfigurat
   return `${explicitCount} explicit researched conception record${explicitCount === 1 ? "" : "s"} and ${facetProxyCount} facet-proxy conception mapping${facetProxyCount === 1 ? "" : "s"}; neither is a direct respondent conception measure.`;
 };
 
+const configurationRelationshipParticipantsTextFor = (relationship: IdeologyConfiguration["researchedRelationships"][number], configuration: IdeologyConfiguration): string => relationship.participants
+  .map((participant) => {
+    const labels = participant.commitmentIds
+      .map((commitmentId) => configuration.commitments.find((commitment) => commitment.id === commitmentId)?.label)
+      .filter((label): label is string => label !== undefined);
+    return labels.length > 0 ? labels.join(" / ") : participant.id;
+  })
+  .join(" ↔ ");
+
 const sourceLinksFor = (sourceRefs: readonly string[]): ReactNode => sourceRefs.map((sourceRef, index) => {
   const source = sourceMap.get(sourceRef);
   return source ? <span key={`${sourceRef}-${index}`}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null;
@@ -992,6 +1001,21 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
                 {candidate.configuration.causalAssumptions.length > 0 ? <p className="morphology-candidate-detail"><strong>Causal assumptions:</strong> {configurationCommitmentTextFor(candidate.configuration.causalAssumptions)}</p> : null}
                 {candidate.configuration.institutionalImplications.length > 0 ? <p className="morphology-candidate-detail"><strong>Institutional implications:</strong> {configurationCommitmentTextFor(candidate.configuration.institutionalImplications)}</p> : null}
                 <p className="morphology-candidate-detail"><strong>Configuration evidence:</strong> {candidate.configuration.evidencePosture.replaceAll("-", " ")}; priority and conflict rules remain {candidate.configuration.priorities.status}.</p>
+                {candidate.configuration.researchedRelationships.length > 0 ? (
+                  <details className="morphology-configuration-relationships">
+                    <summary>Inspect researched configuration relationships ({candidate.configuration.researchedRelationships.length})</summary>
+                    <div className="morphology-configuration-relationship-list">
+                      {candidate.configuration.researchedRelationships.map((relationship) => (
+                        <div className="morphology-configuration-relationship" key={relationship.id}>
+                          <p><strong>{relationship.kind.replaceAll("-", " ")}</strong> · {configurationRelationshipParticipantsTextFor(relationship, candidate.configuration)}</p>
+                          <p>{relationship.statement}</p>
+                          <p className="morphology-configuration-relationship-meta">Evidence posture: {relationship.evidencePosture.replaceAll("-", " ")}. Source basis: {sourceLinksFor(relationship.sourceRefs)}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="morphology-configuration-relationship-note">These are sourced theoretical configuration claims, not respondent observations, calibrated priorities, or affinity weights. Profiles without an explicit relation retain a separate <code>not-established</code> gap.</p>
+                  </details>
+                ) : null}
                 <p className="morphology-candidate-detail"><strong>Fit provenance:</strong> Each directional commitment below identifies the primary profile dimension and construct-level evidence form used for its provisional fit. A linked facet proxy is retained as context only. Direct categorical and relational records remain contextual and are excluded from affinity calculation.</p>
                 <details className="morphology-evidence-details">
                   <summary>Inspect evidence trail ({candidate.basis.length} commitment records)</summary>

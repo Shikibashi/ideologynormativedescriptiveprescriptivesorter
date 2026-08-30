@@ -47,6 +47,7 @@ import {
   type InterpretiveBasis,
   type Layer,
   type ResearchAnchorConception,
+  type ResearchAnchorRelation,
 } from "./types";
 
 export { BELIEF_CONSTRUCTS };
@@ -1460,6 +1461,25 @@ const relationalConstraintRecords = (): IdeologyConfiguration["relationalConstra
   },
 ];
 
+const configurationRelationshipFor = (
+  relation: ResearchAnchorRelation,
+  commitments: readonly BeliefCommitment[],
+): IdeologyConfiguration["researchedRelationships"][number] => ({
+  id: relation.id,
+  kind: relation.kind,
+  statement: relation.statement,
+  participants: relation.participants.map((participant) => ({
+    ...participant,
+    commitmentIds: commitments
+      .filter((commitment) => participant.kind === "facet"
+        ? commitment.facetId === participant.id
+        : commitment.conceptId === participant.id)
+      .map((commitment) => commitment.id),
+  })),
+  evidencePosture: relation.evidencePosture,
+  sourceRefs: relation.sourceIds,
+});
+
 const conceptionsFor = (
   commitments: readonly BeliefCommitment[],
   evidencePosture: IdeologyConfiguration["evidencePosture"],
@@ -1489,7 +1509,12 @@ export const configurationForAnchor = (anchor: Dataset["anchors"][number], datas
   const conceptionCommitments = researchProfile?.conceptions.map((conception) => commitmentForConception(anchor.id, conception)) ?? [];
   const commitments = [...dimensionCommitments, ...conceptionCommitments];
   const optionalOrContestedCommitments = commitments.filter((commitment) => commitment.centrality === "optional-or-contested");
-  const sourceRefs = unique([...anchor.sourceRefs, ...(researchProfile?.sourceIds ?? [])]);
+  const researchedRelationships = researchProfile?.relationships.map((relation) => configurationRelationshipFor(relation, commitments)) ?? [];
+  const sourceRefs = unique([
+    ...anchor.sourceRefs,
+    ...(researchProfile?.sourceIds ?? []),
+    ...researchedRelationships.flatMap((relation) => relation.sourceRefs),
+  ]);
   const variants = researchProfile?.variants ?? [];
   const neighbors = researchProfile?.neighbors ?? [];
   const compatibility = [
@@ -1519,6 +1544,7 @@ export const configurationForAnchor = (anchor: Dataset["anchors"][number], datas
     causalAssumptions: commitments.filter((commitment) => commitment.layer === "descriptive" && commitment.constructIds.includes("diagnosis-causal-account")),
     institutionalImplications: commitments.filter((commitment) => commitment.layer === "prescriptive"),
     optionalOrContestedCommitments,
+    researchedRelationships,
     priorities: {
       status: "not-established",
       note: "The current anchor and research profile do not establish a priority ordering among commitments.",
@@ -1590,6 +1616,27 @@ export function validateIdeologyConfigurations(dataset: Dataset): readonly strin
     }
     for (const relation of configuration.compatibility) {
       if (!ideologyIds.has(relation.targetId)) errors.push(`ideology configuration ${configuration.targetId} references missing compatibility target ${relation.targetId}`);
+    }
+    const researchedRelationshipIds = new Set<string>();
+    const commitmentIds = new Set(configuration.commitments.map((commitment) => commitment.id));
+    for (const relationship of configuration.researchedRelationships) {
+      if (researchedRelationshipIds.has(relationship.id)) errors.push(`ideology configuration ${configuration.targetId} has duplicate researched relationship ${relationship.id}`);
+      researchedRelationshipIds.add(relationship.id);
+      if (!relationship.statement.trim()) errors.push(`ideology configuration ${configuration.targetId} researched relationship ${relationship.id} has no statement`);
+      if (relationship.participants.length < 2) errors.push(`ideology configuration ${configuration.targetId} researched relationship ${relationship.id} has fewer than two participants`);
+      for (const participant of relationship.participants) {
+        if (!participant.id.trim()) errors.push(`ideology configuration ${configuration.targetId} researched relationship ${relationship.id} has an empty participant id`);
+        if (participant.commitmentIds.length === 0) {
+          errors.push(`ideology configuration ${configuration.targetId} researched relationship ${relationship.id} participant ${participant.id} has no resolved commitment`);
+        }
+        for (const commitmentId of participant.commitmentIds) {
+          if (!commitmentIds.has(commitmentId)) errors.push(`ideology configuration ${configuration.targetId} researched relationship ${relationship.id} references missing commitment ${commitmentId}`);
+        }
+      }
+      for (const sourceRef of relationship.sourceRefs) {
+        if (!sourceIds.has(sourceRef)) errors.push(`ideology configuration ${configuration.targetId} researched relationship ${relationship.id} references missing source ${sourceRef}`);
+        if (!configuration.sourceRefs.includes(sourceRef)) errors.push(`ideology configuration ${configuration.targetId} does not expose relationship source ${sourceRef}`);
+      }
     }
     const constraintKinds = configuration.relationalConstraints.map((constraint) => constraint.kind);
     if (constraintKinds.length !== requiredConstraintKinds.length || requiredConstraintKinds.some((kind) => !constraintKinds.includes(kind))) {

@@ -393,6 +393,11 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await expect(evidenceDetails.locator(".morphology-evidence-row").first()).toContainText(/fit source/i);
   await expect(evidenceDetails.locator(".morphology-evidence-row").first()).toContainText(/primary profile dimensions/i);
   await expect(evidenceDetails.locator(".morphology-evidence-sources")).toContainText(/Configuration sources/i);
+  expect(await page.locator(".morphology-configuration-relationships").count()).toBeGreaterThan(0);
+  const configurationRelationships = page.locator(".morphology-configuration-relationships").first();
+  await configurationRelationships.locator("summary").click();
+  await expect(configurationRelationships).toContainText(/source backed contested/i);
+  await expect(configurationRelationships).toContainText(/source basis/i);
  await expect(page.getByRole("heading", { name: "A combined pattern" })).toBeVisible();
  await expect(page.getByText(/Compatibility baseline/i)).toBeVisible();
  await expect(page.locator(".combined-neighbor-list")).toBeVisible();

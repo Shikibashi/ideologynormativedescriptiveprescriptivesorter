@@ -5,6 +5,9 @@ import type {
   ResearchAnchorConception,
   ResearchAnchorDimension,
   ResearchAnchorProfile,
+  ResearchAnchorRelation,
+  ResearchAnchorRelationKind,
+  ResearchAnchorRelationParticipant,
   ResearchConfidence,
   ResearchCoverageSummary,
   ResearchExpectedDirection,
@@ -2915,6 +2918,19 @@ const anchorConception = (
   sourceIds: readonly string[],
 ): ResearchAnchorConception => ({ conceptId, layer, label, interpretation, centrality, sourceIds });
 
+const relationParticipant = (kind: ResearchAnchorRelationParticipant["kind"], id: string): ResearchAnchorRelationParticipant => ({ kind, id });
+
+const facetParticipants = (...facetIds: string[]): readonly ResearchAnchorRelationParticipant[] => facetIds.map((facetId) => relationParticipant("facet", facetId));
+
+const researchedRelation = (
+  id: string,
+  kind: ResearchAnchorRelationKind,
+  statement: string,
+  participants: readonly ResearchAnchorRelationParticipant[],
+  sourceIds: readonly string[],
+  evidencePosture: ResearchAnchorRelation["evidencePosture"] = "source-backed-contested",
+): ResearchAnchorRelation => ({ id, kind, statement, participants, evidencePosture, sourceIds });
+
 const profile = (
   targetId: string,
   definition: string,
@@ -2932,6 +2948,7 @@ const profile = (
   neighbors,
   dimensions,
   conceptions: [],
+  relationships: [],
   sourceIds,
   status: "research_candidate",
 });
@@ -4039,6 +4056,38 @@ const RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES: readonly ResearchAnchorProfile[
       dimension("internationalism", "prescriptive", "strong-positive", "characteristic", "Local and transnational networks circulate knowledge and support gender-justice work across jurisdictions.", ["source-oup-islamic-feminism-schroter", "source-oup-sharify-funk-islamic-feminism", "source-cambridge-islamic-feminists-approaches"]),
       dimension("market-allocation", "prescriptive", "indeterminate", "contested", "The field includes varied economic and family-policy positions; market coordination is not constitutive and cannot substitute for the gender-justice and interpretive boundary.", ["source-oup-islamic-feminism-schroter", "source-oup-sharify-funk-islamic-feminism", "source-cambridge-wadud-social-justice"]),
       dimension("public-ownership", "prescriptive", "indeterminate", "contested", "Collective or public institutional routes may appear in particular projects, but no ownership model defines Islamic Feminism across its plural contexts.", ["source-oup-islamic-feminism-schroter", "source-cambridge-islamic-feminists-approaches", "source-musawah-vision-family"]),
+    ],
+  ),
+];
+
+const RESEARCH_TRANCHE_FIFTEEN_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = [
+  profile(
+    "confucian-political-thought",
+    "A historically layered and internally contested political-philosophical field linking political order, ruler–minister–people relations, ritual and moral cultivation, official conduct, and obligations to the welfare of the people, while classical and modern interpretations differ over democracy, rights, merit, and institutional limits.",
+    "Do not infer Confucian Political Thought from East Asian or Chinese identity, family respect, private ethics, religious practice, hierarchy, academic merit, democracy, republicanism, or one modern reconstruction. The field contains classical Mencian and Xunzian disagreement and modern democratic, rights-based, meritocratic, perfectionist, and republican translations; none is a universal definition.",
+    [
+      "classical Mencian and Xunzian political reasoning",
+      "ruler–minister–people and role-relational order",
+      "ritual, moral cultivation, and official conduct",
+      "welfare and benevolent government",
+      "modern democratic, rights-based, meritocratic, perfectionist, and republican reconstructions",
+    ],
+    ["conservatism", "historical-republicanism", "contemporary-neo-republicanism", "green-communitarianism"],
+    ["source-oup-wong-confucian-political-philosophy", "source-oup-amine-classical-confucian-political-thought", "source-cambridge-kim-confucian-virtue-politics", "source-sep-modern-confucianism", "source-oup-chan-confucian-perfectionism", "source-oup-chan-confucian-republicanism"],
+    [
+      dimension("institutionalism", "descriptive", "defining-positive", "defining", "Political order is analyzed through relationships among rulers, ministers, officials, and the people rather than through an isolated individual–state contrast.", ["source-oup-wong-confucian-political-philosophy", "source-oup-amine-classical-confucian-political-thought"]),
+      dimension("cultural-causation", "descriptive", "defining-positive", "defining", "Ritual, moral cultivation, and learned conduct can shape how authority is exercised, recognized, and transmitted.", ["source-oup-wong-confucian-political-philosophy", "source-cambridge-kim-confucian-virtue-politics", "source-sep-modern-confucianism"]),
+      dimension("cultural-causation", "descriptive", "moderate-positive", "characteristic", "Family and role-based relationships can influence public expectations about obligation, office, and social order without fixing one institutional or gender arrangement.", ["source-oup-wong-confucian-political-philosophy", "source-oup-amine-classical-confucian-political-thought"]),
+      dimension("institutionalism", "descriptive", "moderate-positive", "characteristic", "Law, ritual, education, welfare, and administration can work together or be balanced differently as mechanisms for regulating political life.", ["source-oup-amine-classical-confucian-political-thought", "source-cambridge-kim-confucian-virtue-politics"]),
+      dimension("solidarity", "normative", "defining-positive", "defining", "Those who govern owe attention to the welfare and material sufficiency of the people rather than only to preserving office or hierarchy.", ["source-oup-amine-classical-confucian-political-thought", "source-oup-wong-confucian-political-philosophy"]),
+      dimension("order-tradition", "normative", "defining-positive", "defining", "Public authority should be judged partly by the character, competence, and conduct of those who exercise it.", ["source-cambridge-kim-confucian-virtue-politics", "source-oup-amine-classical-confucian-political-thought"]),
+      dimension("democracy", "normative", "indeterminate", "contested", "Modern Confucian arguments variously defend democracy, criticize liberal foundations, or reconstruct virtue politics through democratic institutions; no single democratic position defines the historical field.", ["source-sep-modern-confucianism", "source-oup-chan-confucian-perfectionism", "source-oup-chan-confucian-republicanism"]),
+      dimension("equality", "normative", "indeterminate", "contested", "Modern reconstructions connect political equality and equal subjectivity to Confucian ideals in different ways, while classical role and rank accounts do not settle one modern equality doctrine.", ["source-sep-modern-confucianism", "source-cambridge-kim-confucian-virtue-politics", "source-oup-chan-confucian-republicanism"]),
+      dimension("liberty", "normative", "indeterminate", "contested", "Rights, civil liberties, and non-domination are engaged in modern reconstructions, but they are not constitutive of every historical or contemporary Confucian interpretation.", ["source-sep-modern-confucianism", "source-oup-chan-confucian-perfectionism", "source-oup-chan-confucian-republicanism"]),
+      dimension("state-capacity", "prescriptive", "moderate-positive", "characteristic", "Public office should be supported by education, selection, and accountability practices that cultivate competence and responsibility, while the basis and limits of selection remain contested.", ["source-oup-amine-classical-confucian-political-thought", "source-cambridge-kim-confucian-virtue-politics", "source-oup-chan-confucian-republicanism"]),
+      dimension("state-capacity", "prescriptive", "moderate-positive", "characteristic", "Governance may need a combination of law, ritual, education, welfare, and administration rather than a single mechanism of social order.", ["source-oup-amine-classical-confucian-political-thought", "source-oup-wong-confucian-political-philosophy"]),
+      dimension("public-provision", "prescriptive", "moderate-positive", "characteristic", "Legitimate rule should secure material conditions that allow people to live and participate with dignity, while the scope and institutional form of welfare remain open.", ["source-oup-amine-classical-confucian-political-thought", "source-oup-chan-confucian-perfectionism"]),
+      dimension("reformism", "prescriptive", "indeterminate", "contested", "Modern Confucian proposals vary among constitutional, democratic, meritocratic, perfectionist, and republican translations rather than prescribing one settled institutional route.", ["source-sep-modern-confucianism", "source-oup-chan-confucian-perfectionism", "source-oup-chan-confucian-republicanism"]),
     ],
   ),
 ];
@@ -5382,6 +5431,32 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-cambridge-civic-republicanism", "source-oup-gallagher-civic-virtue", "source-oup-civic-republicanism", "source-oup-well-ordered-republic"],
     ),
   ],
+  "confucian-political-thought": [
+    anchorConception(
+      "political-order-through-relational-duty",
+      "normative",
+      "Political order through relational duty",
+      "Political authority is interpreted through obligations among rulers, officials, and people and through the welfare of those governed; role-based duty does not by itself entail unconditional obedience or one fixed hierarchy.",
+      "defining",
+      ["source-oup-wong-confucian-political-philosophy", "source-oup-amine-classical-confucian-political-thought", "source-cambridge-kim-confucian-virtue-politics"],
+    ),
+    anchorConception(
+      "cultivated-and-accountable-office",
+      "prescriptive",
+      "Governance through cultivated and accountable office",
+      "A political order may use education, selection, moral and practical competence, public responsibility, and institutional accountability to form office-holders, while the proper balance between merit, participation, and constraint remains contested.",
+      "characteristic",
+      ["source-oup-amine-classical-confucian-political-thought", "source-cambridge-kim-confucian-virtue-politics", "source-oup-chan-confucian-republicanism"],
+    ),
+    anchorConception(
+      "plural-modern-institutional-translation",
+      "prescriptive",
+      "Plural modern translations of Confucian political ideals",
+      "Modern Confucian political philosophy has been reconstructed through liberal-democratic, perfectionist, meritocratic, and republican institutions; these are bounded interpretations and do not define the classical or contemporary field as a whole.",
+      "contested",
+      ["source-sep-modern-confucianism", "source-oup-chan-confucian-perfectionism", "source-oup-chan-confucian-republicanism"],
+    ),
+  ],
   "market-socialism-context": [
     anchorConception(
       "social-control-with-market-coordination",
@@ -5402,12 +5477,252 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
   ],
 };
 
+/**
+ * Source-backed relationships are kept in a separate research layer. They
+ * describe how a tradition's commitments are theorized to hang together; they
+ * are not inferred from respondent co-occurrence and never alter affinity.
+ * The first tranche covers the profiles that received the deepest targeted
+ * research treatment. Profiles without an explicit record remain visibly
+ * open through the configuration-level not-established constraint gaps.
+ */
+const RESEARCH_ANCHOR_RELATIONSHIPS: Readonly<Record<string, readonly ResearchAnchorRelation[]>> = {
+  "christian-democracy": [
+    researchedRelation(
+      "christian-democracy:subsidiarity-social-obligation",
+      "conditionality",
+      "Public provision may intervene when intermediary associations cannot meet a social obligation, while subsidiarity and associational autonomy remain protected; the threshold and institutional form vary across Christian-democratic contexts.",
+      facetParticipants("solidarity", "decentralization", "market-allocation"),
+      ["source-cambridge-christian-democracy", "source-cambridge-christian-democracy-history"],
+    ),
+    researchedRelation(
+      "christian-democracy:market-social-floor",
+      "conflict-resolution",
+      "Market coordination is admissible when bounded by social obligation and a social floor; neither market exchange nor solidarity alone resolves the tradition's distributive question.",
+      facetParticipants("market-allocation", "solidarity"),
+      ["source-cambridge-christian-democracy"],
+    ),
+  ],
+  populism: [
+    researchedRelation(
+      "populism:people-sovereignty-pluralism",
+      "conflict-resolution",
+      "Popular sovereignty is central to the populist articulation, but its relationship to pluralist limits and institutional mediation is contested across host formations rather than settled by the thin core.",
+      facetParticipants("elite-autonomy", "democracy", "state-capacity"),
+      ["source-cambridge-populism", "source-oup-populism"],
+    ),
+    researchedRelation(
+      "populism:thin-core-host-condition",
+      "conditionality",
+      "The people–elite diagnosis supplies a political boundary, while economic and institutional prescriptions depend on the host project and cannot be inferred from anti-elite language alone.",
+      facetParticipants("elite-autonomy", "equality", "state-capacity"),
+      ["source-cambridge-populism", "source-oup-populism"],
+    ),
+  ],
+  conservatism: [
+    researchedRelation(
+      "conservatism:fallibilist-prudential-revision",
+      "epistemic",
+      "Political judgment should remain sensitive to human fallibility and situated institutional knowledge, with experience and consequences providing reasons for prudent, corrigible revision rather than confidence in one abstract design.",
+      facetParticipants("institutionalism", "order-tradition", "reformism"),
+      ["source-sep-conservatism", "source-oup-conservatism", "source-cambridge-conservatism-traditions"],
+    ),
+  ],
+  ordoliberalism: [
+    researchedRelation(
+      "ordoliberalism:competition-state-condition",
+      "conditionality",
+      "Market coordination is treated as legitimate within a rule-bound public framework that establishes competition and constrains private concentration; the state is a condition of the order rather than an alternative to all exchange.",
+      facetParticipants("market-coordination", "institutionalism", "state-capacity"),
+      ["source-oup-ordoliberalism"],
+    ),
+    researchedRelation(
+      "ordoliberalism:rule-bound-not-direction",
+      "conflict-resolution",
+      "Public authority should enforce the competitive framework without replacing decentralized transaction decisions, preserving a contested boundary between constitutive rules and discretionary economic direction.",
+      facetParticipants("state-capacity", "market-coordination"),
+      ["source-oup-ordoliberalism", "source-sep-liberalism"],
+    ),
+  ],
+  "anarcho-capitalism": [
+    researchedRelation(
+      "anarcho-capitalism:voluntary-order-property-priority",
+      "priority",
+      "Voluntary exchange and property claims are given priority over territorial public provision, subject to the tradition's contested account of legitimate ownership and the limits of imposed authority.",
+      facetParticipants("liberty", "market-coordination", "state-capacity"),
+      ["source-sep-libertarianism", "source-cambridge-social-anarchism-anarchocapitalism", "source-nozick"],
+    ),
+    researchedRelation(
+      "anarcho-capitalism:anarchist-boundary-contestation",
+      "contestation",
+      "The relation between proprietary hierarchy and anarchist anti-state polycentricity is contested: scholarship and self-descriptions disagree over whether market property institutions are compatible with anarchism.",
+      facetParticipants("state-capacity", "decentralization", "liberty"),
+      ["source-sep-anarchism", "source-cambridge-social-anarchism-anarchocapitalism", "source-cambridge-prevost-anarchocapitalism"],
+    ),
+  ],
+  "pan-africanism": [
+    researchedRelation(
+      "pan-africanism:transnational-solidarity-scope",
+      "priority",
+      "African and diasporic solidarity extends political obligation across state borders, while the institutional form and scope of that solidarity remain varied across Pan-African projects.",
+      facetParticipants("solidarity", "internationalism", "universalism"),
+      ["source-oup-pan-africanism", "source-cambridge-panafrican-distinction"],
+    ),
+    researchedRelation(
+      "pan-africanism:self-determination-universalism",
+      "conditionality",
+      "Collective self-determination is pursued through an anti-colonial account of equal standing, but the relation between territorial sovereignty, transnational unity, and wider universal obligations varies historically.",
+      facetParticipants("solidarity", "universalism", "internationalism"),
+      ["source-oup-pan-africanism", "source-cambridge-panafrican-distinction"],
+    ),
+  ],
+  zionism: [
+    researchedRelation(
+      "zionism:self-determination-equal-citizenship",
+      "conflict-resolution",
+      "Jewish collective self-determination is theorized alongside contested claims of equal civic standing; the tradition contains divergent constitutional resolutions rather than one settled answer.",
+      facetParticipants("cultural-causation", "universalism", "democracy", "state-capacity"),
+      ["source-cambridge-zionism-philosophy", "source-oup-zionism-vsi", "source-oup-mann-zionism-human-rights", "source-yale-shumsky-zionist-political-imagination"],
+    ),
+    researchedRelation(
+      "zionism:homeland-diaspora-constitutional-variation",
+      "contestation",
+      "The relationship among homeland, sovereignty, diaspora, and constitutional form is an internal site of variation; it must not be collapsed into one territorial or institutional programme.",
+      facetParticipants("cultural-causation", "democracy", "state-capacity"),
+      ["source-cambridge-zionism-philosophy", "source-oup-zionism-vsi", "source-yale-shumsky-zionist-political-imagination"],
+    ),
+  ],
+  "black-nationalism": [
+    researchedRelation(
+      "black-nationalism:autonomy-coalition-condition",
+      "conditionality",
+      "Collective autonomy can support self-directed institutions while remaining compatible with wider coalitions; solidarity does not require strategic unanimity or one state-seeking route.",
+      facetParticipants("liberty", "solidarity", "decentralization"),
+      ["source-oup-black-nationalism-ore", "source-cambridge-black-nationalism", "source-sage-jagmohan-black-nationalism"],
+    ),
+    researchedRelation(
+      "black-nationalism:liberation-route-contestation",
+      "contestation",
+      "A shared diagnosis of anti-Black institutional and material domination can support state-seeking, community-national, cultural, diasporic, or coalition routes whose relation to autonomy remains internally contested.",
+      facetParticipants("structural-power", "liberty", "solidarity", "decentralization"),
+      ["source-oup-black-nationalism-ore", "source-cambridge-black-nationalism", "source-cambridge-panafrican-distinction"],
+    ),
+  ],
+  ecofeminism: [
+    researchedRelation(
+      "ecofeminism:anti-essentialist-care-condition",
+      "conditionality",
+      "Care, relationality, and ecological concern are politically relevant only when they are not grounded in a fixed female essence; anti-essentialist and intersectional boundaries condition the synthesis.",
+      facetParticipants("structural-power", "ecological-priority", "solidarity"),
+      ["source-oup-feminist-theory", "source-sep-environmental-ethics"],
+    ),
+    researchedRelation(
+      "ecofeminism:gender-ecology-joint-critique",
+      "priority",
+      "Gendered domination and ecological degradation are analyzed together rather than treating either as a sufficient standalone issue; the precise causal and institutional relation varies among ecofeminist strands.",
+      facetParticipants("structural-power", "ecological-priority", "solidarity"),
+      ["source-oup-feminist-theory", "source-sep-environmental-ethics"],
+    ),
+  ],
+  "green-anarchism": [
+    researchedRelation(
+      "green-anarchism:ecological-limits-over-expansion",
+      "priority",
+      "Ecological limits constrain indefinite material expansion and therefore condition economic and institutional choices rather than functioning as an optional policy preference.",
+      facetParticipants("ecological-limits", "ecological-priority", "decentralization"),
+      ["source-cambridge-ecologism", "source-sep-environmental-ethics", "source-oup-social-ecology"],
+    ),
+    researchedRelation(
+      "green-anarchism:decentralized-ecological-governance",
+      "conditionality",
+      "Ecological governance is theorized through federated local institutions and mutual coordination rather than permanent centralized authority, while the scale and form of federation remain open.",
+      facetParticipants("decentralization", "liberty", "ecological-priority"),
+      ["source-sep-anarchism", "source-oup-social-ecology", "source-cambridge-ecologism"],
+    ),
+  ],
+  islamism: [
+    researchedRelation(
+      "islamism:public-language-institutional-variation",
+      "conditionality",
+      "A comprehensive Islamic public language does not determine one institutional translation: law, participation, authority, and state form vary substantially among Islamist currents.",
+      facetParticipants("cultural-causation", "state-capacity", "solidarity", "equality"),
+      ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-islamism-case-universe", "source-cambridge-wasatiyya"],
+    ),
+    researchedRelation(
+      "islamism:social-justice-equality-framework",
+      "priority",
+      "Social justice and equality claims can be articulated within an Islamic framework, but their relation to religious authority, participation, and institutional route is current-dependent rather than a universal rule for the whole family.",
+      facetParticipants("solidarity", "equality", "cultural-causation", "state-capacity"),
+      ["source-cambridge-islamism", "source-oup-islamic-political-ideologies"],
+    ),
+  ],
+  khomeinism: [
+    researchedRelation(
+      "khomeinism:guardianship-constitutional-contestation",
+      "conflict-resolution",
+      "Jurist guardianship and participatory or constitutional claims stand in a contested relation across Khomeini's texts, institutional interpretations, and later receptions; no single resolution is assumed.",
+      facetParticipants("order-tradition", "democracy", "state-capacity"),
+      ["source-cambridge-arjomand-khomeini-order", "source-cambridge-namazi-khomeini-sovereign-state", "source-tandf-khomeini-democratic-constitutionalism", "source-oup-ghobadzadeh-governmental-shiism"],
+    ),
+    researchedRelation(
+      "khomeinism:independence-social-justice-route",
+      "conditionality",
+      "Anti-imperial independence and oppressed-centered justice are translated through revolutionary public authority, while their institutional balance and scope vary across historical and interpretive accounts.",
+      facetParticipants("internationalism", "equality", "state-capacity"),
+      ["source-ucp-khomeinism", "source-cambridge-arjomand-khomeini-order", "source-cambridge-islamism"],
+    ),
+  ],
+  qutbism: [
+    researchedRelation(
+      "qutbism:divine-sovereignty-comprehensive-order",
+      "priority",
+      "Divine sovereignty is treated as a governing normative priority that reaches a comprehensive moral and institutional order rather than a single policy preference, while scholarship complicates binary readings of authority.",
+      facetParticipants("order-tradition", "institutionalism", "state-capacity"),
+      ["source-oup-toth-qutb", "source-tandf-khatab-qutb-hakimiyya", "source-tandf-faradj-qutb-authority", "source-cambridge-qutb-march"],
+    ),
+    researchedRelation(
+      "qutbism:transformation-route-contestation",
+      "contestation",
+      "The relation between moral transformation, disciplined community, and the route to political change remains contested across Qutb's periods and later receptions; no single reformist or revolutionary sequence is inferred.",
+      facetParticipants("structural-power", "state-capacity", "reformism", "democracy"),
+      ["source-oup-toth-qutb", "source-cambridge-qutb-march", "source-cambridge-qutb-vahdat", "source-oup-wagemakers-qutb-legacy"],
+    ),
+  ],
+  "confucian-political-thought": [
+    researchedRelation(
+      "confucian-political-thought:order-through-cultivation",
+      "conditionality",
+      "Moral cultivation and ritual are theorized as supports for political order, but Mencian, Xunzian, and modern accounts differ over their relation to law, administration, and institutional constraint.",
+      facetParticipants("cultural-causation", "institutionalism", "order-tradition"),
+      ["source-oup-wong-confucian-political-philosophy", "source-oup-amine-classical-confucian-political-thought", "source-cambridge-kim-confucian-virtue-politics"],
+    ),
+    researchedRelation(
+      "confucian-political-thought:authority-and-welfare",
+      "priority",
+      "Political authority is connected to obligations toward the welfare and material sufficiency of the people rather than being justified only by office, inherited status, or administrative success.",
+      facetParticipants("solidarity", "order-tradition", "state-capacity"),
+      ["source-oup-amine-classical-confucian-political-thought", "source-oup-wong-confucian-political-philosophy"],
+    ),
+    researchedRelation(
+      "confucian-political-thought:modern-translation-contestation",
+      "contestation",
+      "The relation among virtue politics, democracy, equality, rights, merit, and republican checks remains a contested modern reconstruction; no single institutional sequence is inferred for the whole tradition.",
+      facetParticipants("democracy", "equality", "liberty", "reformism"),
+      ["source-sep-modern-confucianism", "source-oup-chan-confucian-perfectionism", "source-oup-chan-confucian-republicanism"],
+    ),
+  ],
+};
+
 const profilesWithResearchConceptions = (profiles: readonly ResearchAnchorProfile[]): readonly ResearchAnchorProfile[] => profiles.map((profile) => ({
   ...profile,
   conceptions: RESEARCH_ANCHOR_CONCEPTIONS[profile.targetId] ?? profile.conceptions,
 }));
 
-export const RESEARCH_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = profilesWithResearchConceptions([...PRIORITY_ANCHOR_PROFILES, ...CORE_ANCHOR_PROFILES, ...MACRO_ANCHOR_PROFILES, ...MESO_ANCHOR_PROFILES, ...MICRO_ANCHOR_PROFILES, ...MICRO_TRANCHE_TWO_ANCHOR_PROFILES, ...MICRO_TRANCHE_THREE_ANCHOR_PROFILES, ...MICRO_TRANCHE_FOUR_ANCHOR_PROFILES, ...CONTEXT_TRANCHE_FIVE_ANCHOR_PROFILES, ...COMPLETION_TRANCHE_SIX_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_SEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_EIGHT_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_NINE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_ELEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TWELVE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_THIRTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES]);
+const profilesWithResearchRelationships = (profiles: readonly ResearchAnchorProfile[]): readonly ResearchAnchorProfile[] => profiles.map((profile) => ({
+  ...profile,
+  relationships: RESEARCH_ANCHOR_RELATIONSHIPS[profile.targetId] ?? profile.relationships,
+}));
+
+export const RESEARCH_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = profilesWithResearchRelationships(profilesWithResearchConceptions([...PRIORITY_ANCHOR_PROFILES, ...CORE_ANCHOR_PROFILES, ...MACRO_ANCHOR_PROFILES, ...MESO_ANCHOR_PROFILES, ...MICRO_ANCHOR_PROFILES, ...MICRO_TRANCHE_TWO_ANCHOR_PROFILES, ...MICRO_TRANCHE_THREE_ANCHOR_PROFILES, ...MICRO_TRANCHE_FOUR_ANCHOR_PROFILES, ...CONTEXT_TRANCHE_FIVE_ANCHOR_PROFILES, ...COMPLETION_TRANCHE_SIX_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_SEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_EIGHT_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_NINE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_ELEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TWELVE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_THIRTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FIFTEEN_ANCHOR_PROFILES]));
 
 const neighbor = (
   targetId: string,

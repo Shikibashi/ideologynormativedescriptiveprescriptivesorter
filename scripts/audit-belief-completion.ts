@@ -215,6 +215,13 @@ const structuralChecks = {
       && configuration.institutionalImplications.length > 0
       && configuration.relationalConstraints.length === 5
       && configuration.sourceRefs.length > 0),
+  researchedConfigurationRelationshipsAreTraceable: canonicalConfigurations.every((configuration) =>
+    configuration.researchedRelationships.every((relationship) => relationship.statement.trim().length > 0
+      && relationship.participants.length >= 2
+      && relationship.sourceRefs.length > 0
+      && relationship.sourceRefs.every((sourceRef) => configuration.sourceRefs.includes(sourceRef))
+      && relationship.participants.every((participant) => participant.commitmentIds.length > 0
+        && participant.commitmentIds.every((commitmentId) => configuration.commitments.some((commitment) => commitment.id === commitmentId))))),
   configurationConceptionRepresentationIsClassified: canonicalConfigurations.every((configuration) =>
     configuration.conceptions.every((conception) =>
       conception.representation === "explicit-research-conception" ? conception.facetId === undefined : conception.facetId !== undefined)),

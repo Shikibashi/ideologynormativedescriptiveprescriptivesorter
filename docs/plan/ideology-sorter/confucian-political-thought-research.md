@@ -50,3 +50,11 @@ The candidates are research material, not respondent identity labels. The bank r
 | Canonical production anchors | 119 | 119 |
 
 The implementation is expected to preserve the canonical 9 macro / 44 meso / 72 micro node counts and the existing production scoring boundary.
+
+## Qualitative profile bridge — V124
+
+The research workbench now supplies a qualitative `ResearchAnchorProfile` for this registry target. It maps the source field onto four descriptive dimensions covering relational political order, ritual and cultivation, family and role relations, and the law/ritual/education/welfare/administration bundle; five normative dimensions covering welfare, official character, democracy, equality, and liberty; and four prescriptive dimensions covering cultivated and accountable office, combined governance mechanisms, material sufficiency, and plural institutional translation.
+
+The profile also records three qualitative conceptions: `political-order-through-relational-duty`, `cultivated-and-accountable-office`, and `plural-modern-institutional-translation`. Three typed relationships record the conditional role of cultivation and ritual, the connection between authority and welfare, and the contested translation among virtue politics, democracy, equality, rights, merit, and republican checks. These are source-backed theoretical configuration records, not respondent observations or scoring inputs.
+
+The profile remains `research_candidate`; the target remains `registry-only` and `not-scored`. No production question, production anchor, ontology placement, effect, coefficient, threshold, morphology candidate, legacy score, or content version changed. The expanded profile closes a qualitative documentation gap only; direct construct design and all external validation gates remain open.

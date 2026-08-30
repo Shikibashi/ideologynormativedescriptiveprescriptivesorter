@@ -281,6 +281,12 @@ const report = {
     allHaveNormativeCommitments: canonicalConfigurations.every((configuration) => configuration.normativeCommitments.length > 0),
     allHaveDescriptiveAssumptions: canonicalConfigurations.every((configuration) => configuration.descriptiveAssumptions.length > 0),
     allHaveInstitutionalImplications: canonicalConfigurations.every((configuration) => configuration.institutionalImplications.length > 0),
+    researchedRelationshipCount: canonicalConfigurations.reduce((total, configuration) => total + configuration.researchedRelationships.length, 0),
+    sourceBackedRelationshipCount: canonicalConfigurations.reduce((total, configuration) => total + configuration.researchedRelationships.filter((relationship) => relationship.evidencePosture.startsWith("source-backed")).length, 0),
+    contestedRelationshipCount: canonicalConfigurations.reduce((total, configuration) => total + configuration.researchedRelationships.filter((relationship) => relationship.evidencePosture === "source-backed-contested").length, 0),
+    canonicalConfigurationsWithResearchedRelationships: canonicalConfigurations.filter((configuration) => configuration.researchedRelationships.length > 0).map((configuration) => configuration.targetId),
+    canonicalConfigurationsWithoutResearchedRelationships: canonicalConfigurations.filter((configuration) => configuration.researchedRelationships.length === 0).map((configuration) => configuration.targetId),
+    allResearchedRelationshipParticipantsResolved: canonicalConfigurations.every((configuration) => configuration.researchedRelationships.every((relationship) => relationship.participants.every((participant) => participant.commitmentIds.length > 0))),
     allHaveRelationalConstraintGaps: canonicalConfigurations.every((configuration) => configuration.relationalConstraints.length === 5),
   },
   roundTrip: {

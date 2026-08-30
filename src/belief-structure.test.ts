@@ -497,6 +497,20 @@ describe("stated political commitment configuration", () => {
     expect(configurations.every((configuration) => configuration.priorities.status === "not-established")).toBe(true);
     expect(configurations.every((configuration) => configuration.relationalConstraints.length > 0)).toBe(true);
     expect(configurations.every((configuration) => configuration.relationalConstraints.length === 5)).toBe(true);
+    const researchedConfigurations = canonicalConfigurations.filter((configuration) => configuration.researchedRelationships.length > 0);
+    const researchedRelationships = researchedConfigurations.flatMap((configuration) => configuration.researchedRelationships);
+    expect(researchedConfigurations).toHaveLength(13);
+    expect(researchedRelationships).toHaveLength(25);
+    expect(new Set(researchedRelationships.map((relationship) => relationship.id)).size).toBe(researchedRelationships.length);
+    expect(researchedRelationships.every((relationship) => relationship.evidencePosture === "source-backed-contested")).toBe(true);
+    expect(researchedRelationships.some((relationship) => relationship.kind === "epistemic")).toBe(true);
+    expect(researchedConfigurations.every((configuration) => configuration.researchedRelationships.every((relationship) => relationship.statement.length > 0
+      && relationship.sourceRefs.length > 0
+      && relationship.participants.length >= 2
+      && relationship.participants.every((participant) => participant.commitmentIds.length > 0
+        && participant.commitmentIds.every((commitmentId) => configuration.commitments.some((commitment) => commitment.id === commitmentId)))))).toBe(true);
+    expect(researchedConfigurations.find((configuration) => configuration.targetId === "christian-democracy")?.researchedRelationships
+      .some((relationship) => relationship.participants.some((participant) => participant.id === "solidarity"))).toBe(true);
     expect(validateIdeologyConfigurations(DATASET)).toEqual([]);
     expect(canonicalConfigurations.every((configuration) => configuration.conceptualCommitments.length > 0)).toBe(true);
     expect(configurations.some((configuration) => configuration.conceptions.some((conception) => conception.conceptId === "self-management-freedom" && !conception.facetId && conception.representation === "explicit-research-conception" && conception.evidencePosture === "source-backed"))).toBe(true);

@@ -1638,3 +1638,44 @@ V122 closes a public interpretation leak in the configuration projection. Config
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
 
 V122 improves the separation between an inspectable configuration diagnostic and a ranked provisional candidate, but it does not establish a respondent measure or identity classification. The fixed ontology, source-backed configuration records, production effects, legacy scorer, share contract, and external validation ledger remain unchanged. The overall objective remains `INCOMPLETE` / fail-closed.
+
+## V123 observed verification — source-backed configuration relationships — 2026-08-30
+
+V123 adds an explicit research relationship layer to the configuration explanation. The first tranche contains 25 `source-backed-contested` relationship hypotheses across 13 canonical configurations, including an epistemic relation for Conservatism. Every participant resolves to one or more exact configuration commitments and every relationship retains source provenance. The records are rendered as theoretical configuration context and do not enter respondent observations, construct signals, morphology fit, affinity weights, or legacy scoring.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- src/belief-structure.test.ts --reporter=dot` | PASS | Focused configuration suite: 27/27; relationship ids, contested posture, source provenance, and participant bindings are validated |
+| `npx tsc --noEmit --pretty false` | PASS | Research relationship types, profile enrichment, configuration mapping, audit invariant, and UI disclosure compile |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-CXAsNm66.js` 2,899.10 kB (648.10 kB gzip); existing large-client-chunk advisory remains |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical/source-backed configurations; 25 researched relationships across 13 configurations; all participants resolved; all adversarial checks true; zero validation/failure errors |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass, including `researchedConfigurationRelationshipsAreTraceable`; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4189 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1 --reporter=list` | PASS | Rebuilt-preview completion/share scenario: 1/1 in 1.8 minutes; the source-backed configuration relationship disclosure and existing evidence/share paths pass |
+| `git diff --check` | PASS | No whitespace errors after the relationship layer, UI, audit, test, and documentation changes |
+| Preview cleanup / port 4189 | PASS | Preview stopped after browser QA; no listener remained |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V123 advances the researched configuration explanation while preserving the fail-closed boundary. The 25 relationship hypotheses are not exhaustive validation of the 119 canonical traditions; the remaining configurations retain explicit open relational gaps, and the six external validation gates remain `NOT RUN`. The overall objective remains `INCOMPLETE` / fail-closed.
+
+## V124 observed verification — Confucian Political Thought qualitative profile bridge — 2026-08-30
+
+V124 adds the missing qualitative profile, conception records, and relationship records for the existing Confucian Political Thought registry target. The profile is source-backed and contested, but remains research-only: the target has no production questions, no production anchor, no score contribution, and no respondent-facing classification path. The existing production and belief-structure contracts remain unchanged.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The Confucian profile, conception map, relationship map, audit fields, and focused test imports compile. |
+| `npx vitest run src/confucian-research.test.ts src/research.test.ts --no-file-parallelism --testTimeout=60000` | PASS | 94/94 focused tests pass, including the registry-only boundary, 13 profile dimensions, 3 conceptions, 3 relationships, and source provenance assertions. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets; 128/128 profiles and conceptions, empty missing-id lists, and zero validation errors. |
+| `npm run belief:question-coverage -- --summary` | PASS | 119 canonical targets retain 4/4/4 question blocks, zero validation errors, and zero blocking failures; four contested prescriptive gaps remain explicitly open. |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97 and all 1,500 production items remain covered by the existing facet-proxy measurement audit; three constructs remain unmeasured and 10 construct/layer cells remain open. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical/source-backed configurations and 25 existing canonical relationship records remain traceable; no registry-only Confucian record enters morphology. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass; exit 1 remains correct because six required external-study gates are `NOT RUN`. |
+| `npx vitest run --no-file-parallelism --testTimeout=60000` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; 2,908.46 kB JavaScript / 650.10 kB gzip; existing large-client-chunk advisory remains. |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; isolated reachability remains the structural criterion and competition ranks remain diagnostics. |
+| `npm run qa` | PASS | Full browser suite: 11/11 scenarios in 2.6 minutes, including inventory, research workbench, missing-information, under-determined diagnostics, completion/share, responsive, and malformed-share paths. |
+| `git diff --check` | PASS | No whitespace errors after the profile bridge, audit field, test, and documentation changes. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The research coverage audit confirms that the qualitative bridge closes the sole missing profile/conception row without changing the production surface. Local TypeScript, unit, and structural evidence does not establish comprehension, expert agreement, psychometric validity, invariance, population/consequence safety, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed until those external gates are separately run and recorded.
