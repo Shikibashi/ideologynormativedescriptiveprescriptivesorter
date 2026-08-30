@@ -2078,3 +2078,18 @@ The current checkout exposes ten source-backed-contested route variants for the 
 | Required external validation gates | NOT RUN | No external reviewer, respondent, psychometric, cross-context, population/consequence, or held-out morphology evidence was created or promoted. |
 
 V144 preserves contested scholarly plurality as qualitative context and improves route traceability only. It does not promote research candidates, establish a respondent belief, change the fixed ontology, alter the belief-to-morphology path, or close the comprehensive objective.
+
+## V145 observed verification — include research-route integrity in completion audit — 2026-08-30
+
+The objective-level completion audit now includes the existing research metadata validator and explicit checks for the four contested route-bearing profiles. This ensures that a malformed route or a route that overlaps a production/scoring id cannot coexist with an otherwise structurally green objective report.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The completion-audit imports and route assertions compile with no output. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed configurations, 238 source-backed-contested relationships, all adversarial checks true, validation errors 0, failure count 0. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight source-linked direct pilot items remain isolated from production scoring. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | New route checks pass; structural eligibility is true, validation errors are 0, and the six external-study gates remain `NOT RUN`, so exit 1 is expected. |
+| `npm run test:run -- src/research.test.ts --no-file-parallelism --reporter=dot` | PASS | 95/95 research tests passed, including route metadata/layer/provenance rejection. |
+| `git diff --check` | PASS | No whitespace errors. |
+
+V145 closes a local completion-audit observability gap only. It does not create external evidence, promote route context, change scoring or morphology, or close the comprehensive objective.

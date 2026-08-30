@@ -1085,3 +1085,9 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-144-01 | Open Research and select each of `populism`, `islamism`, `religious-nationalism`, and `deep-ecology`. | The selected profile exposes 2, 2, 2, and 4 `source-backed-contested` prescriptive route variants respectively; each route has a statement, source links, and prescriptive dimensions while the base family direction remains contested/indeterminate. |
 | R-144-01 | Run the route metadata regression and research coverage audit. | The route validator accepts the current source snapshot, rejects missing route provenance or a non-prescriptive route dimension, reports 10 route variants across 4 targets, and reports zero research-bank validation errors. |
 | R-144-02 | Run TypeScript, full Vitest, production build, and browser QA after the route surface is present. | All executed local checks pass; the route records remain qualitative context and do not enter respondent scoring, morphology fit, affinity ordering, or promotion. |
+
+## V145 completion-audit reconciliation scenario
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-145-01 | Run `npm run belief:completion-audit -- --summary` with the contested route metadata present. | The report includes passing research-metadata, expected-route-coverage, and route-non-scoring structural checks; structural eligibility is true, while the six external-study gates remain `NOT RUN` and overall status remains `INCOMPLETE`. |
