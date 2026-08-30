@@ -1,5 +1,6 @@
 import { DATASET } from "./data";
 import { ideologyConfigurationsFor } from "./beliefs";
+import { RESEARCH_ANCHOR_PROFILES } from "./research-bank";
 import { calculateResults, scoringAnchorsFor, validateDataset } from "./scoring";
 import type {
   AnswerMap,
@@ -9,6 +10,9 @@ import type {
   IdeologyConfiguration,
   Layer,
   Question,
+  ResearchAnchorCentrality,
+  ResearchAnchorRouteVariant,
+  ResearchQualitativeDirection,
 } from "./types";
 
 const LAYERS = ["descriptive", "normative", "prescriptive"] as const satisfies readonly Layer[];
@@ -49,6 +53,29 @@ export type IdeologyQuestionLayerCoverage = Readonly<{
   status: "pass" | "gap" | "not-established";
 }>;
 
+/**
+ * A trace from one source-backed qualitative route to the existing target
+ * question block. Route variants are not extra ideology nodes, respondent
+ * evidence, or scoring alternatives; this record only shows whether the
+ * route's determinate prescriptive facets have an existing target item.
+ */
+export type IdeologyRouteQuestionCoverage = Readonly<{
+  routeId: string;
+  label: string;
+  statement: string;
+  sourceIds: readonly string[];
+  layer: "prescriptive";
+  questionIds: readonly string[];
+  questionCount: number;
+  directionalCommitmentFacetIds: readonly string[];
+  coveredDirectionalFacetIds: readonly string[];
+  uncoveredDirectionalFacetIds: readonly string[];
+  directionalItemCount: number;
+  alignmentCounts: Readonly<Record<IdeologyQuestionAlignment, number>>;
+  questionAlignments: readonly IdeologyQuestionAlignmentRecord[];
+  status: "pass" | "gap" | "not-established";
+}>;
+
 export type IdeologyQuestionEvidenceTraceLayer = Readonly<{
   layer: Layer;
   representationPosture: IdeologyQuestionLayerPosture;
@@ -74,6 +101,7 @@ export type IdeologyQuestionCoverageRow = Readonly<{
   label: string;
   ontologyNodeId: string;
   layers: Readonly<Record<Layer, IdeologyQuestionLayerCoverage>>;
+  routeVariantCoverage: readonly IdeologyRouteQuestionCoverage[];
   evidenceTrace: IdeologyQuestionEvidenceTrace;
   allLayersPass: boolean;
   targetCandidatePresent: boolean;
@@ -97,6 +125,7 @@ export type IdeologyQuestionCoverageReport = Readonly<{
     allCanonicalTargetsReachPrimaryProfileEvidence: boolean;
     allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: boolean;
     allCanonicalTargetsReachTargetMorphologyEvidence: boolean;
+    allResearchRouteVariantsHaveQuestionTrace: boolean;
   }>;
 }>;
 
@@ -106,10 +135,21 @@ const centralityWeight = (centrality: BeliefCommitmentCentrality): number => {
   return 0.5;
 };
 
+const researchCentralityWeight = (centrality: ResearchAnchorCentrality): number => {
+  if (centrality === "defining") return 2;
+  if (centrality === "characteristic") return 1;
+  return 0.5;
+};
+
 const directionSign = (direction: BeliefCommitmentDirection): number => {
   if (direction === "positive") return 1;
   if (direction === "negative") return -1;
   return 0;
+};
+
+const qualitativeDirectionSign = (direction: ResearchQualitativeDirection): number => {
+  if (direction === "indeterminate") return 0;
+  return direction.endsWith("-negative") ? -1 : 1;
 };
 
 const directionalCommitmentWeightsFor = (
@@ -235,6 +275,66 @@ const layerCoverageFor = (
       : commitmentWeights.size === 0
         ? "not-established"
         : hasMappedDirectionalCommitment
+          ? "pass"
+          : "gap",
+  };
+};
+
+const routeDirectionalCommitmentWeightsFor = (
+  route: ResearchAnchorRouteVariant,
+): ReadonlyMap<string, number> => {
+  const weights = new Map<string, number>();
+  for (const dimension of route.dimensions) {
+    if (dimension.layer !== "prescriptive") continue;
+    const direction = qualitativeDirectionSign(dimension.expectedDirection);
+    if (direction === 0) continue;
+    weights.set(
+      dimension.facetId,
+      (weights.get(dimension.facetId) ?? 0) + direction * researchCentralityWeight(dimension.centrality),
+    );
+  }
+  return weights;
+};
+
+const routeQuestionCoverageFor = (
+  route: ResearchAnchorRouteVariant,
+  questions: readonly Question[],
+): IdeologyRouteQuestionCoverage => {
+  const prescriptiveQuestions = questions.filter((question) => question.layer === "prescriptive");
+  const commitmentWeights = routeDirectionalCommitmentWeightsFor(route);
+  const directionalCommitmentFacetIds = [...new Set(route.dimensions
+    .filter((dimension) => dimension.layer === "prescriptive" && qualitativeDirectionSign(dimension.expectedDirection) !== 0)
+    .map((dimension) => dimension.facetId))].sort();
+  const questionAlignments = prescriptiveQuestions.map((question) => alignmentForQuestion(question, commitmentWeights));
+  const coveredDirectionalFacetIds = directionalCommitmentFacetIds.filter((facetId) =>
+    questionAlignments.some((alignment) => alignment.matchedFacetIds.includes(facetId)));
+  const uncoveredDirectionalFacetIds = directionalCommitmentFacetIds.filter((facetId) =>
+    !coveredDirectionalFacetIds.includes(facetId));
+  const alignmentCounts = emptyAlignmentCounts();
+  for (const alignment of questionAlignments) alignmentCounts[alignment.alignment] += 1;
+
+  return {
+    routeId: route.id,
+    label: route.label,
+    statement: route.statement,
+    sourceIds: route.sourceIds,
+    layer: "prescriptive",
+    questionIds: prescriptiveQuestions.map((question) => question.id),
+    questionCount: prescriptiveQuestions.length,
+    directionalCommitmentFacetIds,
+    coveredDirectionalFacetIds,
+    uncoveredDirectionalFacetIds,
+    directionalItemCount: questionAlignments.filter((alignment) => alignment.matchedFacetIds.length > 0).length,
+    alignmentCounts,
+    questionAlignments,
+    // Route alternatives must retain a four-item target block and at least
+    // one mapped determinate facet. Uncovered facets stay visible for review;
+    // this local trace is not a completeness, validity, or respondent gate.
+    status: prescriptiveQuestions.length !== 4
+      ? "gap"
+      : directionalCommitmentFacetIds.length === 0
+        ? "not-established"
+        : coveredDirectionalFacetIds.length > 0
           ? "pass"
           : "gap",
   };
@@ -386,6 +486,8 @@ const rowFor = (configuration: IdeologyConfiguration, dataset: Dataset): Ideolog
     layer,
     layerCoverageFor(configuration, layer, targetQuestions),
   ])) as Record<Layer, IdeologyQuestionLayerCoverage>;
+  const routeVariants = RESEARCH_ANCHOR_PROFILES.find((profile) => profile.targetId === configuration.targetId)?.routeVariants ?? [];
+  const routeVariantCoverage = routeVariants.map((route) => routeQuestionCoverageFor(route, targetQuestions));
   const result = calculateResults(targetTraceAnswersFor(configuration, dataset), dataset);
   const targetCandidate = result.primary.morphology.candidates.find((candidate) => candidate.anchorId === configuration.targetId);
   const evidenceTrace = targetEvidenceTraceFor(configuration, dataset, result, targetCandidate);
@@ -394,6 +496,7 @@ const rowFor = (configuration: IdeologyConfiguration, dataset: Dataset): Ideolog
     label: configuration.label,
     ontologyNodeId: configuration.ontologyNodeId,
     layers,
+    routeVariantCoverage,
     evidenceTrace,
     allLayersPass: LAYERS.every((layer) => layers[layer].status === "pass"),
     targetCandidatePresent: targetCandidate !== undefined,
@@ -424,6 +527,11 @@ export const auditIdeologyQuestionCoverage = (dataset: Dataset = DATASET): Ideol
     ...(row.targetCandidateStatus !== null && row.targetCandidateStatus !== "provisional-candidate"
       ? [`${row.targetId} reaches a non-provisional primary morphology candidate`]
       : []),
+    ...row.routeVariantCoverage.flatMap((route) => route.status === "pass"
+      ? []
+      : route.status === "not-established"
+        ? [`${row.targetId} ${route.routeId} route has no determinate prescriptive direction`]
+        : [`${row.targetId} ${route.routeId} route does not reach a four-item target question trace`]),
   ]);
   const openGaps = rows.flatMap((row) => LAYERS.flatMap((layer) => {
     const coverage = row.layers[layer];
@@ -443,10 +551,12 @@ export const auditIdeologyQuestionCoverage = (dataset: Dataset = DATASET): Ideol
     allCanonicalTargetsReachPrimaryProfileEvidence: rows.every((row) => row.evidenceTrace.allTargetQuestionsReachPrimaryProfile),
     allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: rows.every((row) => row.evidenceTrace.allTargetLayersReachDirectionalPrimaryProfile),
     allCanonicalTargetsReachTargetMorphologyEvidence: rows.every((row) => row.evidenceTrace.allLayersReachTargetMorphology),
+    allResearchRouteVariantsHaveQuestionTrace: rows.flatMap((row) => row.routeVariantCoverage).length > 0
+      && rows.flatMap((row) => row.routeVariantCoverage).every((route) => route.status === "pass"),
   };
   return {
     generatedAt: new Date().toISOString(),
-    interpretation: "Local structural content-traceability and synthetic configuration-path audit only. Target metadata is used only to select fixture items; the audit checks question-id presence through the primary profile and target morphology basis. It does not establish respondent comprehension, candidate rank, reliability, validity, invariance, population consequences, or a political identity.",
+    interpretation: "Local structural content-traceability and synthetic configuration-path audit only. Target metadata is used only to select fixture items; the audit checks question-id presence through the primary profile and target morphology basis, and separately traces source-backed prescriptive route variants to the existing target block. Route records remain qualitative, non-scoring context. It does not establish respondent comprehension, candidate rank, reliability, validity, invariance, population consequences, or a political identity.",
     canonicalTargetCount: rows.length,
     rows,
     validationErrors: validateDataset(dataset),

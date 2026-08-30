@@ -1,0 +1,23 @@
+---
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#F4EFE7"
+    primaryTextColor: "#24221E"
+    primaryBorderColor: "#C9BDAE"
+    lineColor: "#706A61"
+---
+flowchart TD
+    Route([Source-backed route variant]) --> Metadata{Prescriptive dimensions and source provenance valid?}
+    Metadata -->|No| Invalid[Keep route metadata invalid and visible]
+    Metadata -->|Yes| Select[Select existing target-tagged prescriptive block]
+    Select --> Count{Exactly four target questions?}
+    Count -->|No| Gap[Emit structural route gap]
+    Count -->|Yes| Align[Align route facet directions to existing question effects]
+    Align --> Mapped{At least one determinate route facet mapped?}
+    Mapped -->|No| Gap
+    Mapped -->|Yes| Trace[Emit source-linked non-scoring route trace]
+    Trace --> Preserve[Preserve base family posture as contested or indeterminate]
+    Gap --> Preserve
+    Invalid --> Preserve
+    Preserve --> Output([Coverage report and completion structural check])

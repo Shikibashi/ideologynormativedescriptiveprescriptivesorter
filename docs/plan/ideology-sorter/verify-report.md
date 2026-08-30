@@ -2159,3 +2159,17 @@ V149 adds an additive morphology observability trace over the existing source-ba
 | Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
 
 V149 improves structural interpretability and same-layer evidence traceability only. It does not establish respondent comprehension, expert agreement, layer separability, reliability, validity, invariance, population/consequence safety, empirical classification, or held-out respondent morphology; the comprehensive objective remains `INCOMPLETE` / fail-closed.
+
+## V150 observed verification — route-aware target-question trace — 2026-08-30
+
+V150 extends the existing canonical question-coverage audit with a non-duplicative route trace. The repository already had the claim-review ledger and packet validator proposed during planning, so no second ledger was added. The new trace joins the ten existing source-backed-contested prescriptive route variants to the existing four-item target blocks for Populism, Islamism, Religious Nationalism, and Deep Ecology. It preserves base-family indeterminacy and remains outside production scoring and respondent evidence.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Route coverage types, audit summaries, completion structural check, and regression contracts compile with no output. |
+| `npx vitest run src/ideology-question-coverage.test.ts --no-file-parallelism` | PASS | Focused route/content trace suite: 9/9 tests passed, including normal 2/2/2/4 route inventory and broken-effect fail-closed behavior. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | 119 canonical targets, 10 route variants, route trace structural check true, zero validation errors/failures; the same four family-level prescriptive gaps remain open and `contested-indeterminate`. |
+| `git diff --check` | PASS | No whitespace errors after the V150 source, audit, flow, test, and documentation changes. |
+| Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
+
+The V150 local evidence is limited to route-to-existing-question traceability and fail-closed structural behavior. It does not establish comprehension, response-process validity, expert agreement, route exclusivity, psychometric reliability/validity, invariance, population/consequence safety, empirical classification, or held-out respondent morphology; the comprehensive objective remains `INCOMPLETE` / fail-closed.

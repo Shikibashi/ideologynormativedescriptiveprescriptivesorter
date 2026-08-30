@@ -29,6 +29,7 @@ describe("ideology question coverage", () => {
       allCanonicalTargetsReachPrimaryProfileEvidence: true,
       allCanonicalTargetsReachDirectionalPrimaryProfileEvidence: false,
       allCanonicalTargetsReachTargetMorphologyEvidence: false,
+      allResearchRouteVariantsHaveQuestionTrace: true,
     });
   }, 30_000);
 
@@ -42,6 +43,56 @@ describe("ideology question coverage", () => {
     expect(islamism?.layers.normative.questionAlignments.find((item) => item.questionId === "n-islamism-02"))
       .toMatchObject({ alignment: "aligned", matchedFacetIds: ["equality"] });
   });
+
+  it("traces every source-backed route variant to the existing contested family block", () => {
+    const expectedRouteCounts = new Map([
+      ["populism", 2],
+      ["islamism", 2],
+      ["religious-nationalism", 2],
+      ["deep-ecology", 4],
+    ]);
+    const routeRows = report.rows.filter((row) => row.routeVariantCoverage.length > 0);
+    const routeCoverages = routeRows.flatMap((row) => row.routeVariantCoverage);
+
+    expect(routeRows.map((row) => row.targetId)).toEqual([...expectedRouteCounts.keys()]);
+    expect(routeCoverages).toHaveLength(10);
+    expect(report.structuralChecks.allResearchRouteVariantsHaveQuestionTrace).toBe(true);
+    for (const [targetId, routeCount] of expectedRouteCounts) {
+      const row = report.rows.find((candidate) => candidate.targetId === targetId);
+
+      expect(row?.routeVariantCoverage).toHaveLength(routeCount);
+      expect(row?.routeVariantCoverage.every((route) => route.status === "pass")).toBe(true);
+      for (const route of row?.routeVariantCoverage ?? []) {
+        expect(route.layer).toBe("prescriptive");
+        expect(route.questionCount).toBe(4);
+        expect(route.sourceIds.length).toBeGreaterThan(0);
+        expect(route.directionalCommitmentFacetIds.length).toBeGreaterThan(0);
+        expect(route.coveredDirectionalFacetIds.length).toBeGreaterThan(0);
+        expect(route.directionalItemCount).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("keeps route traces non-scoring and fails closed when a route loses its target effects", () => {
+    const brokenDataset: Dataset = {
+      ...DATASET,
+      questions: DATASET.questions.map((question) => question.id.startsWith("p-populism-")
+        ? { ...question, effects: {} }
+        : question),
+    };
+    const brokenReport = auditIdeologyQuestionCoverage(brokenDataset);
+    const populism = brokenReport.rows.find((row) => row.targetId === "populism");
+
+    expect(populism?.layers.prescriptive.representationPosture).toBe("contested-indeterminate");
+    expect(populism?.routeVariantCoverage.every((route) => route.status === "gap")).toBe(true);
+    expect(brokenReport.structuralChecks.allResearchRouteVariantsHaveQuestionTrace).toBe(false);
+    expect(brokenReport.openGaps).toContain(
+      "populism prescriptive has no determinate source-backed commitment direction; this layer remains contested or not established",
+    );
+    expect(brokenReport.failures).toContain(
+      "populism populism:majoritarian-popular-sovereignty route does not reach a four-item target question trace",
+    );
+  }, 30_000);
 
   it("distinguishes directional, contested, and unrepresented layer postures", () => {
     const classicalLiberalism = report.rows.find((row) => row.targetId === "classical-liberalism");

@@ -237,6 +237,7 @@ const structuralChecks = {
   questionCoverageHasNoUnexpectedFailures: questionCoverage.failures.length === 0,
   questionCoverageHasCompleteTargetBlocks: questionCoverage.structuralChecks.allCanonicalTargetsHaveFourQuestionsPerLayer,
   questionCoverageMorphologyIsProvisional: questionCoverage.structuralChecks.allPrimaryMorphologyCandidatesAreProvisional,
+  questionCoverageRouteVariantsHaveQuestionTrace: questionCoverage.structuralChecks.allResearchRouteVariantsHaveQuestionTrace,
   constructLayerCoverageIsExplicit: BELIEF_CONSTRUCT_DEFINITIONS.every((definition) => LAYERS.every((layer) =>
     baseResult.primary.profile.measurementSummary.constructLayerItemCounts[definition.id][layer] === expectedConstructLayerItemCounts[definition.id][layer],
   ))
@@ -358,6 +359,12 @@ const report = {
     relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
     contestedRouteVariantTargets: contestedRouteVariantProfiles.filter((profile) => profile !== undefined).length,
     contestedRouteVariants: contestedRouteVariants.length,
+    routeVariantQuestionCoverage: questionCoverage.rows
+      .flatMap((row) => row.routeVariantCoverage)
+      .reduce<Record<string, number>>((counts, route) => ({
+        ...counts,
+        [route.status]: (counts[route.status] ?? 0) + 1,
+      }), {}),
     mixedProfileUnderDeterminedDiagnostics: mixedResult.primary.morphology.underDeterminedCandidates.length,
     ideologyQuestionCoverage: {
       canonicalTargets: questionCoverage.canonicalTargetCount,

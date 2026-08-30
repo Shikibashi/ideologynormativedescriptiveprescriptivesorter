@@ -5,6 +5,7 @@
 | `quiz-flow.mmd` | Intro, answer navigation, layer transitions, completion. | `src/App.tsx` |
 | `scoring-flow.mmd` | Coverage gate, facet aggregation, distance, family balance, pulls. | `src/scoring.ts` |
 | `share-flow.mmd` | Safe restore and explicit share-link creation. | `src/share.ts`, `src/App.tsx` |
+| `route-coverage-flow.mmd` | Trace source-backed prescriptive route variants to existing target questions without scoring or closing family-level indeterminacy. | `src/ideology-question-coverage.ts`, `src/research.ts` |
 
 ## Module status
 
