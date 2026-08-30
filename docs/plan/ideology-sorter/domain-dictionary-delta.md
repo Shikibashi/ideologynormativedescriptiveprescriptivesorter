@@ -20,3 +20,10 @@
 ## Global Dictionary Sync
 
 - `[inferred-skip]` Project-specific terms are not written to the global dictionary during this run.
+
+## v3 → v4
+
+- ADD: belief profile, belief construct, facet proxy, direct categorical evidence, relational evidence, ideological morphology candidate, and evidence gate.
+- REFINE: `observed` and `partial` belief-construct statuses describe local mapped evidence only; they do not assert a validated latent trait.
+- REFINE: explicit direct and relational evidence remains traceable but effect-free until applicable content, response-process, empirical, comparability, and consequence gates are satisfied.
+- ACCEPTED-BY-DEFAULT: an open external evidence gate keeps the affected artifact provisional and the objective-level completion audit fail-closed.

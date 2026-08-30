@@ -1,5 +1,7 @@
 import { DATASET, layerFacetMap } from "./data";
-import { LAYERS, type Answer, type AnswerMap, type CalculationResult, type Dataset, type FacetSignal, type IdeologyPathNode, type InterpretiveNeighbor, type Layer, type LayerResult } from "./types";
+import { calculateBeliefProfile, configurationForAnchor, interpretiveBasisFor, validateBeliefModel } from "./beliefs";
+import { deriveIdeologicalMorphology } from "./morphology";
+import { LAYERS, type Answer, type AnswerMap, type BeliefDirectEvidence, type BeliefRelationalEvidence, type CalculationResult, type Dataset, type FacetSignal, type IdeologyPathNode, type InterpretiveNeighbor, type Layer, type LayerResult } from "./types";
 
 const ANSWER_VALUES = new Set<Answer>([-2, -1, 0, 1, 2, "no-view"]);
 
@@ -45,6 +47,8 @@ export const validateDataset = (dataset: Dataset): readonly string[] => {
   const questionIds = new Set<string>();
   const anchorIds = new Set<string>();
   const sourceIds = new Set(dataset.sources.map((source) => source.id));
+
+  errors.push(...validateBeliefModel(dataset));
 
   for (const source of dataset.sources) {
     if (!source.label.trim()) errors.push(`source ${source.id} is missing a label`);
@@ -297,7 +301,12 @@ const separationFor = (candidates: readonly AnchorCandidate[], anchorId: string,
   return { margin: safeMargin, separation };
 };
 
-const interpretiveNeighborFor = (candidate: AnchorCandidate, candidates: readonly AnchorCandidate[], dataset: Dataset): InterpretiveNeighbor => {
+const interpretiveNeighborFor = (
+  candidate: AnchorCandidate,
+  candidates: readonly AnchorCandidate[],
+  dataset: Dataset,
+  profiles: Readonly<Partial<Record<Layer, Readonly<Record<string, number>>>>>,
+): InterpretiveNeighbor => {
   const { anchor, fit } = candidate;
   const ontologyNode = dataset.ideologyNodes.find((node) => node.id === anchor.ontologyNodeId);
   const { margin, separation } = separationFor(candidates, anchor.id, fit, dataset);
@@ -317,12 +326,14 @@ const interpretiveNeighborFor = (candidate: AnchorCandidate, candidates: readonl
     tied: margin <= dataset.policy.tieTolerance,
     separation,
     margin,
+    configuration: configurationForAnchor(anchor, dataset),
+    basis: interpretiveBasisFor(profiles, dataset),
   };
 };
 
 const calculateNeighbors = (profile: Readonly<Record<string, number>>, facetWeights: Readonly<Record<string, number>>, layer: Layer, dataset: Dataset): readonly InterpretiveNeighbor[] => {
   const candidates = anchorCandidatesFor(profile, facetWeights, layer, dataset);
-  return orderedAnchorCandidates(candidates, dataset).map((candidate) => interpretiveNeighborFor(candidate, candidates, dataset));
+  return orderedAnchorCandidates(candidates, dataset).map((candidate) => interpretiveNeighborFor(candidate, candidates, dataset, { [layer]: profile }));
 };
 
 const isCovered = (result: LayerResult): result is Extract<LayerResult, { kind: "covered" }> => result.kind === "covered";
@@ -351,12 +362,13 @@ const combinedResultFor = (layers: Readonly<Record<Layer, LayerResult>>, dataset
   }
 
   const selected = orderedAnchorCandidates(candidates, dataset);
+  const profiles = Object.fromEntries(LAYERS.map((layer) => [layer, (layers[layer] as Extract<LayerResult, { kind: "covered" }>).profile])) as Record<Layer, Readonly<Record<string, number>>>;
   return {
     kind: "covered",
     coveredLayers: LAYERS,
     coverage: LAYERS.reduce((sum, layer) => sum + (isCovered(layers[layer]) ? layers[layer].coverage : 0), 0) / LAYERS.length,
     neighbors: selected.map((candidate) => ({
-      ...interpretiveNeighborFor(candidate, candidates, dataset),
+      ...interpretiveNeighborFor(candidate, candidates, dataset, profiles),
       layerFits: candidate.layerFits,
     })),
   };
@@ -385,7 +397,12 @@ const crossLayerPulls = (layers: Readonly<Record<Layer, LayerResult>>): readonly
   return pulls;
 };
 
-export const calculateResults = (answers: AnswerMap, dataset: Dataset = DATASET): CalculationResult => {
+export const calculateResults = (
+  answers: AnswerMap,
+  dataset: Dataset = DATASET,
+  relationalEvidence: readonly BeliefRelationalEvidence[] = [],
+  directEvidence: readonly BeliefDirectEvidence[] = [],
+): CalculationResult => {
   const layers = {} as Record<Layer, LayerResult>;
 
   for (const layer of LAYERS) {
@@ -416,10 +433,14 @@ export const calculateResults = (answers: AnswerMap, dataset: Dataset = DATASET)
     };
   }
 
+  const pulls = crossLayerPulls(layers);
+  const beliefProfile = calculateBeliefProfile(answers, dataset, pulls, relationalEvidence, directEvidence);
   return {
+    beliefProfile,
+    beliefMorphology: deriveIdeologicalMorphology(beliefProfile, dataset),
     layers,
     combined: combinedResultFor(layers, dataset),
-    pulls: crossLayerPulls(layers),
+    pulls,
     datasetId: dataset.manifest.datasetId,
     contentVersion: dataset.manifest.contentVersion,
     scoringPolicyVersion: dataset.manifest.scoringPolicyVersion,

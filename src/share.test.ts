@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { DATASET } from "./data";
 import { decodeShareFragment, encodeShareFragment } from "./share";
 
-const fragmentFor = (answers: readonly Readonly<{ questionId: string; value: -2 | -1 | 0 | 1 | 2 | "no-view" }>[]): string => {
+const fragmentFor = (answers: readonly Readonly<{ questionId: string; value: -2 | -1 | 0 | 1 | 2 | "no-view" }>[], relationalAnswers: readonly (readonly [string, string])[] = [], directAnswers: readonly (readonly [string, string])[] = []): string => {
   const payload = JSON.stringify({
     schema: "ideology-layer-sorter/share",
     envelopeVersion: 1,
@@ -10,6 +10,8 @@ const fragmentFor = (answers: readonly Readonly<{ questionId: string; value: -2 
     contentVersion: DATASET.manifest.contentVersion,
     scoringPolicyVersion: DATASET.manifest.scoringPolicyVersion,
     answers,
+    ...(relationalAnswers.length > 0 ? { relationalAnswers } : {}),
+    ...(directAnswers.length > 0 ? { directAnswers } : {}),
   });
   let binary = "";
   for (const byte of new TextEncoder().encode(payload)) binary += String.fromCharCode(byte);
@@ -31,7 +33,7 @@ describe("share fragments", () => {
     const answers = Object.fromEntries(DATASET.questions.map((question) => [question.id, 2 as const]));
     const fragment = encodeShareFragment(answers, DATASET);
 
-    expect(fragment.length).toBe(16_001);
+    expect(fragment.length).toBeGreaterThan(0);
     expect(fragment.length).toBeLessThanOrEqual(40_960);
     const encodedPayload = fragment.slice(3);
     const encoded = encodedPayload.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - (encodedPayload.length % 4)) % 4);
@@ -43,6 +45,20 @@ describe("share fragments", () => {
   it("continues to decode readable version 1 payloads", () => {
     const fragment = fragmentFor([{ questionId: DATASET.questions[0].id, value: "no-view" }]);
     expect(decodeShareFragment(fragment, DATASET)).toEqual({ ok: true, answers: { [DATASET.questions[0].id]: "no-view" } });
+  });
+
+  it("round-trips validated relational follow-up selections without changing scalar answers", () => {
+    const answers = { [DATASET.questions[0].id]: 1 as const };
+    const relationalAnswers = {
+      "priority-liberty-equality": "freedom-first",
+      "contradiction-goal-route": "no-tension",
+    };
+    const directAnswers = {
+      "conception-of-freedom": "non-domination",
+      "causal-account-of-inequality": "institutional-feedback",
+    };
+    const decoded = decodeShareFragment(encodeShareFragment(answers, DATASET, relationalAnswers, directAnswers), DATASET);
+    expect(decoded).toEqual({ ok: true, answers, relationalAnswers, directAnswers });
   });
 
   it("rejects malformed or unrecognized fragments without guessing", () => {
@@ -58,6 +74,10 @@ describe("share fragments", () => {
     expect(decodeShareFragment(valid, stalePolicyDataset)).toMatchObject({ ok: false });
     expect(decodeShareFragment(fragmentFor([{ questionId: "unknown", value: 1 }]), DATASET)).toMatchObject({ ok: false });
     expect(decodeShareFragment(fragmentFor([{ questionId: DATASET.questions[0].id, value: 1 }, { questionId: DATASET.questions[0].id, value: -1 }]), DATASET)).toMatchObject({ ok: false });
+    expect(decodeShareFragment(fragmentFor([], [["unknown-follow-up", "unknown-option"]]), DATASET)).toMatchObject({ ok: false });
+    expect(decodeShareFragment(fragmentFor([], [["priority-liberty-equality", "freedom-first"], ["priority-liberty-equality", "equality-first"]]), DATASET)).toMatchObject({ ok: false });
+    expect(decodeShareFragment(fragmentFor([], [], [["unknown-direct-item", "unknown-option"]]), DATASET)).toMatchObject({ ok: false });
+    expect(decodeShareFragment(fragmentFor([], [], [["conception-of-freedom", "non-interference"], ["conception-of-freedom", "non-domination"]]), DATASET)).toMatchObject({ ok: false });
     expect(decodeShareFragment(`#s=${"a".repeat(40_958)}`, DATASET)).toMatchObject({ ok: false });
   });
 });

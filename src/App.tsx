@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { answerOptions, DATASET, sourceMap } from "./data";
+import { BELIEF_GAP_CANDIDATES } from "./belief-gap-candidates";
+import { BELIEF_DIRECT_ITEMS, directEvidenceForAnswers } from "./belief-direct-items";
+import type { BeliefDirectAnswerMap } from "./belief-direct-items";
+import { BELIEF_RELATIONAL_FOLLOWUPS, relationalEvidenceForAnswers } from "./belief-followups";
+import type { BeliefRelationalAnswerMap } from "./belief-followups";
+import { constructLabelFor } from "./beliefs";
 import {
   buildResearchTargets,
   createResearchCandidate,
@@ -22,13 +28,15 @@ import {
 import { calculateResults, formatFit } from "./scoring";
 import { researchTaxonomyDecisionForTarget, researchTaxonomyDispositionLabels } from "./research-governance";
 import { decodeShareFragment, encodeShareFragment } from "./share";
-import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type CombinedResult, type IdeologyLevel, type Layer, type LayerResult, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
+import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefDiagnosticLayer, type BeliefMeasurementStatus, type BeliefProfile, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
 
 type PrimaryView = "intro" | "quiz" | "results";
 type View = PrimaryView | "research";
 
 type SessionState = Readonly<{
   answers: AnswerMap;
+  directAnswers: BeliefDirectAnswerMap;
+  relationalAnswers: BeliefRelationalAnswerMap;
   view: View;
   questionIndex: number;
   returnView?: PrimaryView;
@@ -74,18 +82,81 @@ const researchLabelFor = (targetId: string): string =>
 
 const hasAnswer = (answers: AnswerMap, questionId: string): boolean => answers[questionId] !== undefined;
 
+const beliefStatusLabels: Record<BeliefMeasurementStatus, string> = {
+  observed: "observed item association",
+  partial: "partial proxy",
+  "not-yet-measured": "not yet measured",
+};
+
+const beliefDiagnosticLayerLabels: Record<BeliefDiagnosticLayer, string> = {
+  question: "question",
+  construct: "construct",
+  conception: "conception",
+  relationship: "relationship",
+  weighting: "weighting",
+  "causal-belief": "causal belief",
+  "priority-conflict-rule": "priority/conflict rule",
+  "institutional-inference": "institutional inference",
+  "ideological-mapping": "ideological mapping",
+};
+
+const formatSignedSignal = (value: number): string => `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`;
+
+const basisSummaryFor = (basis: readonly InterpretiveBasis[]): string => basis
+  .slice(0, 4)
+  .map((item) => `${item.facetLabel} (${item.direction}; ${item.constructIds.map(constructLabelFor).join(", ")})`)
+  .join("; ");
+
+const configurationSummaryFor = (configuration: IdeologyConfiguration): string => {
+  const defining = configuration.commitments.filter((commitment) => commitment.centrality === "defining").slice(0, 3).map((commitment) => commitment.label);
+  const optional = configuration.optionalOrContestedCommitments.slice(0, 2).map((commitment) => commitment.label);
+  const definingText = defining.length > 0 ? defining.join(", ") : "none established";
+  const optionalText = optional.length > 0 ? optional.join(", ") : "none recorded";
+  return `Defining commitments: ${definingText}. Optional or contested: ${optionalText}. Priority: ${configuration.priorities.note}`;
+};
+
+const configurationCommitmentTextFor = (commitments: IdeologyConfiguration["commitments"]): string => {
+  const text = commitments
+    .filter((commitment) => commitment.expectedDirection !== "indeterminate")
+    .slice(0, 3)
+    .map((commitment) => `${commitment.label}: ${commitment.rationale}`)
+    .join(" ");
+  return text || "No directional commitment is established in this configuration.";
+};
+
+const sourceLinksFor = (sourceRefs: readonly string[]): ReactNode => sourceRefs.map((sourceRef, index) => {
+  const source = sourceMap.get(sourceRef);
+  return source ? <span key={`${sourceRef}-${index}`}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null;
+});
+
+type MorphologyBasisRecord = IdeologicalMorphology["candidates"][number]["basis"][number];
+
+const morphologyBasisStatusFor = (basis: MorphologyBasisRecord): string => {
+  if (basis.observedSignal === undefined || basis.agreement === undefined) return "No directional evidence observed for this commitment.";
+  const contribution = basis.contribution === undefined ? "not included" : basis.contribution.toFixed(3);
+  return `Observed ${formatSignedSignal(basis.observedSignal)}; ${Math.round(basis.agreement * 100)}% directional agreement; weight ${basis.weight.toFixed(3)}; weighted contribution ${contribution}.`;
+};
+
+const morphologyEvidenceQuestionSummaryFor = (questionIds: readonly string[]): string => {
+  if (questionIds.length === 0) return "No answered item evidence is attached.";
+  const preview = questionIds.slice(0, 3).join(", ");
+  return `${questionIds.length} answered item${questionIds.length === 1 ? "" : "s"} attached (${preview}${questionIds.length > 3 ? ", …" : ""}).`;
+};
+
 const firstUnansweredQuestion = (answers: AnswerMap): number => {
   const index = DATASET.questions.findIndex((question) => !hasAnswer(answers, question.id));
   return index < 0 ? DATASET.questions.length - 1 : index;
 };
 
 const initialSession = (): SessionState => {
-  if (typeof window === "undefined" || !window.location.hash) return { answers: {}, view: "intro", questionIndex: 0 };
+  if (typeof window === "undefined" || !window.location.hash) return { answers: {}, directAnswers: {}, relationalAnswers: {}, view: "intro", questionIndex: 0 };
   const decoded = decodeShareFragment(window.location.hash, DATASET);
-  if (!decoded.ok) return { answers: {}, view: "intro", questionIndex: 0, restoredNotice: decoded.reason };
+  if (!decoded.ok) return { answers: {}, directAnswers: {}, relationalAnswers: {}, view: "intro", questionIndex: 0, restoredNotice: decoded.reason };
   const questionIndex = firstUnansweredQuestion(decoded.answers);
   return {
     answers: decoded.answers,
+    directAnswers: decoded.directAnswers ?? {},
+    relationalAnswers: decoded.relationalAnswers ?? {},
     view: questionIndex === DATASET.questions.length - 1 && hasAnswer(decoded.answers, DATASET.questions[questionIndex].id) ? "results" : "quiz",
     questionIndex,
     restoredNotice: "A versioned result snapshot was restored from this link. Nothing was sent to a server.",
@@ -114,11 +185,14 @@ const MethodologyDisclosure = ({ open, onToggle }: { open: boolean; onToggle: ()
       <div className="methodology-panel">
         <p><strong>Three different claims.</strong> Descriptive items ask what you think is happening. Normative items ask what deserves value. Prescriptive items ask what institutions should do. Keeping the layers apart makes disagreement easier to inspect.</p>
         <p><strong>Interpretive, not scientific.</strong> Answers are aggregated into facet signals and compared with approximate editorial anchors. An internal fit is a transparent calculation over this provisional item set, not a measure of a person, a diagnosis, or a recommendation.</p>
+        <p><strong>Commitment configuration.</strong> The result now starts with a stated political commitment configuration: a source-linked, cross-layer description of observed claims and response states. It is not a hidden-essence detector. Existing ideology labels remain downstream interpretive neighbors whose anchor comparisons are explained by the observed basis and the source-backed configuration lens.</p>
+        <p><strong>Measurement audit.</strong> Every production prompt is audited for its bridged construct, compound or cross-construct wording, duplicate wording, and branch-coverage metadata. The current bank produces facet-proxy observations only; audit dispositions are review signals and do not silently rewrite the question bank.</p>
         <p><strong>Formula.</strong> For each observed facet, signed answers are averaged using the item effect as a weight. Anchor distance is the weighted mean of squared differences across observed facets. Neighbors are ordered by that distance; when the leading candidates are close, the interface says “low separation” instead of presenting a precise-looking percentage. When all three layers are covered, the combined reading averages their three layer-specific fits equally so one layer cannot dominate just because it has more answered items.</p>
         <dl className="methodology-list">
           <div><dt>Response scale</dt><dd>Five directional positions, plus a separate “No view yet” state.</dd></div>
           <div><dt>Missing information</dt><dd>A layer needs half of its prompts answered before it produces an interpretive result.</dd></div>
           <div><dt>Combined pattern</dt><dd>The cross-layer reading is withheld until descriptive, normative, and prescriptive layers are all covered. It is a transparent proximity signal, not an identity assignment or recommendation.</dd></div>
+          <div><dt>Primary representation</dt><dd>Concepts, social scope, diagnosis, authority, distribution, institutions, political economy, and change are shown as configured item associations. Priority rules, conditions, confidence, and dissent handling remain explicit gaps.</dd></div>
           <div><dt>Data posture</dt><dd>Questions and anchors are original editorial content. Every item and anchor resolves to at least one ideology-research context source. Academic sources support construct and survey-method choices; they do not validate this project's anchor vectors or classify a respondent.</dd></div>
           <div><dt>Review posture</dt><dd>This expanded bank remains provisional. Any future candidate promotion is blocked until neighbor-distinctness review, applicable cross-cultural/jurisdictional review, and later empirical validation are documented; source citations and automated checks do not establish those checks by themselves.</dd></div>
         </dl>
@@ -246,6 +320,26 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
         </aside>
 
         <div className="research-main">
+          <section className="belief-gap-shelf" aria-labelledby="belief-gap-shelf-title">
+            <div className="research-section-label" id="belief-gap-shelf-title">Underlying belief gaps</div>
+            <p className="research-form-note">These {BELIEF_GAP_CANDIDATES.length} source-attributed candidates target constructs the production bank does not yet measure. They are effect-free research material: no candidate changes the quiz, anchor vectors, or morphology output.</p>
+            <div className="belief-gap-candidate-list">
+              {BELIEF_GAP_CANDIDATES.map((candidate) => (
+                <details className="belief-gap-candidate" key={candidate.id}>
+                  <summary><span>{constructLabelFor(candidate.constructId)} · {candidate.layer} · {candidate.responseFormat}</span><strong>{candidate.prompt}</strong></summary>
+                  <div className="belief-gap-candidate-body">
+                    <p>{candidate.context}</p>
+                    <p><strong>Response options:</strong> {candidate.responseOptions.join("; ")}</p>
+                    <p><strong>Gap addressed:</strong> {candidate.gapAddressed}</p>
+                    <p><strong>Research rationale:</strong> {candidate.scholarlyRationale}</p>
+                    <p><strong>Same-answer / different-reason risk:</strong> {candidate.sameAnswerDifferentReasonRisk}</p>
+                    <p><strong>Sources:</strong> {candidate.sourceRefs.map((sourceRef) => sourceMap.get(sourceRef)?.label ?? sourceRef).join("; ")}</p>
+                    <p className="belief-gap-candidate-status">Status: <code>{candidate.reviewStatus.replace("_", " ")}</code>; not ready for production deployment.</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
           {selectedTarget ? (
             <>
               <article className="research-brief">
@@ -464,9 +558,271 @@ const Coverage = ({ result }: { result: LayerResult }): ReactNode => (
   </div>
 );
 
+const BeliefProfileView = ({ profile }: { profile: BeliefProfile }): ReactNode => {
+  const notEstablishedTensions = profile.tensions.filter((tension) => tension.status === "not-established");
+  return (
+    <section className="belief-profile" aria-labelledby="belief-profile-title">
+      <div className="belief-profile-header">
+        <div>
+          <p className="eyebrow">Primary representation</p>
+          <h2 id="belief-profile-title">Stated commitment configuration</h2>
+          <p className="belief-profile-lede">This is a structured reading of the claims and response states expressed in this item set. It keeps concepts, causal beliefs, values, institutions, uncertainty, and unresolved gaps visible before any named ideology is shown.</p>
+        </div>
+        <span className="belief-profile-status">{profile.status === "insufficient-information" ? "incomplete evidence" : "provisional model · " + profile.status}</span>
+      </div>
+      <div className="belief-response-grid" aria-label="Response state summary">
+        <div><strong>{profile.response.directional}</strong><span>directional responses</span></div>
+        <div><strong>{profile.response.mixed}</strong><span>mixed / depends</span></div>
+        <div><strong>{profile.response.noView}</strong><span>no view yet</span></div>
+        <div><strong>{profile.response.unanswered}</strong><span>unanswered</span></div>
+      </div>
+      <div className="belief-audit-summary" aria-label="Measurement audit summary">
+        <div><strong>{profile.measurementSummary.totalItems}</strong><span>items audited</span></div>
+        <div><strong>{profile.measurementSummary.proxyItems}</strong><span>facet proxies</span></div>
+        <div><strong>{profile.measurementSummary.directItems}</strong><span>direct items</span></div>
+        <div><strong>{profile.measurementSummary.ideologyCodedQuestionIds.length}</strong><span>branch metadata flags</span></div>
+        <div><strong>{profile.measurementSummary.compoundQuestionIds.length}</strong><span>compound wording flags</span></div>
+        <div><strong>{profile.measurementSummary.conditionalQuestionIds.length}</strong><span>condition / contrast flags</span></div>
+        <div><strong>{Object.values(profile.measurementSummary.researchCandidateCounts).reduce((sum, count) => sum + count, 0)}</strong><span>quarantined gap candidates</span></div>
+      </div>
+      <p className="belief-profile-note belief-audit-note">Disposition ledger: {profile.measurementSummary.dispositionCounts.preserve} preserve · {profile.measurementSummary.dispositionCounts.remap} remap · {profile.measurementSummary.dispositionCounts.rewrite} rewrite · {profile.measurementSummary.dispositionCounts.split} split · {profile.measurementSummary.dispositionCounts.redundant} redundant · {profile.measurementSummary.dispositionCounts["construct-gap"]} construct gap. These are editorial review signals, not respondent judgments.</p>
+      <div className="belief-relational-summary" aria-label="Explicit relational evidence summary">
+        {Object.entries(profile.relationalSummary).map(([key, count]) => (
+          <div key={key}><strong>{count}</strong><span>{key.replace(/([A-Z])/g, " $1").toLowerCase()}</span></div>
+        ))}
+      </div>
+      {profile.directEvidence.length > 0 ? (
+        <div className="belief-direct-evidence">
+          <h3>Direct categorical pilot observations</h3>
+          <ul className="belief-gap-list">{profile.directEvidence.map((evidence) => <li key={evidence.id}><strong>{evidence.optionLabel}.</strong> {evidence.statement}</li>)}</ul>
+          <p className="belief-profile-note">These selected accounts are respondent-stated categorical evidence. They remain separate from scalar construct signals and are not used to change ideology affinities until measurement review is complete.</p>
+        </div>
+      ) : null}
+      {profile.relationalEvidence.length > 0 ? (
+        <div className="belief-relational-evidence">
+          <h3>Explicit relational observations</h3>
+          <ul className="belief-gap-list">{profile.relationalEvidence.map((evidence) => <li key={evidence.id}><strong>{evidence.kind}.</strong> {evidence.statement}{evidence.condition ? ` Condition: ${evidence.condition}` : ""}{evidence.resolution ? ` Resolution: ${evidence.resolution}` : ""}</li>)}</ul>
+          <p className="belief-profile-note">These observations are carried as stated rules or tensions. They are not inferred from scalar co-occurrence and do not override missing measurement evidence.</p>
+        </div>
+      ) : null}
+      {profile.evidenceValidationErrors.length > 0 ? (
+        <div className="belief-evidence-warning" role="alert">
+          <h3>Optional evidence withheld</h3>
+          <p>{profile.evidenceValidationErrors.length} optional evidence contract issue{profile.evidenceValidationErrors.length === 1 ? "" : "s"} caused the optional records to be withheld from this profile. The base quiz remains available.</p>
+        </div>
+      ) : null}
+      {profile.diagnostics.length > 0 ? (
+        <div className="belief-diagnostics" aria-label="Lowest responsible layer diagnostics">
+          <div className="belief-diagnostics-header">
+            <div>
+              <h3>Where the evidence currently stops</h3>
+              <p>These are internal measurement and inference diagnostics. They identify the lowest layer that needs more evidence or review; they are not judgments about the respondent.</p>
+            </div>
+            <span>{profile.diagnostics.length} diagnostic{profile.diagnostics.length === 1 ? "" : "s"}</span>
+          </div>
+          <ul className="belief-diagnostic-list">
+            {profile.diagnostics.map((diagnostic) => (
+              <li className="belief-diagnostic" key={diagnostic.id}>
+                <div className="belief-diagnostic-topline"><span>{beliefDiagnosticLayerLabels[diagnostic.layer]}</span><span>{diagnostic.status.replaceAll("-", " ")}</span></div>
+                <p><strong>{diagnostic.title}.</strong> {diagnostic.detail}</p>
+                {diagnostic.evidenceQuestionIds.length > 0 ? <small>{diagnostic.evidenceQuestionIds.length} evidence question record{diagnostic.evidenceQuestionIds.length === 1 ? "" : "s"} attached.</small> : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      <div className="belief-facet-section">
+        <div className="belief-facet-header">
+          <div>
+            <h3>Facet evidence retained in this profile</h3>
+            <p>These narrower signals remain visible beneath each broader construct. They are legacy facet proxies, not direct conceptions or validated latent scales.</p>
+          </div>
+          <span>{profile.facets.length} facets retained</span>
+        </div>
+        <div className="belief-facet-grid">
+          {profile.facets.map((facet) => (
+            <article className="belief-facet" key={`${facet.layer}:${facet.facetId}`}>
+              <div className="belief-facet-topline"><span>{LAYER_LABELS[facet.layer].short}</span><span>{facet.measurementMode === "direct-item" ? "direct item" : "facet proxy"}</span></div>
+              <h4>{facet.label}</h4>
+              <p className="belief-facet-constructs">{facet.constructIds.map(constructLabelFor).join(" · ")}</p>
+              {facet.signal === undefined ? <p className="belief-facet-signal belief-facet-no-signal">No directional signal</p> : (
+                <div className="belief-facet-signal"><span>{formatSignedSignal(facet.signal)}</span><span className="belief-facet-meter"><span style={{ width: `${Math.round(Math.abs(facet.signal) * 100)}%` }} /></span></div>
+              )}
+              <p className="belief-facet-meta">{facet.response.directional + facet.response.mixed} answered · {Math.round(facet.directionalCoverage * 100)}% directional · {Math.round(facet.mixedRate * 100)}% mixed · {facet.response.noView} no view · {facet.response.unanswered} unanswered · {facet.evidenceQuestionIds.length} evidence items</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="belief-construct-grid">
+        {profile.constructs.map((construct) => (
+          <article className="belief-construct" key={construct.id}>
+            <div className="belief-construct-topline"><span className={`belief-construct-status status-${construct.status}`}>{beliefStatusLabels[construct.status]}</span><span>{Math.round(construct.coverage * 100)}% mapped · {Math.round(construct.directionalCoverage * 100)}% directional</span></div>
+            <h3>{construct.label}</h3>
+            <p>{construct.description}</p>
+            {construct.signal === undefined ? <p className="belief-construct-signal">No directional item signal is available.</p> : (
+              <div className="belief-signal">
+                <div><span>Observed item signal</span><strong>{formatSignedSignal(construct.signal)}</strong></div>
+                <span className="belief-signal-track"><span className="belief-signal-fill" style={{ width: `${Math.round(Math.abs(construct.signal) * 100)}%` }} /></span>
+              </div>
+            )}
+            <p className="belief-construct-meta">{construct.response.directional + construct.response.mixed} mapped responses · {Math.round(construct.mixedRate * 100)}% mixed · {construct.response.noView} no view · {construct.response.unanswered} unanswered</p>
+            {construct.directEvidenceCount > 0 ? <p className="belief-construct-direct"><strong>{construct.directEvidenceCount} direct categorical pilot record{construct.directEvidenceCount === 1 ? "" : "s"} retained separately from this construct&apos;s scalar signal.</strong></p> : null}
+            {construct.relationalEvidenceCount > 0 ? <p className="belief-construct-direct"><strong>{construct.relationalEvidenceCount} explicit relational record{construct.relationalEvidenceCount === 1 ? "" : "s"} attached to this construct; the record remains explanatory and does not change its scalar signal.</strong></p> : null}
+            <p className="belief-construct-note">{construct.statusNote}</p>
+          </article>
+        ))}
+      </div>
+      <div className="belief-profile-columns">
+        <div>
+          <h3>What remains unmeasured or partial</h3>
+          <ul className="belief-gap-list">{profile.gaps.map((gap) => <li key={gap}>{gap}</li>)}</ul>
+        </div>
+        <div>
+          <h3>Conflict and uncertainty handling</h3>
+          <ul className="belief-gap-list">{notEstablishedTensions.map((tension) => <li key={tension.id}><strong>{tension.title}.</strong> {tension.body}</li>)}</ul>
+          <p className="belief-profile-note">Observed cross-layer pulls remain explanatory tensions below. They do not become contradiction, coherence, legitimacy, or identity judgments.</p>
+        </div>
+      </div>
+      <p className="belief-provenance"><strong>Model provenance:</strong> {profile.provenance.map((sourceRef, index) => { const source = sourceMap.get(sourceRef); return source ? <span key={sourceRef}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null; })}. These sources support conceptual and survey-method choices; they do not validate this respondent reading.</p>
+    </section>
+  );
+};
+
+const BeliefDirectPilotView = ({ answers, onAnswer }: { answers: BeliefDirectAnswerMap; onAnswer: (questionId: string, optionId: string) => void }): ReactNode => {
+  const answeredCount = BELIEF_DIRECT_ITEMS.filter((item) => answers[item.id] !== undefined).length;
+  return (
+    <section className="belief-direct-pilot" aria-labelledby="belief-direct-pilot-title">
+      <div className="belief-direct-pilot-header">
+        <div>
+          <p className="eyebrow">Optional belief-structure pilot</p>
+          <h2 id="belief-direct-pilot-title">Make the underlying account explicit</h2>
+          <p className="belief-direct-pilot-lede">These eight categorical choices ask which conception, causal account, legitimacy basis, distributive reason, institutional route, economic explanation, or change path is closest to your view. They expose direct evidence without converting a category into a numerical ideology score.</p>
+        </div>
+        <span className="belief-profile-status">{answeredCount} of {BELIEF_DIRECT_ITEMS.length} answered</span>
+      </div>
+      <p className="belief-direct-pilot-note">Choose “No view yet” when none of the accounts fits or you do not have a view. The options are provisional measurement hypotheses for later cognitive, expert, cross-context, and empirical review; selecting one does not establish its truth, accuracy, or ideological meaning. Selected choices are included in a share link.</p>
+      <div className="belief-direct-item-list">
+        {BELIEF_DIRECT_ITEMS.map((item) => (
+          <fieldset className="belief-direct-item" key={item.id}>
+            <legend>{item.prompt}</legend>
+            <p className="belief-direct-item-context">{item.context}</p>
+            <div className="belief-direct-item-options">
+              {item.options.map((option) => {
+                const optionId = `${item.id}-${option.id}`;
+                return (
+                  <label className="belief-direct-item-option" htmlFor={optionId} key={option.id}>
+                    <input id={optionId} name={item.id} type="radio" checked={answers[item.id] === option.id} onChange={() => onAnswer(item.id, option.id)} />
+                    <span><strong>{option.label}</strong><small>{option.statement}</small></span>
+                  </label>
+                );
+              })}
+            </div>
+            <p className="belief-direct-item-source">Question-design basis: {item.sourceRefs.map((sourceRef, index) => { const source = sourceMap.get(sourceRef); return source ? <span key={sourceRef}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null; })}</p>
+          </fieldset>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const BeliefRelationalFollowUpView = ({ answers, onAnswer }: { answers: BeliefRelationalAnswerMap; onAnswer: (followUpId: string, optionId: string) => void }): ReactNode => {
+  const answeredCount = BELIEF_RELATIONAL_FOLLOWUPS.filter((followUp) => answers[followUp.id] !== undefined).length;
+  return (
+    <section className="belief-followups" aria-labelledby="belief-followups-title">
+      <div className="belief-followups-header">
+        <div>
+          <p className="eyebrow">Optional profile refinement</p>
+          <h2 id="belief-followups-title">Clarify how your commitments relate</h2>
+          <p className="belief-followups-lede">These six structured choices record explicit priority, conditionality, conflict-resolution, uncertainty, contradiction, and contestation evidence. They are kept separate from scalar facet scores and do not assign an identity.</p>
+        </div>
+        <span className="belief-profile-status">{answeredCount} of {BELIEF_RELATIONAL_FOLLOWUPS.length} answered</span>
+      </div>
+      <p className="belief-followups-note">Choose “No view yet” when the scenario does not describe your view. The sources below support question design and interpretation boundaries; they do not validate your response or establish that a selected rule is factually correct. Selected relationship choices are included in a share link alongside the base quiz answers.</p>
+      <div className="belief-followup-list">
+        {BELIEF_RELATIONAL_FOLLOWUPS.map((followUp) => (
+          <fieldset className="belief-followup" key={followUp.id}>
+            <legend>{followUp.prompt}</legend>
+            <p className="belief-followup-context">{followUp.context}</p>
+            <div className="belief-followup-options">
+              {followUp.options.map((option) => {
+                const optionId = `${followUp.id}-${option.id}`;
+                return (
+                  <label className="belief-followup-option" htmlFor={optionId} key={option.id}>
+                    <input id={optionId} name={followUp.id} type="radio" checked={answers[followUp.id] === option.id} onChange={() => onAnswer(followUp.id, option.id)} />
+                    <span><strong>{option.label}</strong><small>{option.statement}</small></span>
+                  </label>
+                );
+              })}
+            </div>
+            <p className="belief-followup-source">Question-design basis: {followUp.sourceRefs.map((sourceRef, index) => { const source = sourceMap.get(sourceRef); return source ? <span key={sourceRef}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null; })}</p>
+          </fieldset>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const IdeologicalMorphologyView = ({ morphology }: { morphology: IdeologicalMorphology }): ReactNode => {
+  const candidates = morphology.candidates.slice(0, 5);
+  const provisionalCandidateCount = morphology.candidates.filter((candidate) => candidate.status === "provisional-candidate").length;
+  return (
+    <section className="belief-morphology" aria-labelledby="belief-morphology-title">
+      <div className="belief-morphology-header">
+        <div>
+          <p className="eyebrow">Higher-order interpretation</p>
+          <h2 id="belief-morphology-title">Ideological morphology candidates</h2>
+          <p className="belief-morphology-lede">These candidates compare the observed construct proxies with source-backed configurations of existing traditions. They explain resemblance; they do not assign an identity or replace the underlying belief profile.</p>
+        </div>
+        <span className="belief-profile-status">{morphology.status === "provisional-candidates" ? `${provisionalCandidateCount} provisional candidates` : "not derived"}</span>
+      </div>
+      {morphology.status === "insufficient-information" ? (
+        <div className="belief-morphology-empty"><h3>No named morphology yet.</h3><p>{morphology.gaps[0]}</p></div>
+      ) : morphology.status === "not-derived" || candidates.length === 0 ? (
+        <div className="belief-morphology-empty"><h3>No configuration candidate yet.</h3><p>The current construct evidence does not support a source-backed comparison.</p></div>
+      ) : (
+        <div className="morphology-candidate-list" aria-label="Ideological morphology candidates">
+          {candidates.map((candidate, index) => (
+            <article className="morphology-candidate" key={candidate.anchorId}>
+              <div className="morphology-candidate-rank" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+              <div className="morphology-candidate-body">
+                <div className="morphology-candidate-topline"><h3>{candidate.label}</h3><span>{candidate.status === "provisional-candidate" ? "provisional candidate" : "under-determined"}</span></div>
+                <p className="morphology-candidate-meta">{candidate.family} family · {Math.round(candidate.coverage * 100)}% configuration coverage · {Math.round(candidate.fit * 100)}% directional agreement</p>
+                <p>{candidate.explanation}</p>
+                {candidate.definingCommitmentsObserved.length > 0 ? <p className="morphology-candidate-detail"><strong>Observed defining commitments:</strong> {candidate.definingCommitmentsObserved.join(", ")}</p> : null}
+                {candidate.missingDefiningCommitments.length > 0 ? <p className="morphology-candidate-detail"><strong>Missing defining commitments:</strong> {candidate.missingDefiningCommitments.join(", ")}</p> : null}
+                {candidate.conflictingCommitments.length > 0 ? <p className="morphology-candidate-detail"><strong>Potential counter-signals:</strong> {candidate.conflictingCommitments.join(", ")}</p> : null}
+                {candidate.configuration.conceptions.length > 0 ? <p className="morphology-candidate-detail"><strong>Conceptual configuration:</strong> {configurationCommitmentTextFor(candidate.configuration.conceptualCommitments)}</p> : null}
+                {candidate.configuration.causalAssumptions.length > 0 ? <p className="morphology-candidate-detail"><strong>Causal assumptions:</strong> {configurationCommitmentTextFor(candidate.configuration.causalAssumptions)}</p> : null}
+                {candidate.configuration.institutionalImplications.length > 0 ? <p className="morphology-candidate-detail"><strong>Institutional implications:</strong> {configurationCommitmentTextFor(candidate.configuration.institutionalImplications)}</p> : null}
+                <p className="morphology-candidate-detail"><strong>Configuration evidence:</strong> {candidate.configuration.evidencePosture.replaceAll("-", " ")}; priority and conflict rules remain {candidate.configuration.priorities.status}.</p>
+                <details className="morphology-evidence-details">
+                  <summary>Inspect evidence trail ({candidate.basis.length} commitment records)</summary>
+                  <div className="morphology-evidence-list">
+                    {candidate.basis.map((basis) => (
+                      <div className="morphology-evidence-row" key={`${basis.commitmentId}:${basis.constructId}`}>
+                        <div className="morphology-evidence-row-head"><strong>{basis.commitmentLabel}</strong><span>{constructLabelFor(basis.constructId)} · expected {basis.expectedDirection}</span></div>
+                        <p>{morphologyBasisStatusFor(basis)}</p>
+                        <p className="morphology-evidence-questions">{morphologyEvidenceQuestionSummaryFor(basis.evidenceQuestionIds)}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {candidate.directBasis.length > 0 ? <div className="morphology-evidence-secondary"><strong>Direct categorical pilot evidence:</strong> {candidate.directBasis.map((basis) => basis.optionLabel).join("; ")}. It is retained for transparency and excluded from affinity calculation.</div> : null}
+                  {candidate.relationalBasis.length > 0 ? <div className="morphology-evidence-secondary"><strong>Relational evidence:</strong> {candidate.relationalBasis.map((basis) => basis.statement).join(" ")}</div> : null}
+                  <p className="morphology-evidence-sources"><strong>Configuration sources:</strong> {sourceLinksFor(candidate.sourceRefs)}</p>
+                </details>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+      <ul className="belief-gap-list morphology-gap-list">{morphology.gaps.map((gap) => <li key={gap}>{gap}</li>)}</ul>
+    </section>
+  );
+};
+
 const CoveredLayer = ({ result }: { result: Extract<LayerResult, { kind: "covered" }> }): ReactNode => (
   <>
-    <div className="fit-chip">Neighbors are ranked by observed facet distance; low separation means the item set does not distinguish them strongly.</div>
+    <div className="fit-chip">Compatibility trace: these neighbors are retained from the original observed-facet distance scorer. The belief profile and morphology above are the primary interpretation; low separation means this legacy item set does not distinguish candidates strongly.</div>
     <div className="neighbor-list" aria-label="Interpretive neighbors">
       {result.neighbors.map((neighbor, index) => (
         <article className="neighbor-item" key={neighbor.anchorId}>
@@ -481,6 +837,8 @@ const CoveredLayer = ({ result }: { result: Extract<LayerResult, { kind: "covere
             })}
             <p className="neighbor-summary">{neighbor.summary}</p>
             <p className="neighbor-note">Anchor note: {neighbor.note}</p>
+            <p className="neighbor-basis"><strong>Observed inputs considered:</strong> {basisSummaryFor(neighbor.basis)}</p>
+            <p className="neighbor-configuration"><strong>Configuration lens:</strong> {configurationSummaryFor(neighbor.configuration)}</p>
             <p className="neighbor-source">Evidence basis: {neighbor.sourceRefs.map((sourceRef, sourceIndex) => { const source = sourceMap.get(sourceRef); return source ? <span key={sourceRef}>{sourceIndex > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null; })}</p>
             {neighbor.separation === "low" || neighbor.tied ? <p className="tie-note">This neighbor is close to another anchor. Read the nearby possibilities together; the current items do not establish a unique label.</p> : null}
           </div>
@@ -504,7 +862,7 @@ const CombinedReading = ({ result }: { result: CombinedResult }): ReactNode => (
   <section className="combined-reading" aria-labelledby="combined-reading-title">
     <div className="combined-reading-header">
       <div>
-        <p className="eyebrow">Across the three views</p>
+        <p className="eyebrow">Compatibility baseline · across the three views</p>
         <h2 id="combined-reading-title">{result.kind === "covered" ? "A combined pattern" : "Keep the combined reading open"}</h2>
       </div>
       {result.kind === "covered" ? <span className="combined-coverage">{Math.round(result.coverage * 100)}% average layer coverage</span> : null}
@@ -517,7 +875,7 @@ const CombinedReading = ({ result }: { result: CombinedResult }): ReactNode => (
       </div>
     ) : (
       <>
-        <p className="combined-explanation">This is an inspectable composition of the three layer-specific readings. Each layer contributes one equally weighted anchor fit; the label remains an editorial neighbor, not a discovered identity or a recommendation.</p>
+        <p className="combined-explanation">This is the retained legacy facet-distance composition of the three layer-specific readings. Each layer contributes one equally weighted anchor fit. It is shown for compatibility regression beneath the primary belief-model morphology; the label remains an editorial neighbor, not a discovered identity or a recommendation.</p>
         <div className="combined-neighbor-list" aria-label="Combined interpretive neighbors">
           {result.neighbors.map((neighbor, index) => (
             <article className="combined-neighbor-item" key={neighbor.anchorId}>
@@ -530,6 +888,8 @@ const CombinedReading = ({ result }: { result: CombinedResult }): ReactNode => (
                   {LAYERS.map((layer) => <span key={layer}><strong>{LAYER_LABELS[layer].short}</strong><span>{formatFit(neighbor.layerFits[layer])}</span></span>)}
                 </div>
                 <p className="neighbor-summary">{neighbor.summary}</p>
+                <p className="neighbor-basis"><strong>Observed inputs considered:</strong> {basisSummaryFor(neighbor.basis)}</p>
+                <p className="neighbor-configuration"><strong>Configuration lens:</strong> {configurationSummaryFor(neighbor.configuration)}</p>
                 <p className="neighbor-source">Evidence basis: {neighbor.sourceRefs.map((sourceRef, sourceIndex) => { const source = sourceMap.get(sourceRef); return source ? <span key={sourceRef}>{sourceIndex > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span> : null; })}</p>
                 {neighbor.separation === "low" || neighbor.tied ? <p className="tie-note">This combined neighbor is close to another anchor. Read nearby possibilities together; the current items do not establish a unique label.</p> : null}
               </div>
@@ -542,13 +902,15 @@ const CombinedReading = ({ result }: { result: CombinedResult }): ReactNode => (
   </section>
 );
 
-const ResultsView = ({ answers, onRestart, methodologyOpen, onToggleMethodology }: { answers: AnswerMap; onRestart: () => void; methodologyOpen: boolean; onToggleMethodology: () => void }): ReactNode => {
-  const result = useMemo(() => calculateResults(answers, DATASET), [answers]);
+const ResultsView = ({ answers, directAnswers, relationalAnswers, onDirectAnswer, onRelationalAnswer, onRestart, methodologyOpen, onToggleMethodology }: { answers: AnswerMap; directAnswers: BeliefDirectAnswerMap; relationalAnswers: BeliefRelationalAnswerMap; onDirectAnswer: (questionId: string, optionId: string) => void; onRelationalAnswer: (followUpId: string, optionId: string) => void; onRestart: () => void; methodologyOpen: boolean; onToggleMethodology: () => void }): ReactNode => {
+  const directEvidence = useMemo(() => directEvidenceForAnswers(directAnswers), [directAnswers]);
+  const relationalEvidence = useMemo(() => relationalEvidenceForAnswers(relationalAnswers), [relationalAnswers]);
+  const result = useMemo(() => calculateResults(answers, DATASET, relationalEvidence, directEvidence), [answers, directEvidence, relationalEvidence]);
   const [shareLink, setShareLink] = useState("");
   const [shareFeedback, setShareFeedback] = useState("");
 
   const copyShareLink = async (): Promise<void> => {
-    const fragment = encodeShareFragment(answers, DATASET);
+    const fragment = encodeShareFragment(answers, DATASET, relationalAnswers, directAnswers);
     const link = `${window.location.origin}${window.location.pathname}${fragment}`;
     setShareLink(link);
     try {
@@ -557,7 +919,9 @@ const ResultsView = ({ answers, onRestart, methodologyOpen, onToggleMethodology 
         return;
       }
       await navigator.clipboard.writeText(link);
-      setShareFeedback("Share link copied. It contains only versioned answers in the URL fragment.");
+      setShareFeedback(relationalEvidence.length > 0 || directEvidence.length > 0
+        ? "Share link copied. It contains versioned base-quiz answers and the selected belief-structure evidence."
+        : "Share link copied. It contains only versioned base-quiz answers in the URL fragment.");
     } catch {
       setShareFeedback("The share link is ready below. Copy it manually if your browser blocked clipboard access.");
     }
@@ -576,6 +940,14 @@ const ResultsView = ({ answers, onRestart, methodologyOpen, onToggleMethodology 
         {shareFeedback ? <p className="status-line" role="status">{shareFeedback}</p> : null}
         {shareLink ? <label className="share-note" htmlFor="share-link">Versioned share link<input id="share-link" value={shareLink} readOnly /></label> : null}
       </div>
+
+      <BeliefProfileView profile={result.beliefProfile} />
+
+      <BeliefDirectPilotView answers={directAnswers} onAnswer={onDirectAnswer} />
+
+      <BeliefRelationalFollowUpView answers={relationalAnswers} onAnswer={onRelationalAnswer} />
+
+      <IdeologicalMorphologyView morphology={result.beliefMorphology} />
 
       <CombinedReading result={result.combined} />
 
@@ -616,6 +988,12 @@ export default function App(): ReactNode {
     const questionId = DATASET.questions[session.questionIndex].id;
     setSession((current) => ({ ...current, answers: { ...current.answers, [questionId]: value } }));
   };
+  const directAnswer = (questionId: string, optionId: string): void => {
+    setSession((current) => ({ ...current, directAnswers: { ...current.directAnswers, [questionId]: optionId } }));
+  };
+  const relationalAnswer = (followUpId: string, optionId: string): void => {
+    setSession((current) => ({ ...current, relationalAnswers: { ...current.relationalAnswers, [followUpId]: optionId } }));
+  };
   const next = (): void => setSession((current) => current.questionIndex >= DATASET.questions.length - 1 ? { ...current, view: "results" } : { ...current, questionIndex: current.questionIndex + 1 });
   const back = (): void => setSession((current) => current.questionIndex === 0 ? { ...current, view: "intro" } : { ...current, questionIndex: current.questionIndex - 1 });
   const toggleResearch = (): void => setSession((current) => current.view === "research"
@@ -623,7 +1001,7 @@ export default function App(): ReactNode {
     : { ...current, view: "research", returnView: current.view });
   const restart = (): void => {
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
-    setSession({ answers: {}, view: "intro", questionIndex: 0 });
+    setSession({ answers: {}, directAnswers: {}, relationalAnswers: {}, view: "intro", questionIndex: 0 });
     setMethodologyOpen(false);
   };
 
@@ -633,7 +1011,7 @@ export default function App(): ReactNode {
       <main className="main-shell">
         {session.view === "intro" ? <IntroView onStart={start} onResearch={toggleResearch} methodologyOpen={methodologyOpen} onToggleMethodology={() => setMethodologyOpen((open) => !open)} restoredNotice={session.restoredNotice} /> : null}
         {session.view === "quiz" ? <QuizView questionIndex={session.questionIndex} answers={session.answers} onAnswer={answer} onNext={next} onBack={back} /> : null}
-        {session.view === "results" ? <ResultsView answers={session.answers} onRestart={restart} methodologyOpen={methodologyOpen} onToggleMethodology={() => setMethodologyOpen((open) => !open)} /> : null}
+        {session.view === "results" ? <ResultsView answers={session.answers} directAnswers={session.directAnswers} relationalAnswers={session.relationalAnswers} onDirectAnswer={directAnswer} onRelationalAnswer={relationalAnswer} onRestart={restart} methodologyOpen={methodologyOpen} onToggleMethodology={() => setMethodologyOpen((open) => !open)} /> : null}
         {session.view === "research" ? <ResearchWorkbench onClose={toggleResearch} /> : null}
       </main>
       <footer className="footer-note">An original, client-only experiment. No account, remote answer storage, scientific validation, or political recommendation is implied.</footer>

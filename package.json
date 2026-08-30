@@ -11,7 +11,11 @@
     "test:run": "vitest run",
     "qa": "playwright test",
     "research:coverage": "vite-node scripts/audit-research-coverage.ts",
-    "research:anchor-reachability": "vite-node scripts/audit-anchor-reachability.ts"
+    "research:anchor-reachability": "vite-node scripts/audit-anchor-reachability.ts",
+    "belief:measurement-audit": "vite-node scripts/audit-belief-measurement.ts",
+    "belief:morphology-audit": "vite-node scripts/audit-belief-morphology.ts",
+    "belief:direct-pilot-audit": "vite-node scripts/audit-belief-direct-pilot.ts",
+    "belief:completion-audit": "vite-node scripts/audit-belief-completion.ts"
   },
   "dependencies": {
     "react": "^19.1.1",

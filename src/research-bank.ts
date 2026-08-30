@@ -2,6 +2,7 @@ import { DATASET } from "./data";
 import type {
   Layer,
   ResearchAnchorCentrality,
+  ResearchAnchorConception,
   ResearchAnchorDimension,
   ResearchAnchorProfile,
   ResearchConfidence,
@@ -2881,6 +2882,15 @@ const dimension = (
   sourceIds: readonly string[],
 ): ResearchAnchorDimension => ({ facetId, layer, expectedDirection, centrality, rationale, sourceIds });
 
+const anchorConception = (
+  conceptId: string,
+  layer: Exclude<Layer, "descriptive">,
+  label: string,
+  interpretation: string,
+  centrality: ResearchAnchorCentrality,
+  sourceIds: readonly string[],
+): ResearchAnchorConception => ({ conceptId, layer, label, interpretation, centrality, sourceIds });
+
 const profile = (
   targetId: string,
   definition: string,
@@ -2897,6 +2907,7 @@ const profile = (
   variants,
   neighbors,
   dimensions,
+  conceptions: [],
   sourceIds,
   status: "research_candidate",
 });
@@ -4007,8 +4018,281 @@ const RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES: readonly ResearchAnchorProfile[
   ),
 ];
 
+/**
+ * Explicit conceptions fill the cases where a profile's broad facet dimensions
+ * do not themselves carry the concept-conception bridge. These are qualitative,
+ * source-backed tradition profiles; they are not respondent measurements and do
+ * not enter legacy or morphology affinity weights.
+ */
+const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnchorConception[]>> = {
+  "libertarian-socialism": [
+    anchorConception(
+      "self-management-freedom",
+      "normative",
+      "Freedom as self-management",
+      "Freedom is understood as meaningful control over shared institutions by the people affected, rather than as protection from public authority alone or as centralized representation on their behalf.",
+      "defining",
+      ["source-sep-anarchism", "source-ostrom", "source-sen"],
+    ),
+  ],
+  "social-democracy": [
+    anchorConception(
+      "social-citizenship",
+      "normative",
+      "Equality as social citizenship",
+      "Equal civic standing includes protection against shared risks and access to social provision, while regulated markets remain compatible with the tradition's democratic and solidaristic commitments.",
+      "defining",
+      ["source-oup-social-democracy", "source-esping-andersen", "source-rawls"],
+    ),
+  ],
+  "democratic-socialism": [
+    anchorConception(
+      "economic-democracy",
+      "normative",
+      "Democracy as economic control",
+      "Democracy is interpreted as extending into ownership and productive institutions: political equality is incomplete when concentrated economic power remains insulated from those affected by it.",
+      "defining",
+      ["source-oup-political-ideologies", "source-sen", "source-ostrom"],
+    ),
+  ],
+  ecosocialism: [
+    anchorConception(
+      "ecological-justice",
+      "normative",
+      "Justice as ecological and social protection",
+      "Ecological limits and social equality are treated as jointly constitutive: a transition is not just when environmental burdens are shifted onto people with less power, and essential systems remain subject to collective control.",
+      "defining",
+      ["source-cambridge-ecosocialism", "source-rockstrom", "source-sen"],
+    ),
+  ],
+  ecologism: [
+    anchorConception(
+      "ecological-integrity",
+      "normative",
+      "Political judgment under ecological limits",
+      "Ecological limits, interdependence, and human–nature relations shape what counts as a defensible political order, while the moral basis and institutional translation remain plural across anthropocentric, ecocentric, justice-centered, democratic, and internationalist variants.",
+      "defining",
+      ["source-oup-green-ideology-humphrey", "source-cambridge-ecologism", "source-sep-environmental-ethics", "source-gardiner"],
+    ),
+  ],
+  "anarcho-syndicalism": [
+    anchorConception(
+      "workplace-democracy",
+      "normative",
+      "Democracy as worker self-government",
+      "Democratic control is not confined to elections: workers directly govern the workplaces and federated economic institutions in which they participate, without making permanent managerial or state command constitutive.",
+      "defining",
+      ["source-ostrom", "source-cambridge-direct-action-syndicalism", "source-cambridge-batalha-syndicalism"],
+    ),
+  ],
+  "anarcho-primitivism": [
+    anchorConception(
+      "ecological-autonomy",
+      "normative",
+      "Freedom as ecological autonomy",
+      "Freedom and ecological integrity are interpreted as requiring a fundamental challenge to civilization-scale industrial and technical dependence, with small-scale self-organization treated as a route rather than a lifestyle signal.",
+      "defining",
+      ["source-sep-anarchism", "source-sep-environmental-ethics", "source-tandf-el-ojeili-taylor-anarchoprimitivism", "source-tandf-dunlap-anarchist-civilization"],
+    ),
+  ],
+  "anarcho-communism": [
+    anchorConception(
+      "need-oriented-commoning",
+      "normative",
+      "Common provision according to need",
+      "Common provision is understood as a free-associational relationship in which social goods are organized around need and shared responsibility rather than wage dependence, competitive accumulation, or permanent hierarchy.",
+      "defining",
+      ["source-sep-anarchism", "source-cambridge-cahm-anarchist-communism", "source-oup-kinna-anarchist-communism"],
+    ),
+  ],
+  "collectivist-anarchism": [
+    anchorConception(
+      "collective-self-government",
+      "normative",
+      "Equality through federated self-government",
+      "Equality and common control are interpreted as requiring directly self-governing worker and commune associations, while the historically debated relation between contribution and distribution remains an open internal boundary.",
+      "defining",
+      ["source-cambridge-bakunin-statism-anarchy", "source-cambridge-kropotkin-collectivist-wages", "source-ostrom"],
+    ),
+  ],
+  "social-ecology": [
+    anchorConception(
+      "ecological-freedom",
+      "normative",
+      "Freedom as non-hierarchical ecological self-government",
+      "Human freedom and ecological integrity are linked: social hierarchies that enable domination and ecological exploitation are treated as related political problems, with democratic municipal self-government as a characteristic translation rather than a universal institutional formula.",
+      "defining",
+      ["source-sage-social-ecology-best", "source-oup-social-ecology-movements", "source-sep-environmental-ethics"],
+    ),
+  ],
+  womanism: [
+    anchorConception(
+      "holistic-liberation",
+      "normative",
+      "Liberation as survival, wholeness, and community",
+      "Liberation is interpreted through survival, dignity, wholeness, self-definition, and community for Black women and others, rather than inclusion into a universal norm that erases difference or reduces the tradition to identity affirmation.",
+      "defining",
+      ["source-oup-womanist-theology", "source-cambridge-womanism-black-feminism", "source-sage-womanism-survival-wholeness"],
+    ),
+  ],
+  "social-anarchism": [
+    anchorConception(
+      "collective-freedom",
+      "normative",
+      "Freedom as a social condition",
+      "Freedom is understood as a social condition sustained by mutual aid, equality, and the absence of permanent hierarchy, rather than as isolated noninterference or decentralized administration without shared responsibility.",
+      "defining",
+      ["source-sep-anarchism", "source-ostrom", "source-oup-social-ecology"],
+    ),
+  ],
+  "christian-democracy": [
+    anchorConception(
+      "social-market-solidarity",
+      "normative",
+      "Solidarity through plural social institutions",
+      "Individual and market activity is bounded by common-good responsibility and mediated through families, associations, and public institutions; solidarity and subsidiarity do not prescribe one uniform economic settlement.",
+      "defining",
+      ["source-cambridge-christian-democracy", "source-cambridge-christian-democracy-history"],
+    ),
+  ],
+  "black-feminism": [
+    anchorConception(
+      "intersectional-liberation",
+      "normative",
+      "Justice as intersectional liberation",
+      "Justice must attend to interlocking racialized and gendered power while preserving difference and collective self-definition, rather than universalizing one group's experience as the measure of emancipation.",
+      "defining",
+      ["source-oup-feminism", "source-oup-feminist-theory", "source-sep-feminist-philosophy"],
+    ),
+  ],
+  "ecofeminism": [
+    anchorConception(
+      "relational-ecological-justice",
+      "normative",
+      "Justice as relational ecological care",
+      "Care, interdependence, and ecological justice challenge gendered and human–nature domination without requiring an essential identity between women and nature; materialist, spiritual, and intersectional interpretations remain open.",
+      "defining",
+      ["source-oup-feminist-theory", "source-sep-environmental-ethics"],
+    ),
+  ],
+  "bioregionalism": [
+    anchorConception(
+      "place-based-ecological-stewardship",
+      "normative",
+      "Justice as place-responsive stewardship",
+      "Political judgment should respond to ecological place and scale, more-than-human flourishing, and situated knowledge while supporting accountable cooperation among regions rather than treating local identity or watershed management as sufficient.",
+      "defining",
+      ["source-wiley-mctaggart-bioregionalism", "source-wiley-wearne-bioregionalism", "source-sep-environmental-ethics"],
+    ),
+  ],
+  communism: [
+    anchorConception(
+      "common-ownership",
+      "prescriptive",
+      "Common ownership beyond class dependence",
+      "Common ownership and decommodified provision are interpreted as forms of cooperative social organization intended to overcome class dependence, while historical traditions vary over the institutional route and degree of centralization.",
+      "defining",
+      ["source-sep-marx", "source-oup-socialism-vsi"],
+    ),
+  ],
+  "historical-republicanism": [
+    anchorConception(
+      "civic-virtue",
+      "normative",
+      "Freedom through active civic independence",
+      "Freedom and commonwealth are understood to depend on active participation, public virtue, civic independence, and resistance to corruption through mixed and balanced institutions, not on patriotism alone.",
+      "defining",
+      ["source-sep-republicanism", "source-oup-republicanism", "source-dahl"],
+    ),
+  ],
+  "pan-africanism": [
+    anchorConception(
+      "diasporic-solidarity",
+      "normative",
+      "Solidarity across African and diasporic borders",
+      "Political obligation and collective self-determination extend across African and diasporic borders to support liberation and racial equality, without requiring one territorial state or one uniform cultural programme.",
+      "defining",
+      ["source-oup-pan-africanism", "source-cambridge-panafrican-distinction"],
+    ),
+  ],
+  "islamic-feminism": [
+    anchorConception(
+      "interpretive-gender-justice",
+      "normative",
+      "Gender justice through accountable interpretation",
+      "Gender equality and human dignity are pursued through critical engagement with Qur'anic and Islamic interpretive traditions, with women and affected communities treated as agents in contesting the religious and legal norms that govern their lives rather than as objects of a single external emancipation formula.",
+      "defining",
+      ["source-oup-islamic-feminism-schroter", "source-oup-afsaruddin-quran-gender", "source-utexas-barlas-believing-women", "source-musawah-vision-family", "source-ziba-mirhosseini-gender-justice"],
+    ),
+  ],
+  "national-socialism": [
+    anchorConception(
+      "volk-membership",
+      "normative",
+      "Membership as racialized national belonging",
+      "Political membership and rights are organized around a historically specific racialized and inherited national belonging, subordinating universal equal standing; this is an analytic high-risk boundary, not an identity inference.",
+      "defining",
+      ["source-oup-national-socialism", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "civic-nationalism": [
+    anchorConception(
+      "civic-membership",
+      "normative",
+      "Nation as equal civic membership",
+      "The nation is interpreted primarily through shared civic institutions and equal citizenship, with national solidarity bounded by equal standing rather than ancestry alone; the civic–ethnic contrast remains a heuristic rather than a universal dichotomy.",
+      "defining",
+      ["source-oup-nationalism-ere", "source-oup-nationalism-contexts", "source-cambridge-civic-patriotism", "source-sep-nationalism"],
+    ),
+  ],
+  "anti-colonial-nationalism": [
+    anchorConception(
+      "self-determination",
+      "normative",
+      "Self-determination against external rule",
+      "A people subjected to colonial or imperial rule should govern its collective future and transform external domination while retaining protections for internal dissent, minority standing, and non-dominating postcolonial institutions.",
+      "defining",
+      ["source-oup-self-determination-decolonization", "source-cambridge-self-rule-colonial-india", "source-sep-nationalism"],
+    ),
+  ],
+  "council-communism": [
+    anchorConception(
+      "council-democracy",
+      "normative",
+      "Legitimacy through directly accountable councils",
+      "Political and economic authority is legitimate when exercised through directly accountable and recallable workers' councils rather than through party-subordinated command, while the historical current remains distinct from generic workplace participation.",
+      "defining",
+      ["source-oup-council-democracy", "source-uchicago-council-democracy", "source-oup-communism"],
+    ),
+  ],
+  "guild-socialism": [
+    anchorConception(
+      "associational-democracy",
+      "normative",
+      "Democracy through plural associations",
+      "Democratic self-government extends across occupational, civic, and territorial associations, with plural association and accountable coordination taking priority over one centralized command structure.",
+      "defining",
+      ["source-cambridge-guild-democracy", "source-oup-guild-cooperative", "source-oup-cje-guild-socialism"],
+    ),
+  ],
+  trotskyism: [
+    anchorConception(
+      "internationalist-workers-democracy",
+      "normative",
+      "Transformation as internationally connected self-correction",
+      "Socialist transformation is interpreted as requiring international connection, workers' participation, criticism, and political self-correction rather than consolidation of a bureaucratic national hierarchy.",
+      "defining",
+      ["source-cambridge-trotskyism", "source-cambridge-trotskyism-permanent-revolution", "source-oup-political-ideologies"],
+    ),
+  ],
+};
 
-export const RESEARCH_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = [...PRIORITY_ANCHOR_PROFILES, ...CORE_ANCHOR_PROFILES, ...MACRO_ANCHOR_PROFILES, ...MESO_ANCHOR_PROFILES, ...MICRO_ANCHOR_PROFILES, ...MICRO_TRANCHE_TWO_ANCHOR_PROFILES, ...MICRO_TRANCHE_THREE_ANCHOR_PROFILES, ...MICRO_TRANCHE_FOUR_ANCHOR_PROFILES, ...CONTEXT_TRANCHE_FIVE_ANCHOR_PROFILES, ...COMPLETION_TRANCHE_SIX_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_SEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_EIGHT_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_NINE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_ELEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TWELVE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_THIRTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES];
+const profilesWithResearchConceptions = (profiles: readonly ResearchAnchorProfile[]): readonly ResearchAnchorProfile[] => profiles.map((profile) => ({
+  ...profile,
+  conceptions: RESEARCH_ANCHOR_CONCEPTIONS[profile.targetId] ?? profile.conceptions,
+}));
+
+export const RESEARCH_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = profilesWithResearchConceptions([...PRIORITY_ANCHOR_PROFILES, ...CORE_ANCHOR_PROFILES, ...MACRO_ANCHOR_PROFILES, ...MESO_ANCHOR_PROFILES, ...MICRO_ANCHOR_PROFILES, ...MICRO_TRANCHE_TWO_ANCHOR_PROFILES, ...MICRO_TRANCHE_THREE_ANCHOR_PROFILES, ...MICRO_TRANCHE_FOUR_ANCHOR_PROFILES, ...CONTEXT_TRANCHE_FIVE_ANCHOR_PROFILES, ...COMPLETION_TRANCHE_SIX_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_SEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_EIGHT_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_NINE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_ELEVEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_TWELVE_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_THIRTEEN_ANCHOR_PROFILES, ...RESEARCH_TRANCHE_FOURTEEN_ANCHOR_PROFILES]);
 
 const neighbor = (
   targetId: string,
@@ -4382,6 +4666,7 @@ const RESEARCH_TRANCHE_THIRTEEN_NEIGHBOR_DISCRIMINANTS: readonly ResearchNeighbo
   neighbor("labor-zionism", "anti-colonial-nationalism", "Collective self-determination, anti-imperial setting, and national institution-building.", "Labor Zionism specifies a Jewish national and worker-socialist synthesis with labor and settlement institutions; Anti-Colonial Nationalism is wider over national-liberation hosts and economic routes.", ["rc-labor-zionism-d-02", "rc-labor-zionism-n-01", "rc-labor-zionism-p-04"], "Self-determination language alone does not establish the target, and historical interpretations of colonial relations remain contested."),
   neighbor("labor-zionism", "cultural-nationalism", "Language, cultural revival, collective memory, and nation formation.", "Labor Zionism includes Hebrew cultural and national revival but makes worker organization, social transformation, and institutional political economy more constitutive than Cultural Nationalism.", ["rc-labor-zionism-d-01", "rc-labor-zionism-d-03", "rc-labor-zionism-p-02"], "Cultural revival, language use, or national memory can be supported without the labor-socialist and institution-building synthesis."),
 ];
+
 const RESEARCH_TRANCHE_FOURTEEN_NEIGHBOR_DISCRIMINANTS: readonly ResearchNeighborDiscriminant[] = [
   neighbor("islamic-feminism", "feminism", "Gendered domination, equality, agency, and transformation of institutions.", "Islamic Feminism adds critical engagement with Qur'anic and Islamic interpretive traditions, religious and legal authority, and Muslim-context variation; Feminism is the wider family and does not require that boundary.", ["rc-islamic-feminism-d-01", "rc-islamic-feminism-n-01", "rc-islamic-feminism-p-02"], "Generic feminist agreement may omit the Islamic interpretive and institutional mechanism, while Islamic-feminist work may draw on wider feminist vocabularies without being one uniform doctrine."),
   neighbor("islamic-feminism", "liberal-feminism", "Autonomy, equal standing, rights, and contestation of gendered barriers.", "Islamic Feminism makes Islamic sources, interpretive authority, and gendered religious or legal institutions more constitutive; Liberal Feminism does not require a Muslim-context or hermeneutic grounding.", ["rc-islamic-feminism-d-02", "rc-islamic-feminism-n-02", "rc-islamic-feminism-p-01"], "Rights or autonomy language can be liberal, secular, religious, or movement-based without establishing the target's interpretive boundary."),
@@ -4390,7 +4675,6 @@ const RESEARCH_TRANCHE_FOURTEEN_NEIGHBOR_DISCRIMINANTS: readonly ResearchNeighbo
   neighbor("islamic-feminism", "religious-nationalism", "Religious vocabulary, institutions, collective identity, and public authority.", "Islamic Feminism does not require national membership, sovereignty, or religion–nation fusion; its constitutive boundary is gender justice and interpretive authority across local and transnational contexts.", ["rc-islamic-feminism-d-04", "rc-islamic-feminism-n-04", "rc-islamic-feminism-p-03"], "Religious identity, national belonging, or public faith can be present without a gender-justice and authority-reform project."),
   neighbor("islamic-feminism", "socialist-feminism", "Structural gender power, law, labor, social reproduction, and collective transformation.", "Islamic Feminism can address economic and institutional inequality but does not require socialist political economy, class primacy, or socialist ownership; Socialist Feminism has a distinct class and production/reproduction boundary.", ["rc-islamic-feminism-d-02", "rc-islamic-feminism-d-04", "rc-islamic-feminism-p-03"], "Equality, public provision, labor concern, or structural critique can arise from multiple feminist traditions without establishing either target's full rationale."),
 ];
-
 
 export const RESEARCH_NEIGHBOR_DISCRIMINANTS: readonly ResearchNeighborDiscriminant[] = [...PRIORITY_NEIGHBOR_DISCRIMINANTS, ...CORE_NEIGHBOR_DISCRIMINANTS, ...MACRO_NEIGHBOR_DISCRIMINANTS, ...MESO_NEIGHBOR_DISCRIMINANTS, ...MICRO_NEIGHBOR_DISCRIMINANTS, ...MICRO_TRANCHE_TWO_NEIGHBOR_DISCRIMINANTS, ...MICRO_TRANCHE_THREE_NEIGHBOR_DISCRIMINANTS, ...MICRO_TRANCHE_FOUR_NEIGHBOR_DISCRIMINANTS, ...CONTEXT_TRANCHE_FIVE_NEIGHBOR_DISCRIMINANTS, ...COMPLETION_TRANCHE_SIX_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_SEVEN_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_EIGHT_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_NINE_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_TEN_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_ELEVEN_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_TWELVE_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_THIRTEEN_NEIGHBOR_DISCRIMINANTS, ...RESEARCH_TRANCHE_FOURTEEN_NEIGHBOR_DISCRIMINANTS];
 
@@ -4567,7 +4851,6 @@ const RESEARCH_TRANCHE_FOURTEEN_FALSE_POSITIVE_AUDITS: readonly ResearchFalsePos
   { targetId: "islamic-feminism", profile: "Muslim identity, private piety, religious observance, generic feminism or women's rights, support for one family-law reform, Qur'anic study, Islamism, Religious Nationalism, or one scholar or movement", risk: "A respondent or analyst may infer Islamic Feminism from faith, practice, identity, a single gender-equality answer, one legal proposal, or familiarity with a named interpreter while missing the connected gender-justice, Islamic-interpretive, authority, and institutional-reform boundary. The label also contains national, theological, secular, Sunni, Shi'a, racial, class, and grassroots variation.", guardItemIds: ["rc-islamic-feminism-d-01", "rc-islamic-feminism-d-02", "rc-islamic-feminism-n-02", "rc-islamic-feminism-p-01", "rc-islamic-feminism-p-04"], preferredOutcome: "Use the provisional dedicated branch only with convergent gender-justice, Islamic interpretive, authority, and institutional or reform evidence; preserve abstention where context is unclear and never infer faith, gender, ethnicity, organizational affiliation, or a current policy position." },
 ];
 
-
 export const RESEARCH_FALSE_POSITIVE_AUDITS: readonly ResearchFalsePositiveAudit[] = [...PRIORITY_FALSE_POSITIVE_AUDITS, ...CORE_FALSE_POSITIVE_AUDITS, ...MACRO_FALSE_POSITIVE_AUDITS, ...MESO_FALSE_POSITIVE_AUDITS, ...MICRO_FALSE_POSITIVE_AUDITS, ...MICRO_TRANCHE_TWO_FALSE_POSITIVE_AUDITS, ...MICRO_TRANCHE_THREE_FALSE_POSITIVE_AUDITS, ...MICRO_TRANCHE_FOUR_FALSE_POSITIVE_AUDITS, ...CONTEXT_TRANCHE_FIVE_FALSE_POSITIVE_AUDITS, ...COMPLETION_TRANCHE_SIX_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_SEVEN_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_EIGHT_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_NINE_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_TEN_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_ELEVEN_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_TWELVE_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_THIRTEEN_FALSE_POSITIVE_AUDITS, ...RESEARCH_TRANCHE_FOURTEEN_FALSE_POSITIVE_AUDITS];
 
 const PRIORITY_COVERAGE_SUMMARIES: readonly ResearchCoverageSummary[] = [
@@ -4738,8 +5021,8 @@ const RESEARCH_TRANCHE_TWELVE_COVERAGE_SUMMARIES: readonly ResearchCoverageSumma
 ];
 const RESEARCH_TRANCHE_THIRTEEN_COVERAGE_SUMMARIES: readonly ResearchCoverageSummary[] = [
   { targetId: "labor-zionism", currentStatus: "dedicated-scored", newCandidateItems: 12, layersCovered: ["descriptive", "normative", "prescriptive"], definingCommitmentsCovered: ["Jewish collective self-determination joined to worker-socialist transformation", "land, labor, and settlement institutional mechanisms", "cooperative and labor organization as nation-building routes", "transnational diaspora and territorial institutional formation", "historical and equal-civic-standing boundary"], remainingMeasurementGaps: ["Labor Zionism versus wider Zionism, Socialism, Social Democracy, Religious Zionism, Anti-Colonial Nationalism, and Cultural Nationalism", "Poale Zion, Ahdut HaAvoda, Mapai, Histadrut, kibbutz, moshav, diaspora, and period variation", "historical relations with Palestinian Arab society and settler-colonial interpretation", "current-identity and high-salience conflict false positives", "later respondent, cross-cultural, and psychometric/empirical validation"], sourceStrength: "high", contentReviewReadiness: "needs-source-or-boundary-review" },
-];const RESEARCH_TRANCHE_FOURTEEN_COVERAGE_SUMMARIES: readonly ResearchCoverageSummary[] = [
+];
+const RESEARCH_TRANCHE_FOURTEEN_COVERAGE_SUMMARIES: readonly ResearchCoverageSummary[] = [
   { targetId: "islamic-feminism", currentStatus: "dedicated-scored", newCandidateItems: 12, layersCovered: ["descriptive", "normative", "prescriptive"], definingCommitmentsCovered: ["gender justice and equal dignity through Islamic interpretive engagement", "patriarchal interpretation, law, and institutional power as a gendered mechanism", "women's interpretive authority and accountable religious or legal participation", "plural scholarly, grassroots, legal, local, and transnational reform routes"], remainingMeasurementGaps: ["Islamic Feminism versus Feminism, Liberal Feminism, Womanism, Islamism, Religious Nationalism, and Socialist Feminism", "theological, secular, Sunni, Shi'a, national, transnational, racial, class, and grassroots variation", "Muslim versus feminist self-description and the translation between textual interpretation, lived experience, law, and public institutions", "family-law, public-law, religious-authority, and cross-jurisdiction wording", "later respondent, cross-cultural, psychometric, invariance, and empirical validation"], sourceStrength: "high", contentReviewReadiness: "needs-source-or-boundary-review" },
 ];
-
 export const RESEARCH_COVERAGE_SUMMARIES: readonly ResearchCoverageSummary[] = [...PRIORITY_COVERAGE_SUMMARIES, ...CORE_COVERAGE_SUMMARIES, ...MACRO_COVERAGE_SUMMARIES, ...MESO_COVERAGE_SUMMARIES, ...MICRO_COVERAGE_SUMMARIES, ...MICRO_TRANCHE_TWO_COVERAGE_SUMMARIES, ...MICRO_TRANCHE_THREE_COVERAGE_SUMMARIES, ...MICRO_TRANCHE_FOUR_COVERAGE_SUMMARIES, ...CONTEXT_TRANCHE_FIVE_COVERAGE_SUMMARIES, ...COMPLETION_TRANCHE_SIX_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_SEVEN_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_EIGHT_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_NINE_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_TEN_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_ELEVEN_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_TWELVE_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_THIRTEEN_COVERAGE_SUMMARIES, ...RESEARCH_TRANCHE_FOURTEEN_COVERAGE_SUMMARIES];

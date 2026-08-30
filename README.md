@@ -37,6 +37,8 @@ Answers are kept in React state. There is no account, API, database, analytics e
 
 The scorer compares observed facet values with approximate editorial profiles using signed, effect-weighted facet aggregation and a weighted mean squared distance. It carries a separation margin between neighboring anchors and suppresses percentage-like display when the observed item set does not distinguish close candidates. When all three layers are covered, it also exposes a combined pattern made from one equally weighted layer fit per claim type, with the three contributions visible for inspection. The combined pattern is not an identity assignment, recommendation, or scientific classification. It uses deterministic content and a versioned policy so that a shared result can be rejected safely when the dataset changes. The UI calls these outputs “interpretive neighbors” and “internal fit” rather than treating them as scientifically validated classifications.
 
+The current result also exposes a primary stated-belief profile before named ideology morphology. It keeps item response states, facet- and construct-level proxies, cross-layer tensions, explicit relational evidence, explicit gaps, lowest-responsible-layer diagnostics, and provenance visible; every current production prompt is mechanically audited, and the inherited bank remains facet-proxy measurement until direct items pass review. An optional eight-item direct-belief pilot records categorical conceptions, reasons, causal accounts, and institutional routes separately from scalar scoring; it is effect-free, shareable, and still provisional. The audit and morphology contracts are documented in [the belief model contract](docs/plan/ideology-sorter/belief-model.md), with the remaining cognitive, content, empirical, invariance, and consequence gates specified in [the belief-model validation protocol](docs/plan/ideology-sorter/belief-validation-protocol.md). The snapshots can be regenerated with `npm run belief:measurement-audit`, `npm run belief:morphology-audit`, and `npm run belief:direct-pilot-audit`; `npm run belief:completion-audit` is the fail-closed objective audit and intentionally remains nonzero while required external-study gates are open. The three unmeasured gaps—priority/conflict rules, epistemic stance, and heterodoxy/contestation—remain gaps rather than being filled by a label or a new ideology branch; 15 researched, effect-free candidates sit in a quarantined gap shelf for later response-process review.
+
 ## Research workbench
 
 The `Research` view is a quarantined item-authoring surface. It derives its target list from the audited ontology nodes and the separate registry at runtime; it does not maintain a second hardcoded ideology list. Each target is labeled with its measurement state, canonical path where one exists, typed relations, source records, linked-context question IDs, existing constructs, and neighboring branches. “Linked context” is provenance overlap, not evidence that the target is measured.
@@ -136,7 +138,15 @@ External projects informed the design vocabulary and provenance notes, not copie
 - `src/share.ts` — bounded, fail-closed share fragment encoding and decoding.
 - `src/research.ts` — derived target inventory, coverage-gap labels, and quarantined candidate validation.
 - `src/research-governance.ts` — explicit source-backed ontology promotion, retention, demotion, and hold decisions.
+- `src/beliefs.ts` — source-bounded belief constructs, item audit, response-state profile, and anchor configuration reconstruction.
+- `src/belief-gap-candidates.ts` — effect-free research candidates for currently uncovered priority, epistemic, and heterodoxy constructs.
+- `src/belief-validation.ts` — typed objective-level evidence ledger and fail-closed completion eligibility.
+- `src/morphology.ts` — provisional configuration projection layered after the belief profile while preserving the legacy scorer.
 - `scripts/audit-research-coverage.ts` — repeatable ontology-wide coverage audit (`npm run research:coverage`).
+- `scripts/audit-belief-measurement.ts` — repeatable production-item and belief-gap coverage audit (`npm run belief:measurement-audit`).
+- `scripts/audit-belief-morphology.ts` — finite canonical round-trip and adversarial synthetic morphology audit (`npm run belief:morphology-audit`).
+- `scripts/audit-belief-direct-pilot.ts` — structural audit of the effect-free direct-belief pilot and its scoring isolation (`npm run belief:direct-pilot-audit`).
+- `scripts/audit-belief-completion.ts` — requirement-level structural and external-gate completion audit (`npm run belief:completion-audit`).
 - `src/App.tsx` — intro, quiz, results, research workbench, disclosure, and restart/share interactions.
 - `docs/plan/ideology-sorter/` — Zeus/Zephermine planning, domain artifacts, flow diagrams, and QA scenarios.
 

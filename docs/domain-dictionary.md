@@ -1,6 +1,6 @@
 # Domain Dictionary
 
-> Generated 2026-08-29 for the Ideology Layer Sorter. Version v12 (content version 93).
+> Generated 2026-08-30 for the Ideology Layer Sorter. Version v15 (content version 96).
 
 ## Core terms
 
@@ -110,7 +110,7 @@
 - UI wording: Secondary registry
 
 ### Canonical inventory
- - Definition: The audited canonical graph containing 9 macro families, 38 meso traditions, and 69 micro branches in the current V98 dataset; contextual placements and secondary registry entries are excluded from these counts. The ontology also exposes six contextual placements and three registry-only entries for inspectable non-canonical context.
+ - Definition: The audited canonical graph containing 9 macro families, 38 meso traditions, and 71 micro branches in the current V100 dataset; contextual placements and secondary registry entries are excluded from these counts. The ontology also exposes six contextual placements and three registry-only entries for inspectable non-canonical context.
 - Identifier: `canonical-inventory`
 - UI wording: Canonical ontology
 
@@ -228,6 +228,41 @@
 - Definition: A runnable, versioned item set whose wording and anchor vectors remain editorial and have not been presented as scientifically validated.
 - Identifier: `provisional-bank`
 - UI wording: Provisional item bank
+
+### Belief profile
+- Definition: A structured representation of stated response states, facet proxies, construct signals, explicit gaps, and traceable evidence that is shown before any named ideological morphology.
+- Identifier: `belief-profile`
+- UI wording: Stated commitment configuration
+
+### Belief construct
+- Definition: A source-bounded conceptual dimension used to organize descriptive claims, normative commitments, prescriptive routes, or explicit relational evidence; its registry status does not establish a validated latent trait.
+- Identifier: `belief-construct`
+- UI wording: Construct
+
+### Facet proxy
+- Definition: An inherited facet-level signal used as an editorial proxy for a broader belief construct; it preserves the narrower item resolution and is not a direct or validated construct measure.
+- Identifier: `measurement-mode:facet-proxy`
+- UI wording: Facet proxy
+
+### Direct categorical evidence
+- Definition: A selected categorical account of a conception, reason, mechanism, legitimacy basis, institutional route, or change path, retained as text and provenance rather than converted to a numeric score.
+- Identifier: `direct-belief-evidence`
+- UI wording: Direct categorical evidence
+
+### Relational evidence
+- Definition: An explicit stated priority, condition, conflict-resolution rule, uncertainty statement, contradiction, or contestation response; it is not inferred from co-occurrence and does not become a hidden weight.
+- Identifier: `relational-evidence`
+- UI wording: Relational evidence
+
+### Ideological morphology candidate
+- Definition: A provisional, source-backed configuration projection that traces observed facet or construct evidence to an existing canonical ontology path; it is not an identity, diagnosis, recommendation, or validated classification.
+- Identifier: `morphology-candidate`
+- UI wording: Morphology candidate
+
+### Evidence gate
+- Definition: A typed local or external requirement that limits what an implementation may claim; an open or missing external gate keeps the affected profile, item, or morphology output provisional.
+- Identifier: `validation-gate`
+- UI wording: Evidence gate
 
 ## Disallowed shorthand
 

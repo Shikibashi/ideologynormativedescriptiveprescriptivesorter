@@ -1,4 +1,6 @@
-import type { Answer, AnswerMap, Dataset, ShareEnvelope, ShareEnvelopeV1, ShareEnvelopeV2 } from "./types";
+import { BELIEF_RELATIONAL_FOLLOWUPS, type BeliefRelationalAnswerMap } from "./belief-followups";
+import { BELIEF_DIRECT_ITEMS, type BeliefDirectAnswerMap } from "./belief-direct-items";
+import type { Answer, AnswerMap, Dataset, DirectShareAnswer, RelationalShareAnswer, ShareEnvelope, ShareEnvelopeV1, ShareEnvelopeV2 } from "./types";
 
 const SHARE_PREFIX = "#s=";
 // Share fragments are bounded because URL fragments can be exposed through
@@ -35,7 +37,30 @@ const encodeEnvelope = (envelope: ShareEnvelope): string => {
   return `${SHARE_PREFIX}${encoded}`;
 };
 
-export const encodeShareFragment = (answers: AnswerMap, dataset: Dataset): string => {
+const relationalAnswersForShare = (answers: BeliefRelationalAnswerMap): readonly RelationalShareAnswer[] => BELIEF_RELATIONAL_FOLLOWUPS.flatMap((followUp) => {
+  const optionId = answers[followUp.id];
+  if (!optionId || !followUp.options.some((option) => option.id === optionId)) return [];
+  return [[followUp.id, optionId] as const];
+});
+
+const directAnswersForShare = (answers: BeliefDirectAnswerMap): readonly DirectShareAnswer[] => BELIEF_DIRECT_ITEMS.flatMap((item) => {
+  const optionId = answers[item.id];
+  if (!optionId || !item.options.some((option) => option.id === optionId)) return [];
+  return [[item.id, optionId] as const];
+});
+
+export const encodeShareFragment = (
+  answers: AnswerMap,
+  dataset: Dataset,
+  relationalAnswers: BeliefRelationalAnswerMap = {},
+  directAnswers: BeliefDirectAnswerMap = {},
+): string => {
+  const encodedRelationalAnswers = relationalAnswersForShare(relationalAnswers);
+  const encodedDirectAnswers = directAnswersForShare(directAnswers);
+  const optionalPayload = {
+    ...(encodedRelationalAnswers.length > 0 ? { relationalAnswers: encodedRelationalAnswers } : {}),
+    ...(encodedDirectAnswers.length > 0 ? { directAnswers: encodedDirectAnswers } : {}),
+  };
   const readableEnvelope: ShareEnvelopeV1 = {
     schema: "ideology-layer-sorter/share",
     envelopeVersion: 1,
@@ -45,6 +70,7 @@ export const encodeShareFragment = (answers: AnswerMap, dataset: Dataset): strin
     answers: dataset.questions
       .map((question) => ({ questionId: question.id, value: answers[question.id] }))
       .filter((item): item is { questionId: string; value: Answer } => isAnswer(item.value)),
+    ...optionalPayload,
   };
   const readableFragment = encodeEnvelope(readableEnvelope);
   if (readableFragment.length <= MAX_FRAGMENT_LENGTH) return readableFragment;
@@ -59,13 +85,59 @@ export const encodeShareFragment = (answers: AnswerMap, dataset: Dataset): strin
       const value = answers[question.id];
       return isAnswer(value) ? [[questionIndex, compactAnswer(value)] as const] : [];
     }),
+    ...optionalPayload,
   };
   return encodeEnvelope(compactEnvelope);
 };
 
 type DecodeResult =
-  | Readonly<{ ok: true; answers: AnswerMap }>
+  | Readonly<{ ok: true; answers: AnswerMap; relationalAnswers?: BeliefRelationalAnswerMap; directAnswers?: BeliefDirectAnswerMap }>
   | Readonly<{ ok: false; reason: string }>;
+
+const relationalAnswersFromPayload = (value: unknown): { ok: true; answers: Record<string, string> } | { ok: false; reason: string } => {
+  if (value === undefined) return { ok: true, answers: {} };
+  if (!Array.isArray(value) || value.length > BELIEF_RELATIONAL_FOLLOWUPS.length) return { ok: false, reason: "This share payload has an invalid relational answer list." };
+  const followUps = new Map(BELIEF_RELATIONAL_FOLLOWUPS.map((followUp) => [followUp.id, followUp]));
+  const answers: Record<string, string> = {};
+  for (const item of value) {
+    if (!Array.isArray(item) || item.length !== 2 || typeof item[0] !== "string" || typeof item[1] !== "string") return { ok: false, reason: "This share payload contains an unknown relational answer." };
+    const followUp = followUps.get(item[0]);
+    if (!followUp || !followUp.options.some((option) => option.id === item[1])) return { ok: false, reason: "This share payload contains an unknown relational answer." };
+    if (item[0] in answers) return { ok: false, reason: "This share payload contains a duplicate relational answer." };
+    answers[item[0]] = item[1];
+  }
+  return { ok: true, answers };
+};
+
+const directAnswersFromPayload = (value: unknown): { ok: true; answers: Record<string, string> } | { ok: false; reason: string } => {
+  if (value === undefined) return { ok: true, answers: {} };
+  if (!Array.isArray(value) || value.length > BELIEF_DIRECT_ITEMS.length) return { ok: false, reason: "This share payload has an invalid direct-belief answer list." };
+  const directItems = new Map(BELIEF_DIRECT_ITEMS.map((item) => [item.id, item]));
+  const answers: Record<string, string> = {};
+  for (const item of value) {
+    if (!Array.isArray(item) || item.length !== 2 || typeof item[0] !== "string" || typeof item[1] !== "string") return { ok: false, reason: "This share payload contains an unknown direct-belief answer." };
+    const directItem = directItems.get(item[0]);
+    if (!directItem || !directItem.options.some((option) => option.id === item[1])) return { ok: false, reason: "This share payload contains an unknown direct-belief answer." };
+    if (item[0] in answers) return { ok: false, reason: "This share payload contains a duplicate direct-belief answer." };
+    answers[item[0]] = item[1];
+  }
+  return { ok: true, answers };
+};
+
+const decodedResultFor = (answers: AnswerMap, relationalValue: unknown, directValue: unknown): DecodeResult => {
+  const relational = relationalAnswersFromPayload(relationalValue);
+  if (!relational.ok) return relational;
+  const direct = directAnswersFromPayload(directValue);
+  if (!direct.ok) return direct;
+  return Object.keys(relational.answers).length > 0 || Object.keys(direct.answers).length > 0
+    ? {
+      ok: true,
+      answers,
+      ...(Object.keys(relational.answers).length > 0 ? { relationalAnswers: relational.answers } : {}),
+      ...(Object.keys(direct.answers).length > 0 ? { directAnswers: direct.answers } : {}),
+    }
+    : { ok: true, answers };
+};
 
 export const decodeShareFragment = (fragment: string, dataset: Dataset): DecodeResult => {
   if (!fragment || fragment.length > MAX_FRAGMENT_LENGTH) return { ok: false, reason: "This share link is empty or too large." };
@@ -93,7 +165,7 @@ export const decodeShareFragment = (fragment: string, dataset: Dataset): DecodeR
         if (item.questionId in answers) return { ok: false, reason: "This share payload contains a duplicate answer." };
         answers[item.questionId] = item.value;
       }
-      return { ok: true, answers };
+      return decodedResultFor(answers, decoded.relationalAnswers, decoded.directAnswers);
     }
 
     for (const item of decoded.answers) {
@@ -104,7 +176,7 @@ export const decodeShareFragment = (fragment: string, dataset: Dataset): DecodeR
       if (questionId in answers) return { ok: false, reason: "This share payload contains a duplicate answer." };
       answers[questionId] = expandCompactAnswer(item[1]);
     }
-    return { ok: true, answers };
+    return decodedResultFor(answers, decoded.relationalAnswers, decoded.directAnswers);
   } catch {
     return { ok: false, reason: "This share payload could not be decoded." };
   }
