@@ -474,6 +474,9 @@ a { color: inherit; }
 .morphology-resolution strong { color: var(--ink); }
 .morphology-resolution > strong { color: var(--signal); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .morphology-resolution p { margin: 6px 0 0; }
+.morphology-interpretation-inventory { max-width: 820px; margin-top: 14px; padding: 11px 14px; border: 1px solid var(--rule); color: var(--ink-muted); font-size: 0.72rem; line-height: 1.5; }
+.morphology-interpretation-inventory strong { color: var(--ink); }
+.morphology-interpretation-inventory p { margin: 5px 0 0; font-size: 0.68rem; }
 .morphology-candidate-list { display: grid; gap: 1px; margin-top: 27px; background: var(--rule); }
 .morphology-candidate { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; padding: 18px 20px; background: var(--paper); }
 .morphology-candidate-rank { color: var(--signal); font: 500 1.45rem/1 var(--display); }
@@ -482,6 +485,8 @@ a { color: inherit; }
 .morphology-candidate-topline span { color: var(--signal); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .morphology-candidate-meta { margin: 6px 0 0; color: var(--ink-muted); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; }
 .morphology-candidate-body > p:not(.morphology-candidate-meta) { max-width: 780px; margin: 10px 0 0; color: var(--ink-muted); font-size: 0.8rem; line-height: 1.5; }
+.morphology-layer-support { padding: 9px 11px; border-left: 2px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 45%, transparent); }
+.morphology-interpretation { color: var(--ink) !important; }
 .morphology-candidate-detail strong { color: var(--ink); }
 .morphology-evidence-details { max-width: 820px; margin-top: 16px; border-top: 1px solid var(--rule); }
 .morphology-evidence-details summary { padding: 12px 0 9px; color: var(--ink); cursor: pointer; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }

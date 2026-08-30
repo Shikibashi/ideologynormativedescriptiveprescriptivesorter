@@ -20,7 +20,7 @@ describe("configuration morphology separation", () => {
   it("records a finite competing-candidate margin without changing the provisional neighborhood", () => {
     const morphology = calculateResults(allDirectionalAnswers()).beliefMorphology;
 
-    expect(morphology.modelVersion).toBe(5);
+    expect(morphology.modelVersion).toBe(6);
     expect(morphology.candidates.length).toBeGreaterThan(1);
     expect(morphology.underDeterminedCandidates).toEqual([]);
     expect(morphology.candidates.every((candidate) => Number.isFinite(candidate.margin))).toBe(true);
@@ -28,6 +28,19 @@ describe("configuration morphology separation", () => {
     expect(morphology.candidates.every((candidate) => candidate.definingCoverage >= 0 && candidate.definingCoverage <= 1)).toBe(true);
     expect(morphology.candidates.every((candidate) => candidate.observedDefiningCommitmentCount <= candidate.definingCommitmentCount)).toBe(true);
     expect(morphology.candidates.every((candidate) => candidate.separation === displaySeparationFor(candidate.margin))).toBe(true);
+    expect(morphology.candidates.every((candidate) => Object.keys(candidate.layerSupport).join(",") === "descriptive,normative,prescriptive")).toBe(true);
+    expect(morphology.candidates.every((candidate) => Object.values(candidate.layerSupport).every((support) => {
+      const agreementIsBounded = support.directionalAgreement === undefined
+        || (support.directionalAgreement >= 0 && support.directionalAgreement <= 1);
+      return agreementIsBounded
+        && support.coverage >= 0
+        && support.coverage <= 1
+        && support.observedCommitmentCount >= 0
+        && support.observedCommitmentCount <= support.commitmentCount;
+    }))).toBe(true);
+    const hybrid = morphology.candidates.find((candidate) => candidate.interpretationKind === "hybrid-formation");
+    expect(hybrid).toBeDefined();
+    expect(hybrid?.hybridOfIds.length).toBeGreaterThan(0);
     expect(morphology.resolution.status).toBe("coarse-neighborhood");
     expect(morphology.resolution.candidateIds).toEqual(morphology.candidates.slice(0, 5).map((candidate) => candidate.anchorId));
     expect(morphology.resolution.rationale).toContain("no unique ideology label is selected");
@@ -56,6 +69,7 @@ describe("configuration morphology separation", () => {
   it("withholds under-determined configurations from provisional candidate ordering", () => {
     const morphology = calculateResults(prescriptiveOnlyAnswers()).beliefMorphology;
     const provisionalIds = new Set(morphology.candidates.map((candidate) => candidate.anchorId));
+    const classicalLiberalism = morphology.candidates.find((candidate) => candidate.anchorId === "classical-liberalism");
 
     expect(morphology.status).toBe("provisional-candidates");
     expect(morphology.candidates.length).toBeGreaterThan(0);
@@ -65,5 +79,11 @@ describe("configuration morphology separation", () => {
     expect(morphology.underDeterminedCandidates.every((candidate) => !provisionalIds.has(candidate.anchorId))).toBe(true);
     expect(morphology.resolution.candidateIds).toEqual(morphology.candidates.slice(0, 5).map((candidate) => candidate.anchorId));
     expect(morphology.gaps).toEqual(expect.arrayContaining([expect.stringContaining("withheld from provisional candidate ordering")]));
+    expect(classicalLiberalism).toBeDefined();
+    expect(classicalLiberalism?.layerSupport.descriptive).toMatchObject({ coverage: 0, observedCommitmentCount: 0 });
+    expect(classicalLiberalism?.layerSupport.descriptive.directionalAgreement).toBeUndefined();
+    expect(classicalLiberalism?.layerSupport.normative).toMatchObject({ coverage: 0, observedCommitmentCount: 0 });
+    expect(classicalLiberalism?.layerSupport.normative.directionalAgreement).toBeUndefined();
+    expect(classicalLiberalism?.layerSupport.prescriptive.directionalAgreement).toBeDefined();
   });
 });

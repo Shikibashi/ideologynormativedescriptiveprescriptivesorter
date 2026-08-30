@@ -62,6 +62,36 @@ const candidateRowFor = (configuration: IdeologyConfiguration) => {
   const candidate = rank >= 0 ? result.primary.morphology.candidates[rank] : undefined;
   const directionalBasis = candidate?.basis.filter((basis) => basis.expectedDirection !== "indeterminate") ?? [];
   const constructSignals = new Map(result.primary.profile.constructs.map((construct) => [construct.id, construct.signal]));
+  const expectedHybridOfIds = [...new Set(configuration.compatibility
+    .filter((relation) => relation.relation === "hybrid-of")
+    .map((relation) => relation.targetId))];
+  const expectedInterpretationKind = expectedHybridOfIds.length > 0
+    ? "hybrid-formation"
+    : configuration.ontologyLevel === "macro"
+      ? "macro-family"
+      : configuration.ontologyLevel === "micro"
+        ? "micro-current"
+        : "meso-tradition";
+  const candidateLayerSupportComplete = candidate !== undefined && layers.every((layer) => {
+    const support = candidate.layerSupport[layer];
+    return support !== undefined
+      && Number.isFinite(support.coverage)
+      && support.coverage >= 0
+      && support.coverage <= 1
+      && Number.isFinite(support.observedCommitmentCount)
+      && support.observedCommitmentCount >= 0
+      && support.observedCommitmentCount <= support.commitmentCount
+      && Number.isFinite(support.commitmentCount)
+      && support.commitmentCount >= 0
+      && (support.directionalAgreement === undefined
+        || (Number.isFinite(support.directionalAgreement)
+          && support.directionalAgreement >= 0
+          && support.directionalAgreement <= 1));
+  });
+  const interpretationMetadataMatchesOntology = candidate !== undefined
+    && candidate.ontologyLevel === configuration.ontologyLevel
+    && candidate.interpretationKind === expectedInterpretationKind
+    && JSON.stringify(candidate.hybridOfIds) === JSON.stringify(expectedHybridOfIds);
   const directionalFitUsesConstructSignal = directionalBasis.length > 0
     && directionalBasis.every((basis) => basis.observedSignal === constructSignals.get(basis.constructId)
       && basis.calculationSource !== "facet-proxy");
@@ -82,6 +112,8 @@ const candidateRowFor = (configuration: IdeologyConfiguration) => {
     targetFit: candidate?.fit ?? null,
     directionalFitUsesConstructSignal,
     facetContextRecordCount: candidate?.basis.filter((basis) => basis.facetProxySignal !== undefined).length ?? 0,
+    candidateLayerSupportComplete,
+    interpretationMetadataMatchesOntology,
   };
 };
 
@@ -171,6 +203,8 @@ const relationalEvidenceAttachedToConstruct = firstRelationalResult.primary.prof
 const adversarialChecks = {
   neighboringConfigurationsRoundTrip: roundTripRows.every((row) => row.targetCandidateRank !== null),
   morphologyFitUsesConstructProfile: roundTripRows.every((row) => row.directionalFitUsesConstructSignal),
+  morphologyLayerSupportIsComplete: roundTripRows.every((row) => row.candidateLayerSupportComplete),
+  morphologyInterpretationMetadataMatchesOntology: roundTripRows.every((row) => row.interpretationMetadataMatchesOntology),
   betweenCanonicalProfilesRemainVisible: hybridResult?.primary.morphology.status === "provisional-candidates"
     && (hybridResult.primary.morphology.candidates.length ?? 0) > 0,
   weakProfileWithholdsMorphology: emptyResult.primary.morphology.status === "insufficient-information"
@@ -228,6 +262,8 @@ const adversarialChecks = {
 const adversarialFailureLayers: Readonly<Record<keyof typeof adversarialChecks, string>> = {
   neighboringConfigurationsRoundTrip: "ideological-mapping",
   morphologyFitUsesConstructProfile: "ideological-mapping",
+  morphologyLayerSupportIsComplete: "ideological-mapping",
+  morphologyInterpretationMetadataMatchesOntology: "ideological-mapping",
   betweenCanonicalProfilesRemainVisible: "ideological-mapping",
   weakProfileWithholdsMorphology: "question",
   allMixedProfileDoesNotNameMorphology: "question",

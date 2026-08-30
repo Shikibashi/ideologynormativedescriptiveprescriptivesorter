@@ -704,6 +704,10 @@ const constructResultFor = (
     .map((observation) => observation.facetId)
     .filter((facetId): facetId is string => facetId !== undefined));
   const signal = constructSignalFor(definition.id, constructObservations);
+  const layerSignals = Object.fromEntries(LAYERS.flatMap((layer) => {
+    const layerSignal = constructSignalFor(definition.id, constructObservations.filter((observation) => observation.layer === layer));
+    return layerSignal === undefined ? [] : [[layer, layerSignal] as const];
+  })) as Partial<Record<Layer, number>>;
   return {
     id: definition.id,
     label: definition.label,
@@ -717,6 +721,7 @@ const constructResultFor = (
     mixedRate: response.total === 0 ? 0 : response.mixed / response.total,
     layerCoverage,
     ...(signal === undefined ? {} : { signal }),
+    layerSignals,
     observationCount: constructObservations.length,
     directObservationCount,
     proxyObservationCount,

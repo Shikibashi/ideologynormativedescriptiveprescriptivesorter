@@ -1,4 +1,5 @@
 import { BELIEF_MODEL_PROVENANCE, configurationForAnchor } from "./beliefs";
+import { LAYERS } from "./types";
 import type {
   BeliefCommitment,
   BeliefCommitmentDirection,
@@ -16,10 +17,13 @@ import type {
   MorphologyDirectBasis,
   MorphologyRelationalBasis,
   IdeologicalMorphologyResolution,
+  IdeologicalMorphologyInterpretationKind,
+  MorphologyLayerSupport,
+  Layer,
 } from "./types";
 
 export const MORPHOLOGY_MODEL_ID = "configuration-projection" as const;
-export const MORPHOLOGY_MODEL_VERSION = 5;
+export const MORPHOLOGY_MODEL_VERSION = 6;
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
@@ -100,6 +104,59 @@ const directBasisFor = (
 }));
 
 type MorphologyCandidateDraft = Omit<IdeologicalMorphologyCandidate, "margin" | "separation">;
+
+const hybridOfIdsFor = (configuration: IdeologyConfiguration): readonly string[] => [...new Set(
+  configuration.compatibility
+    .filter((relation) => relation.relation === "hybrid-of")
+    .map((relation) => relation.targetId),
+)];
+
+const interpretationKindFor = (
+  configuration: IdeologyConfiguration,
+  hybridOfIds: readonly string[],
+): IdeologicalMorphologyInterpretationKind => {
+  if (hybridOfIds.length > 0) return "hybrid-formation";
+  if (configuration.ontologyLevel === "macro") return "macro-family";
+  if (configuration.ontologyLevel === "micro") return "micro-current";
+  return "meso-tradition";
+};
+
+/**
+ * Decompose the existing candidate fit by the claim layer of each source-
+ * backed commitment. The construct signal is restricted to observations from
+ * the same respondent-facing layer; an aggregate cross-layer construct signal
+ * must not be re-described as layer-specific evidence. This is observability
+ * only and never feeds ordering, margins, or thresholds.
+ */
+const layerSupportFor = (
+  configuration: IdeologyConfiguration,
+  basis: readonly MorphologyBasis[],
+  constructs: ReadonlyMap<string, BeliefConstructResult>,
+): Readonly<Record<Layer, MorphologyLayerSupport>> => Object.fromEntries(LAYERS.map((layer) => {
+  const directionalCommitmentIds = new Set(configuration.commitments
+    .filter((commitment) => commitment.layer === layer && commitment.expectedDirection !== "indeterminate")
+    .map((commitment) => commitment.id));
+  const layerBasis = basis.filter((item) => directionalCommitmentIds.has(item.commitmentId));
+  const observedBasis = layerBasis.flatMap((item) => {
+    const constructSignal = constructs.get(item.constructId)?.layerSignals[layer];
+    const sign = directionSign(item.expectedDirection);
+    if (constructSignal === undefined || sign === undefined) return [];
+    const agreement = clamp((clamp(sign * constructSignal, -1, 1) + 1) / 2, 0, 1);
+    return [{ commitmentId: item.commitmentId, weight: item.weight, contribution: agreement * item.weight }];
+  });
+  const totalWeight = layerBasis.reduce((sum, item) => sum + item.weight, 0);
+  const observedWeight = observedBasis.reduce((sum, item) => sum + item.weight, 0);
+  const observedCommitmentCount = new Set(observedBasis.map((item) => item.commitmentId)).size;
+  const directionalAgreement = observedWeight === 0
+    ? undefined
+    : clamp(observedBasis.reduce((sum, item) => sum + (item.contribution ?? 0), 0) / observedWeight, 0, 1);
+  return [layer, {
+    ...(directionalAgreement === undefined ? {} : { directionalAgreement }),
+    coverage: totalWeight === 0 ? 0 : observedWeight / totalWeight,
+    observedCommitmentCount,
+    commitmentCount: directionalCommitmentIds.size,
+  }];
+})) as Readonly<Record<Layer, MorphologyLayerSupport>>;
 
 /**
  * Fit margins make coarse candidate neighborhoods inspectable. The existing
@@ -288,6 +345,7 @@ const candidateForConfiguration = (
   const conflictText = [...conflictingCommitments].slice(0, 3).join(", ");
   const directBasis = directBasisFor(directEvidence, structure);
   const relationalBasis = relationalBasisFor(relationalEvidence, structure);
+  const hybridOfIds = hybridOfIdsFor(configuration);
   const explanationParts = [
     observedText.length > 0 ? `Observed support includes ${observedText}.` : "No defining commitment is sufficiently observed.",
     missingText.length > 0 ? `Still unmeasured or unavailable: ${missingText}.` : "No defining commitment is missing from the current proxy coverage.",
@@ -306,6 +364,9 @@ const candidateForConfiguration = (
     family: configuration.family,
     ontologyNodeId: configuration.ontologyNodeId,
     ontologyLevel: configuration.ontologyLevel,
+    interpretationKind: interpretationKindFor(configuration, hybridOfIds),
+    hybridOfIds,
+    layerSupport: layerSupportFor(configuration, basis, constructs),
     status,
     fit,
     coverage,

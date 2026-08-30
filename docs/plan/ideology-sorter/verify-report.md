@@ -2137,3 +2137,25 @@ V147 adds seven optional source-linked direct categorical items for the remainin
 | Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
 
 V147 closes a local direct-pilot coverage observability gap only. Research citations, categorical options, synthetic evidence, deterministic tests, browser behavior, and build results do not establish comprehension, response-process validity, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent morphology; the comprehensive objective remains `INCOMPLETE` / fail-closed.
+
+## V149 observed verification — layered morphology and ontology-shape trace — 2026-08-30
+
+V149 adds an additive morphology observability trace over the existing source-backed configuration projection. Candidates now expose their existing macro/meso/micro shape or direct typed hybrid relation, plus descriptive, normative, and prescriptive layer-support slots. Each slot separates same-layer directional agreement from commitment-weight coverage and observed-versus-total directional commitment counts. The trace does not alter fit, candidate order, margins, thresholds, layer weights, legacy scoring, production content, ontology placement, or the no-unique-label posture.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current source, same-layer construct signal trace, morphology metadata, audit assertions, UI rendering, and tests compile with no output. |
+| `npm run test:run -- --no-file-parallelism` | PASS | Full current-tree Vitest suite: 12 files and 182/182 tests passed in 56.57 seconds. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `npm run belief:morphology-audit -- --summary` | PASS | All 119 canonical configurations remain source-backed and round-trip; 238 researched relationships remain resolved; layer-support completeness and ontology-consistent interpretation metadata checks are true; validation and failure counts are 0. |
+| `npm run belief:measurement-audit -- --summary` | PASS | The production bank remains 1,500 `facet-proxy` questions split 500/500/500 by layer; the three production-unmeasured constructs and ten candidate-only cells remain explicit; validation errors are 0. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | The direct pilot now has 30 source-linked items; all 19 research candidates and all ten candidate-only cells remain covered without production overlap, scoring effects, or affinity changes. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | All 119 canonical targets retain 4/4/4 production blocks with zero validation failures; four family-level prescriptive directions remain contested/indeterminate. |
+| `npm run research:coverage -- --summary` | PASS | The current research bank reports 1,536 candidates, 128 targets, 125 ontology nodes, 119 canonical scored placements, 9 non-scored registry/contextual placements, and zero validation errors. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All structural checks pass and validation errors are 0; the six required external-study gates remain `NOT RUN`, so eligibility is false and exit 1 is expected. |
+| `npx vite-node scripts/export-belief-review-packet.ts | npx vite-node scripts/validate-belief-review-packet.ts --summary` | INCOMPLETE / FAIL-CLOSED | Fresh packet parses with zero structural validation errors; morphology model version is 6, the queue has 1,555 items, no reviewer or evidence records exist, all six recorded gate results are missing, and promotion remains false; exit 1 is expected. |
+| `E2E_BASE_URL=http://127.0.0.1:4176 npm run qa -- --workers=1 --reporter=list` | PASS | Full stable-preview Playwright suite: 13/13 scenarios passed in 7.5 minutes, including morphology-shape inventory, per-layer trace rendering, share-link restoration, under-determined diagnostics, missing-layer messaging, and malformed-share resilience; the preview was stopped cleanly. |
+| `git diff --check` | PASS | No whitespace errors after the source, audit, test, UI, and documentation changes. |
+| Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
+
+V149 improves structural interpretability and same-layer evidence traceability only. It does not establish respondent comprehension, expert agreement, layer separability, reliability, validity, invariance, population/consequence safety, empirical classification, or held-out respondent morphology; the comprehensive objective remains `INCOMPLETE` / fail-closed.

@@ -499,8 +499,13 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await expect(page.locator(".belief-structure-list")).toContainText(/research candidate/i);
  await expect(page.getByRole("heading", { name: "Ideological morphology candidates" })).toBeVisible();
  await expect(page.locator(".belief-morphology")).toContainText(/provisional candidates/i);
-  await expect(page.locator(".morphology-resolution")).toContainText(/Selection posture:/i);
+ await expect(page.locator(".morphology-resolution")).toContainText(/Selection posture:/i);
   await expect(page.locator(".morphology-resolution")).toContainText(/no unique ideology label is selected/i);
+  await expect(page.locator(".morphology-interpretation-inventory")).toContainText(/Ontology shapes in the candidate grid/i);
+  await expect(page.locator(".morphology-interpretation-inventory")).toContainText(/hybrid formation/i);
+  await expect(page.locator(".morphology-layer-support").first()).toContainText(/Descriptive/i);
+  await expect(page.locator(".morphology-layer-support").first()).toContainText(/Normative/i);
+  await expect(page.locator(".morphology-layer-support").first()).toContainText(/Prescriptive/i);
   const evidenceDetails = page.locator(".morphology-evidence-details").first();
   await evidenceDetails.locator("summary").click();
   await expect(evidenceDetails.locator(".morphology-evidence-list")).toBeVisible();

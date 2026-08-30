@@ -652,6 +652,12 @@ export type BeliefConstructResult = Readonly<{
   mixedRate: number;
   layerCoverage: Readonly<Record<Layer, number>>;
   signal?: number;
+  /**
+   * Same provisional construct signal restricted to each respondent-facing
+   * claim layer. Missing entries mean that layer has no directional evidence;
+   * they are not neutral values or calibrated layer scores.
+   */
+  layerSignals: Readonly<Partial<Record<Layer, number>>>;
   observationCount: number;
   directObservationCount: number;
   proxyObservationCount: number;
@@ -973,12 +979,41 @@ export type MorphologyDirectBasis = Readonly<{
   evidenceQuestionIds: readonly string[];
 }>;
 
+/**
+ * A decomposition of the same construct-level morphology fit by claim layer.
+ * This is an interpretive trace, not a second scorer or a calibrated layer
+ * score. Commitment coverage is separate from directional agreement so an
+ * unobserved layer cannot be mistaken for a neutral result.
+ */
+export type MorphologyLayerSupport = Readonly<{
+  /** Weighted agreement among observed directional commitments in this layer. */
+  directionalAgreement?: number;
+  /** Share of directional commitment weight with observed construct evidence. */
+  coverage: number;
+  /** Distinct directional commitments with observed agreement. */
+  observedCommitmentCount: number;
+  /** Distinct directional commitments in the source-backed configuration. */
+  commitmentCount: number;
+}>;
+
+export type IdeologicalMorphologyInterpretationKind =
+  | "macro-family"
+  | "meso-tradition"
+  | "micro-current"
+  | "hybrid-formation";
+
 export type IdeologicalMorphologyCandidate = Readonly<{
   anchorId: string;
   label: string;
   family: string;
   ontologyNodeId: string;
   ontologyLevel: IdeologyLevel;
+  /** Existing ontology shape made explicit for the result consumer. */
+  interpretationKind: IdeologicalMorphologyInterpretationKind;
+  /** Direct ontology relations that identify the constitutive hybrid families. */
+  hybridOfIds: readonly string[];
+  /** Per-layer decomposition of the same provisional configuration fit. */
+  layerSupport: Readonly<Record<Layer, MorphologyLayerSupport>>;
   status: "provisional-candidate" | "under-determined";
   fit: number;
   coverage: number;

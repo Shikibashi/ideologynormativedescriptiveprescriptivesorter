@@ -237,6 +237,27 @@ const morphologyResolutionLabels: Readonly<Record<IdeologicalMorphology["resolut
   "provisional-neighborhood": "provisional candidate neighborhood",
 };
 
+const morphologyInterpretationKindLabels: Readonly<Record<IdeologicalMorphology["candidates"][number]["interpretationKind"], string>> = {
+  "macro-family": "macro family",
+  "meso-tradition": "meso tradition",
+  "micro-current": "micro current",
+  "hybrid-formation": "hybrid formation",
+};
+
+const morphologyLayerSupportTextFor = (candidate: IdeologicalMorphology["candidates"][number]): string => LAYERS
+  .map((layer) => {
+    const support = candidate.layerSupport[layer];
+    const agreement = support.directionalAgreement === undefined
+      ? "not observed"
+      : `${Math.round(support.directionalAgreement * 100)}% agreement`;
+    return `${LAYER_LABELS[layer].short}: ${agreement}, ${Math.round(support.coverage * 100)}% commitment coverage (${support.observedCommitmentCount}/${support.commitmentCount})`;
+  })
+  .join(" · ");
+
+const morphologyHybridLabelsFor = (candidate: IdeologicalMorphology["candidates"][number]): string => candidate.hybridOfIds
+  .map(researchLabelFor)
+  .join(" · ");
+
 const configurationRelationshipParticipantsTextFor = (relationship: IdeologyConfiguration["researchedRelationships"][number], configuration: IdeologyConfiguration): string => relationship.participants
   .map((participant) => {
     const labels = participant.commitmentIds
@@ -1173,6 +1194,11 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
   const candidates = morphology.candidates.slice(0, 5);
   const underDeterminedCandidates = morphology.underDeterminedCandidates.slice(0, 5);
   const underDeterminedCandidateCount = morphology.underDeterminedCandidates.length;
+  const interpretationInventory = Object.entries(morphologyInterpretationKindLabels)
+    .map(([kind, label]) => ({ kind, label, count: morphology.candidates.filter((candidate) => candidate.interpretationKind === kind).length }))
+    .filter((item) => item.count > 0)
+    .map((item) => `${item.count} ${item.label}${item.count === 1 ? "" : "s"}`)
+    .join(" · ");
   const resolutionCandidates = morphology.resolution.candidateIds
     .map((candidateId) => morphology.candidates.find((candidate) => candidate.anchorId === candidateId)?.label)
     .filter((label): label is string => label !== undefined);
@@ -1191,6 +1217,7 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
         <p>{morphology.resolution.rationale}</p>
         {resolutionCandidates.length > 0 ? <p><strong>Inspectable neighborhood:</strong> {resolutionCandidates.join("; ")}</p> : null}
       </div>
+      {morphology.candidates.length > 0 ? <div className="morphology-interpretation-inventory" role="note"><strong>Ontology shapes in the candidate grid:</strong> {interpretationInventory}<p>Macro, meso, and micro describe existing catalog levels; hybrid formation names an existing typed relation between traditions. These are descriptive metadata, not scores or identity assignments.</p></div> : null}
       {morphology.status === "insufficient-information" ? (
         <div className="belief-morphology-empty"><h3>No named morphology yet.</h3><p>{morphology.gaps[0]}</p></div>
       ) : morphology.status === "not-derived" || candidates.length === 0 ? (
@@ -1202,7 +1229,9 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
               <div className="morphology-candidate-rank" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
               <div className="morphology-candidate-body">
                 <div className="morphology-candidate-topline"><h3>{candidate.label}</h3><span>provisional candidate</span></div>
-                <p className="morphology-candidate-meta">{candidate.family} family · {Math.round(candidate.coverage * 100)}% configuration coverage · {candidate.observedDefiningCommitmentCount}/{candidate.definingCommitmentCount} defining commitments supported · {Math.round(candidate.fit * 100)}% directional agreement</p>
+                <p className="morphology-candidate-meta">{taxonomyLevelLabels[candidate.ontologyLevel]} · {morphologyInterpretationKindLabels[candidate.interpretationKind]} · {candidate.family} family · {Math.round(candidate.coverage * 100)}% configuration coverage · {candidate.observedDefiningCommitmentCount}/{candidate.definingCommitmentCount} defining commitments supported · {Math.round(candidate.fit * 100)}% directional agreement</p>
+                {candidate.hybridOfIds.length > 0 ? <p className="morphology-candidate-detail morphology-interpretation"><strong>Constitutive hybrid relation:</strong> {morphologyHybridLabelsFor(candidate)}</p> : null}
+                <p className="morphology-candidate-detail morphology-layer-support"><strong>Layered profile trace:</strong> {morphologyLayerSupportTextFor(candidate)}. This restates the same provisional commitment evidence; it is not a second score or a unique label.</p>
                 <p>{candidate.explanation}</p>
                 {candidate.definingCommitmentsObserved.length > 0 ? <p className="morphology-candidate-detail"><strong>Observed defining commitments:</strong> {candidate.definingCommitmentsObserved.join(", ")}</p> : null}
                 {candidate.missingDefiningCommitments.length > 0 ? <p className="morphology-candidate-detail"><strong>Missing defining commitments:</strong> {candidate.missingDefiningCommitments.join(", ")}</p> : null}
