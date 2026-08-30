@@ -1696,6 +1696,36 @@ describe("research workbench contracts", () => {
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => contextIds.includes(targetId)))).toBe(false);
   });
 
+  it("keeps Anarchism context non-scored while recording family-level conceptions", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "anarchism-context");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "meso",
+      placement: "contextual",
+      canonicalPath: [],
+      measurementStatus: "contextual-only",
+      questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "anarchism-context")).toMatchObject({ placement: "contextual", status: "catalog-only" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "anarchism-context")?.anchorId).toBe("anarchism");
+    expect(DATASET.ideologyNodes.find((node) => node.id === "anarchism-context")?.sourceRefs).toEqual(expect.arrayContaining([
+      "source-sep-anarchism",
+      "source-ostrom",
+    ]));
+    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("anarchism-context"))).toBe(false);
+    const anarchismProfile = researchAnchorProfiles.find((profile) => profile.targetId === "anarchism-context");
+    expect(anarchismProfile?.conceptions.map((conception) => conception.conceptId)).toEqual([
+      "anti-hierarchical-freedom",
+      "voluntary-federated-self-government",
+    ]);
+    expect(anarchismProfile?.conceptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ conceptId: "anti-hierarchical-freedom", layer: "normative", centrality: "defining" }),
+      expect.objectContaining({ conceptId: "voluntary-federated-self-government", layer: "prescriptive", centrality: "characteristic" }),
+    ]));
+    expect(anarchismProfile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
+    expect(researchTaxonomyDecisionForTarget("anarchism-context")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored" });
+  });
+
   it("keeps Gandhian Political Thought as a source-backed contextual research target without production scoring", () => {
     const target = buildResearchTargets(DATASET).find((item) => item.id === "gandhian-political-thought");
     expect(target).toMatchObject({

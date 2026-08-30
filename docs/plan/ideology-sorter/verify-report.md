@@ -1180,3 +1180,27 @@ V105 enriches the existing `civic-republicanism` registry profile with two quali
 | Compose/Docker delivery | NOT RUN | Not rerun for this registry-only qualitative refresh; no container or hosted-runtime claim is made |
 
 V106 enriches the existing `conservative-new-right` registry profile with two qualitative conceptions while leaving production content at version 97 with 1,500 questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, two registry entries, six contextual placements, and 1,524 quarantined research candidates. Conservative New Right remains registry-only and not-scored; no canonical node, direct production question, production anchor, effect, coefficient, threshold, picker behavior, morphology output, layer weight, combined-layer semantic, or share semantic changed. The six external-study gates remain explicitly `NOT RUN`; no cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied.
+
+## V107 final observed verification — Anarchism contextual conception bridge — 2026-08-30
+
+V107 enriches the existing contextual `anarchism-context` profile with two qualitative conceptions while leaving production content at version 97 with 1,500 questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, two registry entries, six contextual placements, and 1,524 quarantined research candidates. The node remains linked to the existing `anarchism` family anchor, contextual-only, catalog-only, and not-scored; no direct production question or score path was added.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx vitest run src/research.test.ts` | PASS | Focused research-workbench contract 88/88, including Anarchism context placement, family link, source resolution, conception layers, quarantine, and non-scored governance assertions |
+| `npm run test:run -- --reporter=dot` | PASS | 5 files, 151/151 Vitest tests |
+| `npx tsc --noEmit` | PASS | Current TypeScript tree typechecks |
+| `npm run build` | PASS | Production bundle builds; the existing large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | Content version 97; 1,500 production questions at 500/500/500; 119 production anchors; 124 editorial anchors; 125 ontology nodes; two registry entries; six contextual placements; 1,524 candidates; 124 target rows with conceptions; 131 profile conceptions; zero validation errors; Anarchism context has 2 conceptions and 0 direct questions |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors, failures, or isolated missing layers |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500 production items audited; all remain facet-proxy observations; the audit interpretation remains non-cognitive and non-psychometric |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119/119 source-backed canonical configurations with classified explicit research conceptions; zero configurations missing conceptions; zero validation failures; neutral and mixed-profile safeguards remain intact |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct items remain isolated; zero direct items are in production; zero validation errors/failures |
+| `E2E_BASE_URL=http://127.0.0.1:4179 npm run qa -- --workers=1` | PASS | Serial production-preview Playwright suite 10/10 in 5.3 minutes; preview was stopped and port 4179 was verified closed |
+| `npm run belief:completion-audit -- --summary` | NOT PASS / FAIL-CLOSED | Structural checks are true, but `eligible: false` and exit 1 remain correct because six required external-study gates are `NOT RUN` |
+| `git diff --check` | PASS | No whitespace errors in the remaining worktree diff |
+| `git diff --cached --check` | PASS | No whitespace errors in the owned staged V107 changes |
+| Compose/Docker delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The V107 source pass uses the [Stanford Encyclopedia of Philosophy entry on Anarchism](https://plato.stanford.edu/entries/anarchism/) for the family-level authority, domination, hierarchy, and plural constructive-route boundary, and [Ostrom's *Governing the Commons* source](https://doi.org/10.1017/CBO9780511807763) only for comparative self-governance terminology. `anti-hierarchical-freedom` is normative/defining and `voluntary-federated-self-government` is prescriptive/characteristic; both remain editorial context outside respondent observations, affinity weights, morphology output, or score effects. No cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, current-actor inference, comparison, ranking, recommendation, or personal ideological classification was run or implied. The overall objective remains incomplete because the six external-study gates remain open.

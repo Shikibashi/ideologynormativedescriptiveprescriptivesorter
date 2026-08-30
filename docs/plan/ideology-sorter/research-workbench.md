@@ -737,3 +737,18 @@ The V106 workbench pass uses the existing Freeden, Williams, Jackson, Bures, Dro
 The registry target remains `registry-only` / `not-scored`, with twelve quarantined candidates at descriptive/normative/prescriptive 4/4/4, no canonical path, no direct production questions, no production anchor, and no score effect. Its qualitative profile now records `cultural-continuity-and-particularism` as a contested normative conception and `metapolitical-cultural-work` as a characteristic prescriptive conception for some formations. These records are source-backed editorial context only: they are not latent respondent traits, anchor weights, morphology candidates, or political recommendations.
 
 The workbench retains Conservative New Right as a heterogeneous registry formation rather than a duplicate parent for Conservatism, National Conservatism, Paleoconservatism, Neoconservatism, or Right-Wing Populism. Cultural continuity, national or civilizational language, market preference, elite critique, anti-liberalism, narrative work, or one current organization alone remains insufficient to establish the registry label. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, population generalization, or current-actor inference was run or implied.
+
+## V107 research-workbench continuation — Anarchism contextual family bridge
+
+| Workbench field | V107 contract |
+|---|---|
+| Target | `anarchism-context`, the existing meso contextual node linked to the `anarchism` family anchor |
+| Disposition | Retain contextual and non-scored; do not create a duplicate canonical branch |
+| Candidate bank | Twelve quarantined, effect-free candidates at descriptive/normative/prescriptive 4/4/4 |
+| Qualitative conceptions | `anti-hierarchical-freedom` (normative, defining); `voluntary-federated-self-government` (prescriptive, characteristic) |
+| Source boundary | Stanford Encyclopedia supplies the family-level authority/hierarchy and constructive-variation account; Ostrom supplies comparative self-governance context only |
+| Production boundary | Zero direct production questions, no production anchor, no effect, coefficient, threshold, picker rule, morphology output, or score contribution |
+
+The workbench must show that `anarchism-context` is associated family context, not a respondent-facing ideology result. Its boundary remains stricter than generic anti-government sentiment, privacy, localism, personal independence, market exchange, cooperation, or decentralization. It also must not imply that every anarchist rejects every state in the same way: the source pass preserves philosophical, social, individualist, feminist, ecological, religious, historical, and state-tolerant variation. The new conception records are source-backed editorial bridges and remain outside unvalidated respondent measurement.
+
+This is a research-bank and taxonomy continuation. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, population generalization, or current-actor inference was run or implied.

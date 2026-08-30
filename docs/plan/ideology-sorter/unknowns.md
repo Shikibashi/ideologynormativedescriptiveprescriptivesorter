@@ -664,6 +664,14 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - Market Socialism remains a contextual-only, not-scored target with no production anchor or direct questions; the two qualitative conceptions are source-backed editorial context, not respondent measurements or score effects.
 - No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
 
+## V107 — Anarchism contextual family open boundaries
+
+- How should the family-level critique of authority, domination, and hierarchy be kept distinct from the mechanisms that define Social Anarchism, Individualist Anarchism, Green Anarchism, Libertarian Socialism, mutualism, anarcho-capitalism, and other narrower traditions?
+- Which constructive routes count as recurring qualitative context—voluntary association, mutual aid, consensus, direct democracy, federated organization, or polycentric self-governance—without implying that one route is constitutive of every anarchist tradition or that Ostrom's comparative institutional work is an anarchist source?
+- How should state-tolerant philosophical anarchism, anti-clerical and religious anarchisms, feminist and decolonizing applications, ecological applications, and historical movement forms remain visible without turning the contextual label into a single respondent construct?
+- `anarchism-context` remains contextual-only and not-scored with two qualitative conceptions and twelve quarantined candidates; the conceptions are editorial context rather than respondent measurements, anchor weights, morphology outputs, or score effects.
+- No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
+
 ## V105 — Civic Republicanism open boundaries
 
 - How should Civic Republicanism be separated from Historical Republicanism, Contemporary Neo-Republicanism, Radical Republicanism, Liberalism, Communitarianism, and generic democracy when the label is used for both a historical civic-virtue interpretation and a contemporary non-domination programme?

@@ -1120,3 +1120,12 @@ The V105 crosswalk records `civic-freedom-through-non-domination` and `virtue-an
 | `source-springer-schilk-new-right-metapolitics` | [Schilk, “The Metapolitics of Crises”](https://doi.org/10.1007/s10767-025-09519-3) | Supplies the metapolitical cultural-work conception and distinguishes narrative communities and intellectual strategy from political actors |
 
 The V106 crosswalk records `cultural-continuity-and-particularism` and `metapolitical-cultural-work` as qualitative profile conceptions for the registry entry. The sources support terminology, provenance, geographic and historical boundary writing, neighbor distinctions, and false-positive controls for twelve quarantined effect-free candidates at 4/4/4. They do not establish respondent interpretation, reliability, validity, invariance, empirical classification, population generalization, or current-actor inference. No production questions or scored ideology nodes were added.
+
+## V107 — Anarchism contextual conception crosswalk
+
+| Source ID | Citation | Use in the sorter |
+|---|---|---|
+| `source-sep-anarchism` | [Stanford Encyclopedia of Philosophy, “Anarchism”](https://plato.stanford.edu/entries/anarchism/) | Supports the family-level critique of centralized, hierarchical power and authority, freedom from domination, plural anarchist varieties, and voluntary or consensual constructive routes; it also preserves state-tolerant and historically situated variation. |
+| `source-ostrom` | [Ostrom, *Governing the Commons*](https://doi.org/10.1017/CBO9780511807763) | Supplies comparative language for institutional diversity, self-governance, and collective-action arrangements beyond a simple state/market dichotomy; it is not used to label Ostrom or polycentric governance as anarchist. |
+
+The V107 crosswalk records `anti-hierarchical-freedom` as a defining normative conception and `voluntary-federated-self-government` as a characteristic prescriptive conception for the existing contextual `anarchism-context` profile. The sources support provenance, family-level definition, branch-boundary writing, neighbor distinctions, and false-positive controls for twelve quarantined effect-free candidates at 4/4/4. They do not establish respondent interpretation, reliability, validity, invariance, empirical classification, population generalization, current-actor inference, or any promotion decision beyond retaining the contextual label. No production questions or scored ideology nodes were added.

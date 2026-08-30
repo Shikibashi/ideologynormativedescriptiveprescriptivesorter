@@ -735,3 +735,23 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-106-03 | Inspect the Conservative New Right qualitative conceptions. | `cultural-continuity-and-particularism` is normative/contested and `metapolitical-cultural-work` is prescriptive/characteristic; all conception source IDs resolve; no production anchor or score effect exists. |
 | P-106-04 | Inspect governance and false-positive controls. | The existing `taxonomy-conservative-new-right-retain-registry` decision remains `retain-registry-only` / `not-scored`; cultural continuity, national or civilizational language, market preference, anti-elite sentiment, or metapolitical activity alone do not establish the registry label. |
 | P-106-05 | Run deterministic and delivery checks. | Focused/full Vitest, TypeScript, build, audit, coverage, reachability, belief audits, preview/browser checks, and Git checks report their actual PASS/FAIL/NOT RUN state. No cognitive review, respondent study, psychometric validation, empirical classification, or current-actor inference is substituted or implied. |
+
+## V107 — Anarchism contextual conception tranche
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-107-01 | Run the research coverage inventory after enriching Anarchism context. | Production remains at 1,500 questions with 500 per layer, 119 production anchors, and 124 editorial anchors; the ontology remains at 125 nodes with the existing contextual/catalog-only placements, two registry entries, 127 research targets, 1,524 candidates, and zero validation errors. |
+| P-107-02 | Select `anarchism-context` in the research workbench. | The target remains linked to the existing `anarchism` family anchor, contextual-only, not-scored, without a canonical path or direct production questions; its twelve candidates remain quarantined at 4/4/4. |
+| P-107-03 | Inspect the Anarchism qualitative conceptions. | `anti-hierarchical-freedom` is normative/defining and `voluntary-federated-self-government` is prescriptive/characteristic; every conception source ID resolves, and the records are visibly qualitative rather than respondent measurements. |
+| P-107-04 | Inspect governance and false-positive controls. | The contextual disposition remains retained and non-scored; anti-government feeling, privacy, localism, personal independence, market exchange, cooperation, decentralization, or one anti-authority response alone does not establish the family context or any narrower branch. |
+| P-107-05 | Run deterministic and delivery checks. | Focused/full Vitest, TypeScript, build, audit, coverage, reachability, belief audits, preview/browser checks, and Git checks report their actual PASS/FAIL/NOT RUN state. No cognitive review, respondent study, psychometric validation, empirical classification, or current-actor inference is substituted or implied. |
+
+## V108 — Integrated belief-structure trace
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-108-01 | Complete the base quiz and open the results view. | The primary result shows an integrated belief-structure trace with eleven dimensions before facet evidence and named morphology. |
+| P-108-02 | Inspect the structure evidence postures. | Answered base-quiz evidence remains `facet-proxy`; priorities/conflicts, epistemic stance, and heterodoxy/contestation remain visibly unmeasured; unanswered and `no-view` records do not count as observed structure. |
+| P-108-03 | Select direct categorical and relational follow-up options. | The corresponding dimensions show `categorical-pilot`, `explicit-relational`, or `mixed-provisional` evidence while preserving option text, attached question ids, and provenance without changing affinity weights or legacy compatibility output. |
+| P-108-04 | Run structure and morphology adversarial fixtures. | The integrated trace covers every registered construct, distinguishes evidence forms, retains same-values/different-causal-belief and priority/conditional fixtures, and keeps morphology fail-closed for weak or all-mixed profiles. |
+| P-108-05 | Run deterministic and delivery checks. | Focused/full Vitest, TypeScript, build, belief audits, coverage, reachability, preview/browser checks, and Git checks report their actual PASS/FAIL/NOT RUN state. The six required external validation gates remain explicitly `NOT RUN` until study evidence is recorded. |

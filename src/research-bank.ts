@@ -4469,6 +4469,24 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-cambridge-trotskyism", "source-cambridge-trotskyism-permanent-revolution", "source-oup-political-ideologies"],
     ),
   ],
+  "anarchism-context": [
+    anchorConception(
+      "anti-hierarchical-freedom",
+      "normative",
+      "Freedom from domination and imposed hierarchy",
+      "Anarchist traditions commonly treat freedom as requiring resistance to domination and skepticism toward imposed political authority and hierarchy; the scope of the critique varies across philosophical, social, market, feminist, ecological, religious, and state-tolerant accounts.",
+      "defining",
+      ["source-sep-anarchism"],
+    ),
+    anchorConception(
+      "voluntary-federated-self-government",
+      "prescriptive",
+      "Self-government through voluntary and federated association",
+      "Anarchist constructive arguments may favor voluntary association, mutual aid, consensus or direct-democratic coordination, and federated or polycentric self-government over imposed command; no single institutional route is constitutive, and decentralized governance alone is not sufficient.",
+      "characteristic",
+      ["source-sep-anarchism", "source-ostrom"],
+    ),
+  ],
   "conservative-new-right": [
     anchorConception(
       "cultural-continuity-and-particularism",
