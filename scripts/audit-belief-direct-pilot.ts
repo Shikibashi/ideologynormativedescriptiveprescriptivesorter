@@ -58,6 +58,13 @@ const candidateOnlyConstructLayerPairs = BELIEF_CONSTRUCT_DEFINITIONS.flatMap((d
   .map((layer) => `${definition.id}:${layer}`));
 const directPilotConstructLayerPairs = new Set(BELIEF_DIRECT_ITEMS.flatMap((item) => item.constructIds.map((constructId) => `${constructId}:${item.layer}`)));
 const directPilotCoversCandidateOnlyCells = candidateOnlyConstructLayerPairs.every((pair) => directPilotConstructLayerPairs.has(pair));
+const directPilotCandidateCoverage = BELIEF_GAP_CANDIDATES.map((candidate) => ({
+  candidateId: candidate.id,
+  directItemIds: BELIEF_DIRECT_ITEMS
+    .filter((item) => item.researchCandidateIds?.includes(candidate.id))
+    .map((item) => item.id),
+}));
+const directPilotCoversAllResearchCandidates = directPilotCandidateCoverage.every((coverage) => coverage.directItemIds.length === 1);
 const validationErrors = [
   ...directItemErrors,
   ...directEvidenceErrors,
@@ -104,6 +111,9 @@ const report = {
     directPilotCoversProductionGaps,
     candidateOnlyConstructLayerPairs,
     directPilotCoversCandidateOnlyCells,
+    candidateSpecificDirectItemCount: BELIEF_DIRECT_ITEMS.filter((item) => item.researchCandidateIds?.length).length,
+    researchCandidateCoverage: directPilotCandidateCoverage,
+    directPilotCoversAllResearchCandidates,
     directItemsInProduction,
   },
   syntheticEvidence: {
@@ -128,6 +138,7 @@ const failures = [
   ...(directItemsInProduction.length > 0 ? [`direct pilot items overlap production questions: ${directItemsInProduction.join(", ")}`] : []),
   ...(!directPilotCoversProductionGaps ? ["direct pilot does not cover every construct without a production signal"] : []),
   ...(!directPilotCoversCandidateOnlyCells ? ["direct pilot does not cover every candidate-only construct/layer cell"] : []),
+  ...(!directPilotCoversAllResearchCandidates ? ["direct pilot does not provide exactly one linked record for every research candidate"] : []),
   ...(!sameLegacyScoring ? ["direct pilot evidence changed legacy layer or combined scoring"] : []),
   ...(!sameAffinityBasis ? ["direct pilot evidence changed morphology affinity fit or basis"] : []),
   ...(!enriched.primary.profile.directEvidence.length ? ["direct pilot evidence was not retained in the belief profile"] : []),

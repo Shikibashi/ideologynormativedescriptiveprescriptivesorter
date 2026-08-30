@@ -332,7 +332,14 @@ describe("stated political commitment configuration", () => {
     expect(enrichedStructure.get("distributive-principles")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("moral-scope-of-obligation"), expect.stringContaining("distributive-reason")]));
     expect(enrichedStructure.get("priorities-and-conflicts")).toMatchObject({ evidencePosture: "mixed-provisional" });
     expect(enrichedStructure.get("priorities-and-conflicts")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-liberty-equality")]));
-    expect(enrichedStructure.get("priorities-and-conflicts")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-conflict-rule"), expect.stringContaining("priority-rights-local-autonomy-pilot")]));
+    expect(enrichedStructure.get("priorities-and-conflicts")?.directEvidenceIds).toEqual(expect.arrayContaining([
+      expect.stringContaining("priority-conflict-rule"),
+      expect.stringContaining("priority-rights-local-autonomy-pilot"),
+      expect.stringContaining("priority-liberty-equality-pilot"),
+      expect.stringContaining("priority-ecology-growth-pilot"),
+      expect.stringContaining("priority-scope-members-outsiders-pilot"),
+      expect.stringContaining("priority-reform-deep-change-pilot"),
+    ]));
     expect(enrichedStructure.get("priorities-and-conflicts")?.relatedDimensionIds).toEqual(expect.arrayContaining([
       "concepts-and-conceptions",
       "distributive-principles",
@@ -353,10 +360,24 @@ describe("stated political commitment configuration", () => {
     expect(enrichedStructure.get("legitimacy-and-authority")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conflict-rights-local-autonomy"), expect.stringContaining("contradiction-goal-route"), expect.stringContaining("contestation-minority-response")]));
     expect(enrichedStructure.get("epistemic-stance")).toMatchObject({ evidencePosture: "mixed-provisional" });
     expect(enrichedStructure.get("epistemic-stance")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("uncertainty-descriptive-claim")]));
-    expect(enrichedStructure.get("epistemic-stance")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("epistemic-stance-pilot"), expect.stringContaining("epistemic-fact-value-distinction-pilot")]));
+    expect(enrichedStructure.get("epistemic-stance")?.directEvidenceIds).toEqual(expect.arrayContaining([
+      expect.stringContaining("epistemic-stance-pilot"),
+      expect.stringContaining("epistemic-fact-value-distinction-pilot"),
+      expect.stringContaining("epistemic-confidence-pilot"),
+      expect.stringContaining("epistemic-revision-pilot"),
+      expect.stringContaining("epistemic-uncertainty-pilot"),
+      expect.stringContaining("epistemic-evidence-change-pilot"),
+    ]));
     expect(enrichedStructure.get("heterodoxy-and-contestation")).toMatchObject({ evidencePosture: "mixed-provisional" });
     expect(enrichedStructure.get("heterodoxy-and-contestation")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("contestation-minority-response")]));
-    expect(enrichedStructure.get("heterodoxy-and-contestation")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("heterodoxy-contestation-pilot"), expect.stringContaining("heterodoxy-revision-pilot")]));
+    expect(enrichedStructure.get("heterodoxy-and-contestation")?.directEvidenceIds).toEqual(expect.arrayContaining([
+      expect.stringContaining("heterodoxy-contestation-pilot"),
+      expect.stringContaining("heterodoxy-revision-pilot"),
+      expect.stringContaining("heterodoxy-dissent-pilot"),
+      expect.stringContaining("heterodoxy-internal-disagreement-pilot"),
+      expect.stringContaining("heterodoxy-opposition-pilot"),
+      expect.stringContaining("heterodoxy-minority-response-pilot"),
+    ]));
     expect(enrichedStructure.get("heterodoxy-and-contestation")?.relatedDimensionIds).toEqual(["legitimacy-and-authority"]);
     expect(enriched.structure.find((dimension) => dimension.id === "priorities-and-conflicts")?.evidenceQuestionIds).toContain("priority-liberty-equality");
   });

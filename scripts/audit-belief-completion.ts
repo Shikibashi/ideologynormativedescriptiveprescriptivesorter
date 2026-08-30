@@ -97,6 +97,13 @@ const candidateOnlyConstructLayerPairs = expectedUncoveredConstructLayerPairs.fi
 });
 const directPilotConstructLayerPairs = new Set(BELIEF_DIRECT_ITEMS.flatMap((item) => item.constructIds.map((constructId) => `${constructId}:${item.layer}`)));
 const directPilotCoversCandidateOnlyCells = candidateOnlyConstructLayerPairs.every((pair) => directPilotConstructLayerPairs.has(pair));
+const directPilotCandidateCoverage = BELIEF_GAP_CANDIDATES.map((candidate) => ({
+  candidateId: candidate.id,
+  directItemIds: BELIEF_DIRECT_ITEMS
+    .filter((item) => item.researchCandidateIds?.includes(candidate.id))
+    .map((item) => item.id),
+}));
+const directPilotCoversAllResearchCandidates = directPilotCandidateCoverage.every((coverage) => coverage.directItemIds.length === 1);
 const baseAnswers = allAnswers(2);
 const baseResult = calculateResults(baseAnswers, DATASET);
 const noViewResult = calculateResults(allAnswers("no-view"), DATASET);
@@ -271,6 +278,7 @@ const structuralChecks = {
     && JSON.stringify(affinityTraceFor(directResult)) === JSON.stringify(affinityTraceFor(baseResult)),
   directPilotCoversProductionGaps,
   directPilotCoversCandidateOnlyCells,
+  directPilotCoversAllResearchCandidates,
   directEvidenceAttachedToStructure,
   relationalEvidenceIsolated: relationalResult.primary.profile.relationalEvidence.length === relationalEvidence.length
     && JSON.stringify(relationalResult.legacy.layers) === JSON.stringify(baseResult.legacy.layers)
@@ -344,6 +352,9 @@ const report = {
     directPilotCoversProductionGaps,
     candidateOnlyConstructLayerPairs,
     directPilotCoversCandidateOnlyCells,
+    candidateSpecificDirectItemCount: BELIEF_DIRECT_ITEMS.filter((item) => item.researchCandidateIds?.length).length,
+    researchCandidateCoverage: directPilotCandidateCoverage,
+    directPilotCoversAllResearchCandidates,
     relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
     contestedRouteVariantTargets: contestedRouteVariantProfiles.filter((profile) => profile !== undefined).length,
     contestedRouteVariants: contestedRouteVariants.length,

@@ -6,6 +6,7 @@ import {
   type Dataset,
   type Layer,
 } from "./types";
+import { BELIEF_GAP_CANDIDATES } from "./belief-gap-candidates";
 
 export type BeliefDirectItemOption = Readonly<{
   id: string;
@@ -21,6 +22,8 @@ export type BeliefDirectItem = Readonly<{
   layer: Layer;
   kind: BeliefDirectEvidenceKind;
   constructIds: readonly BeliefConstructId[];
+  /** Optional lineage to a quarantined research candidate that this pilot adapts. */
+  researchCandidateIds?: readonly string[];
   prompt: string;
   context: string;
   options: readonly BeliefDirectItemOption[];
@@ -439,6 +442,7 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
     layer: "prescriptive",
     kind: "conception",
     constructIds: ["concept-conception"],
+    researchCandidateIds: ["bc-conception-liberty-institution"],
     prompt: "When a public institution is designed to protect liberty, which interpretation should guide its rules?",
     context: "This records a preferred meaning for an institutional rule. It does not assess institutional performance or classify a respondent by ideology.",
     options: [
@@ -475,6 +479,7 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
     layer: "normative",
     kind: "political-economy",
     constructIds: ["political-economy"],
+    researchCandidateIds: ["bc-political-economy-justice"],
     prompt: "What should make an economic order just?",
     context: "This records the primary normative standard used to judge an economic order. It is not a description of how a particular economy works or a recommendation for a current policy.",
     options: [
@@ -511,6 +516,7 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
     layer: "descriptive",
     kind: "change-mechanism",
     constructIds: ["change-strategy"],
+    researchCandidateIds: ["bc-change-mechanism"],
     prompt: "When major political change succeeds, which mechanism usually matters most?",
     context: "This asks for an explanatory account of how change tends to occur. It does not ask which route the respondent prefers or whether a particular historical case proves the mechanism.",
     options: [
@@ -547,6 +553,7 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
     layer: "normative",
     kind: "transition-standard",
     constructIds: ["change-strategy"],
+    researchCandidateIds: ["bc-change-transition-standard"],
     prompt: "When an incremental reform improves conditions but leaves a serious injustice in place, what should determine whether it is acceptable?",
     context: "This records a standard for judging a transition rather than a general reform-or-rupture identity. It does not estimate the reform's likely success or consequences.",
     options: [
@@ -576,13 +583,14 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
       },
       noViewOption(),
     ],
-    sourceRefs: ["source-pierson", "source-rawls", "source-dahl", "source-sen", "source-aapor"],
+    sourceRefs: ["source-pierson", "source-rawls", "source-dahl", "source-sen", "source-schwartz", "source-aapor"],
   },
   {
     id: "priority-rights-local-autonomy-pilot",
     layer: "prescriptive",
     kind: "priority-rule",
     constructIds: ["priority-conflict"],
+    researchCandidateIds: ["bc-priority-rights-local-autonomy"],
     prompt: "When local self-government conflicts with uniform protection of basic rights, which should take priority?",
     context: "This asks how a jurisdiction-neutral institutional conflict should be resolved. It records a priority rule without assuming a particular country, level of government, or constitutional arrangement.",
     options: [
@@ -619,6 +627,7 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
     layer: "normative",
     kind: "epistemic-stance",
     constructIds: ["epistemic-stance"],
+    researchCandidateIds: ["bc-epistemic-fact-value-distinction"],
     prompt: "When a political disagreement involves both values and factual claims, which approach is closest to your view?",
     context: "This records a norm for treating factual uncertainty and value disagreement. It does not determine factual accuracy, information level, or whether one political value is correct.",
     options: [
@@ -655,6 +664,7 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
     layer: "normative",
     kind: "contestation-response",
     constructIds: ["heterodoxy-contestation"],
+    researchCandidateIds: ["bc-heterodoxy-revision"],
     prompt: "A political tradition can remain recognizably the same while revising one of its central concepts. Which rule is closest to your view?",
     context: "This asks how a tradition or movement should treat conceptual revision and continuity. It does not identify current membership or decide which interpretation is historically correct.",
     options: [
@@ -681,6 +691,450 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         label: "Trace history and practice",
         statement: "Judge continuity by the historical and institutional practices through which concepts are used and revised.",
         sourceRefs: ["source-freeden-steers-morphology", "source-dahl"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology", "source-dahl", "source-aapor"],
+  },
+  {
+    id: "priority-liberty-equality-pilot",
+    layer: "normative",
+    kind: "priority-rule",
+    constructIds: ["priority-conflict"],
+    researchCandidateIds: ["bc-priority-liberty-equality"],
+    prompt: "When protecting individual freedom conflicts with reducing material inequality, which principle should take priority?",
+    context: "This records a rule for resolving a value conflict. It does not measure the respondent's current level of freedom or equality and does not classify the respondent by ideology.",
+    options: [
+      {
+        id: "protect-liberty-first",
+        label: "Protect individual freedom first",
+        statement: "Protect individual freedom first, even when material inequality remains.",
+        sourceRefs: ["source-schwartz", "source-sep-liberalism"],
+      },
+      {
+        id: "prioritize-equality-first",
+        label: "Prioritize social equality first",
+        statement: "Prioritize reducing material inequality first, even when some individual choices are constrained.",
+        sourceRefs: ["source-rawls", "source-schwartz"],
+      },
+      {
+        id: "secure-basic-floor-and-liberty",
+        label: "Secure a basic floor first",
+        statement: "Secure a basic floor of rights and opportunities before resolving the remaining conflict between liberty and equality.",
+        sourceRefs: ["source-rawls", "source-sen"],
+      },
+      {
+        id: "contextual-priority-rule",
+        label: "Use a context-specific rule",
+        statement: "Resolve the conflict according to the context, affected interests, and likely consequences rather than applying one fixed priority.",
+        sourceRefs: ["source-sagiv-schwartz-values-review"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-schwartz", "source-sagiv-schwartz-values-review", "source-rawls", "source-aapor"],
+  },
+  {
+    id: "priority-ecology-growth-pilot",
+    layer: "normative",
+    kind: "priority-rule",
+    constructIds: ["priority-conflict"],
+    researchCandidateIds: ["bc-priority-ecology-growth"],
+    prompt: "When ecological limits conflict with economic growth, which should take priority?",
+    context: "This records a priority rule between ecological protection and material production. It does not ask for a factual estimate of ecological risk or a current policy recommendation.",
+    options: [
+      {
+        id: "ecological-limits-first",
+        label: "Respect ecological limits first",
+        statement: "Respect ecological limits first, even when production grows more slowly.",
+        sourceRefs: ["source-rockstrom", "source-schwartz"],
+      },
+      {
+        id: "material-production-first",
+        label: "Increase material production first",
+        statement: "Increase material production first, even when ecological limits are approached sooner.",
+        sourceRefs: ["source-schwartz", "source-sagiv-schwartz-values-review"],
+      },
+      {
+        id: "basic-needs-within-limits",
+        label: "Meet basic needs within limits",
+        statement: "Meet basic human needs within ecological limits, even if that requires changing the pattern of growth.",
+        sourceRefs: ["source-rockstrom", "source-sen"],
+      },
+      {
+        id: "contextual-ecological-priority",
+        label: "Use a context-specific ecological rule",
+        statement: "Set the priority according to the ecological threshold, affected needs, and available alternatives in the particular case.",
+        sourceRefs: ["source-sagiv-schwartz-values-review", "source-rockstrom"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-schwartz", "source-sagiv-schwartz-values-review", "source-rockstrom", "source-aapor"],
+  },
+  {
+    id: "priority-scope-members-outsiders-pilot",
+    layer: "normative",
+    kind: "priority-rule",
+    constructIds: ["priority-conflict"],
+    researchCandidateIds: ["bc-priority-scope-members-outsiders"],
+    prompt: "When obligations to members of a political community conflict with obligations to people outside it, which should take priority?",
+    context: "This records a rule for resolving the scope of political obligation. It does not ask about ancestry, identity, citizenship, or the respondent's membership in any group.",
+    options: [
+      {
+        id: "community-members-first",
+        label: "Prioritize community members",
+        statement: "Prioritize obligations to members of the political community when obligations conflict.",
+        sourceRefs: ["source-anderson", "source-schwartz"],
+      },
+      {
+        id: "equal-consideration",
+        label: "Give equal consideration",
+        statement: "Give people outside the political community equal consideration rather than treating membership as decisive.",
+        sourceRefs: ["source-rawls", "source-sagiv-schwartz-values-review"],
+      },
+      {
+        id: "greatest-need-or-risk",
+        label: "Prioritize greatest need or risk",
+        statement: "Give priority to whoever faces the greater need or risk, regardless of political membership.",
+        sourceRefs: ["source-sen"],
+      },
+      {
+        id: "contextual-scope-rule",
+        label: "Use a context-specific scope rule",
+        statement: "Resolve the scope conflict according to the relationship, institutional responsibility, and seriousness of the needs involved.",
+        sourceRefs: ["source-sagiv-schwartz-values-review", "source-anderson"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-schwartz", "source-sagiv-schwartz-values-review", "source-rawls", "source-anderson"],
+  },
+  {
+    id: "priority-reform-deep-change-pilot",
+    layer: "prescriptive",
+    kind: "priority-rule",
+    constructIds: ["priority-conflict"],
+    researchCandidateIds: ["bc-priority-reform-deep-change"],
+    prompt: "A reform would improve people's lives now but make a deeper institutional change harder later. What should determine your support?",
+    context: "This records a rule for judging a transition under uncertainty. It does not measure general reformism, predict whether a reform will work, or recommend a real-world policy.",
+    options: [
+      {
+        id: "immediate-relief-decisive",
+        label: "Make immediate relief decisive",
+        statement: "Support the reform because improving people's lives now is decisive, even if deeper change becomes harder.",
+        sourceRefs: ["source-schwartz", "source-sagiv-schwartz-values-review"],
+      },
+      {
+        id: "protect-long-term-capacity",
+        label: "Protect long-term change capacity",
+        statement: "Reject the reform when it would materially reduce the capacity for a deeper institutional change later.",
+        sourceRefs: ["source-pierson"],
+      },
+      {
+        id: "safeguard-path-to-change",
+        label: "Condition support on safeguards",
+        statement: "Support the reform only with safeguards that preserve a credible path to deeper institutional change.",
+        sourceRefs: ["source-pierson", "source-sagiv-schwartz-values-review"],
+      },
+      {
+        id: "defer-until-consequences-clear",
+        label: "Defer until consequences are clearer",
+        statement: "Withhold support until the likely consequences and available alternatives are clearer.",
+        sourceRefs: ["source-pierson", "source-aapor"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-pierson", "source-schwartz", "source-sagiv-schwartz-values-review", "source-aapor"],
+  },
+  {
+    id: "epistemic-confidence-pilot",
+    layer: "descriptive",
+    kind: "epistemic-stance",
+    constructIds: ["epistemic-stance"],
+    researchCandidateIds: ["bc-epistemic-confidence"],
+    prompt: "How confident are you in your answer to this descriptive political claim when the available evidence is incomplete?",
+    context: "This records a stated confidence condition separately from agreement with a descriptive claim. It does not measure knowledge, accuracy, intelligence, or good faith.",
+    options: [
+      {
+        id: "no-confidence",
+        label: "No basis for confidence",
+        statement: "I do not have enough basis to express confidence in my answer.",
+        sourceRefs: ["source-adcock-collier", "source-elkjaer-wlezien-dont-know"],
+      },
+      {
+        id: "tentative-confidence",
+        label: "Tentative confidence",
+        statement: "I have a tentative answer but expect that credible evidence could readily change it.",
+        sourceRefs: ["source-borsboom-validity", "source-aapor"],
+      },
+      {
+        id: "moderate-confidence",
+        label: "Moderate, revisable confidence",
+        statement: "I am moderately confident, while treating the answer as revisable if the evidence changes.",
+        sourceRefs: ["source-borsboom-validity", "source-adcock-collier"],
+      },
+      {
+        id: "strong-but-not-proof",
+        label: "Strong but not conclusive confidence",
+        statement: "I am strongly confident, but confidence does not make the descriptive claim conclusive.",
+        sourceRefs: ["source-borsboom-validity", "source-aapor"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-adcock-collier", "source-borsboom-validity", "source-aapor", "source-elkjaer-wlezien-dont-know"],
+  },
+  {
+    id: "epistemic-revision-pilot",
+    layer: "descriptive",
+    kind: "epistemic-stance",
+    constructIds: ["epistemic-stance"],
+    researchCandidateIds: ["bc-epistemic-revision"],
+    prompt: "I would revise a political belief when credible evidence repeatedly conflicts with it.",
+    context: "This records a stated approach to revising descriptive beliefs. It does not determine whether a belief is true or evaluate whether a respondent actually changes views.",
+    options: [
+      {
+        id: "revise-the-claim",
+        label: "Revise the claim",
+        statement: "Revise the belief when credible evidence repeatedly conflicts with it.",
+        sourceRefs: ["source-aapor", "source-borsboom-validity"],
+      },
+      {
+        id: "narrow-or-reframe",
+        label: "Narrow or reframe it",
+        statement: "Narrow or reframe the belief to account for evidence that conflicts with its original scope.",
+        sourceRefs: ["source-borsboom-validity", "source-jost"],
+      },
+      {
+        id: "hold-provisionally",
+        label: "Hold it provisionally",
+        statement: "Hold the belief provisionally while acknowledging that repeated credible conflict weakens it.",
+        sourceRefs: ["source-borsboom-validity", "source-aapor"],
+      },
+      {
+        id: "seek-more-evidence",
+        label: "Seek more evidence first",
+        statement: "Seek more evidence before deciding whether the belief should be revised.",
+        sourceRefs: ["source-aapor", "source-jost"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-aapor", "source-borsboom-validity", "source-jost"],
+  },
+  {
+    id: "epistemic-uncertainty-pilot",
+    layer: "descriptive",
+    kind: "epistemic-stance",
+    constructIds: ["epistemic-stance"],
+    researchCandidateIds: ["bc-epistemic-uncertainty"],
+    prompt: "When I do not know enough about a political fact, I prefer to withhold a firm judgment.",
+    context: "This distinguishes stated uncertainty from disagreement with a claim. It does not treat withholding an answer as a political position or as evidence of accuracy.",
+    options: [
+      {
+        id: "withhold-firm-judgment",
+        label: "Withhold a firm judgment",
+        statement: "Withhold a firm judgment when the available information is not sufficient.",
+        sourceRefs: ["source-aapor", "source-elkjaer-wlezien-dont-know"],
+      },
+      {
+        id: "state-provisional-judgment",
+        label: "State a provisional judgment",
+        statement: "State the best current judgment while explicitly marking the uncertainty.",
+        sourceRefs: ["source-adcock-collier", "source-borsboom-validity"],
+      },
+      {
+        id: "seek-targeted-evidence",
+        label: "Seek targeted evidence",
+        statement: "Seek targeted evidence that could resolve the specific uncertainty before making a firm judgment.",
+        sourceRefs: ["source-aapor", "source-adcock-collier"],
+      },
+      {
+        id: "best-current-model-with-uncertainty",
+        label: "Use a marked best-current model",
+        statement: "Use the best current explanatory model while keeping its uncertainty and possible revision visible.",
+        sourceRefs: ["source-borsboom-validity", "source-elkjaer-wlezien-dont-know"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-aapor", "source-adcock-collier", "source-borsboom-validity", "source-elkjaer-wlezien-dont-know"],
+  },
+  {
+    id: "epistemic-evidence-change-pilot",
+    layer: "descriptive",
+    kind: "epistemic-stance",
+    constructIds: ["epistemic-stance"],
+    researchCandidateIds: ["bc-epistemic-evidence-change"],
+    prompt: "What kind of evidence would change your view on this claim?",
+    context: "This records a stated condition for revising a descriptive claim. It does not reduce a reason for revision to agreement, and it does not establish that the selected evidence is sufficient or correct.",
+    options: [
+      {
+        id: "new-data-observation",
+        label: "New data or observation",
+        statement: "New data or a relevant observation would change my view.",
+        sourceRefs: ["source-aera-testing-standards", "source-borsboom-validity"],
+      },
+      {
+        id: "credible-source-testimony",
+        label: "Credible source or testimony",
+        statement: "A credible source or testimony with a defensible basis would change my view.",
+        sourceRefs: ["source-aapor", "source-elkjaer-wlezien-dont-know"],
+      },
+      {
+        id: "coherent-argument",
+        label: "A coherent argument",
+        statement: "A coherent argument that addresses the relevant evidence would change my view.",
+        sourceRefs: ["source-aera-testing-standards", "source-borsboom-validity"],
+      },
+      {
+        id: "changed-circumstance",
+        label: "A changed circumstance",
+        statement: "A material change in the circumstances described by the claim would change my view.",
+        sourceRefs: ["source-aapor", "source-elkjaer-wlezien-dont-know"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-aera-testing-standards", "source-borsboom-validity", "source-aapor", "source-elkjaer-wlezien-dont-know"],
+  },
+  {
+    id: "heterodoxy-dissent-pilot",
+    layer: "normative",
+    kind: "contestation-response",
+    constructIds: ["heterodoxy-contestation"],
+    researchCandidateIds: ["bc-heterodoxy-dissent"],
+    prompt: "Members of a political movement should be able to challenge its central commitments without being treated as disloyal.",
+    context: "This records a norm for internal dissent in a hypothetical movement. It does not identify the respondent with a movement or decide whether a particular challenge is correct.",
+    options: [
+      {
+        id: "protect-good-faith-dissent",
+        label: "Protect good-faith dissent",
+        statement: "Protect good-faith dissent so members can challenge central commitments without automatic exclusion.",
+        sourceRefs: ["source-dahl", "source-freeden-steers-morphology"],
+      },
+      {
+        id: "distinguish-dissent-from-sabotage",
+        label: "Distinguish dissent from sabotage",
+        statement: "Protect substantive dissent while distinguishing it from coercion, sabotage, or attacks on others' ability to participate.",
+        sourceRefs: ["source-dahl", "source-freeden-morphology"],
+      },
+      {
+        id: "permit-dissent-with-accountability",
+        label: "Permit dissent with accountability",
+        statement: "Permit internal dissent, with a stated process for answering its reasons and addressing conduct that violates shared rules.",
+        sourceRefs: ["source-dahl", "source-freeden-steers-morphology"],
+      },
+      {
+        id: "state-membership-boundary",
+        label: "State a membership boundary",
+        statement: "State a clear membership boundary and explain when a challenge is disagreement within the movement or a departure from its purpose.",
+        sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-dahl", "source-freeden-morphology", "source-freeden-steers-morphology", "source-aapor"],
+  },
+  {
+    id: "heterodoxy-internal-disagreement-pilot",
+    layer: "normative",
+    kind: "contestation-response",
+    constructIds: ["heterodoxy-contestation"],
+    researchCandidateIds: ["bc-heterodoxy-internal-disagreement"],
+    prompt: "A description of a political tradition should report serious internal disagreement instead of presenting one official interpretation.",
+    context: "This records a norm for interpreting political traditions. It does not ask which tradition is correct, require the respondent to identify with one, or turn variation into a respondent trait.",
+    options: [
+      {
+        id: "report-meaningful-variation",
+        label: "Report meaningful variation",
+        statement: "Report serious internal disagreement whenever it materially changes how the tradition's commitments are understood.",
+        sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology"],
+      },
+      {
+        id: "present-competing-interpretations",
+        label: "Present competing interpretations",
+        statement: "Present competing interpretations and the reasons each gives for organizing the tradition's concepts.",
+        sourceRefs: ["source-freeden-morphology", "source-dahl"],
+      },
+      {
+        id: "separate-core-and-peripheral",
+        label: "Separate core and peripheral disagreement",
+        statement: "Distinguish disagreement about core commitments from disagreement about peripheral or context-specific applications.",
+        sourceRefs: ["source-freeden-steers-morphology"],
+      },
+      {
+        id: "dominant-interpretation-with-dissent",
+        label: "Report a dominant view with dissent",
+        statement: "Identify a historically dominant interpretation while making serious dissent and competing variants visible.",
+        sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology", "source-dahl", "source-aapor"],
+  },
+  {
+    id: "heterodoxy-opposition-pilot",
+    layer: "prescriptive",
+    kind: "contestation-response",
+    constructIds: ["heterodoxy-contestation"],
+    researchCandidateIds: ["bc-heterodoxy-opposition"],
+    prompt: "A political order should protect organized opposition even when it challenges the order's founding principles.",
+    context: "This records a rule for institutional protection of opposition. It does not name a country or party and does not resolve separate questions about violence, coercion, or rights limits.",
+    options: [
+      {
+        id: "protect-organized-opposition",
+        label: "Protect organized opposition",
+        statement: "Protect organized opposition even when it challenges the order's founding principles.",
+        sourceRefs: ["source-dahl", "source-freeden-morphology"],
+      },
+      {
+        id: "protect-with-noncoercion-limits",
+        label: "Protect it with noncoercion limits",
+        statement: "Protect organized opposition while limiting conduct that uses coercion or prevents others from participating.",
+        sourceRefs: ["source-dahl", "source-freeden-steers-morphology"],
+      },
+      {
+        id: "bounded-constitutional-process",
+        label: "Use a bounded constitutional process",
+        statement: "Protect opposition through a stated constitutional process that allows challenge while preserving equal participation and basic rights.",
+        sourceRefs: ["source-dahl", "source-freeden-morphology"],
+      },
+      {
+        id: "do-not-protect-founding-challenges",
+        label: "Do not protect founding challenges",
+        statement: "Do not protect organized opposition when its challenge rejects the principles that define the political order.",
+        sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology"],
+      },
+      noViewOption(),
+    ],
+    sourceRefs: ["source-dahl", "source-freeden-morphology", "source-freeden-steers-morphology", "source-aapor"],
+  },
+  {
+    id: "heterodoxy-minority-response-pilot",
+    layer: "prescriptive",
+    kind: "contestation-response",
+    constructIds: ["heterodoxy-contestation"],
+    researchCandidateIds: ["bc-heterodoxy-minority-response"],
+    prompt: "A minority within a political movement rejects one core policy but accepts the movement's broader purpose. What response best fits your view?",
+    context: "This records a response rule for a hypothetical internal minority. It does not identify a current movement, ask the respondent to join one, or determine whether the criticism is persuasive.",
+    options: [
+      {
+        id: "exclude-minority",
+        label: "Exclude the minority",
+        statement: "The minority should leave or be excluded when rejecting a core policy is incompatible with membership.",
+        sourceRefs: ["source-freeden-morphology", "source-freeden-steers-morphology"],
+      },
+      {
+        id: "retain-open-dissent",
+        label: "Retain open dissent",
+        statement: "The minority should remain and openly dissent while continuing to share the movement's broader purpose.",
+        sourceRefs: ["source-dahl", "source-freeden-morphology"],
+      },
+      {
+        id: "revise-if-persuasive",
+        label: "Revise if the criticism persuades",
+        statement: "The movement should revise its policy if the minority's criticism is persuasive under a fair internal process.",
+        sourceRefs: ["source-dahl", "source-freeden-steers-morphology"],
+      },
+      {
+        id: "context-dependent-process",
+        label: "Use a stated context-dependent process",
+        statement: "The response should depend on the issue and consequences, using a stated process for deciding whether dissent and membership can coexist.",
+        sourceRefs: ["source-dahl", "source-freeden-morphology", "source-freeden-steers-morphology"],
       },
       noViewOption(),
     ],
@@ -719,6 +1173,8 @@ export const validateBeliefDirectItems = (dataset: Dataset): readonly string[] =
   const errors: string[] = [];
   const constructIds = new Set<BeliefConstructId>(BELIEF_CONSTRUCTS);
   const sourceIds = new Set(dataset.sources.map((source) => source.id));
+  const candidatesById = new Map(BELIEF_GAP_CANDIDATES.map((candidate) => [candidate.id, candidate]));
+  const linkedCandidateIds = new Set<string>();
   const itemIds = new Set<string>();
   for (const item of BELIEF_DIRECT_ITEMS) {
     if (itemIds.has(item.id)) errors.push(`duplicate direct belief item id ${item.id}`);
@@ -744,6 +1200,23 @@ export const validateBeliefDirectItems = (dataset: Dataset): readonly string[] =
       if (!sourceIds.has(sourceRef)) errors.push(`direct belief item ${item.id} references missing source ${sourceRef}`);
     }
     if (item.sourceRefs.length === 0) errors.push(`direct belief item ${item.id} has no source links`);
+    if (item.researchCandidateIds) {
+      if (item.researchCandidateIds.length === 0) errors.push(`direct belief item ${item.id} has an empty research candidate link list`);
+      for (const candidateId of item.researchCandidateIds) {
+        if (linkedCandidateIds.has(candidateId)) errors.push(`duplicate direct belief research candidate link ${candidateId}`);
+        linkedCandidateIds.add(candidateId);
+        const candidate = candidatesById.get(candidateId);
+        if (!candidate) {
+          errors.push(`direct belief item ${item.id} references missing research candidate ${candidateId}`);
+          continue;
+        }
+        if (candidate.layer !== item.layer) errors.push(`direct belief item ${item.id} has mismatched research candidate layer`);
+        if (!item.constructIds.includes(candidate.constructId)) errors.push(`direct belief item ${item.id} has mismatched research candidate construct`);
+        if (!candidate.sourceRefs.every((sourceRef) => item.sourceRefs.includes(sourceRef))) {
+          errors.push(`direct belief item ${item.id} is missing research candidate source links`);
+        }
+      }
+    }
   }
   return errors;
 };
