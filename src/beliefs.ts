@@ -1,5 +1,5 @@
 import { RESEARCH_ANCHOR_PROFILES } from "./research-bank";
-import { beliefGapCandidateCountsFor, validateBeliefGapCandidates, validateBeliefGapEvidence } from "./belief-gap-candidates";
+import { BELIEF_GAP_CANDIDATES, beliefGapCandidateCountsFor, validateBeliefGapCandidates, validateBeliefGapEvidence } from "./belief-gap-candidates";
 import { BELIEF_RELATIONAL_FOLLOWUPS, validateBeliefRelationalFollowUps } from "./belief-followups";
 import { validateBeliefDirectEvidence, validateBeliefDirectItems } from "./belief-direct-items";
 import {
@@ -14,6 +14,7 @@ import {
   type BeliefConception,
   type BeliefConstructDefinition,
   type BeliefConstructLayerCoverage,
+  type BeliefConstructLayerResearchCoverage,
   type BeliefConstructId,
   type BeliefDiagnostic,
   type BeliefDiagnosticLayer,
@@ -35,6 +36,7 @@ import {
   type BeliefRelationalEvidenceKind,
   type BeliefRelationalSummary,
   type BeliefResponseSummary,
+  type BeliefResearchCoverageStatus,
   type BeliefStructureDimension,
   type BeliefStructureDimensionId,
   type BeliefStructureEvidencePosture,
@@ -303,6 +305,60 @@ export const auditBeliefMeasurement = (dataset: Dataset): readonly BeliefMeasure
   });
 };
 
+const researchCoverageKeyFor = (constructId: BeliefConstructId, layer: Layer): string => `${constructId}:${layer}`;
+
+const researchCoverageStatusFor = (
+  productionItemCount: number,
+  researchCandidateCount: number,
+): BeliefResearchCoverageStatus => {
+  if (productionItemCount > 0 && researchCandidateCount > 0) return "production-and-candidate";
+  if (productionItemCount > 0) return "production-covered";
+  if (researchCandidateCount > 0) return "candidate-only";
+  return "unrepresented";
+};
+
+const researchCandidateCoverageForAudits = (
+  audits: readonly BeliefMeasurementAudit[],
+): readonly BeliefConstructLayerResearchCoverage[] => {
+  const productionItemCounts = new Map<string, number>();
+  for (const audit of audits) {
+    for (const constructId of audit.constructIds) {
+      const key = researchCoverageKeyFor(constructId, audit.layer);
+      productionItemCounts.set(key, (productionItemCounts.get(key) ?? 0) + 1);
+    }
+  }
+
+  const researchCandidateIds = new Map<string, string[]>();
+  for (const candidate of BELIEF_GAP_CANDIDATES) {
+    const key = researchCoverageKeyFor(candidate.constructId, candidate.layer);
+    const candidateIds = researchCandidateIds.get(key) ?? [];
+    candidateIds.push(candidate.id);
+    researchCandidateIds.set(key, candidateIds);
+  }
+
+  return BELIEF_CONSTRUCT_DEFINITIONS.flatMap((definition) => definition.layers.map((layer) => {
+    const key = researchCoverageKeyFor(definition.id, layer);
+    const productionItemCount = productionItemCounts.get(key) ?? 0;
+    const candidateIds = researchCandidateIds.get(key) ?? [];
+    return {
+      constructId: definition.id,
+      layer,
+      productionItemCount,
+      researchCandidateIds: candidateIds,
+      researchCandidateCount: candidateIds.length,
+      status: researchCoverageStatusFor(productionItemCount, candidateIds.length),
+    };
+  }));
+};
+
+/**
+ * Returns the declared construct/claim-layer coverage matrix. The production
+ * counts are derived from the current item audit; candidate ids are copied
+ * from the separate research shelf. Neither side is converted into a score.
+ */
+export const researchCandidateCoverageFor = (dataset: Dataset): readonly BeliefConstructLayerResearchCoverage[] =>
+  researchCandidateCoverageForAudits(auditBeliefMeasurement(dataset));
+
 export const validateBeliefModel = (dataset: Dataset): readonly string[] => {
   const errors: string[] = [];
   const sourceIds = new Set(dataset.sources.map((source) => source.id));
@@ -346,6 +402,19 @@ export const validateBeliefModel = (dataset: Dataset): readonly string[] => {
     }
   }
   if (auditIds.size !== dataset.questions.length) errors.push("belief measurement audit does not cover every production question");
+  const researchCoverage = researchCandidateCoverageForAudits(audits);
+  const researchCoverageByKey = new Map(researchCoverage.map((coverage) => [researchCoverageKeyFor(coverage.constructId, coverage.layer), coverage]));
+  for (const candidate of BELIEF_GAP_CANDIDATES) {
+    const coverage = researchCoverageByKey.get(researchCoverageKeyFor(candidate.constructId, candidate.layer));
+    if (!coverage?.researchCandidateIds.includes(candidate.id)) {
+      errors.push(`research candidate ${candidate.id} is missing from its construct/layer coverage record`);
+    }
+  }
+  for (const coverage of researchCoverage) {
+    if (coverage.productionItemCount === 0 && coverage.researchCandidateCount === 0) {
+      errors.push(`construct/layer ${coverage.constructId}:${coverage.layer} has neither production coverage nor a research candidate`);
+    }
+  }
   errors.push(...validateIdeologyConfigurations(dataset));
   errors.push(...validateBeliefDirectItems(dataset));
   errors.push(...validateBeliefRelationalFollowUps(dataset));
@@ -718,6 +787,7 @@ const measurementSummaryFor = (
       .filter((layer) => constructLayerItemCounts[definition.id][layer] === 0)
       .map((layer) => ({ constructId: definition.id, layer }))),
     uncoveredConstructIds: BELIEF_CONSTRUCTS.filter((constructId) => constructItemCounts[constructId] === 0),
+    researchCandidateCoverage: researchCandidateCoverageForAudits(audits),
     duplicateQuestionIds,
     compoundQuestionIds,
     conditionalQuestionIds,

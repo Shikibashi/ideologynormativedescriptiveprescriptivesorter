@@ -1070,3 +1070,10 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 |---|---|---|
 | P-142-01 | Open Research, select `deep-ecology`, and inspect the selected anchor profile. | The workbench displays the source-backed configuration relationship section with two records, explicit participants, `source-backed-contested` posture, statements, source links, and a clear qualitative/non-scoring boundary. |
 | R-142-01 | Run TypeScript, the production build, and the focused relationship browser scenario against a stable preview. | All executed checks pass; the UI only exposes existing research context, while the fixed ontology, production scoring/morphology paths, and six external `NOT RUN` gates remain unchanged. |
+
+## V143 construct-layer coverage scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-143-01 | Open Research and inspect the production-versus-research construct/layer coverage table. | The table has 25 declared cells, 15 production-covered cells, 10 candidate-only gap cells, and 19 quarantined candidate bindings; it labels the matrix as an authoring/provenance aid rather than a respondent measure. |
+| R-143-01 | Run the focused coverage regression, TypeScript, production build, full Vitest suite, full browser suite, fresh packet validation, and coverage-snapshot mutation. | The executed local checks pass; the fresh packet remains `INCOMPLETE`, the mutated coverage snapshot is `INVALID`, promotion remains false, and all six external gates remain `NOT RUN`. |

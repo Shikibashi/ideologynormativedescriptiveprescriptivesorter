@@ -355,6 +355,12 @@ test("exposes a bounded production measurement audit queue without changing the 
   await expect(page.locator(".research-audit-metrics")).toContainText("1500");
   await expect(page.locator(".research-audit-result-count")).toContainText("Showing 42 of 42 matching audit records.");
   await expect(page.locator(".research-audit-item")).toHaveCount(42);
+  await expect(page.locator(".research-coverage")).toBeVisible();
+  await expect(page.locator(".research-coverage-metrics")).toContainText("25");
+  await expect(page.locator(".research-coverage-metrics")).toContainText("10");
+  await expect(page.locator(".research-coverage-table tbody tr")).toHaveCount(25);
+  await expect(page.locator(".research-coverage-candidate-only")).toHaveCount(10);
+  await expect(page.locator(".research-coverage-table")).toContainText("bc-priority-liberty-equality");
 
   await page.locator("#measurement-audit-filter").selectOption("all-items");
   await expect(page.locator(".research-audit-result-count")).toContainText("Showing 80 of 1500 matching audit records.");

@@ -811,6 +811,22 @@ export type BeliefConstructLayerCoverage = Readonly<{
   layer: Layer;
 }>;
 
+export type BeliefResearchCoverageStatus = "production-covered" | "candidate-only" | "production-and-candidate" | "unrepresented";
+
+/**
+ * Separates live production coverage from the quarantined authoring shelf for
+ * one declared construct/claim-layer cell. Candidate presence is a research
+ * input, not evidence that the cell is measured or fit for scoring.
+ */
+export type BeliefConstructLayerResearchCoverage = Readonly<{
+  constructId: BeliefConstructId;
+  layer: Layer;
+  productionItemCount: number;
+  researchCandidateIds: readonly string[];
+  researchCandidateCount: number;
+  status: BeliefResearchCoverageStatus;
+}>;
+
 export type BeliefMeasurementSummary = Readonly<{
   totalItems: number;
   proxyItems: number;
@@ -823,6 +839,8 @@ export type BeliefMeasurementSummary = Readonly<{
   /** Declared construct/layer cells with no production item coverage. */
   uncoveredConstructLayerPairs: readonly BeliefConstructLayerCoverage[];
   uncoveredConstructIds: readonly BeliefConstructId[];
+  /** Every declared cell, including the separate quarantined research shelf. */
+  researchCandidateCoverage: readonly BeliefConstructLayerResearchCoverage[];
   duplicateQuestionIds: readonly string[];
   compoundQuestionIds: readonly string[];
   conditionalQuestionIds: readonly string[];

@@ -7,6 +7,7 @@ import {
   BELIEF_MODEL_PROVENANCE,
   BELIEF_MODEL_VERSION,
   auditBeliefMeasurement,
+  researchCandidateCoverageFor,
   validateBeliefModel,
 } from "../src/beliefs";
 import { BELIEF_VALIDATION_GATES, validateBeliefValidationLedger } from "../src/belief-validation";
@@ -27,6 +28,7 @@ const EXTERNAL_GATE_IDS = BELIEF_VALIDATION_GATES
   .map((gate) => gate.id);
 
 const productionAudits = auditBeliefMeasurement(DATASET);
+const researchCandidateCoverage = researchCandidateCoverageFor(DATASET);
 const questionById = new Map(DATASET.questions.map((question) => [question.id, question]));
 const reviewItemIdFor = (index: number): string => `production-${String(index + 1).padStart(4, "0")}`;
 
@@ -163,6 +165,9 @@ const packet = {
       layer,
       DATASET.questions.filter((question) => question.layer === layer).length,
     ])),
+    measurementCoverage: {
+      constructLayer: researchCandidateCoverage,
+    },
     fixedOntology: {
       nodeCount: DATASET.ideologyNodes.length,
       nodes: DATASET.ideologyNodes.map((node) => ({

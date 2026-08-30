@@ -797,3 +797,9 @@ Evidence rows may reference one or more external gates, but a row with status `N
 The current worktree renders `selectedAnchorProfile.relationships` beneath the selected research profile when records are present. It shows typed relationship kinds, resolved facet/concept participants, the explicit `source-backed-contested` evidence posture, the scholarly statement, and the registered source links. The explanatory copy keeps configuration relationships separate from respondent observations, answer co-occurrences, calibrated affinity, morphology fit, and legacy scoring.
 
 The focused `deep-ecology` browser path verifies the two records and their statement/posture. This does not promote a relationship into production, add a facet, infer a respondent relationship, or close any cognitive, expert, empirical, invariance, population/consequence, or held-out morphology gate.
+
+## V143 integration note — production and research coverage matrix
+
+The current belief measurement summary now reports every declared construct/claim-layer cell, joining mechanical production-item counts to ids from the separate quarantined research shelf. The Research Workbench renders the 25-row matrix with 15 production-covered cells and 10 candidate-only gap cells; the audit report and study packet carry the same structured snapshot. Candidate-only status remains an authoring/provenance signal and is never converted into a respondent trait or scoring input.
+
+The model validator requires each candidate to appear in its declared cell and rejects cells with neither production coverage nor a research candidate. The review-packet validator compares the matrix exactly, so a changed count or candidate binding is `INVALID` before any review record is considered. No ontology, effect map, morphology affinity, legacy scorer, or external gate status changes.

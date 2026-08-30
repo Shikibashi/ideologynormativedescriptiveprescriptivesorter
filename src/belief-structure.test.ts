@@ -73,6 +73,13 @@ describe("stated political commitment configuration", () => {
       { constructId: "heterodoxy-contestation", layer: "prescriptive" },
     ]);
     expect(summary.uncoveredConstructIds).toEqual(expect.arrayContaining(["priority-conflict", "epistemic-stance", "heterodoxy-contestation"]));
+    expect(summary.researchCandidateCoverage).toHaveLength(25);
+    expect(summary.researchCandidateCoverage.filter((coverage) => coverage.status === "candidate-only")).toHaveLength(summary.uncoveredConstructLayerPairs.length);
+    expect(summary.researchCandidateCoverage.filter((coverage) => coverage.status === "production-covered")).toHaveLength(15);
+    expect(summary.researchCandidateCoverage.filter((coverage) => coverage.status === "production-and-candidate")).toEqual([]);
+    expect(summary.researchCandidateCoverage.filter((coverage) => coverage.status === "unrepresented")).toEqual([]);
+    expect(summary.researchCandidateCoverage.filter((coverage) => coverage.status === "candidate-only").every((coverage) => coverage.productionItemCount === 0 && coverage.researchCandidateCount > 0)).toBe(true);
+    expect(summary.researchCandidateCoverage.flatMap((coverage) => coverage.researchCandidateIds)).toHaveLength(BELIEF_GAP_CANDIDATES.length);
     expect(summary.branchMetadataQuestionIds.length).toBeGreaterThan(0);
     expect(summary.ideologyCodedQuestionIds).toHaveLength(0);
     expect(summary.compoundQuestionIds.length).toBeGreaterThan(0);

@@ -7,6 +7,7 @@ import {
   BELIEF_MODEL_ID,
   BELIEF_MODEL_VERSION,
   auditBeliefMeasurement,
+  researchCandidateCoverageFor,
 } from "../src/beliefs";
 import {
   BELIEF_REVIEW_ALLOWED_DISPOSITIONS,
@@ -43,6 +44,7 @@ const currentGateStatus = Object.fromEntries(currentExternalGateIds.map((gateId)
   BELIEF_VALIDATION_GATES.find((gate) => gate.id === gateId)?.status ?? "NOT RUN",
 ]));
 const currentProductionAudits = auditBeliefMeasurement(DATASET);
+const currentResearchCandidateCoverage = researchCandidateCoverageFor(DATASET);
 const currentQuestionById = new Map(DATASET.questions.map((question) => [question.id, question]));
 const currentResponseScale = answerOptions.map((option) => ({
   value: option.value,
@@ -144,6 +146,10 @@ const snapshotErrorsFor = (root: JsonRecord): string[] => {
   for (const layer of ["descriptive", "normative", "prescriptive"] as const) {
     const expectedCount = DATASET.questions.filter((question) => question.layer === layer).length;
     if (packetQuestionCountsByLayer[layer] !== expectedCount) errors.push(`packet question count for ${layer} does not match the current dataset`);
+  }
+  const measurementCoverage = isRecord(snapshot.measurementCoverage) ? snapshot.measurementCoverage : {};
+  if (!jsonMatches(measurementCoverage.constructLayer, currentResearchCandidateCoverage)) {
+    errors.push("packet construct/layer measurement coverage snapshot does not match the current source snapshot");
   }
 
   const fixedOntology = isRecord(snapshot.fixedOntology) ? snapshot.fixedOntology : {};

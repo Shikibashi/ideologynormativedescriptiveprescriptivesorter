@@ -6,7 +6,7 @@ import { BELIEF_DIRECT_ITEMS, directEvidenceForAnswers } from "./belief-direct-i
 import type { BeliefDirectAnswerMap } from "./belief-direct-items";
 import { BELIEF_RELATIONAL_FOLLOWUPS, relationalEvidenceForAnswers } from "./belief-followups";
 import type { BeliefRelationalAnswerMap } from "./belief-followups";
-import { auditBeliefMeasurement, constructLabelFor } from "./beliefs";
+import { auditBeliefMeasurement, constructLabelFor, researchCandidateCoverageFor } from "./beliefs";
 import {
   buildResearchTargets,
   createResearchCandidate,
@@ -29,7 +29,7 @@ import {
 import { calculateResults, formatFit } from "./scoring";
 import { researchTaxonomyDecisionForTarget, researchTaxonomyDispositionLabels } from "./research-governance";
 import { decodeShareFragment, encodeShareFragment } from "./share";
-import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefDiagnosticLayer, type BeliefItemDisposition, type BeliefMeasurementAudit, type BeliefMeasurementAuditFlag, type BeliefMeasurementStatus, type BeliefProfile, type BeliefStructureEvidencePosture, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type MorphologyCalculationSource, type ResearchAnchorRelation, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
+import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefConstructLayerResearchCoverage, type BeliefDiagnosticLayer, type BeliefItemDisposition, type BeliefMeasurementAudit, type BeliefMeasurementAuditFlag, type BeliefMeasurementStatus, type BeliefProfile, type BeliefResearchCoverageStatus, type BeliefStructureEvidencePosture, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type MorphologyCalculationSource, type ResearchAnchorRelation, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
 
 type PrimaryView = "intro" | "quiz" | "results";
 type View = PrimaryView | "research";
@@ -76,6 +76,19 @@ const projectInspirationSources = [
 const researchTargets = buildResearchTargets(DATASET);
 const researchCandidateTargetCount = new Set(curatedResearchCandidates.map((candidate) => candidate.targetId)).size;
 const productionMeasurementAudits = auditBeliefMeasurement(DATASET);
+const productionResearchCoverage = researchCandidateCoverageFor(DATASET);
+
+const researchCoverageStatusLabels: Record<BeliefResearchCoverageStatus, string> = {
+  "production-covered": "production covered",
+  "candidate-only": "candidate-only gap",
+  "production-and-candidate": "production + candidate",
+  unrepresented: "unrepresented",
+};
+
+const researchCoverageCountFor = (status: BeliefResearchCoverageStatus): number =>
+  productionResearchCoverage.filter((coverage) => coverage.status === status).length;
+
+const researchCoverageStatusLabelFor = (coverage: BeliefConstructLayerResearchCoverage): string => researchCoverageStatusLabels[coverage.status];
 
 type MeasurementAuditFilter = "open-disposition" | "all-flagged" | "compound-wording" | "conditional-wording" | "branch-target-metadata" | "all-items";
 
@@ -527,6 +540,41 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
                 </details>
               ))}
             </div>
+          </section>
+          <section className="research-coverage" aria-labelledby="research-coverage-title">
+            <div className="research-coverage-header">
+              <div>
+                <div className="research-section-label" id="research-coverage-title">0.5 / Construct and claim-layer coverage</div>
+                <h2>Keep live measurement distinct from the research shelf.</h2>
+                <p className="research-coverage-lede">Each row is a declared belief construct and claim layer. Production counts come from the current item audit; candidate counts come from the quarantined authoring bank. A candidate-only row is an open design seam, not a measured respondent trait and not a reason to change scoring.</p>
+              </div>
+            </div>
+            <div className="research-coverage-metrics" aria-label="Construct coverage totals">
+              <div><strong>{productionResearchCoverage.length}</strong><span>declared cells</span></div>
+              <div><strong>{researchCoverageCountFor("production-covered")}</strong><span>production-covered cells</span></div>
+              <div><strong>{researchCoverageCountFor("candidate-only")}</strong><span>candidate-only gaps</span></div>
+              <div><strong>{productionResearchCoverage.reduce((total, coverage) => total + coverage.researchCandidateCount, 0)}</strong><span>quarantined candidates</span></div>
+            </div>
+            <div className="research-coverage-table-wrap">
+              <table className="research-coverage-table">
+                <caption>Production and research-candidate coverage by belief construct and claim layer</caption>
+                <thead>
+                  <tr><th scope="col">Construct</th><th scope="col">Claim layer</th><th scope="col">Production items</th><th scope="col">Research candidates</th><th scope="col">Posture</th></tr>
+                </thead>
+                <tbody>
+                  {productionResearchCoverage.map((coverage) => (
+                    <tr key={`${coverage.constructId}:${coverage.layer}`}>
+                      <th scope="row">{constructLabelFor(coverage.constructId)}</th>
+                      <td>{LAYER_LABELS[coverage.layer].short}</td>
+                      <td>{coverage.productionItemCount}</td>
+                      <td><span>{coverage.researchCandidateCount}</span>{coverage.researchCandidateIds.length > 0 ? <small>{coverage.researchCandidateIds.join(", ")}</small> : null}</td>
+                      <td><span className={`research-coverage-posture research-coverage-${coverage.status}`}>{researchCoverageStatusLabelFor(coverage)}</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="research-coverage-boundary">This matrix is a provenance and authoring aid. It does not promote candidates, create direct production items, alter legacy facet effects, or establish comprehension, response-process interpretation, reliability, validity, invariance, population safety, or empirical classification.</p>
           </section>
           <section className="belief-gap-shelf" aria-labelledby="belief-gap-shelf-title">
             <div className="research-section-label" id="belief-gap-shelf-title">Underlying belief gaps</div>

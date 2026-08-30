@@ -56,6 +56,13 @@ const report = {
     constructLayerItemCounts: profile.measurementSummary.constructLayerItemCounts,
     uncoveredConstructLayerPairs: profile.measurementSummary.uncoveredConstructLayerPairs,
     uncoveredConstructIds: profile.measurementSummary.uncoveredConstructIds,
+    researchCandidateCoverage: profile.measurementSummary.researchCandidateCoverage,
+    researchCandidateOnlyPairs: profile.measurementSummary.researchCandidateCoverage
+      .filter((coverage) => coverage.status === "candidate-only")
+      .map((coverage) => `${coverage.constructId}:${coverage.layer}`),
+    unrepresentedConstructLayerPairs: profile.measurementSummary.researchCandidateCoverage
+      .filter((coverage) => coverage.status === "unrepresented")
+      .map((coverage) => `${coverage.constructId}:${coverage.layer}`),
     researchCandidateCounts: profile.measurementSummary.researchCandidateCounts,
     researchCandidateCount: BELIEF_GAP_CANDIDATES.length,
     researchCandidateResponseFormats: countBy(BELIEF_GAP_CANDIDATES.map((candidate) => candidate.responseFormat)),
@@ -64,7 +71,7 @@ const report = {
   },
   itemAudits: audits,
   validationErrors: validateBeliefModel(DATASET),
-  interpretation: "This is an item-audit and proxy-coverage report. It is not cognitive, psychometric, invariance, population, or empirical validation.",
+  interpretation: "This is an item-audit and production-vs-research coverage report. Research-candidate presence does not establish measurement, and the report is not cognitive, psychometric, invariance, population, or empirical validation.",
 };
 
 const output = process.argv.includes("--summary")

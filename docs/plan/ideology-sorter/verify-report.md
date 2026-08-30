@@ -2031,6 +2031,32 @@ The current worktree's Research Workbench relationship surface was verified agai
 | `npx tsc --noEmit --pretty false` | PASS | Current source, including the relationship rendering and formatter, compiles with no output. |
 | `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
 | `E2E_BASE_URL=http://127.0.0.1:4174 npx playwright test tests/sorter.spec.ts --grep "shows research-backed taxonomy decisions separately from scoring" --workers=1 --reporter=list` | PASS | One focused browser scenario passed against an isolated production preview; Deep Ecology rendered two `source-backed-contested` relationship records. |
+| `npm run qa -- --workers=1 --reporter=list` | PASS | Full current-tree browser suite: 13/13 scenarios passed against the isolated production preview; the suite took 7.5 minutes and the preview was stopped cleanly. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 10 files and 175/175 tests passed in 56.26 seconds. |
+| `git diff --check` | PASS | No whitespace errors after the current worktree documentation and UI/test changes. |
 | Required external validation gates | NOT RUN | No respondent, reviewer, psychometric, cross-context, population/consequence, or held-out morphology evidence was created or promoted. |
 
 V142 is a UI traceability check only. It does not convert scholarship into respondent evidence, infer ideological identity, alter the fixed ontology or legacy scorer, or close the comprehensive objective.
+
+## V143 observed verification — production/research construct-layer coverage — 2026-08-30
+
+V143 adds an explicit 25-cell matrix for the declared belief constructs and claim layers. The matrix keeps current production item counts separate from the 19 effect-free research candidates, is included in the measurement audit and review-packet snapshot, and is rendered in the Research Workbench. No production question, legacy effect, anchor vector, ontology node, affinity calculation, or morphology rule was changed.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current source and review-packet exporter/validator compile with no output. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 11 files and 177/177 tests passed in 59.04 seconds. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500 production items audited; 25 declared construct/layer cells; 15 production-covered, 10 candidate-only, 19 quarantined candidates, and 0 unrepresented cells; validation errors 0. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical source-backed configurations and 238 source-backed-contested relationships remain resolved; adversarial checks pass and failure count is 0. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | All 119 canonical targets retain 4/4/4 production blocks and no validation failures; Populism, Islamism, Religious Nationalism, and Deep Ecology prescriptive direction remains contested/indeterminate. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 canonical anchors, 124 editorial anchors, 125 ontology nodes, 128 research targets, and 0 research-bank validation errors. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All structural checks pass; the six required external gates remain `NOT RUN`, so eligibility is false and exit 1 is expected. |
+| Fresh exporter-to-validator pipeline | INCOMPLETE / FAIL-CLOSED | 1,533 review-queue items, 0 structural validation errors, no reviewer/evidence records, six missing recorded gate results, and promotion false. |
+| Coverage-snapshot mutation | PASS | Replacing a candidate id in `snapshot.measurementCoverage.constructLayer` is rejected as `INVALID` with a construct/layer coverage snapshot mismatch. |
+| Focused coverage-matrix browser scenario | PASS | The workbench rendered 25 rows and 10 candidate-only posture cells against an isolated production preview on port 4175. |
+| `E2E_BASE_URL=http://127.0.0.1:4175 npm run qa -- --workers=1 --reporter=list` | PASS | Full current-tree browser suite: 13/13 scenarios passed in 7.4 minutes; the owned preview was stopped cleanly. |
+| `git diff --check` | PASS | No whitespace errors after the coverage-matrix implementation and documentation update. |
+| Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance, population/consequence, or held-out morphology evidence was created or promoted. |
+
+V143 improves measurement-gap traceability and packet freshness only. Candidate presence remains a research/authoring signal, not a measured construct or ideological classification result; the comprehensive objective remains `INCOMPLETE` / fail-closed.
