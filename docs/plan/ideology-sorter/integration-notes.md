@@ -752,6 +752,12 @@ V133 exposes the existing `auditBeliefMeasurement(DATASET)` result inside the Re
 
 The new surface is explicitly read-only and editorial. It does not mutate the question bank, promote candidates, alter effects, invoke a second scorer, or infer respondent comprehension, expert adjudication, psychometric validity, reliability, invariance, population consequences, or held-out morphology validity. Each record directs future reviewers to record one-claim interpretation, construct/conception, expected response process, missingness semantics, neighboring distinctions, reviewer IDs, disagreement, and adjudication outside the UI before changing production measurement. The V132 content version, 1,500-item audit, 42 split dispositions, three unmeasured constructs, four open prescriptive gaps, and six external validation gates remain unchanged.
 
+## V134 integration note — full regression after the queue commit
+
+The committed V133 workbench queue was revalidated against the current tree with TypeScript, 175 Vitest tests, the production build, all structural audits, and the full 13-scenario single-worker browser suite. The queue remains a presentation and review-triage surface over `auditBeliefMeasurement(DATASET)`; it does not introduce a second scorer, change the live question bank, or convert mechanical flags into adjudicated dispositions.
+
+The completion audit remains `INCOMPLETE` / fail-closed with all 30 structural checks passing but six required external-study gates still `NOT RUN`. No local regression, synthetic profile, source-backed relationship, browser interaction, or build result is treated as evidence of respondent comprehension, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent-morphology validity.
+
 ## V135 integration note — align taxonomy governance with live provisional measurement
 
 The explicit Khomeinism and Qutbism taxonomy decisions now use the same `scored-provisional` governance status as their already activated dedicated production branches. Their source sets were expanded to the full target-attached research records, while `source-backed-contested` posture, competing interpretations, historical scope, and no-respondent-classification boundaries remain explicit. The change removes two deliberate measurement reconciliation exceptions; the typed fail-closed reconciliation validator remains available for future mismatches.
@@ -777,3 +783,17 @@ The intake path now avoids reporting a missing reviewer field again as a second 
 ## V139 integration note — exact packet and queue metadata identity
 
 The review intake now verifies the question-id sequence, per-layer question counts, fixed-ontology snapshot, the queue/item/layer tuple for every stable review id, and the current content of the blinded and adjudication production arrays and open-disposition list. This prevents a metadata- or prompt-swapped packet from being accepted merely because its ids and array lengths are unchanged. The validator remains an intake integrity check: it does not authenticate an external study, generate reviewer records, change `BELIEF_VALIDATION_GATES`, promote evidence, or alter the belief-to-morphology or legacy scoring paths.
+
+## V140 integration note — exact research and contract snapshots
+
+The validator now performs semantic snapshot comparisons for all research queues and registries included in the packet, including the 19 gap candidates, eight direct categorical items, six relational follow-ups, 11 construct definitions, 464 source records, queue counts, complete gate snapshot, blocking-gate set, allowed dispositions, and reviewer-design minimums. A content change with an unchanged array length is therefore rejected before reviewer records are considered. This remains packet integrity validation only; it does not authenticate sources or studies, close external gates, or introduce a second scoring path.
+
+## V141 integration note — recorded-result coverage is separate from gate linkage
+
+Evidence rows may reference one or more external gates, but a row with status `NOT RUN` does not count as a recorded study result. The validator now exposes `evidenceGateIdsCovered`, `evidenceGateIdsWithRecordedResults`, and `evidenceGateIdsMissing`, and keeps the packet `INCOMPLETE` while any required gate lacks a non-`NOT RUN` result. This is a bookkeeping and fail-closed boundary only; the validator cannot authenticate the evidence or mutate `BELIEF_VALIDATION_GATES`.
+
+## V142 integration note — qualitative relationship context in the Research Workbench
+
+The current worktree renders `selectedAnchorProfile.relationships` beneath the selected research profile when records are present. It shows typed relationship kinds, resolved facet/concept participants, the explicit `source-backed-contested` evidence posture, the scholarly statement, and the registered source links. The explanatory copy keeps configuration relationships separate from respondent observations, answer co-occurrences, calibrated affinity, morphology fit, and legacy scoring.
+
+The focused `deep-ecology` browser path verifies the two records and their statement/posture. This does not promote a relationship into production, add a facet, infer a respondent relationship, or close any cognitive, expert, empirical, invariance, population/consequence, or held-out morphology gate.

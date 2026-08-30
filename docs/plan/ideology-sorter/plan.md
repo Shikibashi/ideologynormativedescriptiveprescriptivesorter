@@ -782,6 +782,12 @@ The next measurement-layer action is now an inspectable research-authoring seam 
 
 Verification for this bounded slice covers TypeScript, the full unit suite, the production build, the focused queue/responsive browser paths, and whitespace checks. The next substantive measurement work remains the three unmeasured constructs and adjudication of the 42 cross-construct split signals; any new question or ideology promotion must still pass the existing source/provenance, coverage, measurement, morphology, and fail-closed validation boundaries.
 
+## V134 continuation — full current-tree revalidation after the queue commit — 2026-08-30
+
+The committed V133 review queue was re-read from the current shared `HEAD` and validated with the complete single-worker browser suite plus the deterministic and structural audit surface. TypeScript, 175/175 Vitest tests, the 42-module production build, measurement, morphology, question-coverage, research-coverage, reachability, and direct-pilot audits all pass; the full browser suite passes 13/13 and no preview listener remains after cleanup.
+
+The completion audit remains deliberately `INCOMPLETE` / fail-closed: all 30 structural checks pass, while cognitive response-process, independent expert content adjudication, empirical reliability/validity, invariance/DIF/cross-context, population/consequence, and held-out respondent morphology remain `NOT RUN`. The next action requiring new authority is actual external study/review evidence; local source, synthetic, UI, build, and regression evidence must not be promoted to those gates.
+
 ## V135 continuation — align Khomeinism/Qutbism taxonomy status — 2026-08-30
 
 Research and repository evidence support closing the explicit governance mismatch for the existing Khomeinism and Qutbism branches. Both already have source-backed canonical placement, complete dedicated production blocks, source-backed configuration profiles, neighbor discriminants, and false-positive audits; their taxonomy decisions were the only canonical promotions still marked `catalog-only`. The decision records now cite the full attached source sets and report `scored-provisional`, while retaining contested posture and historical/interpretive boundaries.
@@ -807,3 +813,17 @@ The review-record validator now reports each absent required field once and rese
 ## V139 continuation — enforce exact review-packet identity — 2026-08-30
 
 The review-packet validator now checks the packet's question-id and fixed-ontology snapshots, verifies that every stable queue id retains its current queue type, item id, and layer, and compares the blinded production items and adjudication audit rows with the current production snapshot. This closes a local provenance gap in which a packet could preserve the set of stable ids and array lengths while swapping the content a reviewer would see. The repair does not create review evidence, alter production questions, change scoring or morphology, update the typed gate ledger, or promote the packet; all six external validation gates remain `NOT RUN`.
+
+## V140 continuation — enforce exact research-review snapshots — 2026-08-30
+
+The review-packet validator now compares the quarantined gap candidates, direct categorical items, relational follow-ups, construct registry, source registry, research-queue counts, full validation-gate snapshot, promotion blocking-gate set, allowed dispositions, and reviewer-design minimums with the current source snapshot. This prevents a packet from retaining valid array lengths while changing the research material or review contract presented to an external team. The repair creates no external evidence and leaves production scoring, morphology, the ontology, the typed gate ledger, and promotion eligibility unchanged.
+
+## V141 continuation — distinguish gate linkage from recorded evidence — 2026-08-30
+
+The review-packet validator now distinguishes gate IDs referenced by evidence rows from gates with a recorded result whose status is not `NOT RUN`. Required gates without such a result remain explicitly incomplete, including when a row documents that the study was not run. This improves evidence-status observability without authenticating a study, changing the typed gate ledger, promoting the model, or treating any local or synthetic record as external validation.
+
+## V142 observed continuation — expose source-backed configuration relationships in the Research Workbench — 2026-08-30
+
+The current worktree extends the existing Research Workbench so a selected anchor with source-backed configuration relationships, such as Deep Ecology, exposes each relationship's kind, participants, evidence posture, statement, and source links. The surface explains that these records preserve qualitative scholarship about priority, conditionality, conflict, epistemic, and contestation claims; they are not respondent co-occurrences, calibrated rules, affinity inputs, hidden weights, or a second scoring path. The participant formatter resolves existing facet labels and leaves concept identifiers explicit.
+
+The existing focused browser scenario now selects `deep-ecology` and verifies the two relationship records and their `source-backed-contested` posture. This is a presentation and traceability check over the existing research-bank records only: the fixed ontology, production questions, effects, legacy scorer, belief-to-morphology path, candidate quarantine, and validation-gate ledger are unchanged. TypeScript, the production build, and the focused browser assertion pass; the six external gates remain `NOT RUN` and the objective remains incomplete.

@@ -29,7 +29,7 @@ import {
 import { calculateResults, formatFit } from "./scoring";
 import { researchTaxonomyDecisionForTarget, researchTaxonomyDispositionLabels } from "./research-governance";
 import { decodeShareFragment, encodeShareFragment } from "./share";
-import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefDiagnosticLayer, type BeliefItemDisposition, type BeliefMeasurementAudit, type BeliefMeasurementAuditFlag, type BeliefMeasurementStatus, type BeliefProfile, type BeliefStructureEvidencePosture, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type MorphologyCalculationSource, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
+import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefDiagnosticLayer, type BeliefItemDisposition, type BeliefMeasurementAudit, type BeliefMeasurementAuditFlag, type BeliefMeasurementStatus, type BeliefProfile, type BeliefStructureEvidencePosture, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type MorphologyCalculationSource, type ResearchAnchorRelation, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
 
 type PrimaryView = "intro" | "quiz" | "results";
 type View = PrimaryView | "research";
@@ -230,6 +230,15 @@ const configurationRelationshipParticipantsTextFor = (relationship: IdeologyConf
       .map((commitmentId) => configuration.commitments.find((commitment) => commitment.id === commitmentId)?.label)
       .filter((label): label is string => label !== undefined);
     return labels.length > 0 ? labels.join(" / ") : participant.id;
+  })
+  .join(" ↔ ");
+
+const researchAnchorRelationshipParticipantsTextFor = (relationship: ResearchAnchorRelation): string => relationship.participants
+  .map((participant) => {
+    if (participant.kind === "facet") {
+      return DATASET.facets.find((facet) => facet.id === participant.id)?.label ?? participant.id;
+    }
+    return `concept: ${participant.id}`;
   })
   .join(" ↔ ");
 
@@ -603,6 +612,24 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
                               <small>{conception.layer} · {conception.centrality} · source-backed, non-scored</small>
                               <p>{conception.interpretation}</p>
                               <small>Sources: {sourceLinksFor(conception.sourceIds)}</small>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                  {selectedAnchorProfile?.relationships.length ? (
+                    <div className="research-bank-columns research-profile-relationships">
+                      <div>
+                        <h3>Source-backed configuration relationships</h3>
+                        <p>These records describe how scholarship connects commitments within a tradition. They preserve priority, conditionality, conflict, epistemic, and contestation claims as qualitative context; they are not respondent co-occurrences, calibrated rules, or affinity inputs.</p>
+                        <ul>
+                          {selectedAnchorProfile.relationships.map((relationship) => (
+                            <li key={relationship.id}>
+                              <strong>{relationship.kind.replaceAll("-", " ")}</strong>
+                              <small>{researchAnchorRelationshipParticipantsTextFor(relationship)} · {relationship.evidencePosture.replaceAll("-", " ")}</small>
+                              <p>{relationship.statement}</p>
+                              <small>Sources: {sourceLinksFor(relationship.sourceIds)}</small>
                             </li>
                           ))}
                         </ul>

@@ -1004,6 +1004,12 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-133-02 | Switch among conditional wording and all-item filters, then search `n-collectivist-anarchism-04`. | The conditional filter reports 510 matching audit records and caps the rendered list at 80; the all-item search narrows to one record and exposes the preserved single-claim prompt and `Democracy +0.95` effect without changing the live bank. |
 | R-133-01 | Run TypeScript, the full Vitest suite, production build, focused queue/responsive browser paths, and `git diff --check`. | All executed deterministic checks pass; the existing large-client-chunk advisory remains informational, while the three unmeasured constructs, four open prescriptive gaps, 42 split dispositions, and six external validation gates remain visible and fail-closed. |
 
+## Current V134 full regression scenario
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-134-01 | Run the full current-tree TypeScript, Vitest, build, structural audits, single-worker browser suite, preview cleanup check, and `git diff --check` after the committed audit queue. | All deterministic checks pass, including 13/13 browser scenarios; the 42 split dispositions, three unmeasured constructs, four open prescriptive gaps, and six `NOT RUN` external validation gates remain visible and fail-closed. |
+
 ## Current V135 taxonomy-governance scenario
 
 | ID | Scenario | Expected result |
@@ -1041,3 +1047,26 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | R-139-02 | Validate a packet whose first snapshot `questionIds` entry is changed. | The validator reports `INVALID` with a question-id snapshot error and keeps promotion ineligible. |
 | R-139-03 | Validate a packet whose first blinded production prompt is changed. | The validator reports `INVALID` with a production-item content error and keeps promotion ineligible. |
 | R-139-04 | Validate the fresh exporter output. | The packet remains structurally valid, reports `INCOMPLETE` only because no external review/evidence records exist, and preserves all six external gates as `NOT RUN`. |
+
+## Current V140 research-snapshot scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-140-01 | Validate a packet whose first gap-candidate prompt is changed without changing the array length. | The validator reports `INVALID` with a research-queue source-snapshot error and keeps promotion ineligible. |
+| R-140-02 | Validate a packet whose first validation-gate boundary is changed. | The validator reports `INVALID` with a gate-snapshot error and keeps promotion ineligible. |
+| R-140-03 | Validate the fresh exporter output. | The research queues, registries, queue counts, gate snapshot, review contract, and promotion boundary match the current source; the packet remains `INCOMPLETE` only because actual review/evidence records are absent. |
+
+## Current V141 gate-evidence coverage scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-141-01 | Add a structurally valid evidence row for one gate with status `NOT RUN`. | The gate appears in `evidenceGateIdsCovered` but not `evidenceGateIdsWithRecordedResults`; it remains in `evidenceGateIdsMissing`, and the packet remains `INCOMPLETE`. |
+| R-141-02 | Change that row’s status to `PASS` without changing its gate ID. | The gate moves to `evidenceGateIdsWithRecordedResults` and leaves `evidenceGateIdsMissing`; no promotion or typed gate update occurs. |
+| R-141-03 | Validate the fresh exporter output. | All six required gates are reported missing recorded results, zero evidence rows exist, promotion remains false, and the packet remains `INCOMPLETE`. |
+
+## V142 Research Workbench relationship scenario
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-142-01 | Open Research, select `deep-ecology`, and inspect the selected anchor profile. | The workbench displays the source-backed configuration relationship section with two records, explicit participants, `source-backed-contested` posture, statements, source links, and a clear qualitative/non-scoring boundary. |
+| R-142-01 | Run TypeScript, the production build, and the focused relationship browser scenario against a stable preview. | All executed checks pass; the UI only exposes existing research context, while the fixed ontology, production scoring/morphology paths, and six external `NOT RUN` gates remain unchanged. |

@@ -340,6 +340,11 @@ test("shows research-backed taxonomy decisions separately from scoring", async (
   await page.locator("#research-target").selectOption("deep-ecology");
   await expect(page.locator(".research-governance-note")).toContainText(/promote to canonical ontology/i);
   await expect(page.locator(".research-governance-note")).toContainText(/scored-provisional/i);
+  const relationshipProfile = page.locator(".research-profile-relationships");
+  await expect(relationshipProfile).toContainText(/source-backed configuration relationships/i);
+  await expect(relationshipProfile.locator("li")).toHaveCount(2);
+  await expect(relationshipProfile).toContainText(/source backed contested/i);
+  await expect(relationshipProfile).toContainText(/ecocentric value and expanded ecological selfhood/i);
 });
 
 test("exposes a bounded production measurement audit queue without changing the live bank", async ({ page }) => {

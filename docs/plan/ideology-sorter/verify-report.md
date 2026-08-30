@@ -1871,6 +1871,29 @@ V133 adds a Research Workbench presentation of the existing production measureme
 
 The browser and deterministic checks establish the workbench interaction and presentation contract only. They do not establish respondent comprehension, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
 
+## V134 observed verification — full current-tree regression after the audit queue — 2026-08-30
+
+After the V133 queue was present at `HEAD` (`5e06d3e`, `feat(workbench): expose measurement audit queue`), the full current-tree browser suite and the structural audit surface were rerun. This verification observes the committed queue and does not add a second review mechanism or alter the production bank.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current committed queue and application source compile with no output. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 175/175 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-C6_vt1oZ.js` 3,026.26 kB (674.53 kB gzip) and `index-D6wjrBST.css` 54.80 kB (8.52 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 99; 1,500/1,500 items audited; 42 split dispositions, zero duplicate/rewrite/redundant dispositions, three unmeasured constructs, and zero validation errors. |
+| `npx vite-node scripts/audit-belief-morphology.ts --summary` | PASS | 119 source-backed canonical configurations, 238 source-backed-contested relationships, all adversarial checks true, and zero validation/failure errors. |
+| `npx vite-node scripts/audit-ideology-question-coverage.ts --summary` | PASS WITH OPEN GAPS | 119 canonical targets retain 4/4/4 blocks with zero validation errors/failures; four contested prescriptive gaps remain explicit. |
+| `npx vite-node scripts/audit-research-coverage.ts --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets, complete profile/conception rows, and zero validation errors. |
+| `npx vite-node scripts/audit-anchor-reachability.ts --summary` | PASS | 119 production anchors; zero validation/failure errors; overlap ranks remain structural diagnostics only. |
+| `npx vite-node scripts/audit-belief-direct-pilot.ts --summary` | PASS | Eight effect-free direct pilot items remain outside production; source/option and isolation checks pass. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass and `structuralEligible` is true, but six required external-study gates remain `NOT RUN`; exit 1 is expected. |
+| `npm run qa -- --workers=1 --reporter=list` | PASS | Full current browser suite: 13/13 scenarios passed in 8.3 minutes, including the long all-layer share-link and both audit-queue scenarios. |
+| `ss -ltnp \| rg ':4173|:4174|:5173'` | PASS | No preview listener remained after the browser suite. |
+| `git diff --check` | PASS | No whitespace errors in the current tracked-objective diff. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The completed local checks establish the queue, regression, and structural presentation contracts only. They do not establish respondent comprehension, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
+
 ## V135 observed verification — Khomeinism/Qutbism governance alignment — 2026-08-30
 
 The V135 change aligns the two explicit taxonomy decisions with their already activated dedicated production branches. It changes only research-governance source coverage, decision status, tests, and documentation; it does not change the ontology inventory, production question bank, question effects, anchors, legacy scorer, morphology rules, or optional pilot contracts.
@@ -1966,3 +1989,48 @@ V139 closes a provenance-integrity gap in the review intake validator. Stable re
 | Required external validation gates | NOT RUN | No reviewer, respondent, coding, comparison, population, consequence, or held-out morphology evidence was created or promoted. |
 
 V139 improves packet integrity only. The validator still cannot authenticate external evidence, modify `BELIEF_VALIDATION_GATES`, or promote the belief model; the comprehensive goal remains `INCOMPLETE` / fail-closed.
+
+## V140 observed verification — enforce exact research-review snapshots — 2026-08-30
+
+V140 extends packet identity validation beyond production questions. The validator now compares all quarantined research queues and source/construct registries, queue counts, complete validation-gate snapshot, promotion blocking gates, allowed dispositions, and reviewer-design minimums with the current checkout. A changed gap-candidate prompt and a changed gate boundary are rejected even when their enclosing arrays retain the expected lengths.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The validator and current TypeScript source compile with no output. |
+| `npx vite-node scripts/export-belief-review-packet.ts | npx vite-node scripts/validate-belief-review-packet.ts --summary` | INCOMPLETE / FAIL-CLOSED | Fresh packet parses with zero structural validation errors; 1,533 items have no independent reviewer records, no evidence rows exist, all six external gates remain `NOT RUN`, and promotion remains false. Exit 1 is expected. |
+| Research-queue mutation | PASS | Changing the first gap-candidate prompt is rejected as `INVALID` with a source-snapshot error. |
+| Gate-snapshot mutation | PASS | Changing the first gate boundary is rejected as `INVALID` with a gate-snapshot error. |
+| `git diff --check` | PASS | No whitespace errors after the validator and documentation update. |
+| Required external validation gates | NOT RUN | No reviewer, respondent, coding, comparison, population, consequence, or held-out morphology evidence was created or promoted. |
+
+V140 strengthens packet provenance only. It does not authenticate external evidence, modify `BELIEF_VALIDATION_GATES`, alter the belief-to-morphology path, or close the comprehensive objective.
+
+## V141 observed verification — distinguish gate linkage from recorded evidence — 2026-08-30
+
+V141 makes evidence-ledger coverage explicit. A gate reference is reported separately from a recorded result; only a structurally valid evidence row with a status other than `NOT RUN` counts toward recorded-result coverage. The validator keeps every required gate in `evidenceGateIdsMissing` until such a row exists, without authenticating the evidence or changing the typed gate ledger.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The validator and current TypeScript source compile with no output. |
+| Fresh exporter-to-validator pipeline | INCOMPLETE / FAIL-CLOSED | The empty packet has zero evidence rows, all six gates missing recorded results, 1,533 incomplete review items, zero structural validation errors, and promotion false. |
+| `NOT RUN` evidence-row mutation | PASS | A valid-looking row linked to `cognitive-response-process` with status `NOT RUN` is counted as linked but not as recorded evidence; the gate remains missing. |
+| Recorded-result mutation | PASS | Changing that row to `PASS` moves only that gate into recorded-result coverage; the other five gates remain missing, reviewer completeness remains unmet, and promotion remains false. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 175/175 tests across 10 files. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `git diff --check` | PASS | No whitespace errors after the validator and documentation update. |
+| Required external validation gates | NOT RUN | No reviewer, respondent, coding, comparison, population, consequence, or held-out morphology evidence was created or promoted. |
+
+V141 improves gate-result observability only. A non-`NOT RUN` row is still not authenticated by this tool, does not advance the typed gate ledger, and cannot close the comprehensive goal.
+
+## V142 observed verification — Research Workbench relationship context — 2026-08-30
+
+The current worktree's Research Workbench relationship surface was verified against the existing `deep-ecology` research anchor. The selected profile exposes two source-backed configuration relationships and keeps their qualitative, contested, non-scoring status explicit. The browser assertion exercises the rendered heading, record count, evidence posture, and representative statement without changing the live question bank or scorer.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current source, including the relationship rendering and formatter, compiles with no output. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `E2E_BASE_URL=http://127.0.0.1:4174 npx playwright test tests/sorter.spec.ts --grep "shows research-backed taxonomy decisions separately from scoring" --workers=1 --reporter=list` | PASS | One focused browser scenario passed against an isolated production preview; Deep Ecology rendered two `source-backed-contested` relationship records. |
+| Required external validation gates | NOT RUN | No respondent, reviewer, psychometric, cross-context, population/consequence, or held-out morphology evidence was created or promoted. |
+
+V142 is a UI traceability check only. It does not convert scholarship into respondent evidence, infer ideological identity, alter the fixed ontology or legacy scorer, or close the comprehensive objective.

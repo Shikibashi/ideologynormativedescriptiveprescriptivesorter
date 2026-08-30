@@ -231,6 +231,7 @@ a { color: inherit; }
 .research-shelf-actions { display: flex; align-items: start; gap: 12px; flex: 0 0 auto; }
 .research-bank { margin-top: 36px; padding-top: 25px; border-top: 1px solid var(--rule); }
 .research-bank-overview, .research-bank-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 20px; }
+.research-profile-relationships { grid-template-columns: minmax(0, 1fr); }
 .research-bank-overview h3, .research-bank-columns h3 { margin: 0; color: var(--ink); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
 .research-bank-overview p, .research-bank-columns p, .research-bank-columns ul { margin: 8px 0 0; color: var(--ink-muted); font-size: 0.78rem; line-height: 1.55; }
 .research-bank-overview p + p { margin-top: 8px; }

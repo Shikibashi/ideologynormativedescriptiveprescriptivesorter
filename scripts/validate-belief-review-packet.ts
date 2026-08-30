@@ -160,6 +160,7 @@ const snapshotErrorsFor = (root: JsonRecord): string[] => {
 
   const validation = isRecord(root.validation) ? root.validation : {};
   const gateSnapshot = asRecords(validation.gateSnapshot);
+  if (!jsonMatches(gateSnapshot, BELIEF_VALIDATION_GATES)) errors.push("packet gate snapshot does not match the current validation ledger");
   for (const gateId of currentExternalGateIds) {
     const snapshotGate = gateSnapshot.find((gate) => gate.id === gateId);
     if (!snapshotGate || snapshotGate.status !== currentGateStatus[gateId]) errors.push(`packet gate snapshot is stale or altered for ${gateId}`);
@@ -167,6 +168,7 @@ const snapshotErrorsFor = (root: JsonRecord): string[] => {
   const promotion = isRecord(root.promotion) ? root.promotion : {};
   if (promotion.eligibleForPromotion !== false) errors.push("review packet must remain ineligible for promotion");
   if (promotion.packetContainsExternalEvidence !== false) errors.push("review packet must not claim to contain external evidence");
+  if (!jsonMatches(promotion.blockingGateIds, currentExternalGateIds)) errors.push("packet promotion blocking gates do not match the current external gate set");
   return errors;
 };
 
@@ -226,6 +228,30 @@ const packetSectionErrorsFor = (root: JsonRecord): string[] => {
     if (!Array.isArray(value)) errors.push(`packet is missing ${path} array`);
     else if (value.length !== expectedLength) errors.push(`${path} count ${value.length} does not match current count ${expectedLength}`);
   }
+
+  const researchQueueExpectations: readonly [string, unknown][] = [
+    ["researchQueues.gapCandidates", BELIEF_GAP_CANDIDATES],
+    ["researchQueues.directCategoricalItems", BELIEF_DIRECT_ITEMS],
+    ["researchQueues.relationalFollowUps", BELIEF_RELATIONAL_FOLLOWUPS],
+    ["registries.constructs", BELIEF_CONSTRUCT_DEFINITIONS],
+    ["registries.sources", DATASET.sources],
+  ];
+  for (const [path, expected] of researchQueueExpectations) {
+    const value = path.split(".").reduce<unknown>((current, key) => isRecord(current) ? current[key] : undefined, root);
+    if (Array.isArray(value) && value.length === (expected as readonly unknown[]).length && !jsonMatches(value, expected)) {
+      errors.push(`${path} does not match the current source snapshot`);
+    }
+  }
+  const counts = isRecord(researchQueues.counts) ? researchQueues.counts : undefined;
+  const expectedCounts = {
+    gapCandidates: BELIEF_GAP_CANDIDATES.length,
+    directCategoricalItems: BELIEF_DIRECT_ITEMS.length,
+    relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
+  };
+  if (!jsonMatches(counts, expectedCounts)) errors.push("researchQueues.counts does not match the current research queues");
+  if (reviewDesign.defaultMinimumIndependentReviewers !== 2) errors.push("packet review design must require two independent reviewers");
+  if (reviewDesign.namedAdjudicatorRequired !== true) errors.push("packet review design must require a named adjudicator");
+  if (!jsonMatches(reviewDesign.allowedDispositions, BELIEF_REVIEW_ALLOWED_DISPOSITIONS)) errors.push("packet allowed dispositions do not match the current review contract");
 
   const blindItems = productionReview.blindFirstPassItems;
   if (Array.isArray(blindItems) && blindItems.length === expectedProductionCount) {
@@ -360,12 +386,19 @@ const reviewRecordErrorsFor = (root: JsonRecord): { errors: readonly string[]; c
   return { errors, completenessIssues, completedItemCount, reviewerCount: reviewerIds.size };
 };
 
-const evidenceRecordErrorsFor = (root: JsonRecord): { errors: readonly string[]; gateIdsCovered: readonly string[]; recordCount: number } => {
+const evidenceRecordErrorsFor = (root: JsonRecord): {
+  errors: readonly string[];
+  gateIdsCovered: readonly string[];
+  gateIdsWithRecordedResults: readonly string[];
+  missingGateIds: readonly string[];
+  recordCount: number;
+} => {
   const evidenceLedger = isRecord(root.evidenceLedger) ? root.evidenceLedger : {};
   const records = Array.isArray(evidenceLedger.records) ? evidenceLedger.records : [];
   const errors: string[] = [];
   const evidenceIds = new Set<string>();
   const gateIdsCovered = new Set<string>();
+  const gateIdsWithRecordedResults = new Set<string>();
   if (!Array.isArray(evidenceLedger.records)) errors.push("review packet is missing evidenceLedger.records array");
   for (const [index, recordValue] of records.entries()) {
     if (!isRecord(recordValue)) {
@@ -380,17 +413,29 @@ const evidenceRecordErrorsFor = (root: JsonRecord): { errors: readonly string[];
       evidenceIds.add(evidenceId);
     }
     const gateIds = recordValue.gateIds;
+    const status = recordValue.status;
+    const hasRecordedResult = isNonEmptyString(status) && allowedStatuses.has(status) && status !== "NOT RUN";
     if (!Array.isArray(gateIds) || gateIds.length === 0 || gateIds.some((gateId) => !isNonEmptyString(gateId))) {
       errors.push(`${prefix} must list one or more gateIds`);
     } else {
       for (const gateId of gateIds) {
         if (!currentExternalGateIdSet.has(gateId)) errors.push(`${prefix} references unknown external gate ${gateId}`);
-        else gateIdsCovered.add(gateId);
+        else {
+          gateIdsCovered.add(gateId);
+          if (hasRecordedResult) gateIdsWithRecordedResults.add(gateId);
+        }
       }
     }
-    if (!isNonEmptyString(recordValue.status) || !allowedStatuses.has(recordValue.status)) errors.push(`${prefix} has an invalid status`);
+    if (!isNonEmptyString(status) || !allowedStatuses.has(status)) errors.push(`${prefix} has an invalid status`);
   }
-  return { errors, gateIdsCovered: [...gateIdsCovered].sort(), recordCount: records.length };
+  const sortedGateIdsWithRecordedResults = [...gateIdsWithRecordedResults].sort();
+  return {
+    errors,
+    gateIdsCovered: [...gateIdsCovered].sort(),
+    gateIdsWithRecordedResults: sortedGateIdsWithRecordedResults,
+    missingGateIds: currentExternalGateIds.filter((gateId) => !gateIdsWithRecordedResults.has(gateId)),
+    recordCount: records.length,
+  };
 };
 
 const run = async (): Promise<void> => {
@@ -425,9 +470,10 @@ const run = async (): Promise<void> => {
     ...reviewRecords.errors,
     ...evidenceRecords.errors,
   ];
+  const evidenceGateCoverageIssues = evidenceRecords.missingGateIds.map((gateId) => `${gateId} has no evidence record with a non-NOT RUN status`);
   const status = validationErrors.length > 0
     ? "INVALID"
-    : reviewRecords.completenessIssues.length > 0
+    : reviewRecords.completenessIssues.length > 0 || evidenceGateCoverageIssues.length > 0
       ? "INCOMPLETE"
       : "READY_FOR_REVIEW_EVIDENCE";
   const output = {
@@ -440,16 +486,21 @@ const run = async (): Promise<void> => {
     completenessIssueCount: reviewRecords.completenessIssues.length,
     evidenceLedgerRecordCount: evidenceRecords.recordCount,
     evidenceGateIdsCovered: evidenceRecords.gateIdsCovered,
+    evidenceGateIdsWithRecordedResults: evidenceRecords.gateIdsWithRecordedResults,
+    evidenceGateIdsMissing: evidenceRecords.missingGateIds,
     externalGateStatus: currentGateStatus,
     validationErrorCount: validationErrors.length,
     validationErrors,
     completenessIssues: summaryMode ? undefined : reviewRecords.completenessIssues,
     completenessIssuePreview: reviewRecords.completenessIssues.slice(0, 5),
+    evidenceGateCoverageIssueCount: evidenceGateCoverageIssues.length,
+    evidenceGateCoverageIssues: summaryMode ? undefined : evidenceGateCoverageIssues,
+    evidenceGateCoverageIssuePreview: evidenceGateCoverageIssues.slice(0, 5),
     eligibleForPromotion: false,
-    interpretation: "This validator checks packet freshness, record structure, review completeness, and gate linkage. It cannot authenticate an external study, change BELIEF_VALIDATION_GATES, or promote the model.",
+    interpretation: "This validator checks packet freshness, record structure, review completeness, and recorded-result coverage for required gates. A non-NOT RUN row is not authenticated by this tool and cannot change BELIEF_VALIDATION_GATES or promote the model.",
   };
   process.stdout.write(JSON.stringify(output, null, 2) + "\n");
-  if (validationErrors.length > 0 || reviewRecords.completenessIssues.length > 0 || status !== "READY_FOR_REVIEW_EVIDENCE") process.exitCode = 1;
+  if (validationErrors.length > 0 || reviewRecords.completenessIssues.length > 0 || evidenceGateCoverageIssues.length > 0 || status !== "READY_FOR_REVIEW_EVIDENCE") process.exitCode = 1;
 };
 
 run().catch((error: unknown) => {
