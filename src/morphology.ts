@@ -17,7 +17,7 @@ import type {
 } from "./types";
 
 export const MORPHOLOGY_MODEL_ID = "configuration-projection" as const;
-export const MORPHOLOGY_MODEL_VERSION = 1;
+export const MORPHOLOGY_MODEL_VERSION = 2;
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
@@ -74,6 +74,31 @@ const directBasisFor = (evidence: readonly BeliefDirectEvidence[]): readonly Mor
   sourceRefs: item.sourceRefs,
   evidenceQuestionIds: item.evidenceQuestionIds,
 }));
+
+type MorphologyCandidateDraft = Omit<IdeologicalMorphologyCandidate, "margin" | "separation">;
+
+/**
+ * Fit margins make coarse candidate neighborhoods inspectable. The existing
+ * policy bands are display safeguards shared with the compatibility path;
+ * they are not calibrated confidence, validity evidence, or a reason to tune
+ * coefficients from synthetic profiles.
+ */
+const morphologySeparationFor = (
+  candidate: MorphologyCandidateDraft,
+  candidates: readonly MorphologyCandidateDraft[],
+  dataset: Dataset,
+): Pick<IdeologicalMorphologyCandidate, "margin" | "separation"> => {
+  const margin = candidates
+    .filter((other) => other.anchorId !== candidate.anchorId)
+    .reduce((smallest, other) => Math.min(smallest, Math.abs(other.fit - candidate.fit)), Number.POSITIVE_INFINITY);
+  const safeMargin = Number.isFinite(margin) ? margin : 1;
+  const separation = safeMargin <= dataset.policy.separationThreshold
+    ? "low"
+    : safeMargin <= dataset.policy.clearSeparationThreshold
+      ? "moderate"
+      : "high";
+  return { margin: safeMargin, separation };
+};
 
 const basisForCommitment = (
   commitment: BeliefCommitment,
@@ -136,7 +161,7 @@ const candidateForConfiguration = (
   facets: ReadonlyMap<string, BeliefFacetResult>,
   directEvidence: readonly BeliefDirectEvidence[],
   relationalEvidence: readonly BeliefRelationalEvidence[],
-): IdeologicalMorphologyCandidate | undefined => {
+): MorphologyCandidateDraft | undefined => {
   const basis = configuration.commitments.flatMap((commitment) => commitment.constructIds
     .map((constructId) => basisForCommitment(commitment, constructId, constructs, facets, commitment.constructIds.length)));
   const directionalBasis = basis.filter((item) => item.expectedDirection !== "indeterminate");
@@ -230,11 +255,20 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
 
   const constructs = constructMapFor(profile);
   const facets = facetMapFor(profile);
-  const candidates = canonicalConfigurationsFor(dataset)
+  const candidateDrafts = canonicalConfigurationsFor(dataset)
     .map((configuration) => candidateForConfiguration(configuration, constructs, facets, profile.directEvidence, profile.relationalEvidence))
-    .filter((candidate): candidate is IdeologicalMorphologyCandidate => candidate !== undefined)
+    .filter((candidate): candidate is MorphologyCandidateDraft => candidate !== undefined);
+  const candidates = candidateDrafts
+    .map((candidate) => ({
+      ...candidate,
+      ...morphologySeparationFor(candidate, candidateDrafts, dataset),
+    }))
     .sort((left, right) => right.fit - left.fit || right.coverage - left.coverage || left.label.localeCompare(right.label) || left.anchorId.localeCompare(right.anchorId));
   const unmeasured = profile.constructs.filter((construct) => construct.status === "not-yet-measured").map((construct) => construct.label);
+  const leadingCandidates = candidates.slice(0, 2);
+  const separationGap = leadingCandidates.length > 1
+    ? `The two leading configuration candidates are ${leadingCandidates[0].separation} separated by a ${Math.round(leadingCandidates[0].margin * 100)} percentage-point internal-fit margin. This is a diagnostic of the current item/configuration grid, not confidence or empirical validation; no unique ideology label is selected.`
+    : "The current candidate set has fewer than two configuration candidates, so a competing-candidate margin is not estimable.";
   return {
     modelId: MORPHOLOGY_MODEL_ID,
     modelVersion: MORPHOLOGY_MODEL_VERSION,
@@ -243,6 +277,7 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
     gaps: [
       "These are configuration-projection candidates, not validated latent traits, diagnoses, identities, or recommendations.",
       "The legacy facet-distance scorer remains available as a compatibility regression baseline and is not silently replaced by this pass.",
+      separationGap,
       ...(profile.directEvidence.length > 0 ? ["Direct categorical pilot evidence is carried for transparency but excluded from morphology calculation until response-process and empirical review are complete."] : []),
       "Unmeasured priority, conditionality, epistemic-confidence, and heterodoxy constructs are not filled in by morphology matching.",
       ...(unmeasured.length > 0 ? [`The following constructs remain unmeasured: ${unmeasured.join(", ")}.`] : []),

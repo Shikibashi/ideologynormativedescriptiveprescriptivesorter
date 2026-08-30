@@ -763,6 +763,10 @@ export type IdeologicalMorphologyCandidate = Readonly<{
   status: "provisional-candidate" | "under-determined";
   fit: number;
   coverage: number;
+  /** Difference between this candidate's internal fit and its closest competitor. */
+  margin: number;
+  /** A display band from the predeclared policy, not calibrated confidence. */
+  separation: "low" | "moderate" | "high";
   definingCommitmentsObserved: readonly string[];
   missingDefiningCommitments: readonly string[];
   conflictingCommitments: readonly string[];

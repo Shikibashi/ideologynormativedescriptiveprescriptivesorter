@@ -2,7 +2,7 @@
 
 ## Status
 
-This document records the first implementation seam for the deeper belief-structure objective. It is an editorial and engineering contract, not a psychometric validation report. The current model is `stated-political-commitment-configuration` version 2, and the current morphology projection is `configuration-projection` version 1.
+This document records the first implementation seam for the deeper belief-structure objective. It is an editorial and engineering contract, not a psychometric validation report. The current model is `stated-political-commitment-configuration` version 2, and the current morphology projection is `configuration-projection` version 2.
 
 The existing descriptive, normative, and prescriptive ontology, including its macro, meso, micro, and hybrid relations, remains unchanged. The new layer is additive: it makes the respondent-facing belief representation explicit and leaves the legacy facet-distance scorer available as the compatibility regression baseline. Objective-level gate status is kept separately in [`src/belief-validation.ts`](../../../src/belief-validation.ts), and `npm run belief:completion-audit` fails closed when structural checks pass but required external validation is still open.
 
