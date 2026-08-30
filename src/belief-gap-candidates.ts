@@ -53,7 +53,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Schwartz treats values as structured and potentially competing, while Rawls supplies a prominent example of ordering political principles rather than treating each value as an isolated score.",
     "The current bank records liberty and equality proxies but never asks which one governs a conflict.",
     "The same priority can be selected for different reasons, including rights, welfare, equal standing, or distrust of coercion; collect a brief reason in response-process review.",
-    ["source-schwartz", "source-rawls", "source-aapor"],
+    ["source-schwartz", "source-sagiv-schwartz-values-review", "source-rawls", "source-aapor"],
   ),
   candidate(
     "bc-priority-ecology-growth",
@@ -66,7 +66,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Value-structure research supports modeling competing goods, and the ecological-limit literature in the existing source registry supports treating ecological constraint as a distinct political concern rather than a generic preference.",
     "The current ecological and economic items provide separate proxies but no rule for resolving a growth-versus-limit conflict.",
     "A choice may reflect factual beliefs about technology or scarcity rather than a priority rule, so the follow-up should separate reasons from the forced choice.",
-    ["source-schwartz", "source-rockstrom", "source-aapor"],
+    ["source-schwartz", "source-sagiv-schwartz-values-review", "source-rockstrom", "source-aapor"],
   ),
   candidate(
     "bc-priority-scope-members-outsiders",
@@ -79,7 +79,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "The existing social-scope bridge draws on competing particularist and universalist traditions; the item tests an explicit ordering rule rather than treating universalism as a single scalar value.",
     "The current bank measures universalism and solidarity as broad value proxies but does not ask how scope conflicts are resolved.",
     "The same option may be justified by reciprocity, equal worth, emergency need, or institutional duty; ask for the respondent's reason before interpreting the response.",
-    ["source-schwartz", "source-rawls", "source-anderson"],
+    ["source-schwartz", "source-sagiv-schwartz-values-review", "source-rawls", "source-anderson"],
   ),
   candidate(
     "bc-priority-rights-local-autonomy",
@@ -105,7 +105,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "The existing Pierson source supports attention to path dependence, while the current bank explicitly distinguishes change strategy from a full theory of acceptable transition costs.",
     "The current reformism items do not identify when a respondent accepts, rejects, or conditions a reform.",
     "The scenario answer depends on beliefs about consequences as well as values; collect the assumed causal mechanism separately from the selected rule.",
-    ["source-pierson", "source-schwartz", "source-aapor"],
+    ["source-pierson", "source-schwartz", "source-sagiv-schwartz-values-review", "source-aapor"],
   ),
   candidate(
     "bc-epistemic-confidence",
@@ -118,7 +118,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "A measurement-validity argument requires the intended response process to be specified; confidence should therefore be elicited separately from substantive agreement and missingness.",
     "The current no-view and mixed states distinguish two answer states but do not record confidence in a directional answer.",
     "Respondents may interpret confidence as knowledge, importance, or willingness to defend a view; cognitive review must test those interpretations.",
-    ["source-adcock-collier", "source-borsboom-validity", "source-aapor"],
+    ["source-adcock-collier", "source-borsboom-validity", "source-aapor", "source-elkjaer-wlezien-dont-know"],
   ),
   candidate(
     "bc-epistemic-revision",
@@ -144,7 +144,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Clear missingness and response-state distinctions are a survey-design requirement; this item tests a stated uncertainty practice rather than scoring no-view as a political position.",
     "The current answer format records no-view but cannot distinguish principled withholding from low salience or uncertainty about the response options.",
     "Agreement can be normatively desirable without describing actual behavior; do not use it as a proxy for accuracy or epistemic virtue.",
-    ["source-aapor", "source-adcock-collier", "source-borsboom-validity"],
+    ["source-aapor", "source-adcock-collier", "source-borsboom-validity", "source-elkjaer-wlezien-dont-know"],
   ),
   candidate(
     "bc-epistemic-fact-value-distinction",
@@ -170,7 +170,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Response-process and validity frameworks require attention to how an answer is produced, not only its numerical association with another item.",
     "The current bank has no field for reasons, evidence standards, or claim-specific conditions for revision.",
     "The selected evidence type is not itself evidence that the respondent's political claim is true; code it as a stated epistemic condition only.",
-    ["source-aera-testing-standards", "source-borsboom-validity", "source-aapor"],
+    ["source-aera-testing-standards", "source-borsboom-validity", "source-aapor", "source-elkjaer-wlezien-dont-know"],
   ),
   candidate(
     "bc-heterodoxy-revision",
@@ -183,7 +183,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Morphological ideology research treats concepts as historically and contextually recombinable; the candidate tests whether revision is considered compatible with continuity.",
     "The current bank has no direct measure of whether a respondent permits internal conceptual revision.",
     "Agreement may mean openness to change in general rather than a view about tradition and conceptual identity; use examples in review.",
-    ["source-freeden-morphology", "source-aapor"],
+    ["source-freeden-morphology", "source-freeden-steers-morphology", "source-aapor"],
   ),
   candidate(
     "bc-heterodoxy-dissent",
@@ -196,7 +196,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Dahl's account of contestation supports treating opposition and dissent as distinct institutional concerns; morphology research supports avoiding one official interpretation of a tradition.",
     "The current democracy and pluralism proxies do not specifically record internal dissent rights.",
     "A respondent may support dissent for democratic, epistemic, strategic, or liberal reasons; those reasons should not be collapsed into one construct score.",
-    ["source-dahl", "source-freeden-morphology", "source-aapor"],
+    ["source-dahl", "source-freeden-morphology", "source-freeden-steers-morphology", "source-aapor"],
   ),
   candidate(
     "bc-heterodoxy-opposition",
@@ -209,7 +209,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Participation and opposition are central to Dahl's democratic account, while the morphology framework cautions against treating one contested tradition as internally uniform.",
     "The current prescriptive items measure democracy and authority but do not directly test protection for organized heterodox opposition.",
     "The item can be interpreted as an absolute free-speech claim or as a rule for constitutional opposition; later review must distinguish those readings.",
-    ["source-dahl", "source-freeden-morphology", "source-aapor"],
+    ["source-dahl", "source-freeden-morphology", "source-freeden-steers-morphology", "source-aapor"],
   ),
   candidate(
     "bc-heterodoxy-internal-disagreement",
@@ -222,7 +222,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Morphological analysis emphasizes flexible, contested concept combinations; the candidate tests whether internal variation should remain visible in interpretation.",
     "The current anchor configurations record variants and contested commitments, but the respondent-facing bank does not measure a view about heterodoxy itself.",
     "Agreement may reflect a general preference for pluralism rather than a specific theory of ideological interpretation; preserve that ambiguity.",
-    ["source-freeden-morphology", "source-dahl", "source-aapor"],
+    ["source-freeden-morphology", "source-freeden-steers-morphology", "source-dahl", "source-aapor"],
   ),
   candidate(
     "bc-heterodoxy-minority-response",
@@ -235,7 +235,7 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "Internal contestation is a relationship among commitment, membership, authority, and revision; a scenario is more informative than inferring it from a general democracy score.",
     "The current bank does not observe how a respondent resolves the relationship between movement continuity and internal dissent.",
     "The answer may depend on the policy's consequences or on the meaning of membership; collect the stated condition before interpreting the response.",
-    ["source-freeden-morphology", "source-dahl", "source-aapor"],
+    ["source-freeden-morphology", "source-freeden-steers-morphology", "source-dahl", "source-aapor"],
   ),
 ];
 
