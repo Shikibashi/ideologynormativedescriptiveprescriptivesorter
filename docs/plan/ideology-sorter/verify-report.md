@@ -1579,3 +1579,62 @@ V120 adds a collapsed, per-candidate disclosure for the quarantined gap shelf. I
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
 
 V120 improves inspectability of the research shelf but does not provide respondent or instrument validation. The six external gates remain `NOT RUN`, and the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V121 observed verification — declared claim-layer status boundary — 2026-08-30
+
+V121 corrects the construct-level status reported for mapped proxies whose declared claim-layer scope is not fully represented in the production bank. An all-directional answer map now leaves political economy and change strategy `partial`, because their declared normative or descriptive/normative cells have no production items; their per-construct layer coverage remains explicit. The completion harness adds a structural assertion that a construct with a declared item-layer gap cannot be reported as `observed`.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- src/belief-structure.test.ts --reporter=dot` | PASS | Focused belief-structure suite: 27/27; political economy and change strategy retain `partial` status with their empty declared layers visible in `layerCoverage` |
+| `npx tsc --noEmit --pretty false` | PASS | Status computation, completion-audit invariant, and regression assertions compile |
+| `npx vite-node scripts/audit-belief-measurement.ts --summary` | PASS | 1,500/1,500 production items; 11 constructs; ten uncovered declared construct/layer pairs remain explicit; three entirely unmeasured constructs remain listed |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 29 structural checks pass, including `declaredLayerGapsRemainNonObserved`; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 172/172 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-DsMwCRS4.js` 2,885.17 kB (644.79 kB gzip); existing large-client-chunk advisory remains |
+| `E2E_BASE_URL=http://127.0.0.1:4187 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1 --reporter=list` | PASS | Rebuilt-preview completion/share scenario: 1/1 in 1.8 minutes; preview was stopped afterward |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V121 improves the honesty of local claim-layer status and makes the gap machine-checkable, but it does not add evidence for the absent cells or validate the proxy model. The fixed ontology, production questions, legacy scorer, morphology configuration, share contract, and quarantined research candidates remain unchanged. The overall objective remains `INCOMPLETE` / fail-closed.
+
+## V122 observed verification — under-determined morphology diagnostics — 2026-08-30
+
+V122 separates source-backed configuration projections that lack sufficient defining evidence from the ordered provisional candidate set. The new adversarial fixture uses mixed descriptive/normative answers with directional prescriptive answers: 110 provisional candidates remain in the public ordering and 9 under-determined projections are retained in the diagnostic collection. An all-mixed profile has zero public candidates and 119 under-determined diagnostics. The V121 claim-layer status correction remains included in this tranche.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The version-4 morphology contract, UI disclosure, audits, and tests compile |
+| `npx vitest run src/morphology-separation.test.ts src/belief-structure.test.ts --no-file-parallelism --testTimeout=60000` | PASS | Focused structural suites: 30/30 tests |
+| `npx vitest run --no-file-parallelism --testTimeout=60000` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; 119 canonical round trips; separated provisional/under-determined fixture checks pass; zero validation errors and zero failures |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500/1,500 production items; 11 constructs; ten uncovered declared construct/layer pairs remain explicit; priority/conflict, epistemic stance, and heterodoxy/contestation remain unmeasured |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight direct categorical pilot items remain isolated from scalar scoring and morphology affinity |
+| `npm run belief:question-coverage -- --summary` | PASS | 119 canonical targets; 4/4/4 target blocks; zero validation errors and zero blocking failures; four contested prescriptive gaps remain open |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 canonical targets, and 1,536 quarantined research candidates across 128 targets; zero validation errors |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; rank and top-three outputs remain structural overlap diagnostics |
+| `npx playwright test tests/sorter.spec.ts -g "under-determined configurations" --workers=1` | PASS | Real 1,500-question browser flow and diagnostic disclosure: 1/1 in 1.8 minutes |
+| `npm run qa` | PASS | Full browser suite: 11/11 in 2.3 minutes, including the under-determined disclosure, full completion/share, research workbench, missing-information, and malformed-share scenarios |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 29 structural checks pass and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `git diff --check` | PASS | No whitespace errors |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V122 improves the interpretive boundary without adding production items or ideology nodes. Under-determined records remain inspectable but are not ranked, selected, or treated as identity assignments. Local structural, audit, and browser evidence does not establish a respondent measure, cognitive validity, psychometric validity, invariance, population/consequence safety, or empirical morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V122 observed verification — under-determined morphology diagnostics — 2026-08-30
+
+V122 closes a public interpretation leak in the configuration projection. Configuration records without enough defining support remain inspectable as `underDeterminedCandidates`, but they are excluded from the ordered `candidates` collection. The ranked collection therefore contains only `provisional-candidate` records; an all-mixed profile stays `not-derived` with zero ranked candidates while retaining withheld diagnostics. Diagnostic margins remain non-ranking metadata.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- src/morphology-separation.test.ts --reporter=dot` | PASS | Focused morphology separation suite: 3/3; provisional and under-determined records are disjoint, and all-mixed output remains fail-closed |
+| `npx tsc --noEmit --pretty false` | PASS | Under-determined morphology contract, diagnostic rendering, audit fixture, and browser assertions compile |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-BGpMdueU.js` 2,886.84 kB (645.22 kB gzip); existing large-client-chunk advisory remains |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical configurations round-trip; 119 source-backed; 119 provisional target records; all named adversarial checks true; under-determined diagnostic separation passes with zero failures |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 29 structural checks pass; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4188 npx playwright test tests/sorter.spec.ts -g "keeps under-determined configurations visible without ranking them as candidates" --workers=1 --reporter=list` | PASS | Rebuilt-preview under-determined disclosure scenario: 1/1 in 1.7 minutes; withheld records are visible as diagnostics and absent from ranked candidate ordering |
+| `git diff --check` | PASS | No whitespace errors after the morphology, audit, test, and documentation changes |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V122 improves the separation between an inspectable configuration diagnostic and a ranked provisional candidate, but it does not establish a respondent measure or identity classification. The fixed ontology, source-backed configuration records, production effects, legacy scorer, share contract, and external validation ledger remain unchanged. The overall objective remains `INCOMPLETE` / fail-closed.

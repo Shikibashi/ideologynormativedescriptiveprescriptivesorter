@@ -33,3 +33,11 @@ The existing legacy scorer and its separation behavior remain unchanged. This is
 5. The completion audit continues to report the six external gates as `NOT RUN` and remains fail-closed.
 
 Passing these conditions demonstrates traceability of a coarse candidate set only. It does not establish a respondent measure, a validated classification, or a scientific confidence estimate.
+
+## V122 implementation boundary — provisional candidates versus under-determined diagnostics
+
+The previous morphology contract exposed every configuration draft in `candidates` whenever at least one provisional record existed. That allowed a ranked list to contain records explicitly marked `under-determined`, even though those records lacked enough defining evidence to be compared as provisional candidates. This was a semantic leakage in the public interpretation boundary.
+
+`configuration-projection` is now version 4. The public `candidates` collection contains only `provisional-candidate` records. The new `underDeterminedCandidates` collection retains source-backed configuration projections whose defining support or total configuration coverage is insufficient; it preserves their missing-evidence diagnostics without assigning them a rank. Provisional margins are computed against the provisional comparison set, while diagnostic records retain a finite grid margin only as non-ranking metadata. A profile with no provisional records remains `not-derived`, but its withheld diagnostics stay inspectable when the three-layer coverage threshold has been met.
+
+This boundary follows the existing morphology and measurement evidence synthesis: ideology is treated as a structured, revisable configuration, conceptualization is kept distinct from measurement, and abstention is a legitimate software state when the current comparison grid cannot support a label. The implementation does not calibrate a confidence score, promote a construct, add a production question, or claim respondent, cognitive, psychometric, invariance, population, consequence, or empirical validity. Local tests and audits remain structural evidence only.

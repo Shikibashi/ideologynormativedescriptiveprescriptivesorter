@@ -902,3 +902,19 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-120-01 | Complete the base quiz, open the quarantined research-candidate disclosure, and inspect the first candidate. | Each candidate exposes its declared gap, scholarly rationale, and same-answer/different-reason risk behind an accessible disclosure; the candidate remains explicitly research-only. |
 | P-120-02 | Select a candidate option after opening its rationale disclosure. | The selected response appears as quarantined evidence while construct status, morphology, canonical affinities, and legacy results remain unchanged. |
 | R-120-01 | Run the built-preview completion/share scenario. | The rationale disclosure, candidate selection, versioned share restoration, primary profile, morphology evidence, and legacy compatibility path all pass; external validation gates remain `NOT RUN`. |
+
+## Current V121 claim-layer status scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-121-01 | Complete the base quiz with directional answers and inspect political economy. | The construct remains a provisional `partial` proxy because its declared normative layer has no production item; `layerCoverage` shows descriptive/prescriptive coverage and a zero normative cell. |
+| R-121-02 | Complete the base quiz with directional answers and inspect change strategy. | The construct remains a provisional `partial` proxy because its declared descriptive and normative layers have no production item; `layerCoverage` shows only prescriptive coverage. |
+| R-121-03 | Run the measurement and completion audits. | The declared construct/layer gaps remain explicit and candidate-tracked; no gap candidate is promoted into scalar status, morphology, or legacy scoring, and the external validation gates remain `NOT RUN`. |
+
+## Current V122 morphology diagnostic scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-122-01 | Submit a fully covered profile with mixed descriptive/normative answers and directional prescriptive answers, then open morphology. | The morphology status remains provisional only when supported records exist; the ordered candidate list contains only `provisional-candidate` records, with no under-determined status or rank mixed into that list. |
+| P-122-02 | Open the under-determined configuration disclosure. | Source-backed withheld configurations expose missing defining evidence as diagnostics without rank, selection language, or identity assignment; the full diagnostic collection remains in the result contract. |
+| R-122-01 | Run the morphology and completion audits against all-mixed and partially directional fixtures. | All-mixed remains `not-derived` with zero public candidates and explicit under-determined diagnostics; the partially directional fixture keeps provisional and under-determined anchor ids disjoint; completion remains fail-closed while external gates are `NOT RUN`. |

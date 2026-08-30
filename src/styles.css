@@ -450,6 +450,15 @@ a { color: inherit; }
 .belief-morphology-empty { margin-top: 27px; padding: 18px 20px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .belief-morphology-empty h3 { margin: 0; font: 600 1rem/1.2 var(--body); }
 .belief-morphology-empty p { max-width: 720px; margin: 9px 0 0; color: var(--ink-muted); font-size: 0.82rem; line-height: 1.5; }
+.morphology-underdetermined { margin-top: 27px; border-top: 1px solid var(--rule); }
+.morphology-underdetermined > summary { padding: 14px 0 10px; color: var(--signal); cursor: pointer; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.morphology-underdetermined-copy { max-width: 820px; color: var(--ink-muted); font-size: 0.78rem; line-height: 1.5; }
+.morphology-underdetermined-copy p { margin: 0 0 12px; }
+.morphology-underdetermined-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid color-mix(in srgb, var(--rule) 70%, transparent); }
+.morphology-underdetermined-list li { display: grid; gap: 4px; padding: 11px 0; border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent); }
+.morphology-underdetermined-list strong { color: var(--ink); font-size: 0.8rem; }
+.morphology-underdetermined-list span { font-size: 0.72rem; }
+.morphology-underdetermined-more { margin-top: 12px !important; font-size: 0.7rem; }
 .morphology-gap-list { margin-top: 22px; }
 .combined-reading { margin-bottom: 50px; padding: 28px 0 34px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
 .combined-reading-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; }

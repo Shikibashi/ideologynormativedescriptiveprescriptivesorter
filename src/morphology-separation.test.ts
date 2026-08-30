@@ -5,6 +5,11 @@ import type { AnswerMap } from "./types";
 
 const allDirectionalAnswers = (): AnswerMap => Object.fromEntries(DATASET.questions.map((question) => [question.id, 2]));
 
+const prescriptiveOnlyAnswers = (): AnswerMap => Object.fromEntries(DATASET.questions.map((question) => [
+  question.id,
+  question.layer === "prescriptive" ? 1 : 0,
+]));
+
 const displaySeparationFor = (margin: number): "low" | "moderate" | "high" => margin <= DATASET.policy.separationThreshold
   ? "low"
   : margin <= DATASET.policy.clearSeparationThreshold
@@ -15,8 +20,9 @@ describe("configuration morphology separation", () => {
   it("records a finite competing-candidate margin without changing the provisional neighborhood", () => {
     const morphology = calculateResults(allDirectionalAnswers()).beliefMorphology;
 
-    expect(morphology.modelVersion).toBe(3);
+    expect(morphology.modelVersion).toBe(4);
     expect(morphology.candidates.length).toBeGreaterThan(1);
+    expect(morphology.underDeterminedCandidates).toEqual([]);
     expect(morphology.candidates.every((candidate) => Number.isFinite(candidate.margin))).toBe(true);
     expect(morphology.candidates.every((candidate) => candidate.margin >= 0 && candidate.margin <= 1)).toBe(true);
     expect(morphology.candidates.every((candidate) => candidate.separation === displaySeparationFor(candidate.margin))).toBe(true);
@@ -39,5 +45,18 @@ describe("configuration morphology separation", () => {
     expect(duplicate?.fit).toBeCloseTo(first?.fit ?? Number.NaN, 12);
     expect(duplicate).toMatchObject({ margin: 0, separation: "low" });
     expect(morphology.gaps).toEqual(expect.arrayContaining([expect.stringContaining("no unique ideology label is selected")]));
+  });
+
+  it("withholds under-determined configurations from provisional candidate ordering", () => {
+    const morphology = calculateResults(prescriptiveOnlyAnswers()).beliefMorphology;
+    const provisionalIds = new Set(morphology.candidates.map((candidate) => candidate.anchorId));
+
+    expect(morphology.status).toBe("provisional-candidates");
+    expect(morphology.candidates.length).toBeGreaterThan(0);
+    expect(morphology.candidates.every((candidate) => candidate.status === "provisional-candidate")).toBe(true);
+    expect(morphology.underDeterminedCandidates.length).toBeGreaterThan(0);
+    expect(morphology.underDeterminedCandidates.every((candidate) => candidate.status === "under-determined")).toBe(true);
+    expect(morphology.underDeterminedCandidates.every((candidate) => !provisionalIds.has(candidate.anchorId))).toBe(true);
+    expect(morphology.gaps).toEqual(expect.arrayContaining([expect.stringContaining("withheld from provisional candidate ordering")]));
   });
 });

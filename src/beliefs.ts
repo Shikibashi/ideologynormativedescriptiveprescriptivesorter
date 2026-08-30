@@ -602,6 +602,11 @@ const constructResultFor = (
   const response = responseSummaryFor(questionIds, answers);
   const answered = response.directional + response.mixed;
   const coverage = response.total === 0 ? 0 : answered / response.total;
+  const questionIdSet = new Set(questionIds);
+  const layerCoverage = layerCoverageFor(questionIds, answers, dataset);
+  const hasDeclaredLayerItemGap = definition.layers.some((layer) =>
+    !dataset.questions.some((question) => question.layer === layer && questionIdSet.has(question.id)),
+  );
   const constructObservations = observations.filter((observation) => observation.constructId === definition.id);
   const constructDirectEvidence = directEvidence.filter((evidence) => evidence.constructIds.includes(definition.id));
   const constructGapEvidence = gapEvidence.filter((evidence) => evidence.constructId === definition.id);
@@ -612,7 +617,7 @@ const constructResultFor = (
     ? directObservationCount > 0 ? "partial" : "not-yet-measured"
       : answered === 0
         ? "partial"
-      : definition.measurementStatus === "partial" || coverage < 1 || response.mixed > 0
+      : definition.measurementStatus === "partial" || hasDeclaredLayerItemGap || coverage < 1 || response.mixed > 0
         ? "partial"
         : "observed";
   const evidenceQuestionIds = unique(constructObservations
@@ -640,7 +645,7 @@ const constructResultFor = (
     coverage,
     directionalCoverage: response.total === 0 ? 0 : response.directional / response.total,
     mixedRate: response.total === 0 ? 0 : response.mixed / response.total,
-    layerCoverage: layerCoverageFor(questionIds, answers, dataset),
+    layerCoverage,
     ...(signal === undefined ? {} : { signal }),
     observationCount: constructObservations.length,
     directObservationCount,

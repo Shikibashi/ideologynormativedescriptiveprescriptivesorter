@@ -413,6 +413,24 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await expect(page.getByRole("heading", { name: /Three views/ })).toBeVisible();
 });
 
+test("keeps under-determined configurations visible without ranking them as candidates", async ({ page }) => {
+  test.setTimeout(Math.max(60_000, DATASET.questions.length * 200));
+  await page.goto("/");
+  await page.getByRole("button", { name: /Begin the reading/ }).click();
+  for (let index = 0; index < DATASET.questions.length; index += 1) {
+    const question = DATASET.questions[index];
+    await choose(page, question.layer === "prescriptive" ? 3 : 2);
+    await advance(page, index === DATASET.questions.length - 1);
+  }
+
+  await expect(page.locator(".belief-morphology")).toContainText(/provisional candidates/i);
+  await expect(page.locator(".morphology-candidate-list")).not.toContainText(/under-determined/i);
+  const diagnostics = page.locator(".morphology-underdetermined");
+  await expect(diagnostics).toContainText(/under-determined configuration.*withheld from candidate ordering/i);
+  await diagnostics.locator("summary").click();
+  await expect(diagnostics).toContainText(/diagnostics, not ranked candidates/i);
+});
+
 test("shows missing information instead of inventing a layer result", async ({ page }) => {
   test.setTimeout(Math.max(60_000, DATASET.questions.length * 200));
   await page.goto("/");

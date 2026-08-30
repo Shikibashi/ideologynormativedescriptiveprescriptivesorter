@@ -197,6 +197,11 @@ const structuralChecks = {
   ))
     && JSON.stringify(baseResult.primary.profile.measurementSummary.uncoveredConstructLayerPairs.map((pair) => `${pair.constructId}:${pair.layer}`))
       === JSON.stringify(expectedUncoveredConstructLayerPairs),
+  declaredLayerGapsRemainNonObserved: BELIEF_CONSTRUCT_DEFINITIONS.every((definition) => {
+    const construct = baseResult.primary.profile.constructs.find((candidate) => candidate.id === definition.id);
+    const hasDeclaredLayerGap = definition.layers.some((layer) => expectedConstructLayerItemCounts[definition.id][layer] === 0);
+    return construct !== undefined && (!hasDeclaredLayerGap || construct.status !== "observed");
+  }),
   layerGapCandidatesAreTracked: baseResult.primary.profile.measurementSummary.uncoveredConstructLayerPairs.every((pair) =>
     BELIEF_GAP_CANDIDATES.some((candidate) => candidate.constructId === pair.constructId && candidate.layer === pair.layer),
   ),
@@ -239,8 +244,11 @@ const structuralChecks = {
     && sameValuesDifferentCausalBeliefsEvidence.firstDiagnosisSignal !== sameValuesDifferentCausalBeliefsEvidence.secondDiagnosisSignal,
   weakAndMixedProfilesFailClosed: noViewResult.primary.morphology.status === "insufficient-information"
     && noViewResult.primary.morphology.candidates.length === 0
+    && noViewResult.primary.morphology.underDeterminedCandidates.length === 0
     && mixedResult.primary.morphology.status === "not-derived"
-    && mixedResult.primary.morphology.candidates.length === 0,
+    && mixedResult.primary.morphology.candidates.length === 0
+    && mixedResult.primary.morphology.underDeterminedCandidates.length > 0
+    && mixedResult.primary.morphology.underDeterminedCandidates.every((candidate) => candidate.status === "under-determined"),
 };
 
 const structuralFailures = Object.entries(structuralChecks)
@@ -286,6 +294,7 @@ const report = {
     gapPilotEvidence: gapEvidence.length,
     directPilotItems: BELIEF_DIRECT_ITEMS.length,
     relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
+    mixedProfileUnderDeterminedDiagnostics: mixedResult.primary.morphology.underDeterminedCandidates.length,
     ideologyQuestionCoverage: {
       canonicalTargets: questionCoverage.canonicalTargetCount,
       failures: questionCoverage.failures,

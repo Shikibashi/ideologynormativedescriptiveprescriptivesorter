@@ -928,6 +928,8 @@ export type IdeologicalMorphology = Readonly<{
   modelVersion: number;
   status: "provisional-candidates" | "insufficient-information" | "not-derived";
   candidates: readonly IdeologicalMorphologyCandidate[];
+  /** Source-backed configuration projections retained as diagnostics because defining evidence is insufficient; never included in candidate ordering. */
+  underDeterminedCandidates: readonly IdeologicalMorphologyCandidate[];
   gaps: readonly string[];
   provenance: readonly string[];
   compatibility: Readonly<{

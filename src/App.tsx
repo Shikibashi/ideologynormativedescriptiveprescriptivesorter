@@ -959,7 +959,8 @@ const BeliefRelationalFollowUpView = ({ answers, onAnswer }: { answers: BeliefRe
 
 const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: IdeologicalMorphology; profile: BeliefProfile }): ReactNode => {
   const candidates = morphology.candidates.slice(0, 5);
-  const provisionalCandidateCount = morphology.candidates.filter((candidate) => candidate.status === "provisional-candidate").length;
+  const underDeterminedCandidates = morphology.underDeterminedCandidates.slice(0, 5);
+  const underDeterminedCandidateCount = morphology.underDeterminedCandidates.length;
   return (
     <section className="belief-morphology" aria-labelledby="belief-morphology-title">
       <div className="belief-morphology-header">
@@ -968,19 +969,19 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
           <h2 id="belief-morphology-title">Ideological morphology candidates</h2>
           <p className="belief-morphology-lede">These candidates compare observed construct-level profile signals with source-backed configurations of existing traditions. They explain resemblance; they do not assign an identity or replace the underlying belief profile.</p>
         </div>
-        <span className="belief-profile-status">{morphology.status === "provisional-candidates" ? `${provisionalCandidateCount} provisional candidates` : "not derived"}</span>
+        <span className="belief-profile-status">{morphology.status === "provisional-candidates" ? `${morphology.candidates.length} provisional candidates` : "not derived"}</span>
       </div>
       {morphology.status === "insufficient-information" ? (
         <div className="belief-morphology-empty"><h3>No named morphology yet.</h3><p>{morphology.gaps[0]}</p></div>
       ) : morphology.status === "not-derived" || candidates.length === 0 ? (
-        <div className="belief-morphology-empty"><h3>No configuration candidate yet.</h3><p>The current construct evidence does not support a source-backed comparison.</p></div>
+        <div className="belief-morphology-empty"><h3>{underDeterminedCandidateCount > 0 ? "No provisional candidate yet." : "No configuration candidate yet."}</h3><p>{underDeterminedCandidateCount > 0 ? "The current construct evidence is retained as under-determined diagnostics, but it does not support a source-backed comparison in the provisional candidate ordering." : "The current construct evidence does not support a source-backed comparison."}</p></div>
       ) : (
         <div className="morphology-candidate-list" aria-label="Ideological morphology candidates">
           {candidates.map((candidate, index) => (
             <article className="morphology-candidate" key={candidate.anchorId}>
               <div className="morphology-candidate-rank" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
               <div className="morphology-candidate-body">
-                <div className="morphology-candidate-topline"><h3>{candidate.label}</h3><span>{candidate.status === "provisional-candidate" ? "provisional candidate" : "under-determined"}</span></div>
+                <div className="morphology-candidate-topline"><h3>{candidate.label}</h3><span>provisional candidate</span></div>
                 <p className="morphology-candidate-meta">{candidate.family} family · {Math.round(candidate.coverage * 100)}% configuration coverage · {Math.round(candidate.fit * 100)}% directional agreement</p>
                 <p>{candidate.explanation}</p>
                 {candidate.definingCommitmentsObserved.length > 0 ? <p className="morphology-candidate-detail"><strong>Observed defining commitments:</strong> {candidate.definingCommitmentsObserved.join(", ")}</p> : null}
@@ -1014,6 +1015,23 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
           ))}
         </div>
       )}
+      {underDeterminedCandidateCount > 0 ? (
+        <details className="morphology-underdetermined">
+          <summary>{underDeterminedCandidateCount} under-determined configuration{underDeterminedCandidateCount === 1 ? "" : "s"} withheld from candidate ordering</summary>
+          <div className="morphology-underdetermined-copy">
+            <p>These source-backed configuration projections remain visible because the current profile does not provide enough defining evidence for provisional comparison. They are diagnostics, not ranked candidates, selected ideologies, or identity assignments.</p>
+            <ul className="morphology-underdetermined-list">
+              {underDeterminedCandidates.map((candidate) => {
+                const missing = candidate.missingDefiningCommitments.length > 0
+                  ? `Missing defining evidence: ${candidate.missingDefiningCommitments.join(", ")}.`
+                  : "Defining support or total configuration coverage is insufficient for provisional ordering.";
+                return <li key={candidate.anchorId}><strong>{candidate.label}</strong><span>{Math.round(candidate.coverage * 100)}% configuration coverage. {missing}</span></li>;
+              })}
+            </ul>
+            {underDeterminedCandidateCount > underDeterminedCandidates.length ? <p className="morphology-underdetermined-more">Showing {underDeterminedCandidates.length} of {underDeterminedCandidateCount}; the complete diagnostic collection remains available in the result data.</p> : null}
+          </div>
+        </details>
+      ) : null}
       <ul className="belief-gap-list morphology-gap-list">{morphology.gaps.map((gap) => <li key={gap}>{gap}</li>)}</ul>
     </section>
   );

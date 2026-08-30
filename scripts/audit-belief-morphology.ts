@@ -96,6 +96,10 @@ const firstConfigurationAnswers = firstConfiguration ? answersTowardConfiguratio
 const secondConfigurationAnswers = secondConfiguration ? answersTowardConfiguration(secondConfiguration) : {};
 const neutralResult = calculateResults(Object.fromEntries(DATASET.questions.map((question) => [question.id, 0])));
 const emptyResult = calculateResults({});
+const underDeterminedResult = calculateResults(Object.fromEntries(DATASET.questions.map((question) => [
+  question.id,
+  question.layer === "prescriptive" ? 1 : 0,
+])));
 const hybridResult = firstConfiguration && secondConfiguration
   ? calculateResults(mixAnswerMaps(firstConfigurationAnswers, secondConfigurationAnswers))
   : undefined;
@@ -169,13 +173,24 @@ const adversarialChecks = {
   weakProfileWithholdsMorphology: emptyResult.primary.morphology.status === "insufficient-information"
     && emptyResult.primary.morphology.candidates.length === 0,
   allMixedProfileDoesNotNameMorphology: neutralResult.primary.morphology.status === "not-derived"
-    && neutralResult.primary.morphology.candidates.length === 0,
+    && neutralResult.primary.morphology.candidates.length === 0
+    && neutralResult.primary.morphology.underDeterminedCandidates.length > 0,
+  underDeterminedRecordsAreSeparated: underDeterminedResult.primary.morphology.status === "provisional-candidates"
+    && underDeterminedResult.primary.morphology.candidates.length > 0
+    && underDeterminedResult.primary.morphology.candidates.every((candidate) => candidate.status === "provisional-candidate")
+    && underDeterminedResult.primary.morphology.underDeterminedCandidates.length > 0
+    && underDeterminedResult.primary.morphology.underDeterminedCandidates.every((candidate) => candidate.status === "under-determined")
+    && underDeterminedResult.primary.morphology.underDeterminedCandidates.every((candidate) =>
+      !underDeterminedResult.primary.morphology.candidates.some((provisional) => provisional.anchorId === candidate.anchorId)),
   mixedResponsesRemainNonDirectional: neutralResult.primary.profile.observations
     .filter((observation) => observation.state === "mixed")
     .every((observation) => observation.value === undefined)
     && neutralResult.primary.profile.facets.every((facet) => facet.signal === undefined)
     && neutralResult.primary.profile.constructs.every((construct) => construct.signal === undefined)
     && neutralResult.primary.morphology.candidates.every((candidate) => candidate.basis
+      .every((basis) => basis.agreement === undefined && basis.evidenceQuestionIds.length === 0))
+    && neutralResult.primary.morphology.underDeterminedCandidates.length > 0
+    && neutralResult.primary.morphology.underDeterminedCandidates.every((candidate) => candidate.basis
       .every((basis) => basis.agreement === undefined && basis.evidenceQuestionIds.length === 0)),
   sameValuesDifferentCausalBeliefsVisible,
   samePolicyDifferentPrincipleVisible: firstDirectResult.primary.profile.directEvidence.find((item) => item.kind === "distributive-reason")?.statement
@@ -207,6 +222,7 @@ const adversarialFailureLayers: Readonly<Record<keyof typeof adversarialChecks, 
   betweenCanonicalProfilesRemainVisible: "ideological-mapping",
   weakProfileWithholdsMorphology: "question",
   allMixedProfileDoesNotNameMorphology: "question",
+  underDeterminedRecordsAreSeparated: "ideological-mapping",
   mixedResponsesRemainNonDirectional: "question",
   sameValuesDifferentCausalBeliefsVisible: "causal-belief",
   samePolicyDifferentPrincipleVisible: "conception",
@@ -278,6 +294,10 @@ const report = {
   adversarial: {
     neutralMorphologyStatus: neutralResult.primary.morphology.status,
     neutralCandidateCount: neutralResult.primary.morphology.candidates.length,
+    neutralUnderDeterminedCandidateCount: neutralResult.primary.morphology.underDeterminedCandidates.length,
+    underDeterminedMorphologyStatus: underDeterminedResult.primary.morphology.status,
+    underDeterminedCandidateCount: underDeterminedResult.primary.morphology.candidates.length,
+    underDeterminedDiagnosticCount: underDeterminedResult.primary.morphology.underDeterminedCandidates.length,
     mixedResponsesRemainNonDirectional: adversarialChecks.mixedResponsesRemainNonDirectional,
     hybridMorphologyStatus: hybridResult?.primary.morphology.status ?? null,
     hybridCandidateCount: hybridResult?.primary.morphology.candidates.length ?? 0,

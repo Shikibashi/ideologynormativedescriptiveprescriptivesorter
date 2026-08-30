@@ -224,7 +224,18 @@ describe("stated political commitment configuration", () => {
   it("reports observed proxies without upgrading them into validated latent traits", () => {
     const profile = calculateBeliefProfile(allAnswers(2), DATASET);
     expect(profile).toMatchObject({ modelId: BELIEF_MODEL_ID, modelVersion: BELIEF_MODEL_VERSION, status: "partial" });
-    expect(profile.constructs.find((item) => item.id === "political-economy")).toMatchObject({ status: "observed", coverage: 1, response: { directional: expect.any(Number), mixed: 0, noView: 0, unanswered: 0 } });
+    expect(profile.constructs.find((item) => item.id === "political-economy")).toMatchObject({
+      status: "partial",
+      coverage: 1,
+      layerCoverage: { descriptive: 1, normative: 0, prescriptive: 1 },
+      response: { directional: expect.any(Number), mixed: 0, noView: 0, unanswered: 0 },
+    });
+    expect(profile.constructs.find((item) => item.id === "change-strategy")).toMatchObject({
+      status: "partial",
+      coverage: 1,
+      layerCoverage: { descriptive: 0, normative: 0, prescriptive: 1 },
+      response: { directional: expect.any(Number), mixed: 0, noView: 0, unanswered: 0 },
+    });
     expect(profile.constructs.find((item) => item.id === "concept-conception")).toMatchObject({ status: "partial", coverage: 1 });
     expect(profile.constructs.find((item) => item.id === "priority-conflict")).toMatchObject({ status: "not-yet-measured", coverage: 0 });
     expect(profile.constructs.find((item) => item.id === "priority-conflict")?.signal).toBeUndefined();
@@ -688,7 +699,7 @@ describe("stated political commitment configuration", () => {
   it("fails closed before morphology when the three-layer evidence threshold is not met", () => {
     const result = calculateResults(allAnswers("no-view"));
     expect(result.beliefProfile.status).toBe("insufficient-information");
-    expect(result.beliefMorphology).toMatchObject({ status: "insufficient-information", candidates: [] });
+    expect(result.beliefMorphology).toMatchObject({ status: "insufficient-information", candidates: [], underDeterminedCandidates: [] });
     expect(result.beliefMorphology.gaps[0]).toContain("no ideological morphology candidate is derived");
   });
 
@@ -697,6 +708,8 @@ describe("stated political commitment configuration", () => {
     expect(result.beliefProfile.status).toBe("partial");
     expect(result.beliefMorphology.status).toBe("not-derived");
     expect(result.beliefMorphology.candidates).toEqual([]);
+    expect(result.beliefMorphology.underDeterminedCandidates.length).toBeGreaterThan(0);
+    expect(result.beliefMorphology.underDeterminedCandidates.every((candidate) => candidate.status === "under-determined")).toBe(true);
   });
 
   it("traces observed facet inputs without treating target IDs as respondent evidence", () => {
