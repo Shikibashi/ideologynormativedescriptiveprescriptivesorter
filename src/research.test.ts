@@ -18,6 +18,8 @@ import {
 import {
   RESEARCH_TAXONOMY_DECISIONS,
   researchTaxonomyDecisionForTarget,
+  researchTaxonomyGovernanceSummary,
+  validateResearchTaxonomyDecisionSet,
   validateResearchTaxonomyDecisions,
 } from "./research-governance";
 
@@ -2433,5 +2435,44 @@ describe("research workbench contracts", () => {
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "neo-fascism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "legionary-fascism")).toBe(true);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "white-nationalism")).toBe(true);
+  });
+
+  it("surfaces governance dispositions that intentionally await a separate measurement change", () => {
+    const summary = researchTaxonomyGovernanceSummary(DATASET);
+
+    expect(summary.decisionCount).toBe(DATASET.ideologyNodes.length + DATASET.ideologyRegistry.length);
+    expect(summary.validationErrors).toEqual([]);
+    expect(summary.measurementStatusExceptions).toEqual([
+      {
+        targetId: "khomeinism",
+        label: "Khomeinism",
+        governanceScoringStatus: "catalog-only",
+        liveMeasurementStatus: "dedicated-scored",
+        reconciliationId: "measurement-activation-khomeinism",
+        reconciliationKind: "separate-measurement-activation",
+        interpretation: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
+      },
+      {
+        targetId: "qutbism",
+        label: "Qutbism",
+        governanceScoringStatus: "catalog-only",
+        liveMeasurementStatus: "dedicated-scored",
+        reconciliationId: "measurement-activation-qutbism",
+        reconciliationKind: "separate-measurement-activation",
+        interpretation: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
+      },
+    ]);
+    expect(summary.unclassifiedMeasurementMismatches).toEqual([]);
+    expect(summary.measurementReconciliations).toHaveLength(2);
+    expect(summary.resultingScoringStatusCounts).toMatchObject({ "catalog-only": 2, "not-scored": 8 });
+  });
+
+  it("fails closed when a governance-versus-measurement exception loses its reconciliation record", () => {
+    const errors = validateResearchTaxonomyDecisionSet(DATASET, RESEARCH_TAXONOMY_DECISIONS);
+
+    expect(errors).toEqual(expect.arrayContaining([
+      "taxonomy decision taxonomy-khomeinism-promote has an unclassified measurement/governance mismatch",
+      "taxonomy decision taxonomy-qutbism-promote has an unclassified measurement/governance mismatch",
+    ]));
   });
 });

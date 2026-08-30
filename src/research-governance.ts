@@ -439,10 +439,111 @@ const defaultDecisionFor = (target: ResearchTarget): ResearchTaxonomyDecision =>
   );
 };
 
+const expectedPlacementForDisposition: Readonly<Record<ResearchTaxonomyDisposition, IdeologyNodePlacement | "registry-only">> = {
+  "promote-to-canonical": "canonical",
+  "retain-canonical": "canonical",
+  "demote-to-contextual": "contextual",
+  "demote-to-associated": "registry-only",
+  "retain-contextual": "contextual",
+  "retain-registry-only": "registry-only",
+  "hold-catalog-only": "canonical",
+};
+
+const liveMeasurementCanRepresentGovernanceStatus = (
+  decisionResult: ResearchTaxonomyDecision["resultingScoringStatus"],
+  liveMeasurementStatus: ResearchTarget["measurementStatus"],
+): boolean => {
+  if (decisionResult === "catalog-only") return liveMeasurementStatus === "catalog-only";
+  if (decisionResult === "not-scored") return ["contextual-only", "registry-only", "catalog-only"].includes(liveMeasurementStatus);
+  return ["dedicated-scored", "partial-dedicated", "scored-indirect"].includes(liveMeasurementStatus);
+};
+
+export type ResearchTaxonomyMeasurementReconciliation = Readonly<{
+  id: string;
+  decisionId: string;
+  targetId: string;
+  kind: "separate-measurement-activation";
+  liveMeasurementStatus: ResearchTarget["measurementStatus"];
+  rationale: string;
+  recordedAt: string;
+}>;
+
+/**
+ * These records make the two current Khomeinism/Qutbism states explicit. The
+ * taxonomy decisions remain catalog-only as research dispositions, while a
+ * separately recorded earlier measurement activation explains why the live
+ * workbench still contains their provisional direct branches. Neither record
+ * asserts empirical validity or changes the scoring inventory.
+ */
+export const RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS: readonly ResearchTaxonomyMeasurementReconciliation[] = [
+  {
+    id: "measurement-activation-khomeinism",
+    decisionId: "taxonomy-khomeinism-promote",
+    targetId: "khomeinism",
+    kind: "separate-measurement-activation",
+    liveMeasurementStatus: "dedicated-scored",
+    rationale: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
+    recordedAt: "2026-08-30",
+  },
+  {
+    id: "measurement-activation-qutbism",
+    decisionId: "taxonomy-qutbism-promote",
+    targetId: "qutbism",
+    kind: "separate-measurement-activation",
+    liveMeasurementStatus: "dedicated-scored",
+    rationale: "The canonical direct branch was activated in a separate measurement tranche; this record does not convert the taxonomy decision's catalog-only research disposition into empirical validation.",
+    recordedAt: "2026-08-30",
+  },
+];
+
 export const RESEARCH_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = (() => {
   const explicitByTarget = new Map(EXPLICIT_TAXONOMY_DECISIONS.map((item) => [item.targetId, item]));
   return buildResearchTargets(DATASET).map((target) => explicitByTarget.get(target.id) ?? defaultDecisionFor(target));
 })();
+
+/**
+ * Summarizes the research ledger without treating its intended disposition as
+ * a mutation of the live scoring inventory. Exceptions are deliberate when a
+ * research decision is waiting for a separate measurement change; surfacing
+ * them keeps that boundary inspectable instead of silently reconciling it.
+ */
+export const researchTaxonomyGovernanceSummary = (dataset: Dataset = DATASET) => {
+  const targets = targetById(dataset);
+  const decisions = dataset === DATASET ? RESEARCH_TAXONOMY_DECISIONS : buildResearchTargets(dataset).map(defaultDecisionFor);
+  const reconciliations = dataset === DATASET ? RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS : [];
+  const countBy = (values: readonly string[]): Readonly<Record<string, number>> => values.reduce<Record<string, number>>((counts, value) => {
+    counts[value] = (counts[value] ?? 0) + 1;
+    return counts;
+  }, {});
+  const measurementStatusExceptions = decisions.flatMap((item) => {
+    const target = targets.get(item.targetId);
+    if (!target || liveMeasurementCanRepresentGovernanceStatus(item.resultingScoringStatus, target.measurementStatus)) return [];
+    const reconciliation = reconciliations.find((candidate) => candidate.targetId === item.targetId);
+    return [{
+      targetId: item.targetId,
+      label: target.label,
+      governanceScoringStatus: item.resultingScoringStatus,
+      liveMeasurementStatus: target.measurementStatus,
+      reconciliationId: reconciliation?.id ?? null,
+      reconciliationKind: reconciliation?.kind ?? "unclassified",
+      interpretation: reconciliation?.rationale ?? "unclassified measurement/governance mismatch",
+    }];
+  });
+
+  const unclassifiedMeasurementMismatches = measurementStatusExceptions.filter((item) => item.reconciliationId === null).map((item) => item.targetId);
+
+  return {
+    decisionCount: decisions.length,
+    dispositionCounts: countBy(decisions.map((item) => item.disposition)),
+    evidenceStatusCounts: countBy(decisions.map((item) => item.evidenceStatus)),
+    resultingPlacementCounts: countBy(decisions.map((item) => item.resultingPlacement)),
+    resultingScoringStatusCounts: countBy(decisions.map((item) => item.resultingScoringStatus)),
+    measurementReconciliations: reconciliations,
+    measurementStatusExceptions,
+    unclassifiedMeasurementMismatches,
+    validationErrors: validateResearchTaxonomyDecisions(dataset),
+  };
+};
 
 export const researchTaxonomyDecisionForTarget = (targetId: string, dataset: Dataset = DATASET): ResearchTaxonomyDecision | undefined => {
   if (dataset === DATASET) return RESEARCH_TAXONOMY_DECISIONS.find((item) => item.targetId === targetId);
@@ -450,14 +551,18 @@ export const researchTaxonomyDecisionForTarget = (targetId: string, dataset: Dat
   return target ? defaultDecisionFor(target) : undefined;
 };
 
-export const validateResearchTaxonomyDecisions = (dataset: Dataset = DATASET): readonly string[] => {
+export const validateResearchTaxonomyDecisionSet = (
+  dataset: Dataset,
+  decisions: readonly ResearchTaxonomyDecision[],
+  reconciliations: readonly ResearchTaxonomyMeasurementReconciliation[] = [],
+): readonly string[] => {
   const errors: string[] = [];
   const targets = targetById(dataset);
   const sources = new Map(dataset.sources.map((source) => [source.id, source]));
-  const decisions = dataset === DATASET ? RESEARCH_TAXONOMY_DECISIONS : buildResearchTargets(dataset).map(defaultDecisionFor);
 
   if (new Set(decisions.map((item) => item.id)).size !== decisions.length) errors.push("taxonomy decision IDs must be unique");
   if (new Set(decisions.map((item) => item.targetId)).size !== decisions.length) errors.push("taxonomy decisions must have one decision per target");
+  if (new Set(reconciliations.map((item) => item.id)).size !== reconciliations.length) errors.push("measurement reconciliation IDs must be unique");
 
   for (const target of targets.values()) {
     if (!decisions.some((item) => item.targetId === target.id)) errors.push(`missing taxonomy decision for ${target.id}`);
@@ -470,14 +575,44 @@ export const validateResearchTaxonomyDecisions = (dataset: Dataset = DATASET): r
       continue;
     }
     if (item.sourceIds.length === 0) errors.push(`taxonomy decision ${item.id} needs source evidence`);
+    if (new Set(item.sourceIds).size !== item.sourceIds.length) errors.push(`taxonomy decision ${item.id} has duplicate source evidence`);
     if (item.sourceIds.some((sourceId) => sources.get(sourceId)?.role !== "ideology-research")) errors.push(`taxonomy decision ${item.id} needs only ideology-research sources`);
+    if (item.sourceIds.some((sourceId) => !target.sourceRefs.includes(sourceId))) errors.push(`taxonomy decision ${item.id} cites a source not attached to target ${target.id}`);
     if (!item.rationale.trim() || !item.boundary.trim()) errors.push(`taxonomy decision ${item.id} needs rationale and boundary text`);
+    if (item.competingInterpretations.length === 0 || item.competingInterpretations.some((interpretation) => !interpretation.trim())) errors.push(`taxonomy decision ${item.id} needs competing interpretations`);
     if (item.reviewStatus !== "research_decision") errors.push(`taxonomy decision ${item.id} has an invalid review status`);
-    if (item.disposition === "promote-to-canonical" && (target.targetKind !== "ideology-node" || item.resultingPlacement !== "canonical")) errors.push(`taxonomy decision ${item.id} promotes a non-node or non-canonical result`);
-    if (item.disposition === "demote-to-associated" && item.resultingPlacement !== "registry-only") errors.push(`taxonomy decision ${item.id} must result in registry-only placement`);
-    if (item.disposition === "hold-catalog-only" && (target.targetKind !== "ideology-node" || item.resultingPlacement !== "canonical" || item.resultingScoringStatus !== "catalog-only")) errors.push(`taxonomy decision ${item.id} must hold a canonical node as catalog-only`);
+    if (item.resultingPlacement !== expectedPlacementForDisposition[item.disposition]) errors.push(`taxonomy decision ${item.id} has a placement inconsistent with ${item.disposition}`);
+    if (target.targetKind === "registry-entry" && item.disposition !== "retain-registry-only") errors.push(`taxonomy decision ${item.id} changes a registry entry outside registry-only retention`);
+    if (target.targetKind === "ideology-node" && item.disposition === "retain-registry-only") errors.push(`taxonomy decision ${item.id} retains an ideology node as registry-only without an associated demotion`);
+    if (item.disposition === "hold-catalog-only" && (target.targetKind !== "ideology-node" || item.resultingScoringStatus !== "catalog-only")) errors.push(`taxonomy decision ${item.id} must hold a canonical node as catalog-only`);
+    if (item.resultingPlacement !== "canonical" && item.resultingScoringStatus !== "not-scored") errors.push(`taxonomy decision ${item.id} gives a non-canonical result a scoring status`);
+    if (item.resultingScoringStatus === "scored-provisional" && item.resultingPlacement !== "canonical") errors.push(`taxonomy decision ${item.id} marks a non-canonical result as scored-provisional`);
     if (item.evidenceStatus === "insufficient-source-boundary" && item.resultingScoringStatus === "scored-provisional") errors.push(`taxonomy decision ${item.id} cannot mark insufficient evidence as scored-provisional`);
+
+    const liveMeasurementStatus = target.measurementStatus;
+    if (!liveMeasurementCanRepresentGovernanceStatus(item.resultingScoringStatus, liveMeasurementStatus)) {
+      const reconciliation = reconciliations.find((candidate) => candidate.targetId === item.targetId);
+      if (!reconciliation) errors.push(`taxonomy decision ${item.id} has an unclassified measurement/governance mismatch`);
+      else if (reconciliation.decisionId !== item.id) errors.push(`measurement reconciliation ${reconciliation.id} references the wrong taxonomy decision`);
+      else if (reconciliation.liveMeasurementStatus !== liveMeasurementStatus) errors.push(`measurement reconciliation ${reconciliation.id} has a stale live measurement status`);
+    }
+  }
+
+  for (const reconciliation of reconciliations) {
+    const target = targets.get(reconciliation.targetId);
+    const decision = decisions.find((item) => item.id === reconciliation.decisionId);
+    if (!target) errors.push(`measurement reconciliation ${reconciliation.id} references missing target ${reconciliation.targetId}`);
+    if (!decision) errors.push(`measurement reconciliation ${reconciliation.id} references missing decision ${reconciliation.decisionId}`);
+    if (decision && decision.targetId !== reconciliation.targetId) errors.push(`measurement reconciliation ${reconciliation.id} target does not match its decision`);
+    if (target && reconciliation.liveMeasurementStatus !== target.measurementStatus) errors.push(`measurement reconciliation ${reconciliation.id} does not match live target coverage`);
+    if (!reconciliation.rationale.trim()) errors.push(`measurement reconciliation ${reconciliation.id} needs rationale text`);
   }
 
   return errors;
+};
+
+export const validateResearchTaxonomyDecisions = (dataset: Dataset = DATASET): readonly string[] => {
+  const decisions = dataset === DATASET ? RESEARCH_TAXONOMY_DECISIONS : buildResearchTargets(dataset).map(defaultDecisionFor);
+  const reconciliations = dataset === DATASET ? RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS : [];
+  return validateResearchTaxonomyDecisionSet(dataset, decisions, reconciliations);
 };
