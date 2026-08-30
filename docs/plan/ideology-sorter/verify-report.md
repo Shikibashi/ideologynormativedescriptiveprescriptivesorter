@@ -1003,3 +1003,27 @@ The broader Vitest suite, build, high-severity audit, anchor-reachability comman
 | `git diff --check` | PASS | No whitespace errors |
 
 The initial browser failures are retained as diagnostic history, not silently converted into passes; the final PASS rows are the successful reruns against the explicitly controlled runtime surfaces. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, or population evidence was run or implied. The unrelated belief-profile/morphology workstream remains outside the V98 tranche and is not authorized for staging.
+
+## V99 verification boundary — Labor Zionism canonical micro tranche
+
+At authoring time, the V99-specific evidence is: focused `src/research.test.ts` 84/84 PASS; `npx tsc --noEmit` PASS; `npm run research:coverage` PASS with zero validation errors and 1,512 candidates across 126 targets; and `git diff --check` still pending after documentation edits. The current production inventory is content version 95 with 1,476 prompts (492 per layer), 117 production anchors, 122 editorial anchors, 123 ontology nodes, 9 macro / 44 total meso / 70 micro placements, 117 canonical nodes, six contextual placements, three registry entries, and a Labor Zionism canonical micro target with twelve direct prompts at 4/4/4.
+
+The V99 branch adds eight source records, one canonical micro node under `nationalism`, one provisional anchor, twelve direct prompts, twelve quarantined effect-free candidates, a seventeen-dimension profile, six neighbor discriminants, a false-positive audit, coverage metadata, and explicit source-backed promotion governance. The full Vitest suite, build, audit, anchor-reachability, Compose/Docker, health, share, and Playwright gates must be recorded from actual current-tree execution before this record can be closed. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, or population generalization was run or implied.
+
+
+## V99 final observed verification — 2026-08-30
+
+| Check | Status | Observed result |
+|---|---|---|
+| `npx vitest run src/research.test.ts` | PASS | 84/84 focused research-contract tests |
+| `npm run test:run` | PASS | 5 files, 140/140 Vitest tests |
+| `npx tsc --noEmit` and `npm run build` | PASS | Current tree typechecks and builds; the existing Vite large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | 0 validation errors; 1,512 candidates across 126 targets; 126 profiles, false-positive audits, and coverage rows |
+| `npm run research:anchor-reachability` | PASS | 117 production anchors; 0 validation errors; 0 structural failures; all production anchors isolated-reachable across all three layers |
+| Compose config, fresh image, health | PASS | Compose config passed; current-tree no-cache Docker image built; forced recreation is healthy and `/healthz` returns `ok` |
+| local Playwright | PASS | Complete suite passed 10/10 against the local Vite runtime |
+| Docker Playwright | PASS | Complete suite passed 10/10 against the rebuilt Docker runtime |
+| `git diff --check` and Zeus-state JSON parse | PASS | No whitespace errors; `python -m json.tool` passed |
+
+The current production contract is content version 95 with 1,476 prompts (492 per layer), 117 production anchors, 122 editorial anchors, 123 ontology nodes, 9 macro / 44 total meso / 70 micro placements, six contextual placements, three registry entries, and 1,512 quarantined candidates across 126 research targets. Labor Zionism is source-backed, canonical, and provisional: it has twelve direct prompts at 4/4/4, six neighbor discriminants, a false-positive audit, and isolated three-layer reachability. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, or population generalization was run or implied. The separate belief-profile/morphology workstream remains outside this tranche and is not staged.

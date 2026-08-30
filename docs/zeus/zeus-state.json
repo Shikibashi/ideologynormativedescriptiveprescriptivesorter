@@ -2079,6 +2079,62 @@
     ],
     "finalStatus": "complete_with_conditions"
   },
+  "laborZionismCoverageRun": {
+    "id": "2026-08-30-labor-zionism-canonical-micro",
+    "description": "Research-backed Labor Zionism canonical micro-tradition promotion and three-layer coverage.",
+    "startedAt": "2026-08-30T05:31:12Z",
+    "completedAt": "2026-08-30T05:37:39Z",
+    "gitInitialized": true,
+    "planningDir": "docs/plan/ideology-sorter/precision-source-expansion",
+    "noCognitiveReview": true,
+    "phases": {
+      "audit": "completed",
+      "research": "completed",
+      "implementation": "completed",
+      "governance": "completed",
+      "verification": "completed",
+      "docker": "completed",
+      "testing": "completed",
+      "report": "completed"
+    },
+    "evidence": {
+      "sourceComparison": "proved: university-press, Cambridge, Oxford, JSTOR/documentary, and Oxford Bibliographies sources support a historically situated and internally varied Zionist-socialist current with national, worker, settlement, institutional, cultural, and transnational dimensions while preserving contested interpretations",
+      "boundary": "proved: the target requires convergent Jewish collective self-determination and worker-socialist institution-building; identity, citizenship, union membership, labor sympathy, one party, one settlement, one policy, or current conflict position is insufficient",
+      "production": "observed: content version 95 contains 1,476 questions at 492 per layer, 122 editorial anchors, and 117 production anchors",
+      "topology": "proved: one canonical micro node was added under the existing nationalism sibling convention; the editorial inventory is 123 ontology nodes with 9 macro / 44 total meso / 70 micro placements and six contextual placements",
+      "directTarget": "proved: Labor Zionism has twelve direct target-tagged prompts at 4/4/4 and a provisional existing-facet anchor",
+      "researchBank": "proved: Labor Zionism has twelve quarantined effect-free candidates at 4/4/4 and a seventeen-dimension qualitative profile",
+      "governance": "proved: explicit source-backed promote-to-canonical governance records resultingPlacement canonical and resultingScoringStatus scored-provisional",
+      "coverage": "proved: npm run research:coverage reports 1,512 candidates across 126 targets with zero validation errors and complete profile, false-positive, and coverage rows",
+      "focusedTests": "proved: focused src/research.test.ts passed 84/84",
+      "typecheck": "proved: npx tsc --noEmit passed",
+      "fullVerification": "proved: npm run test:run passed 140/140; npm run build passed; npm audit --omit=dev --audit-level=high reported zero vulnerabilities; Compose config, fresh no-cache Docker build, forced recreation, healthy /healthz, and container health passed; local and Docker Playwright each passed 10/10",
+      "reachability": "proved: npm run research:anchor-reachability reports 117 production anchors, zero validation errors, zero structural failures, and all production anchors isolated-reachable across all three layers",
+      "cognitiveEvidence": "not-run by explicit user constraint; no cognitive, respondent, psychometric, or empirical validation is claimed",
+      "documentation": "proved: V99 plan, source map, integration notes, QA scenarios, decision record, research record, unknowns, verification report, and Zeus records were synchronized",
+      "integrity": "preserved: the separate belief-profile/morphology workstream remains unowned and must not be staged"
+    },
+    "artifacts": {
+      "data": "src/data.ts",
+      "ontology": "src/ontology.ts",
+      "researchBank": "src/research-bank.ts",
+      "governance": "src/research-governance.ts",
+      "tests": "src/research.test.ts, src/scoring.test.ts, src/share.test.ts, tests/sorter.spec.ts",
+      "researchPlan": "docs/plan/ideology-sorter/precision-source-expansion/",
+      "verifyReport": "docs/plan/ideology-sorter/verify-report.md",
+      "sourceMap": "docs/plan/ideology-sorter/precision-source-expansion/academic-source-map.md",
+      "state": "docs/zeus/zeus-state.json"
+    },
+    "warnings": [
+      "Labor Zionism remains a contested, internally varied, provisional editorial measurement, not a validated respondent classifier or current-actor label.",
+      "The shared facet schema is unchanged; existing facets are proxies for the national, worker-socialist, settlement, and transnational architecture, and the anchor remains provisional.",
+      "The comprehensive goal remains open; six contextual placements and three registry-only targets remain outside production scoring.",
+      "No cognitive review, respondent study, substitute simulation, psychometric, reliability, validity, invariance, empirical, or population evidence was run.",
+      "No cognitive review, respondent study, substitute simulation, psychometric, reliability, validity, invariance, empirical, or population evidence was run.",
+      "The public GitHub remote is configured; the V99 commit is the next repository-state change."
+    ],
+    "finalStatus": "complete_with_conditions"
+  },
   "phases": {
     "parsing": {
       "status": "completed",
@@ -2176,12 +2232,12 @@
   "errors": [],
   "warnings": [
     "Argos is conditional because keyboard-only, text-zoom, clipboard-denial/network-observation, and redacting historical secret-scan coverage remain open.",
-    "The canonical taxonomy is source-curated; candidate coverage is now 1,500 quarantined candidates across 125 targets, while production measurement remains partial and later evidence gates remain open.",
+    "The canonical taxonomy is source-curated; candidate coverage is now 1,512 quarantined candidates across 126 targets, while production measurement remains provisional and later evidence gates remain open.",
     "The combined pattern is an equal-layer interpretive composition gated on complete layer coverage; it is not a validated identity classifier, recommendation, comparison, or ranking.",
     "The separate belief-profile/morphology workstream remains uncommitted and outside the Gandhian tranche; no unrelated changes were staged."
   ],
-"archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism continuation, v53 Cultural Nationalism continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, v57 Zionism micro-branch continuation, v58 Khomeinism micro-branch continuation, v59 Qutbism micro-branch continuation, v60 Radical Republicanism micro-branch continuation, v61 Marxist Feminism micro-branch continuation, v62 Socialist Feminism micro-branch continuation, v63 Left-Wing Populism micro-branch continuation, v64 Neoconservatism continuation, v65 Paleoconservatism continuation, v66 Wasatiyya continuation, v67 Right-Wing Populism continuation, and v68 Hindutva micro-branch continuation, and v69 Religious Zionism micro-branch continuation completed 2026-08-28, v70 Neo-Fascism meso-branch continuation completed 2026-08-28, v71 Falangism micro-branch continuation completed 2026-08-28, and v72 Brazilian Integralism micro-branch continuation completed 2026-08-28, v73 Integral Nationalism cross-case historical-category continuation completed 2026-08-28, and v74 Legionary Fascism historically bounded micro-branch continuation completed 2026-08-28, and v75 Fascism macro-family continuation completed 2026-08-28, and v76 White Nationalism high-risk racial-national continuation completed 2026-08-28, and v77 Neo-Nazism postwar continuity and adaptation completed 2026-08-28, and v78 Revolutionary Islamism cross-case public-order continuation completed 2026-08-28, and v79 Third Positionism postwar far-right continuation completed 2026-08-28, and v80 Salafi-Jihadism high-risk doctrinal continuation completed 2026-08-28, and v81 Revisionist / Bernsteinian Social Democracy historical-microtype continuation completed 2026-08-28, and v82 National-Syndicalism historical-microtype continuation completed 2026-08-28, and v83 British Fascism historical-microtype continuation completed 2026-08-28, and v84 French Fascism historical-microtype continuation completed 2026-08-28, and v85 Italian Fascism historical-microtype continuation completed 2026-08-28, and v86 Japanese Fascism historical-microtype continuation completed 2026-08-28, and v87 Flemish / Belgian Fascism historical-microtype continuation completed 2026-08-29, and v88 Agrarian Populism historically bounded microtype continuation completed 2026-08-29, and v89 Bioregionalism ecological microtype continuation completed 2026-08-29, and v90 Civic Republicanism registry-retention continuation completed 2026-08-29, and v91 Conservative New Right registry-retention continuation completed 2026-08-29, and v92 Deep Ecology associated-framework continuation completed 2026-08-29, and v93 Georgism canonical-meso continuation completed 2026-08-29, and v94 Degrowth canonical-meso continuation completed 2026-08-29",
-  "latestArchiveEntry": "v98 Gandhian Political Thought contextual continuation completed 2026-08-30",
-  "completedAt": "2026-08-30T04:34:00Z",
-  "finalStatus": "partial_with_conditions"
+"archive": "first execution; audit continuation, four selected-micro continuations, contextual/registry continuation, completion tranche six, combined-pattern continuation, direct branch coverage continuation, current four-canonical-branch continuation, v7 eight-canonical-meso continuation, v8-v17 canonical continuations, v18 Black Nationalism continuation, v19 Materialist Feminism continuation, v20 Anti-Colonial Nationalism continuation, v21 Arab Nationalism continuation, v22 Maoism continuation, v23 Council Communism continuation, v24 Guild Socialism continuation, v25 Trotskyism continuation, v26 Marxism-Leninism continuation, v27 Autonomist Marxism continuation, v28 Anarcho-Pacifism continuation, v29 Social Ecology continuation, v30 Womanism continuation, v31 Classical-Liberal Feminism continuation, v32 Anarcho-Communism continuation, v33 Collectivist Anarchism continuation, v34 Anarchism macro-family continuation, v35 Conservatism continuation, v36 Ecologism / Green Ideology continuation, v37 Liberalism macro-family continuation, v38 Socialism macro-family continuation, v39 Nationalism macro-family continuation, v40 Republicanism macro-family continuation, v41 Feminism macro-family continuation, v42 Anarcho-Syndicalism micro-branch continuation, v43 Anarcho-Capitalism micro-branch continuation, v44 Anarcho-Primitivism micro-branch continuation, v45 Austromarxism micro-branch continuation, v46 Egalitarian-Liberal Feminism micro-branch continuation, v47 Buddhist Nationalism continuation, v48 Cultural / Spiritual Ecofeminism micro-branch continuation, v49 Materialist / Socialist Ecofeminism micro-branch continuation, v50 Christian Nationalism continuation, v51 Egoist Anarchism micro-branch continuation, v52 Cultural Feminism continuation, v53 Cultural Nationalism continuation, v54 Ethnocultural Nationalism continuation, v55 Lesbian Feminism micro-branch continuation, v56 One-Nation Conservatism micro-branch continuation, v57 Zionism micro-branch continuation, v58 Khomeinism micro-branch continuation, v59 Qutbism micro-branch continuation, v60 Radical Republicanism micro-branch continuation, v61 Marxist Feminism micro-branch continuation, v62 Socialist Feminism micro-branch continuation, v63 Left-Wing Populism micro-branch continuation, v64 Neoconservatism continuation, v65 Paleoconservatism continuation, v66 Wasatiyya continuation, v67 Right-Wing Populism continuation, and v68 Hindutva micro-branch continuation, and v69 Religious Zionism micro-branch continuation completed 2026-08-28, v70 Neo-Fascism meso-branch continuation completed 2026-08-28, v71 Falangism micro-branch continuation completed 2026-08-28, and v72 Brazilian Integralism micro-branch continuation completed 2026-08-28, v73 Integral Nationalism cross-case historical-category continuation completed 2026-08-28, and v74 Legionary Fascism historically bounded micro-branch continuation completed 2026-08-28, and v75 Fascism macro-family continuation completed 2026-08-28, and v76 White Nationalism high-risk racial-national continuation completed 2026-08-28, and v77 Neo-Nazism postwar continuity and adaptation completed 2026-08-28, and v78 Revolutionary Islamism cross-case public-order continuation completed 2026-08-28, and v79 Third Positionism postwar far-right continuation completed 2026-08-28, and v80 Salafi-Jihadism high-risk doctrinal continuation completed 2026-08-28, and v81 Revisionist / Bernsteinian Social Democracy historical-microtype continuation completed 2026-08-28, and v82 National-Syndicalism historical-microtype continuation completed 2026-08-28, and v83 British Fascism historical-microtype continuation completed 2026-08-28, and v84 French Fascism historical-microtype continuation completed 2026-08-28, and v85 Italian Fascism historical-microtype continuation completed 2026-08-28, and v86 Japanese Fascism historical-microtype continuation completed 2026-08-28, and v87 Flemish / Belgian Fascism historical-microtype continuation completed 2026-08-29, and v88 Agrarian Populism historically bounded microtype continuation completed 2026-08-29, and v89 Bioregionalism ecological microtype continuation completed 2026-08-29, and v90 Civic Republicanism registry-retention continuation completed 2026-08-29, and v91 Conservative New Right registry-retention continuation completed 2026-08-29, and v92 Deep Ecology associated-framework continuation completed 2026-08-29, and v93 Georgism canonical-meso continuation completed 2026-08-29, and v94 Degrowth canonical-meso continuation completed 2026-08-29, and v99 Labor Zionism canonical micro continuation completed 2026-08-30",
+  "latestArchiveEntry": "v99 Labor Zionism canonical micro continuation completed 2026-08-30",
+  "completedAt": "2026-08-30T05:37:39Z",
+  "finalStatus": "complete_with_conditions"
 }

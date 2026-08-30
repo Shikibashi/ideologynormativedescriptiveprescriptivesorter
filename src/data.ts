@@ -4290,6 +4290,86 @@ const SOURCES: readonly SourceReference[] = [
     citation: "Gandhi Heritage Portal, Sabarmati Ashram Preservation and Memorial Trust, key texts of Mahatma Gandhi.",
     supports: "A Government of India documentation project and repository linking primary texts including Indian Home Rule (Hind Swaraj), Satyagraha in South Africa, and Constructive Programme; used for primary-text provenance alongside scholarly interpretation, not as proof of contemporary meaning or implementation.",
   },
+  {
+    id: "source-ucp-shafir-land-labor",
+    label: "Shafir: Land, Labor and the Origins of the Israeli-Palestinian Conflict",
+    url: "https://www.ucpress.edu/books/land-labor-and-the-origins-of-the-israeli-palestinian-conflict-1882-1914/paper",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Shafir, G. (1996). Land, Labor and the Origins of the Israeli-Palestinian Conflict, 1882–1914. University of California Press. https://www.ucpress.edu/books/land-labor-and-the-origins-of-the-israeli-palestinian-conflict-1882-1914/paper.",
+    supports: "A historical-sociological study of the early Zionist enterprise's struggle over land and labor, including the conquest of labor, trade unions and parties, cooperative settlement, and the formation of Israeli nationalism; used to represent a historical political-economic mechanism without treating its interpretation as a respondent classification.",
+  },
+  {
+    id: "source-cambridge-beinin-socialism-zionism",
+    label: "Beinin: Socialism, Zionism, and Settler Colonialism in Israel/Palestine",
+    url: "https://doi.org/10.1017/9781108611107.020",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Beinin, J. (2022). Socialism, Zionism, and settler colonialism in Israel/Palestine. In M. van der Linden (Ed.), The Cambridge History of Socialism (pp. 389–413). Cambridge University Press. https://doi.org/10.1017/9781108611107.020.",
+    supports: "A Cambridge history chapter tracing the ascent of socialist or Labor Zionism, the attempt to redefine Jews as a national rather than religious community, its secular project, and the contested settler-colonial history of the Zionist project; used with explicit historical context and not as a current political classification.",
+  },
+  {
+    id: "source-oup-halpern-reinharz-zionism-left",
+    label: "Halpern and Reinharz: Zionism and the Creation of a New Society",
+    url: "https://academic.oup.com/book/48119",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Halpern, B., & Reinharz, J. (1998). Zionism and the Creation of a New Society. Oxford University Press. https://doi.org/10.1093/oso/9780195092097.001.0001.",
+    supports: "A scholarly history of Zionism's variegated ideological principles and the social structure that emerged in Palestine's Jewish community, with dedicated treatment of Zionism and the Left, young workers, Zionist parties, and the hegemony of Labor; used to preserve ideological and institutional variation.",
+  },
+  {
+    id: "source-cambridge-yona-labour-zionism",
+    label: "Yona: The Shifting Centre of Interwar Labour Zionism",
+    url: "https://doi.org/10.1017/S096077732100031X",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Yona, R. (2021). From Russia to Palestine via Poland: The shifting centre of interwar Labour Zionism. Contemporary European History, 30(4), 513–527. https://doi.org/10.1017/S096077732100031X.",
+    supports: "A transnational history showing how Labor Zionist institutions connected Eastern European communities and Mandatory Palestine, with Poland as a demographic centre and Palestine as a political-cultural centre; used for the movement's institutional and diaspora-territorial boundary.",
+  },
+  {
+    id: "source-cambridge-kelemen-labour-zionism",
+    label: "Kelemen: Zionism and European Social Democracy",
+    url: "https://doi.org/10.1017/S002085900011404X",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Kelemen, P. (1996). In the name of socialism: Zionism and European social democracy in the inter-war years. International Review of Social History, 41(3), 331–350. https://doi.org/10.1017/S002085900011404X.",
+    supports: "A research article examining why European social democrats and socialists supported Zionism and Labor Zionism, including the period's debated notion of positive colonialism; used to preserve the socialism, social-democracy, and historical-colonial boundary rather than endorse the argument.",
+  },
+  {
+    id: "source-suny-gorny-zionist-labor",
+    label: "Gorny: Converging Alternatives",
+    url: "https://www.jstor.org/stable/jj.18253105",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Gorny, Y. (2006). Converging Alternatives: The Bund and the Zionist Labor Movement, 1897–1985. State University of New York Press. https://www.jstor.org/stable/jj.18253105.",
+    supports: "A comparative history of the Bund and Zionist Labor movement as rival Jewish socialist approaches, covering class and nation, Eretz Israel and diaspora relations, Hebrew culture, labor institutions, and changing movement and party formations; used for neighbor discrimination and period variation.",
+  },
+  {
+    id: "source-jstor-origins-israel-labor",
+    label: "Kaplan and Penslar: The Origins of Israel, 1882–1948",
+    url: "https://www.jstor.org/stable/jj.36075899",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Kaplan, E., & Penslar, D. J. (Eds.). (2011). The Origins of Israel, 1882–1948: A Documentary History. University of Wisconsin Press. https://doi.org/10.2307/jj.36075899.",
+    supports: "A documentary history with primary sources and scholarly introductions on the Yishuv's social, economic, and cultural formation, including Po'alei Tsion, Hebrew labor, collective work and settlement, and labor disputes; used for primary-text provenance, not as evidence that any respondent endorses a historical movement.",
+  },
+  {
+    id: "source-oup-zionism-bibliography",
+    label: "Penslar and Kaye: Zionism from Its Inception to 1948",
+    url: "https://doi.org/10.1093/obo/9780199840731-0006",
+    retrievalDate: "2026-08-30",
+    posture: "reference",
+    role: "ideology-research",
+    citation: "Penslar, D., & Kaye, A. (2012; updated 2021). Zionism from its inception to 1948. Oxford Bibliographies in Jewish Studies. https://doi.org/10.1093/obo/9780199840731-0006.",
+    supports: "An Oxford Bibliographies overview defining Zionism as a variety of Jewish nationalism and a project to remake the Jewish people, while mapping dedicated scholarship on the Zionist Labor movement, diaspora, settlement, culture, and Zionist-Palestinian relations; used as a field map and boundary source.",
+  },
 ];
 
 const FACETS: readonly Facet[] = [
@@ -4424,6 +4504,7 @@ const DIRECT_BRANCH_SOURCE_REFS = {
   distributism: ["source-jstor-salter-distributism", "source-cambridge-boyd-distributism", "source-cambridge-mathews-distributism", "source-oup-pierson-distributism", "source-sage-quilley-distributism", "source-cauriensia-utrera-distributism", "source-cambridge-kelly-distributism-work", "source-cambridge-chesterton-distributism-primary"],
   christianSocialism: ["source-bloomsbury-williams-christian-socialism", "source-liverpool-williams-christian-socialism-thesis", "source-oup-drake-gospel-church", "source-oup-stauffer-listening-spirit", "source-cambridge-jashari-christians-socialism", "source-oup-lockley-christian-socialism", "source-taylor-johnson-labour-church", "source-sage-hogan-christian-socialism"],
   ujamaa: ["source-oup-jennings-ujamaa", "source-cambridge-lal-self-reliance-ujamaa", "source-cambridge-lal-african-socialism-ujamaa", "source-cambridge-hunter-african-socialism", "source-cambridge-aminzade-african-socialism", "source-ahr-maddox-lal-african-socialism", "source-oup-nyerere-ujamaa-1962", "source-nyerere-arusha-declaration-1967"],
+  laborZionism: ["source-ucp-shafir-land-labor", "source-cambridge-beinin-socialism-zionism", "source-oup-halpern-reinharz-zionism-left", "source-cambridge-yona-labour-zionism", "source-cambridge-kelemen-labour-zionism", "source-suny-gorny-zionist-labor", "source-jstor-origins-israel-labor", "source-oup-zionism-bibliography"],
   communism: ["source-oup-communism", "source-oup-socialism-vsi", "source-sep-marx", "source-sen"],
   marxismLeninism: ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-cambridge-democratic-centralism", "source-oup-communism", "source-sep-marx"],
   autonomistMarxism: ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
@@ -4581,6 +4662,7 @@ const DEGROWTH_CONTEXT = "Analytical scope: Degrowth as a plural ecological-econ
 const DISTRIBUTISM_CONTEXT = "Analytical scope: Distributism as a historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, the dignity and responsibility of work, subsidiarity, common-good obligations, and associational, cooperative, guild, family, or worker routes that mediate between isolated individuals and concentrated market or state power; preserve variation in Catholic social roots, Christian interpretation, agrarian and urban forms, small-property and worker-control mechanisms, market participation, public regulation, and later ecological or localist readings; distinguish it from Catholic identity or piety, family traditionalism, small business support, localism, cooperatives alone, generic private-property defense, anti-capitalism or anti-socialism alone, anti-monopoly policy alone, agrarian identity, one policy, one movement, one actor, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 const CHRISTIAN_SOCIALISM_CONTEXT = "Analytical scope: Christian Socialism as a plural and historically varied political tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes; preserve variation across Anglican, Catholic, Protestant, Social Gospel, liberationist, ecumenical, historical, and global contexts and across reformist, revolutionary, democratic, church-linked, lay, and autonomous interpretations; distinguish it from private Christian identity or piety, charitable relief, generic social concern, Christian Democracy, Distributism, liberation theology as a broader theological field, democratic socialism without Christian grounding, one denomination, one movement, one author, one policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
 const UJAMAA_CONTEXT = "Analytical scope: Ujamaa / Nyererean African Socialism as a historically bounded and internally varied postcolonial political tradition associated with familyhood, egalitarian social relations, anti-exploitation, collective self-reliance, participation in nation-building, and communal or public development; preserve variation across Nyerere's political thought, wider African-socialist debates, rural and urban settings, national and transnational aims, local agency, state direction, nationalization, villagization, democratic participation, and coercive implementation; distinguish it from generic Socialism, Pan-Africanism, Anti-Colonial Nationalism, communitarianism, ruralism, nationalism, public ownership, self-reliance, Tanzania or Nyerere identification, the Arusha Declaration, one villagization policy, or any current political identity; this instrument is non-diagnostic and does not infer a respondent's ideology.";
+  const LABOR_ZIONISM_CONTEXT = "Analytical scope: Labor Zionism as a historically situated and internally varied Zionist-socialist current joining Jewish collective self-determination and nation-building with worker organization, labor-centered social transformation, cooperative or collective settlement, and institution-building; preserve variation among Poale Zion, socialist and social-democratic routes, pioneering and cooperative forms, diaspora and Palestine/Eretz Israel transnational organization, cultural and state-building projects, democratic and pluralist arrangements, class and peoplehood debates, and historical relations with Palestinian Arab society; distinguish it from Zionism generally, Socialism, Social Democracy, Revisionist or Religious Zionism, the Bund, Anti-Colonial Nationalism, Cultural Nationalism, Jewish identity, religious practice, Israeli citizenship, labor solidarity, union membership, cooperative preference, one settlement or party, current conflict positions, one historical policy, or any current political identity; this instrument is historical, non-operational, and does not classify respondents or current actors.";
 
 const QUESTIONS: readonly Question[] = [
   question("d-economy-01", "descriptive", "Economy", "Differences in ownership usually shape people's bargaining power.", { "structural-power": 1 }, "This asks about how economic relationships work, not whether those relationships are good.", sourceRefs("source-8values")),
@@ -6221,6 +6303,18 @@ const QUESTIONS: readonly Question[] = [
   question("p-ujamaa-02", "prescriptive", "Shared productive resources", "Land, productive resources, and essential services should be organized through communal, cooperative, or public institutions when private concentration blocks shared development.", { "public-ownership": 0.7, "public-provision": 0.65, decentralization: 0.5 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
   question("p-ujamaa-03", "prescriptive", "Participatory nation-building", "National development should involve broad participation and reciprocal labor or service through accountable institutions rather than passive administration.", { decentralization: 0.55, "state-capacity": 0.55, "public-provision": 0.25, reformism: 0.2 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
   question("p-ujamaa-04", "prescriptive", "Local and national coordination", "Rural and local communities should have meaningful roles in development decisions while national institutions coordinate shared goals.", { decentralization: 0.6, "state-capacity": 0.6, "public-provision": 0.4 }, UJAMAA_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.ujamaa, ["ujamaa"]),
+  question("d-labor-zionism-01", "descriptive", "Nation and labor", "Labor Zionist movements linked Jewish collective self-determination to the creation of a Hebrew-speaking working society rather than treating national and social questions as separate.", { "cultural-causation": 0.95, "structural-power": 0.8 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("d-labor-zionism-02", "descriptive", "Political economy", "Control over land, labor, and settlement institutions could shape both national formation and class relations in the Zionist project.", { "structural-power": 0.95, institutionalism: 0.7 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("d-labor-zionism-03", "descriptive", "Institutions", "Worker organizations, cooperative settlements, and transnational institutions helped turn Labor Zionist ideas into organized social and political capacity.", { institutionalism: 0.95, "cultural-causation": 0.6 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("d-labor-zionism-04", "descriptive", "Historical variation", "Labor Zionist currents differed across periods and places in their relations to socialism, democracy, diaspora communities, state power, and Palestinian Arab society.", { "cultural-causation": 0.85, "structural-power": 0.65, institutionalism: 0.6 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("n-labor-zionism-01", "normative", "Nation and equality", "Collective Jewish self-determination and social equality should be pursued together rather than treating one as a substitute for the other.", { equality: 0.9, solidarity: 0.85 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("n-labor-zionism-02", "normative", "Work and dignity", "A dignified national community should give workers meaningful standing in economic and political life.", { equality: 0.85, solidarity: 0.8, democracy: 0.45 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("n-labor-zionism-03", "normative", "Nation and pluralism", "A project of Jewish self-determination should be judged partly by whether it protects the equal civic standing of people who do not belong to the Jewish nation.", { universalism: 0.9, democracy: 0.75, equality: 0.55 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("n-labor-zionism-04", "normative", "Social transformation", "National renewal should involve changing social and economic relations, not only establishing formal sovereignty.", { equality: 0.8, solidarity: 0.75 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("p-labor-zionism-01", "prescriptive", "Worker institutions", "Workers should build durable organizations that give them power over the institutions shaping national and economic life.", { "public-ownership": 0.55, decentralization: 0.75 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("p-labor-zionism-02", "prescriptive", "Settlement and production", "Cooperative or collective forms of settlement and production should be available as routes to national institution-building, without requiring one uniform ownership model.", { "public-ownership": 0.65, decentralization: 0.75, "market-allocation": 0.15 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("p-labor-zionism-03", "prescriptive", "Public capacity", "Public institutions should secure social provision and democratic economic coordination as part of national development.", { "public-provision": 0.8, "state-capacity": 0.7, reformism: 0.35 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
+  question("p-labor-zionism-04", "prescriptive", "Transnational organization", "Political and labor institutions should cooperate across diaspora and territorial communities while remaining accountable to the people affected by their decisions.", { internationalism: 0.85, decentralization: 0.55, "state-capacity": 0.25 }, LABOR_ZIONISM_CONTEXT, DIRECT_BRANCH_SOURCE_REFS.laborZionism, ["labor-zionism"]),
 ].sort((left, right) => QUESTION_LAYER_ORDER[left.layer] - QUESTION_LAYER_ORDER[right.layer]);
 
 const layerFacetIds = (layer: Layer): readonly string[] => FACETS.filter((facet) => facet.layer === layer).map((facet) => facet.id);
@@ -6248,6 +6342,7 @@ const academicSourceForAnchor = (id: string): string => {
   if (id === "distributism") return "source-jstor-salter-distributism";
   if (id === "christian-socialism") return "source-bloomsbury-williams-christian-socialism";
   if (id === "ujamaa") return "source-oup-jennings-ujamaa";
+  if (id === "labor-zionism") return "source-ucp-shafir-land-labor";
   if (id === "hindutva") return "source-sage-mehta-hindu-nationalism";
   if (id === "religious-zionism") return "source-jstor-schwartz-religious-zionism";
   if (id === "neoconservatism") return "source-oup-hull-neoconservatism";
@@ -6496,6 +6591,7 @@ const ANCHORS: readonly IdeologyAnchor[] = [
   anchor("distributism", "Distributism", "Distributist", "A historically rooted and internally varied political-economic tradition centered on widely dispersed productive property, work, common-good responsibility, subsidiarity, and associational or worker control as alternatives to concentrated market or state power.", { "structural-power": 0.9, "market-coordination": 0.35, "elite-autonomy": 0.65, "cultural-causation": 0.75, institutionalism: 0.9, "ecological-limits": 0.15 }, { liberty: 0.85, equality: 0.9, solidarity: 0.95, "order-tradition": 0.65, democracy: 0.7, universalism: 0.35, "ecological-priority": 0.2 }, { "market-allocation": 0.3, "public-provision": 0.55, "public-ownership": 0.5, decentralization: 0.85, "state-capacity": 0.65, reformism: 0.75, internationalism: 0.15 }, "A provisional Distributism anchor: scholarship supports a contested wide-ownership, work, common-good, subsidiarity, and associational boundary with Catholic social roots and varied agrarian, urban, cooperative, guild, market, regulatory, and ecological routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one property or institutional design.", "distributism"),
   anchor("christian-socialism", "Christian Socialism", "Christian Socialist", "A plural and historically varied Christian-socialist tradition joining Christian moral or theological commitments to socialist critique of economic domination, solidarity, and collective transformation through democratic, labor, cooperative, public, community, and movement routes.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.65, "cultural-causation": 0.9, institutionalism: 0.85, "ecological-limits": 0.15 }, { liberty: 0.6, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.8, universalism: 0.75, "ecological-priority": 0.2 }, { "market-allocation": -0.3, "public-provision": 0.85, "public-ownership": 0.7, decentralization: 0.7, "state-capacity": 0.75, reformism: 0.5, internationalism: 0.55 }, "A provisional Christian Socialism anchor: scholarship supports a plural religious-socialist boundary involving moral or theological grounding, structural critique, solidarity, and collective transformation, while preserving Anglican, Catholic, Protestant, Social Gospel, liberationist, labor, cooperative, democratic, reformist, revolutionary, and public or autonomous routes; the vector is not empirically validated and does not decide a respondent's political identity or endorse one church, movement, or institutional design.", "christian-socialism"),
   anchor("ujamaa", "Ujamaa (African Socialism)", "African Socialist", "A historically bounded and internally varied postcolonial political tradition associated with familyhood, egalitarian social relations, anti-exploitation, collective self-reliance, participation in nation-building, and communal or public development.", { "structural-power": 0.9, "market-coordination": -0.15, "elite-autonomy": 0.55, "cultural-causation": 0.85, institutionalism: 0.8, "ecological-limits": 0.1 }, { liberty: 0.65, equality: 0.9, solidarity: 1, "order-tradition": 0.25, democracy: 0.75, universalism: 0.6, "ecological-priority": 0.15 }, { "market-allocation": -0.25, "public-provision": 0.8, "public-ownership": 0.75, decentralization: 0.6, "state-capacity": 0.7, reformism: 0.4, internationalism: 0.55 }, "A provisional Ujamaa anchor: scholarship supports a historically bounded African-Socialist boundary involving familyhood, egalitarianism, postcolonial self-reliance, collective development, and communal or public institutions, while preserving local agency, state direction, national and wider African scope, and contested implementation; the vector is not empirically validated and does not decide a respondent's political identity or endorse one policy, state, or historical interpretation.", "ujamaa"),
+  anchor("labor-zionism", "Labor Zionism", "Zionist Socialist", "A historically situated and internally varied Zionist-socialist current joining Jewish collective self-determination and nation-building with worker organization, labor-centered social transformation, cooperative or collective settlement, and institution-building.", { "structural-power": 0.85, "market-coordination": 0.05, "elite-autonomy": 0.55, "cultural-causation": 0.95, institutionalism: 0.9, "ecological-limits": 0 }, { liberty: 0.65, equality: 0.9, solidarity: 0.95, "order-tradition": 0.25, democracy: 0.75, universalism: 0.55, "ecological-priority": 0 }, { "market-allocation": 0.2, "public-provision": 0.75, "public-ownership": 0.65, decentralization: 0.65, "state-capacity": 0.7, reformism: 0.55, internationalism: 0.7 }, "A provisional Labor Zionism anchor: source-backed history supports a joint national self-determination, worker-institution, cooperative or collective settlement, and social-transformation boundary with substantial period and internal variation; the vector is not empirically validated and does not classify Jewish identity, current conflict positions, citizenship, current parties, or one territorial or ownership programme.", "labor-zionism"),
 ];
 
 export const SCORING_POLICY: ScoringPolicy = {
@@ -6512,10 +6608,10 @@ export const SCORING_POLICY: ScoringPolicy = {
 export const DATASET: Dataset = {
   manifest: {
     datasetId: "layer-sorter-mvp",
-    contentVersion: 94,
+    contentVersion: 95,
     scoringPolicyVersion: SCORING_POLICY.version,
     questionCount: QUESTIONS.length,
-    questionsPerLayer: { descriptive: 488, normative: 488, prescriptive: 488 },
+    questionsPerLayer: { descriptive: 492, normative: 492, prescriptive: 492 },
     supportedShareVersions: [1, 2],
   },
   policy: SCORING_POLICY,

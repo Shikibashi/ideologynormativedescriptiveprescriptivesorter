@@ -209,6 +209,7 @@ export type ResearchQualitativeDirection =
   | "defining-positive"
   | "strong-positive"
   | "moderate-positive"
+  | "characteristic-positive"
   | "indeterminate"
   | "moderate-negative"
   | "strong-negative"

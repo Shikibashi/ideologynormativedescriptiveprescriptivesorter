@@ -63,6 +63,44 @@ describe("research workbench contracts", () => {
     expect(targets.find((target) => target.id === "gandhian-political-thought")).toMatchObject({ targetKind: "ideology-node", level: "meso", placement: "contextual", measurementStatus: "contextual-only", questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 } });
   });
 
+  it("integrates Labor Zionism as a source-backed canonical micro branch with convergent research safeguards", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "labor-zionism");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      measurementStatus: "dedicated-scored",
+      anchorId: "labor-zionism",
+      canonicalPath: [
+        { id: "nationalism", label: "Nationalism", level: "macro" },
+        { id: "labor-zionism", label: "Labor Zionism", level: "micro" },
+      ],
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "labor-zionism")).toMatchObject({ canonicalParentId: "nationalism", anchorId: "labor-zionism", placement: "canonical", status: "scored" });
+
+    const directQuestions = DATASET.questions.filter((question) => question.targetNodeIds?.includes("labor-zionism"));
+    expect(directQuestions).toHaveLength(12);
+    expect(directQuestions.filter((question) => question.layer === "descriptive")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "normative")).toHaveLength(4);
+    expect(directQuestions.filter((question) => question.layer === "prescriptive")).toHaveLength(4);
+    expect(directQuestions.every((question) => question.context?.startsWith("Analytical scope: Labor Zionism as a historically situated"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-ucp-shafir-land-labor"))).toBe(true);
+    expect(directQuestions.every((question) => question.sourceRefs.includes("source-cambridge-yona-labour-zionism"))).toBe(true);
+
+    const candidates = researchCandidatesForTarget("labor-zionism");
+    expect(candidates).toHaveLength(12);
+    expect(candidates.filter((candidate) => candidate.layer === "descriptive")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "normative")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "prescriptive")).toHaveLength(4);
+    expect(researchAnchorProfiles.find((profile) => profile.targetId === "labor-zionism")?.dimensions).toHaveLength(17);
+    expect(researchNeighborDiscriminants.filter((item) => item.targetId === "labor-zionism")).toHaveLength(6);
+    expect(researchFalsePositiveAudits.find((item) => item.targetId === "labor-zionism")?.guardItemIds).toEqual(expect.arrayContaining(["rc-labor-zionism-d-01", "rc-labor-zionism-n-03", "rc-labor-zionism-p-02", "rc-labor-zionism-p-04"]));
+    expect(researchCoverageSummaries.find((item) => item.targetId === "labor-zionism")).toMatchObject({ currentStatus: "dedicated-scored", newCandidateItems: 12, sourceStrength: "high" });
+    expect(researchTaxonomyDecisionForTarget("labor-zionism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-30" });
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "labor-zionism")).toBe(true);
+  });
+
   it("activates Khomeinism, Qutbism, Radical Republicanism, Marxist Feminism, Socialist Feminism, Left-Wing Populism, Neoconservatism, and Paleoconservatism with source-backed boundaries", () => {
     const targets = buildResearchTargets(DATASET);
     expect(targets.find((target) => target.id === "khomeinism")).toMatchObject({
@@ -213,18 +251,18 @@ describe("research workbench contracts", () => {
   });
 
   it("validates the curated research bank without mutating candidate records", () => {
-    expect(curatedResearchCandidates).toHaveLength(1500);
-    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1500);
+    expect(curatedResearchCandidates).toHaveLength(1512);
+    expect(new Set(curatedResearchCandidates.map((candidate) => candidate.id)).size).toBe(1512);
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1464);
-    expect(DATASET.manifest.questionCount).toBe(1464);
+    expect(DATASET.questions).toHaveLength(1476);
+    expect(DATASET.manifest.questionCount).toBe(1476);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
     const targetIds = [...new Set(curatedResearchCandidates.map((candidate) => candidate.targetId))];
-    expect(targetIds).toHaveLength(125);
+    expect(targetIds).toHaveLength(126);
     for (const targetId of targetIds) {
       expect(researchCandidatesForTarget(targetId)).toHaveLength(12);
       expect(researchAnchorProfiles.some((profile) => profile.targetId === targetId)).toBe(true);
@@ -2063,8 +2101,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1464);
-    expect(DATASET.manifest.questionCount).toBe(1464);
+    expect(DATASET.questions).toHaveLength(1476);
+    expect(DATASET.manifest.questionCount).toBe(1476);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {

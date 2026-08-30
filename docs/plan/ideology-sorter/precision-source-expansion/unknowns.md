@@ -708,3 +708,12 @@
 - How should the sorter continue distinguishing Deep Ecology from Ecologism, Green Politics, Bioregionalism, Social Ecology, Green Anarchism, and Anarcho-Primitivism when sources share ecological, anti-industrial, decentralist, or more-than-human vocabulary?
 - The existing twelve Deep Ecology candidates remain effect-free research material; no production questions, effects, anchors, current-party labels, or respondent-facing classification are authorized by V92.
 - Three registry-only targets and five contextual placements remain outside production scoring. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
+
+## V99 open questions — Labor Zionism
+
+- How should Labor Zionism be distinguished from wider Zionism, Socialism, Social Democracy, Religious Zionism, Anti-Colonial Nationalism, Cultural Nationalism, and the Bund when the historical field contains overlap, hybridization, and organization or period variation?
+- Which combinations of Jewish collective self-determination, worker-socialist transformation, land/labor and settlement mechanisms, cooperative or collective institution-building, and transnational diaspora-territorial organization are necessary without treating identity, citizenship, union membership, one party, one settlement, or current conflict position as sufficient evidence?
+- How should Poale Zion, Ahdut HaAvoda, Mapai, Histadrut, kibbutz, moshav, diaspora, Palestine/Eretz Israel, class/peoplehood debates, democratic/pluralist variation, and relations with Palestinian Arab society be represented without one historical case becoming a universal label?
+- How should the source-set disagreement over settler-colonial interpretation be shown as historical scholarship and contested context rather than a current-actor or present-policy classification?
+- The deterministic reachability audit should test all three layers for the provisional anchor; full-production overlap and ranks remain geometry diagnostics only, and no uncalibrated retuning is authorized.
+- Four registry-only targets and six contextual placements remain outside production scoring after V99. Cognitive/respondent comprehension, psychometric reliability/validity, invariance, empirical classification, population generalization, and current-actor inference remain untested by explicit constraint.
