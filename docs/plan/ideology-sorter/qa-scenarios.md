@@ -995,3 +995,11 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 |---|---|---|
 | P-132-01 | Inspect `n-collectivist-anarchism-04` and its measurement audit record. | The normative item asks one participation claim about people who perform common work; it retains the source-backed context and `{ democracy: 0.95 }` effect without a compound-wording or rewrite disposition. |
 | R-132-01 | Run the focused regression and measurement audit after the V132 edit. | The focused suite passes 35/35; content version 99 reports zero rewrite, duplicate, and redundant dispositions, while 42 cross-construct split signals remain explicit review items. |
+
+## Current V133 measurement-audit workbench scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-133-01 | Open Research and inspect the default production measurement queue. | The read-only queue shows 42 open disposition signals, the 1,500-item audit total, retained legacy effects and source metadata, and an explicit mechanical-only boundary. |
+| P-133-02 | Switch among conditional wording and all-item filters, then search `n-collectivist-anarchism-04`. | The conditional filter reports 510 matching audit records and caps the rendered list at 80; the all-item search narrows to one record and exposes the preserved single-claim prompt and `Democracy +0.95` effect without changing the live bank. |
+| R-133-01 | Run TypeScript, the full Vitest suite, production build, focused queue/responsive browser paths, and `git diff --check`. | All executed deterministic checks pass; the existing large-client-chunk advisory remains informational, while the three unmeasured constructs, four open prescriptive gaps, 42 split dispositions, and six external validation gates remain visible and fail-closed. |

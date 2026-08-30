@@ -775,3 +775,9 @@ Completion condition for V131: exact duplicate production wording is removed wit
 3. Rerun TypeScript, focused regression, measurement audit, and whitespace validation.
 
 Completion condition for V132: the remaining non-cross-construct rewrite signal is removed without changing scoring semantics; the 42 cross-construct split signals remain visibly queued for human review; and the comprehensive completion audit remains `INCOMPLETE` / fail-closed.
+
+## V133 continuation — expose the production measurement review queue — 2026-08-30
+
+The next measurement-layer action is now an inspectable research-authoring seam rather than an automatic content rewrite. The Research Workbench presents the current item-level `auditBeliefMeasurement(DATASET)` output, keeps open dispositions visible, and preserves the exact production wording, construct bridge, legacy effects, target metadata, and source trail needed for later adjudication. Filters and search are bounded for browser use; they do not change production data or scoring.
+
+Verification for this bounded slice covers TypeScript, the full unit suite, the production build, the focused queue/responsive browser paths, and whitespace checks. The next substantive measurement work remains the three unmeasured constructs and adjudication of the 42 cross-construct split signals; any new question or ideology promotion must still pass the existing source/provenance, coverage, measurement, morphology, and fail-closed validation boundaries.

@@ -1854,3 +1854,19 @@ V132 rewrites `n-collectivist-anarchism-04` from a coordinated “do and are aff
 | `git diff --check` | PASS | No whitespace errors after the V132 source and test updates. |
 
 The repair removes one mechanical rewrite disposition; it is not evidence of respondent comprehension or response-process validity. The remaining 42 split signals, three unmeasured constructs, four contested prescriptive gaps, and six external validation gates remain open and explicitly fail-closed.
+
+## V133 observed verification — read-only production measurement audit queue — 2026-08-30
+
+V133 adds a Research Workbench presentation of the existing production measurement audit. The UI exposes open dispositions and machine flags as a bounded, searchable queue and keeps the complete machine-readable audit in the validation script. It does not change production questions, effects, ontology nodes, morphology, candidate promotion, share encoding, or legacy scoring.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The audit queue imports the existing audit contract and compiles with no output. |
+| Focused stable-server Playwright queue/responsive paths | PASS | `E2E_BASE_URL=http://127.0.0.1:4174 npx playwright test tests/sorter.spec.ts --grep 'exposes a bounded production measurement audit queue|keeps the research surface within a narrow viewport' --workers=1`: 2/2 passed in 6.2 seconds; the explicitly started server was stopped afterward. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 175/175 tests across 10 files. |
+| `npm run build` | PASS | Production build: 42 modules; `index-C6_vt1oZ.js` 3,026.26 kB (674.53 kB gzip) and `index-D6wjrBST.css` 54.80 kB (8.52 kB gzip); the existing large-client-chunk advisory remains. |
+| `git diff --check` | PASS | No whitespace errors in the bounded tracked-objective diff. |
+| Current measurement/coverage/morphology evidence | INHERITED | The V132 audit remains the current data evidence because this slice only reads `auditBeliefMeasurement(DATASET)`: 1,500/1,500 audited items, 42 split dispositions, three unmeasured constructs, 119 canonical owners with 238 source-backed-contested relationships, and four open prescriptive gaps. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The browser and deterministic checks establish the workbench interaction and presentation contract only. They do not establish respondent comprehension, expert agreement, psychometric validity, reliability, invariance, population/consequence safety, empirical classification, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.

@@ -6,7 +6,7 @@ import { BELIEF_DIRECT_ITEMS, directEvidenceForAnswers } from "./belief-direct-i
 import type { BeliefDirectAnswerMap } from "./belief-direct-items";
 import { BELIEF_RELATIONAL_FOLLOWUPS, relationalEvidenceForAnswers } from "./belief-followups";
 import type { BeliefRelationalAnswerMap } from "./belief-followups";
-import { constructLabelFor } from "./beliefs";
+import { auditBeliefMeasurement, constructLabelFor } from "./beliefs";
 import {
   buildResearchTargets,
   createResearchCandidate,
@@ -29,7 +29,7 @@ import {
 import { calculateResults, formatFit } from "./scoring";
 import { researchTaxonomyDecisionForTarget, researchTaxonomyDispositionLabels } from "./research-governance";
 import { decodeShareFragment, encodeShareFragment } from "./share";
-import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefDiagnosticLayer, type BeliefMeasurementStatus, type BeliefProfile, type BeliefStructureEvidencePosture, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type MorphologyCalculationSource, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
+import { LAYER_LABELS, LAYERS, type Answer, type AnswerMap, type BeliefDiagnosticLayer, type BeliefItemDisposition, type BeliefMeasurementAudit, type BeliefMeasurementAuditFlag, type BeliefMeasurementStatus, type BeliefProfile, type BeliefStructureEvidencePosture, type CombinedResult, type IdeologicalMorphology, type IdeologyConfiguration, type IdeologyLevel, type InterpretiveBasis, type Layer, type LayerResult, type MorphologyCalculationSource, type ResearchQuestionCandidate, type ResearchTarget, type SourceRole } from "./types";
 
 type PrimaryView = "intro" | "quiz" | "results";
 type View = PrimaryView | "research";
@@ -75,6 +75,48 @@ const projectInspirationSources = [
 
 const researchTargets = buildResearchTargets(DATASET);
 const researchCandidateTargetCount = new Set(curatedResearchCandidates.map((candidate) => candidate.targetId)).size;
+const productionMeasurementAudits = auditBeliefMeasurement(DATASET);
+
+type MeasurementAuditFilter = "open-disposition" | "all-flagged" | "compound-wording" | "conditional-wording" | "branch-target-metadata" | "all-items";
+
+const measurementAuditFilters: readonly MeasurementAuditFilter[] = [
+  "open-disposition",
+  "all-flagged",
+  "compound-wording",
+  "conditional-wording",
+  "branch-target-metadata",
+  "all-items",
+];
+
+const measurementAuditFilterLabels: Record<MeasurementAuditFilter, string> = {
+  "open-disposition": "Open disposition review",
+  "all-flagged": "All flagged items",
+  "compound-wording": "Compound wording",
+  "conditional-wording": "Condition / contrast wording",
+  "branch-target-metadata": "Branch metadata",
+  "all-items": "All production items",
+};
+
+const measurementAuditMatchesFilter = (audit: BeliefMeasurementAudit, filter: MeasurementAuditFilter): boolean => {
+  if (filter === "open-disposition") return audit.disposition !== "preserve";
+  if (filter === "all-flagged") return audit.flags.length > 0;
+  if (filter === "all-items") return true;
+  return audit.flags.includes(filter);
+};
+
+const measurementAuditCountForFilter = (filter: MeasurementAuditFilter): number => productionMeasurementAudits.filter((audit) => measurementAuditMatchesFilter(audit, filter)).length;
+
+const measurementAuditFlagLabelFor = (flag: BeliefMeasurementAuditFlag): string => flag.replaceAll("-", " ");
+
+const measurementAuditDispositionLabelFor = (disposition: BeliefItemDisposition): string => disposition.replaceAll("-", " ");
+
+const measurementAuditLegacyEffectsFor = (audit: BeliefMeasurementAudit): string => {
+  const effects = Object.entries(audit.legacyEffects).map(([facetId, effect]) => {
+    const facetLabel = DATASET.facets.find((facet) => facet.id === facetId)?.label ?? facetId;
+    return `${facetLabel} ${effect >= 0 ? "+" : ""}${effect}`;
+  });
+  return effects.join(" · ") || "No legacy facet effect";
+};
 
 const researchLabelFor = (targetId: string): string =>
   researchTargets.find((target) => target.id === targetId)?.label
@@ -334,6 +376,8 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
   const [draft, setDraft] = useState<ResearchQuestionCandidate | null>(() => researchTargets[0] ? createResearchCandidate(researchTargets[0], "normative", DATASET) : null);
   const [savedCandidates, setSavedCandidates] = useState<readonly ResearchQuestionCandidate[]>([]);
   const [statusMessage, setStatusMessage] = useState("");
+  const [auditFilter, setAuditFilter] = useState<MeasurementAuditFilter>("open-disposition");
+  const [auditQuery, setAuditQuery] = useState("");
 
   const selectedTarget = researchTargets.find((target) => target.id === selectedTargetId);
   const curatedCandidates = curatedResearchCandidates.filter((candidate) => candidate.targetId === selectedTargetId);
@@ -347,6 +391,22 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
   const sourceOptions = DATASET.sources.filter((source) => source.role === "ideology-research");
   const candidateErrors = draft ? validateResearchCandidate(draft, DATASET) : [];
   const candidateWarnings = draft ? researchCandidateWarnings(draft, selectedTarget) : [];
+  const normalizedAuditQuery = auditQuery.trim().toLowerCase();
+  const filteredMeasurementAudits = productionMeasurementAudits.filter((audit) => {
+    if (!measurementAuditMatchesFilter(audit, auditFilter)) return false;
+    if (!normalizedAuditQuery) return true;
+    const searchableText = [
+      audit.questionId,
+      audit.prompt,
+      audit.context ?? "",
+      audit.domain,
+      ...audit.constructIds,
+      ...audit.editorialTargetNodeIds,
+      ...audit.flags,
+    ].join(" ").toLowerCase();
+    return searchableText.includes(normalizedAuditQuery);
+  });
+  const displayedMeasurementAudits = filteredMeasurementAudits.slice(0, 80);
 
   useEffect(() => {
     if (!selectedTarget) {
@@ -420,6 +480,45 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
         </aside>
 
         <div className="research-main">
+          <section className="research-audit" aria-labelledby="measurement-audit-title">
+            <div className="research-audit-header">
+              <div>
+                <div className="research-section-label" id="measurement-audit-title">0 / Production item review queue</div>
+                <h2>Review the item before changing the model.</h2>
+                <p className="research-audit-lede">This queue exposes the current production-bank audit at item level so a content reviewer can inspect the exact claim, construct bridge, legacy effect, editorial metadata, and source trail. It is read-only and editorial: these mechanical signals are not respondent evidence, expert adjudication, psychometric validation, or a reason to rewrite items automatically.</p>
+              </div>
+              <span className="research-audit-open-count">{measurementAuditCountForFilter("open-disposition")} open disposition signals</span>
+            </div>
+            <div className="research-audit-metrics" aria-label="Production item audit totals">
+              <div><strong>{productionMeasurementAudits.length}</strong><span>production items audited</span></div>
+              <div><strong>{measurementAuditCountForFilter("open-disposition")}</strong><span>open dispositions</span></div>
+              <div><strong>{measurementAuditCountForFilter("compound-wording")}</strong><span>compound signals</span></div>
+              <div><strong>{measurementAuditCountForFilter("conditional-wording")}</strong><span>condition / contrast signals</span></div>
+            </div>
+            <div className="research-audit-controls">
+              <label className="research-field" htmlFor="measurement-audit-filter"><span>Review signal</span><select id="measurement-audit-filter" value={auditFilter} onChange={(event) => setAuditFilter(event.target.value as MeasurementAuditFilter)}>{measurementAuditFilters.map((filter) => <option key={filter} value={filter}>{measurementAuditFilterLabels[filter]} · {measurementAuditCountForFilter(filter)}</option>)}</select><small>Open disposition is the current human-review queue. Other filters expose machine flags without changing their disposition.</small></label>
+              <label className="research-field" htmlFor="measurement-audit-query"><span>Find by item, construct, branch, or wording</span><input id="measurement-audit-query" type="search" value={auditQuery} onChange={(event) => setAuditQuery(event.target.value)} placeholder="For example: collectivist, democracy, or n-..." /></label>
+            </div>
+            <p className="research-audit-result-count" role="status">{filteredMeasurementAudits.length === 0 ? "No audit records match this filter and search." : `Showing ${displayedMeasurementAudits.length} of ${filteredMeasurementAudits.length} matching audit record${filteredMeasurementAudits.length === 1 ? "" : "s"}.`}{filteredMeasurementAudits.length > displayedMeasurementAudits.length ? " Search to narrow the queue; the complete machine-readable audit remains available through the validation script." : ""}</p>
+            <div className="research-audit-list" aria-label="Production item audit records">
+              {displayedMeasurementAudits.map((audit) => (
+                <details className="research-audit-item" key={audit.questionId}>
+                  <summary><span>{audit.questionId} · {LAYER_LABELS[audit.layer].short} · {measurementAuditDispositionLabelFor(audit.disposition)}</span><strong>{audit.prompt}</strong></summary>
+                  <div className="research-audit-item-body">
+                    <p><strong>Construct bridge:</strong> {audit.constructIds.map(constructLabelFor).join(" · ") || "No construct bridge recorded."}</p>
+                    <p><strong>Domain:</strong> {audit.domain} · <strong>Measurement:</strong> {audit.measurementMode.replaceAll("-", " ")}</p>
+                    <p><strong>Review signals:</strong> {audit.flags.length > 0 ? audit.flags.map(measurementAuditFlagLabelFor).join(" · ") : "none"}</p>
+                    <p><strong>Audit rationale:</strong> {audit.rationale}</p>
+                    {audit.context ? <p><strong>Context:</strong> {audit.context}</p> : null}
+                    <p><strong>Legacy facet effects retained:</strong> {measurementAuditLegacyEffectsFor(audit)}</p>
+                    <p><strong>Editorial target metadata:</strong> {audit.editorialTargetNodeIds.length > 0 ? audit.editorialTargetNodeIds.map(researchLabelFor).join(" · ") : "none"}</p>
+                    <p><strong>Sources:</strong> {sourceLinksFor(audit.sourceRefs)}</p>
+                    <p className="research-audit-boundary"><strong>Review status:</strong> mechanical signal only — independent expert adjudication has not run. Record one-claim interpretation, construct/conception, expected response process, missingness semantics, neighboring distinctions, reviewer IDs, disagreement, and adjudication outside this read-only surface before changing production measurement.</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
           <section className="belief-gap-shelf" aria-labelledby="belief-gap-shelf-title">
             <div className="research-section-label" id="belief-gap-shelf-title">Underlying belief gaps</div>
             <p className="research-form-note">These {BELIEF_GAP_CANDIDATES.length} source-attributed candidates target constructs the production bank does not yet measure. They are effect-free research material: no candidate changes the quiz, anchor vectors, or morphology output.</p>

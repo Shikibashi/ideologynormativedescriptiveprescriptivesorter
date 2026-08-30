@@ -311,6 +311,26 @@ test("opens the research workbench and saves a quarantined candidate item", asyn
   await expect(page.getByRole("heading", { name: /Three views/ })).toBeVisible();
 });
 
+test("exposes a read-only production measurement review queue", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /^Research$/ }).click();
+  const audit = page.locator(".research-audit");
+  await expect(audit.getByRole("heading", { name: /Review the item before changing the model/ })).toBeVisible();
+  await expect(audit.locator(".research-audit-open-count")).toContainText("42 open disposition signals");
+  await expect(audit.locator(".research-audit-item")).toHaveCount(42);
+  await expect(audit).toContainText(/independent expert adjudication has not run/i);
+  await expect(audit).toContainText("d-contemporary-neo-republicanism-04");
+
+  await page.locator("#measurement-audit-filter").selectOption("conditional-wording");
+  await expect(audit.locator(".research-audit-result-count")).toContainText(/510 matching audit records/i);
+  await expect(audit.locator(".research-audit-item")).toHaveCount(80);
+
+  await page.locator("#measurement-audit-filter").selectOption("all-items");
+  await page.locator("#measurement-audit-query").fill("n-collectivist-anarchism-04");
+  await expect(audit.locator(".research-audit-item")).toHaveCount(1);
+  await expect(audit).toContainText("People who perform common work should participate as equals in the rules governing it.");
+});
+
 test("shows research-backed taxonomy decisions separately from scoring", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /^Research$/ }).click();
@@ -320,6 +340,29 @@ test("shows research-backed taxonomy decisions separately from scoring", async (
   await page.locator("#research-target").selectOption("deep-ecology");
   await expect(page.locator(".research-governance-note")).toContainText(/promote to canonical ontology/i);
   await expect(page.locator(".research-governance-note")).toContainText(/scored-provisional/i);
+});
+
+test("exposes a bounded production measurement audit queue without changing the live bank", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /^Research$/ }).click();
+  await expect(page.getByRole("heading", { name: "Review the item before changing the model." })).toBeVisible();
+  await expect(page.locator(".research-audit-open-count")).toContainText("42 open disposition signals");
+  await expect(page.locator(".research-audit-metrics")).toContainText("1500");
+  await expect(page.locator(".research-audit-result-count")).toContainText("Showing 42 of 42 matching audit records.");
+  await expect(page.locator(".research-audit-item")).toHaveCount(42);
+
+  await page.locator("#measurement-audit-filter").selectOption("all-items");
+  await expect(page.locator(".research-audit-result-count")).toContainText("Showing 80 of 1500 matching audit records.");
+  await expect(page.locator(".research-audit-item")).toHaveCount(80);
+
+  await page.locator("#measurement-audit-query").fill("n-collectivist-anarchism-04");
+  await expect(page.locator(".research-audit-result-count")).toContainText("Showing 1 of 1 matching audit record.");
+  const auditRecord = page.locator(".research-audit-item").first();
+  await expect(auditRecord).toContainText("n-collectivist-anarchism-04");
+  await auditRecord.locator("summary").click();
+  await expect(auditRecord).toContainText("People who perform common work should participate as equals in the rules governing it.");
+  await expect(auditRecord).toContainText(/Legacy facet effects retained: Democracy \+0\.95/i);
+  await expect(auditRecord).toContainText(/mechanical signal only/i);
 });
 
 test.describe("responsive workbench", () => {
