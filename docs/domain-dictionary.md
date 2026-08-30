@@ -1,6 +1,6 @@
 # Domain Dictionary
 
-> Generated 2026-08-30 for the Ideology Layer Sorter. Version v15 (content version 96).
+> Generated 2026-08-30 for the Ideology Layer Sorter. Version v16 (content version 97).
 
 ## Core terms
 
@@ -309,3 +309,5 @@ flowchart LR
 | 2026-08-29 | v12 | Updated the active vocabulary context for content version 93: 1,452 prompts, 115 canonical scoring anchors, 120 editorial anchors, 9 macro / 37 canonical meso / 69 micro nodes, 123 research targets, and 1,476 quarantined candidates; total meso placements remain 42 because five are contextual. |
 | 2026-08-29 | v13 | Updated the active vocabulary context for content version 94: 1,464 prompts, 116 canonical scoring anchors, 121 editorial anchors, 9 macro / 38 canonical meso / 69 micro nodes, 124 research targets, and 1,488 quarantined candidates; total meso placements are 43 because five are contextual. |
 | 2026-08-29 | v14 | Added the V98 source-backed Gandhian Political Thought contextual research target: production remains content version 94 with 1,464 prompts, 116 production anchors, 122 editorial ontology nodes, 9 macro / 38 canonical meso / 69 micro nodes, six contextual placements, three registry-only entries, 125 research targets, and 1,500 quarantined candidates; no production questions or scoring anchor were added. |
+| 2026-08-30 | v15 | Updated the active vocabulary context for content version 97 after the Deep Ecology promotion: 1,500 prompts, 119 production anchors, 124 editorial anchors, 125 ontology nodes, 9 macro / 38 canonical meso / 72 micro placements, six contextual placements, two registry entries, 127 research targets, and 1,524 quarantined candidates. |
+| 2026-08-30 | v16 | Refreshed current academic provenance and registry-boundary terms for Civic Republicanism and Conservative New Right; production questions, anchors, scoring semantics, and quarantined-candidate counts remain unchanged. |

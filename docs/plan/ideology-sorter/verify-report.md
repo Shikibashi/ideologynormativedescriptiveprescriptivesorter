@@ -1095,3 +1095,24 @@ No cognitive review, respondent study, expert content adjudication, psychometric
 | Compose/Docker delivery | NOT RUN | Not rerun for V102; no container or hosted-runtime claim is made |
 
 The V102 structural contract is eligible but the overall completion status remains incomplete by design. The six external-study gates are not substituted with synthetic fixtures, source citations, automated audits, or cognitive-review alternatives. This is neutral repository taxonomy/data authoring and verification, not a personal ideological comparison, recommendation, ranking, or score.
+
+## V103 verification — registry-boundary source refresh
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx vitest run src/research.test.ts` | PASS | 85/85 focused research-workbench tests pass, including refreshed Civic Republicanism and Conservative New Right provenance and governance assertions |
+| `npm run test:run` | PASS | 144/144 current-tree Vitest tests pass across five files; unrelated dirty belief-workstream files remain outside the V103 commit |
+| `npx tsc --noEmit` | PASS | Current TypeScript tree typechecks |
+| `npm run build` | PASS | Production bundle builds; the existing large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | Content version 97; 1,500 production questions; 119 production anchors; 124 editorial anchors; two registry entries; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors and structural failures; registry entries remain outside production anchor routing |
+| `npm run belief:measurement-audit` | PASS | All 1,500 production items audited; existing construct gaps and review dispositions remain explicit |
+| `npm run belief:morphology-audit` | PASS | 119 canonical configurations round-trip; zero validation errors and structural failures; synthetic output remains non-respondent evidence |
+| `npm run belief:direct-pilot-audit` | PASS | Eight-item effect-free categorical pilot remains isolated from legacy scoring; zero validation errors and failures |
+| `E2E_BASE_URL=http://127.0.0.1:4174 npm run qa -- --workers=1` | PASS | Production-preview Playwright suite 10/10; inventory, research workbench, governance, responsive, full-layer, share-link, transition, and malformed-share paths pass in 5.3 minutes |
+| `npm run belief:completion-audit --silent -- --summary` | NOT PASS / FAIL-CLOSED | Structural checks pass; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `git diff --check` | PASS | No whitespace errors after V103 documentation and source updates |
+| Compose/Docker delivery | NOT RUN | Not rerun for this source-only registry refresh; no container or hosted-runtime claim is made |
+
+V103 leaves production content at version 97 with 1,500 questions and 119 production anchors. The two registry entries remain outside production scoring, and their 24 research candidates remain quarantined and effect-free. The six external-study gates remain explicitly `NOT RUN`; no cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, or population/consequence review was run or implied.

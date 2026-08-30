@@ -1075,3 +1075,13 @@ The V99 source set supports terminology, provenance, historically situated bound
 The V100 source set supports terminology, provenance, historically and institutionally bounded distinctions, internal variation, neighbor discrimination, false-positive controls, and original item authoring for twelve direct prompts and twelve quarantined effect-free candidates at 4/4/4. It supports a provisional existing-facet anchor and qualitative profile but does not establish respondent interpretation, reliability, validity, invariance, empirical classification, or population generalization. No cognitive review or respondent study was run.
 
 The source-backed boundary is explicitly not Muslim identity, private piety, religious observance, generic feminism or women's rights, Islamism, Religious Nationalism, Womanism, Liberal Feminism, Socialist Feminism, one interpreter, one legal school, one organization, one jurisdiction, or one current policy. The existing facet schema remains unchanged; Islamic Feminism's interpretive, legal, and institutional dimensions are recorded as provisional proxies and measurement limitations rather than a new axis.
+
+## V103 — Registry-boundary refresh sources
+
+| Source ID | Citation | Use in the sorter |
+|---|---|---|
+| `source-sep-republicanism` | [Stanford Encyclopedia of Philosophy, “Republicanism”](https://plato.stanford.edu/entries/republicanism/) | Current terminology boundary between historical/classical republican traditions and contemporary civic or neo-republican work on non-domination, while preserving civic virtue and participation as historically important themes |
+| `source-oup-well-ordered-republic` | [Lovett, *The Well-Ordered Republic*](https://academic.oup.com/book/43753/chapter-abstract/370680232) | Contemporary non-domination, empire of law, and popular-control framework used to sharpen Civic Republicanism's qualitative bridge profile and its separation from adjacent canonical branches |
+| `source-springer-schilk-new-right-metapolitics` | [Schilk, “The Metapolitics of Crises: How the New Right Weaponises Narratives to Mainstream Far-Right Ideology”](https://doi.org/10.1007/s10767-025-09519-3) | Discourse-analytic distinction between metapolitical narrative work and political actors, with explicit attention to divergent Continental European and Anglo-American New Right applications |
+
+The V103 source set is used for provenance, terminology, taxonomy boundaries, qualitative profiles, and false-positive controls only. It does not establish respondent interpretation, reliability, validity, invariance, empirical classification, population generalization, or current-actor inference. No production questions or scored ideology nodes were added for these registry entries.

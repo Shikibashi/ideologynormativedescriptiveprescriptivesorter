@@ -2017,12 +2017,13 @@ describe("research workbench contracts", () => {
       "source-aup-bures-european-new-right",
       "source-sage-drolet-williams-european-new-right",
       "source-sage-gianoncelli-new-right",
+      "source-springer-schilk-new-right-metapolitics",
     ]));
     expect(researchCandidatesForTarget("conservative-new-right")).toHaveLength(12);
     expect(researchAnchorProfiles.find((profile) => profile.targetId === "conservative-new-right")?.dimensions.length).toBeGreaterThanOrEqual(7);
     expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "conservative-new-right")).toHaveLength(3);
     expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "conservative-new-right")?.preferredOutcome).toContain("contextual formation");
-    expect(researchTaxonomyDecisionForTarget("conservative-new-right")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
+    expect(researchTaxonomyDecisionForTarget("conservative-new-right")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });
     expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("conservative-new-right"))).toBe(false);
   });
 
@@ -2232,12 +2233,12 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("white-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
-    expect(researchTaxonomyDecisionForTarget("civic-republicanism")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
-    expect(researchTaxonomyDecisionForTarget("conservative-new-right")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
+    expect(researchTaxonomyDecisionForTarget("civic-republicanism")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });
+    expect(researchTaxonomyDecisionForTarget("conservative-new-right")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });
     expect(DATASET.ideologyNodes.some((node) => node.id === "civic-republicanism")).toBe(false);
     expect(DATASET.ideologyNodes.some((node) => node.id === "conservative-new-right")).toBe(false);
-    expect(DATASET.ideologyRegistry.find((entry) => entry.id === "civic-republicanism")?.sourceRefs).toEqual(expect.arrayContaining(["source-cambridge-civic-republicanism", "source-oup-gallagher-civic-virtue", "source-springer-toth-civic-republicanism"]));
-    expect(DATASET.ideologyRegistry.find((entry) => entry.id === "conservative-new-right")?.sourceRefs).toEqual(expect.arrayContaining(["source-aup-bures-european-new-right", "source-sage-drolet-williams-european-new-right"]));
+    expect(DATASET.ideologyRegistry.find((entry) => entry.id === "civic-republicanism")?.sourceRefs).toEqual(expect.arrayContaining(["source-cambridge-civic-republicanism", "source-oup-gallagher-civic-virtue", "source-springer-toth-civic-republicanism", "source-oup-well-ordered-republic"]));
+    expect(DATASET.ideologyRegistry.find((entry) => entry.id === "conservative-new-right")?.sourceRefs).toEqual(expect.arrayContaining(["source-aup-bures-european-new-right", "source-sage-drolet-williams-european-new-right", "source-springer-schilk-new-right-metapolitics"]));
     expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("civic-republicanism"))).toBe(false);
     expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("conservative-new-right"))).toBe(false);
     expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "qutbism")).toBe(true);
