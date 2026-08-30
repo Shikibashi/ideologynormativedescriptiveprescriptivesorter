@@ -767,3 +767,16 @@ This is a research-bank and taxonomy continuation. No cognitive review, responde
 The workbench must keep `green-politics` as a broad contextual map across Ecologism, Social Ecology, Ecosocialism, Bioregionalism, and other associated traditions. The conceptions are qualitative research context, not respondent observations, latent traits, affinity weights, morphology candidates, or political recommendations. A broad green response does not establish a specific ecological theory, justice foundation, governance scale, ownership route, or movement identity.
 
 The remaining boundary is stricter than environmental concern, recycling, one climate or conservation policy, localism, decentralization, public provision, environmental justice language, or one movement route. The source pass preserves variation among anthropocentric and ecocentric foundations, social-justice and sustainability arguments, state, market, common, cooperative, grassroots, local, regional, national, and transnational routes. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, population generalization, or current-actor inference was run or implied.
+
+## V110 research-workbench continuation — contextual bridge coverage
+
+| Workbench field | V110 contract |
+|---|---|
+| Targets | `green-communitarianism` and `liberal-conservatism-context`, both existing meso contextual nodes |
+| Disposition | Retain contextual and non-scored; do not create duplicate canonical ancestry or respondent-facing labels |
+| Candidate bank | Twelve quarantined, effect-free candidates per target at descriptive/normative/prescriptive 4/4/4 |
+| Qualitative conceptions | Green Communitarianism: `ecological-community-relational-justice` (normative, characteristic) and `place-based-accountable-stewardship` (prescriptive, characteristic); Liberal Conservatism: `liberty-through-institutional-continuity` (normative, characteristic) and `liberal-reform-with-conservative-prudence` (prescriptive, characteristic) |
+| Source boundary | Cambridge/EconPapers ecological-communitarian sources preserve ecological community, sustainability, distributive justice, and internal variation; SEP Liberalism/Conservatism plus Klein preserve the liberty-continuity and bounded-reform overlap without fixing one synthesis |
+| Production boundary | Zero direct production questions, no production anchor, no effect, coefficient, threshold, picker rule, morphology output, or score contribution |
+
+The workbench keeps both targets as qualitative research context. Green Communitarianism is not inferred from environmental concern, localism, community identity, or decentralization alone; Liberal Conservatism is not inferred from one liberal or conservative response, party association, market position, or respect for institutions alone. Their source-backed conceptions close the missing profile bridge while preserving contested boundaries and the existing quarantine. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, population generalization, or current-actor inference was run or implied.

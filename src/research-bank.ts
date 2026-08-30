@@ -4487,6 +4487,24 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-anarchism", "source-ostrom"],
     ),
   ],
+  "green-communitarianism": [
+    anchorConception(
+      "ecological-community-relational-justice",
+      "normative",
+      "Justice through ecological community membership",
+      "Ecological-communitarian arguments can treat people as members of mutually constituting human and more-than-human communities, making ecological integrity, sustainability, and distributive responsibility matters of justice; communitarian approaches remain internally diverse and do not settle one anthropocentric, ecocentric, spiritual, or political route.",
+      "characteristic",
+      ["source-cambridge-eckersley-communitarianism", "source-repec-pelletier-ecological-communitarianism", "source-sep-environmental-ethics"],
+    ),
+    anchorConception(
+      "place-based-accountable-stewardship",
+      "prescriptive",
+      "Ecological stewardship through place-based and accountable communities",
+      "Some ecological-communitarian routes give affected communities meaningful roles in stewardship and deliberation, using local or common institutions within wider coordination and accountability; place, community, or decentralization alone does not identify the context, and no single scale or ownership form is constitutive.",
+      "characteristic",
+      ["source-cambridge-eckersley-communitarianism", "source-ostrom", "source-cambridge-ecologism"],
+    ),
+  ],
   "green-politics": [
     anchorConception(
       "ecological-justice-and-future-standing",
@@ -4503,6 +4521,24 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       "Green political routes may combine grassroots participation, decentralization, public authority, common institutions, cooperative provision, and wider coordination to address ecological conditions; no single state, market, commons, or movement route is constitutive of the broad context.",
       "characteristic",
       ["source-cambridge-ecologism", "source-ostrom"],
+    ),
+  ],
+  "liberal-conservatism-context": [
+    anchorConception(
+      "liberty-through-institutional-continuity",
+      "normative",
+      "Liberty mediated by inherited institutions",
+      "Liberal-conservative formulations can treat individual liberty and legal protections as valuable while also treating historically developed institutions, social practices, and public order as conditions of their exercise; the combination leaves unresolved tensions over abstract rights, authority, markets, welfare, and the scope of reform.",
+      "characteristic",
+      ["source-sep-liberalism", "source-oup-conservatism", "source-sciencedirect-klein-conservative-liberalism"],
+    ),
+    anchorConception(
+      "liberal-reform-with-conservative-prudence",
+      "prescriptive",
+      "Reform through liberty with institutional prudence",
+      "Some liberal-conservative arguments favor ordinary policy reform that expands or protects practical liberty while approaching changes to the wider polity incrementally, experimentally, and with attention to unintended consequences; this does not prescribe one market, welfare, constitutional, national, or foreign-policy programme.",
+      "characteristic",
+      ["source-sciencedirect-klein-conservative-liberalism", "source-oup-conservatism", "source-sep-liberalism"],
     ),
   ],
   "conservative-new-right": [

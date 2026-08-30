@@ -763,3 +763,13 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | R-109-01 | Inspect the `green-politics` research target. | The target remains a meso contextual/catalog-only node with twelve quarantined candidates at 4/4/4, zero direct production questions, and no score path. |
 | R-109-02 | Inspect the Green Politics qualitative profile. | The workbench exposes `ecological-justice-and-future-standing` as a normative characteristic conception and `participatory-multilevel-ecological-governance` as a prescriptive characteristic conception; every provenance id resolves to the source registry. |
 | R-109-03 | Run coverage and governance audits. | Coverage reports the conception bridge without changing production question, anchor, coefficient, picker, or morphology counts; taxonomy governance remains `retain-contextual` / `not-scored`; false-positive and neighbor controls remain present. |
+
+## V110 — Contextual bridge conception and quarantine coverage
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-110-01 | Inspect `green-communitarianism` and `liberal-conservatism-context` in the research workbench. | Each target remains a meso contextual/catalog-only node with twelve quarantined candidates at descriptive/normative/prescriptive 4/4/4, zero direct production questions, and no score path. |
+| R-110-02 | Inspect the qualitative profile for each target. | Green Communitarianism exposes `ecological-community-relational-justice` and `place-based-accountable-stewardship`; Liberal Conservatism exposes `liberty-through-institutional-continuity` and `liberal-reform-with-conservative-prudence`; each conception has characteristic centrality and an explicit normative/prescriptive layer. |
+| R-110-03 | Resolve source and governance provenance. | Every conception source id resolves to the source registry, and both governance decisions report `retain-contextual`, contextual placement, and `not-scored` status without creating canonical ancestry. |
+| R-110-04 | Run the full deterministic audit surface. | Focused/full Vitest, TypeScript, build, dependency audit, research coverage, reachability, belief audits, and browser checks report actual statuses; the six external validation gates remain explicitly `NOT RUN`. |
+| R-110-05 | Inspect the workbench boundary language. | Environmental concern, localism, community identity, decentralization, one liberal response, one conservative response, market support, institutional respect, or gradualism alone is not presented as sufficient evidence for either contextual bridge. |

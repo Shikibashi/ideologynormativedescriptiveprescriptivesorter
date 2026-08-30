@@ -1228,3 +1228,26 @@ V109 adds two source-backed qualitative conceptions to the existing contextual `
 | Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
 
 The source pass uses [Carter's chapter on Green political thought](https://doi.org/10.1017/CBO9780511819179.006) for ecological limits, human–nature relations, grassroots democracy, decentralization, social justice, and plural green routes; the [Stanford Encyclopedia of Philosophy Environmental Ethics entry](https://plato.stanford.edu/entries/ethics-environmental/) for moral and political variation, environmental justice, sustainability, and future-generation boundaries; and [Ostrom's *Governing the Commons*](https://doi.org/10.1017/CBO9780511807763) only for comparative institutional diversity and self-governance terminology. The conception records remain editorial context outside respondent observations, affinity weights, morphology output, or score effects. No cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied. This is neutral taxonomy/provenance authoring, not a comparison, assessment, ranking, recommendation, or decision between political ideologies, parties, candidates, policies, or issues.
+
+## V110 observed verification — contextual bridge provenance — 2026-08-30
+
+V110 adds source-backed qualitative conception bridges for the existing `green-communitarianism` and `liberal-conservatism-context` contextual meso targets. Both remain catalog-only and non-scored, with twelve quarantined candidates each, zero direct production questions, no canonical path, and explicit `retain-contextual` governance. No scoring, belief-model, morphology, share, or ontology semantics changed.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx vitest run src/research.test.ts --reporter=dot` | PASS | Focused research file: 90/90 tests |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 153/153 tests across five files |
+| `npx tsc --noEmit --pretty false` | PASS | TypeScript and research/governance contracts compile |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | Zero vulnerabilities reported |
+| `npm run research:coverage` | PASS | 1,500 production questions; 127 targets/profiles/conception rows; 1,524 quarantined candidates; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors/failures; isolated routing remains intact; overlap ranks remain diagnostics only |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500 facet-proxy items; complete audit coverage; three unmeasured constructs and 15 gap candidates remain visible |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; zero validation/failure counts; adversarial isolation checks remain true |
+| `npm run belief:direct-pilot-audit` | PASS | Eight effect-free categorical pilot items; isolation and provenance checks pass |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All structural checks true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4180 npm run qa -- --reporter=list` | PASS | Stable Vite server; all 10 Playwright scenarios passed in 1.8 minutes, including full research-target iteration and all-layer share flow |
+| `git diff --check` | PASS | No whitespace errors in the worktree and staged diff |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The structural and browser evidence confirms the V110 code path and quarantine boundary only. It does not validate respondent interpretation, cognition, reliability, validity, invariance, population behavior, consequences, or political classification. The six external gates remain `NOT RUN`, and no substitute or personal ideological assessment is claimed.

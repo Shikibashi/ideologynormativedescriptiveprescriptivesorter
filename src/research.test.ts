@@ -1756,6 +1756,45 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("green-politics")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored" });
   });
 
+  it("keeps the remaining contextual bridges source-backed and non-scored", () => {
+    const contextualTargets = [
+      {
+        id: "green-communitarianism",
+        conceptionIds: ["ecological-community-relational-justice", "place-based-accountable-stewardship"],
+        sourceIds: ["source-cambridge-eckersley-communitarianism", "source-repec-pelletier-ecological-communitarianism"],
+      },
+      {
+        id: "liberal-conservatism-context",
+        conceptionIds: ["liberty-through-institutional-continuity", "liberal-reform-with-conservative-prudence"],
+        sourceIds: ["source-sep-liberalism", "source-sciencedirect-klein-conservative-liberalism"],
+      },
+    ] as const;
+
+    for (const contextualTarget of contextualTargets) {
+      const target = buildResearchTargets(DATASET).find((item) => item.id === contextualTarget.id);
+      expect(target).toMatchObject({
+        targetKind: "ideology-node",
+        level: "meso",
+        placement: "contextual",
+        canonicalPath: [],
+        measurementStatus: "contextual-only",
+        questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+      });
+      expect(DATASET.ideologyNodes.find((node) => node.id === contextualTarget.id)).toMatchObject({ placement: "contextual", status: "catalog-only" });
+      expect(researchCandidatesForTarget(contextualTarget.id)).toHaveLength(12);
+      expect(DATASET.questions.some((question) => question.targetNodeIds?.includes(contextualTarget.id))).toBe(false);
+      const profile = researchAnchorProfiles.find((item) => item.targetId === contextualTarget.id);
+      expect(profile?.conceptions.map((conception) => conception.conceptId)).toEqual(contextualTarget.conceptionIds);
+      expect(profile?.conceptions).toEqual(expect.arrayContaining([
+        expect.objectContaining({ layer: "normative", centrality: "characteristic" }),
+        expect.objectContaining({ layer: "prescriptive", centrality: "characteristic" }),
+      ]));
+      expect(profile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
+      expect(contextualTarget.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId))).toBe(true);
+      expect(researchTaxonomyDecisionForTarget(contextualTarget.id)).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });
+    }
+  });
+
   it("keeps Gandhian Political Thought as a source-backed contextual research target without production scoring", () => {
     const target = buildResearchTargets(DATASET).find((item) => item.id === "gandhian-political-thought");
     expect(target).toMatchObject({

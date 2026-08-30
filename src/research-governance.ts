@@ -348,6 +348,32 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
     "not-scored",
     "2026-08-30",
   ),
+  decision(
+    "taxonomy-green-communitarianism-retain-contextual",
+    "green-communitarianism",
+    "retain-contextual",
+    "source-backed-contested",
+    ["source-cambridge-ecologism", "source-cambridge-eckersley-communitarianism", "source-repec-pelletier-ecological-communitarianism", "source-ostrom", "source-sep-environmental-ethics"],
+    "The source set supports Green Communitarianism as a contextual ecological-community bridge joining ecological limits, relational or shared stewardship, and community responsibility while preserving substantial variation in moral foundation, scale, and institutional route.",
+    "Retain this as a contextual meso research target with twelve quarantined candidates. The literature does not justify exclusive canonical ancestry, a production anchor, or a respondent-facing label; ecological concern, localism, community identity, or decentralization alone remains insufficient.",
+    ["Green Communitarianism may be treated as a bridge within green political theory, environmental ethics, ecological economics, or communitarian political thought rather than a separate ideology node.", "Community and place can support stewardship but can also conceal exclusion, unequal power, or scale problems; local or common governance is not a universal requirement.", "The ecological-community claim overlaps Green Politics, Ecologism, Social Ecology, and Bioregionalism and should not be collapsed into any one of them."],
+    "contextual",
+    "not-scored",
+    "2026-08-30",
+  ),
+  decision(
+    "taxonomy-liberal-conservatism-context-retain-contextual",
+    "liberal-conservatism-context",
+    "retain-contextual",
+    "source-backed-contested",
+    ["source-sep-liberalism", "source-oup-conservatism", "source-sciencedirect-klein-conservative-liberalism", "source-oup-political-ideologies"],
+    "The source set supports Liberal Conservatism as a contextual overlap vocabulary joining liberal concern for liberty or rights with conservative concern for historically developed institutions, practical knowledge, continuity, and bounded reform, while preserving disagreement over the label and its economic and constitutional routes.",
+    "Retain this as a contextual meso research target with twelve quarantined candidates. The literature supports a family resemblance or historical overlap, not one exclusive canonical ancestry, production anchor, or respondent-facing identity label.",
+    ["The overlap may be treated as a conservative form of liberalism, a liberalized conservatism, a historical synthesis, or a host-specific label rather than a distinct ideology node.", "The liberal and conservative commitments can conflict over abstract rights, authority, markets, welfare, democracy, and the meaning of reform; one liberal or conservative response cannot resolve the combination.", "Liberal Conservatism overlaps Liberalism, Conservatism, One-Nation Conservatism, Neoconservatism, Christian Democracy, and other host traditions."],
+    "contextual",
+    "not-scored",
+    "2026-08-30",
+  ),
 ];
 
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>
