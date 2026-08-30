@@ -1760,3 +1760,25 @@ After the V125 morphology-resolution seam and V126-V127 relationship tranches se
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
 
 The stable-server retries provide behavioral evidence for the affected browser paths, while the default QA failure remains recorded rather than converted into a pass. No cognitive review, respondent study, psychometric claim, empirical validity claim, or unique political identity classification is inferred from these checks; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V129 observed verification — additional configuration relationship tranche — 2026-08-30
+
+V129 verifies the next source-backed relationship tranche after the 40 new records for twenty canonical owners settled in the shared tree. The production question bank, fixed macro/meso/micro/hybrid ontology, question effects, morphology fit, candidate ordering, legacy scorer, and share contract remain unchanged. The research registry now exposes 146 `source-backed-contested` relationships across 73 of 119 canonical owners; the remaining 46 owners retain explicit open relational gaps.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The additional relationship records, public configuration aliases, and focused assertions compile. |
+| `npx vitest run src/belief-structure.test.ts --no-file-parallelism --reporter=dot` | PASS | Focused configuration suite: 27/27; 73 relationship-bearing canonical owners and 146 unique contested records are checked for source provenance and participant commitment bindings. |
+| `npx vite-node scripts/audit-belief-morphology.ts --summary` | PASS | 119 canonical configurations; 146 source-backed-contested relationships across 73 owners; all participants resolved; all adversarial checks true; zero validation/failure errors. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite build: 42 modules; `index-OCimuFIL.js` 2,956.42 kB (660.36 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets, 128/128 profile and conception rows, and zero validation errors. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | 119 canonical targets retain 4/4/4 blocks with zero validation errors/failures; four contested prescriptive gaps remain explicitly open. |
+| `npm run belief:measurement-audit -- --summary` | PASS | All 1,500 items remain audited through facet-proxy mode; `priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation` remain unmeasured, with 19 quarantined research candidates. |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; competition ranks remain structural overlap diagnostics only. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | Exit 1 remains correct: all 30 structural checks pass and `structuralEligible` is true, while the six required external-study gates remain `NOT RUN`. |
+| Stable-server Playwright relationship/production paths | PASS | The stable-server completion/share, research-workbench, malformed-share, missing-information, and layer-transition scenarios passed 5/5 in the current verification cycle. |
+| `git diff --check` | PASS | No whitespace errors after the tranche documentation and assertion updates. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The relationship expansion improves source-backed explanatory coverage but does not make the configuration model exhaustive or empirically validated. No cognitive review, respondent study, psychometric or empirical validity claim, population/invariance claim, or unique political identity classification is inferred; the overall objective remains `INCOMPLETE` / fail-closed.

@@ -499,8 +499,8 @@ describe("stated political commitment configuration", () => {
     expect(configurations.every((configuration) => configuration.relationalConstraints.length === 5)).toBe(true);
     const researchedConfigurations = canonicalConfigurations.filter((configuration) => configuration.researchedRelationships.length > 0);
     const researchedRelationships = researchedConfigurations.flatMap((configuration) => configuration.researchedRelationships);
-    expect(researchedConfigurations).toHaveLength(53);
-    expect(researchedRelationships).toHaveLength(106);
+    expect(researchedConfigurations).toHaveLength(73);
+    expect(researchedRelationships).toHaveLength(146);
     expect(researchedConfigurations.map((configuration) => configuration.targetId)).toEqual(expect.arrayContaining([
       "liberalism-family",
       "socialism-family",
@@ -530,6 +530,26 @@ describe("stated political commitment configuration", () => {
       "liberal-feminism",
       "contemporary-neo-republicanism",
       "black-feminism",
+      "revisionist-bernsteinian-social-democracy",
+      "christian-nationalism",
+      "buddhist-nationalism",
+      "bioregionalism",
+      "anarcha-feminism",
+      "liberal-nationalism",
+      "radical-feminism",
+      "historical-republicanism",
+      "individualist-anarchism",
+      "egoist-anarchism",
+      "conservative-nationalism",
+      "mutualism",
+      "national-socialism",
+      "neo-fascism",
+      "neoliberalism",
+      "radical-conservatism",
+      "reactionary-conservatism",
+      "religious-nationalism",
+      "socialist-marxist-feminism",
+      "anti-colonial-nationalism",
       "classical-liberalism",
       "social-liberalism",
       "traditional-conservatism",

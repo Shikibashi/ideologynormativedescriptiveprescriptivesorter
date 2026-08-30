@@ -711,3 +711,10 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - [ ] Defining-commitment support is displayed as an observed count/proportion; it is not a calibrated confidence, measurement-error estimate, reliability result, or validity argument.
 - [ ] When the neighborhood is coarse, the next authorized step is source-backed neighbor-discriminating item research and later external review. Do not tune coefficients, add target-specific weights, or promote a unique label from synthetic overlap diagnostics.
 - [ ] The candidate resolution record is an abstention/shortlist diagnostic; it does not answer the open cognitive response-process, expert content, empirical, invariance/DIF, population/consequence, or held-out respondent morphology gates.
+
+## V129 unknowns — additional configuration relationships
+
+- [ ] The relationship registry now covers 73 of 119 canonical owners with 146 source-backed-contested records; the remaining 46 owners still have explicit relational gaps, and no coverage percentage is evidence that the researched configuration model is exhaustive.
+- [ ] The new national, ecological, feminist, republican, socialist, and anarchist relationships preserve source-backed variation but do not establish which relation a respondent endorses; stated priority, condition, conflict resolution, epistemic stance, and contestation still require the separate relational response process.
+- [ ] Some new relationships share broad facets such as structural power, liberty, solidarity, decentralization, or state capacity. Participant binding makes the shared substrate inspectable but cannot by itself distinguish neighboring traditions or justify a target-specific score.
+- [ ] The 40 added relation records do not address the three unmeasured constructs (`priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation`) or the four open prescriptive target-layer gaps; those remain measurement work rather than taxonomy work.
