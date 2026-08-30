@@ -23,19 +23,19 @@ const directEvidence = directEvidenceForAnswers(directAnswers);
 const allQuizAnswers: AnswerMap = Object.fromEntries(DATASET.questions.map((question) => [question.id, 2]));
 const baseline = calculateResults(allQuizAnswers, DATASET);
 const enriched = calculateResults(allQuizAnswers, DATASET, [], directEvidence);
-const sameLegacyScoring = JSON.stringify(baseline.layers) === JSON.stringify(enriched.layers)
-  && JSON.stringify(baseline.combined) === JSON.stringify(enriched.combined);
-const sameAffinityBasis = JSON.stringify(baseline.beliefMorphology.candidates.map((candidate) => ({
+const sameLegacyScoring = JSON.stringify(baseline.legacy.layers) === JSON.stringify(enriched.legacy.layers)
+  && JSON.stringify(baseline.legacy.combined) === JSON.stringify(enriched.legacy.combined);
+const sameAffinityBasis = JSON.stringify(baseline.primary.morphology.candidates.map((candidate) => ({
   anchorId: candidate.anchorId,
   fit: candidate.fit,
   basis: candidate.basis,
-}))) === JSON.stringify(enriched.beliefMorphology.candidates.map((candidate) => ({
+}))) === JSON.stringify(enriched.primary.morphology.candidates.map((candidate) => ({
   anchorId: candidate.anchorId,
   fit: candidate.fit,
   basis: candidate.basis,
 })));
 const directEvidenceLinkedToConstructs = directEvidence.every((evidence) =>
-  evidence.constructIds.every((constructId) => enriched.beliefProfile.constructs
+  evidence.constructIds.every((constructId) => enriched.primary.profile.constructs
     .find((construct) => construct.id === constructId)
     ?.directEvidenceIds.includes(evidence.id) ?? false),
 );
@@ -72,10 +72,17 @@ const report = {
       total: item.options.length,
       recordable: item.options.filter((option) => option.record !== false).length,
       noView: item.options.filter((option) => option.record === false).length,
-      sourceRefs: item.sourceRefs,
+      questionDesignSourceRefs: item.sourceRefs,
+      recordableOptionSourceRefs: item.options
+        .filter((option) => option.record !== false)
+        .map((option) => ({ optionId: option.id, sourceRefs: option.sourceRefs })),
       constructIds: item.constructIds,
     })),
-    sourceRefCount: new Set(BELIEF_DIRECT_ITEMS.flatMap((item) => item.sourceRefs)).size,
+    questionDesignSourceRefCount: new Set(BELIEF_DIRECT_ITEMS.flatMap((item) => item.sourceRefs)).size,
+    recordableOptionSourceRefCount: new Set(BELIEF_DIRECT_ITEMS
+      .flatMap((item) => item.options)
+      .filter((option) => option.record !== false)
+      .flatMap((option) => option.sourceRefs)).size,
     uncoveredConstructIds: uncoveredDirectConstructIds,
     directItemsInProduction,
   },
@@ -87,9 +94,9 @@ const report = {
   isolation: {
     sameLegacyScoring,
     sameAffinityBasis,
-    directEvidenceVisibleInProfile: enriched.beliefProfile.directEvidence.length === directEvidence.length,
+    directEvidenceVisibleInProfile: enriched.primary.profile.directEvidence.length === directEvidence.length,
     directEvidenceLinkedToConstructs,
-    directBasisVisibleInMorphology: enriched.beliefMorphology.candidates.every((candidate) => candidate.directBasis.length === directEvidence.length),
+    directBasisVisibleInMorphology: enriched.primary.morphology.candidates.every((candidate) => candidate.directBasis.length === directEvidence.length),
   },
   validationErrors,
   interpretation: "This is a structural audit of an effect-free, categorical direct-belief pilot. It is not cognitive, psychometric, invariance, population, or empirical validation, and the pilot is not production scoring.",
@@ -101,9 +108,9 @@ const failures = [
   ...(directItemsInProduction.length > 0 ? [`direct pilot items overlap production questions: ${directItemsInProduction.join(", ")}`] : []),
   ...(!sameLegacyScoring ? ["direct pilot evidence changed legacy layer or combined scoring"] : []),
   ...(!sameAffinityBasis ? ["direct pilot evidence changed morphology affinity fit or basis"] : []),
-  ...(!enriched.beliefProfile.directEvidence.length ? ["direct pilot evidence was not retained in the belief profile"] : []),
+  ...(!enriched.primary.profile.directEvidence.length ? ["direct pilot evidence was not retained in the belief profile"] : []),
   ...(!directEvidenceLinkedToConstructs ? ["direct pilot evidence was not linked back to every declared construct"] : []),
-  ...(!enriched.beliefMorphology.candidates.every((candidate) => candidate.directBasis.length === directEvidence.length)
+  ...(!enriched.primary.morphology.candidates.every((candidate) => candidate.directBasis.length === directEvidence.length)
     ? ["direct pilot evidence was not retained in morphology trace metadata"]
     : []),
 ];

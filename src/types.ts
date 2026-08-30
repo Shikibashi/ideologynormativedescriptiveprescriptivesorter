@@ -380,7 +380,7 @@ export type BeliefConfidenceLevel = "low" | "moderate" | "high" | "not-stated";
 
 export type BeliefItemDisposition = "preserve" | "remap" | "rewrite" | "split" | "redundant" | "construct-gap";
 
-export type BeliefMeasurementAuditFlag = "ideology-coded" | "compound-wording" | "conditional-wording" | "cross-construct" | "duplicate-wording";
+export type BeliefMeasurementAuditFlag = "branch-target-metadata" | "ideology-coded-wording" | "compound-wording" | "conditional-wording" | "cross-construct" | "duplicate-wording";
 
 export type BeliefCandidateResponseFormat =
   | "five-point-directional"
@@ -405,6 +405,72 @@ export type BeliefResponseSummary = Readonly<{
   mixed: number;
   noView: number;
   unanswered: number;
+}>;
+
+/**
+ * A compact, non-scoring view of the substantive dimensions in the primary
+ * belief profile. The posture describes the kind of evidence available for a
+ * respondent's profile; it is not a validity or reliability result.
+ */
+export type BeliefStructureDimensionId =
+  | "values-and-moral-scope"
+  | "concepts-and-conceptions"
+  | "descriptive-causal-beliefs"
+  | "legitimacy-and-authority"
+  | "distributive-principles"
+  | "institutional-commitments"
+  | "political-economy"
+  | "political-change"
+  | "priorities-and-conflicts"
+  | "epistemic-stance"
+  | "heterodoxy-and-contestation";
+
+export type BeliefStructureEvidencePosture =
+  | "unmeasured"
+  | "facet-proxy"
+  | "direct-item"
+  | "categorical-pilot"
+  | "candidate-pilot"
+  | "explicit-relational"
+  | "mixed-provisional";
+
+export type BeliefStructureDimension = Readonly<{
+  id: BeliefStructureDimensionId;
+  label: string;
+  description: string;
+  constructIds: readonly BeliefConstructId[];
+  evidencePosture: BeliefStructureEvidencePosture;
+  /** Answered directional or mixed observations, not unanswered records. */
+  observedObservationCount: number;
+  directionalObservationCount: number;
+  /** Observed item-level records grouped by descriptive/normative/prescriptive claim layer. */
+  observedObservationCountsByLayer: Readonly<Record<Layer, number>>;
+  /** Directional subset of the claim-layer counts above. */
+  directionalObservationCountsByLayer: Readonly<Record<Layer, number>>;
+  /**
+   * Primary directional signal from the linked construct when this dimension
+   * has one construct; this is provisional profile evidence, not a validated
+   * latent-trait score.
+   */
+  observedSignal?: number;
+  /** Directional question records supporting the primary construct signal. */
+  observedSignalEvidenceQuestionIds: readonly string[];
+  mixedObservationCount: number;
+  facetProxyObservationCount: number;
+  directItemObservationCount: number;
+  directEvidenceIds: readonly string[];
+  directEvidenceKinds: readonly BeliefDirectEvidenceKind[];
+  /** Selected research-candidate responses; they remain quarantined and non-scoring. */
+  gapEvidenceIds: readonly string[];
+  gapResponseFormats: readonly BeliefCandidateResponseFormat[];
+  relationalEvidenceIds: readonly string[];
+  relationalEvidenceKinds: readonly BeliefRelationalEvidenceKind[];
+  /** Other profile dimensions connected by this dimension's explicit relational records. */
+  relatedDimensionIds: readonly BeliefStructureDimensionId[];
+  evidenceQuestionIds: readonly string[];
+  /** Explains what the current evidence does and does not establish. */
+  gap: string;
+  sourceRefs: readonly string[];
 }>;
 
 /**
@@ -490,6 +556,7 @@ export type BeliefFacetResult = Readonly<{
 export type BeliefRelationalEvidence = Readonly<{
   id: string;
   optionId: string;
+  layer: Layer;
   kind: BeliefRelationalEvidenceKind;
   constructIds: readonly BeliefConstructId[];
   statement: string;
@@ -498,6 +565,7 @@ export type BeliefRelationalEvidence = Readonly<{
   resolution?: string;
   confidence?: BeliefConfidenceLevel;
   evidenceQuestionIds: readonly string[];
+  /** Sources for the selected relationship option, not the broader prompt design. */
   sourceRefs: readonly string[];
 }>;
 
@@ -517,6 +585,7 @@ export type BeliefDirectEvidence = Readonly<{
   optionLabel: string;
   statement: string;
   evidenceQuestionIds: readonly string[];
+  /** Sources for the selected categorical option, not the broader prompt design. */
   sourceRefs: readonly string[];
 }>;
 
@@ -552,6 +621,10 @@ export type BeliefConstructResult = Readonly<{
   directEvidenceCount: number;
   directEvidenceIds: readonly string[];
   directEvidenceQuestionIds: readonly string[];
+  /** Selected research-candidate records; these do not contribute to coverage or signal. */
+  gapEvidenceCount: number;
+  gapEvidenceIds: readonly string[];
+  gapResponseFormats: readonly BeliefCandidateResponseFormat[];
   /** Explicit relational records attached to this construct; these do not contribute to coverage or signal. */
   relationalEvidenceCount: number;
   relationalEvidenceIds: readonly string[];
@@ -576,16 +649,29 @@ export type BeliefProfile = Readonly<{
   modelVersion: number;
   status: "observed" | "partial" | "insufficient-information";
   response: BeliefResponseSummary;
+  /**
+   * Integrated, non-scoring view of the respondent's substantive belief
+   * structure. Ideological morphology is derived after this profile.
+   */
+  structure: readonly BeliefStructureDimension[];
   facets: readonly BeliefFacetResult[];
   constructs: readonly BeliefConstructResult[];
   observations: readonly BeliefObservation[];
   directEvidence: readonly BeliefDirectEvidence[];
+  /** Selected quarantined research candidates; never used as scalar or morphology evidence. */
+  gapEvidence: readonly BeliefGapEvidence[];
   relationalEvidence: readonly BeliefRelationalEvidence[];
   /** Invalid optional evidence is rejected before it can affect the profile. */
   evidenceValidationErrors: readonly string[];
   relationalSummary: BeliefRelationalSummary;
   measurementAudit: readonly BeliefMeasurementAudit[];
   measurementSummary: BeliefMeasurementSummary;
+  /**
+   * Cross-layer relationships derived from the belief profile's observed
+   * facet signals. This is primary explanatory evidence, not legacy anchor
+   * scoring output.
+   */
+  crossLayerPulls: readonly CrossLayerPull[];
   tensions: readonly BeliefTension[];
   diagnostics: readonly BeliefDiagnostic[];
   gaps: readonly string[];
@@ -605,6 +691,8 @@ export type BeliefConception = Readonly<{
   interpretation: string;
   centrality: BeliefCommitmentCentrality;
   sourceRefs: readonly string[];
+  /** Distinguishes a researched conception record from a broad facet proxy. */
+  representation: "explicit-research-conception" | "facet-proxy";
   evidencePosture: "source-backed" | "anchor-projection";
 }>;
 
@@ -662,13 +750,25 @@ export type IdeologyConfiguration = Readonly<{
 export type BeliefMeasurementAudit = Readonly<{
   questionId: string;
   layer: Layer;
+  prompt: string;
+  context?: string;
+  domain: string;
   facetIds: readonly string[];
+  /** The effect map inherited from the compatibility scorer. */
+  legacyEffects: Readonly<Record<string, number>>;
+  /** Editorial branch coverage metadata; never respondent evidence. */
+  editorialTargetNodeIds: readonly string[];
   constructIds: readonly BeliefConstructId[];
   flags: readonly BeliefMeasurementAuditFlag[];
   disposition: BeliefItemDisposition;
   measurementMode: BeliefMeasurementMode;
   rationale: string;
   sourceRefs: readonly string[];
+}>;
+
+export type BeliefConstructLayerCoverage = Readonly<{
+  constructId: BeliefConstructId;
+  layer: Layer;
 }>;
 
 export type BeliefMeasurementSummary = Readonly<{
@@ -678,10 +778,17 @@ export type BeliefMeasurementSummary = Readonly<{
   researchCandidateCounts: Readonly<Record<BeliefConstructId, number>>;
   dispositionCounts: Readonly<Record<BeliefItemDisposition, number>>;
   constructItemCounts: Readonly<Record<BeliefConstructId, number>>;
+  /** Production item counts by declared construct and respondent-facing claim layer. */
+  constructLayerItemCounts: Readonly<Record<BeliefConstructId, Readonly<Record<Layer, number>>>>;
+  /** Declared construct/layer cells with no production item coverage. */
+  uncoveredConstructLayerPairs: readonly BeliefConstructLayerCoverage[];
   uncoveredConstructIds: readonly BeliefConstructId[];
   duplicateQuestionIds: readonly string[];
   compoundQuestionIds: readonly string[];
   conditionalQuestionIds: readonly string[];
+  /** Editorial branch tags are not respondent-facing ideology evidence. */
+  branchMetadataQuestionIds: readonly string[];
+  /** Explicit requests for a named ideology remain a separate wording risk. */
   ideologyCodedQuestionIds: readonly string[];
 }>;
 
@@ -697,6 +804,25 @@ export type BeliefGapCandidate = Readonly<{
   gapAddressed: string;
   sameAnswerDifferentReasonRisk: string;
   reviewStatus: "research_candidate";
+  sourceRefs: readonly string[];
+}>;
+
+/**
+ * A selected response to a research-candidate gap item. This remains separate
+ * from production observations and direct categorical evidence so a pilot
+ * response can be traced without being treated as a validated measure.
+ */
+export type BeliefGapEvidence = Readonly<{
+  id: string;
+  candidateId: string;
+  optionId: string;
+  optionText: string;
+  constructId: BeliefConstructId;
+  layer: Layer;
+  responseFormat: BeliefCandidateResponseFormat;
+  evidenceQuestionIds: readonly string[];
+  reviewStatus: "research_candidate";
+  /** Candidate design and interpretation sources, not selected-option truth. */
   sourceRefs: readonly string[];
 }>;
 
@@ -716,26 +842,42 @@ export type BeliefObservation = Readonly<{
   sourceRefs: readonly string[];
 }>;
 
+/** `facet-proxy` is retained only as a legacy-regression sentinel; current directional fit uses the construct profile. */
+export type MorphologyCalculationSource = "construct-proxy" | "facet-proxy" | "direct-item" | "mixed-provisional" | "none";
+
 export type MorphologyBasis = Readonly<{
   commitmentId: string;
   commitmentLabel: string;
   constructId: BeliefConstructId;
+  /** Primary profile dimensions that contextualize this configuration commitment. */
+  profileDimensionIds: readonly BeliefStructureDimensionId[];
+  /** Evidence form actually used for fit; categorical and relational evidence never appears here. */
+  calculationSource: MorphologyCalculationSource;
   facetId?: string;
   expectedDirection: BeliefCommitmentDirection;
   centrality: BeliefCommitmentCentrality;
   weight: number;
+  /** Primary construct-level signal used for provisional configuration fit. */
   observedSignal?: number;
+  /** Narrow facet-proxy signal retained as context; it is not used for fit. */
+  facetProxySignal?: number;
   agreement?: number;
   contribution?: number;
+  /** Directional item ids supporting the primary construct-level signal. */
   evidenceQuestionIds: readonly string[];
+  /** Directional item ids supporting the retained facet context, when present. */
+  facetProxyEvidenceQuestionIds?: readonly string[];
 }>;
 
 export type MorphologyRelationalBasis = Readonly<{
   evidenceId: string;
   optionId: string;
+  layer: Layer;
   kind: BeliefRelationalEvidenceKind;
   statement: string;
   constructIds: readonly BeliefConstructId[];
+  /** Primary profile dimensions linked through the record's explicit constructs. */
+  profileDimensionIds: readonly BeliefStructureDimensionId[];
   rule?: string;
   condition?: string;
   resolution?: string;
@@ -746,10 +888,13 @@ export type MorphologyRelationalBasis = Readonly<{
 
 export type MorphologyDirectBasis = Readonly<{
   evidenceId: string;
+  layer: Layer;
   kind: BeliefDirectEvidenceKind;
   optionLabel: string;
   statement: string;
   constructIds: readonly BeliefConstructId[];
+  /** Primary profile dimensions linked through the record's explicit constructs. */
+  profileDimensionIds: readonly BeliefStructureDimensionId[];
   sourceRefs: readonly string[];
   evidenceQuestionIds: readonly string[];
 }>;
@@ -788,6 +933,8 @@ export type IdeologicalMorphology = Readonly<{
   compatibility: Readonly<{
     legacyAnchorScorerPreserved: true;
     legacyScorerRemainsPrimaryForRegression: true;
+    primaryInference: "belief-profile";
+    legacyScorerRole: "compatibility-regression";
   }>;
 }>;
 
@@ -873,11 +1020,41 @@ export type CrossLayerPull = Readonly<{
   layers: readonly [Layer, Layer];
 }>;
 
-export type CalculationResult = Readonly<{
-  beliefProfile: BeliefProfile;
-  beliefMorphology: IdeologicalMorphology;
+export type BeliefInterpretation = Readonly<{
+  /** The primary respondent representation. */
+  profile: BeliefProfile;
+  /** Ideology is projected from the profile as a higher-order interpretation. */
+  morphology: IdeologicalMorphology;
+  pulls: readonly CrossLayerPull[];
+}>;
+
+export type LegacyCalculation = Readonly<{
+  /** Compatibility layer retained from the original facet-distance scorer. */
   layers: Readonly<Record<Layer, LayerResult>>;
   combined: CombinedResult;
+}>;
+
+export type CalculationResult = Readonly<{
+  /**
+   * The production interpretation path. Consumers should use this object for
+   * the respondent reading and ideological morphology.
+   */
+  primary: BeliefInterpretation;
+  /**
+   * The old anchor-distance path, retained for regression and transparent
+   * compatibility inspection rather than primary inference.
+   */
+  legacy: LegacyCalculation;
+
+  /** @deprecated Use primary.profile. Kept for share/test compatibility. */
+  beliefProfile: BeliefProfile;
+  /** @deprecated Use primary.morphology. Kept for share/test compatibility. */
+  beliefMorphology: IdeologicalMorphology;
+  /** @deprecated Use legacy.layers. Kept for compatibility. */
+  layers: Readonly<Record<Layer, LayerResult>>;
+  /** @deprecated Use legacy.combined. Kept for compatibility. */
+  combined: CombinedResult;
+  /** @deprecated Use primary.pulls. Kept for compatibility. */
   pulls: readonly CrossLayerPull[];
   datasetId: string;
   contentVersion: number;
@@ -893,6 +1070,7 @@ export type ShareEnvelopeV1 = Readonly<{
   answers: readonly Readonly<{ questionId: string; value: Answer }>[];
   relationalAnswers?: readonly RelationalShareAnswer[];
   directAnswers?: readonly DirectShareAnswer[];
+  gapAnswers?: readonly GapShareAnswer[];
 }>;
 
 export type CompactShareAnswer = readonly [questionIndex: number, value: -2 | -1 | 0 | 1 | 2 | 3];
@@ -900,6 +1078,8 @@ export type CompactShareAnswer = readonly [questionIndex: number, value: -2 | -1
 export type RelationalShareAnswer = readonly [followUpId: string, optionId: string];
 
 export type DirectShareAnswer = readonly [questionId: string, optionId: string];
+
+export type GapShareAnswer = readonly [candidateId: string, optionId: string];
 
 export type ShareEnvelopeV2 = Readonly<{
   schema: "ideology-layer-sorter/share";
@@ -910,6 +1090,7 @@ export type ShareEnvelopeV2 = Readonly<{
   answers: readonly CompactShareAnswer[];
   relationalAnswers?: readonly RelationalShareAnswer[];
   directAnswers?: readonly DirectShareAnswer[];
+  gapAnswers?: readonly GapShareAnswer[];
 }>;
 
 export type ShareEnvelope = ShareEnvelopeV1 | ShareEnvelopeV2;

@@ -3076,6 +3076,7 @@ const PRIORITY_ANCHOR_PROFILES: readonly ResearchAnchorProfile[] = [
     [
       dimension("cultural-causation", "descriptive", "defining-positive", "defining", "Religion supplies a comprehensive public political language.", ["source-cambridge-islamism"]),
       dimension("solidarity", "normative", "moderate-positive", "characteristic", "Social justice can be articulated through an Islamic framework.", ["source-cambridge-islamism"]),
+      dimension("equality", "normative", "moderate-positive", "characteristic", "Social justice and equal moral standing can be articulated within an Islamic framework, while no single account of equality identifies the whole family across its varied currents.", ["source-cambridge-islamism", "source-oup-islamic-political-ideologies"]),
       dimension("state-capacity", "prescriptive", "indeterminate", "contested", "Institutional translation varies substantially among currents.", ["source-cambridge-islamism"]),
       dimension("state-capacity", "prescriptive", "indeterminate", "contested", "Accountability and participation require branch-sensitive wording.", ["source-cambridge-wasatiyya"]),
     ],
@@ -4129,7 +4130,787 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-marx", "source-oup-political-ideologies"],
     ),
   ],
-  "anarchism-family": [
+  libertarianism: [
+    anchorConception(
+      "self-ownership-and-noncoercion",
+      "normative",
+      "Freedom as self-ownership and noncoercion",
+      "Individual freedom is given stringent weight through control over one's person, resistance to coercive interference, and protected voluntary exchange, while the family remains internally divided over property, redistribution, and the legitimate state's scope.",
+      "defining",
+      ["source-sep-libertarianism", "source-nozick"],
+    ),
+  ],
+  neoliberalism: [
+    anchorConception(
+      "competition-as-governance",
+      "prescriptive",
+      "Public order through competitive governance",
+      "Competition and market coordination are treated as institutional mechanisms that public authority should create, maintain, or extend, while the historical and theoretical record remains contested over welfare, democracy, state capacity, and the meaning of freedom.",
+      "contested",
+      ["source-sep-neoliberalism", "source-oup-ordoliberalism", "source-sep-liberalism"],
+    ),
+  ],
+  "marxism-leninism": [
+    anchorConception(
+      "vanguard-mediated-emancipation",
+      "prescriptive",
+      "Emancipation through disciplined revolutionary organization",
+      "Class emancipation is interpreted as requiring a disciplined revolutionary organization capable of coordinating a transition beyond capitalism, with democratic centralism, party leadership, state capacity, and the relation between participation and command remaining historically and theoretically contested.",
+      "defining",
+      ["source-cambridge-vanguard-party", "source-oup-marxist-democracy", "source-oup-communism"],
+    ),
+  ],
+  populism: [
+    anchorConception(
+      "popular-sovereignty-against-elite-closure",
+      "normative",
+      "Popular sovereignty against elite closure",
+      "Politics is interpreted through a morally charged distinction between an ordinary people and a corrupt or insulated elite, with popular sovereignty treated as central while the fuller social, economic, national, and constitutional content remains supplied by host traditions and contested across cases.",
+      "defining",
+      ["source-oup-populism", "source-cambridge-populism"],
+    ),
+  ],
+  "anarcho-capitalism": [
+    anchorConception(
+      "voluntary-proprietary-order",
+      "prescriptive",
+      "Order through voluntary proprietary institutions",
+      "A legitimate political order is interpreted as one without territorial monopoly, using voluntary contracts, property-protected exchange, and competing or polycentric institutions for protection and adjudication; the relation between this market-anarchist account and anarchism remains contested.",
+      "defining",
+      ["source-sep-libertarianism", "source-cambridge-social-anarchism-anarchocapitalism", "source-cambridge-prevost-anarchocapitalism"],
+    ),
+  ],
+  "revisionist-bernsteinian-social-democracy": [
+    anchorConception(
+      "evolutionary-democratic-socialism",
+      "prescriptive",
+      "Socialist change through democratic evolution",
+      "Socialist transformation is interpreted as a democratic, gradual, and empirically revisable process pursued through organized reform rather than a necessary revolutionary rupture, while the historical meaning and limits of Bernsteinian revisionism remain distinct from contemporary social democracy as a whole.",
+      "defining",
+      ["source-oup-ostrowski-bernstein-reform-revolution", "source-oup-constitutionalism-bernstein-revisionism", "source-cambridge-steger-evolutionary-socialism"],
+    ),
+  ],
+  "autonomist-marxism": [
+    anchorConception(
+      "autonomy-through-self-activity",
+      "normative",
+      "Freedom through worker and social self-activity",
+      "Emancipation is interpreted as practical control exercised through worker and social self-activity, refusal of imposed work, and collective autonomy rather than party-led representation or a fixed vanguard route; the tradition remains internally varied across sites and periods.",
+      "defining",
+      ["source-sage-autonomism", "source-antipode-autonomist-marxism", "source-oup-political-ideologies", "source-sen"],
+    ),
+  ],
+  austromarxism: [
+    anchorConception(
+      "democratic-socialism-with-national-autonomy",
+      "prescriptive",
+      "Democratic socialism with non-territorial national autonomy",
+      "Socialist democracy is interpreted as compatible with worker-movement unity and non-territorial or personal national autonomy within a multinational political order, rather than requiring either national assimilation or a separate territorial state for every cultural nation.",
+      "defining",
+      ["source-oup-austromarxism", "source-cambridge-red-vienna-austromarxism", "source-jstage-renner-national-autonomy", "source-cambridge-national-question-austromarxism"],
+    ),
+  ],
+  "egalitarian-liberal-feminism": [
+    anchorConception(
+      "substantive-autonomy-and-equal-standing",
+      "normative",
+      "Autonomy through substantive equal standing",
+      "Equal liberty is interpreted as requiring social, legal, and institutional conditions that make personal and political autonomy effective, while rights, democratic inclusion, and public accountability constrain enabling action.",
+      "defining",
+      ["source-sep-liberal-feminism", "source-rawls", "source-oup-equal-citizenship-feminist-liberalism", "source-oup-friedman-autonomy-gender-politics"],
+    ),
+  ],
+  "cultural-spiritual-ecofeminism": [
+    anchorConception(
+      "relational-ecological-interdependence",
+      "normative",
+      "Justice through anti-essentialist ecological interdependence",
+      "Gendered and ecological domination are interpreted through relational interdependence and critique of hierarchical dualisms, while spiritual, secular, cultural, and material interpretations remain plural and no claim that women are naturally closer to nature is required.",
+      "defining",
+      ["source-oup-religious-ecofeminism-ruether", "source-oup-ecofeminism-religion", "source-sep-feminist-environmental-philosophy", "source-wiley-ecofeminist-universal-particular", "source-cambridge-feminist-theology-creation"],
+    ),
+  ],
+  "materialist-socialist-ecofeminism": [
+    anchorConception(
+      "social-reproduction-and-ecological-justice",
+      "normative",
+      "Justice across production, reproduction, and ecology",
+      "Ecological justice is interpreted through the linked material relations of production, social reproduction, gendered power, resource control, and environmental degradation, with collective and democratic routes remaining open across public, cooperative, municipal, and autonomous forms.",
+      "defining",
+      ["source-cambridge-oksala-materialist-ecofeminism", "source-oup-materialist-feminist-perspectives-environment", "source-wiley-feminist-political-ecology-sundberg", "source-cambridge-eco-feminist-socialist-just-transition"],
+    ),
+  ],
+  "christian-nationalism": [
+    anchorConception(
+      "christianized-national-membership",
+      "normative",
+      "National membership through a Christian public order",
+      "National membership and public authority are interpreted through a Christianized account of history, community, and moral order, while theological, constitutional, democratic, racial, and jurisdictional routes remain heterogeneous and private faith alone is insufficient.",
+      "defining",
+      ["source-cambridge-christian-nationalism", "source-cambridge-christian-nationalism-democracy-africa", "source-oup-defining-christian-nationalism", "source-sep-nationalism"],
+    ),
+  ],
+  "buddhist-nationalism": [
+    anchorConception(
+      "buddhist-national-continuity",
+      "normative",
+      "National continuity through Buddhist public meaning",
+      "National identity and public order are interpreted through Buddhist history, institutions, symbols, or moral claims, while the implications for membership, minority standing, democracy, and state authority remain context-dependent and contested.",
+      "defining",
+      ["source-oup-buddhist-nationalism", "source-oup-buddhist-nationalism-obo", "source-cambridge-buddhist-nationalism-berkwitz", "source-cambridge-religious-nationalism-south-asia"],
+    ),
+  ],
+  "anarcho-pacifism": [
+    anchorConception(
+      "nonviolent-anti-domination",
+      "normative",
+      "Freedom through nonviolent anti-domination",
+      "Anarchist freedom is interpreted as requiring resistance to permanent hierarchy, war, militarism, and structural violence, with nonviolence treated as a political and ethical orientation rather than personal quietism or opposition to one conflict alone.",
+      "defining",
+      ["source-oup-anarcho-pacifism", "source-sage-pacifism-anarchism-landscape", "source-oup-anarchism-world-politics", "source-sep-anarchism"],
+    ),
+  ],
+  "classical-liberal-feminism": [
+    anchorConception(
+      "rights-based-feminist-autonomy",
+      "normative",
+      "Feminist justice through rights-based autonomy",
+      "Feminist justice is interpreted through equal rights, personal autonomy, freedom from coercive interference, and constitutional inclusion, while public action, market arrangements, and the boundary with enabling egalitarian feminism remain contested.",
+      "defining",
+      ["source-sep-liberal-feminism", "source-fpq-baehr-liberal-feminism", "source-sep-libertarianism", "source-oup-feminism"],
+    ),
+  ],
+  "liberal-feminism": [
+    anchorConception(
+      "gender-justice-through-equal-rights",
+      "normative",
+      "Gender justice through equal rights and autonomy",
+      "Gender justice is interpreted through equal rights, personal autonomy, and equal civic standing, with legal and institutional reform used to remove gendered barriers while the boundary between formal equality and enabling social conditions remains contested.",
+      "defining",
+      ["source-oup-feminism", "source-sep-liberal-feminism", "source-sep-liberalism"],
+    ),
+  ],
+  "contemporary-neo-republicanism": [
+    anchorConception(
+      "freedom-as-non-domination",
+      "normative",
+      "Freedom as non-domination",
+      "Freedom is interpreted as independence from arbitrary or uncontrolled power, including private as well as public power, and therefore requires contestable institutions and equal civic standing rather than only the absence of current interference.",
+      "defining",
+      ["source-sep-republicanism", "source-oup-republicanism", "source-dahl"],
+    ),
+  ],
+  "green-anarchism": [
+    anchorConception(
+      "ecological-self-organization",
+      "prescriptive",
+      "Ecological freedom through federated self-organization",
+      "A legitimate ecological order is interpreted as combining resistance to permanent hierarchy with ecological limits, mutual aid, and federated local self-organization, rather than treating localism, environmental concern, or anti-government sentiment alone as sufficient.",
+      "defining",
+      ["source-sep-anarchism", "source-cambridge-ecologism", "source-oup-social-ecology"],
+    ),
+  ],
+  "anarcha-feminism": [
+    anchorConception(
+      "anti-hierarchical-feminist-emancipation",
+      "normative",
+      "Emancipation through anti-hierarchical feminist freedom",
+      "Feminist emancipation is interpreted as opposition to gendered domination and the wider hierarchies that reproduce it, with autonomy, mutual aid, and self-organized institutions required rather than treating either feminism or anti-state politics in isolation as constitutive.",
+      "defining",
+      ["source-sep-anarchism", "source-oup-feminist-theory", "source-oup-feminism"],
+    ),
+  ],
+  "liberal-nationalism": [
+    anchorConception(
+      "rights-bounded-national-self-government",
+      "normative",
+      "National self-government bounded by equal rights",
+      "National solidarity and self-government are treated as politically meaningful when the political community protects equal rights, plural membership, and accountable institutions; the synthesis remains distinct from both rights without national partiality and membership defined by ancestry alone.",
+      "defining",
+      ["source-sep-nationalism", "source-sep-liberalism", "source-anderson"],
+    ),
+  ],
+  "radical-feminism": [
+    anchorConception(
+      "patriarchy-as-systemic-domination",
+      "normative",
+      "Emancipation through transforming patriarchal power",
+      "Gender hierarchy is interpreted as a systemic relation of domination spanning intimate, cultural, and public institutions, so emancipation requires transforming the power relations that make sexuality, embodiment, and private dependence politically consequential rather than relying on formal rights alone.",
+      "defining",
+      ["source-oup-feminism", "source-oup-feminist-theory", "source-sep-feminist-philosophy"],
+    ),
+  ],
+  "individualist-anarchism": [
+    anchorConception(
+      "autonomous-self-direction",
+      "normative",
+      "Freedom as autonomous self-direction",
+      "Freedom is interpreted as protection for individual self-direction against imposed collective command, while voluntary association remains possible and the tradition remains open over property, exchange, cooperation, and the forms of sociality that autonomy can support.",
+      "defining",
+      ["source-sep-anarchism", "source-sep-libertarianism"],
+    ),
+  ],
+  "egoist-anarchism": [
+    anchorConception(
+      "self-direction-beyond-imposed-obligation",
+      "normative",
+      "Self-direction beyond imposed obligation",
+      "Political freedom is interpreted through critique of fixed abstractions, imposed moral obligations, and organizational authority that claims the individual, while voluntary association is left possible and the current is not reduced to generic nonconformity or property absolutism.",
+      "defining",
+      ["source-sep-stirner", "source-wiley-stirner-egoism", "source-cambridge-stirner-anarchism", "source-oup-individualist-anarchism"],
+    ),
+  ],
+  "cultural-feminism": [
+    anchorConception(
+      "care-relation-and-gendered-difference",
+      "normative",
+      "Political value in care, relation, and gendered difference",
+      "Care, relationship, embodiment, and gendered experience are interpreted as potentially valuable political resources and sites of critique, while the tradition remains contested and does not require a fixed natural essence shared by all women or a culture-only account of domination.",
+      "defining",
+      ["source-signs-alcoff-cultural-feminism", "source-cambridge-narayan-cultural-essentialism", "source-oup-kotiswaran-universal-care", "source-oup-feminist-theory"],
+    ),
+  ],
+  "cultural-nationalism": [
+    anchorConception(
+      "nation-as-cultural-community",
+      "normative",
+      "National community through cultural reproduction",
+      "National community is interpreted through language, memory, symbols, education, and cultural association, with cultural reproduction treated as politically formative while membership, statehood, minority standing, and the relation to ancestry remain variable rather than assumed.",
+      "defining",
+      ["source-oup-cultural-nationalism", "source-tandf-spencer-cultural-political-nationalism", "source-oup-hutchinson-memorialization-national-communities", "source-tandf-giudici-grizelj-language-curricula", "source-cje-trohler-national-minded-citizens", "source-sep-nationalism"],
+    ),
+  ],
+  "ethnocultural-nationalism": [
+    anchorConception(
+      "inherited-cultural-membership",
+      "normative",
+      "Political community through inherited cultural membership",
+      "Political community is interpreted through inherited cultural or ancestral continuity and the obligations attached to it, while the civic elements, institutional forms, and consequences for people judged outside the authentic nation remain variable rather than being reduced to race or private cultural attachment.",
+      "defining",
+      ["source-annualreviews-tamir-ethnic-civic", "source-oup-smith-ethnic-nationalism-minorities", "source-oup-smith-culture-community-territory", "source-wiley-piwoni-ethnic-civic-distinction", "source-oup-national-membership-ethnic-model", "source-sep-nationalism"],
+    ),
+  ],
+  "lesbian-feminism": [
+    anchorConception(
+      "autonomy-against-compulsory-heterosexuality",
+      "normative",
+      "Autonomy against compulsory heterosexuality",
+      "Feminist freedom is interpreted as resistance to compulsory heterosexuality and the gendered institutions that organize dependence, with self-definition, collective autonomy, and material exit from coercive arrangements remaining central while separatist, coalition, and intersectional routes vary historically.",
+      "defining",
+      ["source-uchicago-rich-compulsory-heterosexuality", "source-wiley-schippers-compulsory-heterosexuality", "source-oup-lee-atchison-lesbian-separatism", "source-oup-hobson-lesbian-feminism-defense", "source-oup-feminist-theory"],
+    ),
+  ],
+  "one-nation-conservatism": [
+    anchorConception(
+      "organic-national-social-stewardship",
+      "normative",
+      "Social stewardship through organic national solidarity",
+      "A national community is interpreted as an interdependent social body in which inherited institutions carry responsibilities across class and generation, so political stewardship may address social insecurity without making one welfare design or party programme constitutive.",
+      "defining",
+      ["source-oup-one-nation-conservatism", "source-tandf-walsha-one-nation", "source-policy-press-page-one-nation-welfare", "source-wiley-webb-one-nation-tradition", "source-oup-conservatism"],
+    ),
+  ],
+  zionism: [
+    anchorConception(
+      "jewish-national-self-determination",
+      "normative",
+      "Collective self-determination through Jewish national peoplehood",
+      "Collective Jewish self-determination is interpreted as a constitutive political and cultural project involving peoplehood, institutional or homeland revival, and contested relations among sovereignty, diaspora, religious tradition, and equal civic standing; no single territorial or constitutional route is assumed.",
+      "defining",
+      ["source-cambridge-zionism-philosophy", "source-oup-zionism-vsi", "source-cup-boix-jewish-national-identity", "source-oup-mann-zionism-human-rights", "source-sep-nationalism", "source-cambridge-religious-zionism"],
+    ),
+  ],
+  "socialist-marxist-feminism": [
+    anchorConception(
+      "class-and-gender-emancipation",
+      "normative",
+      "Emancipation across class, gender, and social reproduction",
+      "Justice is interpreted as overcoming linked but non-identical forms of class and gender domination, including the organization of productive and reproductive labor, with collective provision, autonomous organizing, and the relationship between reform and transformation remaining open across traditions.",
+      "defining",
+      ["source-oup-feminist-theory", "source-oup-feminism", "source-sep-feminism-class", "source-sep-feminist-power", "source-sep-marx", "source-sen"],
+    ),
+  ],
+  mutualism: [
+    anchorConception(
+      "reciprocal-association-and-fair-exchange",
+      "normative",
+      "Freedom through reciprocal association and fair exchange",
+      "Economic freedom is interpreted through reciprocal exchange, possession-and-use or anti-monopoly limits, cooperative association, and decentralized federation, rather than through either absentee property, centralized state command, or exchange detached from equal access.",
+      "defining",
+      ["source-wiley-mutualism", "source-sep-anarchism", "source-ostrom", "source-oup-socialism-vsi"],
+    ),
+  ],
+  "radical-conservatism": [
+    anchorConception(
+      "decisive-restoration-of-authority",
+      "prescriptive",
+      "Political renewal through decisive restoration of authority",
+      "Political order is interpreted as requiring decisive renewal of authority, community, or inherited purpose when existing institutions are judged incapable of preserving it, while the boundary with reactionary restoration, constitutional conservatism, and fascist transformation remains historically and politically contested.",
+      "defining",
+      ["source-oup-conservatism", "source-oup-pierson-radical-conservatism", "source-frontiers-conservative-revolution", "source-oup-fascism"],
+    ),
+  ],
+  "reactionary-conservatism": [
+    anchorConception(
+      "restoration-of-displaced-authority",
+      "prescriptive",
+      "Political order through restoration of displaced authority",
+      "A legitimate political order is interpreted as one that restores inherited authority, moral continuity, or social distinctions judged to have been wrongly displaced, while historical variation and the boundary with radical conservatism or fascist transformation remain explicit.",
+      "defining",
+      ["source-oup-conservatism", "source-oup-pierson-radical-conservatism", "source-frontiers-conservative-revolution"],
+    ),
+  ],
+  islamism: [
+    anchorConception(
+      "public-order-through-islamic-interpretation",
+      "prescriptive",
+      "Public order through an interpretation of Islam",
+      "Public political authority is interpreted through an account of Islam that reaches beyond private observance, while law, democracy, social justice, sovereignty, movement organization, and the relation between religious principles and state institutions vary substantially across Islamist currents.",
+      "defining",
+      ["source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-political-islam", "source-oup-islamism-case-universe", "source-cambridge-wasatiyya"],
+    ),
+  ],
+  khomeinism: [
+    anchorConception(
+      "jurist-guardianship-and-revolutionary-sovereignty",
+      "prescriptive",
+      "Revolutionary sovereignty through jurist guardianship",
+      "Political order is interpreted through a historically specific Shi'i Islamist project joining jurist guardianship, Islamic sovereignty, revolutionary state formation, and anti-imperial independence, while constitutional participation, social justice, textual interpretation, and institutional reception remain contested.",
+      "defining",
+      ["source-ucp-khomeinism", "source-cambridge-arjomand-khomeini-order", "source-cambridge-namazi-khomeini-sovereign-state", "source-tandf-khomeini-democratic-constitutionalism", "source-oup-ghobadzadeh-governmental-shiism", "source-cambridge-islamism"],
+    ),
+  ],
+  qutbism: [
+    anchorConception(
+      "divine-sovereignty-and-moral-reconstitution",
+      "prescriptive",
+      "Public order through divine sovereignty and moral reconstitution",
+      "Political transformation is interpreted through a critique of jahiliyya and human sovereignty, a comprehensive Islamic moral order, and disciplined community-building aimed at reconstituting public authority, while Qutb's historical setting, later receptions, and revolutionary or reformist translations remain distinct.",
+      "defining",
+      ["source-cambridge-qutb-march", "source-cambridge-qutb-vahdat", "source-oup-toth-qutb", "source-tandf-khatab-qutb-hakimiyya", "source-tandf-faradj-qutb-authority", "source-oup-wagemakers-qutb-legacy", "source-cambridge-islamism"],
+    ),
+  ],
+  "radical-republicanism": [
+    anchorConception(
+      "emancipation-from-domination",
+      "normative",
+      "Freedom through emancipatory non-domination",
+      "Freedom is interpreted as collective emancipation from arbitrary power and entrenched domination, requiring equal civic standing, contestatory democracy, and institutional transformation beyond merely adding checks to an otherwise unchanged hierarchy.",
+      "defining",
+      ["source-sep-republicanism", "source-oup-republicanism", "source-dahl", "source-oup-radical-republicanism", "source-cambridge-pettit-non-domination", "source-apsr-urbinati-republican-democracy", "source-tandf-thompson-radical-republicanism"],
+    ),
+  ],
+  "left-wing-populism": [
+    anchorConception(
+      "egalitarian-popular-sovereignty",
+      "normative",
+      "Popular sovereignty joined to egalitarian inclusion",
+      "The people-versus-elite distinction is interpreted through an egalitarian and broadly inclusive political subject, with popular sovereignty connected to redistribution, democratic deepening, or structural transformation while the host programme, leadership form, and pluralist boundary remain contested.",
+      "defining",
+      ["source-oup-left-populism", "source-oup-populism", "source-cambridge-populism", "source-cambridge-saalfeld-left-populism", "source-wiley-venizelos-left-populism"],
+    ),
+  ],
+  neoconservatism: [
+    anchorConception(
+      "republican-democratic-common-purpose",
+      "normative",
+      "Democratic order through common civic purpose",
+      "A durable democratic order is interpreted as requiring shared civic purpose, moral commitments, and capable public authority rather than value-neutral procedure alone, while the tradition remains historically situated and internally varied over domestic and international institutional routes.",
+      "defining",
+      ["source-oup-neoconservatism", "source-oup-hull-neoconservatism", "source-sage-williams-neoconservatism", "source-oup-conservatism", "source-oup-political-ideologies"],
+    ),
+  ],
+  paleoconservatism: [
+    anchorConception(
+      "national-particularity-and-inherited-order",
+      "normative",
+      "Political judgment through national particularity and inherited order",
+      "Political legitimacy is interpreted through historically rooted national and local communities, inherited institutions, sovereignty, and prudential limits on universalizing projects, while economic policy, membership, and the boundary with national or paleolibertarian currents remain contested.",
+      "defining",
+      ["source-oup-paleoconservatism", "source-oup-bartee-paleoconservatism", "source-oup-kolozi-paleoconservatism", "source-oup-conservatism", "source-ia-national-conservatism"],
+    ),
+  ],
+  wasatiyya: [
+    anchorConception(
+      "contextual-islamic-middle-way",
+      "normative",
+      "Public justice through a context-sensitive Islamic middle way",
+      "Political judgment is interpreted through an Islamic middle-way vocabulary that seeks balance, public justice, consultation, coexistence, and context-sensitive reform, while the relation to state authority, plural citizenship, movement discourse, and secular or theological limits varies by setting.",
+      "defining",
+      ["source-cambridge-wasatiyya", "source-cambridge-islamism", "source-oup-kazmi-wasatiyya", "source-mej-sakthivel-wasatiyya", "source-tandf-teitelbaum-wasatiyya"],
+    ),
+  ],
+  "right-wing-populism": [
+    anchorConception(
+      "national-popular-sovereignty-against-elite-closure",
+      "normative",
+      "National popular sovereignty against elite closure",
+      "The people-versus-elite distinction is interpreted through a right-host political community and a claim to restore popular sovereignty, while nativism, authoritarianism, membership boundaries, economic policy, and institutional bypass remain variable rather than being treated as one universal package.",
+      "defining",
+      ["source-oup-right-populism", "source-oup-populism", "source-cambridge-populism", "source-cambridge-meijers-right-populism", "source-tandf-praet-right-populism"],
+    ),
+  ],
+  "agrarian-populism": [
+    anchorConception(
+      "agrarian-popular-sovereignty",
+      "normative",
+      "Popular sovereignty through agrarian community",
+      "Political legitimacy is interpreted through the claims of small producers, rural communities, or agrarian movements against concentrated land, capital, or administrative power, with egalitarian, cooperative, nationalist, ecological, and institutional routes varying across historical and contemporary cases.",
+      "defining",
+      ["source-wiley-arter-agrarian-populism", "source-wiley-hajdu-agrarian-populism", "source-wiley-borras-agrarian-populism", "source-wiley-pattenden-agrarian-populism", "source-wiley-mamonova-rural-populism", "source-wiley-agrarian-populism", "source-oup-populism", "source-cambridge-populism"],
+    ),
+  ],
+  hindutva: [
+    anchorConception(
+      "hindu-civilizational-national-community",
+      "normative",
+      "National community through Hindu civilizational continuity",
+      "National community is interpreted through a contested Hindu civilizational account of history, territorial belonging, cultural recovery, and public purpose, while internal diversity, caste and minority relations, constitutional form, and the difference between religious identity and political formulation remain explicit.",
+      "defining",
+      ["source-oup-hindutva", "source-sage-mehta-hindu-nationalism", "source-oup-sarkar-hindu-nationalism-india", "source-cambridge-brass-hindu-nationalism", "source-sep-nationalism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "religious-zionism": [
+    anchorConception(
+      "religious-jewish-national-self-determination",
+      "normative",
+      "Jewish national self-determination through religious meaning",
+      "Jewish national self-determination is interpreted through religious history, sacred or theological claims, and political community, while territorial, constitutional, diaspora, citizenship, and religious interpretation vary across currents and cannot be inferred from Jewish identity or observance alone.",
+      "defining",
+      ["source-cambridge-religious-zionism", "source-jstor-schwartz-religious-zionism", "source-tandf-yadgar-hadad-religious-zionism", "source-cambridge-novak-zionism-judaism", "source-tandf-rubin-religious-zionism", "source-cambridge-zionism-philosophy", "source-oup-zionism-vsi", "source-oup-mann-zionism-human-rights", "source-sep-nationalism"],
+    ),
+  ],
+  "marxist-feminism": [
+    anchorConception(
+      "social-reproduction-and-class-power",
+      "normative",
+      "Emancipation through social reproduction and class power",
+      "Gender justice is interpreted through the linked organization of capitalist production, social reproduction, and gendered power, so emancipation reaches work, care, household, and class relations rather than stopping at formal equality or redistribution alone.",
+      "defining",
+      ["source-oup-feminist-theory", "source-sep-feminism-class", "source-sep-feminist-power", "source-sen", "source-guilford-arruzza-social-reproduction", "source-cambridge-household-capitalism", "source-cambridge-ideology-work-reproduction", "source-goldsmiths-social-reproduction-feminisms"],
+    ),
+  ],
+  "socialist-feminism": [
+    anchorConception(
+      "collective-social-reproduction",
+      "normative",
+      "Justice through collective social reproduction",
+      "Gender emancipation is interpreted through collective responsibility for care, production, reproduction, and material security, with feminist autonomy and anti-patriarchal transformation joined to socialist or cooperative routes that vary across historical and contemporary currents.",
+      "defining",
+      ["source-oup-feminism-strands", "source-oup-feminist-theory", "source-sage-hennessy-socialist-feminism", "source-cambridge-cantillon-social-reproduction", "source-cambridge-household-capitalism", "source-cambridge-dean-feministization", "source-sen"],
+    ),
+  ],
+  ordoliberalism: [
+    anchorConception(
+      "competitive-order-through-constitutive-rules",
+      "prescriptive",
+      "Economic freedom through a constitutive competitive order",
+      "Economic freedom is interpreted as depending on a capable legal and institutional order that creates and protects effective competition, rather than on laissez-faire absence of rules or comprehensive public direction; the historical school remains distinct from every later use of competition language.",
+      "defining",
+      ["source-oup-ordoliberalism", "source-sep-liberalism"],
+    ),
+  ],
+  "religious-nationalism": [
+    anchorConception(
+      "sacralized-national-community",
+      "normative",
+      "National community through sacred history and authority",
+      "National membership and public authority are interpreted through religious narratives, sacred history, institutions, or authority, while membership rules, constitutional form, minority standing, and the relationship between religious and national power vary across traditions and jurisdictions.",
+      "defining",
+      ["source-oup-religious-nationalism", "source-oup-religious-nationalism-21c", "source-sep-nationalism", "source-oup-political-ideologies", "source-cambridge-religious-zionism", "source-oup-hindutva"],
+    ),
+  ],
+  "conservative-nationalism": [
+    anchorConception(
+      "national-continuity-and-conservative-authority",
+      "normative",
+      "National continuity through conservative authority",
+      "Political obligation is interpreted through the continuity, sovereignty, and bounded solidarity of a historically situated nation, with inherited authority and social order receiving weight while membership, economic policy, and external cooperation remain variable and distinct from ancestry alone.",
+      "defining",
+      ["source-jpi-national-conservatism", "source-ia-national-conservatism", "source-oup-conservatism", "source-sep-nationalism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "neo-fascism": [
+    anchorConception(
+      "postwar-fascist-rebirth",
+      "prescriptive",
+      "Postwar political renewal through fascist adaptation",
+      "A historically bounded postwar current is interpreted through attempted fascist adaptation or rebirth, anti-pluralist national community, activist organization, and transformative public order, while generational, organizational, national, and ideological variation makes generic radical-right or nationalist language insufficient.",
+      "defining",
+      ["source-oup-bull-neo-fascism", "source-cambridge-wolff-neo-fascism", "source-routledge-albanese-neofascism", "source-cambridge-forlenza-fascism-form", "source-oup-fascism", "source-oup-neo-nazism"],
+    ),
+  ],
+  "third-positionism": [
+    anchorConception(
+      "anti-liberal-anti-marxist-national-solidarity",
+      "normative",
+      "National solidarity beyond liberal capitalism and Marxism",
+      "Political order is interpreted as a proposed third position against both liberal capitalism and Marxist communism, joining national solidarity, anti-pluralist or hierarchical organization, and a transformative economic settlement whose historical forms vary across movements and countries.",
+      "defining",
+      ["source-aup-wolff-terza-posizione", "source-oup-griffin-third-positionism", "source-cambridge-taiana-third-position", "source-cambridge-kressel-argentine-franco", "source-oup-fascism", "source-oup-political-ideologies", "source-persee-national-syndicalism", "source-sep-nationalism"],
+    ),
+  ],
+  "national-syndicalism": [
+    anchorConception(
+      "corporative-national-solidarity",
+      "prescriptive",
+      "Social order through national syndicalist corporatism",
+      "Class conflict and national community are interpreted through organized syndicates or corporative institutions intended to coordinate labor and production under a national political order, while movement, state, Catholic, anti-liberal, and fascist relations vary historically.",
+      "defining",
+      ["source-cambridge-ganapini-national-syndicalism", "source-pucminas-national-syndicalism", "source-cambridge-abse-syndicalism-fascism", "source-kci-shin-cercle-proudhon", "source-persee-national-syndicalism", "source-cambridge-mann-fascists", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "italian-fascism": [
+    anchorConception(
+      "national-revolutionary-corporative-state",
+      "prescriptive",
+      "National rebirth through a corporative revolutionary state",
+      "The historically specific Italian movement and regime is interpreted through national rebirth, mass and party organization, anti-liberal transformation, leadership, and corporative state formation, with period, institutional, social, and ideological variation preserved rather than generalized to all authoritarian politics.",
+      "defining",
+      ["source-cambridge-cerasi-italian-corporative-populism", "source-oup-morgan-italian-corporatism", "source-oup-corner-fascist-party-popular-opinion", "source-cambridge-whittam-fascist-italy-transition", "source-cambridge-forlenza-fascism-form", "source-cambridge-italian-fascism", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "flemish-belgian-fascism": [
+    anchorConception(
+      "flemish-national-revolutionary-corporatism",
+      "prescriptive",
+      "National and regional rebirth through corporative mobilization",
+      "The historically situated Flemish and Belgian formations are interpreted through national or regional peoplehood, anti-liberal mobilization, corporative or authoritarian organization, and projects of political rebirth, while Catholic, technocratic, language, territorial, and movement-state relations remain case-specific.",
+      "defining",
+      ["source-oup-de-wever-belgium-fascism", "source-tandf-de-wever-catholicism-belgium-fascism", "source-jstor-conway-rexism", "source-cambridge-van-de-maele-belgian-technocratic-fascism", "source-cambridge-dalle-mulle-flemish-nationality", "source-sage-kunkeler-flemish-fascism", "source-cambridge-belgian-fascism", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "japanese-fascism": [
+    anchorConception(
+      "imperial-national-mobilization",
+      "prescriptive",
+      "Imperial national mobilization and transformed order",
+      "The historically situated Japanese formation is interpreted through imperial-national community, state and military mobilization, anti-liberal transformation, and projects of social and imperial reorganization, while period, institutional, intellectual, and wartime variation make generic militarism insufficient.",
+      "defining",
+      ["source-cambridge-fletcher-japanese-fascism", "source-oup-hofmann-fascist-effect-japan-italy", "source-cambridge-young-japanese-fascism-empire", "source-oup-mimura-japanese-military-fascism", "source-oup-tsuzuki-japanese-fascism", "source-oup-japanese-fascism", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "british-fascism": [
+    anchorConception(
+      "british-national-rebirth-and-authoritarian-mobilization",
+      "prescriptive",
+      "National rebirth through authoritarian mobilization",
+      "The historically varied British formations are interpreted through national rebirth, organized mass politics, anti-liberal or authoritarian order, and changing relationships among empire, race, class, and the state, while country, period, and movement differences remain constitutive.",
+      "defining",
+      ["source-cambridge-jackson-british-fascism", "source-oup-liburd-british-fascisti-empire", "source-cambridge-douglas-british-irish-fascism", "source-cambridge-loughlin-british-fascism-northern-ireland", "source-cambridge-british-fascism", "source-cambridge-mann-fascists", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "french-fascism": [
+    anchorConception(
+      "french-national-revolutionary-authority",
+      "prescriptive",
+      "National renewal through authoritarian transformation",
+      "The historically varied French formations are interpreted through national renewal, anti-parliamentary or authoritarian political projects, organized mobilization, and changing relationships among veterans, rural society, empire, and the state, with the Vichy period and other currents kept analytically distinct.",
+      "defining",
+      ["source-cambridge-passmore-french-fascism", "source-oup-passmore-right-france-vichy", "source-oup-millington-french-veterans-fascism", "source-oup-paxton-french-peasant-fascism", "source-cambridge-desan-french-fascism-conversion", "source-oup-french-fascism", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  falangism: [
+    anchorConception(
+      "national-syndicalist-catholic-rebirth",
+      "prescriptive",
+      "Spanish national rebirth through national syndicalism",
+      "The historically situated Spanish formation is interpreted through national rebirth, national-syndicalist organization, disciplined movement politics, and a historically variable Catholic and state relationship, rather than through generic nationalism, corporatism, or authoritarianism alone.",
+      "defining",
+      ["source-oup-falangism", "source-wiley-colas-falangism", "source-oup-fascism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "brazilian-integralism": [
+    anchorConception(
+      "spiritual-corporate-national-unity",
+      "normative",
+      "National unity through spiritual and corporative organization",
+      "The historically situated Brazilian movement is interpreted through spiritualized national unity, anti-liberal mass organization, corporative social coordination, and a project of political rebirth, while its local, Catholic, racial, economic, and institutional translations remain historically specific and contested.",
+      "defining",
+      ["source-scielo-bianchi-integralism", "source-tandf-goncalves-brazil-integralism", "source-ufjf-calil-integralism", "source-unesp-perez-brazil-integralism", "source-oup-fascism", "source-sep-nationalism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "integral-nationalism": [
+    anchorConception(
+      "national-totality-and-organic-solidarity",
+      "normative",
+      "Political order through national totality and organic solidarity",
+      "Political community is interpreted as an integrated national whole whose authority and solidarity should overcome liberal fragmentation, while the historical applications, religious or secular grounding, territorial projects, and relationship to fascism vary across contexts and cannot be inferred from national identification alone.",
+      "defining",
+      ["source-cambridge-integral-nationalism", "source-ucpress-zaitsev-integral-nationalism", "source-uvr-zajtsev-integral-nationalism", "source-psage-matsaberidze-georgian-integral-nationalism", "source-sage-spektorowski-integral-nationalism", "source-oup-fascism", "source-sep-nationalism", "source-oup-political-ideologies"],
+    ),
+  ],
+  "legionary-fascism": [
+    anchorConception(
+      "sacralized-national-rebirth",
+      "normative",
+      "National rebirth through sacralized political faith",
+      "The historically situated Romanian formation is interpreted through sacralized national rebirth, disciplined movement and youth organization, anti-pluralist sovereignty, and a religiously charged political faith, while Orthodox, generational, social, and movement-state relations remain case-specific.",
+      "defining",
+      ["source-tandf-ioanid-legionary-sacralised-politics", "source-tandf-iordachi-legionary-faith", "source-cambridge-cercel-legionary-sovereignty", "source-jstor-clark-holy-legionary-youth", "source-oup-legionary", "source-oup-fascism", "source-sep-nationalism", "source-oup-political-ideologies"],
+    ),
+  ],
+  fascism: [
+    anchorConception(
+      "palingenetic-ultranationalism",
+      "normative",
+      "National rebirth through anti-pluralist mobilization",
+      "Fascist politics is interpreted as a historically situated project of national rebirth joining ultranationalist community, anti-pluralist or anti-liberal order, activist mass mobilization, leadership, and transformative state or movement organization; no single national case or policy is treated as exhaustive.",
+      "defining",
+      ["source-routledge-griffin-nature-fascism", "source-penguinrandomhouse-paxton-anatomy-fascism", "source-uwpress-payne-history-fascism", "source-cambridge-mann-fascists", "source-oup-fascism", "source-oup-political-ideologies", "source-oup-national-socialism"],
+    ),
+  ],
+  "white-nationalism": [
+    anchorConception(
+      "racial-national-membership",
+      "normative",
+      "Political community through white racial membership",
+      "Political community is interpreted through white racial membership, continuity, or supremacy and the unequal standing attached to it, while the movement's transnational, national, religious, demographic, organizational, and state-seeking forms vary; racial identity or ancestry alone is not treated as a political commitment.",
+      "defining",
+      ["source-cambridge-geary-global-white-nationalism", "source-cambridge-buzas-racial-nationalism", "source-oup-nieli-white-identity", "source-cambridge-rosenberg-white-supremacist-discourse", "source-oup-white-nationalism", "source-sep-nationalism", "source-oup-political-ideologies", "source-oup-fascism"],
+    ),
+  ],
+  "neo-nazism": [
+    anchorConception(
+      "postwar-nazi-continuity-and-racial-rebirth",
+      "prescriptive",
+      "Postwar racial-national rebirth through Nazi continuity",
+      "The historically and organizationally varied postwar current is interpreted through continuity, adaptation, or revival of Nazi racial-national doctrine, anti-democratic mobilization, and movement or network organization, while its national, generational, symbolic, and strategic forms remain distinct and no operational guidance is implied.",
+      "defining",
+      ["source-bloomsbury-jackson-colin-jordan-neo-nazi", "source-nyup-goodrick-clarke-black-sun", "source-tandf-kahn-german-neo-nazism", "source-wiley-simi-neo-nazi-movements", "source-oup-neo-nazism", "source-specialist-neo-nazi", "source-oup-national-socialism", "source-oup-bull-neo-fascism"],
+    ),
+  ],
+  "revolutionary-islamism": [
+    anchorConception(
+      "revolutionary-islamic-state-transformation",
+      "prescriptive",
+      "Political transformation through revolutionary Islam",
+      "Public order is interpreted through a revolutionary Islamist project that joins comprehensive Islamic authority, anti-imperial or anti-regime transformation, disciplined mobilization, and state reconstitution, while the historical, theological, social, and institutional routes vary across movements and periods.",
+      "defining",
+      ["source-cambridge-chalcraft-islamism-revolution", "source-cambridge-sadeghi-boroujerdi-revolutionary-islam", "source-cambridge-maidul-islam-islamism-ideology", "source-oup-nasr-islamic-leviathan", "source-cambridge-islamism", "source-oup-islamic-political-ideologies", "source-oup-political-islam", "source-oup-islamism-case-universe"],
+    ),
+  ],
+  "salafi-jihadism": [
+    anchorConception(
+      "salafi-jihadi-theonomic-revolution",
+      "prescriptive",
+      "Political order through Salafi-jihadi theonomy",
+      "The historically varied current is interpreted through a Salafi account of religious authority joined to revolutionary or militant reconstitution of political order, transnational struggle, and theonomy, while quietist, political, and jihadi Salafi currents remain analytically distinct and no operational guidance is implied.",
+      "defining",
+      ["source-oup-meijer-global-salafism", "source-oup-wehrey-boukhars-salafism-currents", "source-cambridge-wagemakers-quietist-jihadi", "source-cambridge-lav-salafi-jihadi-theonomy", "source-oup-salafi-jihadism", "source-cambridge-islamism", "source-oup-political-ideologies", "source-oup-islamism-case-universe"],
+    ),
+  ],
+  "black-nationalism": [
+    anchorConception(
+      "black-collective-autonomy-and-liberation",
+      "normative",
+      "Collective autonomy and liberation from anti-Black domination",
+      "Political justice is interpreted through Black collective dignity, linked fate, self-determination, and liberation from institutional and material anti-Black domination, while separatist, diasporic, cultural, coalition, state-seeking, and economic routes vary across traditions and periods.",
+      "defining",
+      ["source-oup-black-nationalism-ore", "source-cambridge-black-nationalism", "source-sage-jagmohan-black-nationalism", "source-cambridge-panafrican-distinction"],
+    ),
+  ],
+  "materialist-feminism": [
+    anchorConception(
+      "material-conditions-of-gendered-power",
+      "normative",
+      "Justice through material conditions of gendered power",
+      "Gender justice is interpreted through the material organization of labor, property, social reproduction, and institutional power, with lived experience and cultural meaning connected to those conditions rather than treated as a substitute for them; Marxist, socialist, and other materialist routes remain distinct.",
+      "defining",
+      ["source-oup-materialisms-feminist-theory", "source-oup-feminist-theory", "source-sep-feminism-class", "source-sep-feminist-power", "source-sen"],
+    ),
+  ],
+  "arab-nationalism": [
+    anchorConception(
+      "arab-collective-self-determination",
+      "normative",
+      "Collective self-determination through Arab peoplehood",
+      "Political community is interpreted through a shared Arab peoplehood, language, history, and collective self-determination, often in relation to anti-colonial independence and regional unity, while state, secular, religious, socialist, and authoritarian translations vary historically.",
+      "defining",
+      ["source-oup-arab-nationalism-dawisha", "source-oup-arab-nationalism-emergence", "source-cambridge-arab-nationalism", "source-cambridge-arab-nationalism-frontiers", "source-sep-nationalism"],
+    ),
+  ],
+  maoism: [
+    anchorConception(
+      "peasant-led-revolutionary-transformation",
+      "prescriptive",
+      "Revolutionary transformation through peasant mobilization",
+      "Revolutionary politics is interpreted through a historically situated adaptation of Marxism centered on peasant and mass mobilization, disciplined party organization, anti-imperial transformation, and continuing revolutionary struggle, while Chinese and transnational applications and later readings remain distinct.",
+      "defining",
+      ["source-oup-maoism", "source-oup-maoism-compare", "source-cambridge-maoist-social-history", "source-cambridge-maoism-cultural-revolution", "source-oup-communism", "source-sen"],
+    ),
+  ],
+  georgism: [
+    anchorConception(
+      "land-value-and-equal-access",
+      "normative",
+      "Equal freedom through shared land value",
+      "Justice is interpreted through equal access to the value created by land and natural opportunity, allowing private use or improvement while treating unearned location value as a common claim; the institutional and ecological translations of that principle remain open.",
+      "defining",
+      ["source-helsinki-obeng-odoom-georgist-political-economy", "source-jhu-england-land-liberty", "source-oup-odonnell-george-inequality", "source-oup-mclean-land-value-taxation", "source-sage-williams-georgist-political-ecology", "source-wiley-mccann-georgist-social-philosophy", "source-wiley-hudson-george-critics", "source-oll-george-progress-poverty"],
+    ),
+  ],
+  degrowth: [
+    anchorConception(
+      "ecological-sufficiency-and-democratic-reduction",
+      "normative",
+      "Justice through ecological sufficiency and democratic reduction",
+      "A just economy is interpreted as reducing materially excessive throughput and growth dependence while securing sufficiency, equality, care, and ecological integrity, with democratic, state, movement, and transition routes varying and recession or austerity not treated as synonyms.",
+      "defining",
+      ["source-cup-kallis-degrowth", "source-tandf-akbulut-degrowth", "source-elsevier-alisa-kallis-degrowth-state", "source-elsevier-asara-degrowth-democracy", "source-cambridge-durrant-cohen-degrowth", "source-sage-savini-degrowth-ideology", "source-elsevier-degrowth-movement-2025", "source-manchester-buch-hansen-degrowth-transformations"],
+    ),
+  ],
+  distributism: [
+    anchorConception(
+      "widely-dispersed-property-and-association",
+      "normative",
+      "Economic justice through widely dispersed property",
+      "A just social order is interpreted as widely distributing productive property and strengthening families, local associations, and intermediary institutions against concentrated economic power, while markets, public authority, religious grounding, and the meaning of ownership vary across distributist accounts.",
+      "defining",
+      ["source-jstor-salter-distributism", "source-cambridge-boyd-distributism", "source-cambridge-mathews-distributism", "source-oup-pierson-distributism", "source-sage-quilley-distributism", "source-cauriensia-utrera-distributism", "source-cambridge-kelly-distributism-work", "source-cambridge-chesterton-distributism-primary"],
+    ),
+  ],
+  "christian-socialism": [
+    anchorConception(
+      "christian-commonwealth-and-economic-justice",
+      "normative",
+      "Economic justice through a Christian commonwealth",
+      "Economic and social justice are interpreted through Christian moral commitments to solidarity, shared responsibility, and the dignity of labor, with socialist, communal, labor, cooperative, and public institutional routes varying across historical and contemporary movements.",
+      "defining",
+      ["source-bloomsbury-williams-christian-socialism", "source-liverpool-williams-christian-socialism-thesis", "source-oup-drake-gospel-church", "source-oup-stauffer-listening-spirit", "source-cambridge-jashari-christians-socialism", "source-oup-lockley-christian-socialism", "source-taylor-johnson-labour-church", "source-sage-hogan-christian-socialism"],
+    ),
+  ],
+  ujamaa: [
+    anchorConception(
+      "communal-self-reliance-and-socialism",
+      "prescriptive",
+      "Socialism through communal self-reliance",
+      "Political economy is interpreted through a historically situated African socialist project joining communal responsibility, self-reliance, equality, and national development, while village organization, state capacity, coercion, participation, and the relationship to broader African socialism remain contested.",
+      "defining",
+      ["source-oup-jennings-ujamaa", "source-cambridge-lal-self-reliance-ujamaa", "source-cambridge-lal-african-socialism-ujamaa", "source-cambridge-hunter-african-socialism", "source-cambridge-aminzade-african-socialism", "source-ahr-maddox-lal-african-socialism", "source-oup-nyerere-ujamaa-1962", "source-nyerere-arusha-declaration-1967"],
+    ),
+  ],
+  "labor-zionism": [
+    anchorConception(
+      "national-revival-through-labor-institutions",
+      "prescriptive",
+      "National revival through labor and cooperative institutions",
+      "Jewish collective self-determination is interpreted through labor, socialist, cooperative, and institution-building projects that join national revival with social transformation, while diaspora, territorial, class, democratic, and economic routes vary across periods and organizations.",
+      "defining",
+      ["source-ucp-shafir-land-labor", "source-cambridge-beinin-socialism-zionism", "source-oup-halpern-reinharz-zionism-left", "source-cambridge-yona-labour-zionism", "source-cambridge-kelemen-labour-zionism", "source-suny-gorny-zionist-labor", "source-jstor-origins-israel-labor", "source-oup-zionism-bibliography"],
+    ),
+  ],
+  "deep-ecology": [
+    anchorConception(
+      "intrinsic-value-and-ecological-selfhood",
+      "normative",
+      "Ecological justice through intrinsic value and expanded selfhood",
+      "The more-than-human world is interpreted as having value beyond human use, with ecological limits and an expanded ecological self shaping political and ethical judgment, while the relation to policy, activism, decentralization, state action, and human equality varies across ecosophies and movements.",
+      "defining",
+      ["source-naess-deep-ecology", "source-oup-dobson-environmental-politics", "source-oup-attfield-environmental-movements", "source-sep-environmental-ethics", "source-cambridge-ecologism", "source-oup-social-ecology-movements", "source-trumpeter-drengson-devall-deep-ecology", "source-mit-katz-light-rothenberg-deep-ecology", "source-wiley-grey-deep-ecology-critique", "source-cambridge-dizerega-deep-ecology-liberalism", "source-uksw-bombik-deep-ecology-methodology", "source-sage-luke-deep-ecology"],
+    ),
+  ],
+  anarchism: [
     anchorConception(
       "anti-domination-self-organization",
       "normative",
@@ -4139,7 +4920,7 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-anarchism", "source-oup-anarchism-ward-introduction", "source-ostrom"],
     ),
   ],
-  "conservatism-family": [
+  conservatism: [
     anchorConception(
       "continuity-and-prudence",
       "normative",
@@ -4149,7 +4930,7 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-conservatism", "source-oup-conservatism", "source-cambridge-conservatism-traditions"],
     ),
   ],
-  "liberalism-family": [
+  liberalism: [
     anchorConception(
       "equal-liberty-under-justified-authority",
       "normative",
@@ -4159,7 +4940,7 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-liberalism", "source-cambridge-companion-liberalism", "source-rawls"],
     ),
   ],
-  "socialism-family": [
+  socialism: [
     anchorConception(
       "social-ownership-and-equality",
       "normative",
@@ -4169,7 +4950,7 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-socialism", "source-cambridge-socialist-visions", "source-oup-political-ideologies"],
     ),
   ],
-  "nationalism-family": [
+  nationalism: [
     anchorConception(
       "national-self-determination",
       "normative",
@@ -4179,7 +4960,7 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-nationalism", "source-oup-nationalism-contexts", "source-anderson"],
     ),
   ],
-  "republicanism-family": [
+  republicanism: [
     anchorConception(
       "non-domination-and-contestation",
       "normative",
@@ -4189,7 +4970,7 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-republicanism", "source-oup-republicanism", "source-dahl"],
     ),
   ],
-  "feminism-family": [
+  feminism: [
     anchorConception(
       "gendered-power-and-emancipation",
       "normative",

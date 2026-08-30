@@ -9,6 +9,7 @@ import {
   BELIEF_RELATIONAL_FOLLOWUPS,
   type BeliefRelationalAnswerMap,
   relationalEvidenceForAnswers,
+  validateBeliefRelationalFollowUps,
 } from "./belief-followups";
 import { calculateBeliefProfile, validateBeliefRelationalEvidence } from "./beliefs";
 import { DATASET } from "./data";
@@ -38,6 +39,9 @@ describe("respondent-facing relational follow-ups", () => {
     expect(BELIEF_RELATIONAL_FOLLOWUPS).toHaveLength(6);
     expect(new Set(BELIEF_RELATIONAL_FOLLOWUPS.map((followUp) => followUp.id)).size).toBe(6);
     expect(BELIEF_RELATIONAL_FOLLOWUPS.every((followUp) => followUp.options.length >= 4 && followUp.sourceRefs.length >= 2)).toBe(true);
+    expect(BELIEF_RELATIONAL_FOLLOWUPS.every((followUp) => followUp.options
+      .filter((option) => option.record !== false)
+      .every((option) => option.sourceRefs.length > 0))).toBe(true);
     expect(BELIEF_RELATIONAL_FOLLOWUPS.every((followUp) => followUp.options.some((option) => option.id === "no-view" && option.record === false))).toBe(true);
     expect(BELIEF_RELATIONAL_FOLLOWUPS.find((followUp) => followUp.kind === "conditional")?.options
       .filter((option) => option.record !== false)
@@ -46,6 +50,16 @@ describe("respondent-facing relational follow-ups", () => {
       .filter((followUp) => ["priority", "conditional", "conflict-resolution", "contradiction"].includes(followUp.kind))
       .every((followUp) => followUp.constructIds.includes("priority-conflict"))).toBe(true);
     expect(DATASET.questions).toHaveLength(DATASET.manifest.questionCount);
+  });
+
+  it("rejects a relational option whose substantive source record is unavailable", () => {
+    const datasetWithoutLiberalismSource = {
+      ...DATASET,
+      sources: DATASET.sources.filter((source) => source.id !== "source-sep-liberalism"),
+    };
+    expect(validateBeliefRelationalFollowUps(datasetWithoutLiberalismSource)).toEqual(expect.arrayContaining([
+      expect.stringContaining("option freedom-first references missing source source-sep-liberalism"),
+    ]));
   });
 
   it("converts recorded selections into validated explicit evidence and preserves no-view as missing", () => {
@@ -63,6 +77,23 @@ describe("respondent-facing relational follow-ups", () => {
 
     const priorityEvidence = evidence.find((item) => item.kind === "priority");
     if (!priorityEvidence) throw new Error("expected a generated priority evidence record");
+    expect(priorityEvidence.layer).toBe("normative");
+    const priorityOption = BELIEF_RELATIONAL_FOLLOWUPS.find((followUp) => followUp.id === "priority-liberty-equality")?.options
+      .find((option) => option.id === priorityEvidence?.optionId);
+    expect(priorityOption).toBeDefined();
+    expect(priorityEvidence.sourceRefs).toEqual(priorityOption?.sourceRefs);
+    expect(priorityEvidence.sourceRefs).not.toEqual(
+      BELIEF_RELATIONAL_FOLLOWUPS.find((followUp) => followUp.id === "priority-liberty-equality")?.sourceRefs,
+    );
+    const detachedSourcePriorityEvidence = [{
+      ...priorityEvidence,
+      id: "detached-priority-source",
+      sourceRefs: BELIEF_RELATIONAL_FOLLOWUPS.find((followUp) => followUp.id === "priority-liberty-equality")?.sourceRefs ?? [],
+    }];
+    expect(validateBeliefRelationalEvidence(detachedSourcePriorityEvidence, DATASET)).toEqual(expect.arrayContaining([
+      expect.stringContaining("has mismatched option source links"),
+    ]));
+
     const detachedPriorityEvidence = [{
       ...priorityEvidence,
       id: "detached-priority",
@@ -70,6 +101,11 @@ describe("respondent-facing relational follow-ups", () => {
     }];
     expect(validateBeliefRelationalEvidence(detachedPriorityEvidence, DATASET)).toEqual(expect.arrayContaining([
       expect.stringContaining("must link its priority record to priority-conflict"),
+    ]));
+
+    const detachedLayerEvidence = [{ ...priorityEvidence, id: "detached-priority-layer", layer: "prescriptive" as const }];
+    expect(validateBeliefRelationalEvidence(detachedLayerEvidence, DATASET)).toEqual(expect.arrayContaining([
+      expect.stringContaining("has a mismatched follow-up layer"),
     ]));
 
     const noViewAnswers = Object.fromEntries(BELIEF_RELATIONAL_FOLLOWUPS.map((followUp) => [followUp.id, "no-view"]));
@@ -80,11 +116,28 @@ describe("respondent-facing relational follow-ups", () => {
     expect(BELIEF_DIRECT_ITEMS).toHaveLength(8);
     expect(new Set(BELIEF_DIRECT_ITEMS.map((item) => item.id)).size).toBe(8);
     expect(BELIEF_DIRECT_ITEMS.every((item) => item.options.length >= 4 && item.sourceRefs.length >= 2)).toBe(true);
+    expect(BELIEF_DIRECT_ITEMS.every((item) => item.options
+      .filter((option) => option.record !== false)
+      .every((option) => option.sourceRefs.length > 0))).toBe(true);
     expect(BELIEF_DIRECT_ITEMS.every((item) => item.options.some((option) => option.id === "no-view" && option.record === false))).toBe(true);
 
     const evidence = directEvidenceForAnswers(firstDirectAnswers());
     expect(evidence).toHaveLength(8);
     expect(validateBeliefDirectEvidence(evidence, DATASET)).toEqual([]);
+    const freedomEvidence = evidence.find((item) => item.questionId === "conception-of-freedom");
+    if (!freedomEvidence) throw new Error("expected generated freedom evidence");
+    const freedomOption = BELIEF_DIRECT_ITEMS.find((item) => item.id === "conception-of-freedom")?.options
+      .find((option) => option.id === freedomEvidence?.optionId);
+    expect(freedomEvidence?.sourceRefs).toEqual(freedomOption?.sourceRefs);
+    expect(freedomEvidence?.sourceRefs).not.toEqual(BELIEF_DIRECT_ITEMS.find((item) => item.id === "conception-of-freedom")?.sourceRefs);
+    const detachedSourceFreedomEvidence = [{
+      ...freedomEvidence,
+      id: "detached-freedom-source",
+      sourceRefs: BELIEF_DIRECT_ITEMS.find((item) => item.id === "conception-of-freedom")?.sourceRefs ?? [],
+    }];
+    expect(validateBeliefDirectEvidence(detachedSourceFreedomEvidence, DATASET)).toEqual(expect.arrayContaining([
+      expect.stringContaining("has mismatched option source links"),
+    ]));
 
     const noViewAnswers = Object.fromEntries(BELIEF_DIRECT_ITEMS.map((item) => [item.id, "no-view"]));
     expect(directEvidenceForAnswers(noViewAnswers)).toEqual([]);
@@ -152,6 +205,12 @@ describe("respondent-facing relational follow-ups", () => {
     });
     expect(enriched.beliefProfile.constructs.find((construct) => construct.id === "heterodoxy-contestation")?.signal).toBeUndefined();
     expect(enriched.beliefMorphology.candidates[0]?.relationalBasis).toHaveLength(6);
+    expect(enriched.beliefMorphology.candidates[0]?.relationalBasis.find((item) => item.kind === "priority")).toMatchObject({
+      profileDimensionIds: expect.arrayContaining(["priorities-and-conflicts", "concepts-and-conceptions", "distributive-principles"]),
+    });
+    expect(enriched.beliefMorphology.candidates[0]?.relationalBasis.find((item) => item.kind === "uncertainty")).toMatchObject({
+      profileDimensionIds: expect.arrayContaining(["epistemic-stance", "descriptive-causal-beliefs"]),
+    });
   });
 
   it("keeps different priority and conditional rules visible without changing scalar affinity", () => {
@@ -212,6 +271,9 @@ describe("respondent-facing relational follow-ups", () => {
     ]));
     expect(enriched.beliefMorphology.candidates[0]?.directBasis).toHaveLength(8);
     expect(enriched.beliefMorphology.candidates[0]?.directBasis.every((item) => item.sourceRefs.length > 0)).toBe(true);
+    expect(enriched.beliefMorphology.candidates[0]?.directBasis.find((item) => item.evidenceId.includes("conception-of-freedom"))).toMatchObject({
+      profileDimensionIds: expect.arrayContaining(["concepts-and-conceptions", "legitimacy-and-authority"]),
+    });
     expect(enriched.beliefMorphology.candidates[0]?.fit).toBe(base.beliefMorphology.candidates[0]?.fit);
     expect(enriched.beliefMorphology.candidates[0]?.basis).toEqual(base.beliefMorphology.candidates[0]?.basis);
   });

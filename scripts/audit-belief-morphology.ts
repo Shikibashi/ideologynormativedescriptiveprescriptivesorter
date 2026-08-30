@@ -50,16 +50,21 @@ const relationalAnswersFor = (overrides: Readonly<Record<string, string>> = {}):
   BELIEF_RELATIONAL_FOLLOWUPS.map((followUp) => [followUp.id, overrides[followUp.id] ?? firstRecordableOptionId(followUp.options)]),
 );
 
-const affinityTraceFor = (result: ReturnType<typeof calculateResults>) => result.beliefMorphology.candidates
+const affinityTraceFor = (result: ReturnType<typeof calculateResults>) => result.primary.morphology.candidates
   .map((candidate) => [candidate.anchorId, candidate.fit, candidate.coverage, candidate.basis] as const);
 
 const constructSignalFor = (result: ReturnType<typeof calculateResults>, constructId: string): number | undefined =>
-  result.beliefProfile.constructs.find((construct) => construct.id === constructId)?.signal;
+  result.primary.profile.constructs.find((construct) => construct.id === constructId)?.signal;
 
 const candidateRowFor = (configuration: IdeologyConfiguration) => {
   const result = calculateResults(answersTowardConfiguration(configuration));
-  const rank = result.beliefMorphology.candidates.findIndex((candidate) => candidate.anchorId === configuration.targetId);
-  const candidate = rank >= 0 ? result.beliefMorphology.candidates[rank] : undefined;
+  const rank = result.primary.morphology.candidates.findIndex((candidate) => candidate.anchorId === configuration.targetId);
+  const candidate = rank >= 0 ? result.primary.morphology.candidates[rank] : undefined;
+  const directionalBasis = candidate?.basis.filter((basis) => basis.expectedDirection !== "indeterminate") ?? [];
+  const constructSignals = new Map(result.primary.profile.constructs.map((construct) => [construct.id, construct.signal]));
+  const directionalFitUsesConstructSignal = directionalBasis.length > 0
+    && directionalBasis.every((basis) => basis.observedSignal === constructSignals.get(basis.constructId)
+      && basis.calculationSource !== "facet-proxy");
   return {
     syntheticProfileId: `source-backed-configuration:${configuration.targetId}`,
     syntheticProfileKind: "source-backed-configuration-projection" as const,
@@ -69,9 +74,11 @@ const candidateRowFor = (configuration: IdeologyConfiguration) => {
     profileCommitmentCount: configuration.commitments.length,
     targetCandidateRank: rank < 0 ? null : rank + 1,
     targetCandidateStatus: candidate?.status ?? null,
-    morphologyStatus: result.beliefMorphology.status,
+    morphologyStatus: result.primary.morphology.status,
     targetCoverage: candidate?.coverage ?? null,
     targetFit: candidate?.fit ?? null,
+    directionalFitUsesConstructSignal,
+    facetContextRecordCount: candidate?.basis.filter((basis) => basis.facetProxySignal !== undefined).length ?? 0,
   };
 };
 
@@ -101,10 +108,10 @@ const sameValuesDifferentCausalBeliefAnswers = (causalValue: Answer): AnswerMap 
 ]));
 const sameValuesDifferentCausalBeliefFirst = calculateResults(sameValuesDifferentCausalBeliefAnswers(2));
 const sameValuesDifferentCausalBeliefSecond = calculateResults(sameValuesDifferentCausalBeliefAnswers(-2));
-const sameValuesDifferentCausalBeliefsVisible = JSON.stringify(sameValuesDifferentCausalBeliefFirst.layers.normative)
-  === JSON.stringify(sameValuesDifferentCausalBeliefSecond.layers.normative)
-  && JSON.stringify(sameValuesDifferentCausalBeliefFirst.layers.prescriptive)
-    === JSON.stringify(sameValuesDifferentCausalBeliefSecond.layers.prescriptive)
+const sameValuesDifferentCausalBeliefsVisible = JSON.stringify(sameValuesDifferentCausalBeliefFirst.legacy.layers.normative)
+  === JSON.stringify(sameValuesDifferentCausalBeliefSecond.legacy.layers.normative)
+  && JSON.stringify(sameValuesDifferentCausalBeliefFirst.legacy.layers.prescriptive)
+    === JSON.stringify(sameValuesDifferentCausalBeliefSecond.legacy.layers.prescriptive)
   && constructSignalFor(sameValuesDifferentCausalBeliefFirst, "diagnosis-causal-account")
     !== constructSignalFor(sameValuesDifferentCausalBeliefSecond, "diagnosis-causal-account");
 const metadataChangedDataset = {
@@ -130,6 +137,7 @@ const alternativeDirectResult = calculateResults(
     "distributive-reason": "need",
   })),
 );
+const weakDirectionalResult = calculateResults(Object.fromEntries(DATASET.questions.map((question) => [question.id, 1])));
 const firstRelationalResult = calculateResults(
   firstConfigurationAnswers,
   DATASET,
@@ -148,53 +156,70 @@ const contradictionResult = calculateResults(
   DATASET,
   relationalEvidenceForAnswers(relationalAnswersFor({ "contradiction-goal-route": "unresolved-conflict" })),
 );
-const relationalEvidenceAttachedToConstruct = firstRelationalResult.beliefProfile.relationalEvidence.length === BELIEF_RELATIONAL_FOLLOWUPS.length
-  && firstRelationalResult.beliefProfile.relationalEvidence.every((evidence) => evidence.constructIds.includes(RELATIONAL_CONSTRUCT_FOR_KIND[evidence.kind]))
-  && firstRelationalResult.beliefProfile.constructs.every((construct) => construct.relationalEvidenceIds.every((evidenceId) =>
-    firstRelationalResult.beliefProfile.relationalEvidence.some((evidence) => evidence.id === evidenceId && evidence.constructIds.includes(construct.id))));
+const relationalEvidenceAttachedToConstruct = firstRelationalResult.primary.profile.relationalEvidence.length === BELIEF_RELATIONAL_FOLLOWUPS.length
+  && firstRelationalResult.primary.profile.relationalEvidence.every((evidence) => evidence.constructIds.includes(RELATIONAL_CONSTRUCT_FOR_KIND[evidence.kind]))
+  && firstRelationalResult.primary.profile.constructs.every((construct) => construct.relationalEvidenceIds.every((evidenceId) =>
+    firstRelationalResult.primary.profile.relationalEvidence.some((evidence) => evidence.id === evidenceId && evidence.constructIds.includes(construct.id))));
 
 const adversarialChecks = {
   neighboringConfigurationsRoundTrip: roundTripRows.every((row) => row.targetCandidateRank !== null),
-  betweenCanonicalProfilesRemainVisible: hybridResult?.beliefMorphology.status === "provisional-candidates"
-    && (hybridResult.beliefMorphology.candidates.length ?? 0) > 0,
-  weakProfileWithholdsMorphology: emptyResult.beliefMorphology.status === "insufficient-information"
-    && emptyResult.beliefMorphology.candidates.length === 0,
-  allMixedProfileDoesNotNameMorphology: neutralResult.beliefMorphology.status === "not-derived",
-  mixedResponsesRemainNonDirectional: neutralResult.beliefProfile.observations
+  morphologyFitUsesConstructProfile: roundTripRows.every((row) => row.directionalFitUsesConstructSignal),
+  betweenCanonicalProfilesRemainVisible: hybridResult?.primary.morphology.status === "provisional-candidates"
+    && (hybridResult.primary.morphology.candidates.length ?? 0) > 0,
+  weakProfileWithholdsMorphology: emptyResult.primary.morphology.status === "insufficient-information"
+    && emptyResult.primary.morphology.candidates.length === 0,
+  allMixedProfileDoesNotNameMorphology: neutralResult.primary.morphology.status === "not-derived"
+    && neutralResult.primary.morphology.candidates.length === 0,
+  mixedResponsesRemainNonDirectional: neutralResult.primary.profile.observations
     .filter((observation) => observation.state === "mixed")
     .every((observation) => observation.value === undefined)
-    && neutralResult.beliefProfile.facets.every((facet) => facet.signal === undefined)
-    && neutralResult.beliefProfile.constructs.every((construct) => construct.signal === undefined)
-    && neutralResult.beliefMorphology.candidates.every((candidate) => candidate.basis
+    && neutralResult.primary.profile.facets.every((facet) => facet.signal === undefined)
+    && neutralResult.primary.profile.constructs.every((construct) => construct.signal === undefined)
+    && neutralResult.primary.morphology.candidates.every((candidate) => candidate.basis
       .every((basis) => basis.agreement === undefined && basis.evidenceQuestionIds.length === 0)),
   sameValuesDifferentCausalBeliefsVisible,
-  samePolicyDifferentPrincipleVisible: firstDirectResult.beliefProfile.directEvidence.find((item) => item.kind === "distributive-reason")?.statement
-    !== alternativeDirectResult.beliefProfile.directEvidence.find((item) => item.kind === "distributive-reason")?.statement,
+  samePolicyDifferentPrincipleVisible: firstDirectResult.primary.profile.directEvidence.find((item) => item.kind === "distributive-reason")?.statement
+    !== alternativeDirectResult.primary.profile.directEvidence.find((item) => item.kind === "distributive-reason")?.statement,
+  neighboringConceptionsVisible: firstDirectResult.primary.profile.directEvidence.find((item) => item.kind === "conception")?.statement
+    !== alternativeDirectResult.primary.profile.directEvidence.find((item) => item.kind === "conception")?.statement,
   samePolicyDifferentPrincipleDoesNotChangeAffinity: JSON.stringify(affinityTraceFor(firstDirectResult)) === JSON.stringify(affinityTraceFor(alternativeDirectResult)),
-  alternativePriorityRulesVisible: firstRelationalResult.beliefProfile.relationalEvidence.find((item) => item.kind === "priority")?.rule
-    !== alternativeRelationalResult.beliefProfile.relationalEvidence.find((item) => item.kind === "priority")?.rule,
-  alternativeConditionalRulesVisible: firstRelationalResult.beliefProfile.relationalEvidence.find((item) => item.kind === "conditional")?.condition
-    !== alternativeRelationalResult.beliefProfile.relationalEvidence.find((item) => item.kind === "conditional")?.condition,
+  neighboringConceptionsDoNotChangeAffinity: JSON.stringify(affinityTraceFor(firstDirectResult)) === JSON.stringify(affinityTraceFor(alternativeDirectResult)),
+  alternativePriorityRulesVisible: firstRelationalResult.primary.profile.relationalEvidence.find((item) => item.kind === "priority")?.rule
+    !== alternativeRelationalResult.primary.profile.relationalEvidence.find((item) => item.kind === "priority")?.rule,
+  alternativeConditionalRulesVisible: firstRelationalResult.primary.profile.relationalEvidence.find((item) => item.kind === "conditional")?.condition
+    !== alternativeRelationalResult.primary.profile.relationalEvidence.find((item) => item.kind === "conditional")?.condition,
   relationalEvidenceAttachedToConstruct,
   relationalRulesDoNotChangeAffinity: JSON.stringify(affinityTraceFor(firstRelationalResult)) === JSON.stringify(affinityTraceFor(alternativeRelationalResult)),
-  unresolvedContradictionVisible: contradictionResult.beliefProfile.relationalSummary.unresolvedContradictions === 1
-    && contradictionResult.beliefProfile.relationalEvidence.some((item) => item.kind === "contradiction" && !item.resolution?.trim()),
+  unresolvedContradictionVisible: contradictionResult.primary.profile.relationalSummary.unresolvedContradictions === 1
+    && contradictionResult.primary.profile.relationalEvidence.some((item) => item.kind === "contradiction" && !item.resolution?.trim()),
+  contradictionDoesNotChangeAffinity: JSON.stringify(affinityTraceFor(contradictionResult)) === JSON.stringify(affinityTraceFor(calculateResults(firstConfigurationAnswers))),
+  weakDirectionalProfileRemainsProvisional: weakDirectionalResult.primary.profile.status === "partial"
+    && weakDirectionalResult.primary.morphology.status === "provisional-candidates"
+    && weakDirectionalResult.primary.morphology.candidates.length > 0
+    && weakDirectionalResult.primary.profile.constructs
+      .filter((construct) => construct.signal !== undefined)
+      .every((construct) => Math.abs(construct.signal ?? 0) <= 0.5),
 };
 
 const adversarialFailureLayers: Readonly<Record<keyof typeof adversarialChecks, string>> = {
   neighboringConfigurationsRoundTrip: "ideological-mapping",
+  morphologyFitUsesConstructProfile: "ideological-mapping",
   betweenCanonicalProfilesRemainVisible: "ideological-mapping",
   weakProfileWithholdsMorphology: "question",
   allMixedProfileDoesNotNameMorphology: "question",
   mixedResponsesRemainNonDirectional: "question",
   sameValuesDifferentCausalBeliefsVisible: "causal-belief",
   samePolicyDifferentPrincipleVisible: "conception",
+  neighboringConceptionsVisible: "conception",
   samePolicyDifferentPrincipleDoesNotChangeAffinity: "weighting",
+  neighboringConceptionsDoNotChangeAffinity: "weighting",
   alternativePriorityRulesVisible: "priority-conflict-rule",
   alternativeConditionalRulesVisible: "priority-conflict-rule",
   relationalEvidenceAttachedToConstruct: "relationship",
   relationalRulesDoNotChangeAffinity: "weighting",
   unresolvedContradictionVisible: "relationship",
+  contradictionDoesNotChangeAffinity: "weighting",
+  weakDirectionalProfileRemainsProvisional: "ideological-mapping",
 };
 
 const failures = [
@@ -230,7 +255,12 @@ const report = {
     anchorOnly: canonicalConfigurations.filter((configuration) => configuration.evidencePosture === "anchor-only-projection").length,
     allHaveCommitments: canonicalConfigurations.every((configuration) => configuration.commitments.length > 0),
     allHaveConceptualCommitments: canonicalConfigurations.every((configuration) => configuration.conceptualCommitments.length > 0),
-    allHaveSourceBackedConceptions: canonicalConfigurations.every((configuration) => configuration.conceptions.some((conception) => conception.evidencePosture === "source-backed")),
+    allHaveSourceBackedConceptualRepresentation: canonicalConfigurations.every((configuration) => configuration.conceptions.some((conception) => conception.evidencePosture === "source-backed")),
+    allHaveClassifiedConceptions: canonicalConfigurations.every((configuration) => configuration.conceptions.every((conception) =>
+      conception.representation === "explicit-research-conception" ? conception.facetId === undefined : conception.facetId !== undefined)),
+    explicitResearchConceptionCount: canonicalConfigurations.reduce((total, configuration) => total + configuration.conceptions.filter((conception) => conception.representation === "explicit-research-conception").length, 0),
+    canonicalConfigurationsWithExplicitResearchConceptions: canonicalConfigurations.filter((configuration) => configuration.conceptions.some((conception) => conception.representation === "explicit-research-conception")).map((configuration) => configuration.targetId),
+    canonicalConfigurationsWithoutExplicitResearchConceptions: canonicalConfigurations.filter((configuration) => !configuration.conceptions.some((conception) => conception.representation === "explicit-research-conception")).map((configuration) => configuration.targetId),
     withoutConceptualCommitments: canonicalConfigurations.filter((configuration) => configuration.conceptualCommitments.length === 0).map((configuration) => configuration.targetId),
     allHaveNormativeCommitments: canonicalConfigurations.every((configuration) => configuration.normativeCommitments.length > 0),
     allHaveDescriptiveAssumptions: canonicalConfigurations.every((configuration) => configuration.descriptiveAssumptions.length > 0),
@@ -246,18 +276,18 @@ const report = {
     worstTargetRank: Math.max(...roundTripRows.map((row) => row.targetCandidateRank ?? 0)),
   },
   adversarial: {
-    neutralMorphologyStatus: neutralResult.beliefMorphology.status,
-    neutralCandidateCount: neutralResult.beliefMorphology.candidates.length,
+    neutralMorphologyStatus: neutralResult.primary.morphology.status,
+    neutralCandidateCount: neutralResult.primary.morphology.candidates.length,
     mixedResponsesRemainNonDirectional: adversarialChecks.mixedResponsesRemainNonDirectional,
-    hybridMorphologyStatus: hybridResult?.beliefMorphology.status ?? null,
-    hybridCandidateCount: hybridResult?.beliefMorphology.candidates.length ?? 0,
+    hybridMorphologyStatus: hybridResult?.primary.morphology.status ?? null,
+    hybridCandidateCount: hybridResult?.primary.morphology.candidates.length ?? 0,
     causalOnlyProfileStatus: causalOnlyProfile?.status ?? null,
     causalOnlyUnmeasuredConstructs: causalOnlyProfile?.measurementSummary.uncoveredConstructIds ?? [],
     sameValuesDifferentCausalBeliefs: {
-      normativeSame: JSON.stringify(sameValuesDifferentCausalBeliefFirst.layers.normative)
-        === JSON.stringify(sameValuesDifferentCausalBeliefSecond.layers.normative),
-      prescriptiveSame: JSON.stringify(sameValuesDifferentCausalBeliefFirst.layers.prescriptive)
-        === JSON.stringify(sameValuesDifferentCausalBeliefSecond.layers.prescriptive),
+      normativeSame: JSON.stringify(sameValuesDifferentCausalBeliefFirst.legacy.layers.normative)
+        === JSON.stringify(sameValuesDifferentCausalBeliefSecond.legacy.layers.normative),
+      prescriptiveSame: JSON.stringify(sameValuesDifferentCausalBeliefFirst.legacy.layers.prescriptive)
+        === JSON.stringify(sameValuesDifferentCausalBeliefSecond.legacy.layers.prescriptive),
       firstDiagnosisSignal: constructSignalFor(sameValuesDifferentCausalBeliefFirst, "diagnosis-causal-account") ?? null,
       secondDiagnosisSignal: constructSignalFor(sameValuesDifferentCausalBeliefSecond, "diagnosis-causal-account") ?? null,
       visible: sameValuesDifferentCausalBeliefsVisible,

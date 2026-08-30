@@ -15,7 +15,7 @@ describe("configuration morphology separation", () => {
   it("records a finite competing-candidate margin without changing the provisional neighborhood", () => {
     const morphology = calculateResults(allDirectionalAnswers()).beliefMorphology;
 
-    expect(morphology.modelVersion).toBe(2);
+    expect(morphology.modelVersion).toBe(3);
     expect(morphology.candidates.length).toBeGreaterThan(1);
     expect(morphology.candidates.every((candidate) => Number.isFinite(candidate.margin))).toBe(true);
     expect(morphology.candidates.every((candidate) => candidate.margin >= 0 && candidate.margin <= 1)).toBe(true);

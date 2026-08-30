@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { DATASET } from "./data";
 import { BELIEF_GAP_CANDIDATES, beliefGapCandidateCountsFor, validateBeliefGapCandidates } from "./belief-gap-candidates";
+import { BELIEF_DIRECT_ITEMS, directEvidenceForAnswers } from "./belief-direct-items";
+import { BELIEF_RELATIONAL_FOLLOWUPS, relationalEvidenceForAnswers } from "./belief-followups";
 import {
   BELIEF_CONSTRUCT_DEFINITIONS,
   BELIEF_CONSTRUCTS,
@@ -40,6 +42,8 @@ describe("stated political commitment configuration", () => {
     expect(audits.every((item) => item.constructIds.length > 0)).toBe(true);
     expect(audits.every((item) => item.measurementMode === "facet-proxy")).toBe(true);
     expect(audits.every((item) => item.rationale.length > 0 && item.sourceRefs.length > 0)).toBe(true);
+    expect(audits.every((item) => item.prompt.length > 0 && item.domain.length > 0)).toBe(true);
+    expect(audits.every((item) => Object.keys(item.legacyEffects).length > 0)).toBe(true);
   });
 
   it("makes the item-level audit and unmeasured construct gaps explicit", () => {
@@ -54,8 +58,23 @@ describe("stated political commitment configuration", () => {
     expect(summary.constructItemCounts["priority-conflict"]).toBe(0);
     expect(summary.constructItemCounts["epistemic-stance"]).toBe(0);
     expect(summary.constructItemCounts["heterodoxy-contestation"]).toBe(0);
+    expect(summary.constructLayerItemCounts["political-economy"]).toEqual({ descriptive: 68, normative: 0, prescriptive: 100 });
+    expect(summary.constructLayerItemCounts["change-strategy"]).toEqual({ descriptive: 0, normative: 0, prescriptive: 190 });
+    expect(summary.uncoveredConstructLayerPairs).toEqual([
+      { constructId: "concept-conception", layer: "prescriptive" },
+      { constructId: "political-economy", layer: "normative" },
+      { constructId: "change-strategy", layer: "descriptive" },
+      { constructId: "change-strategy", layer: "normative" },
+      { constructId: "priority-conflict", layer: "normative" },
+      { constructId: "priority-conflict", layer: "prescriptive" },
+      { constructId: "epistemic-stance", layer: "descriptive" },
+      { constructId: "epistemic-stance", layer: "normative" },
+      { constructId: "heterodoxy-contestation", layer: "normative" },
+      { constructId: "heterodoxy-contestation", layer: "prescriptive" },
+    ]);
     expect(summary.uncoveredConstructIds).toEqual(expect.arrayContaining(["priority-conflict", "epistemic-stance", "heterodoxy-contestation"]));
-    expect(summary.ideologyCodedQuestionIds.length).toBeGreaterThan(0);
+    expect(summary.branchMetadataQuestionIds.length).toBeGreaterThan(0);
+    expect(summary.ideologyCodedQuestionIds).toHaveLength(0);
     expect(summary.compoundQuestionIds.length).toBeGreaterThan(0);
     expect(summary.conditionalQuestionIds.length).toBeGreaterThan(0);
     expect(summary.dispositionCounts.remap + summary.dispositionCounts.split + summary.dispositionCounts.rewrite).toBeGreaterThan(0);
@@ -71,6 +90,23 @@ describe("stated political commitment configuration", () => {
     expect(conditionalItem?.flags).toEqual(expect.arrayContaining(["conditional-wording"]));
     expect(conditionalItem?.flags).not.toContain("compound-wording");
     expect(coordinatedPredicateItem?.flags).toContain("compound-wording");
+  });
+
+  it("separates editorial branch metadata from ideology-coded respondent wording", () => {
+    const syntheticDataset = {
+      ...DATASET,
+      questions: DATASET.questions.map((question, index) => index === 0
+        ? { ...question, prompt: "Which political ideology is closest to your view?", targetNodeIds: ["synthetic-branch"] }
+        : question),
+    };
+    const audit = auditBeliefMeasurement(syntheticDataset)[0];
+    expect(audit.flags).toEqual(expect.arrayContaining(["branch-target-metadata", "ideology-coded-wording"]));
+    expect(audit.disposition).toBe("remap");
+    expect(audit.editorialTargetNodeIds).toEqual(["synthetic-branch"]);
+    expect(audit.legacyEffects).toEqual(DATASET.questions[0].effects);
+    const baseline = auditBeliefMeasurement(DATASET)[0];
+    expect(baseline.flags).not.toContain("branch-target-metadata");
+    expect(baseline.flags).not.toContain("ideology-coded-wording");
   });
 
   it("keeps researched gap items explicit, format-specific, and quarantined", () => {
@@ -121,6 +157,7 @@ describe("stated political commitment configuration", () => {
     expect(politicalEconomyMixed?.directionalEvidenceQuestionIds).toEqual([]);
     expect(politicalEconomyMixed?.mixedQuestionIds.length).toBeGreaterThan(0);
     expect(allMixed.observations.filter((observation) => observation.state === "mixed").every((observation) => observation.value === undefined)).toBe(true);
+    expect(allMixed.structure.every((dimension) => dimension.observedSignal === undefined && dimension.observedSignalEvidenceQuestionIds.length === 0)).toBe(true);
     expect(libertyFacetMixed).toMatchObject({ directionalCoverage: 0, mixedRate: 1 });
     expect(libertyFacetMixed?.signal).toBeUndefined();
 
@@ -202,7 +239,68 @@ describe("stated political commitment configuration", () => {
     expect(profile.measurementAudit).toHaveLength(DATASET.questions.length);
   });
 
-  it("retains facet-level concept and mechanism evidence for morphology matching", () => {
+  it("exposes an integrated structure trace without collapsing evidence forms", () => {
+    const profile = calculateBeliefProfile(allAnswers(2), DATASET);
+    const structure = new Map(profile.structure.map((dimension) => [dimension.id, dimension]));
+
+    expect(profile.structure).toHaveLength(11);
+    expect(new Set(profile.structure.map((dimension) => dimension.id)).size).toBe(profile.structure.length);
+    expect(structure.get("values-and-moral-scope")).toMatchObject({ evidencePosture: "facet-proxy", facetProxyObservationCount: expect.any(Number), directEvidenceIds: [], relationalEvidenceIds: [], relatedDimensionIds: [] });
+    expect(structure.get("descriptive-causal-beliefs")).toMatchObject({ evidencePosture: "facet-proxy", directionalObservationCount: expect.any(Number) });
+    const causalStructure = structure.get("descriptive-causal-beliefs");
+    expect(causalStructure?.observedObservationCountsByLayer).toEqual(expect.objectContaining({ descriptive: expect.any(Number), normative: expect.any(Number), prescriptive: expect.any(Number) }));
+    expect(Object.values(causalStructure?.observedObservationCountsByLayer ?? {}).reduce((sum, count) => sum + count, 0)).toBe(causalStructure?.observedObservationCount);
+    expect(Object.values(causalStructure?.directionalObservationCountsByLayer ?? {}).reduce((sum, count) => sum + count, 0)).toBe(causalStructure?.directionalObservationCount);
+    for (const dimension of profile.structure) {
+      const construct = profile.constructs.find((candidate) => candidate.id === dimension.constructIds[0]);
+      expect(construct).toBeDefined();
+      expect(dimension.observedSignal).toBe(construct?.signal);
+      expect(dimension.observedSignalEvidenceQuestionIds).toEqual(construct?.directionalEvidenceQuestionIds ?? []);
+    }
+    expect(structure.get("priorities-and-conflicts")).toMatchObject({ evidencePosture: "unmeasured", observedObservationCount: 0, directEvidenceIds: [], relationalEvidenceIds: [] });
+    expect(structure.get("epistemic-stance")?.gap).toContain("No production item or explicit evidence");
+    expect(profile.structure.every((dimension) => dimension.constructIds.length > 0 && dimension.sourceRefs.length > 0 && dimension.gap.length > 0)).toBe(true);
+
+    const directAnswers = Object.fromEntries(BELIEF_DIRECT_ITEMS.map((item) => [item.id, item.options.find((option) => option.record !== false)?.id ?? "no-view"]));
+    const relationalAnswers = Object.fromEntries(BELIEF_RELATIONAL_FOLLOWUPS.map((followUp) => [followUp.id, followUp.options.find((option) => option.record !== false)?.id ?? "no-view"]));
+    const enriched = calculateBeliefProfile(
+      allAnswers(2),
+      DATASET,
+      [],
+      relationalEvidenceForAnswers(relationalAnswers),
+      directEvidenceForAnswers(directAnswers),
+    );
+    const enrichedStructure = new Map(enriched.structure.map((dimension) => [dimension.id, dimension]));
+    expect(enrichedStructure.get("concepts-and-conceptions")).toMatchObject({ evidencePosture: "mixed-provisional", facetProxyObservationCount: expect.any(Number) });
+    expect(enrichedStructure.get("concepts-and-conceptions")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conception-of-freedom")]));
+    expect(enrichedStructure.get("legitimacy-and-authority")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conception-of-freedom"), expect.stringContaining("legitimacy-basis")]));
+    expect(enrichedStructure.get("values-and-moral-scope")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("moral-scope-of-obligation")]));
+    expect(enrichedStructure.get("distributive-principles")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("moral-scope-of-obligation"), expect.stringContaining("distributive-reason")]));
+    expect(enrichedStructure.get("priorities-and-conflicts")).toMatchObject({ evidencePosture: "explicit-relational" });
+    expect(enrichedStructure.get("priorities-and-conflicts")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-liberty-equality")]));
+    expect(enrichedStructure.get("priorities-and-conflicts")?.relatedDimensionIds).toEqual(expect.arrayContaining([
+      "concepts-and-conceptions",
+      "distributive-principles",
+      "political-change",
+      "institutional-commitments",
+      "legitimacy-and-authority",
+    ]));
+    expect(enrichedStructure.get("concepts-and-conceptions")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-liberty-equality")]));
+    expect(enrichedStructure.get("distributive-principles")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-liberty-equality")]));
+    expect(enrichedStructure.get("institutional-commitments")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conditional-reform-deep-change"), expect.stringContaining("conflict-rights-local-autonomy")]));
+    expect(enrichedStructure.get("political-change")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conditional-reform-deep-change")]));
+    expect(enrichedStructure.get("descriptive-causal-beliefs")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("uncertainty-descriptive-claim")]));
+    expect(enrichedStructure.get("epistemic-stance")?.relatedDimensionIds).toEqual(["descriptive-causal-beliefs"]);
+    expect(enrichedStructure.get("legitimacy-and-authority")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conflict-rights-local-autonomy"), expect.stringContaining("contradiction-goal-route"), expect.stringContaining("contestation-minority-response")]));
+    expect(enrichedStructure.get("epistemic-stance")).toMatchObject({ evidencePosture: "explicit-relational" });
+    expect(enrichedStructure.get("epistemic-stance")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("uncertainty-descriptive-claim")]));
+    expect(enrichedStructure.get("heterodoxy-and-contestation")).toMatchObject({ evidencePosture: "explicit-relational" });
+    expect(enrichedStructure.get("heterodoxy-and-contestation")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("contestation-minority-response")]));
+    expect(enrichedStructure.get("heterodoxy-and-contestation")?.relatedDimensionIds).toEqual(["legitimacy-and-authority"]);
+    expect(enriched.structure.find((dimension) => dimension.id === "priorities-and-conflicts")?.evidenceQuestionIds).toContain("priority-liberty-equality");
+  });
+
+  it("uses construct-level profile evidence and retains facet provenance for morphology matching", () => {
     const libertyProfile = calculateBeliefProfile(answersForFacet("liberty", 2), DATASET);
     const equalityProfile = calculateBeliefProfile(answersForFacet("equality", 2), DATASET);
     const libertyFacet = libertyProfile.facets.find((facet) => facet.facetId === "liberty");
@@ -216,7 +314,15 @@ describe("stated political commitment configuration", () => {
     const equalityCandidate = deriveIdeologicalMorphology(equalityProfile, DATASET).candidates.find((candidate) => candidate.anchorId === "classical-liberalism");
     expect(libertyCandidate).toBeDefined();
     expect(equalityCandidate).toBeDefined();
-    expect(libertyCandidate?.basis.find((item) => item.facetId === "liberty")).toMatchObject({ observedSignal: libertyFacet?.signal, evidenceQuestionIds: expect.any(Array) });
+    const libertyBasis = libertyCandidate?.basis.filter((item) => item.facetId === "liberty") ?? [];
+    expect(libertyBasis).toEqual(expect.arrayContaining([
+      expect.objectContaining({ calculationSource: "construct-proxy", facetProxySignal: libertyFacet?.signal, facetProxyEvidenceQuestionIds: expect.any(Array), profileDimensionIds: expect.any(Array), evidenceQuestionIds: expect.any(Array) }),
+    ]));
+    const libertyConstructSignals = new Map(libertyProfile.constructs.map((construct) => [construct.id, construct.signal]));
+    const libertyConstructEvidence = new Map(libertyProfile.constructs.map((construct) => [construct.id, construct.directionalEvidenceQuestionIds]));
+    expect(libertyBasis.every((item) => item.observedSignal === libertyConstructSignals.get(item.constructId)
+      && item.evidenceQuestionIds === libertyConstructEvidence.get(item.constructId))).toBe(true);
+    expect(libertyBasis.flatMap((item) => item.profileDimensionIds)).toEqual(expect.arrayContaining(["concepts-and-conceptions", "legitimacy-and-authority"]));
     expect(equalityCandidate?.basis.find((item) => item.facetId === "liberty")?.observedSignal).not.toBe(libertyFacet?.signal);
     expect(libertyCandidate?.fit).not.toBe(equalityCandidate?.fit);
   });
@@ -275,6 +381,7 @@ describe("stated political commitment configuration", () => {
       {
         id: "synthetic-priority",
         optionId: "synthetic-priority",
+        layer: "normative",
         kind: "priority",
         constructIds: ["priority-conflict", "concept-conception", "distributive-principle"],
         statement: "Equal standing takes priority over unrestricted choice in this conflict.",
@@ -286,6 +393,7 @@ describe("stated political commitment configuration", () => {
       {
         id: "synthetic-condition",
         optionId: "synthetic-condition",
+        layer: "prescriptive",
         kind: "conditional",
         constructIds: ["priority-conflict", "institutional-mechanism", "legitimacy-authority"],
         statement: "Public authority is acceptable only when it remains contestable.",
@@ -298,6 +406,7 @@ describe("stated political commitment configuration", () => {
       {
         id: "synthetic-conflict-rule",
         optionId: "synthetic-conflict-rule",
+        layer: "prescriptive",
         kind: "conflict-resolution",
         constructIds: ["priority-conflict", "change-strategy", "social-order-moral-scope"],
         statement: "Immediate harm reduction governs the sequence of institutional change.",
@@ -308,6 +417,7 @@ describe("stated political commitment configuration", () => {
       {
         id: "synthetic-uncertainty",
         optionId: "synthetic-uncertainty",
+        layer: "descriptive",
         kind: "uncertainty",
         constructIds: ["epistemic-stance", "diagnosis-causal-account"],
         statement: "The causal claim is held with low confidence and should be revised with credible contrary evidence.",
@@ -319,6 +429,7 @@ describe("stated political commitment configuration", () => {
       {
         id: "synthetic-contradiction",
         optionId: "synthetic-contradiction",
+        layer: "prescriptive",
         kind: "contradiction",
         constructIds: ["priority-conflict", "legitimacy-authority", "institutional-mechanism"],
         statement: "The stated autonomy goal conflicts with the preferred administrative route.",
@@ -328,6 +439,7 @@ describe("stated political commitment configuration", () => {
       {
         id: "synthetic-contestation",
         optionId: "synthetic-contestation",
+        layer: "prescriptive",
         kind: "contestation",
         constructIds: ["heterodoxy-contestation"],
         statement: "Internal dissent should remain legitimate when it challenges a central policy.",
@@ -376,10 +488,110 @@ describe("stated political commitment configuration", () => {
     expect(configurations.every((configuration) => configuration.relationalConstraints.length === 5)).toBe(true);
     expect(validateIdeologyConfigurations(DATASET)).toEqual([]);
     expect(canonicalConfigurations.every((configuration) => configuration.conceptualCommitments.length > 0)).toBe(true);
-    expect(configurations.some((configuration) => configuration.conceptions.some((conception) => conception.conceptId === "self-management-freedom" && !conception.facetId && conception.evidencePosture === "source-backed"))).toBe(true);
+    expect(configurations.some((configuration) => configuration.conceptions.some((conception) => conception.conceptId === "self-management-freedom" && !conception.facetId && conception.representation === "explicit-research-conception" && conception.evidencePosture === "source-backed"))).toBe(true);
+    expect(configurations.some((configuration) => configuration.conceptions.some((conception) => conception.representation === "facet-proxy" && conception.facetId !== undefined))).toBe(true);
+    expect(configurations.every((configuration) => configuration.conceptions.every((conception) => conception.representation === "explicit-research-conception" ? conception.facetId === undefined : conception.facetId !== undefined))).toBe(true);
     expect(configurations.some((configuration) => configuration.conceptions.length > 0)).toBe(true);
     expect(configurations.every((configuration) => configuration.conceptions.every((conception) => conception.interpretation.length > 0 && conception.sourceRefs.every((sourceRef) => sourceIds.has(sourceRef))))).toBe(true);
     expect(configurations.some((configuration) => configuration.conceptualCommitments.length > 0)).toBe(true);
+    const newlyResearchedAnchorIds = [
+      "classical-liberalism",
+      "social-liberalism",
+      "traditional-conservatism",
+      "national-conservatism",
+      "left-libertarianism",
+      "right-libertarianism",
+      "minarchism",
+      "marxism",
+      "anarchism-family",
+      "conservatism-family",
+      "liberalism-family",
+      "socialism-family",
+      "nationalism-family",
+      "republicanism-family",
+      "feminism-family",
+      "libertarianism",
+      "neoliberalism",
+      "marxism-leninism",
+      "populism",
+      "anarcho-capitalism",
+      "revisionist-bernsteinian-social-democracy",
+      "autonomist-marxism",
+      "austromarxism",
+      "egalitarian-liberal-feminism",
+      "cultural-spiritual-ecofeminism",
+      "materialist-socialist-ecofeminism",
+      "christian-nationalism",
+      "buddhist-nationalism",
+      "anarcho-pacifism",
+      "classical-liberal-feminism",
+      "liberal-feminism",
+      "contemporary-neo-republicanism",
+      "green-anarchism",
+      "anarcha-feminism",
+      "liberal-nationalism",
+      "radical-feminism",
+      "individualist-anarchism",
+      "egoist-anarchism",
+      "cultural-feminism",
+      "cultural-nationalism",
+      "ethnocultural-nationalism",
+      "lesbian-feminism",
+      "one-nation-conservatism",
+      "zionism",
+      "socialist-marxist-feminism",
+      "mutualism",
+      "radical-conservatism",
+      "reactionary-conservatism",
+      "islamism",
+      "khomeinism",
+      "qutbism",
+      "radical-republicanism",
+      "left-wing-populism",
+      "neoconservatism",
+      "paleoconservatism",
+      "wasatiyya",
+      "right-wing-populism",
+      "agrarian-populism",
+      "hindutva",
+      "religious-zionism",
+      "marxist-feminism",
+      "socialist-feminism",
+      "ordoliberalism",
+      "religious-nationalism",
+      "conservative-nationalism",
+      "neo-fascism",
+      "third-positionism",
+      "national-syndicalism",
+      "italian-fascism",
+      "flemish-belgian-fascism",
+      "japanese-fascism",
+      "british-fascism",
+      "french-fascism",
+      "falangism",
+      "brazilian-integralism",
+      "integral-nationalism",
+      "legionary-fascism",
+      "fascism",
+      "white-nationalism",
+      "neo-nazism",
+      "revolutionary-islamism",
+      "salafi-jihadism",
+      "black-nationalism",
+      "materialist-feminism",
+      "arab-nationalism",
+      "maoism",
+      "georgism",
+      "degrowth",
+      "distributism",
+      "christian-socialism",
+      "ujamaa",
+      "labor-zionism",
+      "deep-ecology",
+    ];
+    expect(newlyResearchedAnchorIds.every((targetId) => configurations
+      .find((configuration) => configuration.targetId === targetId)
+      ?.conceptions.some((conception) => conception.representation === "explicit-research-conception" && conception.sourceRefs.length > 0))).toBe(true);
     expect(configurations.some((configuration) => configuration.causalAssumptions.length > 0)).toBe(true);
     expect(configurations.some((configuration) => configuration.compatibility.some((relation) => relation.relation === "critical-of" || relation.relation === "alternative-to"))).toBe(true);
     expect(configurations.every((configuration) => configuration.sourceRefs.every((sourceRef) => sourceIds.has(sourceRef)))).toBe(true);
@@ -394,7 +606,7 @@ describe("stated political commitment configuration", () => {
     const candidate = result.beliefMorphology.candidates.find((item) => item.anchorId === "libertarian-socialism");
     const explicitConceptBasis = candidate?.basis.filter((item) => item.commitmentId === "libertarian-socialism:concept:self-management-freedom");
     expect(explicitConceptBasis).toHaveLength(1);
-    expect(explicitConceptBasis?.[0]).toMatchObject({ expectedDirection: "indeterminate" });
+    expect(explicitConceptBasis?.[0]).toMatchObject({ expectedDirection: "indeterminate", calculationSource: "none", profileDimensionIds: ["concepts-and-conceptions"] });
     expect(explicitConceptBasis?.[0]?.agreement).toBeUndefined();
     expect(explicitConceptBasis?.[0]?.contribution).toBeUndefined();
   });
@@ -404,10 +616,58 @@ describe("stated political commitment configuration", () => {
     const canonicalNodeIds = new Set(DATASET.ideologyNodes.filter((node) => node.placement === "canonical").map((node) => node.id));
     expect(result.beliefMorphology.status).toBe("provisional-candidates");
     expect(result.beliefMorphology.candidates.length).toBeGreaterThan(0);
-    expect(result.beliefMorphology.compatibility).toEqual({ legacyAnchorScorerPreserved: true, legacyScorerRemainsPrimaryForRegression: true });
+    expect(result.beliefMorphology.compatibility).toEqual({
+      legacyAnchorScorerPreserved: true,
+      legacyScorerRemainsPrimaryForRegression: true,
+      primaryInference: "belief-profile",
+      legacyScorerRole: "compatibility-regression",
+    });
     expect(result.beliefMorphology.candidates.every((candidate) => canonicalNodeIds.has(candidate.ontologyNodeId))).toBe(true);
     expect(result.beliefMorphology.candidates.every((candidate) => candidate.configuration.priorities.status === "not-established")).toBe(true);
     expect(result.beliefMorphology.gaps).toEqual(expect.arrayContaining([expect.stringContaining("not validated latent traits")]));
+  });
+
+  it("names the belief interpretation as primary and keeps legacy scoring downstream", () => {
+    const result = calculateResults(allAnswers(2));
+    expect(result.primary.profile).toBe(result.beliefProfile);
+    expect(result.primary.morphology).toBe(result.beliefMorphology);
+    expect(result.primary.pulls).toBe(result.primary.profile.crossLayerPulls);
+    expect(result.primary.pulls).toBe(result.pulls);
+    expect(result.legacy.layers).toBe(result.layers);
+    expect(result.legacy.combined).toBe(result.combined);
+
+    const injectedLegacyPull = {
+      id: "legacy-injected-pull",
+      title: "Injected legacy pull",
+      body: "This must not become primary belief evidence.",
+      layers: ["descriptive", "prescriptive"] as const,
+    };
+    const profile = calculateBeliefProfile(allAnswers(2), DATASET, [injectedLegacyPull]);
+    expect(profile.crossLayerPulls).not.toContainEqual(injectedLegacyPull);
+    expect(profile.tensions).not.toContainEqual(expect.objectContaining({ id: injectedLegacyPull.id }));
+  });
+
+  it("derives profile tensions from directional belief evidence instead of legacy mixed-response dilution", () => {
+    const answers = allAnswers(0);
+    for (const [layer, facetId] of [["normative", "liberty"], ["prescriptive", "state-capacity"]] as const) {
+      const questions = DATASET.questions.filter((question) => question.layer === layer && question.effects[facetId] !== undefined && question.effects[facetId] !== 0);
+      const totalWeight = questions.reduce((sum, question) => sum + Math.abs(question.effects[facetId] ?? 0), 0);
+      const selectedQuestion = questions.find((question) => Math.abs(question.effects[facetId] ?? 0) < totalWeight * 0.5);
+      expect(selectedQuestion).toBeDefined();
+      if (!selectedQuestion) throw new Error(`no low-weight ${layer}/${facetId} fixture question`);
+      answers[selectedQuestion.id] = (selectedQuestion.effects[facetId] ?? 0) > 0 ? 2 : -2;
+    }
+
+    const result = calculateResults(answers);
+    expect(result.primary.profile.facets.find((facet) => facet.layer === "normative" && facet.facetId === "liberty")?.signal).toBe(1);
+    expect(result.primary.profile.facets.find((facet) => facet.layer === "prescriptive" && facet.facetId === "state-capacity")?.signal).toBe(1);
+    expect(result.legacy.layers.normative.kind).toBe("covered");
+    expect(result.legacy.layers.prescriptive.kind).toBe("covered");
+    if (result.legacy.layers.normative.kind === "covered" && result.legacy.layers.prescriptive.kind === "covered") {
+      expect(result.legacy.layers.normative.profile.liberty).toBeLessThan(0.55);
+      expect(result.legacy.layers.prescriptive.profile["state-capacity"]).toBeLessThan(0.55);
+    }
+    expect(result.primary.pulls).toEqual(expect.arrayContaining([expect.objectContaining({ id: "autonomy-administration" })]));
   });
 
   it("does not use branch target metadata as respondent evidence", () => {
@@ -421,7 +681,8 @@ describe("stated political commitment configuration", () => {
     expect(changed.observations).toEqual(baseline.observations);
     expect(changed.constructs).toEqual(baseline.constructs);
     expect(changed.response).toEqual(baseline.response);
-    expect(changed.measurementSummary.ideologyCodedQuestionIds).toHaveLength(DATASET.questions.length);
+    expect(changed.measurementSummary.branchMetadataQuestionIds).toHaveLength(DATASET.questions.length);
+    expect(changed.measurementSummary.ideologyCodedQuestionIds).toHaveLength(0);
   });
 
   it("fails closed before morphology when the three-layer evidence threshold is not met", () => {
@@ -435,7 +696,7 @@ describe("stated political commitment configuration", () => {
     const result = calculateResults(allAnswers(0));
     expect(result.beliefProfile.status).toBe("partial");
     expect(result.beliefMorphology.status).toBe("not-derived");
-    expect(result.beliefMorphology.candidates.every((candidate) => candidate.status === "under-determined")).toBe(true);
+    expect(result.beliefMorphology.candidates).toEqual([]);
   });
 
   it("traces observed facet inputs without treating target IDs as respondent evidence", () => {

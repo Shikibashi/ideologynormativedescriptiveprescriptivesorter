@@ -1,6 +1,7 @@
 import { BELIEF_RELATIONAL_FOLLOWUPS, type BeliefRelationalAnswerMap } from "./belief-followups";
 import { BELIEF_DIRECT_ITEMS, type BeliefDirectAnswerMap } from "./belief-direct-items";
-import type { Answer, AnswerMap, Dataset, DirectShareAnswer, RelationalShareAnswer, ShareEnvelope, ShareEnvelopeV1, ShareEnvelopeV2 } from "./types";
+import { BELIEF_GAP_CANDIDATES, beliefGapCandidateOptionIdFor, type BeliefGapAnswerMap } from "./belief-gap-candidates";
+import type { Answer, AnswerMap, Dataset, DirectShareAnswer, GapShareAnswer, RelationalShareAnswer, ShareEnvelope, ShareEnvelopeV1, ShareEnvelopeV2 } from "./types";
 
 const SHARE_PREFIX = "#s=";
 // Share fragments are bounded because URL fragments can be exposed through
@@ -49,17 +50,26 @@ const directAnswersForShare = (answers: BeliefDirectAnswerMap): readonly DirectS
   return [[item.id, optionId] as const];
 });
 
+const gapAnswersForShare = (answers: BeliefGapAnswerMap): readonly GapShareAnswer[] => BELIEF_GAP_CANDIDATES.flatMap((candidate) => {
+  const optionId = answers[candidate.id];
+  if (!optionId || !candidate.responseOptions.some((_, optionIndex) => beliefGapCandidateOptionIdFor(candidate, optionIndex) === optionId)) return [];
+  return [[candidate.id, optionId] as const];
+});
+
 export const encodeShareFragment = (
   answers: AnswerMap,
   dataset: Dataset,
   relationalAnswers: BeliefRelationalAnswerMap = {},
   directAnswers: BeliefDirectAnswerMap = {},
+  gapAnswers: BeliefGapAnswerMap = {},
 ): string => {
   const encodedRelationalAnswers = relationalAnswersForShare(relationalAnswers);
   const encodedDirectAnswers = directAnswersForShare(directAnswers);
+  const encodedGapAnswers = gapAnswersForShare(gapAnswers);
   const optionalPayload = {
     ...(encodedRelationalAnswers.length > 0 ? { relationalAnswers: encodedRelationalAnswers } : {}),
     ...(encodedDirectAnswers.length > 0 ? { directAnswers: encodedDirectAnswers } : {}),
+    ...(encodedGapAnswers.length > 0 ? { gapAnswers: encodedGapAnswers } : {}),
   };
   const readableEnvelope: ShareEnvelopeV1 = {
     schema: "ideology-layer-sorter/share",
@@ -91,7 +101,7 @@ export const encodeShareFragment = (
 };
 
 type DecodeResult =
-  | Readonly<{ ok: true; answers: AnswerMap; relationalAnswers?: BeliefRelationalAnswerMap; directAnswers?: BeliefDirectAnswerMap }>
+  | Readonly<{ ok: true; answers: AnswerMap; relationalAnswers?: BeliefRelationalAnswerMap; directAnswers?: BeliefDirectAnswerMap; gapAnswers?: BeliefGapAnswerMap }>
   | Readonly<{ ok: false; reason: string }>;
 
 const relationalAnswersFromPayload = (value: unknown): { ok: true; answers: Record<string, string> } | { ok: false; reason: string } => {
@@ -124,17 +134,35 @@ const directAnswersFromPayload = (value: unknown): { ok: true; answers: Record<s
   return { ok: true, answers };
 };
 
-const decodedResultFor = (answers: AnswerMap, relationalValue: unknown, directValue: unknown): DecodeResult => {
+const gapAnswersFromPayload = (value: unknown): { ok: true; answers: Record<string, string> } | { ok: false; reason: string } => {
+  if (value === undefined) return { ok: true, answers: {} };
+  if (!Array.isArray(value) || value.length > BELIEF_GAP_CANDIDATES.length) return { ok: false, reason: "This share payload has an invalid research-candidate answer list." };
+  const candidates = new Map(BELIEF_GAP_CANDIDATES.map((candidate) => [candidate.id, candidate]));
+  const answers: Record<string, string> = {};
+  for (const item of value) {
+    if (!Array.isArray(item) || item.length !== 2 || typeof item[0] !== "string" || typeof item[1] !== "string") return { ok: false, reason: "This share payload contains an unknown research-candidate answer." };
+    const candidate = candidates.get(item[0]);
+    if (!candidate || !candidate.responseOptions.some((_, optionIndex) => beliefGapCandidateOptionIdFor(candidate, optionIndex) === item[1])) return { ok: false, reason: "This share payload contains an unknown research-candidate answer." };
+    if (item[0] in answers) return { ok: false, reason: "This share payload contains a duplicate research-candidate answer." };
+    answers[item[0]] = item[1];
+  }
+  return { ok: true, answers };
+};
+
+const decodedResultFor = (answers: AnswerMap, relationalValue: unknown, directValue: unknown, gapValue: unknown): DecodeResult => {
   const relational = relationalAnswersFromPayload(relationalValue);
   if (!relational.ok) return relational;
   const direct = directAnswersFromPayload(directValue);
   if (!direct.ok) return direct;
-  return Object.keys(relational.answers).length > 0 || Object.keys(direct.answers).length > 0
+  const gap = gapAnswersFromPayload(gapValue);
+  if (!gap.ok) return gap;
+  return Object.keys(relational.answers).length > 0 || Object.keys(direct.answers).length > 0 || Object.keys(gap.answers).length > 0
     ? {
       ok: true,
       answers,
       ...(Object.keys(relational.answers).length > 0 ? { relationalAnswers: relational.answers } : {}),
       ...(Object.keys(direct.answers).length > 0 ? { directAnswers: direct.answers } : {}),
+      ...(Object.keys(gap.answers).length > 0 ? { gapAnswers: gap.answers } : {}),
     }
     : { ok: true, answers };
 };
@@ -165,7 +193,7 @@ export const decodeShareFragment = (fragment: string, dataset: Dataset): DecodeR
         if (item.questionId in answers) return { ok: false, reason: "This share payload contains a duplicate answer." };
         answers[item.questionId] = item.value;
       }
-      return decodedResultFor(answers, decoded.relationalAnswers, decoded.directAnswers);
+      return decodedResultFor(answers, decoded.relationalAnswers, decoded.directAnswers, decoded.gapAnswers);
     }
 
     for (const item of decoded.answers) {
@@ -176,7 +204,7 @@ export const decodeShareFragment = (fragment: string, dataset: Dataset): DecodeR
       if (questionId in answers) return { ok: false, reason: "This share payload contains a duplicate answer." };
       answers[questionId] = expandCompactAnswer(item[1]);
     }
-    return decodedResultFor(answers, decoded.relationalAnswers, decoded.directAnswers);
+    return decodedResultFor(answers, decoded.relationalAnswers, decoded.directAnswers, decoded.gapAnswers);
   } catch {
     return { ok: false, reason: "This share payload could not be decoded." };
   }

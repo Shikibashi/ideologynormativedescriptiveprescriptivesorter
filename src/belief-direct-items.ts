@@ -11,6 +11,8 @@ export type BeliefDirectItemOption = Readonly<{
   id: string;
   label: string;
   statement: string;
+  /** Sources for the substantive account represented by this option. */
+  sourceRefs: readonly string[];
   record?: boolean;
 }>;
 
@@ -31,6 +33,7 @@ const noViewOption = (): BeliefDirectItemOption => ({
   id: "no-view",
   label: "No view yet",
   statement: "The respondent does not yet have a view on this account.",
+  sourceRefs: [],
   record: false,
 });
 
@@ -47,21 +50,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "non-interference",
         label: "Freedom from interference",
         statement: "Political freedom primarily means being protected from intentional interference with one's choices.",
+        sourceRefs: ["source-sep-liberalism"],
       },
       {
         id: "non-domination",
         label: "Freedom from arbitrary power",
         statement: "Political freedom primarily means not living under another person's or institution's uncontrolled power, even when no interference is occurring.",
+        sourceRefs: ["source-sep-republicanism"],
       },
       {
         id: "effective-capability",
         label: "Effective ability to act",
         statement: "Political freedom primarily means having the real capabilities and conditions needed to pursue one's choices.",
+        sourceRefs: ["source-sen"],
       },
       {
         id: "plural-conception",
         label: "A plural or context-dependent meaning",
         statement: "Political freedom has several legitimate meanings whose relative importance depends on the context.",
+        sourceRefs: ["source-freeden-morphology"],
       },
       noViewOption(),
     ],
@@ -79,21 +86,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "universal-scope",
         label: "Equal concern for everyone affected",
         statement: "Political obligations should extend equally to all people affected by a decision, regardless of formal membership.",
+        sourceRefs: ["source-rawls"],
       },
       {
         id: "community-priority",
         label: "Special duties within a political community",
         statement: "Political communities may owe special duties to their members while recognizing general duties to outsiders.",
+        sourceRefs: ["source-anderson"],
       },
       {
         id: "reciprocal-scope",
         label: "Scope shaped by reciprocity",
         statement: "The scope of political obligation should be shaped substantially by reciprocal relationships and shared institutions.",
+        sourceRefs: ["source-ostrom"],
       },
       {
         id: "expanded-scope",
         label: "Include future and nonhuman interests",
         statement: "Political reasoning should include future generations and, where relevant, nonhuman interests alongside present human interests.",
+        sourceRefs: ["source-gardiner", "source-sep-environmental-ethics"],
       },
       noViewOption(),
     ],
@@ -111,21 +122,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "unequal-resources",
         label: "Unequal resources and bargaining power",
         statement: "Unequal outcomes persist mainly because resources and bargaining power are distributed unevenly across social positions.",
+        sourceRefs: ["source-gilens-page"],
       },
       {
         id: "institutional-feedback",
         label: "Institutional rules and feedback",
         statement: "Unequal outcomes persist mainly because institutions create feedback effects that reproduce advantage and disadvantage over time.",
+        sourceRefs: ["source-north", "source-pierson"],
       },
       {
         id: "norms-and-culture",
         label: "Norms and cultural expectations",
         statement: "Unequal outcomes persist mainly because norms, expectations, and cultural practices shape opportunities and behavior.",
+        sourceRefs: ["source-schwartz", "source-anderson"],
       },
       {
         id: "multiple-or-uncertain-causes",
         label: "Multiple or uncertain causes",
         statement: "Unequal outcomes usually have multiple interacting causes, and the dominant mechanism cannot be identified without context-specific evidence.",
+        sourceRefs: ["source-adcock-collier", "source-treier-hillygus"],
       },
       noViewOption(),
     ],
@@ -143,21 +158,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "consent-and-participation",
         label: "Consent and participation",
         statement: "Public authority is legitimate when people can participate in authorizing, contesting, and revising the rules that govern them.",
+        sourceRefs: ["source-dahl"],
       },
       {
         id: "rights-and-general-rules",
         label: "Rights and general rules",
         statement: "Public authority is legitimate when it is constrained by rights and general rules that apply to officeholders and citizens alike.",
+        sourceRefs: ["source-rawls"],
       },
       {
         id: "public-outcomes",
         label: "Securing public outcomes",
         statement: "Public authority is legitimate chiefly when it reliably secures important public goods and protects people from serious harm.",
+        sourceRefs: ["source-fukuyama"],
       },
       {
         id: "contestable-basis",
         label: "A contestable combination",
         statement: "Legitimacy depends on a combination of participation, rights, and outcomes whose relative importance must remain open to public contestation.",
+        sourceRefs: ["source-dahl", "source-rawls"],
       },
       noViewOption(),
     ],
@@ -175,21 +194,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "equal-standing",
         label: "Equal standing",
         statement: "A shared social floor is justified because each person should have equal standing as a member of the political community.",
+        sourceRefs: ["source-rawls"],
       },
       {
         id: "need",
         label: "Meeting urgent need",
         statement: "A shared social floor is justified because people facing serious deprivation should receive what they need for a minimally decent life.",
+        sourceRefs: ["source-sen"],
       },
       {
         id: "capability",
         label: "Securing real capabilities",
         statement: "A shared social floor is justified because people need substantive capabilities to pursue lives they have reason to value.",
+        sourceRefs: ["source-sen"],
       },
       {
         id: "reciprocity-and-common-claim",
         label: "Reciprocity and common claim",
         statement: "A shared social floor is justified because social cooperation creates reciprocal claims among people who contribute to and depend on common institutions.",
+        sourceRefs: ["source-rawls", "source-ostrom"],
       },
       noViewOption(),
     ],
@@ -207,21 +230,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "general-rules-and-rights",
         label: "General rules and enforceable rights",
         statement: "A public goal is best achieved by establishing general rules and enforceable rights that constrain arbitrary action.",
+        sourceRefs: ["source-north", "source-rawls"],
       },
       {
         id: "public-capacity-and-provision",
         label: "Public capacity and provision",
         statement: "A public goal is best achieved by building capable institutions that provide or coordinate essential goods and services.",
+        sourceRefs: ["source-north", "source-fukuyama"],
       },
       {
         id: "local-association-and-experiment",
         label: "Local association and experimentation",
         statement: "A public goal is best achieved by giving affected communities room to organize, experiment, and revise arrangements locally.",
+        sourceRefs: ["source-ostrom"],
       },
       {
         id: "plural-route",
         label: "A plural route chosen by context",
         statement: "No single institutional route is generally best; the appropriate mechanism depends on scale, knowledge, power, and the stakes of the goal.",
+        sourceRefs: ["source-ostrom", "source-dahl", "source-north"],
       },
       noViewOption(),
     ],
@@ -239,21 +266,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "exchange-and-dispersed-knowledge",
         label: "Exchange and dispersed knowledge",
         statement: "Decentralized exchange can coordinate activity because information and practical knowledge are distributed across participants.",
+        sourceRefs: ["source-hayek"],
       },
       {
         id: "ownership-and-power",
         label: "Ownership and bargaining power",
         statement: "Economic outcomes are shaped substantially by ownership and bargaining power, not only by voluntary exchange.",
+        sourceRefs: ["source-bakker-jolly-polk", "source-gilens-page"],
       },
       {
         id: "public-and-common-institutions",
         label: "Public and common institutions",
         statement: "Economic coordination depends substantially on public and common institutions that organize shared goods and limit destabilizing power.",
+        sourceRefs: ["source-ostrom", "source-warwick"],
       },
       {
         id: "mixed-and-contextual-account",
         label: "A mixed or context-dependent account",
         statement: "Markets, ownership, public institutions, and social norms interact, so no single account explains economic coordination across contexts.",
+        sourceRefs: ["source-warwick", "source-ostrom"],
       },
       noViewOption(),
     ],
@@ -271,21 +302,25 @@ export const BELIEF_DIRECT_ITEMS: readonly BeliefDirectItem[] = [
         id: "incremental-reform",
         label: "Incremental reform",
         statement: "Political change should usually proceed through cumulative reforms that can be tested, revised, and made durable.",
+        sourceRefs: ["source-pierson"],
       },
       {
         id: "transformative-change",
         label: "Transformative change",
         statement: "Political change should address the underlying structure of power even when doing so requires a substantial institutional transformation.",
+        sourceRefs: ["source-pierson", "source-rawls"],
       },
       {
         id: "restoration-and-continuity",
         label: "Restoration and continuity",
         statement: "Political change should generally preserve or restore institutions and practices that have proven capable of sustaining social continuity.",
+        sourceRefs: ["source-jost"],
       },
       {
         id: "experimental-sequencing",
         label: "Experimental sequencing",
         statement: "Political change should proceed through reversible experiments and sequencing, with the path revised as consequences become clearer.",
+        sourceRefs: ["source-pierson", "source-ostrom"],
       },
       noViewOption(),
     ],
@@ -316,7 +351,7 @@ export const directEvidenceForAnswers = (
     optionLabel: option.label,
     statement: option.statement,
     evidenceQuestionIds: [item.id],
-    sourceRefs: item.sourceRefs,
+    sourceRefs: option.sourceRefs,
   }];
 });
 
@@ -338,6 +373,12 @@ export const validateBeliefDirectItems = (dataset: Dataset): readonly string[] =
       if (optionIds.has(option.id)) errors.push(`direct belief item ${item.id} has duplicate option ${option.id}`);
       optionIds.add(option.id);
       if (!option.label.trim() || !option.statement.trim()) errors.push(`direct belief item ${item.id} has an incomplete option ${option.id}`);
+      if (option.record !== false && option.sourceRefs.length === 0) {
+        errors.push(`direct belief item ${item.id} option ${option.id} has no substantive source links`);
+      }
+      for (const sourceRef of option.sourceRefs) {
+        if (!sourceIds.has(sourceRef)) errors.push(`direct belief item ${item.id} option ${option.id} references missing source ${sourceRef}`);
+      }
     }
     for (const sourceRef of item.sourceRefs) {
       if (!sourceIds.has(sourceRef)) errors.push(`direct belief item ${item.id} references missing source ${sourceRef}`);
@@ -378,8 +419,8 @@ export const validateBeliefDirectEvidence = (
       errors.push(`direct belief evidence ${item.id} must point to its direct item question`);
     }
     if (item.sourceRefs.length === 0) errors.push(`direct belief evidence ${item.id} has no source links`);
-    if (directItem && item.sourceRefs.some((sourceRef) => !directItem.sourceRefs.includes(sourceRef))) {
-      errors.push(`direct belief evidence ${item.id} references a source not attached to its direct item`);
+    if (option && option.record !== false && directItem && !sameIdSet(item.sourceRefs, option.sourceRefs)) {
+      errors.push(`direct belief evidence ${item.id} has mismatched option source links`);
     }
     for (const questionId of item.evidenceQuestionIds) {
       if (!directItemById.has(questionId)) errors.push(`direct belief evidence ${item.id} references missing evidence question ${questionId}`);

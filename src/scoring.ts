@@ -1,7 +1,7 @@
 import { DATASET, layerFacetMap } from "./data";
 import { calculateBeliefProfile, configurationForAnchor, interpretiveBasisFor, validateBeliefModel } from "./beliefs";
 import { deriveIdeologicalMorphology } from "./morphology";
-import { LAYERS, type Answer, type AnswerMap, type BeliefDirectEvidence, type BeliefRelationalEvidence, type CalculationResult, type Dataset, type FacetSignal, type IdeologyPathNode, type InterpretiveNeighbor, type Layer, type LayerResult } from "./types";
+import { LAYERS, type Answer, type AnswerMap, type BeliefDirectEvidence, type BeliefGapEvidence, type BeliefRelationalEvidence, type CalculationResult, type Dataset, type FacetSignal, type IdeologyPathNode, type InterpretiveNeighbor, type Layer, type LayerResult } from "./types";
 
 const ANSWER_VALUES = new Set<Answer>([-2, -1, 0, 1, 2, "no-view"]);
 
@@ -374,37 +374,12 @@ const combinedResultFor = (layers: Readonly<Record<Layer, LayerResult>>, dataset
   };
 };
 
-const crossLayerPulls = (layers: Readonly<Record<Layer, LayerResult>>): readonly CalculationResult["pulls"][number][] => {
-  const descriptive = layers.descriptive;
-  const normative = layers.normative;
-  const prescriptive = layers.prescriptive;
-  if (!isCovered(normative) || !isCovered(prescriptive)) return [];
-
-  const value = (layer: Extract<LayerResult, { kind: "covered" }>, facetId: string): number => layer.profile[facetId] ?? 0;
-  const pulls: CalculationResult["pulls"][number][] = [];
-  if (value(normative, "liberty") > 0.55 && value(prescriptive, "state-capacity") > 0.55) {
-    pulls.push({ id: "autonomy-administration", title: "Autonomy meets administration", body: "Your values emphasize room for self-direction while your preferred practice puts weight on capable public implementation. The two can coexist, but their boundary is a live design question.", layers: ["normative", "prescriptive"] });
-  }
-  if (value(normative, "ecological-priority") > 0.55 && value(prescriptive, "market-allocation") > 0.55) {
-    pulls.push({ id: "ecological-market", title: "Ecological ends, market means", body: "You place high value on ecological protection while also favoring market coordination in practice. That combination makes enforcement, pricing, and distribution choices especially important.", layers: ["normative", "prescriptive"] });
-  }
-  if (value(normative, "order-tradition") > 0.55 && value(prescriptive, "reformism") > 0.55) {
-    pulls.push({ id: "continuity-change", title: "Continuity meets change", body: "You give moral weight to inherited order while preferring gradual institutional change. The practical question is which inheritances deserve continuity and which reforms can preserve trust.", layers: ["normative", "prescriptive"] });
-  }
-  if (isCovered(descriptive) && value(descriptive, "elite-autonomy") > 0.55 && value(prescriptive, "state-capacity") > 0.55) {
-    pulls.push({ id: "diagnosis-implementation", title: "Diagnosis meets implementation", body: "You see organized elites as influential and also want institutions with enough capacity to act. Accountability design matters because implementation power can either constrain or reproduce that influence.", layers: ["descriptive", "prescriptive"] });
-  }
-  return pulls;
-};
-
-export const calculateResults = (
-  answers: AnswerMap,
-  dataset: Dataset = DATASET,
-  relationalEvidence: readonly BeliefRelationalEvidence[] = [],
-  directEvidence: readonly BeliefDirectEvidence[] = [],
-): CalculationResult => {
+/**
+ * Retain the original facet-distance path as a separately named compatibility
+ * calculation. It must not be an input to the primary belief profile.
+ */
+const legacyLayersFor = (answers: AnswerMap, dataset: Dataset): Readonly<Record<Layer, LayerResult>> => {
   const layers = {} as Record<Layer, LayerResult>;
-
   for (const layer of LAYERS) {
     const questions = dataset.questions.filter((question) => question.layer === layer);
     const answered = questions.filter((question) => {
@@ -432,14 +407,38 @@ export const calculateResults = (
       signals: calculateSignals(profile, layer, dataset),
     };
   }
+  return layers;
+};
 
-  const pulls = crossLayerPulls(layers);
-  const beliefProfile = calculateBeliefProfile(answers, dataset, pulls, relationalEvidence, directEvidence);
+export const calculateResults = (
+  answers: AnswerMap,
+  dataset: Dataset = DATASET,
+  relationalEvidence: readonly BeliefRelationalEvidence[] = [],
+  directEvidence: readonly BeliefDirectEvidence[] = [],
+  gapEvidence: readonly BeliefGapEvidence[] = [],
+): CalculationResult => {
+  // Build the primary representation first. Cross-layer pulls are derived
+  // inside the profile from its own observations; the compatibility scorer is
+  // intentionally downstream and cannot feed the belief model.
+  const beliefProfile = calculateBeliefProfile(answers, dataset, [], relationalEvidence, directEvidence, gapEvidence);
+  const beliefMorphology = deriveIdeologicalMorphology(beliefProfile, dataset);
+  const pulls = beliefProfile.crossLayerPulls;
+  const layers = legacyLayersFor(answers, dataset);
+  const combined = combinedResultFor(layers, dataset);
   return {
+    primary: {
+      profile: beliefProfile,
+      morphology: beliefMorphology,
+      pulls,
+    },
+    legacy: {
+      layers,
+      combined,
+    },
     beliefProfile,
-    beliefMorphology: deriveIdeologicalMorphology(beliefProfile, dataset),
+    beliefMorphology,
     layers,
-    combined: combinedResultFor(layers, dataset),
+    combined,
     pulls,
     datasetId: dataset.manifest.datasetId,
     contentVersion: dataset.manifest.contentVersion,

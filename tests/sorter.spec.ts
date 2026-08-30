@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { BELIEF_GAP_CANDIDATES } from "../src/belief-gap-candidates";
 import { DATASET } from "../src/data";
 
 const choose = async (page: Page, optionIndex: number): Promise<void> => {
@@ -357,20 +358,40 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await expect(page.locator(".belief-diagnostics")).toContainText(/construct/i);
   await expect(page.locator(".belief-audit-summary")).toContainText("items audited");
   await expect(page.locator(".belief-audit-summary")).toContainText("quarantined gap candidates");
+  await expect(page.getByRole("heading", { name: "Integrated belief-structure trace" })).toBeVisible();
+  await expect(page.locator(".belief-structure-row")).toHaveCount(11);
+  await expect(page.locator(".belief-structure-list")).toContainText(/Priorities and conflict rules/i);
+  await expect(page.locator(".belief-structure-list")).toContainText(/No profile evidence/i);
+  await expect(page.locator(".belief-structure-list")).toContainText(/Provisional construct signal/i);
+  await expect(page.locator(".belief-structure-list").first()).toContainText(/Claim layers:.*Descriptive/i);
   await expect(page.getByRole("heading", { name: "Facet evidence retained in this profile" })).toBeVisible();
   await expect(page.locator(".belief-facet-grid")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Clarify how your commitments relate" })).toBeVisible();
   await expect(page.locator(".belief-followup")).toHaveCount(6);
   await page.locator('label[for="priority-liberty-equality-freedom-first"]').click();
   await expect(page.locator(".belief-relational-evidence")).toContainText(/priority/i);
+  await expect(page.locator(".belief-structure-list")).toContainText(/Explicit relationship links/i);
   await page.locator('label[for="conception-of-freedom-non-domination"]').click();
   await expect(page.locator(".belief-direct-evidence")).toContainText(/Freedom from arbitrary power/i);
+  await expect(page.getByRole("heading", { name: "Make the remaining gaps inspectable" })).toBeVisible();
+  await expect(page.locator(".belief-gap-item")).toHaveCount(BELIEF_GAP_CANDIDATES.length);
+  await page.locator(".belief-gap-pilot-disclosure > summary").click();
+  const candidateResearch = page.locator(".belief-gap-item").first().locator(".belief-gap-item-research");
+  await candidateResearch.locator("summary").click();
+  await expect(candidateResearch).toContainText(/Gap addressed:/i);
+  await expect(candidateResearch).toContainText(/Scholarly rationale:/i);
+  await expect(candidateResearch).toContainText(/Same-answer \/ different-reason risk:/i);
+  await page.locator('label[for="gap-bc-priority-liberty-equality-1"]').click();
+  await expect(page.locator(".belief-gap-evidence")).toContainText(/Research-candidate responses \(quarantined\)/i);
+  await expect(page.locator(".belief-structure-list")).toContainText(/research candidate/i);
  await expect(page.getByRole("heading", { name: "Ideological morphology candidates" })).toBeVisible();
  await expect(page.locator(".belief-morphology")).toContainText(/provisional candidates/i);
   const evidenceDetails = page.locator(".morphology-evidence-details").first();
   await evidenceDetails.locator("summary").click();
   await expect(evidenceDetails.locator(".morphology-evidence-list")).toBeVisible();
   await expect(evidenceDetails.locator(".morphology-evidence-row").first()).toContainText(/expected/i);
+  await expect(evidenceDetails.locator(".morphology-evidence-row").first()).toContainText(/fit source/i);
+  await expect(evidenceDetails.locator(".morphology-evidence-row").first()).toContainText(/primary profile dimensions/i);
   await expect(evidenceDetails.locator(".morphology-evidence-sources")).toContainText(/Configuration sources/i);
  await expect(page.getByRole("heading", { name: "A combined pattern" })).toBeVisible();
  await expect(page.getByText(/Compatibility baseline/i)).toBeVisible();
@@ -385,6 +406,7 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await restored.goto(shareLink);
   await expect(restored.getByRole("heading", { name: "Your answers have more than one shape." })).toBeVisible();
   await expect(restored.locator("#priority-liberty-equality-freedom-first")).toBeChecked();
+  await expect(restored.locator('label[for="gap-bc-priority-liberty-equality-1"] input')).toBeChecked();
   await expect(restored.locator("#conception-of-freedom-non-domination")).toBeChecked();
   await restored.close();
   await page.getByRole("button", { name: /Start again/ }).click();

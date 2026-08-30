@@ -1,4 +1,4 @@
-import { BELIEF_CONSTRUCTS, LAYERS, type BeliefCandidateResponseFormat, type BeliefConstructId, type BeliefGapCandidate, type Dataset } from "./types";
+import { BELIEF_CONSTRUCTS, LAYERS, type BeliefCandidateResponseFormat, type BeliefConstructId, type BeliefGapCandidate, type BeliefGapEvidence, type Dataset } from "./types";
 
 const directionalOptions = [
   "Strongly disagree",
@@ -39,7 +39,8 @@ const candidate = (
 /**
  * Source-attributed candidates for constructs that the production bank does
  * not yet measure. These are deliberately effect-free and are not part of the
- * respondent-facing quiz or the legacy scorer.
+ * production quiz or the legacy scorer; the app may expose them only through
+ * the explicitly labeled, quarantined research-candidate pilot.
  */
 export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
   candidate(
@@ -237,12 +238,153 @@ export const BELIEF_GAP_CANDIDATES: readonly BeliefGapCandidate[] = [
     "The answer may depend on the policy's consequences or on the meaning of membership; collect the stated condition before interpreting the response.",
     ["source-freeden-morphology", "source-freeden-steers-morphology", "source-dahl", "source-aapor"],
   ),
+  candidate(
+    "bc-conception-liberty-institution",
+    "concept-conception",
+    "prescriptive",
+    "When a public institution is designed to protect liberty, which interpretation should guide its rules?",
+    "Present competing interpretations without naming a tradition. The choice is about the meaning a public rule should enact, not about which institution is most efficient.",
+    "open-reason",
+    ["Prevent direct interference by public or private power.", "Secure the effective capabilities people need to act freely.", "Prevent arbitrary dependence on anyone who can control one's options.", "Let the people affected share in making and revising the rules.", "No view yet."],
+    "Freeden's morphological approach treats political concepts as contested and differently organized, while Rawls, Dahl, and republican theory provide distinct normative routes through liberty, participation, and non-domination. The candidate therefore tests a prescriptive conception rather than assuming that the shared word has one meaning.",
+    "The production bank reaches concepts and conceptions through descriptive and normative proxies but has no prescriptive item that asks which meaning a public institution should enact.",
+    "A selected interpretation may actually be a preferred institution, expected outcome, or general freedom value; expert and response-process review must separate those readings before promotion.",
+    ["source-freeden-morphology", "source-dahl", "source-rawls", "source-sep-republicanism", "source-aapor"],
+  ),
+  candidate(
+    "bc-political-economy-justice",
+    "political-economy",
+    "normative",
+    "What should make an economic order just?",
+    "Ask for the primary reason rather than a preferred policy instrument. The options are competing normative standards, not mutually exclusive empirical descriptions.",
+    "open-reason",
+    ["Equal basic standing and fair terms of cooperation.", "People's real capabilities to pursue lives they have reason to value.", "Protection against arbitrary domination by concentrated economic power.", "Secure ownership and voluntary exchange under general rules.", "It depends on the circumstances.", "No view yet."],
+    "Rawls and Sen articulate different ways of specifying what equality or justice concerns, while republican and liberal traditions supply distinct accounts of economic freedom and domination. The candidate keeps those reasons separate from the descriptive question of how markets coordinate or the prescriptive question of which policy to adopt.",
+    "The current bank observes economic mechanisms and policy preferences but has no normative political-economy item that asks which standard makes an arrangement just.",
+    "Respondents may select the same standard while meaning security, efficiency, equal status, or anti-domination; the option labels require cognitive probing and do not establish a validated economic-justice construct.",
+    ["source-rawls", "source-sen", "source-sep-republicanism", "source-sep-liberalism", "source-aapor"],
+  ),
+  candidate(
+    "bc-change-mechanism",
+    "change-strategy",
+    "descriptive",
+    "When major political change succeeds, which mechanism usually matters most?",
+    "Keep the prompt descriptive: ask how change tends to occur, not which route the respondent prefers or whether a specific historical case proves the mechanism.",
+    "open-reason",
+    ["Existing institutions and organizations carry the change into practice.", "Crisis and conflict open opportunities that ordinary politics does not.", "Organized groups build coalitions, learn, and adapt their strategy.", "A new interpretation of political ideas makes the change legitimate.", "It depends on the case.", "No view yet."],
+    "Pierson and North motivate attention to path dependence and institutional capacity, Tilly supplies an organizational and conflict-centered route, and Freeden's morphology makes conceptual change a distinct interpretive possibility. The candidate separates a descriptive theory of change from a prescriptive reform preference.",
+    "The production bank has descriptive questions about institutions, crisis, and causal mechanisms, but none is declared as a direct theory-of-change response about which mechanism explains successful political change.",
+    "The options mix mechanisms that may co-occur and may be interpreted as historical knowledge, personal strategy, or a normative preference; later review must test whether the item elicits one descriptive account.",
+    ["source-pierson", "source-north", "source-tilly", "source-freeden-morphology", "source-aapor"],
+  ),
+  candidate(
+    "bc-change-transition-standard",
+    "change-strategy",
+    "normative",
+    "When an incremental reform improves conditions but leaves a serious injustice in place, what should determine whether it is acceptable?",
+    "Use a bounded transition dilemma so the response expresses a standard for judging change, not a general left/right or reform/rupture identity.",
+    "conditional-vignette",
+    ["Accept it because reducing present harm is decisive.", "Reject it because preserving the injustice is unacceptable.", "Accept it only if it protects a credible route to deeper change.", "Judge it by whether affected people can revise or contest the arrangement.", "It depends on the consequences and available alternatives.", "No view yet."],
+    "Pierson's account of path dependence informs the transition problem without deciding its value, while Rawls and Dahl provide distinct normative concerns about justice and public contestation. The candidate asks for the rule used to judge a transition rather than treating reformism as a single directional trait.",
+    "The production bank measures reformism as a prescriptive proxy but does not ask which normative standard makes an incremental transition acceptable or unacceptable.",
+    "A response may be driven by expected consequences, legitimacy, strategic feasibility, or a priority rule; those reasons cannot be identified from this option choice alone and must remain separate in review.",
+    ["source-pierson", "source-rawls", "source-dahl", "source-schwartz", "source-aapor"],
+  ),
 ];
 
 export const beliefGapCandidateCountsFor = (): Readonly<Record<BeliefConstructId, number>> => {
   const counts = Object.fromEntries(BELIEF_CONSTRUCTS.map((constructId) => [constructId, 0])) as Record<BeliefConstructId, number>;
   for (const item of BELIEF_GAP_CANDIDATES) counts[item.constructId] += 1;
   return counts;
+};
+
+export const beliefGapCandidateOptionIdFor = (candidate: BeliefGapCandidate, optionIndex: number): string => `${candidate.id}:option-${optionIndex + 1}`;
+
+export const beliefGapEvidenceIdFor = (candidate: BeliefGapCandidate, optionId: string): string => `${candidate.id}:${optionId}`;
+
+export type BeliefGapAnswerMap = Readonly<Partial<Record<string, string>>>;
+
+const sameIdSet = (left: readonly string[], right: readonly string[]): boolean =>
+  left.length === right.length
+    && new Set(left).size === left.length
+    && new Set(right).size === right.length
+    && left.every((id) => right.includes(id));
+
+const candidateOptionIndexFor = (candidate: BeliefGapCandidate, optionId: string): number =>
+  candidate.responseOptions.findIndex((_, index) => beliefGapCandidateOptionIdFor(candidate, index) === optionId);
+
+const isRecordableGapOption = (optionText: string): boolean => optionText.trim().toLowerCase().replace(/[.!?]+$/u, "") !== "no view yet";
+
+/**
+ * Converts a selected candidate option into an explicit, non-scoring record.
+ * No-view is retained in the answer map for restoration but is omitted from
+ * evidence because it is missing information rather than a substantive rule.
+ */
+export const gapEvidenceForAnswers = (answers: BeliefGapAnswerMap): readonly BeliefGapEvidence[] => BELIEF_GAP_CANDIDATES.flatMap((candidate) => {
+  const optionId = answers[candidate.id];
+  if (!optionId) return [];
+  const optionIndex = candidateOptionIndexFor(candidate, optionId);
+  const optionText = optionIndex >= 0 ? candidate.responseOptions[optionIndex] : undefined;
+  if (optionText === undefined || !isRecordableGapOption(optionText)) return [];
+  return [{
+    id: beliefGapEvidenceIdFor(candidate, optionId),
+    candidateId: candidate.id,
+    optionId,
+    optionText,
+    constructId: candidate.constructId,
+    layer: candidate.layer,
+    responseFormat: candidate.responseFormat,
+    evidenceQuestionIds: [candidate.id],
+    reviewStatus: candidate.reviewStatus,
+    sourceRefs: candidate.sourceRefs,
+  }];
+});
+
+/**
+ * Validates the boundary used by the profile calculator and by future
+ * research fixtures. Candidate responses must match the registered prompt,
+ * stable option id, construct, layer, and quarantine state exactly.
+ */
+export const validateBeliefGapEvidence = (
+  evidence: readonly BeliefGapEvidence[],
+  dataset: Dataset,
+): readonly string[] => {
+  const errors: string[] = [];
+  const candidatesById = new Map(BELIEF_GAP_CANDIDATES.map((candidate) => [candidate.id, candidate]));
+  const sourceIds = new Set(dataset.sources.map((source) => source.id));
+  const evidenceIds = new Set<string>();
+  const candidateIds = new Set<string>();
+  for (const item of evidence) {
+    if (evidenceIds.has(item.id)) errors.push(`duplicate belief gap evidence id ${item.id}`);
+    evidenceIds.add(item.id);
+    if (candidateIds.has(item.candidateId)) errors.push(`duplicate belief gap evidence candidate ${item.candidateId}`);
+    candidateIds.add(item.candidateId);
+    const candidate = candidatesById.get(item.candidateId);
+    if (!candidate) {
+      errors.push(`belief gap evidence ${item.id} references unknown candidate ${item.candidateId}`);
+      continue;
+    }
+    if (item.id !== beliefGapEvidenceIdFor(candidate, item.optionId)) errors.push(`belief gap evidence ${item.id} has an unexpected evidence id`);
+    if (item.constructId !== candidate.constructId) errors.push(`belief gap evidence ${item.id} has a mismatched construct`);
+    if (item.layer !== candidate.layer) errors.push(`belief gap evidence ${item.id} has a mismatched layer`);
+    if (item.responseFormat !== candidate.responseFormat) errors.push(`belief gap evidence ${item.id} has a mismatched response format`);
+    if (item.reviewStatus !== candidate.reviewStatus) errors.push(`belief gap evidence ${item.id} is not quarantined with its candidate`);
+    const optionIndex = candidateOptionIndexFor(candidate, item.optionId);
+    if (optionIndex < 0) errors.push(`belief gap evidence ${item.id} references an unavailable candidate option`);
+    else {
+      const expectedOptionText = candidate.responseOptions[optionIndex];
+      if (item.optionText !== expectedOptionText) errors.push(`belief gap evidence ${item.id} has mismatched option text`);
+      if (!isRecordableGapOption(expectedOptionText)) errors.push(`belief gap evidence ${item.id} records a no-view option`);
+    }
+    if (item.evidenceQuestionIds.length !== 1 || item.evidenceQuestionIds[0] !== candidate.id) {
+      errors.push(`belief gap evidence ${item.id} must point only to its candidate question record`);
+    }
+    if (!sameIdSet(item.sourceRefs, candidate.sourceRefs)) errors.push(`belief gap evidence ${item.id} has mismatched candidate source links`);
+    for (const sourceRef of item.sourceRefs) {
+      if (!sourceIds.has(sourceRef)) errors.push(`belief gap evidence ${item.id} references missing source ${sourceRef}`);
+    }
+  }
+  return errors;
 };
 
 export const validateBeliefGapCandidates = (dataset: Dataset): readonly string[] => {
@@ -257,6 +399,8 @@ export const validateBeliefGapCandidates = (dataset: Dataset): readonly string[]
     if (!item.prompt.trim()) errors.push(`belief gap candidate ${item.id} is missing a prompt`);
     if (!item.context.trim()) errors.push(`belief gap candidate ${item.id} is missing context`);
     if (item.responseOptions.length < 3) errors.push(`belief gap candidate ${item.id} needs at least three response options`);
+    if (item.responseOptions.some((option) => !option.trim())) errors.push(`belief gap candidate ${item.id} has an empty response option`);
+    if (new Set(item.responseOptions).size !== item.responseOptions.length) errors.push(`belief gap candidate ${item.id} has duplicate response options`);
     if (!item.scholarlyRationale.trim() || !item.gapAddressed.trim() || !item.sameAnswerDifferentReasonRisk.trim()) {
       errors.push(`belief gap candidate ${item.id} is missing research rationale or ambiguity risk`);
     }

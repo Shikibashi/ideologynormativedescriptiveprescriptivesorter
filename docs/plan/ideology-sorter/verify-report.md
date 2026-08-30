@@ -1064,7 +1064,7 @@ V101 adds four source-backed qualitative conceptions to the existing Gandhian Po
 | `npm run research:coverage` | PASS | Content version 96; 1,488 production questions; 118 production anchors; 123 editorial anchors; 124 ontology nodes; 1,524 candidates across 127 targets; 127 profile rows and false-positive audit rows; 30 profile conceptions across 27 targets; zero validation errors |
 | `npm run research:anchor-reachability` | PASS | 118 production anchors; zero validation errors and zero structural failures; every production anchor remains isolated-reachable across descriptive, normative, and prescriptive layers |
 | `npm run belief:measurement-audit` | PASS | 1,488 production items audited; all remain facet-proxy observations; construct gaps and review dispositions remain explicit |
-| `npm run belief:morphology-audit` | PASS | 118 source-backed canonical configurations round-trip; structural failures and validation errors are zero; synthetic output remains non-respondent evidence |
+| `npm run belief:morphology-audit` | PASS | 118 source-backed canonical configurations round-trip; 26 explicit research conception records across 26 canonical configurations are distinguished from facet-proxy conceptual mappings; all-mixed profiles return `not-derived` with no candidate records; structural failures and validation errors are zero; synthetic output remains non-respondent evidence |
 | `npm run belief:direct-pilot-audit` | PASS | 8-item effect-free categorical pilot remains isolated from legacy scoring; zero validation errors and zero failures |
 | `npm run qa -- --workers=1` against `http://127.0.0.1:4174` | PASS | Complete production-preview Playwright suite passed 10/10, including research workbench, responsive, share, missing-information, and layer-transition paths |
 | `npm run belief:completion-audit` | NOT PASS / FAIL-CLOSED | Exit remains nonzero because cognitive/response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology gates are `NOT RUN` by explicit scope |
@@ -1072,6 +1072,8 @@ V101 adds four source-backed qualitative conceptions to the existing Gandhian Po
 | Compose/Docker delivery | NOT RUN | Not rerun for V101; no container or hosted-runtime claim is made |
 
 The verified V101 production contract remains content version 96 with 1,488 questions (496 per layer), 118 production anchors, 123 editorial anchors, six contextual placements, three registry entries, and 1,524 quarantined candidates across 127 research targets. Gandhian Political Thought has four source-backed conceptions, zero production questions, no production anchor, and no score path. The [Parel *Pax Gandhiana* source](https://academic.oup.com/book/12258) and [Mantena's *Another Realism* source](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/another-realism-the-politics-of-gandhian-nonviolence/7BE21CF751176FAF880BD41A9E5EF10F) are used for provenance and contextual interpretation, not respondent measurement.
+
+The conceptual representation audit now distinguishes an explicit research conception from a facet-linked conceptual proxy. All canonical configurations have source-backed conceptual representation, but only 26 canonical configurations currently carry explicit research conception records; the remaining records are not presented as direct respondent conceptions.
 
 No cognitive review, respondent study, expert content adjudication, psychometric calibration, reliability/validity estimate, invariance/DIF study, empirical validation, population/consequence review, or held-out respondent morphology evidence was run or implied. This is a neutral research-model/data and UI continuation, not a personal ideological comparison, political recommendation, ranking, or score.
 
@@ -1159,6 +1161,26 @@ V104 refreshes provenance and qualitative boundary context for `market-socialism
 
 V105 enriches the existing `civic-republicanism` registry profile with two qualitative conceptions while leaving production content at version 97 with 1,500 questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, two registry entries, six contextual placements, and 1,524 quarantined research candidates. Civic Republicanism remains registry-only and not-scored; no canonical node, direct production question, production anchor, effect, coefficient, threshold, picker behavior, morphology output, layer weight, combined-layer semantic, or share semantic changed. The six external-study gates remain explicitly `NOT RUN`; no cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied.
 
+## V105 observed verification — explicit conception coverage and belief-model continuation — 2026-08-30
+
+This continuation adds qualitative, source-linked `ResearchAnchorConception` records for the remaining canonical configurations. All 119 canonical configurations now expose an explicit research conception in addition to their existing facet-proxy representation. These records explain source-backed concepts and boundaries; they remain outside respondent observations, legacy affinity weights, morphology scoring, coefficient tuning, and political classification. The fixed macro/meso/micro/hybrid ontology, 1,500-question production bank, six respondent-level relational follow-ups, and eight-item direct categorical pilot remain unchanged in scope.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- --reporter=dot` | PASS | 5 files, 146/146 Vitest tests |
+| `npm run build` | PASS | TypeScript and Vite production build; existing large-client-chunk advisory remains |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; 119 explicit research conceptions; zero proxy-only configurations; zero validation errors; adversarial isolation checks remain true |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97; 1,500 items at 500/500/500; all remain facet-proxy; zero ideology-coded wording flags; branch metadata remains separately audited; three construct gaps and 15 quarantined candidates remain explicit |
+| `npm run belief:direct-pilot-audit` | PASS | 8 effect-free categorical items; 21 recordable option-source references; zero validation errors/failures; legacy and affinity isolation remains true |
+| `npm run research:coverage` | PASS | 1,500 production questions; 119 production anchors; 124 editorial anchors; 1,524 candidates across 127 targets; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors and structural failures; isolated three-layer reachability remains intact |
+| `npm run belief:completion-audit -- --summary` | NOT PASS / FAIL-CLOSED | Structural checks pass, but exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npm run qa -- --workers=1` | PASS | Minos Playwright suite 10/10 against the current production preview; preview was stopped after the run |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | This source/data/docs continuation makes no Docker, hosted-runtime, or production-readiness claim |
+
+The current completion audit reports `structuralEligible: true`, `eligible: false`, and `status: "incomplete"`. The open required gates remain cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. No local test, synthetic profile, source citation, browser run, or automated audit substitutes for those external studies.
+
 ## V106 final observed verification — Conservative New Right registry conception bridge — 2026-08-30
 
 | Check | Status | Notes |
@@ -1180,6 +1202,26 @@ V105 enriches the existing `civic-republicanism` registry profile with two quali
 | Compose/Docker delivery | NOT RUN | Not rerun for this registry-only qualitative refresh; no container or hosted-runtime claim is made |
 
 V106 enriches the existing `conservative-new-right` registry profile with two qualitative conceptions while leaving production content at version 97 with 1,500 questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, two registry entries, six contextual placements, and 1,524 quarantined research candidates. Conservative New Right remains registry-only and not-scored; no canonical node, direct production question, production anchor, effect, coefficient, threshold, picker behavior, morphology output, layer weight, combined-layer semantic, or share semantic changed. The six external-study gates remain explicitly `NOT RUN`; no cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied.
+
+## V106 observed verification — primary belief inference path — 2026-08-30
+
+This continuation closes the composition-boundary gap identified in the prior additive implementation. `calculateResults` now constructs the primary `BeliefProfile` first, derives profile-owned cross-layer pulls and `IdeologicalMorphology`, and then evaluates the retained facet-distance scorer as `result.legacy`. The application and current belief audits consume `result.primary`; deprecated top-level aliases remain only for existing consumers. The refactor does not promote proxy observations to validated latent measures, alter the fixed ontology, retune affinity coefficients, or change the legacy answer-to-anchor calculation.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current TypeScript tree and audit scripts typecheck |
+| `npm run test:run -- --reporter=dot` | PASS | 5 files, 149/149 Vitest tests |
+| `npm run build` | PASS | `tsc --noEmit` and Vite build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97; 1,500 items at 500/500/500; all remain facet proxies; three construct gaps and 15 quarantined candidates remain explicit |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; explicit conceptions and adversarial structural checks remain valid; zero validation errors/failures |
+| `npm run belief:direct-pilot-audit` | PASS | Eight effect-free direct items; legacy scoring and morphology affinity remain isolated; zero validation errors/failures |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors/failures; isolated three-layer routing remains intact |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npm run qa -- --workers=1` | PASS | Minos serial Playwright suite 10/10 against the current preview; preview was stopped and port 4178 verified closed |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | `primaryBeliefPathIsExplicit` and all other structural checks are true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The local result-path refactor is verified, but the overall objective remains incomplete. The six open gates are cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. Those gates require external study evidence and are not substituted by source-backed configurations, synthetic profiles, local tests, or browser QA.
 
 ## V107 final observed verification — Anarchism contextual conception bridge — 2026-08-30
 
@@ -1205,6 +1247,27 @@ V107 enriches the existing contextual `anarchism-context` profile with two quali
 
 The V107 source pass uses the [Stanford Encyclopedia of Philosophy entry on Anarchism](https://plato.stanford.edu/entries/anarchism/) for the family-level authority, domination, hierarchy, and plural constructive-route boundary, and [Ostrom's *Governing the Commons* source](https://doi.org/10.1017/CBO9780511807763) only for comparative self-governance terminology. `anti-hierarchical-freedom` is normative/defining and `voluntary-federated-self-government` is prescriptive/characteristic; both remain editorial context outside respondent observations, affinity weights, morphology output, or score effects. No cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, current-actor inference, comparison, ranking, recommendation, or personal ideological classification was run or implied. The overall objective remains incomplete because the six external-study gates remain open.
 
+## V108 observed verification — integrated belief-structure trace — 2026-08-30
+
+This continuation makes the intermediate integrated political-philosophical profile a first-class, typed part of `BeliefProfile`. The primary result now exposes eleven separately named dimensions covering normative values and moral scope, concepts and competing conceptions, descriptive and causal beliefs, legitimacy and authority, distributive principles, institutional commitments, political economy, theories of change, priorities and conflicts, epistemic uncertainty, and heterodoxy or contestation. Each dimension retains its construct bridge, answered evidence counts, direct categorical pilot ids, relational evidence ids, attached question records, provenance, and an explicit evidence posture. The trace is organizational and explanatory only: it adds no affinity weights, does not infer relationships from co-occurrence, and preserves the three unmeasured dimensions as `unmeasured` for a base-quiz response set.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current TypeScript tree and audit scripts typecheck |
+| `npm run test:run -- --reporter=dot` | PASS | 5 files, 151/151 Vitest tests |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97; 1,500 items at 500/500/500; all remain facet proxies; three construct gaps and 15 quarantined candidates remain explicit |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; explicit conception coverage and adversarial checks remain valid; zero validation errors/failures |
+| `npm run belief:direct-pilot-audit` | PASS | Eight effect-free direct items; option-level provenance and affinity isolation remain valid; zero validation errors/failures |
+| `npm run research:coverage` | PASS | Current production question, anchor, ontology, registry, contextual-placement, and research-candidate coverage remains valid; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors/failures; isolated three-layer routing remains intact |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | New `integratedBeliefStructureTrace` and all other structural checks are true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npm run qa -- --workers=1` | PASS | Minos serial Playwright suite 10/10 against the updated preview; primary structure trace assertions, responsive workbench, share-link, missing-information, transition, and malformed-share paths pass; preview was stopped and port 4178 verified closed |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The local structure trace and result rendering are verified, but the objective remains incomplete. The six open gates are cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. Local structural checks, source-backed configurations, synthetic profiles, and browser QA do not substitute for those external studies.
+
 ## V109 observed verification — Green Politics contextual conception bridge — 2026-08-30
 
 V109 adds two source-backed qualitative conceptions to the existing contextual `green-politics` profile while preserving the current production contract. The target remains a meso contextual/catalog-only node with twelve quarantined candidates at descriptive/normative/prescriptive 4/4/4, zero direct production questions, and no anchor, coefficient, threshold, picker, morphology, or score path. The current worktree also contains pre-existing unowned V108 belief-structure and source-key changes; those were preserved and were included in runtime verification but not in the owned staged tranche.
@@ -1229,6 +1292,75 @@ V109 adds two source-backed qualitative conceptions to the existing contextual `
 
 The source pass uses [Carter's chapter on Green political thought](https://doi.org/10.1017/CBO9780511819179.006) for ecological limits, human–nature relations, grassroots democracy, decentralization, social justice, and plural green routes; the [Stanford Encyclopedia of Philosophy Environmental Ethics entry](https://plato.stanford.edu/entries/ethics-environmental/) for moral and political variation, environmental justice, sustainability, and future-generation boundaries; and [Ostrom's *Governing the Commons*](https://doi.org/10.1017/CBO9780511807763) only for comparative institutional diversity and self-governance terminology. The conception records remain editorial context outside respondent observations, affinity weights, morphology output, or score effects. No cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied. This is neutral taxonomy/provenance authoring, not a comparison, assessment, ranking, recommendation, or decision between political ideologies, parties, candidates, policies, or issues.
 
+## V109 observed verification — morphology basis provenance — 2026-08-30
+
+This continuation connects each directional morphology commitment to the primary profile dimensions that contextualize its construct and records the evidence form actually used for provisional fit. Explicit source-backed conceptions are retained as indeterminate context, while categorical pilot and relational records remain separate from the directional basis. The change adds explanation and traceability without adding an affinity weight, changing the fixed ontology, or promoting proxy evidence to validated measurement.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current TypeScript tree and audit scripts typecheck after the morphology provenance fields and UI changes |
+| `npm run test:run -- src/belief-structure.test.ts --reporter=dot` | PASS | Focused structure contract 27/27 |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite 152/152 across five files |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:direct-pilot-audit` | PASS | Eight effect-free categorical pilot items; direct evidence remains isolated from legacy scoring and affinity; zero validation errors/failures |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations with classified conceptions; adversarial checks remain true; zero validation errors/failures |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97; 1,500 production items at 500/500/500; all remain facet proxies; three construct gaps and 15 quarantined candidates remain explicit |
+| `npm run research:coverage` | PASS | 1,500 production questions; 119 production anchors; 124 editorial anchors; 125 ontology nodes; two registry entries; six contextual placements; 1,524 candidates across 127 targets; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors/failures; isolated three-layer routing remains intact |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 14 structural checks pass and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npm run qa -- --workers=1` | PASS | Full serial Minos suite 10/10 in 5.3 minutes against the updated preview; preview was stopped and port 4178 verified closed |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1` | PASS | Post-assertion focused results scenario 1/1 in 1.8 minutes; new fit-source and primary-dimension assertions pass |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The six external gates remain `NOT RUN`: cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. The new fields are a structural explanation seam; they are not evidence that the underlying proxy model has passed those studies.
+
+## V110 observed verification — claim-layer preservation — 2026-08-30
+
+V110 keeps descriptive, normative, and prescriptive claim type orthogonal to the substantive integrated dimensions. Each structure row now reports observed and directional item-record counts by claim layer. The relational evidence contract also preserves the follow-up layer through profile construction, morphology trace projection, validation, and rendering; a layer mismatch is rejected rather than silently relabeled.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The repaired relational layer contract, per-dimension layer counts, audit checks, and UI compile successfully |
+| `npm run test:run -- src/belief-structure.test.ts src/belief-followups.test.ts --reporter=dot` | PASS | Focused belief-structure and relational-contract tests 38/38 |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite 152/152 across five files |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free categorical pilot items; layer-aware direct evidence remains isolated; zero validation errors/failures |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; adversarial layer and isolation checks remain valid; zero validation errors/failures |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97; 1,500 production items at 500/500/500; all remain facet proxies; three construct gaps and 15 quarantined candidates remain explicit |
+| `npm run research:coverage` | PASS | 1,500 production questions; 119 production anchors; 124 editorial anchors; 125 ontology nodes; two registry entries; six contextual placements; 1,524 candidates across 127 targets; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors/failures; isolated three-layer routing remains intact |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 14 structural checks pass and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1` | PASS | Post-layer-contract focused results scenario 1/1 in 1.8 minutes; claim-layer, morphology provenance, direct/relational, share, and primary-profile assertions pass |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The six external gates remain `NOT RUN`: cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. Claim-layer preservation improves interpretability and contract integrity; it does not validate the underlying measure or its cross-context use.
+
+## V111 observed verification — explicit relationship participant trace — 2026-08-30
+
+V111 repairs the integrated-profile routing for multi-construct direct and relational records. Each record is now attached to every profile dimension named by its explicit `constructIds`, rather than only to a dimension selected by its evidence kind. Morphology contextual basis records carry the same linked dimension ids. This preserves the relationship's participants and explanation path without creating a scalar signal, a new weight, an affinity contribution, or an ontology change.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | TypeScript and audit contracts compile with dimension-linked direct/relational morphology basis records |
+| `npm run test:run -- src/belief-structure.test.ts src/belief-followups.test.ts --reporter=dot` | PASS | Focused structure and follow-up contract tests 38/38 |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite 152/152 across five files |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct items; construct and structure attachment plus legacy/affinity isolation remain valid |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; adversarial and relational isolation checks remain valid; zero validation errors/failures |
+| `npm run belief:measurement-audit -- --summary` | PASS | Content version 97; 1,500 items at 500/500/500; all remain facet proxies; three construct gaps and 15 candidates remain explicit |
+| `npm run research:coverage` | PASS | Existing production, anchor, ontology, registry, contextual-placement, conception, and research-bank validation remains green |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors/failures; isolated three-layer routing remains intact |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 16 structural checks are true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1` | PASS | One serial production-preview results scenario passed in 1.8 minutes; structure, direct/relational, morphology, share, and legacy-compatibility assertions remained green |
+| `E2E_BASE_URL=http://127.0.0.1:4178 npx playwright test tests/explore/explore.spec.ts --workers=1` | PASS | Intro exploration passed; report contains no console errors, page errors, or failed requests; screenshot/accessibility artifact collection completed |
+| `git diff --check` | PASS | No whitespace errors |
+| Preview cleanup / port 4178 | PASS | Preview stopped after browser checks; no listener remained on port 4178 |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The local participant trace is verified, but the overall objective remains incomplete. The six open gates are cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. Explicit construct links and deterministic tests do not substitute for those external studies.
+
 ## V110 observed verification — contextual bridge provenance — 2026-08-30
 
 V110 adds source-backed qualitative conception bridges for the existing `green-communitarianism` and `liberal-conservatism-context` contextual meso targets. Both remain catalog-only and non-scored, with twelve quarantined candidates each, zero direct production questions, no canonical path, and explicit `retain-contextual` governance. No scoring, belief-model, morphology, share, or ontology semantics changed.
@@ -1251,3 +1383,199 @@ V110 adds source-backed qualitative conception bridges for the existing `green-c
 | Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
 
 The structural and browser evidence confirms the V110 code path and quarantine boundary only. It does not validate respondent interpretation, cognition, reliability, validity, invariance, population behavior, consequences, or political classification. The six external gates remain `NOT RUN`, and no substitute or personal ideological assessment is claimed.
+
+## V112 observed verification — relational dimension adjacency trace — 2026-08-30
+
+V112 adds a derived `relatedDimensionIds` trace to each integrated belief-structure dimension. The trace is calculated only from explicit relational records and their declared `constructIds`, so it preserves cross-dimension participants for explanation without adding a scalar signal, affinity weight, morphology contribution, or ontology change. The results UI exposes the links as an explicit relationship line, while dimensions without such records remain visibly unlinked rather than being treated as theoretically unrelated.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current TypeScript tree, structure adjacency type, UI rendering, and completion audit compile |
+| `npm run test:run -- src/belief-structure.test.ts src/belief-followups.test.ts --reporter=dot` | PASS | Focused belief-structure and relational-contract tests: 38/38 |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 153/153 across five files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; existing large-client-chunk advisory remains |
+| `npx vite-node scripts/audit-belief-direct-pilot.ts` | PASS | Eight effect-free direct items; evidence remains visible in the profile and isolated from legacy scoring and affinity; zero validation errors/failures |
+| `npx vite-node scripts/audit-belief-morphology.ts` | PASS | 119 source-backed canonical configurations; adversarial, causal/principle, priority, conditional, contradiction, and relational-isolation checks remain true |
+| `npx vite-node scripts/audit-belief-measurement.ts --summary` | PASS | 1,500/1,500 production items audited at 500/500/500; all remain facet proxies; three uncovered constructs and 15 quarantined research candidates remain explicit; zero validation errors |
+| `npx vite-node scripts/audit-research-coverage.ts` | PASS | 1,500 production questions; 119 production anchors; 125 ontology nodes; 2 registry entries; 6 contextual placements; 1,524 research candidates; 127 target rows with profiles/conceptions; zero validation errors |
+| `npx vite-node scripts/audit-anchor-reachability.ts` | PASS | 119 production anchors; zero validation errors/failures; isolated three-layer routing remains intact |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 17 structural checks are true and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4179 npm run qa -- --workers=1` | PASS | Full serial Minos Playwright suite: 10/10 in 5.3 minutes; includes the V112 visible relationship-link assertion and the exploratory route |
+| Explorer issue report | PASS | `test-results/explorer/report.json` contains 0 pages with console errors, page errors, or failed requests |
+| Preview cleanup / port 4179 | PASS | Preview stopped after browser checks; no listener remained on port 4179 |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The V112 local trace is verified, but the comprehensive objective remains incomplete. The six open gates are cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. Local structural checks, synthetic profile projections, source provenance, and browser QA do not substitute for those external studies. The three unmeasured dimensions remain explicit: priorities/conflicts, epistemic stance, and heterodoxy/contestation.
+
+## V113 observed verification — quarantined gap-candidate response seam — 2026-08-30
+
+V113 adds an optional typed response seam for the 15 existing research candidates covering priority/conflict rules, epistemic stance, and heterodoxy/contestation. Candidate selections produce separate `BeliefGapEvidence` records and versioned share answers. The profile and results UI expose the trace, but candidate evidence remains quarantined: it is not a production question, scalar observation, construct signal, morphology fit input, canonical affinity contribution, or legacy scorer input. A selected no-view option is share-restorable but is omitted from substantive candidate evidence.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Candidate evidence, profile/structure fields, scorer signature, share envelope, React session state, and tests compile |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 159/159 across seven files |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight direct categorical items remain effect-free; zero validation/failure errors |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; adversarial and affinity-isolation checks remain true; zero validation/failure errors |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500 production questions audited; all remain facet proxies; priority/conflict, epistemic stance, and heterodoxy/contestation remain uncovered; 15 candidates remain quarantined |
+| `npm run research:coverage -- --summary` | PASS | Current production, ontology, source, research-bank, contextual-placement, and candidate coverage validation remains green |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; isolated three-layer reachability and validation remain green |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 20 structural checks are true and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4180 npm run qa -- --workers=1 --reporter=list` | PASS | Full serial Minos suite: 10/10 in 5.4 minutes; includes candidate selection, quarantined profile trace, and share restoration |
+| Explorer issue report | PASS | `test-results/explorer/report.json`: one inspected route; zero console errors, page errors, or failed requests |
+| Preview cleanup / port 4180 | PASS | Preview stopped after QA; no listener remained on port 4180 |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The V113 local evidence verifies the response seam and its non-scoring quarantine only. It does not validate candidate comprehension, response-process interpretation, expert content, reliability, validity, invariance, population behavior, consequences, or respondent morphology. The six external gates remain `NOT RUN`, the three production constructs remain unmeasured, and the overall objective remains incomplete.
+
+## V114 observed verification — construct/layer coverage and research shelf expansion — 2026-08-30
+
+V114 adds an explicit construct-by-claim-layer audit and four source-linked candidates for the layer gaps it exposed. The production bank remains fixed at 1,500 facet-proxy questions, split 500/500/500 across descriptive, normative, and prescriptive layers. The audit now reports ten uncovered declared construct/layer cells and the research shelf contains 19 quarantined candidates: five for each entirely unmeasured construct plus one prescriptive concept/conception candidate, one normative political-economy candidate, one descriptive change-mechanism candidate, and one normative change-transition candidate. No candidate was promoted into production scoring.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Construct/layer summary types, candidate records, completion checks, UI rendering, and browser-test import compile |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 162/162 tests across eight files |
+| `npm run build` | PASS | TypeScript and Vite production build; 42 modules; existing large-client-chunk advisory remains (`index-Zd44RATn.js`, 2,867.20 kB) |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500/1,500 items audited; all remain facet proxies; ten uncovered construct/layer pairs are explicit; zero validation errors |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct categorical pilot items; zero validation/failure errors and unchanged scoring isolation |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; adversarial and affinity-isolation checks remain true; zero validation/failure errors |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 production anchors, 125 ontology nodes, 2 registry entries, 6 contextual placements, 1,524 research-bank candidates; zero validation errors |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; isolated three-layer routing remains intact |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 22 structural checks are true and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4181 npm run qa -- --workers=1 --reporter=list` | PASS | Full serial Playwright suite: 10/10 in 5.3 minutes after a corrected stale test import; affected all-layer scenario also passed 1/1 in 1.8 minutes |
+| Explorer issue report | PASS | `test-results/explorer/report.json`: one inspected route; zero console errors, page errors, or failed requests |
+| Preview cleanup / port 4181 | PASS | Preview stopped after QA; port 4181 was closed after the run |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The V114 local evidence improves gap diagnosis and candidate traceability but does not close any external validation gate. The three entirely unmeasured constructs remain `not-yet-measured`; all 19 candidates remain quarantined and non-scoring. Cognitive response-process review, expert content adjudication, empirical reliability/validity, invariance/DIF, population/consequence review, and held-out respondent morphology evidence remain `NOT RUN`, so the overall objective remains incomplete.
+
+## V115 observed verification — construct-level morphology fit provenance — 2026-08-30
+
+V115 moves directional morphology fit from facet-level signals to the linked construct-level signal in the integrated `BeliefProfile`. Facet signal and facet evidence-question ids remain separate provenance context; direct categorical, relational, and gap-candidate evidence remains excluded from affinity. The `configuration-projection` model is version 3, and the legacy scorer remains a compatibility regression path.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current TypeScript tree, construct-level morphology basis, provenance fields, UI labels, and audit additions compile; the same check also ran through `npm run build` |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 163/163 tests across eight files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; existing large-client-chunk advisory remains (`index-CeYMp5xP.js`, 2,867.67 kB) |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500/1,500 production items audited at 500/500/500; all remain facet proxies; ten uncovered construct/layer pairs and 19 quarantined candidates remain explicit; zero validation errors |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct categorical pilot items remain isolated from construct signals, morphology affinity, and legacy scoring; zero validation/failure errors |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; all target fixtures round-trip; `morphologyFitUsesConstructProfile: true`; all adversarial and isolation checks true; zero validation/failure errors |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 production anchors, 125 ontology nodes, 2 registry entries, 6 contextual placements, 1,524 research-bank candidates, and 127 profiled/conception-bearing target rows; zero validation errors |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; isolated three-layer routing remains reachable with zero validation errors/failures |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All 23 structural checks are true and `structuralEligible` is true; exit 1 remains correct because the six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4182 npm run qa -- --workers=1 --reporter=list` | PASS | Full serial Playwright suite: 10/10 in 5.3 minutes, including explorer, morphology evidence, share, all-layer, malformed-share, and responsive scenarios |
+| Explorer issue report | PASS | `test-results/explorer/report.json` contains one inspected route with zero console errors, page errors, and failed requests |
+| Preview cleanup / port 4182 | PASS | Preview stopped after QA and no listener remained on port 4182 |
+| `git diff --check` | PASS | No whitespace errors after the V115 documentation and source changes |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+V115 closes the local construct-to-morphology provenance seam but does not establish comprehension, expert agreement, reliability, validity, invariance, population/consequence behavior, or held-out respondent morphology. The three priority/conflict, epistemic-stance, and heterodoxy/contestation dimensions remain unmeasured, the 19 gap candidates remain quarantined, and the six external gates remain `NOT RUN`; the objective remains incomplete.
+
+## V116 observed verification — integrated structure signal trace — 2026-08-30
+
+V116 exposes each single-construct dimension's provisional construct signal and its directional evidence-question ids in the integrated belief-structure trace. The structure reuses the construct result rather than recalculating a second scalar, and the UI states that the value is provisional. Mixed, no-view, unanswered, direct categorical, relational, and quarantined candidate evidence remain outside this scalar field.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Structure signal type, profile construction, UI summary, and completion-audit comparison compile |
+| `npm run test:run -- src/belief-structure.test.ts src/belief-gap-pilot.test.ts src/belief-followups.test.ts --reporter=dot` | PASS | Focused structure, mixed-response, candidate-quarantine, and relational tests: 42/42 |
+| `git diff --check` | PASS | No whitespace errors after the V116 source and documentation changes |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | Exit 1 is correct; all 24 structural checks are true and `structuralEligible` is true, while the six required external-study gates remain `NOT RUN` |
+| Full Vitest suite | PASS | Current-tree suite: 164/164 tests across eight files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; current artifact `index-Cm3TK8jC.js` is 2,868.31 kB (640.80 kB gzip); existing large-client-chunk advisory remains |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500/1,500 production items audited at 500/500/500; all remain facet proxies; ten uncovered construct/layer cells and 19 quarantined candidates remain explicit; zero validation errors |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct categorical pilot items remain isolated from scalar signals, morphology, and legacy scoring; zero validation/failure errors |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; construct-profile fit check and adversarial/isolation checks pass; zero validation/failure errors |
+| `npm run research:coverage -- --summary` | PASS | Current production/research coverage and provenance audit exits 0 with zero validation errors |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors and isolated three-layer reachability audit exits 0 with zero validation errors/failures |
+| Fixed-preview serial Playwright suite | PASS | `E2E_BASE_URL=http://127.0.0.1:4183 npm run qa -- --workers=1 --reporter=list`: 10/10 in 5.4 minutes, including the updated primary-profile surface |
+| Focused signal-disclosure Playwright case | PASS | `E2E_BASE_URL=http://127.0.0.1:4184 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1 --reporter=list`: 1/1 in 1.8 minutes; the new `Provisional construct signal` assertion passed |
+| Explorer issue report | PASS | One inspected route with zero console errors, page errors, or failed requests |
+| Preview cleanup / port 4183 | PASS | Preview stopped after QA; no listener remained on port 4183 |
+| Focused preview cleanup / port 4184 | PASS | Focused preview stopped after the signal-disclosure case; no listener remained on port 4184 |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The V116 implementation remains subject to the six external validation gates: cognitive response process, expert content adjudication, empirical reliability/validity, invariance/DIF across intended contexts, population/consequence review, and held-out respondent morphology. Local structural checks and browser QA cannot substitute for those study-specific records; the overall objective remains incomplete until the completion ledger is legitimately advanced.
+
+## V117 observed verification — canonical question-coverage reconciliation — 2026-08-30
+
+V117 corrects the Islamism configuration-to-item mismatch and adds the canonical target question-coverage audit to the existing completion harness. The current shared research bank also contains the source-backed, effect-free Confucian Political Thought registry-only tranche; tests now preserve the distinction between optional qualitative registry profiles and required non-registry profiles.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current configuration, coverage-audit, completion-harness, test, and package-script changes compile |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 168/168 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-DsyWWTdf.js` 2,884.58 kB (644.64 kB gzip); existing large-client-chunk advisory remains |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500/1,500 production items audited at 500/500/500; dispositions are 1,452 preserve, 1 rewrite, 41 split, and 6 redundant; zero validation errors |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | Eight effect-free direct categorical pilot items remain isolated from scalar signals, morphology affinity, and legacy scoring; zero validation/failure errors |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations; 119 synthetic profiles and provisional target candidates; explicit research conception count 119; zero validation/failure errors |
+| `npm run belief:question-coverage -- --summary` | PASS | 119 canonical targets; all 4/4/4 target blocks and all provisional morphology candidates pass; zero validation errors/unexpected failures; four prescriptive layers remain explicit `not-established` open gaps |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, 3 registry entries, 6 contextual placements, 1,536 research candidates across 128 targets; 127 targets have qualitative profiles/conceptions; zero validation errors |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; full-competition rank diagnostics remain non-validating overlap measures |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 28 structural checks are true and `structuralEligible` is true; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `E2E_BASE_URL=http://127.0.0.1:4185 npm run qa -- --workers=1 --reporter=list` | PASS | Fixed-preview serial Playwright suite: 10/10 in 5.4 minutes; the updated all-layer/share flow passed |
+| Explorer issue report | NOT RUN | The explorer test passed as part of the suite, but no durable `test-results/explorer/report.json` was present after this run, so a separate zero-error report is not claimed |
+| Preview cleanup / port 4185 | PASS | Preview stopped after QA; no listener remained on port 4185 |
+| `git diff --check` | PASS | No whitespace errors |
+| Docker/hosted delivery | NOT RUN | No container, hosted-runtime, or production-readiness claim is made |
+
+The Islamism normative question block now has a direct source-backed profile commitment for its existing equality/social-justice item. The four prescriptive open gaps are intentionally retained as underdetermined rather than forced into an institutional score. The six external gates remain `NOT RUN`, so the overall objective remains incomplete despite the local structural and browser passes.
+
+## V118 observed verification — adversarial conception and weak-profile matrix — 2026-08-30
+
+V118 expands the existing morphology audit's adversarial fixture matrix. It does not add a production question or alter scoring. The added checks cover neighboring direct conceptions of political freedom, different distributive principles behind the same broad policy context, alternative priority and conditional rules, unresolved contradiction, and a weak half-strength directional profile. Direct, relational, and categorical pilot selections remain contextual evidence and are required not to alter morphology or legacy affinity traces.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 170/170 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-DsyWWTdf.js` 2,884.58 kB (644.64 kB gzip); existing large-client-chunk advisory remains |
+| `npm run belief:question-coverage -- --summary` | PASS | 119 canonical targets; zero validation errors and zero blocking failures; four intentional `not-established` open gaps remain visible without failing the CLI |
+| `npx vite-node scripts/audit-belief-morphology.ts --summary` | PASS | 119 source-backed canonical configurations; all named adversarial checks true, including `neighboringConceptionsVisible`, `neighboringConceptionsDoNotChangeAffinity`, `contradictionDoesNotChangeAffinity`, and `weakDirectionalProfileRemainsProvisional`; zero validation/failure errors |
+| Neighboring conception isolation | PASS | `non-interference` and `non-domination` remain distinct direct profile statements while the morphology affinity trace is unchanged |
+| Same policy / different principle isolation | PASS | Alternative distributive reasons remain visible in direct evidence while affinity remains unchanged |
+| Priority/conditional relational isolation | PASS | Alternative rules and conditions remain explicit and attached to constructs without a hidden morphology or legacy-score contribution |
+| Contradiction isolation | PASS | An unresolved contradiction is visible as relational evidence with no invented coherence score and no affinity change |
+| Weak directional profile | PASS | Half-strength responses remain `partial`, keep construct signals at or below `0.5`, and yield only provisional morphology candidates |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 28 structural checks are true and `structuralEligible` is true; the exit remains nonzero because the six required external-study gates are `NOT RUN` |
+| `git diff --check` | PASS | No whitespace errors after the audit and documentation changes |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V118 strengthens local adversarial traceability but does not provide respondent, cognitive, psychometric, empirical, invariance, population, or held-out validation. The completion objective therefore remains `INCOMPLETE` / fail-closed.
+
+## V119 observed verification — fail-closed target evidence trace — 2026-08-30
+
+V119 removes the target-trace fixture's zero-alignment fallback. The audit now preserves mixed/depends responses for target-tagged items that are not represented by a determinate source-backed configuration commitment, and records representation posture per target/layer. The four broad-family prescriptive layers with intentionally indeterminate configuration direction remain open data rather than synthetic directional evidence.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- src/ideology-question-coverage.test.ts --reporter=dot` | PASS | Focused coverage suite: 7/7 tests; normal target traces pass, mixed unmatched items remain profile evidence, indeterminate layers remain `not-established`, and effects-removal negative control fails closed |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 172/172 tests across 10 files |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-DsyWWTdf.js` 2,884.58 kB (644.64 kB gzip); existing large-client-chunk advisory remains |
+| `npm run belief:question-coverage -- --summary` | PASS | 119 canonical targets; 4/4/4 target blocks; zero validation errors and zero blocking failures; four intentional `not-established` open gaps remain visible |
+| `npx tsc --noEmit --pretty false` | PASS | Target trace posture fields, renamed directional-layer summary, and updated tests compile |
+| Zero-alignment fallback removal | PASS | No target item is forced from a zero configuration alignment into a directional answer; unmatched items remain mixed/depends |
+| Negative-control trace | PASS | Removing `n-classical-liberalism-01` effects produces a target-layer trace gap and a blocking coverage failure |
+| `git diff --check` | PASS | No whitespace errors after the source, documentation, and test updates |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V119 improves evidence integrity in the local target trace but does not validate the instrument. The primary profile and morphology remain provisional; the six external gates remain `NOT RUN`, and the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V120 observed verification — research-candidate rationale disclosure — 2026-08-30
+
+V120 adds a collapsed, per-candidate disclosure for the quarantined gap shelf. It exposes the declared gap, scholarly rationale, and same-answer/different-reason risk next to the existing response controls and source links. The change is presentation-only and does not promote candidate evidence into production scoring or morphology.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run test:run -- src/belief-gap-pilot.test.ts src/belief-gap-research.test.ts --reporter=dot` | PASS | Candidate contract, quarantine, malformed-input rejection, and scoring-isolation tests: 6/6 |
+| `npx tsc --noEmit --pretty false` | PASS | New disclosure markup and styles compile |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-CJjzlTFf.js` 2,885.12 kB (644.72 kB gzip); existing large-client-chunk advisory remains |
+| `E2E_BASE_URL=http://127.0.0.1:4186 npx playwright test tests/sorter.spec.ts -g "can complete all layers and create a versioned share link" --workers=1 --reporter=list` | PASS | Built-preview completion/share scenario: 1/1 in 1.8 minutes; rationale disclosure, candidate selection, share restoration, primary profile, morphology, and legacy compatibility assertions passed |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open |
+
+V120 improves inspectability of the research shelf but does not provide respondent or instrument validation. The six external gates remain `NOT RUN`, and the overall objective remains `INCOMPLETE` / fail-closed.

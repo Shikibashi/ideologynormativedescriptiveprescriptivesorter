@@ -11,13 +11,14 @@ import type {
   IdeologicalMorphology,
   IdeologicalMorphologyCandidate,
   IdeologyConfiguration,
+  BeliefStructureDimension,
   MorphologyBasis,
   MorphologyDirectBasis,
   MorphologyRelationalBasis,
 } from "./types";
 
 export const MORPHOLOGY_MODEL_ID = "configuration-projection" as const;
-export const MORPHOLOGY_MODEL_VERSION = 2;
+export const MORPHOLOGY_MODEL_VERSION = 3;
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
@@ -49,14 +50,31 @@ const constructMapFor = (profile: BeliefProfile): ReadonlyMap<string, BeliefCons
 const facetMapFor = (profile: BeliefProfile): ReadonlyMap<string, BeliefFacetResult> =>
   new Map(profile.facets.map((facet) => [`${facet.layer}:${facet.facetId}`, facet]));
 
+const profileDimensionIdsFor = (
+  constructId: BeliefConstructResult["id"],
+  structure: readonly BeliefStructureDimension[],
+): readonly BeliefStructureDimension["id"][] => structure
+  .filter((dimension) => dimension.constructIds.includes(constructId))
+  .map((dimension) => dimension.id);
+
+const profileDimensionIdsForConstructs = (
+  constructIds: readonly BeliefConstructResult["id"][],
+  structure: readonly BeliefStructureDimension[],
+): readonly BeliefStructureDimension["id"][] => [...new Set(constructIds.flatMap((constructId) => profileDimensionIdsFor(constructId, structure)))];
+
 const commitmentLabel = (commitment: BeliefCommitment): string => `${commitment.label} (${commitment.layer})`;
 
-const relationalBasisFor = (evidence: readonly BeliefRelationalEvidence[]): readonly MorphologyRelationalBasis[] => evidence.map((item) => ({
+const relationalBasisFor = (
+  evidence: readonly BeliefRelationalEvidence[],
+  structure: readonly BeliefStructureDimension[],
+): readonly MorphologyRelationalBasis[] => evidence.map((item) => ({
   evidenceId: item.id,
   optionId: item.optionId,
+  layer: item.layer,
   kind: item.kind,
   statement: item.statement,
   constructIds: item.constructIds,
+  profileDimensionIds: profileDimensionIdsForConstructs(item.constructIds, structure),
   ...(item.rule ? { rule: item.rule } : {}),
   ...(item.condition ? { condition: item.condition } : {}),
   ...(item.resolution ? { resolution: item.resolution } : {}),
@@ -65,12 +83,17 @@ const relationalBasisFor = (evidence: readonly BeliefRelationalEvidence[]): read
   evidenceQuestionIds: item.evidenceQuestionIds,
 }));
 
-const directBasisFor = (evidence: readonly BeliefDirectEvidence[]): readonly MorphologyDirectBasis[] => evidence.map((item) => ({
+const directBasisFor = (
+  evidence: readonly BeliefDirectEvidence[],
+  structure: readonly BeliefStructureDimension[],
+): readonly MorphologyDirectBasis[] => evidence.map((item) => ({
   evidenceId: item.id,
+  layer: item.layer,
   kind: item.kind,
   optionLabel: item.optionLabel,
   statement: item.statement,
   constructIds: item.constructIds,
+  profileDimensionIds: profileDimensionIdsForConstructs(item.constructIds, structure),
   sourceRefs: item.sourceRefs,
   evidenceQuestionIds: item.evidenceQuestionIds,
 }));
@@ -105,35 +128,46 @@ const basisForCommitment = (
   constructId: BeliefConstructResult["id"],
   constructs: ReadonlyMap<string, BeliefConstructResult>,
   facets: ReadonlyMap<string, BeliefFacetResult>,
+  structure: readonly BeliefStructureDimension[],
   constructCount: number,
 ): MorphologyBasis => {
   const construct = constructs.get(constructId);
   const facet = commitment.facetId ? facets.get(`${commitment.layer}:${commitment.facetId}`) : undefined;
   const sign = directionSign(commitment.expectedDirection);
-  // A source-backed commitment is attached to a specific facet whenever the
-  // research profile supplies one. Do not fall back to an aggregate construct
-  // signal: doing so would let an unrelated conception or mechanism satisfy a
-  // commitment merely because both share a broad construct label.
-  const hasDirectionalEvidence = commitment.facetId
-    ? (facet?.response.directional ?? 0) > 0
-    : (construct?.response.directional ?? 0) > 0;
-  const observedSignal = hasDirectionalEvidence
-    ? commitment.facetId ? facet?.signal : construct?.signal
-    : undefined;
+  // The primary morphology fit is now calculated from the construct signal
+  // held by the integrated profile. A facet-linked commitment retains its
+  // narrower facet signal for provenance, but that signal is not the fit
+  // input; otherwise morphology would remain a second direct facet scorer.
+  const facetProxySignal = commitment.facetId ? facet?.signal : undefined;
+  const hasDirectionalEvidence = (construct?.response.directional ?? 0) > 0;
+  const observedSignal = hasDirectionalEvidence ? construct?.signal : undefined;
+  const profileDimensionIds = profileDimensionIdsFor(constructId, structure);
+  const constructCalculationSource = construct?.directObservationCount && construct.proxyObservationCount
+    ? "mixed-provisional" as const
+    : construct?.measurementMode === "direct-item"
+      ? "direct-item" as const
+      : "construct-proxy" as const;
+  const calculationSource = sign === undefined || observedSignal === undefined
+    ? "none" as const
+    : constructCalculationSource;
+  const evidenceQuestionIds = construct?.directionalEvidenceQuestionIds ?? [];
+  const facetProxyEvidenceQuestionIds = facet?.directionalEvidenceQuestionIds ?? [];
   const weight = centralityWeight(commitment.centrality) / Math.max(constructCount, 1);
   if (sign === undefined || observedSignal === undefined || (!commitment.facetId && construct?.status === "not-yet-measured")) {
     return {
       commitmentId: commitment.id,
       commitmentLabel: commitmentLabel(commitment),
       constructId,
+      profileDimensionIds,
+      calculationSource,
       ...(commitment.facetId ? { facetId: commitment.facetId } : {}),
       expectedDirection: commitment.expectedDirection,
       centrality: commitment.centrality,
       weight,
       ...(observedSignal === undefined ? {} : { observedSignal }),
-      evidenceQuestionIds: commitment.facetId
-        ? facet?.directionalEvidenceQuestionIds ?? []
-        : construct?.directionalEvidenceQuestionIds ?? [],
+      ...(facetProxySignal === undefined ? {} : { facetProxySignal }),
+      evidenceQuestionIds,
+      ...(facetProxyEvidenceQuestionIds.length === 0 ? {} : { facetProxyEvidenceQuestionIds }),
     };
   }
   const support = clamp(sign * observedSignal, -1, 1);
@@ -142,16 +176,18 @@ const basisForCommitment = (
     commitmentId: commitment.id,
     commitmentLabel: commitmentLabel(commitment),
     constructId,
+    profileDimensionIds,
+    calculationSource,
     ...(commitment.facetId ? { facetId: commitment.facetId } : {}),
     expectedDirection: commitment.expectedDirection,
     centrality: commitment.centrality,
     weight,
     observedSignal,
+    ...(facetProxySignal === undefined ? {} : { facetProxySignal }),
     agreement,
     contribution: agreement * weight,
-    evidenceQuestionIds: commitment.facetId
-      ? facet?.directionalEvidenceQuestionIds ?? []
-      : construct?.directionalEvidenceQuestionIds ?? [],
+    evidenceQuestionIds,
+    ...(facetProxyEvidenceQuestionIds.length === 0 ? {} : { facetProxyEvidenceQuestionIds }),
   };
 };
 
@@ -159,11 +195,12 @@ const candidateForConfiguration = (
   configuration: IdeologyConfiguration,
   constructs: ReadonlyMap<string, BeliefConstructResult>,
   facets: ReadonlyMap<string, BeliefFacetResult>,
+  structure: readonly BeliefStructureDimension[],
   directEvidence: readonly BeliefDirectEvidence[],
   relationalEvidence: readonly BeliefRelationalEvidence[],
 ): MorphologyCandidateDraft | undefined => {
   const basis = configuration.commitments.flatMap((commitment) => commitment.constructIds
-    .map((constructId) => basisForCommitment(commitment, constructId, constructs, facets, commitment.constructIds.length)));
+    .map((constructId) => basisForCommitment(commitment, constructId, constructs, facets, structure, commitment.constructIds.length)));
   const directionalBasis = basis.filter((item) => item.expectedDirection !== "indeterminate");
   if (directionalBasis.length === 0) return undefined;
 
@@ -199,8 +236,8 @@ const candidateForConfiguration = (
   const observedText = [...definingCommitmentsObserved].slice(0, 3).join(", ");
   const missingText = [...missingDefiningCommitments].slice(0, 3).join(", ");
   const conflictText = [...conflictingCommitments].slice(0, 3).join(", ");
-  const directBasis = directBasisFor(directEvidence);
-  const relationalBasis = relationalBasisFor(relationalEvidence);
+  const directBasis = directBasisFor(directEvidence, structure);
+  const relationalBasis = relationalBasisFor(relationalEvidence, structure);
   const explanationParts = [
     observedText.length > 0 ? `Observed support includes ${observedText}.` : "No defining commitment is sufficiently observed.",
     missingText.length > 0 ? `Still unmeasured or unavailable: ${missingText}.` : "No defining commitment is missing from the current proxy coverage.",
@@ -243,12 +280,14 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
       candidates: [],
       gaps: [
         "The profile does not meet the existing layer coverage threshold, so no ideological morphology candidate is derived.",
-        "This model uses provisional facet-to-construct proxies and cannot infer an ideology from incomplete responses.",
+        "This model uses construct-level profile signals built from provisional facet-to-construct proxies and cannot infer an ideology from incomplete responses.",
       ],
       provenance: [...BELIEF_MODEL_PROVENANCE],
       compatibility: {
         legacyAnchorScorerPreserved: true,
         legacyScorerRemainsPrimaryForRegression: true,
+        primaryInference: "belief-profile",
+        legacyScorerRole: "compatibility-regression",
       },
     };
   }
@@ -256,14 +295,19 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
   const constructs = constructMapFor(profile);
   const facets = facetMapFor(profile);
   const candidateDrafts = canonicalConfigurationsFor(dataset)
-    .map((configuration) => candidateForConfiguration(configuration, constructs, facets, profile.directEvidence, profile.relationalEvidence))
+    .map((configuration) => candidateForConfiguration(configuration, constructs, facets, profile.structure, profile.directEvidence, profile.relationalEvidence))
     .filter((candidate): candidate is MorphologyCandidateDraft => candidate !== undefined);
-  const candidates = candidateDrafts
+  const allCandidates = candidateDrafts
     .map((candidate) => ({
       ...candidate,
       ...morphologySeparationFor(candidate, candidateDrafts, dataset),
     }))
     .sort((left, right) => right.fit - left.fit || right.coverage - left.coverage || left.label.localeCompare(right.label) || left.anchorId.localeCompare(right.anchorId));
+  const hasProvisionalCandidates = allCandidates.some((candidate) => candidate.status === "provisional-candidate");
+  // Do not expose under-determined configuration records as candidates when
+  // the profile has no observed defining support. The diagnostic gaps remain
+  // available, but a public candidate set must fail closed with the status.
+  const candidates = hasProvisionalCandidates ? allCandidates : [];
   const unmeasured = profile.constructs.filter((construct) => construct.status === "not-yet-measured").map((construct) => construct.label);
   const leadingCandidates = candidates.slice(0, 2);
   const separationGap = leadingCandidates.length > 1
@@ -286,6 +330,8 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
     compatibility: {
       legacyAnchorScorerPreserved: true,
       legacyScorerRemainsPrimaryForRegression: true,
+      primaryInference: "belief-profile",
+      legacyScorerRole: "compatibility-regression",
     },
   };
 };

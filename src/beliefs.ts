@@ -1,6 +1,6 @@
 import { RESEARCH_ANCHOR_PROFILES } from "./research-bank";
-import { beliefGapCandidateCountsFor, validateBeliefGapCandidates } from "./belief-gap-candidates";
-import { BELIEF_RELATIONAL_FOLLOWUPS } from "./belief-followups";
+import { beliefGapCandidateCountsFor, validateBeliefGapCandidates, validateBeliefGapEvidence } from "./belief-gap-candidates";
+import { BELIEF_RELATIONAL_FOLLOWUPS, validateBeliefRelationalFollowUps } from "./belief-followups";
 import { validateBeliefDirectEvidence, validateBeliefDirectItems } from "./belief-direct-items";
 import {
   BELIEF_CONSTRUCTS,
@@ -10,14 +10,18 @@ import {
   type BeliefCommitment,
   type BeliefCommitmentCentrality,
   type BeliefCommitmentDirection,
+  type BeliefCandidateResponseFormat,
   type BeliefConception,
   type BeliefConstructDefinition,
+  type BeliefConstructLayerCoverage,
   type BeliefConstructId,
   type BeliefDiagnostic,
   type BeliefDiagnosticLayer,
   type BeliefDirectEvidence,
+  type BeliefDirectEvidenceKind,
   type BeliefConstructResult,
   type BeliefFacetResult,
+  type BeliefGapEvidence,
   type BeliefItemDisposition,
   type BeliefMeasurementAudit,
   type BeliefMeasurementAuditFlag,
@@ -31,6 +35,9 @@ import {
   type BeliefRelationalEvidenceKind,
   type BeliefRelationalSummary,
   type BeliefResponseSummary,
+  type BeliefStructureDimension,
+  type BeliefStructureDimensionId,
+  type BeliefStructureEvidencePosture,
   type BeliefTension,
   type CrossLayerPull,
   type Dataset,
@@ -220,6 +227,14 @@ const compoundWordingPattern = /\b(?:and|or)\s+(?:(?:also|still|then|not)\s+)?(?
  */
 const conditionalWordingPattern = /\b(?:unless|when|only if|provided that|as long as|even if|even when|whenever|whereas|while|rather than)\b/i;
 
+/**
+ * A wording flag must concern what the respondent is asked, not the hidden
+ * branch used to author or research a question. This conservative pattern
+ * catches explicit requests for a named ideology or self-identification while
+ * leaving ordinary political-tradition claims available for content review.
+ */
+const ideologyCodedWordingPattern = /\b(?:which|what)\s+(?:political\s+)?(?:ideology|tradition|movement|label)\b|\b(?:do|would)\s+you\s+(?:identify|align|belong|associate)\b|\b(?:identify|align|belong|associate)\s+(?:yourself\s+)?(?:with|as)\b/i;
+
 const normalizedPromptFor = (prompt: string): string => prompt.trim().toLocaleLowerCase().replace(/\s+/g, " ");
 
 const beliefItemDispositionFor = (
@@ -230,7 +245,7 @@ const beliefItemDispositionFor = (
   if (flags.includes("duplicate-wording")) return "redundant";
   if (flags.includes("compound-wording") && flags.includes("cross-construct")) return "split";
   if (flags.includes("compound-wording")) return "rewrite";
-  if (flags.includes("ideology-coded")) return "remap";
+  if (flags.includes("ideology-coded-wording")) return "remap";
   return "preserve";
 };
 
@@ -239,7 +254,7 @@ const beliefItemRationaleFor = (disposition: BeliefItemDisposition, flags: reado
   if (disposition === "redundant") return "The normalized wording duplicates another production item; retain only after a content review confirms that the duplicate is intentional.";
   if (disposition === "split") return "The item combines multiple bridged constructs and uses compound wording; split into single-claim items before treating it as direct construct evidence.";
   if (disposition === "rewrite") return "The item contains compound or conditional wording; rewrite it around one claim before treating it as direct construct evidence.";
-  if (disposition === "remap") return "The item is branch-tagged for ontology coverage; retain the response as a facet proxy but do not use its target-node metadata as respondent evidence.";
+  if (disposition === "remap") return "The respondent-facing wording asks for a named ideology or self-identification; remap it to an underlying belief claim before using it as construct evidence.";
   if (flags.includes("conditional-wording")) return "The item uses condition or contrast wording; preserve it as a review signal until response-process review confirms that its scope and exception are interpreted consistently.";
   if (flags.includes("cross-construct")) return "The item is retained as a legacy facet proxy spanning more than one construct; no construct-specific validity is claimed.";
   return "The item is retained as a single-bridge legacy facet proxy pending response-process and construct-validity review.";
@@ -248,8 +263,8 @@ const beliefItemRationaleFor = (disposition: BeliefItemDisposition, flags: reado
 /**
  * Audits every production question without silently rewriting it. A flag is a
  * review signal for future cognitive/item review, not evidence that an item is
- * unusable. targetNodeIds are intentionally reported as a risk and never used
- * as respondent evidence by the profile calculation.
+ * unusable. targetNodeIds are intentionally reported as editorial metadata and
+ * never used as respondent evidence by the profile calculation.
  */
 export const auditBeliefMeasurement = (dataset: Dataset): readonly BeliefMeasurementAudit[] => {
   const promptCounts = new Map<string, number>();
@@ -261,7 +276,8 @@ export const auditBeliefMeasurement = (dataset: Dataset): readonly BeliefMeasure
   const facetIds = Object.keys(question.effects);
   const constructIds = questionConstructIds(question);
     const flags: BeliefMeasurementAuditFlag[] = [];
-    if (question.targetNodeIds && question.targetNodeIds.length > 0) flags.push("ideology-coded");
+    if (question.targetNodeIds && question.targetNodeIds.length > 0) flags.push("branch-target-metadata");
+    if (ideologyCodedWordingPattern.test(question.prompt)) flags.push("ideology-coded-wording");
     if (compoundWordingPattern.test(question.prompt)) flags.push("compound-wording");
     if (conditionalWordingPattern.test(question.prompt)) flags.push("conditional-wording");
     if (constructIds.length > 1) flags.push("cross-construct");
@@ -270,7 +286,12 @@ export const auditBeliefMeasurement = (dataset: Dataset): readonly BeliefMeasure
   return {
     questionId: question.id,
     layer: question.layer,
+    prompt: question.prompt,
+    ...(question.context ? { context: question.context } : {}),
+    domain: question.domain,
     facetIds,
+    legacyEffects: question.effects,
+    editorialTargetNodeIds: question.targetNodeIds ?? [],
     constructIds,
     flags,
     disposition,
@@ -326,6 +347,7 @@ export const validateBeliefModel = (dataset: Dataset): readonly string[] => {
   if (auditIds.size !== dataset.questions.length) errors.push("belief measurement audit does not cover every production question");
   errors.push(...validateIdeologyConfigurations(dataset));
   errors.push(...validateBeliefDirectItems(dataset));
+  errors.push(...validateBeliefRelationalFollowUps(dataset));
   return errors;
 };
 
@@ -388,6 +410,7 @@ export const validateBeliefRelationalEvidence = (
     if (referencedFollowUpIds.length > 1) errors.push(`belief relational evidence ${item.id} references multiple follow-up questions`);
     const followUp = referencedFollowUpIds.length === 1 ? followUpById.get(referencedFollowUpIds[0]) : undefined;
     if (followUp) {
+      if (followUp.layer !== item.layer) errors.push(`belief relational evidence ${item.id} has a mismatched follow-up layer`);
       if (followUp.kind !== item.kind) errors.push(`belief relational evidence ${item.id} has a mismatched follow-up kind`);
       if (item.evidenceQuestionIds.length !== 1 || item.evidenceQuestionIds[0] !== followUp.id) errors.push(`belief relational evidence ${item.id} must point only to its follow-up question`);
       if (!sameIdSet(item.constructIds, followUp.constructIds)) errors.push(`belief relational evidence ${item.id} has mismatched follow-up construct links`);
@@ -399,11 +422,9 @@ export const validateBeliefRelationalEvidence = (
         if (item.condition !== option.condition) errors.push(`belief relational evidence ${item.id} has mismatched follow-up condition`);
         if (item.resolution !== option.resolution) errors.push(`belief relational evidence ${item.id} has mismatched follow-up resolution`);
         if (item.confidence !== option.confidence) errors.push(`belief relational evidence ${item.id} has mismatched follow-up confidence`);
+        if (!sameIdSet(item.sourceRefs, option.sourceRefs)) errors.push(`belief relational evidence ${item.id} has mismatched option source links`);
       }
       if (item.sourceRefs.length === 0) errors.push(`belief relational evidence ${item.id} has no source links`);
-      if (item.sourceRefs.some((sourceRef) => !followUp.sourceRefs.includes(sourceRef))) {
-        errors.push(`belief relational evidence ${item.id} references a source not attached to its follow-up`);
-      }
     }
     for (const questionId of item.evidenceQuestionIds) {
       if (!questionIds.has(questionId)) errors.push(`belief relational evidence ${item.id} references missing question ${questionId}`);
@@ -574,6 +595,7 @@ const constructResultFor = (
   observations: readonly BeliefObservation[],
   audits: readonly BeliefMeasurementAudit[],
   directEvidence: readonly BeliefDirectEvidence[],
+  gapEvidence: readonly BeliefGapEvidence[],
   relationalEvidence: readonly BeliefRelationalEvidence[],
 ): BeliefConstructResult => {
   const questionIds = audits.filter((audit) => audit.constructIds.includes(definition.id)).map((audit) => audit.questionId);
@@ -582,6 +604,7 @@ const constructResultFor = (
   const coverage = response.total === 0 ? 0 : answered / response.total;
   const constructObservations = observations.filter((observation) => observation.constructId === definition.id);
   const constructDirectEvidence = directEvidence.filter((evidence) => evidence.constructIds.includes(definition.id));
+  const constructGapEvidence = gapEvidence.filter((evidence) => evidence.constructId === definition.id);
   const constructRelationalEvidence = relationalEvidence.filter((evidence) => evidence.constructIds.includes(definition.id));
   const directObservationCount = constructObservations.filter((observation) => observation.measurementMode === "direct-item").length;
   const proxyObservationCount = constructObservations.filter((observation) => observation.measurementMode === "facet-proxy").length;
@@ -625,13 +648,16 @@ const constructResultFor = (
     directEvidenceCount: constructDirectEvidence.length,
     directEvidenceIds: constructDirectEvidence.map((evidence) => evidence.id),
     directEvidenceQuestionIds: unique(constructDirectEvidence.flatMap((evidence) => evidence.evidenceQuestionIds)),
+    gapEvidenceCount: constructGapEvidence.length,
+    gapEvidenceIds: constructGapEvidence.map((evidence) => evidence.id),
+    gapResponseFormats: unique(constructGapEvidence.map((evidence) => evidence.responseFormat)),
     relationalEvidenceCount: constructRelationalEvidence.length,
     relationalEvidenceIds: constructRelationalEvidence.map((evidence) => evidence.id),
     observedFacetIds,
     evidenceQuestionIds,
     directionalEvidenceQuestionIds,
     mixedQuestionIds,
-    sourceRefs: definition.sourceRefs,
+    sourceRefs: unique([...definition.sourceRefs, ...constructGapEvidence.flatMap((evidence) => evidence.sourceRefs)]),
   };
 };
 
@@ -649,9 +675,14 @@ const measurementSummaryFor = (
 ): BeliefMeasurementSummary => {
   const dispositionCounts = emptyDispositionCounts();
   const constructItemCounts = Object.fromEntries(BELIEF_CONSTRUCTS.map((constructId) => [constructId, 0])) as Record<BeliefConstructId, number>;
+  const constructLayerItemCounts = Object.fromEntries(BELIEF_CONSTRUCTS.map((constructId) => [
+    constructId,
+    Object.fromEntries(LAYERS.map((layer) => [layer, 0])) as Record<Layer, number>,
+  ])) as Record<BeliefConstructId, Record<Layer, number>>;
   const duplicateQuestionIds: string[] = [];
   const compoundQuestionIds: string[] = [];
   const conditionalQuestionIds: string[] = [];
+  const branchMetadataQuestionIds: string[] = [];
   const ideologyCodedQuestionIds: string[] = [];
   let proxyItems = 0;
   let directItems = 0;
@@ -659,11 +690,15 @@ const measurementSummaryFor = (
     dispositionCounts[audit.disposition] += 1;
     if (audit.measurementMode === "facet-proxy") proxyItems += 1;
     else directItems += 1;
-    for (const constructId of audit.constructIds) constructItemCounts[constructId] += 1;
+    for (const constructId of audit.constructIds) {
+      constructItemCounts[constructId] += 1;
+      constructLayerItemCounts[constructId][audit.layer] += 1;
+    }
     if (audit.flags.includes("duplicate-wording")) duplicateQuestionIds.push(audit.questionId);
     if (audit.flags.includes("compound-wording")) compoundQuestionIds.push(audit.questionId);
     if (audit.flags.includes("conditional-wording")) conditionalQuestionIds.push(audit.questionId);
-    if (audit.flags.includes("ideology-coded")) ideologyCodedQuestionIds.push(audit.questionId);
+    if (audit.flags.includes("branch-target-metadata")) branchMetadataQuestionIds.push(audit.questionId);
+    if (audit.flags.includes("ideology-coded-wording")) ideologyCodedQuestionIds.push(audit.questionId);
   }
   return {
     totalItems: audits.length,
@@ -672,10 +707,15 @@ const measurementSummaryFor = (
     researchCandidateCounts: beliefGapCandidateCountsFor(),
     dispositionCounts,
     constructItemCounts,
+    constructLayerItemCounts,
+    uncoveredConstructLayerPairs: BELIEF_CONSTRUCT_DEFINITIONS.flatMap((definition): readonly BeliefConstructLayerCoverage[] => definition.layers
+      .filter((layer) => constructLayerItemCounts[definition.id][layer] === 0)
+      .map((layer) => ({ constructId: definition.id, layer }))),
     uncoveredConstructIds: BELIEF_CONSTRUCTS.filter((constructId) => constructItemCounts[constructId] === 0),
     duplicateQuestionIds,
     compoundQuestionIds,
     conditionalQuestionIds,
+    branchMetadataQuestionIds,
     ideologyCodedQuestionIds,
   };
 };
@@ -689,6 +729,220 @@ const relationalSummaryFor = (evidence: readonly BeliefRelationalEvidence[]): Be
   contestationStatements: evidence.filter((item) => item.kind === "contestation").length,
   unresolvedContradictions: evidence.filter((item) => item.kind === "contradiction" && !item.resolution?.trim()).length,
 });
+
+type BeliefStructureDimensionDefinition = Readonly<Pick<BeliefStructureDimension, "id" | "label" | "description" | "constructIds">>;
+
+/**
+ * The integrated profile has explicit slots for the distinctions required by
+ * the objective. These slots organize evidence already present in the
+ * profile; they do not create a new score or infer a relationship from
+ * co-occurrence.
+ */
+const BELIEF_STRUCTURE_DIMENSIONS: readonly BeliefStructureDimensionDefinition[] = [
+  {
+    id: "values-and-moral-scope",
+    label: "Normative commitments and moral scope",
+    description: "What goods, duties, membership, solidarity, and scope of concern the respondent treats as politically important.",
+    constructIds: ["social-order-moral-scope"],
+  },
+  {
+    id: "concepts-and-conceptions",
+    label: "Concepts and competing conceptions",
+    description: "Which political concepts are being invoked and which interpretation gives a shared term its practical meaning.",
+    constructIds: ["concept-conception"],
+  },
+  {
+    id: "descriptive-causal-beliefs",
+    label: "Descriptive and causal beliefs",
+    description: "What the respondent believes is happening, what mechanisms reproduce it, and which explanatory alternatives remain open.",
+    constructIds: ["diagnosis-causal-account"],
+  },
+  {
+    id: "legitimacy-and-authority",
+    label: "Legitimacy and authority",
+    description: "Who may exercise power, why rule is justified or accepted, and which limits or resistance claims apply.",
+    constructIds: ["legitimacy-authority"],
+  },
+  {
+    id: "distributive-principles",
+    label: "Distributive principles",
+    description: "What should be allocated, to whom, and whether need, equal standing, capability, reciprocity, or another reason is doing the work.",
+    constructIds: ["distributive-principle"],
+  },
+  {
+    id: "institutional-commitments",
+    label: "Institutional commitments",
+    description: "Which institutions, ownership forms, decision procedures, and accountability routes are expected to realize a commitment.",
+    constructIds: ["institutional-mechanism"],
+  },
+  {
+    id: "political-economy",
+    label: "Political-economic commitments",
+    description: "How markets, ownership, labor, public goods, exchange, and economic power are understood and related institutionally.",
+    constructIds: ["political-economy"],
+  },
+  {
+    id: "political-change",
+    label: "Theories of political change",
+    description: "Whether change should proceed through reform, transformation, restoration, gradualism, rupture, experimentation, or preservation.",
+    constructIds: ["change-strategy"],
+  },
+  {
+    id: "priorities-and-conflicts",
+    label: "Priorities and conflict rules",
+    description: "What should happen when valued goods, groups, principles, or institutional goals conflict, including exceptions and tradeoffs.",
+    constructIds: ["priority-conflict"],
+  },
+  {
+    id: "epistemic-stance",
+    label: "Epistemic assumptions and uncertainty",
+    description: "How claims are held, revised, qualified, or acted on when information is incomplete; this is separate from agreement and accuracy.",
+    constructIds: ["epistemic-stance"],
+  },
+  {
+    id: "heterodoxy-and-contestation",
+    label: "Heterodoxy and contestation",
+    description: "How internal variation, dissent, opposition, revision, and disagreement over contested concepts are treated.",
+    constructIds: ["heterodoxy-contestation"],
+  },
+];
+
+const structurePostureFor = (
+  observedObservations: readonly BeliefObservation[],
+  directEvidence: readonly BeliefDirectEvidence[],
+  gapEvidence: readonly BeliefGapEvidence[],
+  relationalEvidence: readonly BeliefRelationalEvidence[],
+): BeliefStructureEvidencePosture => {
+  const hasFacetProxy = observedObservations.some((observation) => observation.measurementMode === "facet-proxy");
+  const hasDirectItem = observedObservations.some((observation) => observation.measurementMode === "direct-item");
+  const hasCategoricalPilot = directEvidence.length > 0;
+  const hasCandidatePilot = gapEvidence.length > 0;
+  const hasExplicitRelational = relationalEvidence.length > 0;
+  const evidenceForms = [hasFacetProxy, hasDirectItem, hasCategoricalPilot, hasCandidatePilot, hasExplicitRelational].filter(Boolean).length;
+  if (evidenceForms === 0) return "unmeasured";
+  if (evidenceForms > 1) return "mixed-provisional";
+  if (hasFacetProxy) return "facet-proxy";
+  if (hasDirectItem) return "direct-item";
+  if (hasCategoricalPilot) return "categorical-pilot";
+  if (hasCandidatePilot) return "candidate-pilot";
+  return "explicit-relational";
+};
+
+const structureGapFor = (
+  posture: BeliefStructureEvidencePosture,
+  constructs: readonly BeliefConstructResult[],
+): string => {
+  if (posture === "unmeasured") {
+    return constructs.length > 0 && constructs.every((construct) => construct.status === "not-yet-measured")
+      ? "No production item or explicit evidence currently measures this dimension."
+      : "No answered directional or mixed response and no explicit direct or relational evidence is available for this dimension.";
+  }
+  if (posture === "facet-proxy") return "The available evidence is inherited from facet proxies; it does not by itself establish the corresponding conception, mechanism, or rule.";
+  if (posture === "direct-item") return "A direct construct item is visible in the evidence trace; its content and construct validity still require review.";
+  if (posture === "categorical-pilot") return "A selected categorical pilot account is visible; it is not a scalar measure, accuracy finding, or validated inference.";
+  if (posture === "candidate-pilot") return "A selected research-candidate response is visible; it remains quarantined and does not establish a validated scalar construct.";
+  if (posture === "explicit-relational") return "An explicit relational statement is visible; no hidden scalar priority, confidence, contradiction, or contestation weight is inferred.";
+  return "Multiple evidence forms are visible and remain separate; research candidates stay quarantined, and none is upgraded into a validated latent measure or hidden weight.";
+};
+
+const observationCountsByLayerFor = (observations: readonly BeliefObservation[]): Readonly<Record<Layer, number>> =>
+  Object.fromEntries(LAYERS.map((layer) => [layer, observations.filter((observation) => observation.layer === layer).length])) as Record<Layer, number>;
+
+const dimensionIdsForConstructs = (
+  constructIds: readonly BeliefConstructId[],
+): readonly BeliefStructureDimensionId[] => BELIEF_STRUCTURE_DIMENSIONS
+  .filter((dimension) => dimension.constructIds.some((constructId) => constructIds.includes(constructId)))
+  .map((dimension) => dimension.id);
+
+const beliefStructureFor = (
+  constructs: readonly BeliefConstructResult[],
+  observations: readonly BeliefObservation[],
+  directEvidence: readonly BeliefDirectEvidence[],
+  gapEvidence: readonly BeliefGapEvidence[],
+  relationalEvidence: readonly BeliefRelationalEvidence[],
+): readonly BeliefStructureDimension[] => BELIEF_STRUCTURE_DIMENSIONS.map((definition) => {
+  const dimensionConstructs = constructs.filter((construct) => definition.constructIds.includes(construct.id));
+  const dimensionObservations = observations.filter((observation) => definition.constructIds.includes(observation.constructId));
+  const observedObservations = dimensionObservations.filter((observation) => observation.state === "directional" || observation.state === "mixed");
+  const directionalObservations = observedObservations.filter((observation) => observation.state === "directional");
+  const primaryConstruct = dimensionConstructs.length === 1 ? dimensionConstructs[0] : undefined;
+  // A direct or relational record can intentionally participate in more than
+  // one dimension. Its explicit construct links, not its display kind, are
+  // the source of that fan-out; this preserves relationships such as a
+  // freedom/equality priority across both the priority and substantive rows
+  // without creating a scalar signal or a second score.
+  const dimensionDirectEvidence = directEvidence.filter((evidence) => evidence.constructIds.some((constructId) => definition.constructIds.includes(constructId)));
+  const dimensionGapEvidence = gapEvidence.filter((evidence) => definition.constructIds.includes(evidence.constructId));
+  const dimensionRelationalEvidence = relationalEvidence.filter((evidence) => evidence.constructIds.some((constructId) => definition.constructIds.includes(constructId)));
+  const relatedDimensionIds = unique(dimensionRelationalEvidence
+    .flatMap((evidence) => dimensionIdsForConstructs(evidence.constructIds))
+    .filter((dimensionId) => dimensionId !== definition.id));
+  const evidencePosture = structurePostureFor(observedObservations, dimensionDirectEvidence, dimensionGapEvidence, dimensionRelationalEvidence);
+  return {
+    id: definition.id,
+    label: definition.label,
+    description: definition.description,
+    constructIds: definition.constructIds,
+    evidencePosture,
+    observedObservationCount: observedObservations.length,
+    directionalObservationCount: directionalObservations.length,
+    observedObservationCountsByLayer: observationCountsByLayerFor(observedObservations),
+    directionalObservationCountsByLayer: observationCountsByLayerFor(directionalObservations),
+    ...(primaryConstruct?.signal === undefined ? {} : { observedSignal: primaryConstruct.signal }),
+    observedSignalEvidenceQuestionIds: primaryConstruct?.directionalEvidenceQuestionIds ?? [],
+    mixedObservationCount: observedObservations.filter((observation) => observation.state === "mixed").length,
+    facetProxyObservationCount: observedObservations.filter((observation) => observation.measurementMode === "facet-proxy").length,
+    directItemObservationCount: observedObservations.filter((observation) => observation.measurementMode === "direct-item").length,
+    directEvidenceIds: dimensionDirectEvidence.map((evidence) => evidence.id),
+    directEvidenceKinds: unique(dimensionDirectEvidence.map((evidence) => evidence.kind)),
+    gapEvidenceIds: dimensionGapEvidence.map((evidence) => evidence.id),
+    gapResponseFormats: unique(dimensionGapEvidence.map((evidence) => evidence.responseFormat)),
+    relationalEvidenceIds: dimensionRelationalEvidence.map((evidence) => evidence.id),
+    relationalEvidenceKinds: unique(dimensionRelationalEvidence.map((evidence) => evidence.kind)),
+    relatedDimensionIds,
+    evidenceQuestionIds: unique([
+      ...observedObservations.map((observation) => observation.questionId),
+      ...dimensionDirectEvidence.flatMap((evidence) => evidence.evidenceQuestionIds),
+      ...dimensionRelationalEvidence.flatMap((evidence) => evidence.evidenceQuestionIds),
+    ]),
+    gap: structureGapFor(evidencePosture, dimensionConstructs),
+    sourceRefs: unique([
+      ...dimensionConstructs.flatMap((construct) => construct.sourceRefs),
+      ...dimensionDirectEvidence.flatMap((evidence) => evidence.sourceRefs),
+      ...dimensionRelationalEvidence.flatMap((evidence) => evidence.sourceRefs),
+    ]),
+  };
+});
+
+/**
+ * Derive cross-layer tensions from the primary belief-profile signals. This
+ * deliberately lives beside profile construction so the legacy anchor scorer
+ * cannot become an upstream dependency of the belief representation.
+ */
+const crossLayerPullsForProfile = (
+  facets: readonly BeliefFacetResult[],
+  layerCoverage: Readonly<Record<Layer, number>>,
+  coverageThreshold: number,
+): readonly CrossLayerPull[] => {
+  const covered = (layer: Layer): boolean => layerCoverage[layer] >= coverageThreshold;
+  if (!covered("normative") || !covered("prescriptive")) return [];
+
+  const value = (layer: Layer, facetId: string): number => facets.find((facet) => facet.layer === layer && facet.facetId === facetId)?.signal ?? 0;
+  const pulls: CrossLayerPull[] = [];
+  if (value("normative", "liberty") > 0.55 && value("prescriptive", "state-capacity") > 0.55) {
+    pulls.push({ id: "autonomy-administration", title: "Autonomy meets administration", body: "Your values emphasize room for self-direction while your preferred practice puts weight on capable public implementation. The two can coexist, but their boundary is a live design question.", layers: ["normative", "prescriptive"] });
+  }
+  if (value("normative", "ecological-priority") > 0.55 && value("prescriptive", "market-allocation") > 0.55) {
+    pulls.push({ id: "ecological-market", title: "Ecological ends, market means", body: "You place high value on ecological protection while also favoring market coordination in practice. That combination makes enforcement, pricing, and distribution choices especially important.", layers: ["normative", "prescriptive"] });
+  }
+  if (value("normative", "order-tradition") > 0.55 && value("prescriptive", "reformism") > 0.55) {
+    pulls.push({ id: "continuity-change", title: "Continuity meets change", body: "You give moral weight to inherited order while preferring gradual institutional change. The practical question is which inheritances deserve continuity and which reforms can preserve trust.", layers: ["normative", "prescriptive"] });
+  }
+  if (covered("descriptive") && value("descriptive", "elite-autonomy") > 0.55 && value("prescriptive", "state-capacity") > 0.55) {
+    pulls.push({ id: "diagnosis-implementation", title: "Diagnosis meets implementation", body: "You see organized elites as influential and also want institutions with enough capacity to act. Accountability design matters because implementation power can either constrain or reproduce that influence.", layers: ["descriptive", "prescriptive"] });
+  }
+  return pulls;
+};
 
 const tensionConstructs: Readonly<Record<string, readonly BeliefConstructId[]>> = {
   "autonomy-administration": ["concept-conception", "legitimacy-authority", "institutional-mechanism"],
@@ -799,17 +1053,19 @@ const relationalEvidenceDiagnosticLayerFor = (kind: BeliefRelationalEvidenceKind
     : "relationship";
 
 const beliefDiagnosticsFor = (
-  layerCoverage: readonly number[],
+  layerCoverage: Readonly<Record<Layer, number>>,
   allLayersCovered: boolean,
   constructs: readonly BeliefConstructResult[],
   directEvidence: readonly BeliefDirectEvidence[],
+  gapEvidence: readonly BeliefGapEvidence[],
   relationalEvidence: readonly BeliefRelationalEvidence[],
   directEvidenceValidationErrors: readonly string[],
+  gapEvidenceValidationErrors: readonly string[],
   relationalEvidenceValidationErrors: readonly string[],
 ): readonly BeliefDiagnostic[] => {
   const diagnostics: BeliefDiagnostic[] = [];
   if (!allLayersCovered) {
-    const coverageText = LAYERS.map((layer, index) => `${layer}: ${Math.round((layerCoverage[index] ?? 0) * 100)}%`).join(", ");
+    const coverageText = LAYERS.map((layer) => `${layer}: ${Math.round((layerCoverage[layer] ?? 0) * 100)}%`).join(", ");
     diagnostics.push(diagnosticFor(
       "question-layer-coverage",
       "question",
@@ -889,13 +1145,13 @@ const beliefDiagnosticsFor = (
     ));
   }
 
-  if (directEvidenceValidationErrors.length > 0 || relationalEvidenceValidationErrors.length > 0) {
+  if (directEvidenceValidationErrors.length > 0 || gapEvidenceValidationErrors.length > 0 || relationalEvidenceValidationErrors.length > 0) {
     diagnostics.push(diagnosticFor(
       "optional-evidence-contract",
       "question",
       "validation-error",
       "Optional evidence failed its input contract",
-      "One or more direct or relational records were rejected before profile or morphology use; inspect the contract errors rather than interpreting partial evidence.",
+      "One or more direct, relational, or research-candidate records were rejected before profile or morphology use; inspect the contract errors rather than interpreting partial evidence.",
       [],
       [],
       ["source-aapor"],
@@ -919,6 +1175,19 @@ const beliefDiagnosticsFor = (
       evidence.flatMap((item) => item.constructIds),
       evidence.flatMap((item) => item.evidenceQuestionIds),
       evidence.flatMap((item) => item.sourceRefs),
+    ));
+  }
+
+  if (gapEvidence.length > 0) {
+    diagnostics.push(diagnosticFor(
+      "gap-evidence-candidate-pilot",
+      "construct",
+      "validation-gap",
+      "Research-candidate responses remain quarantined",
+      `${gapEvidence.length} selected research-candidate response${gapEvidence.length === 1 ? " is" : "s are"} visible for currently uncovered constructs, but the candidate wording, response process, neighbor distinctness, and empirical measurement remain unvalidated. These records do not change scalar construct status or morphology affinity.`,
+      gapEvidence.map((item) => item.constructId),
+      gapEvidence.flatMap((item) => item.evidenceQuestionIds),
+      gapEvidence.flatMap((item) => item.sourceRefs),
     ));
   }
 
@@ -951,15 +1220,19 @@ const globalResponseSummaryFor = (answers: AnswerMap, dataset: Dataset): BeliefR
 export const calculateBeliefProfile = (
   answers: AnswerMap,
   dataset: Dataset,
-  pulls: readonly CrossLayerPull[] = [],
+  /** Retained for positional compatibility; primary profile construction ignores legacy pulls. */
+  _legacyPulls: readonly CrossLayerPull[] = [],
   relationalEvidence: readonly BeliefRelationalEvidence[] = [],
   directEvidence: readonly BeliefDirectEvidence[] = [],
+  gapEvidence: readonly BeliefGapEvidence[] = [],
 ): BeliefProfile => {
   const relationalEvidenceValidationErrors = validateBeliefRelationalEvidence(relationalEvidence, dataset);
   const directEvidenceValidationErrors = validateBeliefDirectEvidence(directEvidence, dataset);
+  const gapEvidenceValidationErrors = validateBeliefGapEvidence(gapEvidence, dataset);
   const evidenceValidationErrors = [
     ...relationalEvidenceValidationErrors.map((error) => `relational evidence: ${error}`),
     ...directEvidenceValidationErrors.map((error) => `direct evidence: ${error}`),
+    ...gapEvidenceValidationErrors.map((error) => `gap evidence: ${error}`),
   ];
   // Optional evidence is an external seam even though the current UI creates
   // it from typed option maps. Reject the whole optional collection when any
@@ -967,27 +1240,32 @@ export const calculateBeliefProfile = (
   // the profile, tension notices, or morphology trace.
   const acceptedRelationalEvidence = relationalEvidenceValidationErrors.length === 0 ? relationalEvidence : [];
   const acceptedDirectEvidence = directEvidenceValidationErrors.length === 0 ? directEvidence : [];
+  const acceptedGapEvidence = gapEvidenceValidationErrors.length === 0 ? gapEvidence : [];
   const measurementAudit = auditBeliefMeasurement(dataset);
   const observations = beliefObservationsFor(answers, dataset, measurementAudit);
   const measurementSummary = measurementSummaryFor(measurementAudit);
   const facets = dataset.facets.map((facet) => facetResultFor(facet, answers, dataset, observations, measurementAudit));
-  const constructs = BELIEF_CONSTRUCT_DEFINITIONS.map((item) => constructResultFor(item, answers, dataset, observations, measurementAudit, acceptedDirectEvidence, acceptedRelationalEvidence));
+  const constructs = BELIEF_CONSTRUCT_DEFINITIONS.map((item) => constructResultFor(item, answers, dataset, observations, measurementAudit, acceptedDirectEvidence, acceptedGapEvidence, acceptedRelationalEvidence));
+  const structure = beliefStructureFor(constructs, observations, acceptedDirectEvidence, acceptedGapEvidence, acceptedRelationalEvidence);
   const response = globalResponseSummaryFor(answers, dataset);
-  const layerCoverage = LAYERS.map((layer) => {
+  const layerCoverage = Object.fromEntries(LAYERS.map((layer) => {
     const questions = dataset.questions.filter((question) => question.layer === layer);
     const answered = questions.filter((question) => isNumericAnswer(answers[question.id])).length;
-    return questions.length === 0 ? 0 : answered / questions.length;
-  });
-  const allLayersCovered = layerCoverage.every((coverage) => coverage >= dataset.policy.coverageThreshold);
+    return [layer, questions.length === 0 ? 0 : answered / questions.length];
+  })) as Record<Layer, number>;
+  const allLayersCovered = LAYERS.every((layer) => layerCoverage[layer] >= dataset.policy.coverageThreshold);
   const hasUnmeasuredConstruct = constructs.some((item) => item.status === "not-yet-measured");
   const status: BeliefProfile["status"] = !allLayersCovered ? "insufficient-information" : hasUnmeasuredConstruct ? "partial" : "observed";
+  const crossLayerPulls = crossLayerPullsForProfile(facets, layerCoverage, dataset.policy.coverageThreshold);
   const diagnostics = beliefDiagnosticsFor(
     layerCoverage,
     allLayersCovered,
     constructs,
     acceptedDirectEvidence,
+    acceptedGapEvidence,
     acceptedRelationalEvidence,
     directEvidenceValidationErrors,
+    gapEvidenceValidationErrors,
     relationalEvidenceValidationErrors,
   );
   const unmeasuredConstructLabels = measurementSummary.uncoveredConstructIds
@@ -1018,7 +1296,11 @@ export const calculateBeliefProfile = (
     acceptedRelationalEvidence.length > 0
       ? "Explicit relational evidence is reported as respondent-stated or fixture-stated structure; it is not inferred from scalar co-occurrence and does not resolve missing measurement validation."
       : "No priority, condition, conflict-resolution, uncertainty, contradiction, or contestation rule is inferred from scalar answers.",
-    ...(evidenceValidationErrors.length > 0 ? ["Optional relational or direct evidence was rejected as a whole because one or more records failed the source, option, construct, or provenance contract."] : []),
+    acceptedGapEvidence.length > 0
+      ? "Selected research-candidate responses are visible as quarantined pilot evidence for currently uncovered constructs; they do not establish a validated scalar measure or affect morphology affinity."
+      : "Research-candidate prompts remain outside the production quiz until response-process, content, cross-context, and empirical review is complete.",
+    ...(directEvidenceValidationErrors.length > 0 || relationalEvidenceValidationErrors.length > 0 ? ["Optional relational or direct evidence was rejected as a whole because one or more records failed the source, option, construct, or provenance contract."] : []),
+    ...(gapEvidenceValidationErrors.length > 0 ? ["Optional research-candidate evidence was rejected as a whole because one or more records failed the source, option, construct, or provenance contract."] : []),
     ...(unmeasuredConstructLabels.length > 0 ? [`No production scalar item is currently mapped to: ${unmeasuredConstructLabels.join(", ")}. Explicit relational records, when present above, are kept as non-scalar evidence and do not change this measurement gap.`] : []),
   ];
   const provenance = unique([
@@ -1032,16 +1314,19 @@ export const calculateBeliefProfile = (
     modelVersion: BELIEF_MODEL_VERSION,
     status,
     response,
+    structure,
     facets,
     constructs,
     observations,
     directEvidence: acceptedDirectEvidence,
+    gapEvidence: acceptedGapEvidence,
     relationalEvidence: acceptedRelationalEvidence,
     evidenceValidationErrors,
     relationalSummary: relationalSummaryFor(acceptedRelationalEvidence),
     measurementAudit,
     measurementSummary,
-    tensions: tensionsFor(pulls, acceptedRelationalEvidence),
+    crossLayerPulls,
+    tensions: tensionsFor(crossLayerPulls, acceptedRelationalEvidence),
     diagnostics,
     gaps,
     provenance,
@@ -1183,6 +1468,7 @@ const conceptionsFor = (
     interpretation: commitment.rationale,
     centrality: commitment.centrality,
     sourceRefs: commitment.sourceRefs,
+    representation: commitment.conceptId ? "explicit-research-conception" as const : "facet-proxy" as const,
     evidencePosture: evidencePosture === "source-backed-projection" ? "source-backed" : "anchor-projection",
   }));
 
@@ -1286,6 +1572,12 @@ export function validateIdeologyConfigurations(dataset: Dataset): readonly strin
     for (const conception of configuration.conceptions) {
       if (!conception.conceptId.trim()) errors.push(`ideology configuration ${configuration.targetId} has an empty conception id`);
       if (!conception.interpretation.trim()) errors.push(`ideology configuration ${configuration.targetId} has an empty conception interpretation`);
+      if (conception.representation === "explicit-research-conception" && conception.facetId) {
+        errors.push(`ideology configuration ${configuration.targetId} explicit conception ${conception.conceptId} must not use a facet proxy`);
+      }
+      if (conception.representation === "facet-proxy" && !conception.facetId) {
+        errors.push(`ideology configuration ${configuration.targetId} facet conception ${conception.conceptId} must identify its facet proxy`);
+      }
       if (conception.facetId && !facetById.has(conception.facetId)) errors.push(`ideology configuration ${configuration.targetId} conception references missing facet proxy ${conception.facetId}`);
       for (const sourceRef of conception.sourceRefs) {
         if (!sourceIds.has(sourceRef)) errors.push(`ideology configuration ${configuration.targetId} conception references missing source ${sourceRef}`);

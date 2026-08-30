@@ -5,17 +5,17 @@ import { BELIEF_GAP_CANDIDATES, beliefGapCandidateCountsFor, validateBeliefGapCa
 const sourceIds = new Set(DATASET.sources.map((source) => source.id));
 
 describe("belief measurement-gap research tranche", () => {
-  it("keeps the three uncovered constructs source-linked and evenly represented", () => {
+  it("keeps uncovered constructs and uncovered claim-layer cells source-linked", () => {
     expect(validateBeliefGapCandidates(DATASET)).toEqual([]);
     expect(beliefGapCandidateCountsFor()).toEqual({
-      "concept-conception": 0,
+      "concept-conception": 1,
       "social-order-moral-scope": 0,
       "diagnosis-causal-account": 0,
       "legitimacy-authority": 0,
       "distributive-principle": 0,
       "institutional-mechanism": 0,
-      "political-economy": 0,
-      "change-strategy": 0,
+      "political-economy": 1,
+      "change-strategy": 2,
       "priority-conflict": 5,
       "epistemic-stance": 5,
       "heterodoxy-contestation": 5,
@@ -24,6 +24,12 @@ describe("belief measurement-gap research tranche", () => {
     expect(BELIEF_GAP_CANDIDATES.some((candidate) => candidate.sourceRefs.includes("source-sagiv-schwartz-values-review"))).toBe(true);
     expect(BELIEF_GAP_CANDIDATES.some((candidate) => candidate.sourceRefs.includes("source-elkjaer-wlezien-dont-know"))).toBe(true);
     expect(BELIEF_GAP_CANDIDATES.some((candidate) => candidate.sourceRefs.includes("source-freeden-steers-morphology"))).toBe(true);
+    expect(BELIEF_GAP_CANDIDATES).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: "bc-conception-liberty-institution", constructId: "concept-conception", layer: "prescriptive" }),
+      expect.objectContaining({ id: "bc-political-economy-justice", constructId: "political-economy", layer: "normative" }),
+      expect.objectContaining({ id: "bc-change-mechanism", constructId: "change-strategy", layer: "descriptive" }),
+      expect.objectContaining({ id: "bc-change-transition-standard", constructId: "change-strategy", layer: "normative" }),
+    ]));
   });
 
   it("keeps every gap candidate out of the production and scoring surface", () => {

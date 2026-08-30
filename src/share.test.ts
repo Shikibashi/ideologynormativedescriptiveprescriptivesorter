@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { BELIEF_GAP_CANDIDATES, beliefGapCandidateOptionIdFor } from "./belief-gap-candidates";
 import { DATASET } from "./data";
 import { decodeShareFragment, encodeShareFragment } from "./share";
 
-const fragmentFor = (answers: readonly Readonly<{ questionId: string; value: -2 | -1 | 0 | 1 | 2 | "no-view" }>[], relationalAnswers: readonly (readonly [string, string])[] = [], directAnswers: readonly (readonly [string, string])[] = []): string => {
+const fragmentFor = (answers: readonly Readonly<{ questionId: string; value: -2 | -1 | 0 | 1 | 2 | "no-view" }>[], relationalAnswers: readonly (readonly [string, string])[] = [], directAnswers: readonly (readonly [string, string])[] = [], gapAnswers: readonly (readonly [string, string])[] = []): string => {
   const payload = JSON.stringify({
     schema: "ideology-layer-sorter/share",
     envelopeVersion: 1,
@@ -12,6 +13,7 @@ const fragmentFor = (answers: readonly Readonly<{ questionId: string; value: -2 
     answers,
     ...(relationalAnswers.length > 0 ? { relationalAnswers } : {}),
     ...(directAnswers.length > 0 ? { directAnswers } : {}),
+    ...(gapAnswers.length > 0 ? { gapAnswers } : {}),
   });
   let binary = "";
   for (const byte of new TextEncoder().encode(payload)) binary += String.fromCharCode(byte);
@@ -57,8 +59,12 @@ describe("share fragments", () => {
       "conception-of-freedom": "non-domination",
       "causal-account-of-inequality": "institutional-feedback",
     };
-    const decoded = decodeShareFragment(encodeShareFragment(answers, DATASET, relationalAnswers, directAnswers), DATASET);
-    expect(decoded).toEqual({ ok: true, answers, relationalAnswers, directAnswers });
+    const gapAnswers = {
+      [BELIEF_GAP_CANDIDATES[0].id]: beliefGapCandidateOptionIdFor(BELIEF_GAP_CANDIDATES[0], 0),
+      [BELIEF_GAP_CANDIDATES[1].id]: beliefGapCandidateOptionIdFor(BELIEF_GAP_CANDIDATES[1], BELIEF_GAP_CANDIDATES[1].responseOptions.length - 1),
+    };
+    const decoded = decodeShareFragment(encodeShareFragment(answers, DATASET, relationalAnswers, directAnswers, gapAnswers), DATASET);
+    expect(decoded).toEqual({ ok: true, answers, relationalAnswers, directAnswers, gapAnswers });
   });
 
   it("rejects malformed or unrecognized fragments without guessing", () => {
@@ -78,6 +84,11 @@ describe("share fragments", () => {
     expect(decodeShareFragment(fragmentFor([], [["priority-liberty-equality", "freedom-first"], ["priority-liberty-equality", "equality-first"]]), DATASET)).toMatchObject({ ok: false });
     expect(decodeShareFragment(fragmentFor([], [], [["unknown-direct-item", "unknown-option"]]), DATASET)).toMatchObject({ ok: false });
     expect(decodeShareFragment(fragmentFor([], [], [["conception-of-freedom", "non-interference"], ["conception-of-freedom", "non-domination"]]), DATASET)).toMatchObject({ ok: false });
+    expect(decodeShareFragment(fragmentFor([], [], [], [["unknown-candidate", "unknown-option"]]), DATASET)).toMatchObject({ ok: false });
+    const firstCandidate = BELIEF_GAP_CANDIDATES[0];
+    const firstOptionId = beliefGapCandidateOptionIdFor(firstCandidate, 0);
+    expect(decodeShareFragment(fragmentFor([], [], [], [[firstCandidate.id, "unknown-option"]]), DATASET)).toMatchObject({ ok: false });
+    expect(decodeShareFragment(fragmentFor([], [], [], [[firstCandidate.id, firstOptionId], [firstCandidate.id, firstOptionId]]), DATASET)).toMatchObject({ ok: false });
     expect(decodeShareFragment(`#s=${"a".repeat(40_958)}`, DATASET)).toMatchObject({ ok: false });
   });
 });

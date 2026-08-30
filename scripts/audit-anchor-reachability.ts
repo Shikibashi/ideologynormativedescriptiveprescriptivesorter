@@ -22,8 +22,8 @@ const rows = scoringAnchorsFor(DATASET).map((anchor) => {
   const fullCompetitionResult = calculateResults(answers, fullCompetitionDataset);
   const isolatedResult = calculateResults(answers, { ...DATASET, anchors: [anchor] });
   const neighborsFor = (result: ReturnType<typeof calculateResults>, layer: typeof layers[number]): readonly string[] =>
-    result.layers[layer].kind === "covered"
-      ? result.layers[layer].neighbors.map((neighbor) => neighbor.anchorId)
+    result.legacy.layers[layer].kind === "covered"
+      ? result.legacy.layers[layer].neighbors.map((neighbor) => neighbor.anchorId)
       : [];
   const layerNeighbors = Object.fromEntries(layers.map((layer) => [
     layer,
@@ -37,11 +37,11 @@ const rows = scoringAnchorsFor(DATASET).map((anchor) => {
     })(),
   ]));
   const isolatedLayerReachable = Object.fromEntries(layers.map((layer) => [layer, neighborsFor(isolatedResult, layer).includes(anchor.id)]));
-  const combinedNeighbors = productionResult.combined.kind === "covered"
-    ? productionResult.combined.neighbors.map((neighbor) => neighbor.anchorId)
+  const combinedNeighbors = productionResult.legacy.combined.kind === "covered"
+    ? productionResult.legacy.combined.neighbors.map((neighbor) => neighbor.anchorId)
     : [];
-  const fullCombinedNeighbors = fullCompetitionResult.combined.kind === "covered"
-    ? fullCompetitionResult.combined.neighbors.map((neighbor) => neighbor.anchorId)
+  const fullCombinedNeighbors = fullCompetitionResult.legacy.combined.kind === "covered"
+    ? fullCompetitionResult.legacy.combined.neighbors.map((neighbor) => neighbor.anchorId)
     : [];
   const fullCombinedIndex = fullCombinedNeighbors.indexOf(anchor.id);
   const fullCombinedRank = fullCombinedIndex < 0 ? null : fullCombinedIndex + 1;

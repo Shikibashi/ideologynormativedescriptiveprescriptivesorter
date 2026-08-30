@@ -26,7 +26,7 @@ The existing legacy scorer and its separation behavior remain unchanged. This is
 
 ## Local acceptance conditions
 
-1. The morphology model version is 2 and every exposed candidate has a finite margin in the normalized fit range.
+1. The morphology model version for this historical separation tranche was 2 and every exposed candidate had a finite margin in the normalized fit range. The current projection is version 3 because directional fit now reads construct-level profile evidence; see the subsequent integration note for that semantic change.
 2. Candidate separation is derived from the predeclared display policy and does not alter the existing candidate order.
 3. Identical configuration fixtures are marked low separation and produce an explicit no-unique-label message.
 4. The canonical morphology audit still round-trips all current canonical configurations.

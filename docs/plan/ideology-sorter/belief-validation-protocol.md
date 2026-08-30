@@ -24,11 +24,11 @@ The validation argument separates claims that are often incorrectly collapsed in
 
 | Unit | Claim under review | Current implementation boundary |
 |---|---|---|
-| Production question and answer option | The wording elicits the declared belief, value, conception, descriptive/causal account, prescription, institution, or strategy without silently asking for a named ideology. | The 1,488 production items are currently `facet-proxy` observations; the item audit is a review queue, not validity evidence. |
+| Production question and answer option | The wording elicits the declared belief, value, conception, descriptive/causal account, prescription, institution, or strategy without silently asking for a named ideology. | The 1,500 production items are currently `facet-proxy` observations; the item audit is a review queue, not validity evidence. |
 | Direct categorical item | A respondent can select among explicitly stated conceptions or accounts and the selected option has the declared meaning. | Eight optional direct pilot items are effect-free and excluded from affinity calculation. |
 | Relational follow-up | A respondent can state a priority, condition, conflict rule, uncertainty, contradiction, or contestation relationship. | Six optional follow-up kinds are carried as explicit evidence only; no relationship is inferred from answer order, co-occurrence, or “mixed.” |
 | Construct profile | The observed item evidence supports a bounded construct interpretation with explicit missingness and uncertainty. | Eleven constructs are registered; priority/conflict, epistemic stance, and heterodoxy/contestation remain unmeasured scalar gaps. |
-| Configuration projection | A profile resembles a source-backed configuration of concepts and commitments, with visible support, missing commitments, tensions, and provenance. | Every canonical configuration now exposes at least one source-backed conceptual commitment; morphology remains a provisional configuration projection over canonical ontology paths, not a latent trait, identity, diagnosis, or recommendation. |
+| Configuration projection | A profile resembles a source-backed configuration of concepts and commitments, with visible support, missing commitments, tensions, and provenance. | Every canonical configuration now exposes at least one source-backed conceptual representation, explicitly classified as a researched conception or a facet proxy; morphology remains a provisional configuration projection over canonical ontology paths, not a latent trait, identity, diagnosis, or recommendation. |
 
 The intended inference direction is therefore:
 
@@ -57,7 +57,7 @@ The protocol uses `PASS`, `FAIL`, `NOT RUN`, `NOT APPLICABLE`, and `INCONCLUSIVE
 | Relations to other variables | Predeclared, non-circular external measures or theoretically justified behavioral/attitudinal relations. | `NOT RUN`. | Morphology remains a source-backed interpretation, not an empirically validated classification. |
 | Comparability | Invariance/DIF or an explicit not-estimable conclusion across every intended language, jurisdiction, and comparison group. | `NOT RUN`. | No cross-context or group-comparability claim. |
 | Consequences and population use | Review of false precision, label effects, exclusion, burden, privacy, and intended-population coverage. | `NOT RUN`. | No production or public-validity claim. |
-| Configuration-to-morphology mapping | Held-out adversarial profiles, configuration traceability, and empirical evidence that the mapping reflects the intended use. | Structural synthetic diagnostics: `PASS`; held-out respondent evidence: `NOT RUN`. | Morphology remains provisional and cannot replace the legacy scorer as a validated measure. |
+| Configuration-to-morphology mapping | Held-out adversarial profiles, configuration traceability, and empirical evidence that the mapping reflects the intended use. | Structural synthetic diagnostics: `PASS`; held-out respondent evidence: `NOT RUN`. | Morphology remains provisional; neither it nor the retained legacy scorer is a validated respondent measure. |
 
 This separation follows the validity-argument distinction in the [AERA/APA/NCME Standards](https://www.apa.org/science/programs/testing/standards), the conceptualization-versus-measurement distinction in [Adcock and Collier](https://doi.org/10.1017/S0003055401003100), and the requirement for a defensible response-generating account in [Borsboom, Mellenbergh, and van Heerden](https://doi.org/10.1037/0033-295X.111.4.1061).
 
@@ -79,7 +79,7 @@ Do not select a new weight, threshold, factor structure, label, or target-block 
 
 ### Review queue
 
-The first queue contains the 1,488 production-item audits, 15 quarantined construct-gap candidates, eight direct categorical pilot items, and six relational follow-up definitions. The queue is not a request to rewrite all flagged items automatically. The `split`, `rewrite`, `remap`, `redundant`, and `ideology-coded` flags are review signals that require a human decision.
+The first queue contains the full production-item audit, 19 quarantined construct-gap and construct/layer-gap candidates, eight direct categorical pilot items, and six relational follow-up definitions. The queue is not a request to rewrite all flagged items automatically. The `split`, `rewrite`, `remap`, `redundant`, `branch-target-metadata`, and `ideology-coded-wording` flags are review signals that require a human decision. Branch-target metadata is editorial coverage information, not a respondent-facing ideology claim.
 
 ### Proposed review procedure
 
@@ -206,7 +206,7 @@ Every completed study or adjudication should add one row per substantive claim:
 | Result | Concise result with uncertainty and missing-data treatment. |
 | Limitations | Sampling, context, power, measurement, response-process, or generalization limits. |
 | Decision | Preserve, remap, rewrite, split, quarantine, promote, or reject. |
-| Review and provenance | Reviewer/adjudicator, date, content/policy/model versions, and linked implementation/tests. |
+| Review and provenance | Reviewer/adjudicator, date, content/policy/model versions, linked implementation/tests, question-design sources, and the substantive source links for the selected option or relationship. |
 | Status | `PASS`, `FAIL`, `NOT RUN`, `NOT ESTIMABLE`, or `INCONCLUSIVE`. |
 
 ## 9. Local reproducibility commands
@@ -217,6 +217,7 @@ These commands provide deterministic repository evidence and do not close the ex
 npm run belief:measurement-audit
 npm run belief:direct-pilot-audit
 npm run belief:morphology-audit
+npm run belief:question-coverage
 npm run belief:completion-audit
 npm run research:coverage
 npm run research:anchor-reachability
@@ -238,7 +239,7 @@ The completion audit is intentionally different from the component audits: it re
 
 ## 10. Current evidence ledger snapshot
 
-The current local workstream has executable structural checks for the construct registry, item-audit coverage, direct-item isolation, relational validation, canonical configuration provenance, explicit conceptual coverage, morphology traceability, lowest-responsible-layer diagnostics, legacy-scoring preservation, malformed-input rejection, fixed-artifact browser behavior, and objective-level fail-closed completion eligibility. Those checks are local `PASS` evidence for the contracts they actually exercise.
+The current local workstream has executable structural checks for the construct registry, item-audit coverage, canonical target question coverage, direct-item isolation, relational validation, canonical configuration provenance, explicit conceptual coverage, morphology traceability, lowest-responsible-layer diagnostics, belief-first result composition, legacy-scoring preservation, malformed-input rejection, fixed-artifact browser behavior, and objective-level fail-closed completion eligibility. The result contract exposes the primary profile/morphology path separately from the legacy compatibility path; the application and current belief audits use the primary namespace. Those checks are local `PASS` evidence for the contracts they actually exercise.
 
 The following remain the authoritative external status for this objective:
 
@@ -256,3 +257,11 @@ The following remain the authoritative external status for this objective:
 | Objective completion eligibility | `INCOMPLETE` | Structural checks pass, but six required external-study gates remain `NOT RUN`; the completion audit exits nonzero. |
 
 Until the `NOT RUN` rows are replaced by study-specific evidence, the belief profile and morphology outputs must retain provisional language, and the goal must not be marked complete.
+
+## 11. Research-candidate response seam
+
+The 19 gap candidates have an optional response seam for inspecting the missing distinctions without treating them as promoted items. The seam uses stable candidate-option ids and a separate `BeliefGapEvidence` record. It is valid to inspect or share a selected response, but the record remains `research_candidate` evidence and is not a production `Question`, `BeliefObservation`, scalar construct measure, morphology fit input, or ontology-affinity contribution. Four candidates exist specifically because the measurement audit now reports declared construct/layer cells that have no production item; this is an explicit design inventory, not a claim that every cell must eventually become a separate scale.
+
+The candidate pilot must be evaluated as an instrument-development artifact. A selected option is not treated as true merely because its design rationale cites scholarship; candidate-level sources describe the proposed wording and interpretation boundary. No-view is preserved for share restoration but is excluded from substantive candidate evidence. Any malformed, duplicate, stale, or source-mismatched candidate record is rejected as a whole before profile construction.
+
+Before any candidate can be promoted into the production bank, retain the current candidate status and complete the evidence ledger for its intended construct and context. At minimum, the review must address response-process interpretation, independent expert content adjudication, neighbor distinctness, cross-context or jurisdictional behavior, empirical reliability/validity where applicable, and consequences for the intended population. A local green build, browser interaction, synthetic fixture, or source-linked option does not close any of those gates.

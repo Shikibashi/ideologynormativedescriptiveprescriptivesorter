@@ -46,12 +46,15 @@ const report = {
     measurementModes: countBy(audits.map((audit) => audit.measurementMode)),
     dispositions: profile.measurementSummary.dispositionCounts,
     flags: {
+      branchMetadata: profile.measurementSummary.branchMetadataQuestionIds.length,
       ideologyCoded: profile.measurementSummary.ideologyCodedQuestionIds.length,
       compound: profile.measurementSummary.compoundQuestionIds.length,
       conditional: profile.measurementSummary.conditionalQuestionIds.length,
       duplicate: profile.measurementSummary.duplicateQuestionIds.length,
     },
     constructItemCounts: profile.measurementSummary.constructItemCounts,
+    constructLayerItemCounts: profile.measurementSummary.constructLayerItemCounts,
+    uncoveredConstructLayerPairs: profile.measurementSummary.uncoveredConstructLayerPairs,
     uncoveredConstructIds: profile.measurementSummary.uncoveredConstructIds,
     researchCandidateCounts: profile.measurementSummary.researchCandidateCounts,
     researchCandidateCount: BELIEF_GAP_CANDIDATES.length,
@@ -59,9 +62,21 @@ const report = {
     profileStatus: profile.status,
     responseStateSemantics: mixedStateIsolation,
   },
+  itemAudits: audits,
   validationErrors: validateBeliefModel(DATASET),
   interpretation: "This is an item-audit and proxy-coverage report. It is not cognitive, psychometric, invariance, population, or empirical validation.",
 };
 
-process.stdout.write(JSON.stringify(report, null, 2) + "\n");
+const output = process.argv.includes("--summary")
+  ? {
+      generatedAt: report.generatedAt,
+      dataset: report.dataset,
+      model: report.model,
+      itemAuditCount: report.itemAudits.length,
+      validationErrorCount: report.validationErrors.length,
+      interpretation: report.interpretation,
+    }
+  : report;
+
+process.stdout.write(JSON.stringify(output, null, 2) + "\n");
 if (report.validationErrors.length > 0 || !report.model.auditCoverageComplete || !mixedStateIsolationPassed) process.exitCode = 1;

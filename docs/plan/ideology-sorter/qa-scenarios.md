@@ -756,6 +756,46 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-108-04 | Run structure and morphology adversarial fixtures. | The integrated trace covers every registered construct, distinguishes evidence forms, retains same-values/different-causal-belief and priority/conditional fixtures, and keeps morphology fail-closed for weak or all-mixed profiles. |
 | P-108-05 | Run deterministic and delivery checks. | Focused/full Vitest, TypeScript, build, belief audits, coverage, reachability, preview/browser checks, and Git checks report their actual PASS/FAIL/NOT RUN state. The six required external validation gates remain explicitly `NOT RUN` until study evidence is recorded. |
 
+## V109 — Morphology basis provenance
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-109-01 | Complete the base quiz and open a morphology evidence trail. | Each directional commitment record identifies the primary profile dimension(s) that contextualize its construct and the evidence form used for its provisional fit. |
+| P-109-02 | Inspect a facet-backed commitment. | The record reports `facet-proxy` (or the applicable observed item posture), retains its answered question ids, and does not imply that the facet is a validated latent trait. |
+| P-109-03 | Inspect an explicit source-backed conception. | The record remains `indeterminate` with `none` as its fit source and states that it is configuration context only; it does not contribute to directional agreement or affinity. |
+| P-109-04 | Select direct categorical and relational follow-up options. | Those records remain in their separate direct/relational evidence sections and do not alter the morphology basis, affinity output, or legacy compatibility calculation. |
+| P-109-05 | Run the focused results scenario and completion audit. | Browser assertions for fit source and primary profile dimensions pass; structural checks pass; the six required external validation gates remain `NOT RUN`. |
+
+## V110 — Claim-layer preservation
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-110-01 | Complete the base quiz and inspect an integrated structure row. | The row reports observed and directional item-record counts separately for descriptive, normative, and prescriptive claim layers; the counts reconcile to the row totals. |
+| P-110-02 | Select a relational follow-up from a known layer. | The generated profile evidence and morphology trace retain that follow-up layer, and the results view labels it accordingly. |
+| P-110-03 | Submit a relational record whose layer disagrees with its referenced follow-up. | Validation rejects the record with a layer-mismatch error; the invalid optional collection is withheld rather than silently relabeled. |
+| P-110-04 | Inspect direct categorical and relational evidence beside morphology. | Direct and relational records show their claim layer and remain contextual evidence; they do not enter morphology affinity or legacy compatibility scoring. |
+| P-110-05 | Run deterministic and focused browser checks. | TypeScript, focused/full Vitest, build, belief audits, completion structural checks, and the post-change focused results scenario report their actual status; the six external gates remain `NOT RUN`. |
+
+## V111 — Explicit relationship participant trace
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-111-01 | Select the direct categorical pilot and inspect the integrated structure. | A multi-construct direct record appears in every declared participant dimension, with no new scalar signal or affinity contribution. |
+| P-111-02 | Select the priority, conditional, conflict, uncertainty, contradiction, and contestation follow-ups. | Each explicit relational record appears in every profile dimension named by its construct links; the dedicated relationship kind and claim layer remain visible. |
+| P-111-03 | Open a morphology evidence trail with direct or relational records present. | Contextual basis records expose their linked primary profile dimensions, while fit basis, weights, legacy layers, and affinities remain unchanged. |
+| P-111-04 | Run the completion audit's relationship trace checks. | Every declared direct/relational construct participant is attached to a corresponding structure dimension; structural checks pass without promoting the records to measurements. |
+| P-111-05 | Run deterministic and focused browser checks. | TypeScript, focused/full Vitest, build, belief audits, completion structural checks, and the focused results scenario report actual status; the six external gates remain `NOT RUN`. |
+
+## V112 — Relational dimension adjacency trace
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-112-01 | Submit one or more relational follow-up selections and inspect the structure rows. | Dimensions connected by the selected records display explicit relationship links to the other participant dimensions. |
+| P-112-02 | Inspect a dimension with no accepted relational evidence. | Its adjacency list remains empty and the UI does not imply that an unobserved relationship is absent from political theory. |
+| P-112-03 | Compare the same base answers with and without relational selections. | Scalar observations, construct signals, morphology fit basis, legacy scoring, and affinity output are unchanged; only explicit relationship trace metadata changes. |
+| P-112-04 | Run the completion audit's adjacency check. | Every derived related-dimension link corresponds to a shared explicit relational record, contains no self-link, and is complete for all declared participants. |
+| P-112-05 | Run deterministic and full browser checks. | TypeScript, focused/full Vitest, build, belief audits, completion structural checks, exploratory QA, and the 10-scenario Playwright suite report actual status; the six external gates remain `NOT RUN`. |
+
 ## V109 — Green Politics contextual conception tranche
 
 | ID | Scenario | Expected result |
@@ -763,6 +803,7 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | R-109-01 | Inspect the `green-politics` research target. | The target remains a meso contextual/catalog-only node with twelve quarantined candidates at 4/4/4, zero direct production questions, and no score path. |
 | R-109-02 | Inspect the Green Politics qualitative profile. | The workbench exposes `ecological-justice-and-future-standing` as a normative characteristic conception and `participatory-multilevel-ecological-governance` as a prescriptive characteristic conception; every provenance id resolves to the source registry. |
 | R-109-03 | Run coverage and governance audits. | Coverage reports the conception bridge without changing production question, anchor, coefficient, picker, or morphology counts; taxonomy governance remains `retain-contextual` / `not-scored`; false-positive and neighbor controls remain present. |
+| R-109-04 | Run the full deterministic and delivery checks. | Focused/full Vitest, TypeScript, build, research coverage, reachability, belief audits, preview/browser checks, and Git checks report actual statuses. The six required external validation gates remain explicitly `NOT RUN`; no cognitive review or substitute is inferred from local QA. |
 
 ## V110 — Contextual bridge conception and quarantine coverage
 
@@ -773,3 +814,91 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | R-110-03 | Resolve source and governance provenance. | Every conception source id resolves to the source registry, and both governance decisions report `retain-contextual`, contextual placement, and `not-scored` status without creating canonical ancestry. |
 | R-110-04 | Run the full deterministic audit surface. | Focused/full Vitest, TypeScript, build, dependency audit, research coverage, reachability, belief audits, and browser checks report actual statuses; the six external validation gates remain explicitly `NOT RUN`. |
 | R-110-05 | Inspect the workbench boundary language. | Environmental concern, localism, community identity, decentralization, one liberal response, one conservative response, market support, institutional respect, or gradualism alone is not presented as sufficient evidence for either contextual bridge. |
+
+## V113 — Quarantined gap-candidate response seam
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-113-01 | Complete the base quiz and open the research-candidate response seam. | The results view exposes the current candidate count behind an explicit disclosure, with stable labeled controls and construct/layer/format metadata; the controls are clearly marked as unvalidated research material. |
+| P-113-02 | Select a substantive option for a priority, epistemic, and heterodoxy candidate. | The profile shows quarantined candidate evidence and `candidate-pilot` structure posture for those dimensions; each construct remains `not-yet-measured`, with no scalar signal created. |
+| P-113-03 | Select a candidate no-view option. | The no-view selection is restorable in the share map but is omitted from substantive `BeliefGapEvidence`; it does not count as a response or candidate signal. |
+| P-113-04 | Compare the same base answers with and without candidate selections. | Primary morphology, canonical affinity candidates, legacy layer results, and combined compatibility remain unchanged; only candidate trace metadata changes. |
+| P-113-05 | Create and restore a versioned share link after selecting a candidate. | The candidate answer map round-trips with known candidate and option ids; unknown, duplicate, stale, or malformed candidate records are rejected without partial restoration. |
+| P-113-06 | Run deterministic and browser checks. | TypeScript, focused/full Vitest, build, completion structural checks, the full serial Playwright suite, exploratory issue report, and preview cleanup report actual status; six external validation gates remain `NOT RUN`. |
+
+## R-113 — Gap-candidate evidence boundary
+
+| ID | Area | Steps | Expected result |
+|---|---|---|---|
+| R-113-01 | Candidate contract | Run the candidate research and pilot tests. | All current candidates retain `research_candidate` status, unique stable option ids, source references, and no production question ids; valid selected options create non-scoring evidence. |
+| R-113-02 | Profile attachment | Run `npm run belief:completion-audit -- --summary`. | Candidate evidence is attached to each corresponding integrated dimension, all candidate-specific structural checks pass, and the three entirely unmeasured construct results remain `not-yet-measured`; candidates attached to already-proxied constructs remain non-scoring. |
+
+## Current V114 structural scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-114-01 | Construct/layer coverage | Run `npm run belief:measurement-audit -- --summary`. | The report includes typed construct-by-claim-layer counts and ten explicit uncovered cells: prescriptive concepts/conceptions; normative political economy; descriptive and normative change strategy; and the six cells belonging to the three entirely unmeasured constructs. |
+| R-114-02 | Layer-gap research shelf | Run the belief-gap research tests and inspect the candidate inventory. | The 19 source-linked candidates include at least one candidate for every previously uncovered declared construct/layer cell; all remain effect-free and outside production questions. |
+| R-113-03 | Scoring isolation | Inspect the audit output and compare base/pilot results. | Candidate responses do not enter observations, construct signals, morphology basis, ontology affinity, legacy layer scoring, or combined scoring. |
+| R-113-04 | Share boundary | Run the share contract tests with candidate answers. | Valid candidate answers round-trip in the versioned envelope; malformed, duplicate, or unknown candidate entries are rejected as a whole. |
+| R-113-05 | External evidence boundary | Inspect the validation protocol and completion ledger. | Candidate visibility and local PASS evidence do not promote the candidates or close cognitive, expert, empirical, invariance, population/consequence, or held-out respondent morphology gates. |
+
+## Current V115 structural scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-115-01 | Construct-level morphology fit | Open a morphology evidence trail for a facet-linked commitment. | The directional basis uses the linked construct signal as `observedSignal` and reports `construct-proxy`, `direct-item`, or `mixed-provisional`; a facet signal, when present, is displayed as provenance context only. |
+| R-115-02 | Evidence-question provenance | Inspect the question summaries for a facet-linked morphology commitment. | Primary evidence question ids resolve to the construct-level directional evidence, while any facet-context question ids remain separately labeled and cannot change fit. |
+| R-115-03 | Affinity isolation | Compare the same base answers with direct categorical, relational, and candidate-pilot selections. | Construct-level morphology fit, canonical candidate values, legacy layer results, and combined compatibility remain unchanged by the non-scoring supplements. |
+| R-115-04 | Model provenance | Inspect the morphology result and configuration-projection documentation. | The morphology model is version 3; the legacy scorer remains a compatibility regression path, and no local structural or browser result is presented as respondent, psychometric, empirical, invariance, population, or consequence validation. |
+| R-115-05 | Regression audit | Run the morphology audit and completion audit. | The morphology audit reports `morphologyFitUsesConstructProfile: true` for all 119 source-backed canonical fixtures; completion remains fail-closed while the six external validation gates are `NOT RUN`. |
+
+## Current V116 structural scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-116-01 | Integrated profile signal | Complete the base quiz and inspect each integrated belief-structure row. | Each single-construct dimension mirrors its linked construct's provisional `observedSignal`; the supporting directional question ids are exposed separately from mixed/no-view/unanswered records. |
+| R-116-02 | Mixed-response fail-closed trace | Submit mixed responses across the production bank. | Structure dimensions expose no `observedSignal` and no signal-support question ids; mixed records remain evidence posture only and do not become directional zeroes. |
+| R-116-03 | Evidence-form isolation | Add direct categorical, relational, or quarantined candidate selections to the same base answers. | The structure's construct signal and signal-support ids remain unchanged; the additional records remain separate context and do not enter morphology or legacy scoring. |
+| R-116-04 | Construct-to-structure audit | Run `npx vite-node scripts/audit-belief-completion.ts --summary`. | The new `structureSignalUsesConstructProfile` check passes for every current dimension, while completion remains fail-closed because six required external-study gates are `NOT RUN`. |
+| R-116-05 | Browser disclosure | Run the fixed-preview serial Playwright suite and inspect the primary profile. | The UI labels the value as a provisional construct signal and retains the existing non-validation boundary language; no console errors, page errors, or failed requests occur. |
+
+## Current V117 structural scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-117-01 | Run the canonical target question-coverage audit. | `npm run belief:question-coverage -- --summary` reports 119 canonical targets, zero validation errors, zero unexpected failures, four items in each claim layer for every target, and provisional primary morphology candidates for every target. |
+| R-117-02 | Inspect Islamism normative coverage. | The existing `n-islamism-02` social-justice item aligns to a characteristic source-backed `equality` commitment in the Islamism profile; the item effect and legacy scorer remain unchanged. |
+| R-117-03 | Inspect contested prescriptive layers. | Populism, Islamism, Religious Nationalism, and Deep Ecology remain explicit `not-established` open gaps because no determinate source-backed institutional direction is declared; the audit does not force a route. |
+| R-117-04 | Inspect registry-only research targets. | A registry-only target may have a qualitative source profile, but the Confucian Political Thought tranche remains effect-free, without a production anchor or respondent scoring path. |
+| R-117-05 | Run completion reconciliation. | The existing completion audit includes the coverage checks and reports all 28 structural checks true; overall status remains fail-closed while the six external validation gates are `NOT RUN`. |
+| R-117-06 | Run the deterministic and browser regression surface. | TypeScript, full Vitest, build, component audits, research coverage/reachability, fixed-preview Playwright, and preview cleanup report their actual statuses; no local result is treated as external validation. |
+
+## Current V118 adversarial structural scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-118-01 | Compare neighboring conceptions of political freedom. | Alternative direct categorical conceptions remain distinct statements in the primary profile; neither selected conception changes the morphology candidate or legacy affinity trace. |
+| R-118-02 | Compare identical policy direction with different distributive reasons. | The shared policy context remains compatible with different stated principles; the direct evidence records differ, while morphology and legacy affinity remain unchanged because the pilot is non-scoring. |
+| R-118-03 | Submit alternative priority and conditional rules. | The selected rule and condition are visible as explicit relational evidence attached to their declared constructs; no hidden scalar priority or conditional weight is created, and affinity remains unchanged. |
+| R-118-04 | Submit an unresolved contradiction. | The contradiction is retained with `unresolvedContradictions: 1`, appears in the relational trace, and does not cause the system to invent a coherence score or alter affinity. |
+| R-118-05 | Evaluate a weak directional profile. | Half-strength production responses yield a `partial` belief profile with bounded construct signals and a `provisional-candidates` morphology result; the system does not convert weak direction into validated certainty. |
+| R-118-06 | Run `npx vite-node scripts/audit-belief-morphology.ts --summary`. | All named adversarial checks pass, including neighboring conceptions, weak directional profile behavior, contradiction isolation, same-values/different-causal-beliefs separation, hybrid visibility, and mixed/no-view fail-closed behavior. |
+
+## Current V119 target-evidence structural scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-119-01 | Run the canonical target question-coverage audit with the normal dataset. | `npm run belief:question-coverage -- --summary` reports zero validation errors and zero blocking failures; determinate layers expose target morphology evidence, while the four intentionally indeterminate prescriptive layers remain explicit `not-established` open gaps. |
+| R-119-02 | Inspect a target layer containing both matched and unmatched target-tagged items. | Matched items receive directional fixture evidence; zero-alignment items remain mixed/depends and are visible as primary-profile evidence without being promoted to a directional signal. |
+| R-119-03 | Inspect a target with no determinate source-backed commitment for a layer. | The layer reports `contested-indeterminate` and `not-established`; the audit does not fabricate a positive answer or treat missing morphology basis evidence as a blocking failure. |
+| R-119-04 | Remove one target item's effects in the negative-control fixture. | That item disappears from primary-profile evidence, the target layer becomes a trace `gap`, the relevant structural check becomes false, and the report records a blocking failure. |
+| R-119-05 | Run TypeScript and coverage tests. | `npx tsc --noEmit --pretty false` and the focused `src/ideology-question-coverage.test.ts` suite pass; no scoring, ontology, or respondent-validity claim is made. |
+
+## Current V120 inspectability scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-120-01 | Complete the base quiz, open the quarantined research-candidate disclosure, and inspect the first candidate. | Each candidate exposes its declared gap, scholarly rationale, and same-answer/different-reason risk behind an accessible disclosure; the candidate remains explicitly research-only. |
+| P-120-02 | Select a candidate option after opening its rationale disclosure. | The selected response appears as quarantined evidence while construct status, morphology, canonical affinities, and legacy results remain unchanged. |
+| R-120-01 | Run the built-preview completion/share scenario. | The rationale disclosure, candidate selection, versioned share restoration, primary profile, morphology evidence, and legacy compatibility path all pass; external validation gates remain `NOT RUN`. |
