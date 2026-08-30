@@ -663,3 +663,11 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - How should variation over worker self-management, public or cooperative ownership, democratic investment, credit institutions, commons, property distribution, constitutional limits, and state authority remain visible without double-counting existing socialism or decentralization facets?
 - Market Socialism remains a contextual-only, not-scored target with no production anchor or direct questions; the two qualitative conceptions are source-backed editorial context, not respondent measurements or score effects.
 - No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
+
+## V105 — Civic Republicanism open boundaries
+
+- How should Civic Republicanism be separated from Historical Republicanism, Contemporary Neo-Republicanism, Radical Republicanism, Liberalism, Communitarianism, and generic democracy when the label is used for both a historical civic-virtue interpretation and a contemporary non-domination programme?
+- Is civic virtue and active participation treated as intrinsically valuable, instrumentally necessary for sustaining freedom, or historically variable across republican accounts, and can the sorter preserve those readings without collapsing them into one prescriptive route?
+- How should rule-bound public power, popular control, equal civic standing, private as well as public domination, civic education, vigilance, and contestation be represented without treating patriotism, participation, anti-corruption, constitutional checks, or non-domination alone as sufficient evidence?
+- Civic Republicanism remains registry-only and not-scored with two qualitative conceptions and twelve quarantined candidates; the conceptions are editorial context rather than respondent measurements, anchor weights, or score effects.
+- No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.

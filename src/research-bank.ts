@@ -4469,6 +4469,24 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-cambridge-trotskyism", "source-cambridge-trotskyism-permanent-revolution", "source-oup-political-ideologies"],
     ),
   ],
+  "civic-republicanism": [
+    anchorConception(
+      "civic-freedom-through-non-domination",
+      "normative",
+      "Freedom through non-domination and equal civic standing",
+      "Civic republican arguments can interpret political freedom as independence from arbitrary power and require public authority to remain rule-bound and subject to popular control; this bridge conception is not a synonym for every historical or contemporary republican tradition.",
+      "defining",
+      ["source-sep-republicanism", "source-oup-well-ordered-republic", "source-springer-toth-civic-republicanism"],
+    ),
+    anchorConception(
+      "virtue-and-participatory-maintenance",
+      "prescriptive",
+      "Free institutions sustained by civic virtue and participation",
+      "A free republic may require civic participation, vigilance, deliberation, rule-following, and contestation to maintain institutions and resist corruption, while the role and intensity of civic virtue varies between historical and contemporary accounts.",
+      "characteristic",
+      ["source-cambridge-civic-republicanism", "source-oup-gallagher-civic-virtue", "source-oup-civic-republicanism", "source-oup-well-ordered-republic"],
+    ),
+  ],
   "market-socialism-context": [
     anchorConception(
       "social-control-with-market-coordination",

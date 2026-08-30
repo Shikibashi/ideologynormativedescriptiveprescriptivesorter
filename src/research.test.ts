@@ -2037,6 +2037,37 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-29" });
   });
 
+  it("retains Civic Republicanism as a source-backed registry context with qualitative conceptions", () => {
+    const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "civic-republicanism");
+    expect(target).toMatchObject({
+      targetKind: "registry-entry",
+      registryKind: "associated-tradition",
+      placement: undefined,
+      measurementStatus: "registry-only",
+      questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+    });
+    expect(DATASET.ideologyNodes.some((node) => node.id === "civic-republicanism")).toBe(false);
+    const candidates = researchCandidatesForTarget("civic-republicanism");
+    expect(candidates).toHaveLength(12);
+    expect(candidates.filter((candidate) => candidate.layer === "descriptive")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "normative")).toHaveLength(4);
+    expect(candidates.filter((candidate) => candidate.layer === "prescriptive")).toHaveLength(4);
+    expect(candidates.every((candidate) => candidate.sourceIds.includes("source-oup-well-ordered-republic"))).toBe(true);
+    const civicProfile = researchAnchorProfiles.find((profile) => profile.targetId === "civic-republicanism");
+    expect(civicProfile?.conceptions.map((conception) => conception.conceptId)).toEqual([
+      "civic-freedom-through-non-domination",
+      "virtue-and-participatory-maintenance",
+    ]);
+    expect(civicProfile?.conceptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ conceptId: "civic-freedom-through-non-domination", layer: "normative", centrality: "defining" }),
+      expect.objectContaining({ conceptId: "virtue-and-participatory-maintenance", layer: "prescriptive", centrality: "characteristic" }),
+    ]));
+    expect(civicProfile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "civic-republicanism")?.preferredOutcome).toContain("duplicate scored branch");
+    expect(researchTaxonomyDecisionForTarget("civic-republicanism")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-30" });
+    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("civic-republicanism"))).toBe(false);
+  });
+
   it("retains Conservative New Right as a source-backed contextual formation", () => {
     const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "conservative-new-right");
     expect(target).toMatchObject({

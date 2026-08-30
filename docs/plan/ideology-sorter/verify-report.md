@@ -1137,3 +1137,24 @@ V103 leaves production content at version 97 with 1,500 questions and 119 produc
 | Compose/Docker delivery | NOT RUN | Not rerun for this source-only contextual refresh; no container or hosted-runtime claim is made |
 
 V104 refreshes provenance and qualitative boundary context for `market-socialism-context` but leaves production content at version 97 with 1,500 questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, two registry entries, six contextual placements, and 1,524 quarantined research candidates. Market Socialism remains contextual-only and not-scored; no canonical node, direct production question, anchor, effect, coefficient, threshold, picker behavior, morphology output, layer weight, combined-layer semantic, or share semantic changed. The six external-study gates remain explicitly `NOT RUN`; no cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied.
+
+## V105 final observed verification — Civic Republicanism registry conception bridge — 2026-08-30
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx vitest run src/research.test.ts` | PASS | Focused research-workbench contract 87/87, including Civic Republicanism source, conception, registry-status, quarantine, and governance assertions |
+| `npm run test:run` | PASS | Full current-tree Vitest suite 147/147 across five files |
+| `npx tsc --noEmit` | PASS | Current TypeScript tree typechecks |
+| `npm run build` | PASS | Production bundle builds; the existing large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | Content version 97; 1,500 production questions; 119 production anchors; 124 editorial anchors; 125 ontology nodes; two registry entries; six contextual placements; 1,524 research candidates; 122 target rows with conceptions; 127 profile conceptions; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors and structural failures; registry-only Civic Republicanism remains outside production anchor routing |
+| `npm run belief:measurement-audit` | PASS | All 1,500 production items audited; existing construct gaps and review dispositions remain explicit |
+| `npm run belief:morphology-audit` | PASS | 119 canonical configurations round-trip; zero validation errors and structural failures; synthetic output remains non-respondent evidence |
+| `npm run belief:direct-pilot-audit` | PASS | Eight-item effect-free categorical pilot remains isolated from legacy scoring; zero validation errors and failures |
+| `E2E_BASE_URL=http://127.0.0.1:4174 npm run qa -- --workers=1` | PASS | Production-preview Playwright suite 10/10 in 5.3 minutes; inventory, workbench, registry governance, responsive, full-layer, share-link, transition, and malformed-share paths pass |
+| `npm run belief:completion-audit --silent -- --summary` | NOT PASS / FAIL-CLOSED | Structural checks pass; exit 1 remains correct because six required external-study gates are `NOT RUN` |
+| `git diff --check` | PASS | No whitespace errors after the V105 documentation and source updates |
+| Compose/Docker delivery | NOT RUN | Not rerun for this registry-only contextual refresh; no container or hosted-runtime claim is made |
+
+V105 enriches the existing `civic-republicanism` registry profile with two qualitative conceptions while leaving production content at version 97 with 1,500 questions, 119 production anchors, 124 editorial anchors, 125 ontology nodes, two registry entries, six contextual placements, and 1,524 quarantined research candidates. Civic Republicanism remains registry-only and not-scored; no canonical node, direct production question, production anchor, effect, coefficient, threshold, picker behavior, morphology output, layer weight, combined-layer semantic, or share semantic changed. The six external-study gates remain explicitly `NOT RUN`; no cognitive review, respondent study, substitute simulation, expert adjudication, psychometric validation, reliability/validity estimate, invariance/DIF study, empirical classification, population/consequence review, or current-actor inference was run or implied.
