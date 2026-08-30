@@ -4255,6 +4255,40 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-oup-self-determination-decolonization", "source-cambridge-self-rule-colonial-india", "source-sep-nationalism"],
     ),
   ],
+  "gandhian-political-thought": [
+    anchorConception(
+      "ethical-self-rule",
+      "normative",
+      "Freedom as ethical self-rule",
+      "Swaraj joins inner ethical self-rule with collective political self-government; independence is not exhausted by transferring authority from one state or ruler to another.",
+      "defining",
+      ["source-oup-parel-pax-gandhiana", "source-cambridge-parel-gandhi-state", "source-oup-gandhi-hind-swaraj-law"],
+    ),
+    anchorConception(
+      "means-ends-nonviolence",
+      "normative",
+      "Political means as moral practice",
+      "Satyagraha and civic nonviolence treat the means of political action as part of its ethical and political purpose; nonviolence is not merely private pacifism or a tactic detached from conflict, discipline, and consequences.",
+      "defining",
+      ["source-oup-parel-pax-gandhiana", "source-cambridge-mantena-gandhian-nonviolence", "source-gandhi-heritage-portal-key-texts"],
+    ),
+    anchorConception(
+      "constructive-self-government",
+      "prescriptive",
+      "Self-government through constructive institutions",
+      "Political transformation includes constructive work, participatory or federal institutions, and local or civil-society capacity; the route remains compatible with contested state and constitutional arrangements rather than prescribing a single anti-state formula.",
+      "characteristic",
+      ["source-cambridge-parel-gandhi-state", "source-cambridge-mantena-gandhi-state", "source-sage-parasher-gandhian-democracy", "source-gandhi-heritage-portal-key-texts"],
+    ),
+    anchorConception(
+      "trusteeship-economic-duty",
+      "prescriptive",
+      "Economic responsibility as trusteeship",
+      "Trusteeship frames property and economic power through duties to social wellbeing and can mediate between wealth, nonviolence, and social change; its institutional translation is contested and does not imply charity, public ownership, or one fixed property system.",
+      "contested",
+      ["source-oup-parel-pax-gandhiana", "source-cambridge-rolnick-gandhian-trusteeship", "source-oup-gandhi-hind-swaraj-law"],
+    ),
+  ],
   "council-communism": [
     anchorConception(
       "council-democracy",

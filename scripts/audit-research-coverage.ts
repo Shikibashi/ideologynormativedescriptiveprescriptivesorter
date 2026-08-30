@@ -21,21 +21,25 @@ for (const candidate of curatedResearchCandidates) {
   candidateCounts.set(candidate.targetId, counts);
 }
 
-const targetRows = targets.map((target) => ({
-  id: target.id,
-  label: target.label,
-  kind: target.targetKind,
-  level: target.level ?? null,
-  placement: target.placement ?? null,
-  measurementStatus: target.measurementStatus,
-  directQuestions: target.dedicatedQuestionIds.length,
-  directQuestionCounts: target.questionCounts,
-  curatedCandidateCounts: candidateCounts.get(target.id) ?? { descriptive: 0, normative: 0, prescriptive: 0 },
-  hasAnchorProfile: researchAnchorProfiles.some((profile) => profile.targetId === target.id),
-  neighborDiscriminantCount: researchNeighborDiscriminants.filter((item) => item.targetId === target.id).length,
-  falsePositiveAudit: researchFalsePositiveAudits.some((item) => item.targetId === target.id),
-  sourceRefs: target.sourceRefs,
-}));
+const targetRows = targets.map((target) => {
+  const profile = researchAnchorProfiles.find((candidate) => candidate.targetId === target.id);
+  return {
+    id: target.id,
+    label: target.label,
+    kind: target.targetKind,
+    level: target.level ?? null,
+    placement: target.placement ?? null,
+    measurementStatus: target.measurementStatus,
+    directQuestions: target.dedicatedQuestionIds.length,
+    directQuestionCounts: target.questionCounts,
+    curatedCandidateCounts: candidateCounts.get(target.id) ?? { descriptive: 0, normative: 0, prescriptive: 0 },
+    hasAnchorProfile: profile !== undefined,
+    profileConceptionCount: profile?.conceptions.length ?? 0,
+    neighborDiscriminantCount: researchNeighborDiscriminants.filter((item) => item.targetId === target.id).length,
+    falsePositiveAudit: researchFalsePositiveAudits.some((item) => item.targetId === target.id),
+    sourceRefs: target.sourceRefs,
+  };
+});
 
 const countBy = (values: readonly string[]): Record<string, number> =>
   values.reduce<Record<string, number>>((counts, value) => {
@@ -63,6 +67,8 @@ const report = {
     candidates: curatedResearchCandidates.length,
     targets: new Set(curatedResearchCandidates.map((candidate) => candidate.targetId)).size,
     targetRowsWithProfiles: targetRows.filter((target) => target.hasAnchorProfile).length,
+    targetRowsWithConceptions: targetRows.filter((target) => target.profileConceptionCount > 0).length,
+    profileConceptions: targetRows.reduce((total, target) => total + target.profileConceptionCount, 0),
     targetRowsWithFalsePositiveAudits: targetRows.filter((target) => target.falsePositiveAudit).length,
     validationErrors: [...validateCuratedResearchBank(DATASET), ...validateCuratedResearchMetadata(DATASET)],
   },

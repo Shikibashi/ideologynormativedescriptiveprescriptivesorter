@@ -445,6 +445,19 @@ export const validateCuratedResearchMetadata = (dataset: Dataset = DATASET): rea
         if (!knownSources.has(sourceId)) errors.push("research profile " + profile.targetId + " dimension references missing source " + sourceId);
       }
     }
+    const conceptionIds = new Set<string>();
+    for (const conception of profile.conceptions) {
+      if (conceptionIds.has(conception.conceptId)) errors.push("research profile " + profile.targetId + " has duplicate conception " + conception.conceptId);
+      conceptionIds.add(conception.conceptId);
+      if (!conception.conceptId.trim()) errors.push("research profile " + profile.targetId + " has an empty conception id");
+      if (!conception.label.trim()) errors.push("research profile " + profile.targetId + " conception " + conception.conceptId + " is missing a label");
+      if (!conception.interpretation.trim()) errors.push("research profile " + profile.targetId + " conception " + conception.conceptId + " is missing an interpretation");
+      if (!conception.sourceIds.length) errors.push("research profile " + profile.targetId + " conception " + conception.conceptId + " has no source");
+      for (const sourceId of conception.sourceIds) {
+        if (!knownSources.has(sourceId)) errors.push("research profile " + profile.targetId + " conception references missing source " + sourceId);
+        else if (knownSources.get(sourceId)?.role !== "ideology-research") errors.push("research profile " + profile.targetId + " conception source " + sourceId + " is not ideology research");
+      }
+    }
     for (const neighborId of profile.neighbors) {
       if (!knownTargets.has(neighborId)) errors.push("research profile " + profile.targetId + " references missing neighbor " + neighborId);
     }

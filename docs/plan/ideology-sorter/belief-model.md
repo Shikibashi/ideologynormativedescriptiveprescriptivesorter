@@ -157,6 +157,10 @@ The legacy facet scorer remains in `calculateResults` and is covered by its exis
 
 The execution plan and evidence ledger for the remaining gates is [Belief-model validation protocol](belief-validation-protocol.md). It preserves the distinction between local structural evidence and respondent, cognitive, psychometric, invariance, population, and consequence evidence.
 
+### Contextual conception bridge
+
+Contextual or registry-only research profiles may carry source-backed conceptions even when their facet dimensions are intentionally empty. These records preserve meanings that the production facet vocabulary cannot represent faithfully; they remain qualitative research context and do not create respondent observations, scoring weights, morphology candidates, or production activation. V101 adds this bridge for Gandhian Political Thought with ethical self-rule, means–ends nonviolence, constructive self-government, and contested trusteeship/economic duty. The research metadata validator checks conception ids, labels, interpretations, ideology-research provenance, and duplicate prevention.
+
 The current deterministic evidence covers:
 
 - registry and source-reference validation;

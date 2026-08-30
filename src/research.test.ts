@@ -1717,7 +1717,21 @@ describe("research workbench contracts", () => {
     expect(candidates.every((candidate) => candidate.sourceIds.includes("source-oup-parel-pax-gandhiana"))).toBe(true);
     expect(candidates.every((candidate) => candidate.sourceIds.includes("source-gandhi-heritage-portal-key-texts"))).toBe(true);
     expect(researchCoverageSummaries.find((summary) => summary.targetId === "gandhian-political-thought")).toMatchObject({ currentStatus: "contextual-only", newCandidateItems: 12 });
-    expect(researchAnchorProfiles.find((profile) => profile.targetId === "gandhian-political-thought")?.dimensions).toHaveLength(0);
+    const gandhianProfile = researchAnchorProfiles.find((profile) => profile.targetId === "gandhian-political-thought");
+    expect(gandhianProfile?.dimensions).toHaveLength(0);
+    expect(gandhianProfile?.conceptions.map((conception) => conception.conceptId)).toEqual([
+      "ethical-self-rule",
+      "means-ends-nonviolence",
+      "constructive-self-government",
+      "trusteeship-economic-duty",
+    ]);
+    expect(gandhianProfile?.conceptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ conceptId: "ethical-self-rule", layer: "normative", centrality: "defining" }),
+      expect.objectContaining({ conceptId: "means-ends-nonviolence", layer: "normative", centrality: "defining" }),
+      expect.objectContaining({ conceptId: "constructive-self-government", layer: "prescriptive", centrality: "characteristic" }),
+      expect.objectContaining({ conceptId: "trusteeship-economic-duty", layer: "prescriptive", centrality: "contested" }),
+    ]));
+    expect(gandhianProfile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
     expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "gandhian-political-thought")).toHaveLength(6);
     expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "gandhian-political-thought")?.preferredOutcome).toContain("do not activate");
     expect(researchTaxonomyDecisionForTarget("gandhian-political-thought")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });

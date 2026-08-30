@@ -1050,3 +1050,27 @@ The current production contract is content version 95 with 1,476 prompts (492 pe
 The V100 production contract is content version 96 with 1,488 prompts (496 per layer), 118 production anchors, 123 editorial anchors, 124 ontology nodes, 9 macro / 44 total meso / 71 micro placements, 9 macro / 38 canonical meso / 71 canonical micro inventory, six contextual placements, three registry entries, and 1,524 quarantined candidates across 127 research targets. Islamic Feminism is source-backed, canonical, and provisional: it has nine source references, twelve direct prompts at 4/4/4, twelve quarantined effect-free candidates at 4/4/4, a seventeen-dimension profile, six neighbor discriminants, a false-positive audit, explicit promotion governance, and isolated three-layer reachability. The public repository remote remains configured separately; the V100 commit and push are the next repository-state operations. The separate belief-profile/morphology workstream remains outside the V100 commit scope.
 
 No cognitive review, respondent study, expert content adjudication, psychometric calibration, reliability/validity estimate, invariance/DIF study, empirical validation, population/consequence review, or held-out respondent morphology evidence was run or implied. Local tests and synthetic audits are structural evidence only; they do not validate an ideological classification instrument or authorize political recommendations.
+
+## V101 final observed verification — Gandhian contextual conception bridge — 2026-08-30
+
+V101 adds four source-backed qualitative conceptions to the existing Gandhian Political Thought contextual profile: ethical self-rule, means-ends nonviolence, constructive self-government, and trusteeship as a contested economic duty. The Oxford and Cambridge source pass supports these as an internally varied political-ethical vocabulary, while preserving disagreement over state power, democracy, economic translation, and political strategy. The profile remains `contextual-only` / `not-scored`; no direct production item, anchor, effect, coefficient, threshold, picker, morphology output, or combined-layer semantic changed.
+
+| Check | Status | Observed result |
+|---|---|---|
+| `npx vitest run src/research.test.ts` | PASS | 1 file, 85/85 focused research-contract tests |
+| `npm run test:run` | PASS | 5 files, 143/143 Vitest tests |
+| `npx tsc --noEmit` and `npm run build` | PASS | Current tree typechecks and builds; the existing Vite large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | Content version 96; 1,488 production questions; 118 production anchors; 123 editorial anchors; 124 ontology nodes; 1,524 candidates across 127 targets; 127 profile rows and false-positive audit rows; 30 profile conceptions across 27 targets; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 118 production anchors; zero validation errors and zero structural failures; every production anchor remains isolated-reachable across descriptive, normative, and prescriptive layers |
+| `npm run belief:measurement-audit` | PASS | 1,488 production items audited; all remain facet-proxy observations; construct gaps and review dispositions remain explicit |
+| `npm run belief:morphology-audit` | PASS | 118 source-backed canonical configurations round-trip; structural failures and validation errors are zero; synthetic output remains non-respondent evidence |
+| `npm run belief:direct-pilot-audit` | PASS | 8-item effect-free categorical pilot remains isolated from legacy scoring; zero validation errors and zero failures |
+| `npm run qa -- --workers=1` against `http://127.0.0.1:4174` | PASS | Complete production-preview Playwright suite passed 10/10, including research workbench, responsive, share, missing-information, and layer-transition paths |
+| `npm run belief:completion-audit` | NOT PASS / FAIL-CLOSED | Exit remains nonzero because cognitive/response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology gates are `NOT RUN` by explicit scope |
+| `git diff --check` | PASS | No whitespace errors before documentation finalization |
+| Compose/Docker delivery | NOT RUN | Not rerun for V101; no container or hosted-runtime claim is made |
+
+The verified V101 production contract remains content version 96 with 1,488 questions (496 per layer), 118 production anchors, 123 editorial anchors, six contextual placements, three registry entries, and 1,524 quarantined candidates across 127 research targets. Gandhian Political Thought has four source-backed conceptions, zero production questions, no production anchor, and no score path. The [Parel *Pax Gandhiana* source](https://academic.oup.com/book/12258) and [Mantena's *Another Realism* source](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/another-realism-the-politics-of-gandhian-nonviolence/7BE21CF751176FAF880BD41A9E5EF10F) are used for provenance and contextual interpretation, not respondent measurement.
+
+No cognitive review, respondent study, expert content adjudication, psychometric calibration, reliability/validity estimate, invariance/DIF study, empirical validation, population/consequence review, or held-out respondent morphology evidence was run or implied. This is a neutral research-model/data and UI continuation, not a personal ideological comparison, political recommendation, ranking, or score.

@@ -392,6 +392,24 @@ const ResearchWorkbench = ({ onClose }: { onClose: () => void }): ReactNode => {
                       </div>
                     </div>
                   ) : <p className="research-help">No qualitative profile has been recorded for this target.</p>}
+                  {selectedAnchorProfile?.conceptions.length ? (
+                    <div className="research-bank-columns research-profile-conceptions">
+                      <div>
+                        <h3>Source-backed conceptions</h3>
+                        <p>These records preserve meanings that broad facets cannot represent faithfully. They are qualitative research context, not respondent observations, anchor weights, or production scores.</p>
+                        <ul>
+                          {selectedAnchorProfile.conceptions.map((conception) => (
+                            <li key={conception.conceptId}>
+                              <strong>{conception.label}</strong>
+                              <small>{conception.layer} · {conception.centrality} · source-backed, non-scored</small>
+                              <p>{conception.interpretation}</p>
+                              <small>Sources: {sourceLinksFor(conception.sourceIds)}</small>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
                   <div className="research-bank-list">
                     {curatedCandidates.map((candidate) => (
                       <details className="research-bank-item" key={candidate.id}>
