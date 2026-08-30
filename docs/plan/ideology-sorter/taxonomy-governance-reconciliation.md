@@ -29,13 +29,14 @@ These sources support the data-model boundary and provenance workflow. They do n
 
 - exactly one research decision exists for the target;
 - decision source ids exist, are `ideology-research` sources, are unique, and are attached to the target;
+- each target has at least two distinct explicit neighbor-discriminant records and a false-positive audit with guard items;
 - each disposition has the corresponding placement and target-kind boundary;
 - non-canonical placements cannot receive a scoring status;
 - insufficient source-boundary evidence cannot be marked `scored-provisional`;
 - every live measurement mismatch is either absent or covered by an explicit reconciliation record;
 - every reconciliation points to the correct decision and target and records the current live measurement status.
 
-`researchTaxonomyGovernanceSummary` reports the decision counts, evidence status, intended resulting status, live measurement exceptions, and unclassified mismatch list. `scripts/audit-research-coverage.ts` includes these governance errors in its top-level validation result and exits nonzero if any error is present.
+`researchTaxonomyGovernanceSummary` reports the decision counts, source status, neighbor-discriminant and false-positive evidence coverage, intended resulting status, live measurement exceptions, and unclassified mismatch list. `scripts/audit-research-coverage.ts` includes these governance errors in its top-level validation result and exits nonzero if any error is present.
 
 ## Current snapshot
 
@@ -47,6 +48,7 @@ The current executable coverage report records:
 - 119 live production anchors and 1,500 production questions, evenly split 500/500/500 across the three claim layers;
 - 1,524 quarantined research candidates across 127 targets, with profiles and false-positive audits for every target;
 - 127 source-backed governance decisions: 19 explicit canonical promotions, 100 canonical retentions, 6 contextual retentions, and 2 registry retentions;
+- 127 targets with the minimum two distinct neighbor-discriminant records and 127 targets with a false-positive audit;
 - 117 governance results marked `scored-provisional`, 2 marked `catalog-only`, and 8 marked `not-scored`.
 
 Two exceptions are intentionally explicit:
@@ -60,6 +62,6 @@ The exceptions preserve the existing decision that taxonomy promotion and measur
 
 ## Verification boundary
 
-The local checks verify source attachment, target inventory closure, placement/status rules, explicit mismatch reconciliation, candidate quarantine, and deterministic report behavior. They do not establish comprehension, response-process interpretation, expert adjudication, reliability, validity, invariance, population consequences, or respondent-level ideological classification. Those external gates remain `NOT RUN` / `NOT VERIFIED` as recorded by the belief-validation protocol.
+The local checks verify source attachment, target inventory closure, explicit neighbor-boundary and false-positive records, placement/status rules, explicit mismatch reconciliation, candidate quarantine, and deterministic report behavior. Neighbor-discriminant and false-positive records are research-workbench evidence for content review; their presence is not independent expert adjudication or respondent validity evidence. The checks do not establish comprehension, response-process interpretation, expert adjudication, reliability, validity, invariance, population consequences, or respondent-level ideological classification. Those external gates remain `NOT RUN` / `NOT VERIFIED` as recorded by the belief-validation protocol.
 
 The current measurement-gap shelf remains effect-free. Its 19 candidates and the optional direct/relational pilot seams are not production questions, do not alter legacy facet distance, and do not promote any construct or ideology into a validated measure.

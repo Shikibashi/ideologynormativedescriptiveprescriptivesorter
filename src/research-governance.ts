@@ -1,8 +1,15 @@
 import { DATASET } from "./data";
-import { buildResearchTargets } from "./research";
+import {
+  buildResearchTargets,
+  curatedResearchCandidates,
+  researchFalsePositiveAudits,
+  researchNeighborDiscriminants,
+} from "./research";
 import type {
   Dataset,
   IdeologyNodePlacement,
+  ResearchFalsePositiveAudit,
+  ResearchNeighborDiscriminant,
   ResearchTaxonomyDecision,
   ResearchTaxonomyDisposition,
   ResearchTaxonomyEvidenceStatus,
@@ -379,6 +386,62 @@ const EXPLICIT_TAXONOMY_DECISIONS: readonly ResearchTaxonomyDecision[] = [
 const targetById = (dataset: Dataset): ReadonlyMap<string, ResearchTarget> =>
   new Map(buildResearchTargets(dataset).map((target) => [target.id, target]));
 
+export const MIN_NEIGHBOR_DISCRIMINANTS_PER_TARGET = 2;
+
+export type ResearchTaxonomyEvidenceSet = Readonly<{
+  neighborDiscriminants: readonly ResearchNeighborDiscriminant[];
+  falsePositiveAudits: readonly ResearchFalsePositiveAudit[];
+}>;
+
+export const RESEARCH_TAXONOMY_EVIDENCE: ResearchTaxonomyEvidenceSet = {
+  neighborDiscriminants: researchNeighborDiscriminants,
+  falsePositiveAudits: researchFalsePositiveAudits,
+};
+
+const EMPTY_RESEARCH_TAXONOMY_EVIDENCE: ResearchTaxonomyEvidenceSet = {
+  neighborDiscriminants: [],
+  falsePositiveAudits: [],
+};
+
+const researchEvidenceCoverageFor = (
+  decisions: readonly ResearchTaxonomyDecision[],
+  evidence: ResearchTaxonomyEvidenceSet,
+) => {
+  const targetIds = decisions.map((item) => item.targetId);
+  const neighborDiscriminantsByTarget = new Map<string, ResearchNeighborDiscriminant[]>();
+  for (const discriminant of evidence.neighborDiscriminants) {
+    const existing = neighborDiscriminantsByTarget.get(discriminant.targetId) ?? [];
+    existing.push(discriminant);
+    neighborDiscriminantsByTarget.set(discriminant.targetId, existing);
+  }
+  const falsePositiveAuditsByTarget = new Map<string, ResearchFalsePositiveAudit[]>();
+  for (const audit of evidence.falsePositiveAudits) {
+    const existing = falsePositiveAuditsByTarget.get(audit.targetId) ?? [];
+    existing.push(audit);
+    falsePositiveAuditsByTarget.set(audit.targetId, existing);
+  }
+
+  const targetNeighborDiscriminantCounts = Object.fromEntries(targetIds.map((targetId) => [
+    targetId,
+    neighborDiscriminantsByTarget.get(targetId)?.length ?? 0,
+  ]));
+  const targetFalsePositiveAuditCounts = Object.fromEntries(targetIds.map((targetId) => [
+    targetId,
+    falsePositiveAuditsByTarget.get(targetId)?.length ?? 0,
+  ]));
+
+  return {
+    minimumNeighborDiscriminantsPerTarget: MIN_NEIGHBOR_DISCRIMINANTS_PER_TARGET,
+    targetsWithMinimumNeighborDiscriminants: targetIds.filter((targetId) => {
+      const discriminants = neighborDiscriminantsByTarget.get(targetId) ?? [];
+      return new Set(discriminants.map((item) => item.neighborId)).size >= MIN_NEIGHBOR_DISCRIMINANTS_PER_TARGET;
+    }).length,
+    targetsWithFalsePositiveAudits: targetIds.filter((targetId) => (falsePositiveAuditsByTarget.get(targetId)?.length ?? 0) > 0).length,
+    targetNeighborDiscriminantCounts,
+    targetFalsePositiveAuditCounts,
+  };
+};
+
 const defaultDecisionFor = (target: ResearchTarget): ResearchTaxonomyDecision => {
   if (target.targetKind === "registry-entry") {
     return decision(
@@ -511,6 +574,7 @@ export const researchTaxonomyGovernanceSummary = (dataset: Dataset = DATASET) =>
   const targets = targetById(dataset);
   const decisions = dataset === DATASET ? RESEARCH_TAXONOMY_DECISIONS : buildResearchTargets(dataset).map(defaultDecisionFor);
   const reconciliations = dataset === DATASET ? RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS : [];
+  const evidence = dataset === DATASET ? RESEARCH_TAXONOMY_EVIDENCE : EMPTY_RESEARCH_TAXONOMY_EVIDENCE;
   const countBy = (values: readonly string[]): Readonly<Record<string, number>> => values.reduce<Record<string, number>>((counts, value) => {
     counts[value] = (counts[value] ?? 0) + 1;
     return counts;
@@ -538,10 +602,11 @@ export const researchTaxonomyGovernanceSummary = (dataset: Dataset = DATASET) =>
     evidenceStatusCounts: countBy(decisions.map((item) => item.evidenceStatus)),
     resultingPlacementCounts: countBy(decisions.map((item) => item.resultingPlacement)),
     resultingScoringStatusCounts: countBy(decisions.map((item) => item.resultingScoringStatus)),
+    researchEvidenceCoverage: researchEvidenceCoverageFor(decisions, evidence),
     measurementReconciliations: reconciliations,
     measurementStatusExceptions,
     unclassifiedMeasurementMismatches,
-    validationErrors: validateResearchTaxonomyDecisions(dataset),
+    validationErrors: validateResearchTaxonomyDecisionSet(dataset, decisions, reconciliations, evidence),
   };
 };
 
@@ -555,10 +620,12 @@ export const validateResearchTaxonomyDecisionSet = (
   dataset: Dataset,
   decisions: readonly ResearchTaxonomyDecision[],
   reconciliations: readonly ResearchTaxonomyMeasurementReconciliation[] = [],
+  evidence: ResearchTaxonomyEvidenceSet = RESEARCH_TAXONOMY_EVIDENCE,
 ): readonly string[] => {
   const errors: string[] = [];
   const targets = targetById(dataset);
   const sources = new Map(dataset.sources.map((source) => [source.id, source]));
+  const candidates = new Map(curatedResearchCandidates.map((candidate) => [candidate.id, candidate]));
 
   if (new Set(decisions.map((item) => item.id)).size !== decisions.length) errors.push("taxonomy decision IDs must be unique");
   if (new Set(decisions.map((item) => item.targetId)).size !== decisions.length) errors.push("taxonomy decisions must have one decision per target");
@@ -589,6 +656,14 @@ export const validateResearchTaxonomyDecisionSet = (
     if (item.resultingScoringStatus === "scored-provisional" && item.resultingPlacement !== "canonical") errors.push(`taxonomy decision ${item.id} marks a non-canonical result as scored-provisional`);
     if (item.evidenceStatus === "insufficient-source-boundary" && item.resultingScoringStatus === "scored-provisional") errors.push(`taxonomy decision ${item.id} cannot mark insufficient evidence as scored-provisional`);
 
+    const targetDiscriminants = evidence.neighborDiscriminants.filter((discriminant) => discriminant.targetId === item.targetId);
+    if (new Set(targetDiscriminants.map((discriminant) => discriminant.neighborId)).size < MIN_NEIGHBOR_DISCRIMINANTS_PER_TARGET) {
+      errors.push(`taxonomy decision ${item.id} needs at least ${MIN_NEIGHBOR_DISCRIMINANTS_PER_TARGET} distinct neighbor discriminants`);
+    }
+    if (!evidence.falsePositiveAudits.some((audit) => audit.targetId === item.targetId)) {
+      errors.push(`taxonomy decision ${item.id} needs a false-positive audit`);
+    }
+
     const liveMeasurementStatus = target.measurementStatus;
     if (!liveMeasurementCanRepresentGovernanceStatus(item.resultingScoringStatus, liveMeasurementStatus)) {
       const reconciliation = reconciliations.find((candidate) => candidate.targetId === item.targetId);
@@ -608,11 +683,44 @@ export const validateResearchTaxonomyDecisionSet = (
     if (!reconciliation.rationale.trim()) errors.push(`measurement reconciliation ${reconciliation.id} needs rationale text`);
   }
 
+  const discriminantKeys = new Set<string>();
+  for (const discriminant of evidence.neighborDiscriminants) {
+    const key = `${discriminant.targetId}:${discriminant.neighborId}`;
+    if (discriminantKeys.has(key)) errors.push(`duplicate neighbor discriminant ${key}`);
+    discriminantKeys.add(key);
+    if (!targets.has(discriminant.targetId)) errors.push(`neighbor discriminant references missing target ${discriminant.targetId}`);
+    if (!targets.has(discriminant.neighborId)) errors.push(`neighbor discriminant ${key} references missing neighbor ${discriminant.neighborId}`);
+    if (discriminant.targetId === discriminant.neighborId) errors.push(`neighbor discriminant ${key} cannot compare a target with itself`);
+    if (discriminant.itemIds.length === 0) errors.push(`neighbor discriminant ${key} needs candidate items`);
+    if (!discriminant.sharedCommitments.trim() || !discriminant.distinction.trim() || !discriminant.remainingAmbiguity.trim()) {
+      errors.push(`neighbor discriminant ${key} needs commitment, distinction, and ambiguity text`);
+    }
+    for (const itemId of discriminant.itemIds) {
+      const candidate = candidates.get(itemId);
+      if (!candidate) errors.push(`neighbor discriminant ${key} references missing candidate ${itemId}`);
+    }
+  }
+
+  const falsePositiveKeys = new Set<string>();
+  for (const audit of evidence.falsePositiveAudits) {
+    if (falsePositiveKeys.has(audit.targetId)) errors.push(`duplicate false-positive audit ${audit.targetId}`);
+    falsePositiveKeys.add(audit.targetId);
+    if (!targets.has(audit.targetId)) errors.push(`false-positive audit references missing target ${audit.targetId}`);
+    if (!audit.profile.trim() || !audit.risk.trim() || !audit.preferredOutcome.trim()) errors.push(`false-positive audit ${audit.targetId} needs profile, risk, and preferred outcome text`);
+    if (audit.guardItemIds.length === 0) errors.push(`false-positive audit ${audit.targetId} needs guard candidate items`);
+    for (const itemId of audit.guardItemIds) {
+      const candidate = candidates.get(itemId);
+      if (!candidate) errors.push(`false-positive audit ${audit.targetId} references missing candidate ${itemId}`);
+      else if (candidate.targetId !== audit.targetId) errors.push(`false-positive audit ${audit.targetId} references candidate ${itemId} for another target`);
+    }
+  }
+
   return errors;
 };
 
 export const validateResearchTaxonomyDecisions = (dataset: Dataset = DATASET): readonly string[] => {
   const decisions = dataset === DATASET ? RESEARCH_TAXONOMY_DECISIONS : buildResearchTargets(dataset).map(defaultDecisionFor);
   const reconciliations = dataset === DATASET ? RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS : [];
-  return validateResearchTaxonomyDecisionSet(dataset, decisions, reconciliations);
+  const evidence = dataset === DATASET ? RESEARCH_TAXONOMY_EVIDENCE : EMPTY_RESEARCH_TAXONOMY_EVIDENCE;
+  return validateResearchTaxonomyDecisionSet(dataset, decisions, reconciliations, evidence);
 };

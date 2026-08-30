@@ -17,6 +17,8 @@ import {
 } from "./research";
 import {
   RESEARCH_TAXONOMY_DECISIONS,
+  RESEARCH_TAXONOMY_EVIDENCE,
+  RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS,
   researchTaxonomyDecisionForTarget,
   researchTaxonomyGovernanceSummary,
   validateResearchTaxonomyDecisionSet,
@@ -2465,6 +2467,11 @@ describe("research workbench contracts", () => {
     expect(summary.unclassifiedMeasurementMismatches).toEqual([]);
     expect(summary.measurementReconciliations).toHaveLength(2);
     expect(summary.resultingScoringStatusCounts).toMatchObject({ "catalog-only": 2, "not-scored": 8 });
+    expect(summary.researchEvidenceCoverage).toMatchObject({
+      minimumNeighborDiscriminantsPerTarget: 2,
+      targetsWithMinimumNeighborDiscriminants: 127,
+      targetsWithFalsePositiveAudits: 127,
+    });
   });
 
   it("fails closed when a governance-versus-measurement exception loses its reconciliation record", () => {
@@ -2473,6 +2480,20 @@ describe("research workbench contracts", () => {
     expect(errors).toEqual(expect.arrayContaining([
       "taxonomy decision taxonomy-khomeinism-promote has an unclassified measurement/governance mismatch",
       "taxonomy decision taxonomy-qutbism-promote has an unclassified measurement/governance mismatch",
+    ]));
+  });
+
+  it("fails closed when a taxonomy decision loses its research boundary evidence", () => {
+    const errors = validateResearchTaxonomyDecisionSet(
+      DATASET,
+      RESEARCH_TAXONOMY_DECISIONS,
+      RESEARCH_TAXONOMY_MEASUREMENT_RECONCILIATIONS,
+      { ...RESEARCH_TAXONOMY_EVIDENCE, neighborDiscriminants: [], falsePositiveAudits: [] },
+    );
+
+    expect(errors).toEqual(expect.arrayContaining([
+      "taxonomy decision taxonomy-khomeinism-promote needs at least 2 distinct neighbor discriminants",
+      "taxonomy decision taxonomy-khomeinism-promote needs a false-positive audit",
     ]));
   });
 });
