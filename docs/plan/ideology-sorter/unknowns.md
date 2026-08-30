@@ -664,6 +664,14 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - Market Socialism remains a contextual-only, not-scored target with no production anchor or direct questions; the two qualitative conceptions are source-backed editorial context, not respondent measurements or score effects.
 - No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
 
+## V109 — Green Politics open boundaries
+
+- How should the broad Green Politics context remain distinct from canonical Ecologism, Social Ecology, Ecosocialism, Deep Ecology, Green Anarchism, Bioregionalism, and ordinary environmental policy support when the literature shares ecological, justice, and participation language?
+- Which combinations of ecological integrity, unequal burdens, future standing, human–nature relations, grassroots participation, decentralization, public authority, commons, cooperative provision, and wider coordination are recurring enough to describe the context without turning one moral foundation or institutional route into a universal programme?
+- How should anthropocentric, ecocentric, social-justice, sustainability, local, regional, national, and transnational interpretations remain visible while avoiding inference from environmental concern, recycling, one policy, localism, decentralization, public provision, or one movement route?
+- Green Politics remains contextual-only and not-scored with two qualitative conceptions and twelve quarantined candidates; the conceptions are editorial context rather than respondent measurements, anchor weights, morphology outputs, or score effects.
+- No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
+
 ## V107 — Anarchism contextual family open boundaries
 
 - How should the family-level critique of authority, domination, and hierarchy be kept distinct from the mechanisms that define Social Anarchism, Individualist Anarchism, Green Anarchism, Libertarian Socialism, mutualism, anarcho-capitalism, and other narrower traditions?

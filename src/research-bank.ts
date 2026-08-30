@@ -4487,6 +4487,24 @@ const RESEARCH_ANCHOR_CONCEPTIONS: Readonly<Record<string, readonly ResearchAnch
       ["source-sep-anarchism", "source-ostrom"],
     ),
   ],
+  "green-politics": [
+    anchorConception(
+      "ecological-justice-and-future-standing",
+      "normative",
+      "Ecological justice across present and future standing",
+      "Green political arguments can treat ecological integrity, unequal environmental burdens, and the conditions of future generations as matters of justice, while remaining plural over anthropocentric, ecocentric, social-justice, and sustainability foundations.",
+      "characteristic",
+      ["source-cambridge-ecologism", "source-sep-environmental-ethics"],
+    ),
+    anchorConception(
+      "participatory-multilevel-ecological-governance",
+      "prescriptive",
+      "Ecological transformation through participatory and plural institutions",
+      "Green political routes may combine grassroots participation, decentralization, public authority, common institutions, cooperative provision, and wider coordination to address ecological conditions; no single state, market, commons, or movement route is constitutive of the broad context.",
+      "characteristic",
+      ["source-cambridge-ecologism", "source-ostrom"],
+    ),
+  ],
   "conservative-new-right": [
     anchorConception(
       "cultural-continuity-and-particularism",

@@ -1726,6 +1726,36 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("anarchism-context")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored" });
   });
 
+  it("keeps Green Politics contextual while recording plural ecological conceptions", () => {
+    const target = buildResearchTargets(DATASET).find((item) => item.id === "green-politics");
+    expect(target).toMatchObject({
+      targetKind: "ideology-node",
+      level: "meso",
+      placement: "contextual",
+      canonicalPath: [],
+      measurementStatus: "contextual-only",
+      questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+    });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "green-politics")).toMatchObject({ placement: "contextual", status: "catalog-only" });
+    expect(DATASET.ideologyNodes.find((node) => node.id === "green-politics")?.sourceRefs).toEqual(expect.arrayContaining([
+      "source-cambridge-ecologism",
+      "source-sep-environmental-ethics",
+    ]));
+    expect(researchCandidatesForTarget("green-politics")).toHaveLength(12);
+    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("green-politics"))).toBe(false);
+    const greenPoliticsProfile = researchAnchorProfiles.find((profile) => profile.targetId === "green-politics");
+    expect(greenPoliticsProfile?.conceptions.map((conception) => conception.conceptId)).toEqual([
+      "ecological-justice-and-future-standing",
+      "participatory-multilevel-ecological-governance",
+    ]);
+    expect(greenPoliticsProfile?.conceptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ conceptId: "ecological-justice-and-future-standing", layer: "normative", centrality: "characteristic" }),
+      expect.objectContaining({ conceptId: "participatory-multilevel-ecological-governance", layer: "prescriptive", centrality: "characteristic" }),
+    ]));
+    expect(greenPoliticsProfile?.conceptions.every((conception) => conception.sourceIds.length > 0 && conception.sourceIds.every((sourceId) => DATASET.sources.some((source) => source.id === sourceId)))).toBe(true);
+    expect(researchTaxonomyDecisionForTarget("green-politics")).toMatchObject({ disposition: "retain-contextual", resultingPlacement: "contextual", resultingScoringStatus: "not-scored" });
+  });
+
   it("keeps Gandhian Political Thought as a source-backed contextual research target without production scoring", () => {
     const target = buildResearchTargets(DATASET).find((item) => item.id === "gandhian-political-thought");
     expect(target).toMatchObject({

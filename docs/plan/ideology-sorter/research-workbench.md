@@ -752,3 +752,18 @@ The workbench retains Conservative New Right as a heterogeneous registry formati
 The workbench must show that `anarchism-context` is associated family context, not a respondent-facing ideology result. Its boundary remains stricter than generic anti-government sentiment, privacy, localism, personal independence, market exchange, cooperation, or decentralization. It also must not imply that every anarchist rejects every state in the same way: the source pass preserves philosophical, social, individualist, feminist, ecological, religious, historical, and state-tolerant variation. The new conception records are source-backed editorial bridges and remain outside unvalidated respondent measurement.
 
 This is a research-bank and taxonomy continuation. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, population generalization, or current-actor inference was run or implied.
+
+## V109 research-workbench continuation — Green Politics contextual conception bridge
+
+| Workbench field | V109 contract |
+|---|---|
+| Target | `green-politics`, the existing meso contextual ecological-politics anchor |
+| Disposition | Retain contextual and non-scored; do not create duplicate canonical ancestry |
+| Candidate bank | Twelve quarantined, effect-free candidates at descriptive/normative/prescriptive 4/4/4 |
+| Qualitative conceptions | `ecological-justice-and-future-standing` (normative, characteristic); `participatory-multilevel-ecological-governance` (prescriptive, characteristic) |
+| Source boundary | Carter's green-political-thought chapter supplies ecological-limit, human–nature, grassroots, decentralist, justice, and nonviolence context; SEP Environmental Ethics preserves moral and political variation; Ostrom is comparative institutional context only |
+| Production boundary | Zero direct production questions, no production anchor, no effect, coefficient, threshold, picker rule, morphology output, or score contribution |
+
+The workbench must keep `green-politics` as a broad contextual map across Ecologism, Social Ecology, Ecosocialism, Bioregionalism, and other associated traditions. The conceptions are qualitative research context, not respondent observations, latent traits, affinity weights, morphology candidates, or political recommendations. A broad green response does not establish a specific ecological theory, justice foundation, governance scale, ownership route, or movement identity.
+
+The remaining boundary is stricter than environmental concern, recycling, one climate or conservation policy, localism, decentralization, public provision, environmental justice language, or one movement route. The source pass preserves variation among anthropocentric and ecocentric foundations, social-justice and sustainability arguments, state, market, common, cooperative, grassroots, local, regional, national, and transnational routes. No cognitive review, respondent study, substitute simulation, psychometric validation, reliability/validity estimate, invariance study, empirical classification, population generalization, or current-actor inference was run or implied.

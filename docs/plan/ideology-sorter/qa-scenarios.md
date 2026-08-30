@@ -755,3 +755,11 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | P-108-03 | Select direct categorical and relational follow-up options. | The corresponding dimensions show `categorical-pilot`, `explicit-relational`, or `mixed-provisional` evidence while preserving option text, attached question ids, and provenance without changing affinity weights or legacy compatibility output. |
 | P-108-04 | Run structure and morphology adversarial fixtures. | The integrated trace covers every registered construct, distinguishes evidence forms, retains same-values/different-causal-belief and priority/conditional fixtures, and keeps morphology fail-closed for weak or all-mixed profiles. |
 | P-108-05 | Run deterministic and delivery checks. | Focused/full Vitest, TypeScript, build, belief audits, coverage, reachability, preview/browser checks, and Git checks report their actual PASS/FAIL/NOT RUN state. The six required external validation gates remain explicitly `NOT RUN` until study evidence is recorded. |
+
+## V109 — Green Politics contextual conception tranche
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| R-109-01 | Inspect the `green-politics` research target. | The target remains a meso contextual/catalog-only node with twelve quarantined candidates at 4/4/4, zero direct production questions, and no score path. |
+| R-109-02 | Inspect the Green Politics qualitative profile. | The workbench exposes `ecological-justice-and-future-standing` as a normative characteristic conception and `participatory-multilevel-ecological-governance` as a prescriptive characteristic conception; every provenance id resolves to the source registry. |
+| R-109-03 | Run coverage and governance audits. | Coverage reports the conception bridge without changing production question, anchor, coefficient, picker, or morphology counts; taxonomy governance remains `retain-contextual` / `not-scored`; false-positive and neighbor controls remain present. |
