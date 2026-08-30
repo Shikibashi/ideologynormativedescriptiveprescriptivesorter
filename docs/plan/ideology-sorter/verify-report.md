@@ -1679,3 +1679,84 @@ V124 adds the missing qualitative profile, conception records, and relationship 
 | Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
 
 The research coverage audit confirms that the qualitative bridge closes the sole missing profile/conception row without changing the production surface. Local TypeScript, unit, and structural evidence does not establish comprehension, expert agreement, psychometric validity, invariance, population/consequence safety, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed until those external gates are separately run and recorded.
+
+## V125 observed verification — coarse morphology resolution posture
+
+V125 adds an additive resolution seam to the primary configuration projection. Candidate records expose defining-commitment support separately from total configuration coverage, and the morphology result reports an explicit `insufficient-information`, `not-derived`, `coarse-neighborhood`, or `provisional-neighborhood` posture with at most five inspectable candidate ids. The candidate order and all scoring inputs remain unchanged.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The version-5 morphology contract, resolution record, candidate support fields, UI disclosure, and audit additions compile. |
+| `npx vitest run src/morphology-separation.test.ts --no-file-parallelism --testTimeout=60000` | PASS | Focused morphology suite: 3/3; low-separation output is explicitly a coarse neighborhood, defining support is bounded, and all-mixed/under-determined behavior remains fail-closed. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed canonical configurations remain present; the explicit-resolution adversarial check passes; validation and failure counts are zero. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | Observed exit 1 with all 30 structural checks passing; the six required external-study gates remain `NOT RUN`. |
+| Browser resolution disclosure | PASS | Explicit stable-server Playwright retest passed the completion/share scenario and displayed the resolution posture plus the no-unique-label disclosure. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The new resolution fields are structural observability only. They do not establish respondent comprehension, confidence calibration, psychometric or empirical validity, cross-context comparability, population safety, or a unique political identity classification; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V126 observed verification — expanded source-backed configuration relationships — 2026-08-30
+
+V126 extends the separate research relationship registry from the initial foundational tranche to 33 of the 119 canonical configuration owners. The registry now contains 66 `source-backed-contested` records across priority, conditionality, conflict-resolution, epistemic, and contestation kinds. The relationship statements bind to exact configuration commitments and source references, remain theoretical configuration context, and do not enter respondent observations, construct signals, morphology fit, affinity weights, or legacy scoring. The other 86 canonical owners retain the existing five explicit `not-established` relational constraint gaps.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The moved macro-family registry block, expanded relationship map, configuration aliases, and test expectations compile. |
+| `npm run test:run -- src/belief-structure.test.ts --reporter=dot` | PASS | Focused configuration suite: 27/27; 33 public canonical configuration owners and 66 relationship records are checked, with source provenance and participant commitment bindings. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical/source-backed configurations; 66 source-backed-contested relationships across 33 canonical owners; all participants resolved; all adversarial checks true; zero validation/failure errors. |
+| `npm run belief:question-coverage -- --summary` | PASS | 119 canonical targets retain 4/4/4 blocks and zero validation errors/failures; four contested prescriptive gaps remain explicitly open. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 128 research targets, 128/128 profile and conception rows, and zero validation errors. |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-WGO-2TwM.js` 2,927.64 kB (654.35 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run qa -- --workers=50% --reporter=list` | PASS | Rebuilt application browser suite: 11/11 scenarios in 2.4 minutes, including inventory, research-workbench quarantine, completion/share, missing-information, under-determined diagnostics, responsive layout, layer transitions, and malformed-share behavior. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass and `structuralEligible` is true; exit 1 remains correct because the six required external-study gates are `NOT RUN`. |
+| Preview cleanup / ports 4173, 4187, 4188, 4189 | PASS | No listener remained after browser QA. |
+| `git diff --check` | PASS | No whitespace errors after the registry repair, test update, and verification notes. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+V126 broadens the source-backed explanatory layer without changing the fixed macro/meso/micro/hybrid ontology, production question bank, legacy scorer, morphology fit, or respondent-facing classification semantics. Local structural, synthetic, unit, build, and browser evidence does not establish comprehension, expert agreement, psychometric validity, invariance, population/consequence safety, or empirical respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V127 observed verification — source-backed micro-branch relationships — 2026-08-30
+
+V127 extends the separate relationship registry across ten additional canonical micro branches: Right-Libertarianism, Libertarianism, Anarcho-Syndicalism, Anarcho-Primitivism, Autonomist Marxism, Marxism-Leninism, Egalitarian-Liberal Feminism, Cultural/Spiritual Ecofeminism, Materialist/Socialist Ecofeminism, and Classical-Liberal Feminism. The current registry contains 86 `source-backed-contested` records across 43 of 119 canonical configuration owners. Each record names existing facet commitments and source references; the records remain theoretical, contested configuration context and do not enter respondent observations, construct signals, morphology fit, affinity weights, or legacy scoring. The other 76 canonical owners retain explicit open relational gaps.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The ten-branch relationship additions and updated coverage assertions compile. |
+| `npm run test:run -- src/belief-structure.test.ts --reporter=dot` | PASS | Focused configuration suite: 27/27; 43 public canonical owners and 86 relationship records are checked for unique ids, contested posture, provenance, and participant commitment bindings. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical/source-backed configurations; 86 source-backed-contested relationships across 43 canonical owners; all participants resolved; all adversarial checks true; zero validation/failure errors. |
+| `npm run test:run -- --reporter=dot` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files. |
+| `npm run build` | PASS | TypeScript and Vite production build: 42 modules; `index-BB-jg8nU.js` 2,937.48 kB (656.44 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run qa -- --workers=50% --reporter=list` | PASS | Rebuilt application browser suite: 11/11 scenarios in 2.5 minutes; completion/share, research-workbench quarantine, missing-information, under-determined diagnostics, responsive, transition, and malformed-share paths pass. |
+| `npm run belief:measurement-audit -- --summary` | PASS | Current content remains 1,500/1,500 audited facet-proxy items; `priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation` remain explicitly unmeasured; interpretation remains non-psychometric and non-empirical. |
+| `npm run research:anchor-reachability -- --summary` | PASS | Current 119-anchor isolated reachability report has zero validation/failure errors; competition ranks remain structural overlap diagnostics only. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | All 30 structural checks pass and `structuralEligible` is true; exit 1 remains correct because the six required external-study gates are `NOT RUN`. |
+| Preview cleanup / ports 4173, 4187, 4188, 4189 | PASS | No listener remained after the browser run. |
+| `git diff --check` | PASS | No whitespace errors after the micro-branch registry, test, and documentation updates. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+V127 increases the coverage of the researched explanatory layer without converting source-backed theory into respondent measurement. The fixed ontology, production question bank, legacy scorer, morphology fit, and fail-closed boundary remain intact. Local source, structural, synthetic, unit, build, and browser evidence still does not establish comprehension, expert agreement, psychometric validity, invariance, population/consequence safety, empirical classification, or respondent-morphology validity; the overall objective remains `INCOMPLETE` / fail-closed.
+
+## V128 observed current-tree verification — stable-server browser retest — 2026-08-30
+
+After the V125 morphology-resolution seam and V126-V127 relationship tranches settled in the shared tree, the current implementation was rechecked as one combined delta. The production surface remains 1,500 questions, 119 scoring anchors, and the fixed macro/meso/micro/hybrid ontology. The researched configuration layer now reports 86 `source-backed-contested` relationships across 43 canonical owners; the morphology resolution posture remains additive, inspectable, and outside scoring.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | Current combined relationship, morphology-resolution, audit, UI, and test changes compile. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 173/173 tests across 10 files. |
+| `npx vitest run src/belief-structure.test.ts --no-file-parallelism --reporter=dot` | PASS | Focused configuration suite: 27/27; 43 owners and 86 relationships are checked for source provenance, contested posture, uniqueness, and participant bindings. |
+| `npm run build` | PASS | TypeScript and Vite build: 42 modules; `index-BB-jg8nU.js` 2,937.48 kB (656.44 kB gzip); the existing large-client-chunk advisory remains. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 scoring anchors, 124 editorial anchors, 1,536 candidates across 128 targets, 128/128 profile and conception rows, and zero validation errors. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | 119 canonical targets retain 4/4/4 blocks with zero validation errors/failures; four contested prescriptive gaps remain explicitly open. |
+| `npm run belief:measurement-audit -- --summary` | PASS | All 1,500 items remain audited through the existing facet-proxy mode; `priority-conflict`, `epistemic-stance`, and `heterodoxy-contestation` remain unmeasured, with 19 quarantined research candidates. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 canonical configurations; 86 source-backed-contested relationships across 43 owners; all participants resolved; all adversarial checks true; zero validation/failure errors. |
+| `npm run research:anchor-reachability -- --summary` | PASS | 119 production anchors; zero validation/failure errors; competition ranks remain structural overlap diagnostics only. |
+| `npx vite-node scripts/audit-belief-completion.ts --summary` | INCOMPLETE / FAIL-CLOSED | Exit 1 is correct: all 30 structural checks pass and `structuralEligible` is true, while the six required external-study gates remain `NOT RUN`. |
+| `npm run qa` | FAIL — preview-server environment | The default 10-worker run ended with 6/11 passing and 5 failures after the preview server became unavailable: four long flows timed out waiting for the initial control and the malformed-share case received `ERR_CONNECTION_REFUSED`; no morphology assertion failure was reported. |
+| Stable-server Playwright retest, research/completion/malformed-share subset | PASS | `E2E_BASE_URL=http://127.0.0.1:4174 ... --workers=1`: 3/3 passed in 3.7 minutes, including the new resolution disclosure and versioned share restoration. |
+| Stable-server Playwright retest, missing-information/transition subset | PASS | `E2E_BASE_URL=http://127.0.0.1:4174 ... --workers=1`: 2/2 passed in 3.2 minutes. |
+| `git diff --check` | PASS | No whitespace errors in the current tracked-objective diff. |
+| Required external validation gates | NOT RUN | Cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology studies remain open. |
+
+The stable-server retries provide behavioral evidence for the affected browser paths, while the default QA failure remains recorded rather than converted into a pass. No cognitive review, respondent study, psychometric claim, empirical validity claim, or unique political identity classification is inferred from these checks; the overall objective remains `INCOMPLETE` / fail-closed.

@@ -704,3 +704,10 @@ The new production anchor and prompts are editorial research artifacts. Isolated
 - Is the liberal-policy/conservative-polity distinction in Klein's historical account best treated as one adjacent formulation among several, and how should the sorter avoid converting it into a universal label or inferring the overlap from one liberal or conservative response?
 - Both targets remain contextual-only and not-scored with two qualitative conceptions and twelve quarantined candidates each; the conceptions are editorial context rather than respondent measurements, anchor weights, morphology outputs, or score effects.
 - No cognitive review, respondent study, psychometric validation, reliability/validity estimate, invariance study, substitute simulation, empirical classification, population generalization, or current-actor inference answers these boundaries.
+
+## V125 unknowns — coarse morphology resolution
+
+- [ ] The primary configuration projection now distinguishes a coarse candidate neighborhood from a provisional neighborhood, but no study has established which margin or evidence-coverage pattern should be sufficient for a respondent-facing interpretation.
+- [ ] Defining-commitment support is displayed as an observed count/proportion; it is not a calibrated confidence, measurement-error estimate, reliability result, or validity argument.
+- [ ] When the neighborhood is coarse, the next authorized step is source-backed neighbor-discriminating item research and later external review. Do not tune coefficients, add target-specific weights, or promote a unique label from synthetic overlap diagnostics.
+- [ ] The candidate resolution record is an abstention/shortlist diagnostic; it does not answer the open cognitive response-process, expert content, empirical, invariance/DIF, population/consequence, or held-out respondent morphology gates.

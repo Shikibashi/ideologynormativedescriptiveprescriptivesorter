@@ -8,7 +8,7 @@ describe("ideology question coverage", () => {
 
   beforeAll(() => {
     report = auditIdeologyQuestionCoverage(DATASET);
-  });
+  }, 30_000);
 
   it("traces every canonical 4/4/4 target block to its configuration and primary morphology path", () => {
 

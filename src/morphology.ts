@@ -15,10 +15,11 @@ import type {
   MorphologyBasis,
   MorphologyDirectBasis,
   MorphologyRelationalBasis,
+  IdeologicalMorphologyResolution,
 } from "./types";
 
 export const MORPHOLOGY_MODEL_ID = "configuration-projection" as const;
-export const MORPHOLOGY_MODEL_VERSION = 4;
+export const MORPHOLOGY_MODEL_VERSION = 5;
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
@@ -134,6 +135,43 @@ const decoratedCandidatesFor = (
   }))
   .sort((left, right) => right.fit - left.fit || right.coverage - left.coverage || left.label.localeCompare(right.label) || left.anchorId.localeCompare(right.anchorId));
 
+const morphologyResolutionFor = (
+  status: IdeologicalMorphology["status"],
+  candidates: readonly IdeologicalMorphologyCandidate[],
+  underDeterminedCandidates: readonly IdeologicalMorphologyCandidate[],
+): IdeologicalMorphologyResolution => {
+  if (status === "insufficient-information") {
+    return {
+      status: "insufficient-information",
+      candidateIds: [],
+      rationale: "The three-layer coverage threshold is not met, so no configuration neighborhood is derived.",
+    };
+  }
+  if (candidates.length === 0) {
+    return {
+      status: "not-derived",
+      candidateIds: [],
+      rationale: underDeterminedCandidates.length > 0
+        ? "No configuration has enough defining support for provisional comparison; retain the under-determined diagnostics and gather more discriminating evidence."
+        : "No configuration has enough observed defining support for a provisional neighborhood.",
+    };
+  }
+  const leading = candidates[0];
+  const candidateIds = candidates.slice(0, 5).map((candidate) => candidate.anchorId);
+  if (leading.separation === "low") {
+    return {
+      status: "coarse-neighborhood",
+      candidateIds,
+      rationale: "The leading provisional configurations are close on the current internal-fit grid. Keep the neighborhood visible and add a source-backed discriminating research candidate before considering any scorer change; no unique ideology label is selected.",
+    };
+  }
+  return {
+    status: "provisional-neighborhood",
+    candidateIds,
+    rationale: "The leading provisional configuration is inspectable, but this research-backed projection does not select a unique ideology label. Keep the nearby candidates and defining-evidence coverage visible until the open validation gates are addressed.",
+  };
+};
+
 const basisForCommitment = (
   commitment: BeliefCommitment,
   constructId: BeliefConstructResult["id"],
@@ -226,7 +264,8 @@ const candidateForConfiguration = (
   const definingCommitmentsObserved = new Set<string>();
   const missingDefiningCommitments = new Set<string>();
   const conflictingCommitments = new Set<string>();
-  for (const commitment of configuration.commitments.filter((item) => item.centrality === "defining")) {
+  const definingCommitments = configuration.commitments.filter((item) => item.centrality === "defining");
+  for (const commitment of definingCommitments) {
     const commitmentBasis = basis.filter((item) => item.commitmentId === commitment.id);
     const missing = commitmentBasis.every((item) => item.agreement === undefined)
       || !commitmentBasis.some((item) => {
@@ -270,6 +309,9 @@ const candidateForConfiguration = (
     status,
     fit,
     coverage,
+    definingCoverage: definingCommitments.length === 0 ? 0 : definingCommitmentsObserved.size / definingCommitments.length,
+    observedDefiningCommitmentCount: definingCommitmentsObserved.size,
+    definingCommitmentCount: definingCommitments.length,
     definingCommitmentsObserved: [...definingCommitmentsObserved],
     missingDefiningCommitments: [...missingDefiningCommitments],
     conflictingCommitments: [...conflictingCommitments],
@@ -290,6 +332,7 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
       status: "insufficient-information",
       candidates: [],
       underDeterminedCandidates: [],
+      resolution: morphologyResolutionFor("insufficient-information", [], []),
       gaps: [
         "The profile does not meet the existing layer coverage threshold, so no ideological morphology candidate is derived.",
         "This model uses construct-level profile signals built from provisional facet-to-construct proxies and cannot infer an ideology from incomplete responses.",
@@ -325,12 +368,14 @@ export const deriveIdeologicalMorphology = (profile: BeliefProfile, dataset: Dat
   const underDeterminedGap = underDeterminedCandidates.length > 0
     ? `${underDeterminedCandidates.length} source-backed configuration projection${underDeterminedCandidates.length === 1 ? "" : "s"} remain under-determined and are withheld from provisional candidate ordering.`
     : undefined;
+  const status: IdeologicalMorphology["status"] = candidates.length > 0 ? "provisional-candidates" : "not-derived";
   return {
     modelId: MORPHOLOGY_MODEL_ID,
     modelVersion: MORPHOLOGY_MODEL_VERSION,
-    status: candidates.length > 0 ? "provisional-candidates" : "not-derived",
+    status,
     candidates,
     underDeterminedCandidates,
+    resolution: morphologyResolutionFor(status, candidates, underDeterminedCandidates),
     gaps: [
       "These are configuration-projection candidates, not validated latent traits, diagnoses, identities, or recommendations.",
       "The legacy facet-distance scorer remains available as a compatibility regression baseline and is not silently replaced by this pass.",

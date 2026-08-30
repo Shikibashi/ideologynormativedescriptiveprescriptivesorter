@@ -935,3 +935,29 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | R-124-02 | Inspect the Confucian profile and its source-backed relationships. | The profile exposes 4 descriptive, 5 normative, and 4 prescriptive dimensions; conceptions and relationship participants resolve to known source-backed records; contested modern translations remain marked as contested rather than collapsed into one institutional route. |
 | R-124-03 | Run production and belief audits after the profile bridge. | Production remains 1,500 questions / 119 scoring anchors / 124 editorial anchors; the 119 canonical targets retain 4/4/4 direct coverage; the profile does not enter effects, affinity, morphology, legacy scoring, or respondent output. |
 | R-124-04 | Run the completion audit and review its external-gate ledger. | Structural checks remain green, but the overall completion result remains `INCOMPLETE` / fail-closed because the six required external gates are still `NOT RUN`; no local structural result is reclassified as cognitive or empirical validation. |
+
+## Current V125 morphology-resolution scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-125-01 | Complete the base quiz with enough directional responses to derive morphology and inspect the result. | The result exposes a `Selection posture` record and a bounded inspectable neighborhood; candidate rows show total configuration coverage and defining-commitment support separately. |
+| P-125-02 | Use an all-directional or otherwise close synthetic fixture that produces low leading-candidate separation. | The result reports `coarse candidate neighborhood`, keeps the leading candidates visible, and explicitly says that no unique ideology label is selected; no new score or target-specific weighting appears. |
+| R-125-01 | Run the morphology audit and regression tests after the resolution-seam change. | All canonical source-backed configurations retain their structural round trips, the all-mixed fixture remains `not-derived`, and the legacy scorer remains byte-for-byte unchanged for the tested result paths. |
+
+## Current V126 researched relationship tranche scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-126-01 | Open a morphology candidate for one of the newly covered macro, family, or foundational configurations. | The configuration exposes its source-backed relationship statements, exact participating commitments, and source links as theoretical context; no relation becomes respondent evidence, a score, an affinity weight, or a morphology-fit input. |
+| P-126-02 | Inspect a configuration with a priority, conditionality, conflict-resolution, epistemic, or contestation relation. | The relation kind and contested evidence posture remain explicit; the statement preserves variation and does not establish a universal priority, exception, epistemic stance, or heterodoxy rule for respondents. |
+| R-126-01 | Run the relationship and completion audits after the tranche extension. | The registry reports 66 source-backed-contested relationship records across 33 canonical configuration owners; all participants resolve to commitments, zero structural validation/failure errors occur, the remaining 86 canonical owners retain open relation gaps, and the six external validation gates remain `NOT RUN`. |
+| R-126-02 | Run the full regression, build, and browser QA commands. | Vitest, TypeScript/build, and all 11 browser scenarios pass; the existing large-client-chunk advisory remains informational, preview processes are cleaned up, and no political classification or empirical-validity claim is made. |
+
+## Current V127 source-backed micro-branch relationship scenarios
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-127-01 | Open a candidate for a newly covered libertarian, anarchist, Marxist, or feminist branch. | The configuration shows two source-backed-contested relationship statements linked to its existing facet commitments and provenance; the relation layer remains explanatory context and does not change the candidate's fit, rank, affinity, or legacy score. |
+| P-127-02 | Inspect a relationship that joins a substantive diagnosis to an institutional route. | The UI keeps the source-backed theoretical statement distinct from respondent evidence, preserves contested variation, and does not infer a scalar priority, confidence, contradiction, or identity from co-occurrence. |
+| R-127-01 | Run the relationship, measurement, reachability, and completion audits after the micro-branch tranche. | The relationship registry reports 86 records across 43 canonical owners with all participants and sources resolved; measurement remains 1,500/1,500 with the three unmeasured constructs explicit; reachability has zero validation/failure errors; completion remains `INCOMPLETE` / fail-closed while the six external gates are `NOT RUN`. |
+| R-127-02 | Run the focused and full regression, build, and browser QA commands. | The 27-test belief-structure suite, 173-test Vitest suite, production build, and all 11 browser scenarios pass; preview listeners are cleaned up and no empirical or political-ranking claim is made. |

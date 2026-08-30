@@ -75,7 +75,10 @@ const candidateRowFor = (configuration: IdeologyConfiguration) => {
     targetCandidateRank: rank < 0 ? null : rank + 1,
     targetCandidateStatus: candidate?.status ?? null,
     morphologyStatus: result.primary.morphology.status,
+    resolutionStatus: result.primary.morphology.resolution.status,
+    resolutionCandidateIds: result.primary.morphology.resolution.candidateIds,
     targetCoverage: candidate?.coverage ?? null,
+    targetDefiningCoverage: candidate?.definingCoverage ?? null,
     targetFit: candidate?.fit ?? null,
     directionalFitUsesConstructSignal,
     facetContextRecordCount: candidate?.basis.filter((basis) => basis.facetProxySignal !== undefined).length ?? 0,
@@ -182,6 +185,10 @@ const adversarialChecks = {
     && underDeterminedResult.primary.morphology.underDeterminedCandidates.every((candidate) => candidate.status === "under-determined")
     && underDeterminedResult.primary.morphology.underDeterminedCandidates.every((candidate) =>
       !underDeterminedResult.primary.morphology.candidates.some((provisional) => provisional.anchorId === candidate.anchorId)),
+  morphologyResolutionIsExplicit: roundTripRows.every((row) =>
+    ["provisional-neighborhood", "coarse-neighborhood"].includes(row.resolutionStatus)
+    && row.resolutionCandidateIds.length > 0
+    && row.resolutionCandidateIds.length <= 5),
   mixedResponsesRemainNonDirectional: neutralResult.primary.profile.observations
     .filter((observation) => observation.state === "mixed")
     .every((observation) => observation.value === undefined)
@@ -190,6 +197,8 @@ const adversarialChecks = {
     && neutralResult.primary.morphology.candidates.every((candidate) => candidate.basis
       .every((basis) => basis.agreement === undefined && basis.evidenceQuestionIds.length === 0))
     && neutralResult.primary.morphology.underDeterminedCandidates.length > 0
+    && neutralResult.primary.morphology.resolution.status === "not-derived"
+    && neutralResult.primary.morphology.resolution.candidateIds.length === 0
     && neutralResult.primary.morphology.underDeterminedCandidates.every((candidate) => candidate.basis
       .every((basis) => basis.agreement === undefined && basis.evidenceQuestionIds.length === 0)),
   sameValuesDifferentCausalBeliefsVisible,
@@ -223,6 +232,7 @@ const adversarialFailureLayers: Readonly<Record<keyof typeof adversarialChecks, 
   weakProfileWithholdsMorphology: "question",
   allMixedProfileDoesNotNameMorphology: "question",
   underDeterminedRecordsAreSeparated: "ideological-mapping",
+  morphologyResolutionIsExplicit: "ideological-mapping",
   mixedResponsesRemainNonDirectional: "question",
   sameValuesDifferentCausalBeliefsVisible: "causal-belief",
   samePolicyDifferentPrincipleVisible: "conception",

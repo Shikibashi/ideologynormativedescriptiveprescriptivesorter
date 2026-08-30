@@ -175,6 +175,13 @@ const configurationConceptionPostureTextFor = (configuration: IdeologyConfigurat
   return `${explicitCount} explicit researched conception record${explicitCount === 1 ? "" : "s"} and ${facetProxyCount} facet-proxy conception mapping${facetProxyCount === 1 ? "" : "s"}; neither is a direct respondent conception measure.`;
 };
 
+const morphologyResolutionLabels: Readonly<Record<IdeologicalMorphology["resolution"]["status"], string>> = {
+  "insufficient-information": "insufficient information",
+  "not-derived": "not derived",
+  "coarse-neighborhood": "coarse candidate neighborhood",
+  "provisional-neighborhood": "provisional candidate neighborhood",
+};
+
 const configurationRelationshipParticipantsTextFor = (relationship: IdeologyConfiguration["researchedRelationships"][number], configuration: IdeologyConfiguration): string => relationship.participants
   .map((participant) => {
     const labels = participant.commitmentIds
@@ -970,6 +977,9 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
   const candidates = morphology.candidates.slice(0, 5);
   const underDeterminedCandidates = morphology.underDeterminedCandidates.slice(0, 5);
   const underDeterminedCandidateCount = morphology.underDeterminedCandidates.length;
+  const resolutionCandidates = morphology.resolution.candidateIds
+    .map((candidateId) => morphology.candidates.find((candidate) => candidate.anchorId === candidateId)?.label)
+    .filter((label): label is string => label !== undefined);
   return (
     <section className="belief-morphology" aria-labelledby="belief-morphology-title">
       <div className="belief-morphology-header">
@@ -979,6 +989,11 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
           <p className="belief-morphology-lede">These candidates compare observed construct-level profile signals with source-backed configurations of existing traditions. They explain resemblance; they do not assign an identity or replace the underlying belief profile.</p>
         </div>
         <span className="belief-profile-status">{morphology.status === "provisional-candidates" ? `${morphology.candidates.length} provisional candidates` : "not derived"}</span>
+      </div>
+      <div className="morphology-resolution" role="note">
+        <strong>Selection posture: {morphologyResolutionLabels[morphology.resolution.status]}</strong>
+        <p>{morphology.resolution.rationale}</p>
+        {resolutionCandidates.length > 0 ? <p><strong>Inspectable neighborhood:</strong> {resolutionCandidates.join("; ")}</p> : null}
       </div>
       {morphology.status === "insufficient-information" ? (
         <div className="belief-morphology-empty"><h3>No named morphology yet.</h3><p>{morphology.gaps[0]}</p></div>
@@ -991,7 +1006,7 @@ const IdeologicalMorphologyView = ({ morphology, profile }: { morphology: Ideolo
               <div className="morphology-candidate-rank" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
               <div className="morphology-candidate-body">
                 <div className="morphology-candidate-topline"><h3>{candidate.label}</h3><span>provisional candidate</span></div>
-                <p className="morphology-candidate-meta">{candidate.family} family · {Math.round(candidate.coverage * 100)}% configuration coverage · {Math.round(candidate.fit * 100)}% directional agreement</p>
+                <p className="morphology-candidate-meta">{candidate.family} family · {Math.round(candidate.coverage * 100)}% configuration coverage · {candidate.observedDefiningCommitmentCount}/{candidate.definingCommitmentCount} defining commitments supported · {Math.round(candidate.fit * 100)}% directional agreement</p>
                 <p>{candidate.explanation}</p>
                 {candidate.definingCommitmentsObserved.length > 0 ? <p className="morphology-candidate-detail"><strong>Observed defining commitments:</strong> {candidate.definingCommitmentsObserved.join(", ")}</p> : null}
                 {candidate.missingDefiningCommitments.length > 0 ? <p className="morphology-candidate-detail"><strong>Missing defining commitments:</strong> {candidate.missingDefiningCommitments.join(", ")}</p> : null}

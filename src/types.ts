@@ -948,6 +948,12 @@ export type IdeologicalMorphologyCandidate = Readonly<{
   status: "provisional-candidate" | "under-determined";
   fit: number;
   coverage: number;
+  /** Share of defining commitments with sufficient directional support. */
+  definingCoverage: number;
+  /** Number of defining commitments with sufficient directional support. */
+  observedDefiningCommitmentCount: number;
+  /** Total defining commitments in the source-backed configuration. */
+  definingCommitmentCount: number;
   /** Difference between this candidate's internal fit and its closest competitor. */
   margin: number;
   /** A display band from the predeclared policy, not calibrated confidence. */
@@ -963,6 +969,23 @@ export type IdeologicalMorphologyCandidate = Readonly<{
   sourceRefs: readonly string[];
 }>;
 
+export type IdeologicalMorphologyResolutionStatus =
+  | "insufficient-information"
+  | "not-derived"
+  | "coarse-neighborhood"
+  | "provisional-neighborhood";
+
+/**
+ * Explicitly describes what the current candidate grid can support. This is
+ * an abstention/shortlist diagnostic, not a selected ideology, confidence
+ * score, or empirical validity result.
+ */
+export type IdeologicalMorphologyResolution = Readonly<{
+  status: IdeologicalMorphologyResolutionStatus;
+  candidateIds: readonly string[];
+  rationale: string;
+}>;
+
 export type IdeologicalMorphology = Readonly<{
   modelId: "configuration-projection";
   modelVersion: number;
@@ -970,6 +993,8 @@ export type IdeologicalMorphology = Readonly<{
   candidates: readonly IdeologicalMorphologyCandidate[];
   /** Source-backed configuration projections retained as diagnostics because defining evidence is insufficient; never included in candidate ordering. */
   underDeterminedCandidates: readonly IdeologicalMorphologyCandidate[];
+  /** Explicit shortlist/abstention posture; never a unique ideology selection. */
+  resolution: IdeologicalMorphologyResolution;
   gaps: readonly string[];
   provenance: readonly string[];
   compatibility: Readonly<{

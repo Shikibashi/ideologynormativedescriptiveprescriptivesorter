@@ -2,7 +2,7 @@
 
 ## Status
 
-This document records the first implementation seam for the deeper belief-structure objective. It is an editorial and engineering contract, not a psychometric validation report. The current model is `stated-political-commitment-configuration` version 2, and the current morphology projection is `configuration-projection` version 4.
+This document records the first implementation seam for the deeper belief-structure objective. It is an editorial and engineering contract, not a psychometric validation report. The current model is `stated-political-commitment-configuration` version 2, and the current morphology projection is `configuration-projection` version 5.
 
 The existing descriptive, normative, and prescriptive ontology, including its macro, meso, micro, and hybrid relations, remains unchanged. The new layer is additive: it makes the respondent-facing belief representation explicit and leaves the legacy facet-distance scorer available as the compatibility regression baseline. Objective-level gate status is kept separately in [`src/belief-validation.ts`](../../../src/belief-validation.ts), and `npm run belief:completion-audit` fails closed when structural checks pass but required external validation is still open.
 
@@ -154,6 +154,7 @@ The resulting configuration keeps a `BeliefConception` record for each represent
 8. attaches every commitment basis record to the relevant primary-profile dimension ids and records the evidence form actually used for directional fit (`construct-proxy`, `direct-item`, `mixed-provisional`, or `none`); a `facet-proxy` signal may remain as context, but it is not the fit source. Categorical pilot and relational records remain separate contextual evidence and cannot enter the fit basis.
 9. records each candidate's nearest-competing fit margin and a low/moderate/high separation display band, while retaining the candidate neighborhood and selecting no unique label when the current grid is coarse.
 10. keeps under-determined configuration projections in `underDeterminedCandidates` as diagnostics, never in the ordered `candidates` collection; the diagnostic collection is not a second ranking or a claim that the withheld records are comparable ideologies.
+11. records defining-commitment support counts and an explicit resolution posture (`coarse-neighborhood`, `provisional-neighborhood`, `not-derived`, or `insufficient-information`) with a bounded inspectable neighborhood; this posture is an abstention/shortlist diagnostic, never a unique label or confidence estimate.
 
 `BeliefProfile.diagnostics` makes the same boundary machine-readable. It identifies whether the current evidence stops at question coverage, construct coverage, a conception or causal interpretation, a relational rule, or an optional-evidence contract. Each diagnostic carries a status, the affected constructs, any attached evidence question ids, and provenance. These are internal debugging and measurement-review records; they are not respondent judgments and do not claim that the named layer is valid.
 

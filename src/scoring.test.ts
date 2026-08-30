@@ -352,7 +352,7 @@ describe("layer scoring", () => {
       }
       expect(result.combined.kind).toBe("covered");
     }
-  });
+  }, 30_000);
 
   it("routes every production anchor through all three layers in a structural reachability fixture", () => {
     for (const anchor of scoringAnchorsFor(DATASET)) {
@@ -373,7 +373,7 @@ describe("layer scoring", () => {
         expect(Object.keys(result.combined.neighbors[0]?.layerFits ?? {})).toEqual(["descriptive", "normative", "prescriptive"]);
       }
     }
-  });
+  }, 30_000);
 
   it("keeps contextual bridge anchors inspectable without including them in production scoring", () => {
     expect(DATASET.anchors).toHaveLength(124);

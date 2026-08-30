@@ -499,8 +499,50 @@ describe("stated political commitment configuration", () => {
     expect(configurations.every((configuration) => configuration.relationalConstraints.length === 5)).toBe(true);
     const researchedConfigurations = canonicalConfigurations.filter((configuration) => configuration.researchedRelationships.length > 0);
     const researchedRelationships = researchedConfigurations.flatMap((configuration) => configuration.researchedRelationships);
-    expect(researchedConfigurations).toHaveLength(13);
-    expect(researchedRelationships).toHaveLength(25);
+    expect(researchedConfigurations).toHaveLength(53);
+    expect(researchedRelationships).toHaveLength(106);
+    expect(researchedConfigurations.map((configuration) => configuration.targetId)).toEqual(expect.arrayContaining([
+      "liberalism-family",
+      "socialism-family",
+      "anarchism-family",
+      "nationalism-family",
+      "republicanism-family",
+      "fascism",
+      "ecologism-family",
+      "feminism-family",
+      "right-libertarianism",
+      "libertarianism",
+      "anarcho-syndicalism",
+      "anarcho-primitivism",
+      "autonomist-marxism",
+      "marxism-leninism",
+      "egalitarian-liberal-feminism",
+      "cultural-spiritual-ecofeminism",
+      "materialist-socialist-ecofeminism",
+      "classical-liberal-feminism",
+      "austromarxism",
+      "anarcho-pacifism",
+      "anarcho-communism",
+      "collectivist-anarchism",
+      "social-ecology",
+      "womanism",
+      "social-anarchism",
+      "liberal-feminism",
+      "contemporary-neo-republicanism",
+      "black-feminism",
+      "classical-liberalism",
+      "social-liberalism",
+      "traditional-conservatism",
+      "national-conservatism",
+      "social-democracy",
+      "democratic-socialism",
+      "left-libertarianism",
+      "minarchism",
+      "libertarian-socialism",
+      "eco-socialism",
+      "marxism",
+      "communism",
+    ]));
     expect(new Set(researchedRelationships.map((relationship) => relationship.id)).size).toBe(researchedRelationships.length);
     expect(researchedRelationships.every((relationship) => relationship.evidencePosture === "source-backed-contested")).toBe(true);
     expect(researchedRelationships.some((relationship) => relationship.kind === "epistemic")).toBe(true);
@@ -713,7 +755,12 @@ describe("stated political commitment configuration", () => {
   it("fails closed before morphology when the three-layer evidence threshold is not met", () => {
     const result = calculateResults(allAnswers("no-view"));
     expect(result.beliefProfile.status).toBe("insufficient-information");
-    expect(result.beliefMorphology).toMatchObject({ status: "insufficient-information", candidates: [], underDeterminedCandidates: [] });
+    expect(result.beliefMorphology).toMatchObject({
+      status: "insufficient-information",
+      candidates: [],
+      underDeterminedCandidates: [],
+      resolution: { status: "insufficient-information", candidateIds: [] },
+    });
     expect(result.beliefMorphology.gaps[0]).toContain("no ideological morphology candidate is derived");
   });
 
@@ -724,6 +771,7 @@ describe("stated political commitment configuration", () => {
     expect(result.beliefMorphology.candidates).toEqual([]);
     expect(result.beliefMorphology.underDeterminedCandidates.length).toBeGreaterThan(0);
     expect(result.beliefMorphology.underDeterminedCandidates.every((candidate) => candidate.status === "under-determined")).toBe(true);
+    expect(result.beliefMorphology.resolution).toMatchObject({ status: "not-derived", candidateIds: [] });
   });
 
   it("traces observed facet inputs without treating target IDs as respondent evidence", () => {
