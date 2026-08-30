@@ -17,18 +17,19 @@ const minimumCoveredAnswers = (layer: Layer): number => Math.ceil(DATASET.manife
 describe("dataset contract", () => {
   it("accepts the versioned dataset", () => {
     expect(validateDataset(DATASET)).toEqual([]);
-    expect(DATASET.manifest.questionCount).toBe(1488);
-    expect(DATASET.manifest.questionsPerLayer).toEqual({ descriptive: 496, normative: 496, prescriptive: 496 });
+    expect(DATASET.manifest.questionCount).toBe(1500);
+    expect(DATASET.manifest.questionsPerLayer).toEqual({ descriptive: 500, normative: 500, prescriptive: 500 });
     expect(DATASET.questions.every((question) => question.sourceRefs.some((sourceRef) => DATASET.sources.find((source) => source.id === sourceRef)?.role === "ideology-research"))).toBe(true);
     expect(DATASET.anchors.every((anchor) => anchor.sourceRefs.some((sourceRef) => DATASET.sources.find((source) => source.id === sourceRef)?.role === "ideology-research"))).toBe(true);
     const canonicalNodes = DATASET.ideologyNodes.filter((node) => node.placement === "canonical");
     expect(canonicalNodes.filter((node) => node.level === "macro")).toHaveLength(9);
     expect(canonicalNodes.filter((node) => node.level === "meso")).toHaveLength(38);
-    expect(canonicalNodes.filter((node) => node.level === "micro")).toHaveLength(71);
+    expect(canonicalNodes.filter((node) => node.level === "micro")).toHaveLength(72);
     expect(canonicalNodes.filter((node) => node.level === "macro").map((node) => node.id)).toEqual(expect.arrayContaining(["liberalism", "ecologism", "feminism", "fascism"]));
     expect(DATASET.anchors.every((anchor) => DATASET.ideologyNodes.some((node) => node.anchorId === anchor.id))).toBe(true);
     expect(DATASET.ideologyRegistry.length).toBeGreaterThan(0);
-    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "deep-ecology" && entry.kind === "associated-tradition")).toBe(true);
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "deep-ecology")).toBe(false);
+    expect(DATASET.ideologyNodes.find((node) => node.id === "deep-ecology")).toMatchObject({ status: "scored", anchorId: "deep-ecology", placement: "canonical", canonicalParentId: "ecologism" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "national-conservatism")).toMatchObject({ canonicalParentId: "conservative-nationalism", placement: "canonical" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "ordoliberalism")).toMatchObject({ status: "scored", anchorId: "ordoliberalism", placement: "canonical", canonicalParentId: "liberalism" });
     expect(DATASET.ideologyNodes.find((node) => node.id === "pan-africanism")).toMatchObject({ status: "scored", anchorId: "pan-africanism", placement: "canonical", canonicalParentId: "nationalism" });
@@ -85,23 +86,23 @@ describe("dataset contract", () => {
   });
 
   it("validates secondary registry links without treating registry entries as scored nodes", () => {
-    const registry = DATASET.ideologyRegistry.find((entry) => entry.id === "deep-ecology");
-    expect(registry?.relations.some((relation) => relation.targetId === "ecologism")).toBe(true);
+    const registry = DATASET.ideologyRegistry.find((entry) => entry.id === "civic-republicanism");
+    expect(registry?.relations.some((relation) => relation.targetId === "historical-republicanism")).toBe(true);
     const broken = {
       ...DATASET,
-      ideologyRegistry: DATASET.ideologyRegistry.map((entry) => entry.id === "deep-ecology"
+      ideologyRegistry: DATASET.ideologyRegistry.map((entry) => entry.id === "civic-republicanism"
         ? { ...entry, relations: [...entry.relations, { type: "related-to" as const, targetId: "missing-node", note: "fixture" }] }
         : entry),
     };
-    expect(validateDataset(broken).some((error) => error.includes("ideology registry entry deep-ecology references missing relation target missing-node"))).toBe(true);
+    expect(validateDataset(broken).some((error) => error.includes("ideology registry entry civic-republicanism references missing relation target missing-node"))).toBe(true);
   });
 });
 
 describe("layer scoring", () => {
   it("keeps no-view separate and fails closed below the coverage threshold", () => {
     const result = calculateResults({});
-    expect(result.layers.descriptive).toMatchObject({ kind: "insufficient-information", answered: 0, total: 496, coverage: 0 });
-    expect(result.layers.normative).toMatchObject({ kind: "insufficient-information", answered: 0, total: 496 });
+    expect(result.layers.descriptive).toMatchObject({ kind: "insufficient-information", answered: 0, total: 500, coverage: 0 });
+    expect(result.layers.normative).toMatchObject({ kind: "insufficient-information", answered: 0, total: 500 });
     expect(result.combined).toMatchObject({ kind: "insufficient-information", coveredLayers: [], requiredLayers: ["descriptive", "normative", "prescriptive"] });
     expect(result.pulls).toEqual([]);
   });
@@ -109,7 +110,7 @@ describe("layer scoring", () => {
   it("counts mixed responses as answered while preserving the mixed count", () => {
     const minimum = minimumCoveredAnswers("descriptive");
     const result = calculateResults(answersForLayer("descriptive", 0, minimum));
-    expect(result.layers.descriptive).toMatchObject({ kind: "covered", answered: minimum, total: 496, coverage: 0.5, mixed: minimum });
+    expect(result.layers.descriptive).toMatchObject({ kind: "covered", answered: minimum, total: 500, coverage: 0.5, mixed: minimum });
   });
 
   it("uses the exact half threshold and distinguishes it from the answer immediately below it", () => {
@@ -375,8 +376,8 @@ describe("layer scoring", () => {
   });
 
   it("keeps contextual bridge anchors inspectable without including them in production scoring", () => {
-    expect(DATASET.anchors).toHaveLength(123);
-    expect(scoringAnchorsFor(DATASET)).toHaveLength(118);
+    expect(DATASET.anchors).toHaveLength(124);
+    expect(scoringAnchorsFor(DATASET)).toHaveLength(119);
     expect(scoringAnchorsFor(DATASET).map((anchor) => anchor.id)).toEqual(expect.arrayContaining(["anarchism-family", "feminism-family", "liberalism-family", "nationalism-family", "republicanism-family", "socialism-family"]));
     expect(scoringAnchorsFor(DATASET).map((anchor) => anchor.id)).not.toEqual(expect.arrayContaining([
       "anarchism",

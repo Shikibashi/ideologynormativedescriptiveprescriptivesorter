@@ -26,7 +26,7 @@ describe("research workbench contracts", () => {
     const targets = buildResearchTargets(DATASET);
     expect(targets).toHaveLength(DATASET.ideologyNodes.length + DATASET.ideologyRegistry.length);
     expect(targets.find((target) => target.id === "anarcho-capitalism")).toMatchObject({ targetKind: "ideology-node", measurementStatus: "dedicated-scored", level: "micro", placement: "canonical", anchorId: "anarcho-capitalism", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
-    expect(targets.find((target) => target.id === "deep-ecology")).toMatchObject({ targetKind: "registry-entry", measurementStatus: "registry-only" });
+    expect(targets.find((target) => target.id === "deep-ecology")).toMatchObject({ targetKind: "ideology-node", level: "micro", placement: "canonical", anchorId: "deep-ecology", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "civic-republicanism")).toMatchObject({ targetKind: "registry-entry", measurementStatus: "registry-only" });
     expect(targets.find((target) => target.id === "conservatism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "conservatism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
     expect(targets.find((target) => target.id === "anarchism")).toMatchObject({ targetKind: "ideology-node", level: "macro", placement: "canonical", anchorId: "anarchism-family", measurementStatus: "dedicated-scored", questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 } });
@@ -294,8 +294,8 @@ describe("research workbench contracts", () => {
     expect(validateCuratedResearchBank(DATASET)).toEqual([]);
     expect(validateCuratedResearchMetadata(DATASET)).toEqual([]);
     expect(curatedResearchCandidates.every((candidate) => candidate.reviewStatus === "research_candidate" && !("effects" in candidate))).toBe(true);
-    expect(DATASET.questions).toHaveLength(1488);
-    expect(DATASET.manifest.questionCount).toBe(1488);
+    expect(DATASET.questions).toHaveLength(1500);
+    expect(DATASET.manifest.questionCount).toBe(1500);
   }, 60_000);
 
   it("gives every covered branch a three-layer starter block and review metadata", () => {
@@ -2026,16 +2026,22 @@ describe("research workbench contracts", () => {
     expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("conservative-new-right"))).toBe(false);
   });
 
-  it("retains Deep Ecology as a source-backed associated ecological framework", () => {
+  it("promotes Deep Ecology as a source-backed canonical ecological branch", () => {
     const target = buildResearchTargets(DATASET).find((candidate) => candidate.id === "deep-ecology");
     expect(target).toMatchObject({
-      targetKind: "registry-entry",
-      placement: undefined,
-      measurementStatus: "registry-only",
-      questionCounts: { descriptive: 0, normative: 0, prescriptive: 0 },
+      targetKind: "ideology-node",
+      level: "micro",
+      placement: "canonical",
+      anchorId: "deep-ecology",
+      measurementStatus: "dedicated-scored",
+      questionCounts: { descriptive: 4, normative: 4, prescriptive: 4 },
     });
-    expect(DATASET.ideologyNodes.some((node) => node.id === "deep-ecology")).toBe(false);
-    expect(DATASET.ideologyRegistry.find((entry) => entry.id === "deep-ecology")?.sourceRefs).toEqual(expect.arrayContaining([
+    expect(DATASET.ideologyNodes.find((node) => node.id === "deep-ecology")).toMatchObject({ canonicalParentId: "ecologism", anchorId: "deep-ecology", status: "scored", placement: "canonical" });
+    expect(DATASET.ideologyRegistry.some((entry) => entry.id === "deep-ecology")).toBe(false);
+    expect(DATASET.ideologyNodes.find((node) => node.id === "deep-ecology")?.sourceRefs).toEqual(expect.arrayContaining([
+      "source-naess-deep-ecology",
+      "source-oup-dobson-environmental-politics",
+      "source-oup-attfield-environmental-movements",
       "source-trumpeter-drengson-devall-deep-ecology",
       "source-mit-katz-light-rothenberg-deep-ecology",
       "source-wiley-grey-deep-ecology-critique",
@@ -2046,9 +2052,10 @@ describe("research workbench contracts", () => {
     expect(researchCandidatesForTarget("deep-ecology")).toHaveLength(12);
     expect(researchAnchorProfiles.find((profile) => profile.targetId === "deep-ecology")?.dimensions.length).toBeGreaterThanOrEqual(8);
     expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === "deep-ecology")).toHaveLength(4);
-    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "deep-ecology")?.preferredOutcome).toContain("associated");
-    expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
-    expect(DATASET.questions.some((question) => question.targetNodeIds?.includes("deep-ecology"))).toBe(false);
+    expect(researchFalsePositiveAudits.find((audit) => audit.targetId === "deep-ecology")?.preferredOutcome).toContain("provisional dedicated-scored");
+    expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional", decidedAt: "2026-08-30" });
+    expect(DATASET.anchors.some((anchor) => anchor.ontologyNodeId === "deep-ecology")).toBe(true);
+    expect(DATASET.questions.filter((question) => question.targetNodeIds?.includes("deep-ecology"))).toHaveLength(12);
   });
 
   it("closes the completion tranche with the research-backed Bernsteinian promotion explicit", () => {
@@ -2077,7 +2084,7 @@ describe("research workbench contracts", () => {
       expect(researchNeighborDiscriminants.filter((discriminant) => discriminant.targetId === targetId)).toHaveLength(["agrarian-populism", "bioregionalism", "british-fascism", "conservative-new-right", "deep-ecology", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? ["bioregionalism", "conservative-new-right"].includes(targetId) ? 3 : 4 : 2);
       expect(researchFalsePositiveAudits.some((audit) => audit.targetId === targetId)).toBe(true);
       expect(researchCoverageSummaries.find((summary) => summary.targetId === targetId)).toMatchObject({ newCandidateItems: 12 });
-      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["agrarian-populism", "bioregionalism", "british-fascism", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
+      expect(targets.find((target) => target.id === targetId)?.questionCounts).toEqual(["agrarian-populism", "bioregionalism", "british-fascism", "deep-ecology", "flemish-belgian-fascism", "french-fascism", "italian-fascism", "japanese-fascism", "national-syndicalism", "right-libertarianism", "revisionist-bernsteinian-social-democracy"].includes(targetId) ? { descriptive: 4, normative: 4, prescriptive: 4 } : { descriptive: 0, normative: 0, prescriptive: 0 });
     }
 
     expect(DATASET.questions.some((question) => question.targetNodeIds?.some((targetId) => registryIds.includes(targetId)))).toBe(false);
@@ -2153,8 +2160,8 @@ describe("research workbench contracts", () => {
 
     const completed = { ...scaffold, targetJustification: "This branch needs a separate item because its theory of authority differs from nearby traditions.", exactWording: "People should be free to coordinate peaceful associations without a compulsory central authority." };
     expect(validateResearchCandidate(completed, DATASET)).toEqual([]);
-    expect(DATASET.questions).toHaveLength(1488);
-    expect(DATASET.manifest.questionCount).toBe(1488);
+    expect(DATASET.questions).toHaveLength(1500);
+    expect(DATASET.manifest.questionCount).toBe(1500);
   });
 
   it("keeps production promotion blocked until substantive review and validation pass", () => {
@@ -2223,7 +2230,7 @@ describe("research workbench contracts", () => {
     expect(researchTaxonomyDecisionForTarget("integral-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("legionary-fascism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("white-nationalism")).toMatchObject({ disposition: "retain-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
-    expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "demote-to-associated", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored" });
+    expect(researchTaxonomyDecisionForTarget("deep-ecology")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("bioregionalism")).toMatchObject({ disposition: "promote-to-canonical", resultingPlacement: "canonical", resultingScoringStatus: "scored-provisional" });
     expect(researchTaxonomyDecisionForTarget("civic-republicanism")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });
     expect(researchTaxonomyDecisionForTarget("conservative-new-right")).toMatchObject({ disposition: "retain-registry-only", resultingPlacement: "registry-only", resultingScoringStatus: "not-scored", decidedAt: "2026-08-29" });

@@ -1074,3 +1074,24 @@ V101 adds four source-backed qualitative conceptions to the existing Gandhian Po
 The verified V101 production contract remains content version 96 with 1,488 questions (496 per layer), 118 production anchors, 123 editorial anchors, six contextual placements, three registry entries, and 1,524 quarantined candidates across 127 research targets. Gandhian Political Thought has four source-backed conceptions, zero production questions, no production anchor, and no score path. The [Parel *Pax Gandhiana* source](https://academic.oup.com/book/12258) and [Mantena's *Another Realism* source](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/another-realism-the-politics-of-gandhian-nonviolence/7BE21CF751176FAF880BD41A9E5EF10F) are used for provenance and contextual interpretation, not respondent measurement.
 
 No cognitive review, respondent study, expert content adjudication, psychometric calibration, reliability/validity estimate, invariance/DIF study, empirical validation, population/consequence review, or held-out respondent morphology evidence was run or implied. This is a neutral research-model/data and UI continuation, not a personal ideological comparison, political recommendation, ranking, or score.
+
+## V102 verification — Deep Ecology canonical micro branch
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx vitest run src/research.test.ts` | PASS | Focused research contract 85/85 |
+| `npm run test:run` | PASS | Full current-tree Vitest suite 144/144 across five files; one pre-existing unowned test remains outside the V102 commit |
+| `npx tsc --noEmit` | PASS | Current TypeScript tree typechecks |
+| `npm run build` | PASS | Production bundle builds; the existing large-client-chunk advisory remains |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `npm run research:coverage` | PASS | Content version 97; 1,500 production questions; 119 production anchors; 124 editorial anchors; zero validation errors |
+| `npm run research:anchor-reachability` | PASS | 119 production anchors; zero validation errors and structural failures; Deep Ecology is isolated-reachable across all three layers; full-competition overlap remains diagnostic |
+| `npm run belief:measurement-audit` | PASS | All 1,500 production items audited as facet-proxy observations; construct gaps and review dispositions remain explicit |
+| `npm run belief:morphology-audit` | PASS | 119 canonical configurations round-trip; zero validation errors and structural failures; synthetic output remains non-respondent evidence |
+| `npm run belief:direct-pilot-audit` | PASS | Eight-item effect-free categorical pilot remains isolated from legacy scoring; zero validation errors and failures |
+| `E2E_BASE_URL=http://127.0.0.1:4174 npm run qa -- --workers=1` | PASS | Production-preview Playwright suite 10/10; inventory, research workbench, governance, responsive, full-layer, share-link, transition, and malformed-share paths pass |
+| `npm run belief:completion-audit` | NOT PASS / FAIL-CLOSED | Exit 1 because cognitive response-process, expert adjudication, empirical reliability/validity, invariance/DIF, population/consequence, and held-out respondent morphology gates remain `NOT RUN` by explicit scope |
+| `git diff --check` | PASS | No whitespace errors after V102 finalization |
+| Compose/Docker delivery | NOT RUN | Not rerun for V102; no container or hosted-runtime claim is made |
+
+The V102 structural contract is eligible but the overall completion status remains incomplete by design. The six external-study gates are not substituted with synthetic fixtures, source citations, automated audits, or cognitive-review alternatives. This is neutral repository taxonomy/data authoring and verification, not a personal ideological comparison, recommendation, ranking, or score.
