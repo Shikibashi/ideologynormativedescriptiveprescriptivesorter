@@ -412,7 +412,7 @@ export type BeliefObservationState = "directional" | "mixed" | "no-view" | "unan
 
 export type BeliefRelationalEvidenceKind = "priority" | "conditional" | "conflict-resolution" | "uncertainty" | "contradiction" | "contestation";
 
-export type BeliefDirectEvidenceKind = "conception" | "moral-scope" | "causal-account" | "legitimacy-basis" | "distributive-reason" | "institutional-route" | "political-economy" | "change-path";
+export type BeliefDirectEvidenceKind = "conception" | "moral-scope" | "causal-account" | "legitimacy-basis" | "distributive-reason" | "institutional-route" | "political-economy" | "change-path" | "priority-rule" | "epistemic-stance" | "contestation-response";
 
 export type BeliefConfidenceLevel = "low" | "moderate" | "high" | "not-stated";
 

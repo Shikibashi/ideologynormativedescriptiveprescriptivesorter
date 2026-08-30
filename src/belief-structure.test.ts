@@ -330,8 +330,9 @@ describe("stated political commitment configuration", () => {
     expect(enrichedStructure.get("legitimacy-and-authority")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conception-of-freedom"), expect.stringContaining("legitimacy-basis")]));
     expect(enrichedStructure.get("values-and-moral-scope")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("moral-scope-of-obligation")]));
     expect(enrichedStructure.get("distributive-principles")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("moral-scope-of-obligation"), expect.stringContaining("distributive-reason")]));
-    expect(enrichedStructure.get("priorities-and-conflicts")).toMatchObject({ evidencePosture: "explicit-relational" });
+    expect(enrichedStructure.get("priorities-and-conflicts")).toMatchObject({ evidencePosture: "mixed-provisional" });
     expect(enrichedStructure.get("priorities-and-conflicts")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-liberty-equality")]));
+    expect(enrichedStructure.get("priorities-and-conflicts")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("priority-conflict-rule")]));
     expect(enrichedStructure.get("priorities-and-conflicts")?.relatedDimensionIds).toEqual(expect.arrayContaining([
       "concepts-and-conceptions",
       "distributive-principles",
@@ -346,10 +347,12 @@ describe("stated political commitment configuration", () => {
     expect(enrichedStructure.get("descriptive-causal-beliefs")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("uncertainty-descriptive-claim")]));
     expect(enrichedStructure.get("epistemic-stance")?.relatedDimensionIds).toEqual(["descriptive-causal-beliefs"]);
     expect(enrichedStructure.get("legitimacy-and-authority")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("conflict-rights-local-autonomy"), expect.stringContaining("contradiction-goal-route"), expect.stringContaining("contestation-minority-response")]));
-    expect(enrichedStructure.get("epistemic-stance")).toMatchObject({ evidencePosture: "explicit-relational" });
+    expect(enrichedStructure.get("epistemic-stance")).toMatchObject({ evidencePosture: "mixed-provisional" });
     expect(enrichedStructure.get("epistemic-stance")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("uncertainty-descriptive-claim")]));
-    expect(enrichedStructure.get("heterodoxy-and-contestation")).toMatchObject({ evidencePosture: "explicit-relational" });
+    expect(enrichedStructure.get("epistemic-stance")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("epistemic-stance-pilot")]));
+    expect(enrichedStructure.get("heterodoxy-and-contestation")).toMatchObject({ evidencePosture: "mixed-provisional" });
     expect(enrichedStructure.get("heterodoxy-and-contestation")?.relationalEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("contestation-minority-response")]));
+    expect(enrichedStructure.get("heterodoxy-and-contestation")?.directEvidenceIds).toEqual(expect.arrayContaining([expect.stringContaining("heterodoxy-contestation-pilot")]));
     expect(enrichedStructure.get("heterodoxy-and-contestation")?.relatedDimensionIds).toEqual(["legitimacy-and-authority"]);
     expect(enriched.structure.find((dimension) => dimension.id === "priorities-and-conflicts")?.evidenceQuestionIds).toContain("priority-liberty-equality");
   });

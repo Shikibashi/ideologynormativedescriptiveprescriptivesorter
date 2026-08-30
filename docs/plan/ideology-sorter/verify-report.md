@@ -2093,3 +2093,25 @@ The objective-level completion audit now includes the existing research metadata
 | `git diff --check` | PASS | No whitespace errors. |
 
 V145 closes a local completion-audit observability gap only. It does not create external evidence, promote route context, change scoring or morphology, or close the comprehensive objective.
+
+## V146 observed verification — direct pilot coverage for production-unmeasured constructs — 2026-08-30
+
+V146 adds three optional source-linked direct categorical items for the production-unmeasured priority, epistemic-stance, and heterodoxy/contestation constructs. The items remain outside the 1,500-question production bank and retain explicit missingness; selected records are visible in the belief profile and morphology trace but do not enter legacy scoring, morphology affinity, anchor ordering, or ontology placement. The current source tree has 11 direct pilot items, 19 quarantined candidates, six relational follow-ups, and a 1,536-item review queue.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npx tsc --noEmit --pretty false` | PASS | The new evidence-kind union, direct items, audit coverage assertion, UI copy, and browser-test imports compile with no output. |
+| `npm run test:run -- --no-file-parallelism --reporter=dot` | PASS | Full current-tree Vitest suite: 11 files and 179/179 tests passed in 60.36 seconds. |
+| `npm run build` | PASS | Vite production build: 42 modules; the existing large-client-chunk advisory remains. |
+| `npm run belief:direct-pilot-audit -- --summary` | PASS | 11 direct items; all three constructs without a production signal are covered; zero production overlap, zero validation errors, and legacy/affinity isolation remain true. |
+| `npm run belief:measurement-audit -- --summary` | PASS | 1,500 production items remain `facet-proxy`; the three constructs remain production-unmeasured and all 25 construct/layer cells remain explicitly represented. |
+| `npm run belief:morphology-audit -- --summary` | PASS | 119 source-backed configurations and 238 source-backed-contested relationships remain valid; validation and failure counts are 0. |
+| `npm run research:coverage -- --summary` | PASS | 1,500 production questions, 119 canonical anchors, 124 editorial anchors, 125 ontology nodes, 128 research targets, and 0 research-bank validation errors. |
+| `npm run belief:question-coverage -- --summary` | PASS WITH OPEN GAPS | All 119 canonical targets retain 4/4/4 production blocks with no validation failures; four family-level prescriptive directions remain contested/indeterminate. |
+| Fresh exporter-to-validator pipeline | INCOMPLETE / FAIL-CLOSED | The fresh packet has 1,536 queue items, 0 structural validation errors, no reviewer/evidence records, six missing recorded gate results, and `eligibleForPromotion: false`; exit 1 is expected. |
+| `npm run belief:completion-audit -- --summary` | INCOMPLETE / FAIL-CLOSED | All structural checks, including direct-pilot coverage, pass; the six required external-study gates remain `NOT RUN`, so eligibility is false and exit 1 is expected. |
+| `E2E_BASE_URL=http://127.0.0.1:4176 npm run qa -- --workers=1 --reporter=list` | PASS | Full current-tree Playwright suite: 13/13 scenarios passed in 7.4 minutes against a stable isolated preview, including direct-item rendering and share restoration for all three new records; the preview was stopped cleanly. |
+| `git diff --check` | PASS | No whitespace errors after the source, audit, test, UI, and documentation changes. |
+| Required external validation gates | NOT RUN | No cognitive review, respondent study, expert adjudication, psychometric/reliability/validity, invariance/DIF, population/consequence, or held-out morphology evidence was created or promoted. |
+
+V146 improves inspectability and evidence routing for the three unmeasured constructs only. Local source citations, deterministic audits, synthetic evidence, browser behavior, and build results are not substitutes for the six external gates; the comprehensive objective remains `INCOMPLETE` / fail-closed.

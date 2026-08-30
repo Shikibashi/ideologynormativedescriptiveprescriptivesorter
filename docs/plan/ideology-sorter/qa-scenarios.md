@@ -1091,3 +1091,11 @@ The v58 QA pass is structural and behavioral delivery verification. It does not 
 | ID | Scenario | Expected result |
 |---|---|---|
 | R-145-01 | Run `npm run belief:completion-audit -- --summary` with the contested route metadata present. | The report includes passing research-metadata, expected-route-coverage, and route-non-scoring structural checks; structural eligibility is true, while the six external-study gates remain `NOT RUN` and overall status remains `INCOMPLETE`. |
+
+## V146 direct-pilot extension
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| P-146-01 | Complete the production quiz and inspect the optional direct-belief pilot. | The existing result surface renders `BELIEF_DIRECT_ITEMS.length` items, including the priority-rule, epistemic-stance, and contestation-response records; each retains explicit `No view yet` missingness and non-scoring explanatory copy. |
+| R-146-01 | Select one option for each new pilot item, create a share link, and restore it. | The selected option text is visible in the direct-evidence profile, all three answers restore from the versioned share payload, and legacy/morphology affinity remains unchanged. |
+| R-146-02 | Run the direct-pilot, measurement, completion, packet, TypeScript, Vitest, build, and browser checks. | Structural and deterministic checks pass; the production audit still reports the three constructs as unmeasured, the packet remains incomplete with promotion false, and all six external gates remain `NOT RUN`. |

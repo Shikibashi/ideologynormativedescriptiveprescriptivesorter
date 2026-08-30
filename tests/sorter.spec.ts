@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import { BELIEF_GAP_CANDIDATES } from "../src/belief-gap-candidates";
+import { BELIEF_DIRECT_ITEMS } from "../src/belief-direct-items";
 import { DATASET } from "../src/data";
 
 const choose = async (page: Page, optionIndex: number): Promise<void> => {
@@ -440,6 +441,13 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await expect(page.locator(".belief-structure-list")).toContainText(/Explicit relationship links/i);
   await page.locator('label[for="conception-of-freedom-non-domination"]').click();
   await expect(page.locator(".belief-direct-evidence")).toContainText(/Freedom from arbitrary power/i);
+  await expect(page.locator(".belief-direct-item")).toHaveCount(BELIEF_DIRECT_ITEMS.length);
+  await page.locator('label[for="priority-conflict-rule-protect-basic-floor"]').click();
+  await page.locator('label[for="epistemic-stance-pilot-provisional-revision"]').click();
+  await page.locator('label[for="heterodoxy-contestation-pilot-protect-good-faith-dissent"]').click();
+  await expect(page.locator(".belief-direct-evidence")).toContainText(/Protect a basic floor first/i);
+  await expect(page.locator(".belief-direct-evidence")).toContainText(/Act provisionally and revise/i);
+  await expect(page.locator(".belief-direct-evidence")).toContainText(/Protect good-faith dissent/i);
   await expect(page.getByRole("heading", { name: "Make the remaining gaps inspectable" })).toBeVisible();
   await expect(page.locator(".belief-gap-item")).toHaveCount(BELIEF_GAP_CANDIDATES.length);
   await page.locator(".belief-gap-pilot-disclosure > summary").click();
@@ -482,6 +490,9 @@ test("can complete all layers and create a versioned share link", async ({ page,
   await expect(restored.locator("#priority-liberty-equality-freedom-first")).toBeChecked();
   await expect(restored.locator('label[for="gap-bc-priority-liberty-equality-1"] input')).toBeChecked();
   await expect(restored.locator("#conception-of-freedom-non-domination")).toBeChecked();
+  await expect(restored.locator("#priority-conflict-rule-protect-basic-floor")).toBeChecked();
+  await expect(restored.locator("#epistemic-stance-pilot-provisional-revision")).toBeChecked();
+  await expect(restored.locator("#heterodoxy-contestation-pilot-protect-good-faith-dissent")).toBeChecked();
   await restored.close();
   await page.getByRole("button", { name: /Start again/ }).click();
   await expect(page.getByRole("heading", { name: /Three views/ })).toBeVisible();

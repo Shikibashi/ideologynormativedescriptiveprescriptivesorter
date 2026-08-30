@@ -844,4 +844,10 @@ The route-variant type, metadata validator, coverage report, Research Workbench 
 
 The objective-level `belief:completion-audit` now reuses `validateCuratedResearchMetadata` and checks the expected four-profile route inventory. Its structural report explicitly records research metadata validity, route-count coverage, and route non-scoring isolation alongside the belief-model and morphology checks. This closes an observability gap in which the separate research coverage audit could validate route metadata while the objective-level report did not include it.
 
+## V146 continuation — expose the three production-unmeasured belief constructs — 2026-08-30
+
+Use the existing optional direct categorical pilot to expose one source-backed item for each construct that the production question bank does not currently measure: priority ordering under conflict, epistemic handling of incomplete evidence, and response to internal contestation. Keep the items at the lowest responsible layer—normative, descriptive, and prescriptive respectively—with four substantive options and explicit `No view yet` missingness. Do not add production questions, effects, coefficients, thresholds, anchor vectors, ontology nodes, or ideology assignments.
+
+The implementation must prove option-level source provenance, dynamic share/review-packet inclusion, profile and morphology trace retention, and complete isolation from scalar observations and affinity. The measurement audit must continue to report the three constructs as production-unmeasured; the direct-pilot and completion audits must explicitly require coverage of those constructs without upgrading them to measured status. No cognitive review is in scope, and the six external validation gates remain open.
+
 The added checks remain structural only: they do not convert route statements into observations, add them to production questions, or use them as affinity evidence. The completion audit still remains `INCOMPLETE` until the six external-study gates have authenticated results.

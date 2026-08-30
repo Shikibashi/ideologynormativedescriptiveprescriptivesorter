@@ -74,6 +74,13 @@ const validationErrors = [
   ...researchMetadataValidationErrors,
 ];
 const audits = auditBeliefMeasurement(DATASET);
+const productionCoveredConstructIds = new Set(audits.flatMap((audit) => audit.constructIds));
+const productionUnmeasuredConstructIds = BELIEF_CONSTRUCT_DEFINITIONS
+  .filter((definition) => !productionCoveredConstructIds.has(definition.id))
+  .map((definition) => definition.id);
+const directPilotCoversProductionGaps = productionUnmeasuredConstructIds.every((constructId) =>
+  BELIEF_DIRECT_ITEMS.some((item) => item.constructIds.includes(constructId)),
+);
 const questionCoverage = auditIdeologyQuestionCoverage(DATASET);
 const expectedConstructLayerItemCounts: Record<string, Record<string, number>> = Object.fromEntries(
   BELIEF_CONSTRUCTS.map((constructId) => [constructId, Object.fromEntries(LAYERS.map((layer) => [layer, 0]))]),
@@ -256,6 +263,7 @@ const structuralChecks = {
     && JSON.stringify(directResult.legacy.layers) === JSON.stringify(baseResult.legacy.layers)
     && JSON.stringify(directResult.legacy.combined) === JSON.stringify(baseResult.legacy.combined)
     && JSON.stringify(affinityTraceFor(directResult)) === JSON.stringify(affinityTraceFor(baseResult)),
+  directPilotCoversProductionGaps,
   directEvidenceAttachedToStructure,
   relationalEvidenceIsolated: relationalResult.primary.profile.relationalEvidence.length === relationalEvidence.length
     && JSON.stringify(relationalResult.legacy.layers) === JSON.stringify(baseResult.legacy.layers)
@@ -325,6 +333,8 @@ const report = {
     gapCandidates: BELIEF_GAP_CANDIDATES.length,
     gapPilotEvidence: gapEvidence.length,
     directPilotItems: BELIEF_DIRECT_ITEMS.length,
+    productionUnmeasuredConstructIds,
+    directPilotCoversProductionGaps,
     relationalFollowUps: BELIEF_RELATIONAL_FOLLOWUPS.length,
     contestedRouteVariantTargets: contestedRouteVariantProfiles.filter((profile) => profile !== undefined).length,
     contestedRouteVariants: contestedRouteVariants.length,

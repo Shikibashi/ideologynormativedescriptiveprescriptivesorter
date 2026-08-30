@@ -1,5 +1,5 @@
 import { BELIEF_DIRECT_ITEMS, directEvidenceForAnswers, validateBeliefDirectEvidence, validateBeliefDirectItems, type BeliefDirectAnswerMap } from "../src/belief-direct-items";
-import { BELIEF_CONSTRUCT_DEFINITIONS, validateBeliefModel } from "../src/beliefs";
+import { BELIEF_CONSTRUCT_DEFINITIONS, auditBeliefMeasurement, validateBeliefModel } from "../src/beliefs";
 import { DATASET } from "../src/data";
 import { calculateResults } from "../src/scoring";
 import type { AnswerMap } from "../src/types";
@@ -42,6 +42,14 @@ const directEvidenceLinkedToConstructs = directEvidence.every((evidence) =>
 
 const directItemErrors = validateBeliefDirectItems(DATASET);
 const directEvidenceErrors = validateBeliefDirectEvidence(directEvidence, DATASET);
+const productionMeasurementAudits = auditBeliefMeasurement(DATASET);
+const productionCoveredConstructIds = new Set(productionMeasurementAudits.flatMap((audit) => audit.constructIds));
+const productionUnmeasuredConstructIds = BELIEF_CONSTRUCT_DEFINITIONS
+  .filter((definition) => !productionCoveredConstructIds.has(definition.id))
+  .map((definition) => definition.id);
+const directPilotCoversProductionGaps = productionUnmeasuredConstructIds.every((constructId) =>
+  BELIEF_DIRECT_ITEMS.some((item) => item.constructIds.includes(constructId)),
+);
 const validationErrors = [
   ...directItemErrors,
   ...directEvidenceErrors,
@@ -84,6 +92,8 @@ const report = {
       .filter((option) => option.record !== false)
       .flatMap((option) => option.sourceRefs)).size,
     uncoveredConstructIds: uncoveredDirectConstructIds,
+    productionUnmeasuredConstructIds,
+    directPilotCoversProductionGaps,
     directItemsInProduction,
   },
   syntheticEvidence: {
@@ -106,6 +116,7 @@ const failures = [
   ...validationErrors,
   ...(directEvidence.length !== BELIEF_DIRECT_ITEMS.length ? ["not every direct pilot item produced synthetic evidence"] : []),
   ...(directItemsInProduction.length > 0 ? [`direct pilot items overlap production questions: ${directItemsInProduction.join(", ")}`] : []),
+  ...(!directPilotCoversProductionGaps ? ["direct pilot does not cover every construct without a production signal"] : []),
   ...(!sameLegacyScoring ? ["direct pilot evidence changed legacy layer or combined scoring"] : []),
   ...(!sameAffinityBasis ? ["direct pilot evidence changed morphology affinity fit or basis"] : []),
   ...(!enriched.primary.profile.directEvidence.length ? ["direct pilot evidence was not retained in the belief profile"] : []),
